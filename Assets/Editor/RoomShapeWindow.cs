@@ -1,7 +1,7 @@
 ﻿namespace Assets.Editor
 {
 	using System.Collections.Generic;
-	using Scripts.Utils;
+	using GeneralAlgorithms.DataStructures.Common;
 	using UnityEditor;
 	using UnityEngine;
 

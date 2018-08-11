@@ -1,0 +1,8 @@
+name: thesis_corridors_offset_4
+roomDescriptions:
+  4-2-rectangle:
+    shape: [[0,0], [0,4], [2,4], [2,0]]
+    doorMode: !SpecificPositionsMode
+      doorPositions: 
+        - [[0,0], [2,0]]
+        - [[0,4], [2,4]]

@@ -1,0 +1,14 @@
+name: thesis_advanced
+default:
+  doorMode: !OverlapMode
+    doorLength: 2
+    cornerDistance: 1
+roomDescriptions:
+  small-l-shape:
+    shape: [[0,0], [0,12], [6,12], [6,6], [12,6], [12,0]]
+
+  big-l-shape:
+    shape: [[0,0], [0,18], [6,18], [6,6], [12,6], [12,0]]
+
+  regular-t-shape:
+    shape: [[0,0], [0,6], [6,6], [6,12], [12,12], [12,6], [18,6], [18,0]]

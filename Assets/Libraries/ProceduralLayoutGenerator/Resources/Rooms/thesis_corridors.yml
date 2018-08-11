@@ -1,0 +1,8 @@
+name: thesis_corridors
+roomDescriptions:
+  2-square:
+    shape: [[0,0], [0,2], [2,2], [2,0]]
+    doorMode: !SpecificPositionsMode
+      doorPositions: 
+        - [[0,0], [2,0]]
+        - [[0,2], [2,2]]

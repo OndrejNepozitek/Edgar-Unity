@@ -1,0 +1,11 @@
+name: rectangles
+default:
+  doorMode: !OverlapMode
+    doorLength: 1
+    cornerDistance: 0
+roomDescriptions:
+  6-square:
+    shape: [[0,0], [0,6], [6,6], [6,0]]
+
+  6-9-rectangle:
+    shape: [[0,0], [0,9], [6,9], [6,0]]

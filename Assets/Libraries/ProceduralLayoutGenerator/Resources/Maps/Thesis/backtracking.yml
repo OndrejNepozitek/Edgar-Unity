@@ -1,0 +1,40 @@
+roomsRange:
+  from: 0
+  to: 14
+
+passages:
+  - [0,1]
+  - [0,2]
+  - [0,8]
+  - [0,9]
+  - [1,3]
+  - [1,4]
+  - [1,5]
+  - [2,6]
+  - [2,7]
+  - [8,10]
+  - [8,11]
+  - [8,12]
+  - [9,13]
+  - [9,14]
+
+defaultRoomShapes:
+  -
+    setName: custom
+
+customRoomDescriptionsSet:
+  default:
+    doorMode: !OverlapMode
+      doorLength: 1
+      cornerDistance: 1
+  roomDescriptions:
+    6-square:
+      shape: [[0,0], [0,6], [6,6], [6,0]]
+    6-9-rectangle:
+      shape: [[0,0], [0,9], [6,9], [6,0]]
+    small-l-shape:
+      shape: [[0,0], [0,6], [3,6], [3,3], [6,3], [6,0]]
+    big-l-shape:
+      shape: [[0,0], [0,9], [3,9], [3,3], [6,3], [6,0]]
+    regular-t-shape:
+      shape: [[0,0], [0,3], [3,3], [3,6], [6,6], [6,3], [9,3], [9,0]]

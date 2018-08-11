@@ -1,0 +1,7 @@
+name: bossRooms
+roomDescriptions:
+  bossRoom1:
+    shape: [[2,0], [2,1], [1,1], [1,2], [0,2], [0,7], [1,7], [1,8], [2,8], [2,9], [7,9], [7,8], [8,8], [8,7], [9,7], [9,2], [8,2], [8,1], [7,1], [7,0]]
+    doorMode: !OverlapMode
+      cornerDistance: 1
+      doorLength: 1

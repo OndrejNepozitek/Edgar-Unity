@@ -1,0 +1,57 @@
+roomsRange:
+  from: 0
+  to: 10
+
+passages:
+  - [0,1]
+  - [0,5]
+  - [0,8]
+  - [1,2]
+  - [2,3]
+  - [3,4]
+  - [4,5]
+  - [5,6]
+  - [5,9]
+  - [6,7]
+  - [7,8]
+  - [9,10]
+
+defaultRoomShapes:
+  -
+    setName: custom
+
+customRoomDescriptionsSet:
+  default:
+    doorMode: !OverlapMode
+      doorLength: 1
+      cornerDistance: 3
+  roomDescriptions:
+    12-square:
+      shape: [[0,0], [0,12], [12,12], [12,0]]
+    10-14-rectangle:
+      shape: [[0,0], [0,14], [10,14], [10,0]]
+    10-18-rectangle:
+      shape: [[0,0], [0,18], [10,18], [10,0]]
+    10-16-rectangle:
+      shape: [[0,0], [0,16], [10,16], [10,0]]
+    5-square:
+      shape: [[0,0], [0,5], [5,5], [5,0]]
+      doorMode: !OverlapMode
+        doorLength: 1
+        cornerDistance: 1
+    5-8-rectangle:
+      shape: [[0,0], [0,8], [5,8], [5,0]]
+      doorMode: !OverlapMode
+        doorLength: 1
+        cornerDistance: 1
+    7-18-rectangle:
+      shape: [[0,0], [0,18], [7,18], [7,0]]
+    12-16-rectangle:
+      shape: [[0,0], [0,16], [12,16], [12,0]]
+
+corridors:
+  enable: true
+  offsets: [1]
+  corridorShapes:
+    -
+      setName: corridors

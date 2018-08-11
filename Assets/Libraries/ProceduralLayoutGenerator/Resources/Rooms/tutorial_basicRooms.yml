@@ -1,0 +1,14 @@
+name: tutorial_basicRooms
+roomDescriptions:
+  # Create 8x8 square
+  8-square:
+    shape: [[0,0], [0,8], [8,8], [8,0]]
+    doorMode: !OverlapMode
+      doorLength: 1
+      cornerDistance: 1
+  # Create 6x10 rectangle
+  6-10-rectangle:
+    shape: [[0,0], [0,10], [6,10], [6,0]]
+    doorMode: !OverlapMode
+      doorLength: 1
+      cornerDistance: 1

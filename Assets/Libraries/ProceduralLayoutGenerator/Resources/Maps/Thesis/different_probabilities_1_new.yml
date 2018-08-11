@@ -1,0 +1,53 @@
+roomsRange:
+  from: 0
+  to: 12
+
+passages:
+  - [0,1]
+  - [0,12]
+  - [1,2]
+  - [2,3]
+  - [3,4]
+  - [3,12]
+  - [4,5]
+  - [5,6]
+  - [5,9]
+  - [6,7]
+  - [6,8]
+  - [9,10]
+  - [9,11]
+  - [10,11]
+  - [11,12]
+
+defaultRoomShapes:
+  -
+    setName: custom
+    roomDescriptionName: 6-square
+    probability: 20
+  -
+    setName: custom
+    roomDescriptionName: 6-9-rectangle
+    probability: 1
+  -
+    setName: custom
+    roomDescriptionName: small-l-shape
+    probability: 1
+  -
+    setName: custom
+    roomDescriptionName: regular-t-shape
+    probability: 1
+
+customRoomDescriptionsSet:
+  default:
+    doorMode: !OverlapMode
+      doorLength: 1
+      cornerDistance: 1
+  roomDescriptions:
+    6-square:
+      shape: [[0,0], [0,6], [6,6], [6,0]]
+    6-9-rectangle:
+      shape: [[0,0], [0,9], [6,9], [6,0]]
+    small-l-shape:
+      shape: [[0,0], [0,6], [3,6], [3,3], [6,3], [6,0]]
+    regular-t-shape:
+      shape: [[0,0], [0,3], [3,3], [3,6], [6,6], [6,3], [9,3], [9,0]]

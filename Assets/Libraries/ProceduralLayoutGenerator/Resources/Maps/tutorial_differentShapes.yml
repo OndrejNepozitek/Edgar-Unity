@@ -1,0 +1,38 @@
+roomsRange:
+  from: 0
+  to: 8
+
+passages:
+  - [0,1]
+  - [0,3]
+  - [1,2]
+  - [1,4]
+  - [1,5]
+  - [2,3]
+  - [3,6]
+  - [4,5]
+  - [6,7]
+  - [6,8]
+  - [7,8]
+
+defaultRoomShapes:
+  -
+    setName: rectangles
+  -
+    setName: otherShapes
+
+rooms:
+  [8]:
+    roomShapes:
+      -
+        setName: custom
+        roomDescriptionName: bossRoom
+        scale: [2,2]
+
+customRoomDescriptionsSet:
+  roomDescriptions:
+    bossRoom:
+      shape: [[2,0], [2,1], [1,1], [1,2], [0,2], [0,7], [1,7], [1,8], [2,8], [2,9], [7,9], [7,8], [8,8], [8,7], [9,7], [9,2], [8,2], [8,1], [7,1], [7,0]]
+      doorMode: !OverlapMode
+        cornerDistance: 1
+        doorLength: 1

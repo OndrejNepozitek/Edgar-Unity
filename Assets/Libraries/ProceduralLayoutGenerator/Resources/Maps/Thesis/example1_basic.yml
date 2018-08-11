@@ -1,0 +1,20 @@
+roomsRange:
+  from: 0
+  to: 8
+
+passages:
+  - [0,1]
+  - [0,3]
+  - [1,2]
+  - [1,4]
+  - [1,5]
+  - [2,3]
+  - [3,6]
+  - [4,5]
+  - [6,7]
+  - [6,8]
+  - [7,8]
+
+defaultRoomShapes:
+  -
+    setName: thesis_basic

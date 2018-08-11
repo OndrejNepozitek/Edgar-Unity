@@ -1,0 +1,14 @@
+# We want 4 vertices
+roomsRange:
+  from: 0
+  to: 3
+
+# Define passages
+passages:
+  - [0,1]
+  - [0,3]
+  - [1,2]
+  - [2,3]
+
+defaultRoomShapes:
+  - setName: tutorial_basicRooms

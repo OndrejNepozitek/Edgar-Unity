@@ -1,0 +1,14 @@
+name: thesis_basic
+default:
+  doorMode: !OverlapMode
+    doorLength: 2
+    cornerDistance: 1
+roomDescriptions:
+  12-square:
+    shape: [[0,0], [0,12], [12,12], [12,0]]
+
+  8-square:
+    shape: [[0,0], [0,8], [8,8], [8,0]]
+
+  12-18-rectangle:
+    shape: [[0,0], [0,18], [12,18], [12,0]]

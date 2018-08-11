@@ -1,0 +1,117 @@
+roomsRange:
+  from: 0
+  to: 21
+
+passages:
+  - [1,4]
+  - [2,4]
+  - [3,4]
+  - [4,5]
+  - [5,6]
+  - [6,8]
+  - [6,9]
+  - [7,8]
+  - [9,10]
+  - [9,11]
+  - [9,12]
+  - [9,14]
+  - [13,15]
+  - [14,15]
+  - [14,16]
+  - [16,17]
+  - [17,18]
+  - [17,21]
+  - [18,19]
+  - [18,20]
+  - [21,0]
+
+rooms:
+  # The biggest room
+  [1]:
+    roomShapes:
+      - roomDescriptionName: 18-26-rectangle
+
+  # Square like shapes
+  [2, 3, 0]:
+    roomShapes:
+      - roomDescriptionName: 12-square
+
+  # L room
+  [4]:
+    roomShapes:
+      - roomDescriptionName: l-shape-1
+
+  # Medium to big rectangular rooms
+  [5, 6, 7, 14, 15]:
+    roomShapes:
+      - roomDescriptionName: 10-14-rectangle
+      - roomDescriptionName: 10-16-rectangle
+      - roomDescriptionName: 10-18-rectangle
+
+  # Smallest rooms
+  [8, 10, 11, 12, 16, 21]:
+    roomShapes:
+      - roomDescriptionName: 5-square
+      - roomDescriptionName: 5-8-rectangle
+
+  # Longer rectangle
+  [9, 13]:
+    roomShapes:
+      - roomDescriptionName: 7-18-rectangle
+
+  # Bigger rectangles
+  [17]:
+    roomShapes:
+      - roomDescriptionName: 10-16-rectangle
+      - roomDescriptionName: 10-18-rectangle
+
+  # Bigger rectangle
+  [18]:
+    roomShapes:
+      - roomDescriptionName: 12-16-rectangle
+
+  # Medium rectangles
+  [19, 20]:
+    roomShapes:
+      - roomDescriptionName: 10-14-rectangle
+      - roomDescriptionName: 10-16-rectangle
+
+customRoomDescriptionsSet:
+  default:
+    doorMode: !OverlapMode
+      doorLength: 1
+      cornerDistance: 3
+  roomDescriptions:
+    18-26-rectangle:
+      shape: [[0,0], [0,26], [18,26], [18,0]]
+    12-square:
+      shape: [[0,0], [0,12], [12,12], [12,0]]
+    l-shape-1:
+      shape: [[0,0], [0,20], [7,20], [7,7], [16,7], [16,0]]
+    10-14-rectangle:
+      shape: [[0,0], [0,14], [10,14], [10,0]]
+    10-18-rectangle:
+      shape: [[0,0], [0,18], [10,18], [10,0]]
+    10-16-rectangle:
+      shape: [[0,0], [0,16], [10,16], [10,0]]
+    5-square:
+      shape: [[0,0], [0,5], [5,5], [5,0]]
+      doorMode: !OverlapMode
+        doorLength: 1
+        cornerDistance: 1
+    5-8-rectangle:
+      shape: [[0,0], [0,8], [5,8], [5,0]]
+      doorMode: !OverlapMode
+        doorLength: 1
+        cornerDistance: 1
+    7-18-rectangle:
+      shape: [[0,0], [0,18], [7,18], [7,0]]
+    12-16-rectangle:
+      shape: [[0,0], [0,16], [12,16], [12,0]]
+
+corridors:
+  enable: true
+  offsets: [1]
+  corridorShapes:
+    -
+      setName: corridors

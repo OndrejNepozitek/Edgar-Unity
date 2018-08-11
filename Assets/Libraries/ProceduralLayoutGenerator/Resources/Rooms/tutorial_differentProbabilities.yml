@@ -1,0 +1,14 @@
+name: tutorial_differentProbabilities
+default:
+  doorMode: !OverlapMode
+    doorLength: 1
+    cornerDistance: 1
+roomDescriptions:
+  square-big:
+    shape: [[0,0], [0,8], [8,8], [8,0]]
+  square-small:
+    shape: [[0,0], [0,6], [6,6], [6,0]]
+  rectangle-big:
+    shape: [[0,0], [0,8], [12,8], [12,0]]
+  rectangle-small:
+    shape: [[0,0], [0,6], [10,6], [10,0]]

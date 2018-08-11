@@ -1,0 +1,14 @@
+name: otherShapes
+default:
+  doorMode: !OverlapMode
+    doorLength: 1
+    cornerDistance: 0
+roomDescriptions:
+  small-l-shape:
+    shape: [[0,0], [0,6], [3,6], [3,3], [6,3], [6,0]]
+
+  big-l-shape:
+    shape: [[0,0], [0,9], [3,9], [3,3], [6,3], [6,0]]
+
+  regular-t-shape:
+    shape: [[0,0], [0,3], [3,3], [3,6], [6,6], [6,3], [9,3], [9,0]]
