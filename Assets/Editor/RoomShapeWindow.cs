@@ -98,6 +98,14 @@
 				Close();
 			}
 
+			if (id != 0 && GUILayout.Button("Delete"))
+			{
+				var mainWindow = GetWindow<MainWindow>();
+				mainWindow.RoomShapes.Remove(id);
+
+				Close();
+			}
+
 			GUILayout.EndVertical();
 			
 
@@ -193,7 +201,7 @@
 			this.roomShape = roomShape;
 			this.id = id;
 
-			if (id != -1)
+			if (id != 0)
 			{
 				name = roomShape.Name;
 				usedTiles = new HashSet<IntVector2>(roomShape.GridPoints);

@@ -1,6 +1,8 @@
 ﻿namespace Assets.Editor
 {
 	using System.Collections.Generic;
+	using System.IO;
+	using Newtonsoft.Json;
 	using Scripts;
 	using UnityEditor;
 	using UnityEngine;
@@ -26,10 +28,10 @@
 			showRoomShapes = EditorGUILayout.Foldout(showRoomShapes, "Room shapes", myFoldoutStyle);
 			if (showRoomShapes)
 			{
-				if (GUILayout.Button("Add room shape")) 
+				if (GUILayout.Button("Add room shape"))  
 				{
 					var roomShapeWindow = GetWindow<RoomShapeWindow>();
-					roomShapeWindow.SetRoomShape(-1, null);
+					roomShapeWindow.SetRoomShape(0, null);
 					roomShapeWindow.Show();
 				}
 
@@ -52,7 +54,39 @@
 				}
 			}
 
-			GUILayout.EndVertical();
+			GUILayout.EndVertical();  
+		}
+
+		public void OnDestroy()
+		{
+			Debug.Log("Destroyed");
+		}
+
+		public void OnEnable()
+		{
+			Debug.Log("OnEnable");
+			var path = "Assets/Resources/roomShapes.json";
+
+			using (var reader = new StreamReader(path))
+			{
+				var json = reader.ReadToEnd();
+				var deserialized = JsonConvert.DeserializeObject<Dictionary<int, RoomShape>>(json);
+
+				RoomShapes = deserialized ?? new Dictionary<int, RoomShape>();
+			}
+		}
+
+		void OnDisable()
+		{
+			Debug.Log("OnDisable");
+
+			var json = JsonConvert.SerializeObject(RoomShapes);
+			var path = "Assets/Resources/roomShapes.json";
+
+			using (var writer = new StreamWriter(path))
+			{
+				writer.Write(json); 
+			}
 		}
 	}
 }
