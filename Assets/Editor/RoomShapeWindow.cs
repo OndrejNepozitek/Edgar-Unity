@@ -1,7 +1,12 @@
 ﻿namespace Assets.Editor
 {
+	using System;
 	using System.Collections.Generic;
+	using System.Linq;
 	using GeneralAlgorithms.DataStructures.Common;
+	using GeneralAlgorithms.DataStructures.Polygons;
+	using Newtonsoft.Json;
+	using Scripts;
 	using UnityEditor;
 	using UnityEngine;
 
@@ -12,6 +17,10 @@
 
 		private int selectedMode = 0;
 		private int selectedDoorMode = 1;
+		private string name;
+
+		private RoomShape roomShape;
+		private int id;
 
 		private HashSet<IntVector2> usedTiles = new HashSet<IntVector2>();
 
@@ -46,11 +55,15 @@
 
 			GUILayout.BeginVertical(style, GUILayout.Width(topLeftOffset.x));
 
+			EditorGUIUtility.labelWidth = 75;
+			name = EditorGUILayout.TextField("Name:", name);
+			EditorGUIUtility.labelWidth = 0;
+
+			GUILayout.Space(15);
+
 			GUILayout.Label("Doors");
 
 			selectedDoorMode = GUILayout.SelectionGrid(selectedDoorMode, new string[] { "Simple", "Explicit" }, 2);
-
-			GUILayout.Space(30);
 
 			GUILayout.Label("Mode");
 
@@ -58,7 +71,32 @@
 
 			GUILayout.Space(30);
 
-			GUILayout.Button("Validate");
+			if (GUILayout.Button("Validate"))
+			{
+				try
+				{
+					var polygon = RoomShapesLogic.GetPolygonFromGridPoints(usedTiles);
+
+					EditorUtility.DisplayDialog("The polygon is valid", "The polygon is valid", "Ok");
+				}
+				catch (Exception exception)
+				{
+					EditorUtility.DisplayDialog("The polygon is invalid", exception.Message, "Ok");
+				}
+			}
+
+			if (GUILayout.Button("Save and close"))
+			{
+				var mainWindow = GetWindow<MainWindow>();
+				var nextId = mainWindow.RoomShapes.Count == 0 ? 1 : mainWindow.RoomShapes.Keys.Max() + 1;
+				mainWindow.RoomShapes.Add(nextId, new RoomShape()
+				{
+					Name = name,
+					GridPoints = usedTiles
+				});
+
+				Close();
+			}
 
 			GUILayout.EndVertical();
 			
@@ -147,6 +185,18 @@
 				var y = center.y + tile.Y * LineOffset;
 
 				Handles.DrawSolidRectangleWithOutline(new Rect(x, y, LineOffset, LineOffset), Color.blue, Color.blue);
+			}
+		}
+
+		public void SetRoomShape(int id, RoomShape roomShape)
+		{
+			this.roomShape = roomShape;
+			this.id = id;
+
+			if (id != -1)
+			{
+				name = roomShape.Name;
+				usedTiles = new HashSet<IntVector2>(roomShape.GridPoints);
 			}
 		}
 	}

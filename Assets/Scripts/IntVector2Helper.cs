@@ -1,0 +1,15 @@
+﻿namespace Assets.Scripts
+{
+	using GeneralAlgorithms.DataStructures.Common;
+
+	public static class IntVector2Helper
+	{
+		public static IntVector2 Top => new IntVector2(0, 1);
+
+		public static IntVector2 Right => new IntVector2(1, 0);
+
+		public static IntVector2 Down => new IntVector2(0, -1);
+
+		public static IntVector2 Left => new IntVector2(-1, 0);
+	}
+}
