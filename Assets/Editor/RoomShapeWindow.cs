@@ -23,6 +23,7 @@
 		private int id;
 
 		private HashSet<IntVector2> usedTiles = new HashSet<IntVector2>();
+		private Rect gridAreaRect;
 
 		public RoomShapeWindow()
 		{
@@ -38,8 +39,11 @@
 				HandleGridClick(e.mousePosition);
 			}
 
-			DrawGrid();
+			gridAreaRect = new Rect(300, 20, position.width - 300 - 20, position.height - 40);
+			GUILayout.BeginArea(gridAreaRect);
+			DrawGrid(gridAreaRect);
 			DrawTiles();
+			GUILayout.EndArea();
 
 			if (e.type == EventType.MouseUp || e.type == EventType.MouseDrag)
 			{
@@ -119,7 +123,7 @@
 
 		private void HandleGridClick(Vector2 mousePosition)
 		{
-			if (mousePosition.x < topLeftOffset.x)
+			if (!gridAreaRect.Contains(mousePosition))
 				return;
 
 			var center = GetGridCenter();
@@ -147,13 +151,13 @@
 			}
 		}
 
-		private void DrawGrid()
+		private void DrawGrid(Rect rect)
 		{
-			var centerX = (position.width - topLeftOffset.x) / 2 + topLeftOffset.x;
-			var centerY = position.height / 2;
+			var centerX = rect.width / 2;
+			var centerY = rect.height / 2;
 
-			var linesCountHorizontal = (int) (position.height / LineOffset) + 1;
-			var linesCountVertical = (int) ((position.width - 200) / LineOffset) + 1;
+			var linesCountHorizontal = (int) (rect.height / LineOffset) + 1;
+			var linesCountVertical = (int) (rect.width / LineOffset) + 1;
 
 			for (var i = 0; i < linesCountHorizontal; i++)
 			{
@@ -162,7 +166,7 @@
 
 				Handles.color = centerOffset % 10 == 0 ? Color.black : Color.gray;
 
-				Handles.DrawLine(new Vector3(topLeftOffset.x, computedOffset), new Vector3(position.width, computedOffset));
+				Handles.DrawLine(new Vector3(0, computedOffset), new Vector3(rect.width, computedOffset));
 			}
 
 			for (var i = 0; i < linesCountVertical; i++)
@@ -170,27 +174,21 @@
 				var centerOffset = i - linesCountVertical / 2;
 				var computedOffset = centerX + centerOffset * LineOffset;
 
-				if (computedOffset < topLeftOffset.x)
-					continue;
-
 				Handles.color = centerOffset % 10 == 0 ? Color.black : Color.gray;
 
-				Handles.DrawLine(new Vector3(computedOffset, 0), new Vector3(computedOffset, position.height));
+				Handles.DrawLine(new Vector3(computedOffset, 0), new Vector3(computedOffset, rect.height));
 			}
 		}
 
 		private Vector2 GetGridCenter()
 		{
-			return new Vector2(
-				(position.width - topLeftOffset.x) / 2 + topLeftOffset.x,
-				position.height / 2
-			);
+			return gridAreaRect.center;
 		}
 
 		private void DrawTiles()
 		{
 			Handles.color = Color.black;
-			var center = GetGridCenter();
+			var center = gridAreaRect.center - gridAreaRect.position;
 
 			foreach (var tile in usedTiles)
 			{
