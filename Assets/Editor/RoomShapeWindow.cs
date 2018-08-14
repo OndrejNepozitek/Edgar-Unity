@@ -85,15 +85,20 @@
 				}
 			}
 
+			var data = MainWindow.Data;
+
 			if (GUILayout.Button("Save and close"))
 			{
-				var mainWindow = GetWindow<MainWindow>();
-				var nextId = mainWindow.RoomShapes.Count == 0 ? 1 : mainWindow.RoomShapes.Keys.Max() + 1;
-				mainWindow.RoomShapes.Add(nextId, new RoomShape()
+				if (id == 0)
+				{
+					id = data.RoomShapes.GetNextId();
+				}
+
+				data.RoomShapes[id] = new RoomShape()
 				{
 					Name = name,
 					GridPoints = usedTiles
-				});
+				};
 
 				Close();
 			}
@@ -101,7 +106,7 @@
 			if (id != 0 && GUILayout.Button("Delete"))
 			{
 				var mainWindow = GetWindow<MainWindow>();
-				mainWindow.RoomShapes.Remove(id);
+				data.RoomShapes.Remove(id);
 
 				Close();
 			}
