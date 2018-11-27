@@ -84,6 +84,14 @@
 
 					GUILayout.EndHorizontal();
 				}
+
+				GUILayout.Space(30);
+			}
+
+			if (GUILayout.Button("Add map description"))
+			{
+				var window = GetWindow<MapDescriptionWindow>();
+				window.Show();
 			}
 
 			GUILayout.EndVertical();  
