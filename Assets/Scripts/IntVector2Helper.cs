@@ -11,5 +11,13 @@
 		public static IntVector2 Down => new IntVector2(0, -1);
 
 		public static IntVector2 Left => new IntVector2(-1, 0);
+
+		public static IntVector2 TopLeft => new IntVector2(-1, 1);
+
+		public static IntVector2 TopRight => new IntVector2(1, 1);
+
+		public static IntVector2 BottomLeft => new IntVector2(-1, -1);
+
+		public static IntVector2 BottomRight => new IntVector2(1, -1);
 	}
 }

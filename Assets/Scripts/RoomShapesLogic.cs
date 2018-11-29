@@ -6,6 +6,7 @@
 	using GeneralAlgorithms.DataStructures.Common;
 	using GeneralAlgorithms.DataStructures.Polygons;
 	using UnityEngine;
+	using UnityEngine.Tilemaps;
 
 	public class RoomShapesLogic
 	{
@@ -15,6 +16,25 @@
 			IntVector2Helper.Right,
 			IntVector2Helper.Down,
 			IntVector2Helper.Left
+		};
+
+		private static readonly List<IntVector2> allDirectionVectors = new List<IntVector2>()
+		{
+			IntVector2Helper.Top,
+			IntVector2Helper.Right,
+			IntVector2Helper.Down,
+			IntVector2Helper.Left,
+			IntVector2Helper.TopLeft,
+			IntVector2Helper.TopRight,
+			IntVector2Helper.BottomLeft,
+			IntVector2Helper.BottomRight
+		};
+
+		private static readonly List<IntVector2> topRightVectors = new List<IntVector2>()
+		{
+			IntVector2Helper.Top,
+			IntVector2Helper.Right,
+			IntVector2Helper.TopRight
 		};
 
 		public static GridPolygon GetPolygonFromGridPoints(HashSet<IntVector2> pointsOriginal)
@@ -79,6 +99,82 @@
 			}
 
 			return new GridPolygon(polygonPoints);
+		}
+
+		public static GridPolygon GetPolygonFromTilemap(Tilemap tilemap)
+		{
+			var bounds = tilemap.cellBounds;
+			var allTiles = tilemap.GetTilesBlock(bounds);
+
+			var usedTiles = new HashSet<IntVector2>();
+			var borderPoints = new HashSet<IntVector2>();
+
+			for (var x = 0; x < bounds.size.x; x++)
+			{
+				for (var y = 0; y < bounds.size.y; y++)
+				{
+					var position = new IntVector2(x, y);
+					var tile = (Tile) allTiles[PositionToIndex(position, bounds)];
+
+					if (tile == null)
+					{
+						continue;
+					}
+
+					usedTiles.Add(position);
+				}
+			}
+
+			// PreprocessTilemap(usedTiles);
+
+			foreach (var tile in usedTiles)
+			{
+				foreach (var directionVector in allDirectionVectors)
+				{
+					var newTile = tile + directionVector;
+
+					if (!usedTiles.Contains(newTile))
+					{
+						borderPoints.Add(tile);
+						break;
+					}
+				}
+			}
+
+			return GetPolygonFromGridPoints(borderPoints);
+		}
+
+		private static void PreprocessTilemap(HashSet<IntVector2> tiles)
+		{
+			var toAdd = new HashSet<IntVector2>();
+
+			foreach (var tile in tiles)
+			{
+				foreach (var directionVector in topRightVectors)
+				{
+					var newTile = tile + directionVector;
+
+					if (!tiles.Contains(newTile) && !toAdd.Contains(newTile))
+					{
+						toAdd.Add(newTile);
+					}
+				}
+			}
+
+			foreach (var tile in toAdd)
+			{
+				tiles.Add(tile);
+			}
+		}
+
+		private static int PositionToIndex(IntVector2 position, BoundsInt bounds)
+		{
+			if (position.X < 0 || position.X >= bounds.size.x || position.Y < 0 || position.Y >= bounds.size.y)
+			{
+				return -1;
+			}
+
+			return position.X + position.Y * bounds.size.x;
 		}
 
 		private static bool IsClockwiseOriented(IList<IntVector2> points)
