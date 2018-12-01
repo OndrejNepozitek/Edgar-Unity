@@ -11,12 +11,18 @@
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.MapLayouts;
 	using MapGeneration.Utils;
+	using RoomRotations;
+	using TileMapping;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
+	using Utils;
 
 	public class DungeonGenerator : MonoBehaviour
 	{
 		public Rooms Rooms;
+
+		public Tile DoorTile;
+
 		private IMapLayout<int> lastLayout;
 
 		public void Generate()
@@ -29,7 +35,7 @@
 			}
 
 			var rooms = new List<RoomDescription>();
-			var polygonsToRooms = new Dictionary<GridPolygon, Room>();
+			var polygonsToRooms = new Dictionary<RoomDescription, Room>();
 
 			foreach (var roomSet in Rooms.RoomsSets)
 			{
@@ -37,9 +43,28 @@
 				{
 					var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
 					var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
-					var roomDescription = new RoomDescription(polygon, new OverlapMode(1, 1));
+					var doors = room.Tilemap.GetComponent<Doors.Doors>();
+					var doorLines = new List<OrthogonalLine>();
+
+					foreach (var door in doors.doors)
+					{
+						var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(),door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
+
+						//if (doorLine.Length == 0)
+						//{
+						//	continue;
+						//}
+
+						doorLines.Add(doorLine); 
+					}
+
+					var doorMode = new SpecificPositionsMode(doorLines);
+
+					var roomDescription = new RoomDescription(polygon, doorMode);
 					rooms.Add(roomDescription);
-					polygonsToRooms.Add(polygon, room);
+					polygonsToRooms.Add(roomDescription, room);
+
+					
 				}
 			}
 
@@ -59,7 +84,7 @@
 			mapDescription.AddPassage(3, 0);
 			mapDescription.AddPassage(3, 6);
 
-			mapDescription.AddRoomShapes(rooms, false);
+			mapDescription.AddRoomShapes(rooms);
 
 			var generator = LayoutGeneratorFactory.GetDefaultChainBasedGenerator<int>();
 			generator.InjectRandomGenerator(new System.Random());
@@ -81,18 +106,73 @@
 			var height = maxy - miny;
 			var positionOffset = new IntVector2(width / 2, height / 2);
 
+			var roomRotation = new RoomRotation();
+
+			var gridObject = new GameObject("Whole grid");
+			gridObject.transform.SetParent(parentGameObject.transform);
+			gridObject.AddComponent<Grid>();
+			var tilemapObject = new GameObject();
+			tilemapObject.transform.SetParent(gridObject.transform);
+			var commonTilemap = tilemapObject.AddComponent<Tilemap>();
+			tilemapObject.AddComponent<TilemapRenderer>();
+
+			var isFirst = true;
+
 			foreach (var generatorRoom in layout.Rooms)
 			{
-				var position = generatorRoom.Position - positionOffset;
-				var room = polygonsToRooms[generatorRoom.Shape];
+				var position = generatorRoom.Position;
+				var room = polygonsToRooms[(RoomDescription) generatorRoom.RoomDescription];
 				var go = Instantiate(room.Tilemap);
 				var transform = go.transform;
 				var tilemap = go.GetComponentInChildren<Tilemap>();
+				var polygon = generatorRoom.RoomDescription.Shape.Rotate(generatorRoom.Rotation);
 
+				roomRotation.RotateRoom(go, -generatorRoom.Rotation, new List<Sprite>());
+
+				var correctPosition = new Vector3Int(position.X, position.Y, 0) - tilemap.cellBounds.position;
+				
 				transform.SetParent(parentGameObject.transform);
-				transform.position = new Vector3(position.X, position.Y) - tilemap.cellBounds.position;
+				transform.position = correctPosition;
+				go.SetActive(false);
 
+				var minX = polygon.GetPoints().Min(x => x.X);
+				var minY = polygon.GetPoints().Min(x => x.Y);
+				var correction = new Vector3Int(minX, minY, 0);
+
+				foreach (var door in generatorRoom.Doors)
+				{
+					foreach (var doorPoint in door.DoorLine.GetPoints())
+					{
+						tilemap.SetTile(doorPoint.ToUnityIntVector3() - new Vector3Int(position.X, position.Y, 0) + tilemap.cellBounds.position, DoorTile);
+					}
+				}
+
+				//if (isFirst)
+				//{
+				//	isFirst = false;
+				//}
+				//else
+				//{
+				//	go.SetActive(false);
+				//}
+
+				foreach (var tileTuple in tilemap.GetAllTiles())
+				{
+					var tilePosition = tileTuple.Item1;
+					var tile = tileTuple.Item2;
+
+					commonTilemap.SetTile(tilePosition + correctPosition, tile);
+				}
+
+				DestroyImmediate(go);
 			}
+
+			commonTilemap.ResizeBounds();
+			gridObject.transform.position = -commonTilemap.cellBounds.center;
+
+			var wallCorrection = GetComponent<WallsCorrection>();
+			wallCorrection.GoToCorrect = gridObject;
+			wallCorrection.Execute();
 
 			lastLayout = layout;
 		}

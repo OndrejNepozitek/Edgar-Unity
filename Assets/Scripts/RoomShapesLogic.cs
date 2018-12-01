@@ -7,6 +7,7 @@
 	using GeneralAlgorithms.DataStructures.Polygons;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
+	using Utils;
 
 	public class RoomShapesLogic
 	{
@@ -114,20 +115,16 @@
 			var usedTiles = new HashSet<IntVector2>();
 			var borderPoints = new HashSet<IntVector2>();
 
-			for (var x = 0; x < bounds.size.x; x++)
+			foreach (var position in tilemap.cellBounds.allPositionsWithin)
 			{
-				for (var y = 0; y < bounds.size.y; y++)
+				var tile = tilemap.GetTile<Tile>(position);
+
+				if (tile == null)
 				{
-					var position = new IntVector2(x, y);
-					var tile = (Tile)allTiles[PositionToIndex(position, bounds)];
-
-					if (tile == null)
-					{
-						continue;
-					}
-
-					usedTiles.Add(position);
+					continue;
 				}
+
+				usedTiles.Add(position.ToCustomIntVector2());
 			}
 
 			// PreprocessTilemap(usedTiles);

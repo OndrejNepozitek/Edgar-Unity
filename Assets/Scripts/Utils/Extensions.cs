@@ -21,6 +21,11 @@
 			return new Vector3Int(vector.X, vector.Y, 0);
 		}
 
+		public static Vector3Int RoundToUnityIntVector3(this Vector3 vector)
+		{
+			return new Vector3Int((int) vector.x, (int) vector.y, 0);
+		}
+
 		// TODO: not nice
 		public static Vector3Int RotateAroundCenter(this Vector3Int vector, int degrees)
 		{

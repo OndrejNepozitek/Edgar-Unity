@@ -13,43 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RoomsSets:
   - {fileID: 114896839255095978}
---- !u!114 &114026618149935824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3d7c88d21ef844996abdb0293c4300, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1245934302349090, guid: 63c08ce26c4d1c341b89e0c529948aa0, type: 2}
---- !u!114 &114060303202540588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3d7c88d21ef844996abdb0293c4300, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1589365295966838, guid: a7ac37c3a100691409eff64f53e064e0, type: 2}
---- !u!114 &114105553126700312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c3d7c88d21ef844996abdb0293c4300, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1139878036266760, guid: a0295a05626d4314086a7c6ba9b8a9c4, type: 2}
---- !u!114 &114272816367549054
+--- !u!114 &114002302991448686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,7 +25,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tilemap: {fileID: 1029986879539338, guid: b5b54ccde5e59fc4a8de2014ca844734, type: 2}
---- !u!114 &114448546550964456
+--- !u!114 &114059516958612870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3d7c88d21ef844996abdb0293c4300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1139878036266760, guid: a0295a05626d4314086a7c6ba9b8a9c4, type: 2}
+--- !u!114 &114105553126700312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,6 +73,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tilemap: {fileID: 1139878036266760, guid: a0295a05626d4314086a7c6ba9b8a9c4, type: 2}
+--- !u!114 &114578070486054848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3d7c88d21ef844996abdb0293c4300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1589365295966838, guid: a7ac37c3a100691409eff64f53e064e0, type: 2}
 --- !u!114 &114738428866747394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,9 +109,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Room set
-  Position: {x: 312, y: 50}
+  Position: {x: 313, y: 50}
   Rooms:
-  - {fileID: 114060303202540588}
-  - {fileID: 114026618149935824}
-  - {fileID: 114272816367549054}
-  - {fileID: 114448546550964456}
+  - {fileID: 114002302991448686}
+  - {fileID: 114059516958612870}
+  - {fileID: 114988328390666398}
+  - {fileID: 114578070486054848}
+--- !u!114 &114988328390666398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c3d7c88d21ef844996abdb0293c4300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1245934302349090, guid: 63c08ce26c4d1c341b89e0c529948aa0, type: 2}
