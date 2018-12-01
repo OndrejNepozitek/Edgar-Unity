@@ -122,6 +122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 244789667}
   - component: {fileID: 244789668}
+  - component: {fileID: 244789669}
+  - component: {fileID: 244789670}
   m_Layer: 0
   m_Name: DungeonGenerator
   m_TagString: Untagged
@@ -154,6 +156,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rooms: {fileID: 11400000, guid: f1255fda0a6f54f468f6f1cf13bcaf4d, type: 2}
+--- !u!114 &244789669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 244789666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa29ece0c4dcbf14d8910e984da69d1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Room: {fileID: 1669435222896536, guid: 5756289f416d1ba488e84d101dca3762, type: 2}
+  DummyRoom: {fileID: 0}
+  OutputObject: {fileID: 0}
+  NotRotatedTiles: {fileID: 1167845471432326, guid: d2e91859ad86c6645b8db1b3f0ca7f25,
+    type: 2}
+  RotateDegrees: 180
+--- !u!114 &244789670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 244789666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f55a6038a51cb14eb569a1131d2094a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TilesToCorrectObject: {fileID: 1288613470811006, guid: ad2011afe0dc46a4689482925d3187d6,
+    type: 2}
+  GoToCorrect: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

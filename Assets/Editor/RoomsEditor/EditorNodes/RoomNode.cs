@@ -92,29 +92,29 @@
 
 			if (Data.Tilemap != null)
 			{
-				var tilemap = Data.Tilemap.GetComponentInChildren<Tilemap>();
-
-				var bounds = tilemap.cellBounds;
-				var allTiles = tilemap.GetTilesBlock(bounds);
-
+				var bounds = Data.Tilemap.GetComponentInChildren<Tilemap>().cellBounds;
 				var correction = 20;
 				var yOffset = 10;
 				var xPerTile = (Rect.width - correction) / bounds.size.x;
 				var yPerTile = (Rect.height - correction - yOffset) / bounds.size.y;
-				var sizePerTile = (int) Math.Min(xPerTile, yPerTile);
+				var sizePerTile = (int)Math.Min(xPerTile, yPerTile);
 				var width = sizePerTile * bounds.size.x;
 				var height = sizePerTile * bounds.size.y;
 
-				var startingPoint = Rect.center - new Vector2(width / 2, height / 2 - yOffset / 2);
-
-				for (int x = 0; x < bounds.size.x; x++)
+				foreach (var tilemap in Data.Tilemap.GetComponentsInChildren<Tilemap>())
 				{
-					for (int y = 0; y < bounds.size.y; y++)
+					var allTiles = tilemap.GetTilesBlock(bounds);
+					var startingPoint = Rect.center - new Vector2(width / 2, height / 2 - yOffset / 2);
+
+					for (int x = 0; x < bounds.size.x; x++)
 					{
-						var tile = (Tile) allTiles[x + (bounds.size.y - y - 1) * bounds.size.x];
-						if (tile != null)
+						for (int y = 0; y < bounds.size.y; y++)
 						{
-							DrawTexturePreview(new Rect(startingPoint.x + x * sizePerTile, startingPoint.y + y * sizePerTile, sizePerTile, sizePerTile), tile.sprite);
+							var tile = (Tile)allTiles[x + (bounds.size.y - y - 1) * bounds.size.x];
+							if (tile != null)
+							{
+								DrawTexturePreview(new Rect(startingPoint.x + x * sizePerTile, startingPoint.y + y * sizePerTile, sizePerTile, sizePerTile), tile.sprite);
+							}
 						}
 					}
 				}

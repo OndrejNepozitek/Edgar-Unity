@@ -103,6 +103,11 @@
 
 		public static GridPolygon GetPolygonFromTilemap(Tilemap tilemap)
 		{
+			return GetPolygonFromGridPoints(GetOutline(tilemap));
+		}
+
+		public static HashSet<IntVector2> GetOutline(Tilemap tilemap)
+		{
 			var bounds = tilemap.cellBounds;
 			var allTiles = tilemap.GetTilesBlock(bounds);
 
@@ -114,7 +119,7 @@
 				for (var y = 0; y < bounds.size.y; y++)
 				{
 					var position = new IntVector2(x, y);
-					var tile = (Tile) allTiles[PositionToIndex(position, bounds)];
+					var tile = (Tile)allTiles[PositionToIndex(position, bounds)];
 
 					if (tile == null)
 					{
@@ -141,7 +146,7 @@
 				}
 			}
 
-			return GetPolygonFromGridPoints(borderPoints);
+			return borderPoints;
 		}
 
 		private static void PreprocessTilemap(HashSet<IntVector2> tiles)
