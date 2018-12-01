@@ -9,7 +9,7 @@
 
 	public class RoomRotation
 	{
-		public void RotateRoom(GameObject go, int degrees, List<Sprite> notRotatedSprites)
+		public void RotateRoom(GameObject go, int degrees, List<Sprite> notRotatedSprites = null)
 		{
 			foreach (var tilemap in go.GetComponentsInChildren<Tilemap>())
 			{
@@ -17,8 +17,13 @@
 			}
 		}
 
-		private void RotateTilemap(Tilemap tilemap, int degrees, List<Sprite> notRotatedSprites)
+		private void RotateTilemap(Tilemap tilemap, int degrees, List<Sprite> notRotatedSprites = null)
 		{
+			if (notRotatedSprites == null)
+			{
+				notRotatedSprites = new List<Sprite>();
+			}
+
 			var newTiles = new List<Tuple<Vector3Int, Tile>>();
 
 			var rotation = Quaternion.Euler(0f, 0f, degrees);

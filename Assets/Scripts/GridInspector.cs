@@ -16,7 +16,7 @@
 
 			if (GUILayout.Button("Fix walls!"))
 			{
-				var wallsCorrection = scriptHolder.GetComponent<WallsCorrection>();
+				var wallsCorrection = scriptHolder.GetComponent<WallsCorrectionScript>();
 				wallsCorrection.GoToCorrect = ((Grid) target).gameObject;
 				wallsCorrection.Execute();
 			}

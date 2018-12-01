@@ -104,7 +104,7 @@
 
 		public void OnEnable()
 		{
-			Debug.Log("OnEnable");
+			// Debug.Log("OnEnable");
 			var path = "Assets/Resources/roomShapes.json";
 
 			using (var reader = new StreamReader(path))
@@ -118,7 +118,7 @@
 
 		public void OnDisable()
 		{
-			Debug.Log("OnDisable");
+			//Debug.Log("OnDisable");
 
 			var json = JsonConvert.SerializeObject(Data);
 			var path = "Assets/Resources/roomShapes.json";

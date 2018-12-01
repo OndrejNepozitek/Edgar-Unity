@@ -8,14 +8,12 @@
 
 	public class WallMapper
 	{
-		private readonly GameObject wallsGameObject;
 		private readonly Tilemap wallsTilemap;
 		private readonly Dictionary<int, IntVector2> mapping;
 
-		public WallMapper(GameObject walls)
+		public WallMapper(Tilemap wallsTilemap)
 		{
-			wallsGameObject = walls;
-			wallsTilemap = walls.GetComponentInChildren<Tilemap>();
+			this.wallsTilemap = wallsTilemap;
 			mapping = GetTilesMapping();
 		}
 

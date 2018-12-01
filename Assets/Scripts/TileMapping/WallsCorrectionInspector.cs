@@ -3,14 +3,14 @@
 	using UnityEditor;
 	using UnityEngine;
 
-	[CustomEditor(typeof(WallsCorrection))]
+	[CustomEditor(typeof(WallsCorrectionScript))]
 	public class WallsCorrectionInspector : Editor
 	{
 		public override void OnInspectorGUI()
 		{
 			DrawDefaultInspector();
 
-			var dungeonGenerator = (WallsCorrection) target;
+			var dungeonGenerator = (WallsCorrectionScript) target;
 
 			if (GUILayout.Button("Correct!"))
 			{

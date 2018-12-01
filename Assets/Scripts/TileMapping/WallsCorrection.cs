@@ -7,12 +7,8 @@
 	using UnityEngine.Tilemaps;
 	using Utils;
 
-	public class WallsCorrection : MonoBehaviour
+	public class WallsCorrection
 	{
-		public GameObject TilesToCorrectObject;
-
-		public GameObject GoToCorrect;
-
 		private static readonly Dictionary<IntVector2, int> VectorToConnection = new Dictionary<IntVector2, int>()
 		{
 			{ IntVector2Helper.Top, TileConnection.Top },
@@ -21,26 +17,33 @@
 			{ IntVector2Helper.Left, TileConnection.Left },
 		};
 
-		public void Execute()
+		public void CorrectWalls(GameObject gameObjectToCorrect, Tilemap wallTiles)
 		{
-			var wallTilesList = TilesToCorrectObject
-				.GetComponentInChildren<Tilemap>()
+			foreach (var tilemap in gameObjectToCorrect.GetComponentsInChildren<Tilemap>())
+			{
+				CorrectWalls(tilemap, wallTiles);
+			}
+		}
+
+		public void CorrectWalls(Tilemap tilemapToCorrect, Tilemap wallTiles)
+		{
+			var wallTilesList = wallTiles
 				.GetAllTiles()
 				.Select(x => x.Item2)
 				.ToList();
 
-			var goToCorrect = GoToCorrect; //FindObjectsOfType<GameObject>().FirstOrDefault(x => x.name == "Shop(Clone)");
-			var tilemap = goToCorrect.GetComponentInChildren<Tilemap>();
-
-			var wallTiles = tilemap
+			var wallTilesToCorrect = tilemapToCorrect
 				.GetAllTiles()
 				.Where(x => wallTilesList.Contains(x.Item2))
 				.Select(x => x.Item1)
 				.ToHashSet();
 
-			var wallMapper = new WallMapper(TilesToCorrectObject);
+			var wallMapper = new WallMapper(wallTiles);
 
-			foreach (var wallTile in wallTiles)
+			var rotation = Quaternion.Euler(0f, 0f, 0);
+			var rotationMatrix = Matrix4x4.Rotate(rotation);
+
+			foreach (var wallTile in wallTilesToCorrect)
 			{
 				var connections = TileConnection.None;
 
@@ -49,7 +52,7 @@
 					var vector = pair.Key;
 					var connection = pair.Value;
 
-					if (wallTiles.Contains(wallTile + vector.ToUnityIntVector3()))
+					if (wallTilesToCorrect.Contains(wallTile + vector.ToUnityIntVector3()))
 					{
 						connections |= connection;
 					}
@@ -59,10 +62,8 @@
 
 				if (newTile != null)
 				{
-					var rotation = Quaternion.Euler(0f, 0f, 0);
-					var rotationMatrix = Matrix4x4.Rotate(rotation);
-					tilemap.SetTile(wallTile, newTile);
-					tilemap.SetTransformMatrix(wallTile, rotationMatrix);
+					tilemapToCorrect.SetTile(wallTile, newTile);
+					tilemapToCorrect.SetTransformMatrix(wallTile, rotationMatrix);
 				}
 			}
 		}
