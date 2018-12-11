@@ -4,7 +4,9 @@
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using System.Linq;
-	using Data2;
+	using Data;
+	using Data.Graphs;
+	using Data.Rooms;
 	using GeneralAlgorithms.Algorithms.Common;
 	using GeneralAlgorithms.DataStructures.Common;
 	using GeneralAlgorithms.DataStructures.Polygons;
@@ -21,7 +23,9 @@
 
 	public class DungeonGenerator : MonoBehaviour
 	{
-		public Rooms Rooms;
+		public RoomTemplatesWrapper RoomTemplatesWrapper;
+
+		public LayoutGraph LayoutGraph;
 
 		public GameObject Walls;
 
@@ -56,9 +60,9 @@
 			}
 
 			var rooms = new List<RoomDescription>();
-			var mapDescriptionsToRooms = new Dictionary<RoomDescription, Room>();
+			var mapDescriptionsToRooms = new Dictionary<RoomDescription, RoomTemplate>();
 
-			foreach (var roomSet in Rooms.RoomsSets)
+			foreach (var roomSet in RoomTemplatesWrapper.RoomsSets)
 			{
 				foreach (var room in roomSet.Rooms)
 				{
@@ -89,29 +93,45 @@
 				}
 			}
 
+			//var mapDescription = new MapDescription<int>();
+			//var verticesCount = 7;
+
+			//for (var i = 0; i < verticesCount; i++)
+			//{
+			//	mapDescription.AddRoom(i);
+			//}
+
+			//for (var i = 0; i < verticesCount - 1; i++)
+			//{
+			//	mapDescription.AddPassage(i, i + 1);
+			//}
+
+			//mapDescription.AddPassage(3, 0);
+			//mapDescription.AddPassage(3, 6);
+
+			//mapDescription.AddRoomShapes(rooms);
+
+			//if (ShowElapsedTime)
+			//{
+			//	Debug.Log($"Map description created. {stopwatch.ElapsedMilliseconds / 1000f:F} s");
+			//}
+
 			var mapDescription = new MapDescription<int>();
-			var verticesCount = 7;
+			var roomCounter = 0;
+			var roomToNumber = new Dictionary<Room, int>();
 
-			for (var i = 0; i < verticesCount; i++)
+			foreach (var room in LayoutGraph.Rooms)
 			{
-				mapDescription.AddRoom(i);
+				mapDescription.AddRoom(roomCounter);
+				roomToNumber.Add(room, roomCounter++);
 			}
 
-			for (var i = 0; i < verticesCount - 1; i++)
+			foreach (var connection in LayoutGraph.Connections)
 			{
-				mapDescription.AddPassage(i, i + 1);
+				mapDescription.AddPassage(roomToNumber[connection.From], roomToNumber[connection.To]);
 			}
-
-			mapDescription.AddPassage(3, 0);
-			mapDescription.AddPassage(3, 6);
 
 			mapDescription.AddRoomShapes(rooms);
-
-			if (ShowElapsedTime)
-			{
-				Debug.Log($"Map description created. {stopwatch.ElapsedMilliseconds / 1000f:F} s");
-			}
-
 
 			var generator = LayoutGeneratorFactory.GetDefaultChainBasedGenerator<int>();
 			generator.InjectRandomGenerator(new System.Random());
@@ -145,7 +165,7 @@
 
 
 			// Postprocess pipeline
-			var generatedRooms = new List<RoomInfo>();
+			var generatedRooms = new List<RoomInfo<int>>();
 
 			// Initialize rooms
 			foreach (var layoutRoom in layout.Rooms)
@@ -154,10 +174,10 @@
 				var go = Instantiate(room.Tilemap);
 				go.transform.SetParent(parentGameObject.transform);
 
-				var roomInfo = new RoomInfo()
+				var roomInfo = new RoomInfo<int>()
 				{
 					GameObject = go,
-					Room = room,
+					RoomTemplate = room,
 					LayoutRoom = layoutRoom,
 					BaseTilemap = go.GetComponentInChildren<Tilemap>()
 				};
@@ -258,13 +278,13 @@
 			}
 		}
 
-		public class RoomInfo
+		public class RoomInfo<TNode>
 		{
 			public GameObject GameObject { get; set; }
 
-			public IRoom<int> LayoutRoom { get; set; }
+			public IRoom<TNode> LayoutRoom { get; set; }
 
-			public Room Room { get; set; }
+			public RoomTemplate RoomTemplate { get; set; }
 
 			public Tilemap BaseTilemap { get; set; }
 		}

@@ -1,13 +1,7 @@
 ﻿namespace Assets.Editor.NodeBasedEditor
 {
-	using UnityEngine;
-
-	public interface IEditorNode
+	public interface IEditorNode<TData> : IEditorNodeBase
 	{
-		bool ProcessEvents(Event e);
-
-		void Draw();
-
-		void Drag(Vector2 delta);
+		TData Data { get; set; }
 	}
 }

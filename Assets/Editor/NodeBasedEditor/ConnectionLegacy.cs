@@ -2,13 +2,13 @@
 using UnityEditor;
 using UnityEngine;
 
-public class Connection
+public class ConnectionLegacy
 {
 	public Node inPoint;
 	public Node outPoint;
-	public Action<Connection> OnClickRemoveConnection;
+	public Action<ConnectionLegacy> OnClickRemoveConnection;
 
-	public Connection(Node inPoint, Node outPoint, Action<Connection> OnClickRemoveConnection)
+	public ConnectionLegacy(Node inPoint, Node outPoint, Action<ConnectionLegacy> OnClickRemoveConnection)
 	{
 		this.inPoint = inPoint;
 		this.outPoint = outPoint;

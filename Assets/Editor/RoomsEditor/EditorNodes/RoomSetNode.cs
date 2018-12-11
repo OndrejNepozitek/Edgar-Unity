@@ -4,17 +4,18 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using NodeBasedEditor;
-	using Scripts.Data2;
+	using Scripts.Data;
+	using Scripts.Data.Rooms;
 	using UnityEditor;
 	using UnityEngine;
 	using Object = UnityEngine.Object;
 
-	public class RoomSetNode : IEditorNode
+	public class RoomSetNode : IEditorNode<RoomTemplatesSet>
 	{
 		private readonly GUIStyle style;
 		private readonly GUIStyle roomNodeStyle;
 
-		public readonly RoomSet Data;
+		public RoomTemplatesSet Data { get; set; }
 		private Rect rect;
 		private bool isDragged;
 
@@ -22,7 +23,7 @@
 
 		private readonly List<RoomNode> roomNodes = new List<RoomNode>();
 
-		public RoomSetNode(RoomSet data, float width, float height, GUIStyle style, GUIStyle roomNodeStyle)
+		public RoomSetNode(RoomTemplatesSet data, float width, float height, GUIStyle style, GUIStyle roomNodeStyle)
 		{
 			Data = data;
 			this.style = style;
@@ -136,7 +137,7 @@
 
 		private void AddRoom(GameObject tilemap = null)
 		{
-			var room = ScriptableObject.CreateInstance<Room>();
+			var room = ScriptableObject.CreateInstance<RoomTemplate>();
 			room.Tilemap = tilemap;
 
 			Data.Rooms.Add(room);
@@ -164,7 +165,7 @@
 			}
 		}
 
-		protected RoomNode CreateNode(Room data)
+		protected RoomNode CreateNode(RoomTemplate data)
 		{
 			var node = new RoomNode(data, roomNodeStyle);
 

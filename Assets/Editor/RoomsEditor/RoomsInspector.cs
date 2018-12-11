@@ -1,10 +1,11 @@
 ﻿namespace Assets.Editor.RoomsEditor
 {
-	using Scripts.Data2;
+	using Scripts.Data;
+	using Scripts.Data.Rooms;
 	using UnityEditor;
 	using UnityEngine;
 
-	[CustomEditor(typeof(Rooms))]
+	[CustomEditor(typeof(RoomTemplatesWrapper))]
 	public class RoomsInspector : Editor
 	{
 		public override void OnInspectorGUI()
@@ -12,7 +13,7 @@
 			if (GUILayout.Button("Setup rooms"))
 			{
 				var window = EditorWindow.GetWindow<RoomsWindow>();
-				window.Data = (Rooms) target;
+				window.Data = (RoomTemplatesWrapper) target;
 				window.Initialize();
 				window.Show();
 			}

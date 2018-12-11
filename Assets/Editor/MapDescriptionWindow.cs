@@ -9,7 +9,7 @@
 		public Rect windowRect = new Rect(20, 20, 120, 50);
 
 		private List<Node> nodes;
-		private List<Connection> connections;
+		private List<ConnectionLegacy> connections;
 
 		private GUIStyle nodeStyle;
 		private GUIStyle selectedNodeStyle;
@@ -298,7 +298,7 @@
 			//nodes.Remove(node);
 		}
 
-		private void OnClickRemoveConnection(Connection connection)
+		private void OnClickRemoveConnection(ConnectionLegacy connection)
 		{
 			connections.Remove(connection);
 		}
@@ -307,10 +307,10 @@
 		{
 			if (connections == null)
 			{
-				connections = new List<Connection>();
+				connections = new List<ConnectionLegacy>();
 			}
 
-			connections.Add(new Connection(selectedToNode, selectedFromNode, OnClickRemoveConnection));
+			connections.Add(new ConnectionLegacy(selectedToNode, selectedFromNode, OnClickRemoveConnection));
 		}
 
 		private void ClearConnectionSelection()

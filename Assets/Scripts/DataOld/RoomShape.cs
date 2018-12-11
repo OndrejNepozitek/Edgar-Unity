@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts
+﻿namespace Assets.Scripts.DataOld
 {
 	using System.Collections.Generic;
 	using GeneralAlgorithms.DataStructures.Common;

@@ -3,20 +3,21 @@
 	using System;
 	using System.Linq;
 	using NodeBasedEditor;
-	using Scripts.Data2;
+	using Scripts.Data.Rooms;
 	using UnityEditor;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
-	public class RoomNode : IEditorNode
+	public class RoomNode : IEditorNode<RoomTemplate>
 	{
-		public readonly Room Data;
+		public RoomTemplate Data { get; set; }
+
 		public Rect Rect;
 		private readonly GUIStyle style;
 
 		public Action<RoomNode> OnDeleted;
 
-		public RoomNode(Room data, GUIStyle style)
+		public RoomNode(RoomTemplate data, GUIStyle style)
 		{
 			Data = data;
 			this.style = style;

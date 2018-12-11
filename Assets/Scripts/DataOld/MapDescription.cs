@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Data
+﻿namespace Assets.Scripts.DataOld
 {
 	public class MapDescription
 	{

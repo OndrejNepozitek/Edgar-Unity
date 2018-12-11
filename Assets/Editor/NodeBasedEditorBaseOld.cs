@@ -5,12 +5,12 @@
 	using UnityEditor;
 	using UnityEngine;
 
-	public class NodeBasedEditorBase : EditorWindow
+	public class NodeBasedEditorBaseOld : EditorWindow
 	{
 		public Rect windowRect = new Rect(20, 20, 120, 50);
 
-		protected List<IEditorNode> nodes;
-		protected List<Connection> connections;
+		protected List<IEditorNodeBase> nodes;
+		protected List<ConnectionLegacy> connections;
 
 		protected GUIStyle nodeStyle;
 		protected GUIStyle selectedNodeStyle;
@@ -22,7 +22,7 @@
 		protected Vector2 offset;
 		protected Vector2 drag;
 
-		public NodeBasedEditorBase()
+		public NodeBasedEditorBaseOld()
 		{
 			minSize = new Vector2(500, 500);
 		}
@@ -289,7 +289,7 @@
 			//nodes.Remove(node);
 		}
 
-		protected void OnClickRemoveConnection(Connection connection)
+		protected void OnClickRemoveConnection(ConnectionLegacy connection)
 		{
 			connections.Remove(connection);
 		}
@@ -298,10 +298,10 @@
 		{
 			if (connections == null)
 			{
-				connections = new List<Connection>();
+				connections = new List<ConnectionLegacy>();
 			}
 
-			connections.Add(new Connection(selectedToNode, selectedFromNode, OnClickRemoveConnection));
+			connections.Add(new ConnectionLegacy(selectedToNode, selectedFromNode, OnClickRemoveConnection));
 		}
 
 		private void ClearConnectionSelection()

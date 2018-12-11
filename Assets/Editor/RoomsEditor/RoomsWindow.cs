@@ -3,13 +3,14 @@
 	using System.Collections.Generic;
 	using EditorNodes;
 	using NodeBasedEditor;
-	using Scripts.Data2;
+	using Scripts.Data;
+	using Scripts.Data.Rooms;
 	using UnityEditor;
 	using UnityEngine;
 
-	public class RoomsWindow : NodeBasedEditorBase
+	public class RoomsWindow : NodeBasedEditorBaseOld
 	{
-		public Rooms Data { get; set; }
+		public RoomTemplatesWrapper Data { get; set; }
 		private GUIStyle roomNodeStyle;
 
 		public RoomsWindow()
@@ -19,7 +20,7 @@
 
 		public void Initialize()
 		{
-			nodes = new List<IEditorNode>();
+			nodes = new List<IEditorNodeBase>();
 
 			foreach (var roomSet in Data.RoomsSets)
 			{
@@ -67,10 +68,10 @@
 		{
 			if (nodes == null)
 			{
-				nodes = new List<IEditorNode>();
+				nodes = new List<IEditorNodeBase>();
 			}
 
-			var roomSet = CreateInstance<RoomSet>();
+			var roomSet = CreateInstance<RoomTemplatesSet>();
 			roomSet.Position = mousePosition;
 			Data.RoomsSets.Add(roomSet);
 			AssetDatabase.AddObjectToAsset(roomSet, Data);
@@ -78,7 +79,7 @@
 			CreateNode(roomSet);
 		}
 
-		protected RoomSetNode CreateNode(RoomSet data)
+		protected RoomSetNode CreateNode(RoomTemplatesSet data)
 		{
 			var node = new RoomSetNode(data, 150, 50, nodeStyle, roomNodeStyle);
 			node.OnDeleted += OnDeleteNode;
