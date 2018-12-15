@@ -1,19 +1,17 @@
-﻿namespace Assets.Scripts
+﻿namespace Assets.Scripts.DungeonGenerators.GraphBasedGenerator
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using System.Linq;
-	using Data;
 	using Data.Graphs;
 	using Data.Rooms;
-	using GeneralAlgorithms.Algorithms.Common;
 	using GeneralAlgorithms.DataStructures.Common;
-	using GeneralAlgorithms.DataStructures.Polygons;
+	using GeneratorPipeline;
 	using MapGeneration.Core.Doors.DoorModes;
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.MapLayouts;
 	using MapGeneration.Utils;
+	using Pipeline;
 	using RoomRotations;
 	using TileMapping;
 	using UnityEngine;
@@ -21,7 +19,8 @@
 	using Utils;
 	using Debug = UnityEngine.Debug;
 
-	public class DungeonGenerator : MonoBehaviour
+	[CreateAssetMenu(menuName = "Graph based generator", fileName = "GraphBasesGenerator")]
+	public class GraphBasedGeneratorConfig : PipelineTask
 	{
 		public RoomTemplatesWrapper RoomTemplatesWrapper;
 
@@ -42,32 +41,28 @@
 		public bool CorrectWalls;
 
 		public bool CombineTilemaps;
+	}
 
-		private IMapLayout<int> lastLayout;
+	[PipelineTaskFor(typeof(GraphBasedGeneratorConfig))]
+	public class GraphBasedGenerator<T> : IConfigurablePipelineTask<T, GraphBasedGeneratorConfig> where T : IGeneratorPayload
+	{
+		public GraphBasedGeneratorConfig Config { get; set; }
 
-		public void Generate()
+		public void Process(T payload)
 		{
 			var stopwatch = new Stopwatch();
 			stopwatch.Start();
 
-			if (ShowElapsedTime)
+			if (Config.ShowElapsedTime)
 			{
 				Debug.Log("--- Script started ---");
-			}
-
-
-			var gameHolderOld = GameObject.Find("Rooms holder");
-
-			if (gameHolderOld != null)
-			{
-				DestroyImmediate(gameHolderOld);
 			}
 
 			var rooms = new List<RoomDescription>();
 			var corridors = new List<RoomDescription>();
 			var roomDescriptionsToRoomTemplates = new Dictionary<RoomDescription, RoomTemplate>();
 
-			foreach (var roomSet in RoomTemplatesWrapper.RoomsSets)
+			foreach (var roomSet in Config.RoomTemplatesWrapper.RoomsSets)
 			{
 				foreach (var room in roomSet.Rooms)
 				{
@@ -96,9 +91,9 @@
 				}
 			}
 
-			if (UseCorridors)
+			if (Config.UseCorridors)
 			{
-				foreach (var roomSet in CorridorTemplatesWrapper.RoomsSets)
+				foreach (var roomSet in Config.CorridorTemplatesWrapper.RoomsSets)
 				{
 					foreach (var room in roomSet.Rooms)
 					{
@@ -155,20 +150,20 @@
 			var roomCounter = 0;
 			var roomToNumber = new Dictionary<Room, int>();
 
-			if (UseCorridors)
+			if (Config.UseCorridors)
 			{
-				mapDescription.SetWithCorridors(true, new List<int>() {2,3});
+				mapDescription.SetWithCorridors(true, new List<int>() { 2, 3 });
 
 				mapDescription.AddCorridorShapes(corridors);
 			}
 
-			foreach (var room in LayoutGraph.Rooms)
+			foreach (var room in Config.LayoutGraph.Rooms)
 			{
 				mapDescription.AddRoom(roomCounter);
 				roomToNumber.Add(room, roomCounter++);
 			}
 
-			foreach (var connection in LayoutGraph.Connections)
+			foreach (var connection in Config.LayoutGraph.Connections)
 			{
 				mapDescription.AddPassage(roomToNumber[connection.From], roomToNumber[connection.To]);
 			}
@@ -177,7 +172,7 @@
 
 			IMapLayout<int> layout;
 
-			if (UseCorridors)
+			if (Config.UseCorridors)
 			{
 				var generator = LayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(new List<int>() { 2, 3 });
 				generator.InjectRandomGenerator(new System.Random());
@@ -195,10 +190,11 @@
 				layout = layouts[0];
 			}
 
-			if (ShowElapsedTime)
+			if (Config.ShowElapsedTime)
 			{
 				Debug.Log($"Layout generated. {stopwatch.ElapsedMilliseconds / 1000f:F} s");
 			}
+
 			var parentGameObject = new GameObject("Rooms holder");
 
 			var polygons = layout.Rooms.Select(x => x.Shape + x.Position).ToList();
@@ -213,22 +209,18 @@
 			var height = maxy - miny;
 			var positionOffset = new IntVector2(width / 2, height / 2);
 
-			
-
-
-
 
 			// Postprocess pipeline
-			var generatedRooms = new List<RoomInfo<int>>();
+			var generatedRooms = new List<DungeonGenerator.RoomInfo<int>>();
 
 			// Initialize rooms
 			foreach (var layoutRoom in layout.Rooms)
 			{
 				var room = roomDescriptionsToRoomTemplates[(RoomDescription)layoutRoom.RoomDescription];
-				var go = Instantiate(room.Tilemap);
+				var go = Object.Instantiate(room.Tilemap);
 				go.transform.SetParent(parentGameObject.transform);
 
-				var roomInfo = new RoomInfo<int>()
+				var roomInfo = new DungeonGenerator.RoomInfo<int>()
 				{
 					GameObject = go,
 					RoomTemplate = room,
@@ -255,7 +247,7 @@
 			}
 
 			// Add doors
-			if (AddDoors)
+			if (Config.AddDoors)
 			{
 				foreach (var roomInfo in generatedRooms)
 				{
@@ -266,17 +258,17 @@
 					{
 						foreach (var doorPoint in door.DoorLine.GetPoints())
 						{
-							tilemap.SetTile(doorPoint.ToUnityIntVector3() - new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) + tilemap.cellBounds.position, DoorTile);
+							tilemap.SetTile(doorPoint.ToUnityIntVector3() - new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) + tilemap.cellBounds.position, Config.DoorTile);
 						}
 					}
 				}
 			}
 
 			// Correct walls
-			if (CorrectWalls)
+			if (Config.CorrectWalls)
 			{
 				var wallCorrection = new WallsCorrection();
-				var wallsTilemap = Walls.GetComponentInChildren<Tilemap>();
+				var wallsTilemap = Config.Walls.GetComponentInChildren<Tilemap>();
 
 				foreach (var roomInfo in generatedRooms)
 				{
@@ -285,17 +277,8 @@
 			}
 
 			// Combine tilemaps
-			if (CombineTilemaps)
+			if (Config.CombineTilemaps)
 			{
-				// Prepare gameobjects and components
-				var gridObject = parentGameObject;
-				gridObject.transform.SetParent(parentGameObject.transform);
-				gridObject.AddComponent<Grid>();
-				var tilemapObject = new GameObject("Tilemap holder");
-				tilemapObject.transform.SetParent(gridObject.transform);
-				var commonTilemap = tilemapObject.AddComponent<Tilemap>();
-				tilemapObject.AddComponent<TilemapRenderer>();
-
 				// Map individual rooms to the tilemap
 				foreach (var roomInfo in generatedRooms)
 				{
@@ -311,36 +294,23 @@
 
 						var transformMatrix = tilemap.GetTransformMatrix(originalTilePosition);
 
-						commonTilemap.SetTile(tilePosition, tile);
-						commonTilemap.SetTransformMatrix(tilePosition, transformMatrix);
+						payload.Tilemap.SetTile(tilePosition, tile);
+						payload.Tilemap.SetTransformMatrix(tilePosition, transformMatrix);
 					}
 
-					DestroyImmediate(roomInfo.GameObject);
+					Object.DestroyImmediate(roomInfo.GameObject);
 				}
 
-				commonTilemap.ResizeBounds();
-				gridObject.transform.position = -commonTilemap.cellBounds.center;
+				payload.Tilemap.ResizeBounds();
+				payload.Tilemap.transform.parent.position = -payload.Tilemap.cellBounds.center;
 
-				
+				Object.DestroyImmediate(parentGameObject);
 			}
 
-			lastLayout = layout;
-
-			if (ShowElapsedTime)
+			if (Config.ShowElapsedTime)
 			{
 				Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
 			}
-		}
-
-		public class RoomInfo<TNode>
-		{
-			public GameObject GameObject { get; set; }
-
-			public IRoom<TNode> LayoutRoom { get; set; }
-
-			public RoomTemplate RoomTemplate { get; set; }
-
-			public Tilemap BaseTilemap { get; set; }
 		}
 	}
 }

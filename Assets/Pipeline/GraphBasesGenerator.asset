@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1223b1c19527fcd4ebfa7eeb23f3e98a, type: 3}
+  m_Name: GraphBasesGenerator
+  m_EditorClassIdentifier: 
+  RoomTemplatesWrapper: {fileID: 11400000, guid: 025ae8061fd73bb4ba6681b628f0cca0,
+    type: 2}
+  CorridorTemplatesWrapper: {fileID: 11400000, guid: 859ce40bfb0fd9a4f961ba8eee48a84c,
+    type: 2}
+  LayoutGraph: {fileID: 11400000, guid: 5fdfd8c66226ecc41a9a44ea250c299f, type: 2}
+  Walls: {fileID: 1288613470811006, guid: ad2011afe0dc46a4689482925d3187d6, type: 2}
+  DoorTile: {fileID: 11400000, guid: b5bb4c5e8e00e6f4897ef31fc56123ad, type: 2}
+  UseCorridors: 0
+  ShowElapsedTime: 0
+  AddDoors: 1
+  CorrectWalls: 1
+  CombineTilemaps: 1

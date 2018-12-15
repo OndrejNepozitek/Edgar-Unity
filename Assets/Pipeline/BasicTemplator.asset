@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f2764848700134b934f6e8ddcf02bf, type: 3}
+  m_Name: BasicTemplator
+  m_EditorClassIdentifier: 
+  WallTile: {fileID: 11400000, guid: 2d8aef3a9f8962e48b8878366c6c3568, type: 2}
