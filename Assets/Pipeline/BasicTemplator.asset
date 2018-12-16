@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82f2764848700134b934f6e8ddcf02bf, type: 3}
   m_Name: BasicTemplator
   m_EditorClassIdentifier: 
-  WallTile: {fileID: 11400000, guid: 2d8aef3a9f8962e48b8878366c6c3568, type: 2}
+  WallTile: {fileID: 11400000, guid: 64de478ea9cfcd844818e00ccdd980d3, type: 2}
+  FloorTile: {fileID: 11400000, guid: 24de52948c551d34d896318102d92341, type: 2}

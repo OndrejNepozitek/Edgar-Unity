@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: RandomWalkGenerator
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Scripts.DungeonGenerators:RandomWalkGeneratorConfig
-  Width: 50
-  Height: 50
+  Width: 20
+  Height: 20
   MaxTunnels: 20
   MaxLength: 7

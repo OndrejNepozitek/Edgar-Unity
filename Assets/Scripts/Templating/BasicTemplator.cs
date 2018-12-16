@@ -8,7 +8,9 @@
 	[CreateAssetMenu]
 	public class BasicTemplator : PipelineTask
 	{
-		public Tile WallTile;
+		public TileBase WallTile;
+
+		public TileBase FloorTile;
 	}
 
 	[PipelineTaskFor(typeof(BasicTemplator))]
@@ -23,9 +25,16 @@
 			{
 				var marker = payload.MarkerMap.GetMarker(position);
 
-				if (marker != null && marker.Type == MarkerType.Wall)
+				if (marker != null)
 				{
-					payload.Tilemap.SetTile(position, Config.WallTile);
+					if (marker.Type == MarkerType.Wall)
+					{
+						payload.Tilemap.SetTile(position, Config.WallTile);
+					}
+					else if (marker.Type == MarkerType.Floor)
+					{
+						payload.Tilemap.SetTile(position, Config.FloorTile);
+					}
 				}
 			}
 		}
