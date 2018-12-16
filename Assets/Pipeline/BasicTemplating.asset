@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657d00fff14d15f43b74b8e4267e7086, type: 3}
+  m_Name: BasicTemplating
+  m_EditorClassIdentifier: 
+  Mapping:
+  - MarkerType: {fileID: 11400000, guid: 241c3e383c45d3a44a7ed6f02294d392, type: 2}
+    Tile: {fileID: 11400000, guid: 64de478ea9cfcd844818e00ccdd980d3, type: 2}
+  - MarkerType: {fileID: 11400000, guid: 924b613ab849e0043921c24fb3ec9a9d, type: 2}
+    Tile: {fileID: 11400000, guid: 24de52948c551d34d896318102d92341, type: 2}
+  - MarkerType: {fileID: 11400000, guid: a28dd2d60ad54d34c880e6938f608a0d, type: 2}
+    Tile: {fileID: 11400000, guid: 37d151d7ded746f43afe29ab1d58c379, type: 2}
