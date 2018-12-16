@@ -29,15 +29,15 @@
 
 				if (marker != null)
 				{
-					if (marker.Type == MarkerType.Wall)
+					if (marker.Type == MarkerTypes.Wall)
 					{
 						payload.Tilemap.SetTile(position, Config.WallTile);
 					}
-					else if (marker.Type == MarkerType.Floor)
+					else if (marker.Type == MarkerTypes.Floor)
 					{
 						payload.Tilemap.SetTile(position, Config.FloorTile);
 					}
-					else if (marker.Type == MarkerType.Door)
+					else if (marker.Type == MarkerTypes.Door)
 					{
 						payload.Tilemap.SetTile(position, Config.DoorTile);
 					}

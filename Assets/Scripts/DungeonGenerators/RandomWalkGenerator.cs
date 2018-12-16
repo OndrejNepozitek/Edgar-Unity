@@ -60,8 +60,8 @@
 						var position = new Vector3Int(newPosition.x, i, 0);
 						var position2 = new Vector3Int(newPosition.x + 1, i, 0);
 
-						payload.MarkerMap.SetMarker(position, new Marker() { Type = MarkerType.Wall }); 
-						payload.MarkerMap.SetMarker(position2, new Marker() { Type = MarkerType.Wall }); 
+						payload.MarkerMap.SetMarker(position, new Marker() { Type = MarkerTypes.Wall }); 
+						payload.MarkerMap.SetMarker(position2, new Marker() { Type = MarkerTypes.Wall }); 
 					}
 				}
 				else
@@ -71,8 +71,8 @@
 						var position = new Vector3Int(i, newPosition.y, 0);
 						var position2 = new Vector3Int(i, newPosition.y + 1, 0);
 
-						payload.MarkerMap.SetMarker(position, new Marker() { Type = MarkerType.Wall });
-						payload.MarkerMap.SetMarker(position2, new Marker() { Type = MarkerType.Wall });
+						payload.MarkerMap.SetMarker(position, new Marker() { Type = MarkerTypes.Wall });
+						payload.MarkerMap.SetMarker(position2, new Marker() { Type = MarkerTypes.Wall });
 					}
 				}
 

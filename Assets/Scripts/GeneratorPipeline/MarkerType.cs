@@ -1,7 +1,10 @@
 ﻿namespace Assets.Scripts.GeneratorPipeline
 {
-	public enum MarkerType
+	using UnityEngine;
+
+	[CreateAssetMenu(menuName = "Marker type")]
+	public class MarkerType : ScriptableObject
 	{
-		Nothing, Floor, Wall, Door
+
 	}
 }

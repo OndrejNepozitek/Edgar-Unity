@@ -241,7 +241,7 @@
 						foreach (var doorPoint in door.DoorLine.GetPoints())
 						{
 							var correctPosition = doorPoint.ToUnityIntVector3();
-							payload.MarkerMap.SetMarker(correctPosition, new Marker() { Type = MarkerType.Door });
+							payload.MarkerMap.SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
 							// tilemap.SetTile(doorPoint.ToUnityIntVector3() - new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) + tilemap.cellBounds.position, Config.DoorTile);
 						}
 					}
@@ -303,11 +303,11 @@
 
 				if (wallTilesList.Contains(tile))
 				{
-					Payload.MarkerMap.SetMarker(tilePosition, new Marker() { Type = MarkerType.Wall });
+					Payload.MarkerMap.SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Wall });
 				}
 				else
 				{
-					Payload.MarkerMap.SetMarker(tilePosition, new Marker() { Type = MarkerType.Floor });
+					Payload.MarkerMap.SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Floor });
 				}
 			}
 		}
