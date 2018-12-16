@@ -229,25 +229,25 @@
 			}
 
 			// Add doors
-			if (Config.AddDoors)
 			{
 				foreach (var roomInfo in generatedRooms)
 				{
-					var layoutRoomPosition = roomInfo.LayoutRoom.Position;
-					var tilemap = roomInfo.BaseTilemap;
-
 					foreach (var door in roomInfo.LayoutRoom.Doors)
 					{
 						foreach (var doorPoint in door.DoorLine.GetPoints())
 						{
 							var correctPosition = doorPoint.ToUnityIntVector3();
 							payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Floor });
-							payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
-							// tilemap.SetTile(doorPoint.ToUnityIntVector3() - new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) + tilemap.cellBounds.position, Config.DoorTile);
+
+							if (Config.AddDoors)
+							{
+								payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
+							}
 						}
 					}
 				}
 			}
+
 
 			// Correct walls
 			if (Config.CorrectWalls)
