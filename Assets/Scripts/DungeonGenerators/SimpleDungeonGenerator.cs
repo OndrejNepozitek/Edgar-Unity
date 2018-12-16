@@ -26,7 +26,7 @@
 				{
 					if (x % 2 == 0 || y % 2 == 0)
 					{
-						payload.MarkerMap.SetMarker(new Vector3Int(x, y, 0), new Marker() { Type = MarkerTypes.Wall });
+						payload.MarkerMaps[0].SetMarker(new Vector3Int(x, y, 0), new Marker() { Type = MarkerTypes.Wall });
 					}
 				}
 			}

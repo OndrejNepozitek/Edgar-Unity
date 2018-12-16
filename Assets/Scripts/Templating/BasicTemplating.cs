@@ -30,17 +30,23 @@
 
 		public void Process(T payload)
 		{
-			foreach (var position in payload.MarkerMap.Bounds.allPositionsWithin)
+			for (int i = 0; i < payload.MarkerMaps.Count; i++)
 			{
-				var marker = payload.MarkerMap.GetMarker(position);
+				var markerMap = payload.MarkerMaps[i];
+				var tilemap = payload.Tilemaps[i];
 
-				if (marker != null)
+				foreach (var position in markerMap.Bounds.allPositionsWithin)
 				{
-					var correspondingTile = Config.Mapping.FirstOrDefault(x => x.MarkerType == marker.Type);
+					var marker = markerMap.GetMarker(position);
 
-					if (correspondingTile != null)
+					if (marker != null)
 					{
-						payload.Tilemap.SetTile(position, correspondingTile.Tile);
+						var correspondingTile = Config.Mapping.FirstOrDefault(x => x.MarkerType == marker.Type);
+
+						if (correspondingTile != null)
+						{
+							tilemap.SetTile(position, correspondingTile.Tile);
+						}
 					}
 				}
 			}

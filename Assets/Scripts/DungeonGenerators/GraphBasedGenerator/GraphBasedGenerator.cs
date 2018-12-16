@@ -241,7 +241,8 @@
 						foreach (var doorPoint in door.DoorLine.GetPoints())
 						{
 							var correctPosition = doorPoint.ToUnityIntVector3();
-							payload.MarkerMap.SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
+							payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Floor });
+							payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
 							// tilemap.SetTile(doorPoint.ToUnityIntVector3() - new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) + tilemap.cellBounds.position, Config.DoorTile);
 						}
 					}
@@ -269,8 +270,8 @@
 					Object.DestroyImmediate(roomInfo.GameObject);
 				}
 
-				payload.Tilemap.ResizeBounds();
-				payload.Tilemap.transform.parent.position = -payload.Tilemap.cellBounds.center;
+				payload.Tilemaps[0].ResizeBounds();
+				payload.Tilemaps[0].transform.parent.position = -payload.Tilemaps[0].cellBounds.center;
 
 				Object.DestroyImmediate(parentGameObject);
 			}
@@ -303,11 +304,11 @@
 
 				if (wallTilesList.Contains(tile))
 				{
-					Payload.MarkerMap.SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Wall });
+					Payload.MarkerMaps[0].SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Wall });
 				}
 				else
 				{
-					Payload.MarkerMap.SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Floor });
+					Payload.MarkerMaps[0].SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Floor });
 				}
 			}
 		}

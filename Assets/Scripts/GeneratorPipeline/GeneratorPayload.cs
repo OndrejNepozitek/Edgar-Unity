@@ -1,5 +1,6 @@
 ﻿namespace Assets.Scripts.GeneratorPipeline
 {
+	using System.Collections.Generic;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
@@ -7,8 +8,8 @@
 	{
 		public GameObject GameObject { get; set; }
 
-		public Tilemap Tilemap { get; set; }
+		public List<Tilemap> Tilemaps { get; set; }
 
-		public IMarkerMap MarkerMap { get; set; }
+		public List<IMarkerMap> MarkerMaps { get; set; }
 	}
 }
