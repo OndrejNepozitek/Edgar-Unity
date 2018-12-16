@@ -8,6 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f368578a087ae469dc203dedcf27c1, type: 3}
-  m_Name: Task1
+  m_Script: {fileID: 11500000, guid: 2c70494b22e88cb4f9cd7eab7b02101e, type: 3}
+  m_Name: Postprocess
   m_EditorClassIdentifier: 
+  CenterGrid: 1
