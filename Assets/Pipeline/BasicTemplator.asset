@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WallTile: {fileID: 11400000, guid: 64de478ea9cfcd844818e00ccdd980d3, type: 2}
   FloorTile: {fileID: 11400000, guid: 24de52948c551d34d896318102d92341, type: 2}
+  DoorTile: {fileID: 11400000, guid: 37d151d7ded746f43afe29ab1d58c379, type: 2}

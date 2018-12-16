@@ -224,6 +224,8 @@
 				var layoutRoomPosition = roomInfo.LayoutRoom.Position;
 				var correctPosition = new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) - roomInfo.BaseTilemap.cellBounds.position;
 				roomInfo.GameObject.transform.position = correctPosition;
+
+				TransferRoomToMarkerMap(roomInfo);
 			}
 
 			// Add doors
@@ -238,7 +240,9 @@
 					{
 						foreach (var doorPoint in door.DoorLine.GetPoints())
 						{
-							tilemap.SetTile(doorPoint.ToUnityIntVector3() - new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) + tilemap.cellBounds.position, Config.DoorTile);
+							var correctPosition = doorPoint.ToUnityIntVector3();
+							payload.MarkerMap.SetMarker(correctPosition, new Marker() { Type = MarkerType.Door });
+							// tilemap.SetTile(doorPoint.ToUnityIntVector3() - new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) + tilemap.cellBounds.position, Config.DoorTile);
 						}
 					}
 				}
@@ -262,8 +266,6 @@
 				// Map individual rooms to the tilemap
 				foreach (var roomInfo in generatedRooms)
 				{
-					TransferRoomToMarkerMap(roomInfo);
-
 					Object.DestroyImmediate(roomInfo.GameObject);
 				}
 
@@ -272,6 +274,8 @@
 
 				Object.DestroyImmediate(parentGameObject);
 			}
+
+			
 
 			if (Config.ShowElapsedTime)
 			{

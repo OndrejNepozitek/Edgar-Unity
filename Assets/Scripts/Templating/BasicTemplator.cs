@@ -11,6 +11,8 @@
 		public TileBase WallTile;
 
 		public TileBase FloorTile;
+
+		public TileBase DoorTile;
 	}
 
 	[PipelineTaskFor(typeof(BasicTemplator))]
@@ -34,6 +36,10 @@
 					else if (marker.Type == MarkerType.Floor)
 					{
 						payload.Tilemap.SetTile(position, Config.FloorTile);
+					}
+					else if (marker.Type == MarkerType.Door)
+					{
+						payload.Tilemap.SetTile(position, Config.DoorTile);
 					}
 				}
 			}
