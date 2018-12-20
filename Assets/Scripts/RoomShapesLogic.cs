@@ -117,7 +117,7 @@
 
 			foreach (var position in tilemap.cellBounds.allPositionsWithin)
 			{
-				var tile = tilemap.GetTile<Tile>(position);
+				var tile = tilemap.GetTile(position);
 
 				if (tile == null)
 				{

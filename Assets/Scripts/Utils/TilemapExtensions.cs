@@ -7,7 +7,7 @@
 
 	public static class TilemapExtensions
 	{
-		public static IEnumerable<Tuple<Vector3Int, Tile>> GetAllTiles(this Tilemap tilemap, bool includeEmpty = false)
+		public static IEnumerable<Tuple<Vector3Int, TileBase>> GetAllTiles(this Tilemap tilemap, bool includeEmpty = false)
 		{
 			var bounds = tilemap.cellBounds;
 			var boundsPosition = bounds.position;
@@ -17,7 +17,7 @@
 			{
 				for (var y = 0; y < bounds.size.y; y++)
 				{
-					var tile = (Tile) allTiles[x + y * bounds.size.x];
+					var tile = allTiles[x + y * bounds.size.x];
 					var position = new Vector3Int(x, y, 0);
 
 					if (tile != null || includeEmpty)

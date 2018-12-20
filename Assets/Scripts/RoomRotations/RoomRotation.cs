@@ -24,7 +24,7 @@
 				notRotatedSprites = new List<Sprite>();
 			}
 
-			var newTiles = new List<Tuple<Vector3Int, Tile>>();
+			var newTiles = new List<Tuple<Vector3Int, TileBase>>();
 
 			var rotation = Quaternion.Euler(0f, 0f, degrees);
 			var rotationMatrix = Matrix4x4.Rotate(rotation);
@@ -33,10 +33,11 @@
 			{
 				var position = tilePair.Item1;
 				var tile = tilePair.Item2;
+				var classicTile = tile as Tile;
 
-				if (!notRotatedSprites.Contains(tile.sprite))
+				if (classicTile != null && !notRotatedSprites.Contains(classicTile.sprite))
 				{
-					tile.transform = rotationMatrix;
+					classicTile.transform = rotationMatrix;
 				}
 
 				var newPosition = position.RotateAroundCenter(-degrees);

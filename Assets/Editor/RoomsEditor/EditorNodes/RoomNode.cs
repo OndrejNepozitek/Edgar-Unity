@@ -107,15 +107,12 @@
 					var allTiles = tilemap.GetTilesBlock(bounds);
 					var startingPoint = Rect.center - new Vector2(width / 2, height / 2 - yOffset / 2);
 
-					for (int x = 0; x < bounds.size.x; x++)
+					foreach (var position in tilemap.cellBounds.allPositionsWithin)
 					{
-						for (int y = 0; y < bounds.size.y; y++)
+						if (tilemap.GetTile(position) != null)
 						{
-							var tile = (Tile)allTiles[x + (bounds.size.y - y - 1) * bounds.size.x];
-							if (tile != null)
-							{
-								DrawTexturePreview(new Rect(startingPoint.x + x * sizePerTile, startingPoint.y + y * sizePerTile, sizePerTile, sizePerTile), tile.sprite);
-							}
+
+							DrawTexturePreview(new Rect(startingPoint.x + (position.x - bounds.x) * sizePerTile, startingPoint.y + ((bounds.size.y - position.y) + bounds.y - 1) * sizePerTile, sizePerTile, sizePerTile), tilemap.GetSprite(position));
 						}
 					}
 				}

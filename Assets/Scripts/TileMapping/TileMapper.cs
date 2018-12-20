@@ -109,7 +109,7 @@
 			var roomRotation = new RoomRotation();
 			var go = Instantiate(Room);
 			var notRotatedTiles = NotRotatedTiles.GetComponentsInChildren<Tilemap>().SelectMany(x => x.GetAllTiles())
-				.Select(x => x.Item2.sprite).ToList();
+				.Select(x => ((Tile)x.Item2)?.sprite).Where(x => x != null).ToList();
 
 			roomRotation.RotateRoom(go, RotateDegrees, notRotatedTiles);
 
