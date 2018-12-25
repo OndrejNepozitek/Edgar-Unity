@@ -2,7 +2,6 @@
 {
 	using UnityEngine;
 
-	[CreateAssetMenu]
 	public class Task3 : PipelineTask
 	{
 		

@@ -4,11 +4,11 @@
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
-	[CreateAssetMenu]
+	[CreateAssetMenu(menuName = "Dungeon generator/Payload generator")]
 	public class PayloadGenerator : Pipeline.PayloadGenerator
 	{
 		public int NumberOfTilemaps = 5;
-
+		
 		public override object InitializePayload()
 		{
 			var gameHolderOld = GameObject.Find("Rooms holder");

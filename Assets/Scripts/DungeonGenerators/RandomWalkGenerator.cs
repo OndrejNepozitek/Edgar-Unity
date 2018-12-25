@@ -7,7 +7,7 @@
 	using UnityEngine;
 	using Random = System.Random;
 
-	[CreateAssetMenu(menuName = "Random walk generator", fileName = "RandomWalkGenerator")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Random walk generator", fileName = "Random walk generator")]
 	public class RandomWalkGeneratorConfig : PipelineTask
 	{
 		public int Width = 50;

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5954be246178547954e2cad0ab7441, type: 3}
+  m_Name: Corridors
+  m_EditorClassIdentifier: 
+  RoomsSets:
+  - {fileID: 114619814819471438}
+--- !u!114 &114488108622841098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1992953626902076, guid: 62d735e23eadef649af92d0e45262089, type: 2}
+--- !u!114 &114619814819471438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5302dcba51fa44c9202f0f6a63c257, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Corridors
+  Position: {x: 328, y: 191}
+  Rooms:
+  - {fileID: 114899524452426400}
+  - {fileID: 114488108622841098}
+--- !u!114 &114899524452426400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1020123953894334, guid: d1b3015e580c7534ab5eb7df4ee0fd23, type: 2}

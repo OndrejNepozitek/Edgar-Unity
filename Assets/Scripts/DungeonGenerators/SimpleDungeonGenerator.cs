@@ -4,7 +4,7 @@
 	using Pipeline;
 	using UnityEngine;
 
-	[CreateAssetMenu]
+	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Simple dungeon generator")]
 	public class SimpleDungeonGenerator : PipelineTask
 	{
 		public int Width;

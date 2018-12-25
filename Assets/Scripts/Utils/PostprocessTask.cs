@@ -4,7 +4,7 @@
 	using Pipeline;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Pipeline tasks/Postprocess")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline tasks/Postprocess")]
 	public class PostprocessTask : PipelineTask
 	{
 		public bool CenterGrid = true;

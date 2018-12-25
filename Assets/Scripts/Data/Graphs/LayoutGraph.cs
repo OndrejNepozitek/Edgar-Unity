@@ -4,7 +4,7 @@
 	using Rooms;
 	using UnityEngine;
 
-	[CreateAssetMenu(fileName = "LayoutGraph", menuName = "Layout graph")]
+	[CreateAssetMenu(fileName = "LayoutGraph", menuName = "Dungeon generator/Layout graph")]
 	public class LayoutGraph : ScriptableObject
 	{
 		[HideInInspector]

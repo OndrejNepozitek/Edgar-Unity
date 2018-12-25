@@ -2,7 +2,7 @@
 {
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Marker type")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Marker type")]
 	public class MarkerType : ScriptableObject
 	{
 

@@ -2,10 +2,8 @@
 {
 	using GeneratorPipeline;
 
-	public class Task4
+	public class Task4 
 	{
-
-
 		public class Task<T> : IConfigurablePipelineTask<T, Task4>
 			where T : IGeneratorPayload
 		{
@@ -13,7 +11,7 @@
 
 			public void Process(T payload)
 			{
-				throw new System.NotImplementedException();
+				throw new System.NotImplementedException(); 
 			}
 		}
 	}

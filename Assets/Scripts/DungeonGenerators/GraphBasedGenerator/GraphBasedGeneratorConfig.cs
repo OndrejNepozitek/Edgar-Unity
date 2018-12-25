@@ -5,7 +5,7 @@
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
-	[CreateAssetMenu(menuName = "Graph based generator", fileName = "GraphBasesGenerator")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Graph based generator", fileName = "GraphBasesGenerator")]
 	public class GraphBasedGeneratorConfig : PipelineTask
 	{
 		public LayoutGraph LayoutGraph;

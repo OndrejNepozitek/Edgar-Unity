@@ -3,7 +3,7 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
-	[CreateAssetMenu(fileName = "RoomTemplates", menuName = "Room templates")]
+	[CreateAssetMenu(fileName = "RoomTemplates", menuName = "Dungeon generator/Room templates")]
 	public class RoomTemplatesSet : ScriptableObject
 	{
 		public string Name = "Room set";

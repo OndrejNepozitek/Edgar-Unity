@@ -16,6 +16,6 @@ MonoBehaviour:
   DoorTile: {fileID: 11400000, guid: b5bb4c5e8e00e6f4897ef31fc56123ad, type: 2}
   UseCorridors: 1
   ShowElapsedTime: 1
-  AddDoors: 1
+  AddDoors: 0
   CorrectWalls: 0
   CombineTilemaps: 1

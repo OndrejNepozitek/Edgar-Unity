@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5302dcba51fa44c9202f0f6a63c257, type: 3}
+  m_Name: BasicRoomTemplates
+  m_EditorClassIdentifier: 
+  Name: Room set
+  Position: {x: 420, y: 45}
+  Rooms:
+  - {fileID: 114476903677107468}
+  - {fileID: 114676423946641852}
+  - {fileID: 114511640944337444}
+  - {fileID: 114207200637388148}
+--- !u!114 &114207200637388148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1245934302349090, guid: 63c08ce26c4d1c341b89e0c529948aa0, type: 2}
+--- !u!114 &114476903677107468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1029986879539338, guid: b5b54ccde5e59fc4a8de2014ca844734, type: 2}
+--- !u!114 &114511640944337444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1589365295966838, guid: a7ac37c3a100691409eff64f53e064e0, type: 2}
+--- !u!114 &114676423946641852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tilemap: {fileID: 1139878036266760, guid: a0295a05626d4314086a7c6ba9b8a9c4, type: 2}

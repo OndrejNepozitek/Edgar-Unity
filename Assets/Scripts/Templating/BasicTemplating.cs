@@ -8,7 +8,7 @@
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
-	[CreateAssetMenu(menuName = "Pipeline tasks/Basic templating")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline tasks/Basic templating")]
 	public class BasicTemplating : PipelineTask
 	{
 		public List<TileMapping> Mapping = new List<TileMapping>();
