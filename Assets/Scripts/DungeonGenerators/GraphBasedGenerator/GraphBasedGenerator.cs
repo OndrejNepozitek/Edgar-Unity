@@ -1,5 +1,6 @@
 ﻿namespace Assets.Scripts.DungeonGenerators.GraphBasedGenerator
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using System.Linq;
@@ -13,11 +14,13 @@
 	using MapGeneration.Utils;
 	using Pipeline;
 	using RoomRotations;
+	using RoomTemplates.Doors;
 	using TileMapping;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 	using Utils;
 	using Debug = UnityEngine.Debug;
+	using Object = UnityEngine.Object;
 
 	[PipelineTaskFor(typeof(GraphBasedGeneratorConfig))]
 	public class GraphBasedGenerator<T> : IConfigurablePipelineTask<T, GraphBasedGeneratorConfig> where T : IGeneratorPayload
@@ -25,6 +28,11 @@
 		public GraphBasedGeneratorConfig Config { get; set; }
 
 		protected T Payload;
+
+		private List<RoomDescription> rooms;
+		private List<RoomDescription> corridors;
+		private TwoWayDictionary<RoomDescription, GameObject> roomDescriptionsToRoomTemplates;
+		private Dictionary<Room, int> roomToNumber;
 
 		public void Process(T payload)
 		{
@@ -35,73 +43,69 @@
 
 			if (Config.ShowElapsedTime)
 			{
-				Debug.Log("--- Script started ---");
+				Debug.Log("--- Script started ---"); 
 			}
 
-			var rooms = new List<RoomDescription>();
-			var corridors = new List<RoomDescription>();
-			var roomDescriptionsToRoomTemplates = new Dictionary<RoomDescription, RoomTemplate>();
+			//foreach (var roomSet in Config.RoomTemplatesWrapper.RoomsSets)
+			//{
+			//	foreach (var room in roomSet.Rooms)
+			//	{
+			//		var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
+			//		var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
+			//		var doors = room.Tilemap.GetComponent<Doors>();
+			//		var doorLines = new List<OrthogonalLine>();
 
-			foreach (var roomSet in Config.RoomTemplatesWrapper.RoomsSets)
-			{
-				foreach (var room in roomSet.Rooms)
-				{
-					var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
-					var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
-					var doors = room.Tilemap.GetComponent<Doors.Doors>();
-					var doorLines = new List<OrthogonalLine>();
+			//		foreach (var door in doors.DoorsList)
+			//		{
+			//			var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
 
-					foreach (var door in doors.doors)
-					{
-						var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
+			//			//if (doorLine.Length == 0)
+			//			//{
+			//			//	continue;
+			//			//}
 
-						//if (doorLine.Length == 0)
-						//{
-						//	continue;
-						//}
+			//			doorLines.Add(doorLine);
+			//		}
 
-						doorLines.Add(doorLine);
-					}
+			//		var doorMode = new SpecificPositionsMode(doorLines);
 
-					var doorMode = new SpecificPositionsMode(doorLines);
+			//		var roomDescription = new RoomDescription(polygon, doorMode);
+			//		rooms.Add(roomDescription);
+			//		roomDescriptionsToRoomTemplates.Add(roomDescription, room);
+			//	}
+			//}
 
-					var roomDescription = new RoomDescription(polygon, doorMode);
-					rooms.Add(roomDescription);
-					roomDescriptionsToRoomTemplates.Add(roomDescription, room);
-				}
-			}
+			//if (Config.UseCorridors)
+			//{
+			//	foreach (var roomSet in Config.CorridorTemplatesWrapper.RoomsSets)
+			//	{
+			//		foreach (var room in roomSet.Rooms)
+			//		{
+			//			var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
+			//			var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
+			//			var doors = room.Tilemap.GetComponent<Doors>();
+			//			var doorLines = new List<OrthogonalLine>();
+						
+			//			foreach (var door in doors.DoorsList)
+			//			{
+			//				var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
 
-			if (Config.UseCorridors)
-			{
-				foreach (var roomSet in Config.CorridorTemplatesWrapper.RoomsSets)
-				{
-					foreach (var room in roomSet.Rooms)
-					{
-						var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
-						var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
-						var doors = room.Tilemap.GetComponent<Doors.Doors>();
-						var doorLines = new List<OrthogonalLine>();
+			//				//if (doorLine.Length == 0)
+			//				//{
+			//				//	continue;
+			//				//}
 
-						foreach (var door in doors.doors)
-						{
-							var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
+			//				doorLines.Add(doorLine);
+			//			}
 
-							//if (doorLine.Length == 0)
-							//{
-							//	continue;
-							//}
+			//			var doorMode = new SpecificPositionsMode(doorLines);
 
-							doorLines.Add(doorLine);
-						}
-
-						var doorMode = new SpecificPositionsMode(doorLines);
-
-						var roomDescription = new RoomDescription(polygon, doorMode);
-						corridors.Add(roomDescription);
-						roomDescriptionsToRoomTemplates.Add(roomDescription, room);
-					}
-				}
-			}
+			//			var roomDescription = new RoomDescription(polygon, doorMode);
+			//			corridors.Add(roomDescription);
+			//			roomDescriptionsToRoomTemplates.Add(roomDescription, room);
+			//		}
+			//	}
+			//}
 
 			//var mapDescription = new MapDescription<int>();
 			//var verticesCount = 7;
@@ -126,29 +130,27 @@
 			//	Debug.Log($"Map description created. {stopwatch.ElapsedMilliseconds / 1000f:F} s");
 			//}
 
-			var mapDescription = new MapDescription<int>();
-			var roomCounter = 0;
-			var roomToNumber = new Dictionary<Room, int>();
+			//if (Config.UseCorridors)
+			//{
+			//	mapDescription.SetWithCorridors(true, new List<int>() { 2, 3 });
 
-			if (Config.UseCorridors)
-			{
-				mapDescription.SetWithCorridors(true, new List<int>() { 2, 3 });
+			//	mapDescription.AddCorridorShapes(corridors);
+			//}
 
-				mapDescription.AddCorridorShapes(corridors);
-			}
+			//foreach (var room in Config.LayoutGraph.Rooms)
+			//{
+			//	mapDescription.AddRoom(roomCounter);
+			//	roomToNumber.Add(room, roomCounter++);
+			//}
 
-			foreach (var room in Config.LayoutGraph.Rooms)
-			{
-				mapDescription.AddRoom(roomCounter);
-				roomToNumber.Add(room, roomCounter++);
-			}
+			//foreach (var connection in Config.LayoutGraph.Connections)
+			//{
+			//	mapDescription.AddPassage(roomToNumber[connection.From], roomToNumber[connection.To]);
+			//}
 
-			foreach (var connection in Config.LayoutGraph.Connections)
-			{
-				mapDescription.AddPassage(roomToNumber[connection.From], roomToNumber[connection.To]);
-			}
+			//mapDescription.AddRoomShapes(rooms);
 
-			mapDescription.AddRoomShapes(rooms);
+			var mapDescription = SetupMapDescription(); 
 
 			IMapLayout<int> layout;
 
@@ -197,7 +199,7 @@
 			foreach (var layoutRoom in layout.Rooms)
 			{
 				var room = roomDescriptionsToRoomTemplates[(RoomDescription)layoutRoom.RoomDescription];
-				var go = Object.Instantiate(room.Tilemap);
+				var go = Object.Instantiate(room);
 				go.transform.SetParent(parentGameObject.transform);
 
 				var roomInfo = new DungeonGenerator.RoomInfo<int>()
@@ -311,6 +313,123 @@
 					Payload.MarkerMaps[0].SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Floor });
 				}
 			}
+		}
+
+		protected MapDescription<int> SetupMapDescription()
+		{
+			rooms = new List<RoomDescription>();
+			corridors = new List<RoomDescription>();
+			roomDescriptionsToRoomTemplates = new TwoWayDictionary<RoomDescription, GameObject>();
+			roomToNumber = new Dictionary<Room, int>();
+
+			var layoutGraph = Config.LayoutGraph;
+			var mapDescription = new MapDescription<int>();
+			var roomCounter = -1;
+			
+			// Setup individual rooms
+			foreach (var room in layoutGraph.Rooms)
+			{
+				roomCounter++;
+				mapDescription.AddRoom(roomCounter);
+				roomToNumber.Add(room, roomCounter);
+
+				var roomTemplatesSets = room.RoomTemplateSets;
+				var individualRoomTemplates = room.IndividualRoomTemplates;
+
+				if (room.RoomsGroupGuid != Guid.Empty)
+				{
+					roomTemplatesSets = layoutGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).RoomTemplateSets;
+					individualRoomTemplates = layoutGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).IndividualRoomTemplates;
+				}
+
+				foreach (var roomTemplatesSet in roomTemplatesSets)
+				{
+					foreach (var roomTemplate in roomTemplatesSet.Rooms)
+					{
+						var roomDescription = GetRoomDescription(roomTemplate.Tilemap);
+						mapDescription.AddRoomShapes(roomCounter, roomDescription);
+					}
+				}
+
+				foreach (var roomTemplate in individualRoomTemplates)
+				{
+					var roomDescription = GetRoomDescription(roomTemplate);
+					mapDescription.AddRoomShapes(roomCounter, roomDescription);
+				}
+			}
+
+			// Add default room shapes
+			foreach (var roomTemplatesSet in layoutGraph.DefaultRoomTemplateSets)
+			{
+				foreach (var roomTemplate in roomTemplatesSet.Rooms)
+				{
+					var roomDescription = GetRoomDescription(roomTemplate.Tilemap);
+					mapDescription.AddRoomShapes(roomDescription);
+				}
+			}
+
+			foreach (var roomTemplate in layoutGraph.DefaultIndividualRoomTemplates)
+			{
+				var roomDescription = GetRoomDescription(roomTemplate);
+				mapDescription.AddRoomShapes(roomDescription);
+			}
+
+			// Add corridors
+			if (Config.UseCorridors)
+			{
+				mapDescription.SetWithCorridors(true, new List<int>() { 2, 3 });
+
+				foreach (var roomTemplatesSet in layoutGraph.CorridorRoomTemplateSets)
+				{
+					foreach (var roomTemplate in roomTemplatesSet.Rooms)
+					{
+						var roomDescription = GetRoomDescription(roomTemplate.Tilemap);
+						mapDescription.AddCorridorShapes(roomDescription);
+					}
+				}
+
+				foreach (var roomTemplate in layoutGraph.CorridorIndividualRoomTemplate)
+				{
+					var roomDescription = GetRoomDescription(roomTemplate);
+					mapDescription.AddCorridorShapes(roomDescription);
+				}
+			}
+
+			// Add passages
+			foreach (var connection in Config.LayoutGraph.Connections)
+			{
+				mapDescription.AddPassage(roomToNumber[connection.From], roomToNumber[connection.To]);
+			}
+
+			return mapDescription;
+		}
+
+		protected RoomDescription GetRoomDescription(GameObject roomTemplate)
+		{
+			if (roomDescriptionsToRoomTemplates.ContainsValue(roomTemplate))
+			{
+				return roomDescriptionsToRoomTemplates.GetByValue(roomTemplate);
+			}
+
+			var tilemap = roomTemplate.GetComponentInChildren<Tilemap>();
+			var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
+			var doors = roomTemplate.GetComponent<Doors>();
+			var doorLines = new List<OrthogonalLine>();
+
+			foreach (var door in doors.DoorsList)
+			{
+				var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
+
+				doorLines.Add(doorLine);
+			}
+
+			var doorMode = new SpecificPositionsMode(doorLines);
+
+			var roomDescription = new RoomDescription(polygon, doorMode);
+			rooms.Add(roomDescription);
+			roomDescriptionsToRoomTemplates.Add(roomDescription, roomTemplate);
+
+			return roomDescription;
 		}
 	}
 }

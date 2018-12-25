@@ -66,6 +66,11 @@
 						OnEndConnection?.Invoke(this, e);
 					}
 
+					if (Rect.Contains(e.mousePosition) && e.button == 0 && Mode == EditorMode.Drag)
+					{
+						CustomInspectorWindow.OpenWindow(Data);
+					}
+
 					if (e.button == 0)
 					{
 						isDragged = false;

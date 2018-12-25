@@ -5,31 +5,26 @@
 	using Rooms;
 	using UnityEngine;
 
-	public class Room : ScriptableObject, ISerializationCallbackReceiver
+	[Serializable]
+	public class RoomsGroup : ISerializationCallbackReceiver
 	{
-		public string Name = "Room";
-
-		[HideInInspector]
-		public Vector2 Position;
+		public string Name = "New group";
 
 		public List<RoomTemplatesSet> RoomTemplateSets = new List<RoomTemplatesSet>();
 
 		public List<GameObject> IndividualRoomTemplates = new List<GameObject>();
 
 		[HideInInspector]
-		public Guid RoomsGroupGuid;
-
-		// TODO: this should be done differently. It is not possible to handle every GUID manually.
-		#region Pretty ugly GUID handling
+		public Guid Guid = Guid.NewGuid();
 
 		[SerializeField]
-		private byte[] serializedGuid; 
+		private byte[] serializedGuid;
 
 		public void OnBeforeSerialize()
 		{
-			if (RoomsGroupGuid != Guid.Empty)
+			if (Guid != Guid.Empty)
 			{
-				serializedGuid = RoomsGroupGuid.ToByteArray();
+				serializedGuid = Guid.ToByteArray();
 			}
 		}
 
@@ -37,12 +32,8 @@
 		{
 			if (serializedGuid != null && serializedGuid.Length == 16)
 			{
-				RoomsGroupGuid = new Guid(serializedGuid);
+				Guid = new Guid(serializedGuid);
 			}
 		}
-
-		#endregion
-
-
 	}
 }

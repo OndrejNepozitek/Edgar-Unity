@@ -69,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1600393974296318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.80409384, y: -0.88984704, z: 0}
+  m_LocalPosition: {x: -0.17979622, y: -1.2131819, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4674761517888254}
@@ -114,19 +114,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstPoint: {x: 2, y: 0, z: 0}
-  hasFirstPoint: 0
-  secondPoint: {x: 2, y: -1, z: 0}
-  hasSecondPoint: 0
-  doors:
+  FirstPoint: {x: -5, y: 0, z: 0}
+  HasFirstPoint: 0
+  SecondPoint: {x: -5, y: -1, z: 0}
+  HasSecondPoint: 0
+  DoorsList:
   - From: {x: -2, y: 4, z: 0}
     To: {x: -1, y: 4, z: 0}
+  - From: {x: -3, y: -3, z: 0}
+    To: {x: -2, y: -3, z: 0}
   - From: {x: -2, y: -3, z: 0}
     To: {x: -1, y: -3, z: 0}
-  - From: {x: -5, y: 0, z: 0}
-    To: {x: -5, y: -1, z: 0}
+  - From: {x: -1, y: -3, z: 0}
+    To: {x: 0, y: -3, z: 0}
   - From: {x: 2, y: 0, z: 0}
     To: {x: 2, y: -1, z: 0}
+  - From: {x: -5, y: 0, z: 0}
+    To: {x: -5, y: -1, z: 0}
 --- !u!156049354 &2569400267283143556
 Grid:
   m_ObjectHideFlags: 1

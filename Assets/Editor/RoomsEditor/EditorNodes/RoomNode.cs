@@ -104,7 +104,6 @@
 
 				foreach (var tilemap in Data.Tilemap.GetComponentsInChildren<Tilemap>())
 				{
-					var allTiles = tilemap.GetTilesBlock(bounds);
 					var startingPoint = Rect.center - new Vector2(width / 2, height / 2 - yOffset / 2);
 
 					foreach (var position in tilemap.cellBounds.allPositionsWithin)

@@ -10,7 +10,7 @@
 
 	public class RoomsWindow : NodeBasedEditorBaseOld
 	{
-		public RoomTemplatesWrapper Data { get; set; }
+		public RoomTemplatesSet Data { get; set; }
 		private GUIStyle roomNodeStyle;
 
 		public RoomsWindow()
@@ -22,10 +22,7 @@
 		{
 			nodes = new List<IEditorNodeBase>();
 
-			foreach (var roomSet in Data.RoomsSets)
-			{
-				CreateNode(roomSet);
-			}
+			CreateNode(Data);
 		}
 
 		public override void OnEnable()
@@ -59,42 +56,42 @@
 		{ 
 			base.ProcessContextMenu(mousePosition);
 
-			var genericMenu = new GenericMenu();
-			genericMenu.AddItem(new GUIContent("Add room set"), false, () => OnClickAddRoomSet(mousePosition));
-			genericMenu.ShowAsContext();
+			//var genericMenu = new GenericMenu();
+			//genericMenu.AddItem(new GUIContent("Add room set"), false, () => OnClickAddRoomSet(mousePosition));
+			//genericMenu.ShowAsContext();
 		}
 
-		protected void OnClickAddRoomSet(Vector2 mousePosition)
-		{
-			if (nodes == null)
-			{
-				nodes = new List<IEditorNodeBase>();
-			}
+		//protected void OnClickAddRoomSet(Vector2 mousePosition)
+		//{
+		//	if (nodes == null)
+		//	{
+		//		nodes = new List<IEditorNodeBase>();
+		//	}
 
-			var roomSet = CreateInstance<RoomTemplatesSet>();
-			roomSet.Position = mousePosition;
-			Data.RoomsSets.Add(roomSet);
-			AssetDatabase.AddObjectToAsset(roomSet, Data);
+		//	var roomSet = CreateInstance<RoomTemplatesSet>();
+		//	roomSet.Position = mousePosition;
+		//	Data.RoomsSets.Add(roomSet);
+		//	AssetDatabase.AddObjectToAsset(roomSet, Data);
 
-			CreateNode(roomSet);
-		}
+		//	CreateNode(roomSet);
+		//}
 
 		protected RoomSetNode CreateNode(RoomTemplatesSet data)
 		{
 			var node = new RoomSetNode(data, 150, 50, nodeStyle, roomNodeStyle);
-			node.OnDeleted += OnDeleteNode;
+			// node.OnDeleted += OnDeleteNode;
 
 			nodes.Add(node);
 
 			return node;
 		}
 
-		private void OnDeleteNode(RoomSetNode node)
-		{
-			Data.RoomsSets.Remove(node.Data);
-			DestroyImmediate(node.Data, true);
-			nodes.Remove(node);
-		}
+		//private void OnDeleteNode(RoomSetNode node)
+		//{
+		//	Data.RoomsSets.Remove(node.Data);
+		//	DestroyImmediate(node.Data, true);
+		//	nodes.Remove(node);
+		//}
 
 		protected override void ProcessEvents(Event e)
 		{

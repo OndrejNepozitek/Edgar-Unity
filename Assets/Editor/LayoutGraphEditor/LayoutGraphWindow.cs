@@ -26,6 +26,12 @@
 
 		private EditorMode editorMode = EditorMode.MakeConnections;
 
+		private int selectedToolbar = 0;
+
+		private string[] toolbarStrings = new[] {"Test 1", "Test 2"};
+
+		public static LayoutGraph StaticData { get; set; }
+
 		public void Initialize()
 		{
 			var roomToRoomNodes = new Dictionary<Room, RoomNode>();
@@ -46,6 +52,7 @@
 			editorMode = EditorMode.Drag;
 			connectionFrom = null;
 			connectionProgress = null;
+			StaticData = Data;
 		}
 
 		public override void OnEnable()
@@ -85,7 +92,53 @@
 				roomNodes.ForEach(x => x.Mode = editorMode);
 			}
 
+			//if (Data != null)
+			//{
+			//	DrawUi();
+			//}	
+			
 			base.OnGUI();
+		}
+
+		private void DrawUi()
+		{
+			GUILayout.BeginArea(new Rect(10,10,200,600));
+
+			// selectedToolbar = GUILayout.Toolbar(selectedToolbar, toolbarStrings);
+
+			GUILayout.BeginVertical();
+
+			GUILayout.Label("Rooms groups");
+
+			var groupsToRemove = new List<RoomsGroup>();
+
+			foreach (var roomsGroup in Data.RoomsGroups)
+			{
+				GUILayout.BeginHorizontal();
+
+				roomsGroup.Name = GUILayout.TextField(roomsGroup.Name ?? string.Empty, 10, GUILayout.Width(100));
+
+				if (GUILayout.Button("X", GUILayout.Width(30)))
+				{
+					groupsToRemove.Add(roomsGroup);
+				}
+
+				GUILayout.EndHorizontal();
+			}
+
+			foreach (var roomsGroup in groupsToRemove)
+			{
+				Data.RoomsGroups.Remove(roomsGroup);
+			}
+
+			if (GUILayout.Button("Add room group"))
+			{
+				Data.RoomsGroups.Add(new RoomsGroup());
+			}
+
+			GUILayout.EndVertical();
+
+			GUILayout.EndArea();
 		}
 
 		protected override void ProcessEvents(Event e)
@@ -195,7 +248,7 @@
 
 		protected RoomNode CreateNode(Room data)
 		{
-			var node = new RoomNode(data, 50, 50, roomNodeStyle, editorMode);
+			var node = new RoomNode(data, 40, 40, roomNodeStyle, editorMode);
 
 			node.OnDelete += OnDeleteRoomNode;
 			node.OnStartConnection += OnStartConnection;

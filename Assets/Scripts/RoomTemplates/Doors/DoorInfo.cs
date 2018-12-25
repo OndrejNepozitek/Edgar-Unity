@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Doors
+﻿namespace Assets.Scripts.RoomTemplates.Doors
 {
 	using System;
 	using UnityEngine;

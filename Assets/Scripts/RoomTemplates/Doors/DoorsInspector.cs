@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Doors
+﻿namespace Assets.Scripts.RoomTemplates.Doors
 {
 	using System;
 	using System.Collections.Generic;
@@ -67,9 +67,9 @@
 					//	}
 					//}
 
-					doors.firstPoint = mouseWorldPosition;
-					doors.hasFirstPoint = true;
-					doors.hasSecondPoint = false;
+					doors.FirstPoint = mouseWorldPosition;
+					doors.HasFirstPoint = true;
+					doors.HasSecondPoint = false;
 
 					//// Right click
 					//if (e.button == 1)
@@ -86,10 +86,10 @@
 					break;
 
 				case EventType.MouseUp:
-					if (doors.hasFirstPoint)
+					if (doors.HasFirstPoint)
 					{
-						doors.secondPoint = mouseWorldPosition;
-						doors.hasSecondPoint = true;
+						doors.SecondPoint = mouseWorldPosition;
+						doors.HasSecondPoint = true;
 					}
 
 
@@ -97,11 +97,11 @@
 					break;
 			}
 
-			if (doors.hasFirstPoint)
+			if (doors.HasFirstPoint)
 			{
 				highlightInfo = null;
 
-				var from = doors.firstPoint;
+				var from = doors.FirstPoint;
 				var to = mouseWorldPosition;
 
 				if (from.x != to.x && from.y != to.y)
@@ -111,25 +111,25 @@
 
 				DrawOutline(from, to, Color.yellow);
 
-				if (doors.hasSecondPoint)
+				if (doors.HasSecondPoint)
 				{
 					if (from.Equals(to))
 					{
 						throw new NotSupportedException("Doors with lenght one not supported ATM");
 					}
 
-					doors.doors.Add(new DoorInfo()
+					doors.DoorsList.Add(new DoorInfo()
 					{
 						From = from,
 						To = to,
 					});
 
-					doors.hasFirstPoint = false;
-					doors.hasSecondPoint = false;
+					doors.HasFirstPoint = false;
+					doors.HasSecondPoint = false;
 				}
 			}
 
-			foreach (var door in doors.doors)
+			foreach (var door in doors.DoorsList)
 			{
 				DrawOutline(door.From, door.To, Color.red);
 			}
@@ -189,9 +189,9 @@
 
 			GUILayout.Label("Doors:", EditorStyles.boldLabel);
 
-			for (int i = 0; i < doors.doors.Count; i++)
+			for (int i = 0; i < doors.DoorsList.Count; i++)
 			{
-				DoorInfo door = doors.doors[i];
+				DoorInfo door = doors.DoorsList[i];
 
 				GUILayout.BeginHorizontal();
 
@@ -235,7 +235,7 @@
 
 			foreach (var doorInfo in toRemove)
 			{
-				doors.doors.Remove(doorInfo);
+				doors.DoorsList.Remove(doorInfo);
 
 				if (highlightInfo == doorInfo)
 				{

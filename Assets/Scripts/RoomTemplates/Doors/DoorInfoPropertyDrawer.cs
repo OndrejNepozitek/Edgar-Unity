@@ -1,8 +1,7 @@
-﻿namespace Assets.Scripts.Doors
+﻿namespace Assets.Scripts.RoomTemplates.Doors
 {
 	using UnityEditor;
 	using UnityEngine;
-
 
 	public class DoorInfoPropertyDrawer : PropertyDrawer
 	{

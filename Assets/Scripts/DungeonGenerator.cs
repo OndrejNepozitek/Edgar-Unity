@@ -15,6 +15,7 @@
 	using MapGeneration.Interfaces.Core.MapLayouts;
 	using MapGeneration.Utils;
 	using RoomRotations;
+	using RoomTemplates.Doors;
 	using TileMapping;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
@@ -73,10 +74,10 @@
 				{
 					var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
 					var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
-					var doors = room.Tilemap.GetComponent<Doors.Doors>();
+					var doors = room.Tilemap.GetComponent<Doors>();
 					var doorLines = new List<OrthogonalLine>();
 
-					foreach (var door in doors.doors)
+					foreach (var door in doors.DoorsList)
 					{
 						var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
 
@@ -104,10 +105,10 @@
 					{
 						var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
 						var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
-						var doors = room.Tilemap.GetComponent<Doors.Doors>();
+						var doors = room.Tilemap.GetComponent<Doors>();
 						var doorLines = new List<OrthogonalLine>();
 
-						foreach (var door in doors.doors)
+						foreach (var door in doors.DoorsList)
 						{
 							var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
 
@@ -231,7 +232,7 @@
 				var roomInfo = new RoomInfo<int>()
 				{
 					GameObject = go,
-					RoomTemplate = room,
+					RoomTemplate = room.Tilemap,
 					LayoutRoom = layoutRoom,
 					BaseTilemap = go.GetComponentInChildren<Tilemap>()
 				};
@@ -338,7 +339,7 @@
 
 			public IRoom<TNode> LayoutRoom { get; set; }
 
-			public RoomTemplate RoomTemplate { get; set; }
+			public GameObject RoomTemplate { get; set; }
 
 			public Tilemap BaseTilemap { get; set; }
 		}

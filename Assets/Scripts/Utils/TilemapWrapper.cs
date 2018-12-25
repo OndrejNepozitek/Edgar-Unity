@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.TileMapping
+﻿namespace Assets.Scripts.Utils
 {
 	using System.Collections.Generic;
 	using GeneralAlgorithms.DataStructures.Common;
