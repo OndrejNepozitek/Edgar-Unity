@@ -16,6 +16,7 @@
 	using MapGeneration.Utils;
 	using RoomRotations;
 	using RoomTemplates.Doors;
+	using RoomTemplates.Transformations;
 	using TileMapping;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
@@ -241,13 +242,13 @@
 			}
 
 			// Set correct position and rotate
-			var roomRotation = new RoomRotation();
+			var roomTransformations = new RoomTransformations();
 			foreach (var roomInfo in generatedRooms)
 			{
 				// Rotate
 				// Rotation must precede position correction
-				var rotation = roomInfo.LayoutRoom.Rotation;
-				roomRotation.RotateRoom(roomInfo.GameObject, -rotation);
+				var transformation = roomInfo.LayoutRoom.Transformation;
+				roomTransformations.Transform(roomInfo.GameObject, transformation);
 
 				// Set correct position
 				var layoutRoomPosition = roomInfo.LayoutRoom.Position;

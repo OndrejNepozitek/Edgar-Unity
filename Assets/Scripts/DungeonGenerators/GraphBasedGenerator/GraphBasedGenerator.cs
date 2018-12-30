@@ -5,8 +5,12 @@
 	using System.Diagnostics;
 	using System.Linq;
 	using Data.Graphs;
+	using GeneralAlgorithms.Algorithms.Common;
+	using GeneralAlgorithms.Algorithms.Polygons;
 	using GeneralAlgorithms.DataStructures.Common;
 	using GeneratorPipeline;
+	using MapGeneration.Core.ConfigurationSpaces;
+	using MapGeneration.Core.Doors;
 	using MapGeneration.Core.Doors.DoorModes;
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.MapLayouts;
@@ -16,6 +20,7 @@
 	using RoomRotations;
 	using RoomTemplates;
 	using RoomTemplates.Doors;
+	using RoomTemplates.Transformations;
 	using TileMapping;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
@@ -57,8 +62,14 @@
 				var generator = LayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(new List<int>() { 2, 3 });
 				generator.InjectRandomGenerator(new System.Random());
 
+				var c = 0;
+				generator.OnPerturbed += (_) => { c++; };
+
 				var layouts = generator.GetLayouts(mapDescription, 1);
 				layout = layouts[0];
+
+				if (Config.ShowElapsedTime)
+					Debug.Log($"{c} iterations");
 			}
 			else
 			{
@@ -66,8 +77,14 @@
 
 				generator.InjectRandomGenerator(new System.Random());
 
+				var c = 0;
+				generator.OnPerturbed += (_) => { c++; };
+
 				var layouts = generator.GetLayouts(mapDescription, 1);
 				layout = layouts[0];
+
+				if (Config.ShowElapsedTime)
+					Debug.Log($"{c} iterations");
 			}
 
 			if (Config.ShowElapsedTime)
@@ -116,13 +133,13 @@
 			payload.RoomInfos = generatedRooms;
 
 			// Set correct position and rotate
-			var roomRotation = new RoomRotation();
+			var roomTransformations = new RoomTransformations();
 			foreach (var roomInfo in generatedRooms)
 			{
 				// Rotate
 				// Rotation must precede position correction
-				var rotation = roomInfo.LayoutRoom.Rotation;
-				roomRotation.RotateRoom(roomInfo.Room, -rotation);
+				var transformation = roomInfo.LayoutRoom.Transformation;
+				roomTransformations.Transform(roomInfo.Room, transformation);
 
 				// Set correct position
 				var layoutRoomPosition = roomInfo.LayoutRoom.Position;
@@ -180,7 +197,6 @@
 
 				// Object.DestroyImmediate(parentGameObject);
 			}
-
 			
 
 			if (Config.ShowElapsedTime)

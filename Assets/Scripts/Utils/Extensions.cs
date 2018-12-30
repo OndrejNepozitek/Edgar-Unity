@@ -32,6 +32,12 @@
 			return vector.ToCustomIntVector2().RotateAroundCenter(degrees).ToUnityIntVector3();
 		}
 
+		// TODO: not nice
+		public static Vector3Int Transform(this Vector3Int vector, Transformation transformation)
+		{
+			return vector.ToCustomIntVector2().Transform(transformation).ToUnityIntVector3();
+		}
+
 		public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source, IEqualityComparer<T> comparer = null)
 		{
 			return new HashSet<T>(source, comparer);
