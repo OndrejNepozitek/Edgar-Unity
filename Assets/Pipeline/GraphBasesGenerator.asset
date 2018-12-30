@@ -11,11 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1223b1c19527fcd4ebfa7eeb23f3e98a, type: 3}
   m_Name: GraphBasesGenerator
   m_EditorClassIdentifier: 
-  LayoutGraph: {fileID: 11400000, guid: c3a23112c2392cd4b8c2ea1b7099854c, type: 2}
+  LayoutGraph: {fileID: 11400000, guid: 68318a3d7d14ae549ae8df8bf054afaa, type: 2}
   Walls: {fileID: 1288613470811006, guid: ad2011afe0dc46a4689482925d3187d6, type: 2}
   DoorTile: {fileID: 11400000, guid: b5bb4c5e8e00e6f4897ef31fc56123ad, type: 2}
   UseCorridors: 1
   ShowElapsedTime: 1
-  AddDoors: 0
+  AddDoors: 1
   CorrectWalls: 0
   CombineTilemaps: 1
+  ApplyTemplate: 1

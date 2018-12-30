@@ -8,12 +8,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da5954be246178547954e2cad0ab7441, type: 3}
+  m_Script: {fileID: 11500000, guid: ca5302dcba51fa44c9202f0f6a63c257, type: 3}
   m_Name: Corridors
   m_EditorClassIdentifier: 
-  RoomsSets:
-  - {fileID: 114619814819471438}
---- !u!114 &114488108622841098
+  Name: Room set
+  Position: {x: 444, y: 67}
+  Rooms:
+  - {fileID: 114965999999274638}
+  - {fileID: 114147256196974740}
+--- !u!114 &114147256196974740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -25,23 +28,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tilemap: {fileID: 1992953626902076, guid: 62d735e23eadef649af92d0e45262089, type: 2}
---- !u!114 &114619814819471438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca5302dcba51fa44c9202f0f6a63c257, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Corridors
-  Position: {x: 328, y: 191}
-  Rooms:
-  - {fileID: 114899524452426400}
-  - {fileID: 114488108622841098}
---- !u!114 &114899524452426400
+--- !u!114 &114965999999274638
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

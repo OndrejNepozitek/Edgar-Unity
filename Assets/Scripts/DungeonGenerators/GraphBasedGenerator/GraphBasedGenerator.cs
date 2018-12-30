@@ -5,15 +5,16 @@
 	using System.Diagnostics;
 	using System.Linq;
 	using Data.Graphs;
-	using Data.Rooms;
 	using GeneralAlgorithms.DataStructures.Common;
 	using GeneratorPipeline;
 	using MapGeneration.Core.Doors.DoorModes;
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.MapLayouts;
 	using MapGeneration.Utils;
+	using Payloads;
 	using Pipeline;
 	using RoomRotations;
+	using RoomTemplates;
 	using RoomTemplates.Doors;
 	using TileMapping;
 	using UnityEngine;
@@ -23,7 +24,8 @@
 	using Object = UnityEngine.Object;
 
 	[PipelineTaskFor(typeof(GraphBasedGeneratorConfig))]
-	public class GraphBasedGenerator<T> : IConfigurablePipelineTask<T, GraphBasedGeneratorConfig> where T : IGeneratorPayload
+	public class GraphBasedGenerator<T> : IConfigurablePipelineTask<T, GraphBasedGeneratorConfig> 
+		where T : IGeneratorPayload, IRoomInfoPayload
 	{
 		public GraphBasedGeneratorConfig Config { get; set; }
 
@@ -45,110 +47,6 @@
 			{
 				Debug.Log("--- Script started ---"); 
 			}
-
-			//foreach (var roomSet in Config.RoomTemplatesWrapper.RoomsSets)
-			//{
-			//	foreach (var room in roomSet.Rooms)
-			//	{
-			//		var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
-			//		var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
-			//		var doors = room.Tilemap.GetComponent<Doors>();
-			//		var doorLines = new List<OrthogonalLine>();
-
-			//		foreach (var door in doors.DoorsList)
-			//		{
-			//			var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
-
-			//			//if (doorLine.Length == 0)
-			//			//{
-			//			//	continue;
-			//			//}
-
-			//			doorLines.Add(doorLine);
-			//		}
-
-			//		var doorMode = new SpecificPositionsMode(doorLines);
-
-			//		var roomDescription = new RoomDescription(polygon, doorMode);
-			//		rooms.Add(roomDescription);
-			//		roomDescriptionsToRoomTemplates.Add(roomDescription, room);
-			//	}
-			//}
-
-			//if (Config.UseCorridors)
-			//{
-			//	foreach (var roomSet in Config.CorridorTemplatesWrapper.RoomsSets)
-			//	{
-			//		foreach (var room in roomSet.Rooms)
-			//		{
-			//			var tilemap = room.Tilemap.GetComponentInChildren<Tilemap>();
-			//			var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
-			//			var doors = room.Tilemap.GetComponent<Doors>();
-			//			var doorLines = new List<OrthogonalLine>();
-						
-			//			foreach (var door in doors.DoorsList)
-			//			{
-			//				var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
-
-			//				//if (doorLine.Length == 0)
-			//				//{
-			//				//	continue;
-			//				//}
-
-			//				doorLines.Add(doorLine);
-			//			}
-
-			//			var doorMode = new SpecificPositionsMode(doorLines);
-
-			//			var roomDescription = new RoomDescription(polygon, doorMode);
-			//			corridors.Add(roomDescription);
-			//			roomDescriptionsToRoomTemplates.Add(roomDescription, room);
-			//		}
-			//	}
-			//}
-
-			//var mapDescription = new MapDescription<int>();
-			//var verticesCount = 7;
-
-			//for (var i = 0; i < verticesCount; i++)
-			//{
-			//	mapDescription.AddRoom(i);
-			//}
-
-			//for (var i = 0; i < verticesCount - 1; i++)
-			//{
-			//	mapDescription.AddPassage(i, i + 1);
-			//}
-
-			//mapDescription.AddPassage(3, 0);
-			//mapDescription.AddPassage(3, 6);
-
-			//mapDescription.AddRoomShapes(rooms);
-
-			//if (ShowElapsedTime)
-			//{
-			//	Debug.Log($"Map description created. {stopwatch.ElapsedMilliseconds / 1000f:F} s");
-			//}
-
-			//if (Config.UseCorridors)
-			//{
-			//	mapDescription.SetWithCorridors(true, new List<int>() { 2, 3 });
-
-			//	mapDescription.AddCorridorShapes(corridors);
-			//}
-
-			//foreach (var room in Config.LayoutGraph.Rooms)
-			//{
-			//	mapDescription.AddRoom(roomCounter);
-			//	roomToNumber.Add(room, roomCounter++);
-			//}
-
-			//foreach (var connection in Config.LayoutGraph.Connections)
-			//{
-			//	mapDescription.AddPassage(roomToNumber[connection.From], roomToNumber[connection.To]);
-			//}
-
-			//mapDescription.AddRoomShapes(rooms);
 
 			var mapDescription = SetupMapDescription(); 
 
@@ -177,7 +75,8 @@
 				Debug.Log($"Layout generated. {stopwatch.ElapsedMilliseconds / 1000f:F} s");
 			}
 
-			var parentGameObject = new GameObject("Rooms holder");
+			var parentGameObject = new GameObject("Helper objects");
+			parentGameObject.transform.parent = Payload.GameObject.transform;
 
 			var polygons = layout.Rooms.Select(x => x.Shape + x.Position).ToList();
 			var points = polygons.SelectMany(x => x.GetPoints()).ToList();
@@ -193,25 +92,28 @@
 
 
 			// Postprocess pipeline
-			var generatedRooms = new List<DungeonGenerator.RoomInfo<int>>();
+			var generatedRooms = new List<RoomInfo<int>>();
 
 			// Initialize rooms
+			payload.RoomInfos = new List<RoomInfo<int>>();
 			foreach (var layoutRoom in layout.Rooms)
 			{
 				var room = roomDescriptionsToRoomTemplates[(RoomDescription)layoutRoom.RoomDescription];
 				var go = Object.Instantiate(room);
+				go.SetActive(false);
 				go.transform.SetParent(parentGameObject.transform);
 
-				var roomInfo = new DungeonGenerator.RoomInfo<int>()
+				var roomInfo = new RoomInfo<int>()
 				{
-					GameObject = go,
+					Room = go,
 					RoomTemplate = room,
 					LayoutRoom = layoutRoom,
-					BaseTilemap = go.GetComponentInChildren<Tilemap>()
 				};
 
 				generatedRooms.Add(roomInfo);
 			}
+
+			payload.RoomInfos = generatedRooms;
 
 			// Set correct position and rotate
 			var roomRotation = new RoomRotation();
@@ -220,12 +122,12 @@
 				// Rotate
 				// Rotation must precede position correction
 				var rotation = roomInfo.LayoutRoom.Rotation;
-				roomRotation.RotateRoom(roomInfo.GameObject, -rotation);
+				roomRotation.RotateRoom(roomInfo.Room, -rotation);
 
 				// Set correct position
 				var layoutRoomPosition = roomInfo.LayoutRoom.Position;
-				var correctPosition = new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) - roomInfo.BaseTilemap.cellBounds.position;
-				roomInfo.GameObject.transform.position = correctPosition;
+				var correctPosition = new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) - roomInfo.Room.GetComponentInChildren<Tilemap>().cellBounds.position;
+				roomInfo.Room.transform.position = correctPosition;
 
 				TransferRoomToMarkerMap(roomInfo);
 			}
@@ -243,6 +145,7 @@
 
 							if (Config.AddDoors)
 							{
+								payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.UnderDoor });
 								payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
 							}
 						}
@@ -259,7 +162,7 @@
 
 				foreach (var roomInfo in generatedRooms)
 				{
-					wallCorrection.CorrectWalls(roomInfo.GameObject, wallsTilemap);
+					wallCorrection.CorrectWalls(roomInfo.Room, wallsTilemap);
 				}
 			}
 
@@ -269,13 +172,13 @@
 				// Map individual rooms to the tilemap
 				foreach (var roomInfo in generatedRooms)
 				{
-					Object.DestroyImmediate(roomInfo.GameObject);
+					// Object.DestroyImmediate(roomInfo.Room);
 				}
 
 				payload.Tilemaps[0].ResizeBounds();
 				payload.Tilemaps[0].transform.parent.position = -payload.Tilemaps[0].cellBounds.center;
 
-				Object.DestroyImmediate(parentGameObject);
+				// Object.DestroyImmediate(parentGameObject);
 			}
 
 			
@@ -286,7 +189,7 @@
 			}
 		}
 
-		protected void TransferRoomToMarkerMap(DungeonGenerator.RoomInfo<int> roomInfo)
+		protected void TransferRoomToMarkerMap(RoomInfo<int> roomInfo)
 		{
 			// TODO: should be done only once
 			var wallTilesList = Config.Walls.GetComponentInChildren<Tilemap>()
@@ -294,23 +197,38 @@
 				.Select(x => x.Item2)
 				.ToList();
 
-			var tilemap = roomInfo.BaseTilemap;
+			var tilemap = roomInfo.Room.GetComponentInChildren<Tilemap>();
 			var layoutRoomPosition = roomInfo.LayoutRoom.Position;
-			var correctPosition = new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) - roomInfo.BaseTilemap.cellBounds.position;
+			var correctPosition = new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) - tilemap.cellBounds.position;
 
-			foreach (var tileTuple in tilemap.GetAllTiles())
+			var tilemaps = roomInfo.Room.GetComponentsInChildren<Tilemap>()
+				.OrderBy(x => x.gameObject.GetComponent<TilemapRenderer>().sortOrder).ToList();
+
+			for (int i = 0; i < tilemaps.Count; i++)
 			{
-				var originalTilePosition = tileTuple.Item1;
-				var tilePosition = originalTilePosition + correctPosition;
-				var tile = tileTuple.Item2;
+				var sourceTilemap = tilemaps[i];
+				var destinationTilemap = Payload.Tilemaps[i];
+				var markerMap = Payload.MarkerMaps[i];
 
-				if (wallTilesList.Contains(tile))
+				foreach (var tileTuple in sourceTilemap.GetAllTiles())
 				{
-					Payload.MarkerMaps[0].SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Wall });
-				}
-				else
-				{
-					Payload.MarkerMaps[0].SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Floor });
+					var originalTilePosition = tileTuple.Item1;
+					var tilePosition = originalTilePosition + correctPosition;
+					var tile = tileTuple.Item2;
+
+					if (wallTilesList.Contains(tile))
+					{
+						markerMap.SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Wall });
+					}
+					else
+					{
+						markerMap.SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Floor });
+					}
+
+					if (Config.ApplyTemplate)
+					{
+						destinationTilemap.SetTile(tilePosition, tile);
+					}
 				}
 			}
 		}

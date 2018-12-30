@@ -23,5 +23,7 @@
 		public bool CorrectWalls;
 
 		public bool CombineTilemaps;
+
+		public bool ApplyTemplate;
 	}
 }

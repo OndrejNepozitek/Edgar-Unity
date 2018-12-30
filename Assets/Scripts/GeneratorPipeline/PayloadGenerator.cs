@@ -44,7 +44,8 @@
 			return new GeneratorPayload()
 			{
 				MarkerMaps = markerMaps,
-				Tilemaps = tilemaps
+				Tilemaps = tilemaps,
+				GameObject = gridObject
 			};
 		}
 	}

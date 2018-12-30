@@ -12,12 +12,15 @@
 
 		public static MarkerType Door;
 
+		public static MarkerType UnderDoor;
+
 		static MarkerTypes()
 		{
 			Nothing = Resources.Load<MarkerType>("MarkerTypes/Nothing");
 			Wall = Resources.Load<MarkerType>("MarkerTypes/Wall");
 			Floor = Resources.Load<MarkerType>("MarkerTypes/Floor");
 			Door = Resources.Load<MarkerType>("MarkerTypes/Door");
+			UnderDoor = Resources.Load<MarkerType>("MarkerTypes/UnderDoor");
 		}
 	}
 }

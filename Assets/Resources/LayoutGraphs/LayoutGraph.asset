@@ -58,9 +58,12 @@ MonoBehaviour:
     RoomTemplateSets: []
     IndividualRoomTemplates: []
     serializedGuid: 010eda5e6743594883567df9402596fc
-  DefaultRoomTemplateSets: []
-  DefaultIndividualRoomTemplates: []
-  CorridorRoomTemplateSets: []
+  DefaultRoomTemplateSets:
+  - {fileID: 11400000, guid: 3870582a4d416aa42a3aa40568a410db, type: 2}
+  DefaultIndividualRoomTemplates:
+  - {fileID: 1600393974296318, guid: 953879851b096bc4e81646f22dbe68ef, type: 2}
+  CorridorRoomTemplateSets:
+  - {fileID: 11400000, guid: 859ce40bfb0fd9a4f961ba8eee48a84c, type: 2}
   CorridorIndividualRoomTemplate: []
 --- !u!114 &114051432514612880
 MonoBehaviour:
