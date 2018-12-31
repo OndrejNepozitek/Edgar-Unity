@@ -93,6 +93,7 @@
 
 			if (Data.Tilemap != null)
 			{
+				Data.Tilemap.GetComponentInChildren<Tilemap>().CompressBounds();
 				var bounds = Data.Tilemap.GetComponentInChildren<Tilemap>().cellBounds;
 				var correction = 20;
 				var yOffset = 10;

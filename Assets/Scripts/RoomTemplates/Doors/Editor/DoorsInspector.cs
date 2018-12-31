@@ -4,6 +4,8 @@
 	using System.Collections.Generic;
 	using UnityEditor;
 	using UnityEngine;
+	using UnityEngine.Tilemaps;
+	using Utils;
 
 	[CustomEditor(typeof(Doors))]
 	public class DoorsInspector : Editor
@@ -12,74 +14,63 @@
 
 		public void OnSceneGUI()
 		{
-			
+			var doors = target as Doors;
 
+			switch (doors.SelectedMode)
+			{
+				case 0:
+					DrawSpecifPositions();
+					break;
+
+				case 1:
+					DrawOverlap();
+					break;
+			}
+		}
+
+		private void DrawOverlap()
+		{
+			var doors = target as Doors;
+			var go = doors.transform.gameObject;
+			var tilemap = go.GetComponentInChildren<Tilemap>();
+			var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
+
+			foreach (var line in polygon.GetLines())
+			{
+				if (line.Length - 2 * doors.DistanceFromCorners < doors.DoorLength - 1)
+					continue;
+
+				var doorLine = line.Shrink(doors.DistanceFromCorners);
+
+				DrawOutline(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3(), Color.red);
+			}
+		}
+
+		private void DrawSpecifPositions()
+		{
 			var doors = target as Doors;
 			var go = doors.transform.gameObject;
 			var e = Event.current;
-			var camera = Camera.main;
 
 			Selection.activeGameObject = go;
-			//var mouseWorldPosition = camera.ScreenToWorldPoint(new Vector3(e.mousePosition.x, e.mousePosition.y));
-			//mouseWorldPosition = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y);
-
-			//if (!camera.rect.Contains(e.mousePosition))
-			//{
-			//	return;
-			//}
-
-			// Debug.Log($"Mouse: {e.mousePosition}, Screen: {Screen.width} {Screen.height}");
-
-			//var mousePos = Input.mousePosition;
-			//if (mousePos.x < 10 || mousePos.x >= Handles.GetMainGameViewSize().x - 100 || mousePos.y < 10 || mousePos.y >= Handles.GetMainGameViewSize().y - 100)
-			//	return;
 
 			var mouseWorldPosition = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition).origin;
 			mouseWorldPosition -= doors.transform.position;
 			mouseWorldPosition.z = 0;
-			mouseWorldPosition.x = (float) Math.Floor(mouseWorldPosition.x);
-			mouseWorldPosition.y = (float) Math.Floor(mouseWorldPosition.y);
-			
-			// Debug.Log(mouseWorldPosition);
+			mouseWorldPosition.x = (float)Math.Floor(mouseWorldPosition.x);
+			mouseWorldPosition.y = (float)Math.Floor(mouseWorldPosition.y);
 
-
-			// HandleUtility.AddDefaultControl(0);
 
 			var controlId = GUIUtility.GetControlID(FocusType.Passive);
-			// GUIUtility.hotControl = controlId;
 			HandleUtility.AddDefaultControl(controlId);
 
 			switch (e.type)
 			{
 				case EventType.MouseDown:
 
-					//// Left click
-					//if (e.button == 0)
-					//{
-					//	if (!doors.hasFirstPoint)
-					//	{
-
-					//	}
-
-					//	if (!doors.hasSecondPoint)
-					//	{
-
-					//	}
-					//}
-
 					doors.FirstPoint = mouseWorldPosition;
 					doors.HasFirstPoint = true;
 					doors.HasSecondPoint = false;
-
-					//// Right click
-					//if (e.button == 1)
-					//{
-					//	if (doors.hasFirstPoint)
-					//	{
-					//		doors.hasFirstPoint = false;
-					//		doors.hasSecondPoint = false;
-					//	}
-					//}
 
 					Event.current.Use();
 
@@ -176,72 +167,80 @@
 
 		public override void OnInspectorGUI()
 		{
-			DrawDefaultInspector();
-
 			var doors = target as Doors;
-			var toRemove = new List<DoorInfo>();
+
+			doors.SelectedMode = GUILayout.SelectionGrid(doors.SelectedMode, new[] {"Specific positions", "Overlap mode"}, 2);
 			var shouldRedraw = false;
 
-			GUILayout.Label("Doors:", EditorStyles.boldLabel);
-
-			for (int i = 0; i < doors.DoorsList.Count; i++)
+			if (doors.SelectedMode == 1)
 			{
-				DoorInfo door = doors.DoorsList[i];
+				doors.DoorLength = EditorGUILayout.IntSlider(new GUIContent("Door length"), doors.DoorLength, 1, 10);
+				doors.DistanceFromCorners = EditorGUILayout.IntSlider(new GUIContent("Corner distance"), doors.DistanceFromCorners, 0, 10);
+			}
 
-				GUILayout.BeginHorizontal();
+			if (doors.SelectedMode == 0)
+			{
+				var toRemove = new List<DoorInfo>();
 
-				if (highlightInfo == door)
-				{
-					GUILayout.Label($"Door {i}", new GUIStyle(EditorStyles.label)
-					{
-						normal =
-						{
-							textColor = Color.yellow
-						}
-					});
-				}
-				else
-				{
-					GUILayout.Label($"Door {i}");
-				}
+				GUILayout.Label("Doors:", EditorStyles.boldLabel);
 
-				if (GUILayout.Button("Highlight"))
+				for (int i = 0; i < doors.DoorsList.Count; i++)
 				{
+					DoorInfo door = doors.DoorsList[i];
+
+					GUILayout.BeginHorizontal();
+
 					if (highlightInfo == door)
 					{
-						highlightInfo = null;
-						shouldRedraw = true;
+						GUILayout.Label($"Door {i}", new GUIStyle(EditorStyles.label)
+						{
+							normal =
+							{
+								textColor = Color.yellow
+							}
+						});
 					}
 					else
 					{
-						highlightInfo = door;
+						GUILayout.Label($"Door {i}");
+					}
+
+					if (GUILayout.Button("Highlight"))
+					{
+						if (highlightInfo == door)
+						{
+							highlightInfo = null;
+							shouldRedraw = true;
+						}
+						else
+						{
+							highlightInfo = door;
+							shouldRedraw = true;
+						}
+					}
+
+					if (GUILayout.Button("Remove"))
+					{
+						toRemove.Add(door);
 						shouldRedraw = true;
 					}
+
+					GUILayout.EndHorizontal();
 				}
 
-				if (GUILayout.Button("Remove"))
+				foreach (var doorInfo in toRemove)
 				{
-					toRemove.Add(door);
-					shouldRedraw = true;
-				}
+					doors.DoorsList.Remove(doorInfo);
 
-				GUILayout.EndHorizontal();
-			}
-
-			foreach (var doorInfo in toRemove)
-			{
-				doors.DoorsList.Remove(doorInfo);
-
-				if (highlightInfo == doorInfo)
-				{
-					highlightInfo = null;
+					if (highlightInfo == doorInfo)
+					{
+						highlightInfo = null;
+					}
 				}
 			}
 
-			if (shouldRedraw)
-			{
+			// if (shouldRedraw)
 				SceneView.RepaintAll();
-			}
 		}
 	}
 }

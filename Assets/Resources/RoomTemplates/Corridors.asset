@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,31 +13,33 @@ MonoBehaviour:
   m_Name: Corridors
   m_EditorClassIdentifier: 
   Name: Room set
-  Position: {x: 444, y: 67}
+  Position: {x: 433, y: 88}
   Rooms:
-  - {fileID: 114965999999274638}
-  - {fileID: 114147256196974740}
---- !u!114 &114147256196974740
+  - {fileID: 114674552294515390}
+  - {fileID: 114309824758576138}
+--- !u!114 &114309824758576138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1992953626902076, guid: 62d735e23eadef649af92d0e45262089, type: 2}
---- !u!114 &114965999999274638
+  Tilemap: {fileID: 7784825664180972043, guid: 93239d79875dd6443808eb98bf4658f6, type: 3}
+--- !u!114 &114674552294515390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1020123953894334, guid: d1b3015e580c7534ab5eb7df4ee0fd23, type: 2}
+  Tilemap: {fileID: 9192126211488365788, guid: c6205b29cb29a6641843ed38575f831a, type: 3}

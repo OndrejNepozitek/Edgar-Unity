@@ -143,6 +143,8 @@
 
 				// Set correct position
 				var layoutRoomPosition = roomInfo.LayoutRoom.Position;
+
+				roomInfo.Room.GetComponentInChildren<Tilemap>().CompressBounds();
 				var correctPosition = new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) - roomInfo.Room.GetComponentInChildren<Tilemap>().cellBounds.position;
 				roomInfo.Room.transform.position = correctPosition;
 
@@ -346,18 +348,10 @@
 			}
 
 			var tilemap = roomTemplate.GetComponentInChildren<Tilemap>();
+			tilemap.CompressBounds();
 			var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
 			var doors = roomTemplate.GetComponent<Doors>();
-			var doorLines = new List<OrthogonalLine>();
-
-			foreach (var door in doors.DoorsList)
-			{
-				var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(), door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
-
-				doorLines.Add(doorLine);
-			}
-
-			var doorMode = new SpecificPositionsMode(doorLines);
+			var doorMode = doors.GetDoorMode();
 
 			var roomDescription = new RoomDescription(polygon, doorMode);
 			rooms.Add(roomDescription);

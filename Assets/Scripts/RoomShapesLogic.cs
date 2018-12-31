@@ -74,16 +74,20 @@
 
 					if (found != 2)
 						throw new ArgumentException("The first point must be connected to exactly two points");
+
+					firstDirection = foundDirection;
 				}
 				else
 				{
-					if (found != 1) 
+					if (found != 1)
 						throw new ArgumentException("More than one point is connected");
 
 					if (currentDirection != foundDirection)
 					{
 						polygonPoints.Add(currentPoint);
-					} else if (points.Count == 1 && currentPoint + foundDirection + foundDirection == firstPoint && firstDirection != foundDirection)
+					}
+
+					if (points.Count == 1 && currentPoint + foundDirection + foundDirection == firstPoint && firstDirection != foundDirection)
 					{
 						polygonPoints.Add(firstPoint);
 					}
