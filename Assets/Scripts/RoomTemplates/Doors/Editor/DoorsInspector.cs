@@ -113,11 +113,6 @@
 
 				if (doors.HasSecondPoint)
 				{
-					if (from.Equals(to))
-					{
-						throw new NotSupportedException("Doors with lenght one not supported ATM");
-					}
-
 					doors.DoorsList.Add(new DoorInfo()
 					{
 						From = from,
