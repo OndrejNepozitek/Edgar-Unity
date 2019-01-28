@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Corridors
   m_EditorClassIdentifier: 
   Name: Room set
-  Position: {x: 433, y: 88}
+  Position: {x: 520, y: 137}
   Rooms:
-  - {fileID: 114674552294515390}
-  - {fileID: 114309824758576138}
---- !u!114 &114309824758576138
+  - {fileID: 114635184388610526}
+  - {fileID: 114092018192251970}
+--- !u!114 &114092018192251970
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29,8 +29,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 7784825664180972043, guid: 93239d79875dd6443808eb98bf4658f6, type: 3}
---- !u!114 &114674552294515390
+  Tilemap: {fileID: 146, guid: 93239d79875dd6443808eb98bf4658f6, type: 3}
+--- !u!114 &114635184388610526
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,4 +42,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 9192126211488365788, guid: c6205b29cb29a6641843ed38575f831a, type: 3}
+  Tilemap: {fileID: 148, guid: c6205b29cb29a6641843ed38575f831a, type: 3}

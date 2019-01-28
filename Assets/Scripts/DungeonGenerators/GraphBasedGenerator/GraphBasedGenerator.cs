@@ -3,6 +3,7 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Diagnostics;
+	using System.IO;
 	using System.Linq;
 	using Data.Graphs;
 	using GeneralAlgorithms.Algorithms.Common;
@@ -53,7 +54,10 @@
 				Debug.Log("--- Script started ---"); 
 			}
 
-			var mapDescription = SetupMapDescription(); 
+			var mapDescription = SetupMapDescription();
+
+			var stopwatch2 = new Stopwatch();
+			stopwatch2.Start();
 
 			IMapLayout<int> layout;
 
@@ -68,8 +72,16 @@
 				var layouts = generator.GetLayouts(mapDescription, 1);
 				layout = layouts[0];
 
+				var info =
+					$"{c} iterations,{stopwatch2.ElapsedMilliseconds / 1000f:F} seconds, {c / ((float)stopwatch2.ElapsedMilliseconds / 1000f):##} iters per sec";
+
 				if (Config.ShowElapsedTime)
+				{
 					Debug.Log($"{c} iterations");
+					Debug.Log(info);
+				}
+
+				File.AppendAllText(@"info.txt", info + Environment.NewLine);
 			}
 			else
 			{
@@ -83,8 +95,16 @@
 				var layouts = generator.GetLayouts(mapDescription, 1);
 				layout = layouts[0];
 
+				var info =
+					$"{c} iterations,{stopwatch2.ElapsedMilliseconds / 1000f:F} seconds, {c / ((float)stopwatch2.ElapsedMilliseconds / 1000f):F} iters per sec";
+
 				if (Config.ShowElapsedTime)
+				{
 					Debug.Log($"{c} iterations");
+					Debug.Log(info);
+				}
+					
+				File.AppendAllText(@"info.txt", info + Environment.NewLine);
 			}
 
 			if (Config.ShowElapsedTime)

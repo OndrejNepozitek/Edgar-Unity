@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: BasicRoomTemplates
   m_EditorClassIdentifier: 
   Name: Room set
-  Position: {x: 447, y: 51}
+  Position: {x: 566, y: 91}
   Rooms:
-  - {fileID: 114476903677107468}
-  - {fileID: 114676423946641852}
-  - {fileID: 114511640944337444}
-  - {fileID: 114207200637388148}
-  - {fileID: 114711903449368650}
-  - {fileID: 114802399283770802}
---- !u!114 &114207200637388148
+  - {fileID: 114731463463559538}
+  - {fileID: 114975038339702326}
+  - {fileID: 114574065298276284}
+  - {fileID: 114266631748321764}
+  - {fileID: 114423736206860554}
+  - {fileID: 114391092510506464}
+--- !u!114 &114266631748321764
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33,8 +33,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1245934302349090, guid: 63c08ce26c4d1c341b89e0c529948aa0, type: 3}
---- !u!114 &114476903677107468
+  Tilemap: {fileID: 141, guid: 63c08ce26c4d1c341b89e0c529948aa0, type: 3}
+--- !u!114 &114391092510506464
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1029986879539338, guid: b5b54ccde5e59fc4a8de2014ca844734, type: 3}
---- !u!114 &114511640944337444
+  Tilemap: {fileID: 151, guid: 4187370926d31d64092cf199c043d138, type: 3}
+--- !u!114 &114423736206860554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,8 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1589365295966838, guid: a7ac37c3a100691409eff64f53e064e0, type: 3}
---- !u!114 &114676423946641852
+  Tilemap: {fileID: 138, guid: 89d5e9c36a1eda243bede3c1b30e5120, type: 3}
+--- !u!114 &114574065298276284
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,8 +72,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1139878036266760, guid: a0295a05626d4314086a7c6ba9b8a9c4, type: 3}
---- !u!114 &114711903449368650
+  Tilemap: {fileID: 147, guid: a7ac37c3a100691409eff64f53e064e0, type: 3}
+--- !u!114 &114731463463559538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,8 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1085055386213040, guid: 89d5e9c36a1eda243bede3c1b30e5120, type: 3}
---- !u!114 &114802399283770802
+  Tilemap: {fileID: 137, guid: b5b54ccde5e59fc4a8de2014ca844734, type: 3}
+--- !u!114 &114975038339702326
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,4 +98,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5470e6a5a963bb14696aeacbc699c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilemap: {fileID: 1087522970488483783, guid: 4187370926d31d64092cf199c043d138, type: 3}
+  Tilemap: {fileID: 139, guid: a0295a05626d4314086a7c6ba9b8a9c4, type: 3}
