@@ -260,7 +260,7 @@
 
 			var layoutGraph = Config.LayoutGraph;
 			var mapDescription = new MapDescription<int>();
-			// mapDescription.SetDefaultTransformations(new List<Transformation>() {Transformation.Identity});
+			mapDescription.SetDefaultTransformations(new List<Transformation>() {Transformation.Identity});
 			var roomCounter = -1;
 			
 			// Setup individual rooms
