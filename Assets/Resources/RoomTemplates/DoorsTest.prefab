@@ -94,6 +94,9 @@ MonoBehaviour:
     To: {x: -1, y: -4, z: 0}
   - From: {x: -4, y: -4, z: 0}
     To: {x: -4, y: -4, z: 0}
+  SelectedMode: 1
+  DoorLength: 1
+  DistanceFromCorners: 1
 --- !u!1 &8499689089123820780
 GameObject:
   m_ObjectHideFlags: 0
