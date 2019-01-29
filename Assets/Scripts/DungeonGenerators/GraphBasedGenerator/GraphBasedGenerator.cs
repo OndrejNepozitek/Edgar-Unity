@@ -5,6 +5,8 @@
 	using System.Diagnostics;
 	using System.IO;
 	using System.Linq;
+	using System.Threading;
+	using System.Threading.Tasks;
 	using Data.Graphs;
 	using GeneralAlgorithms.Algorithms.Common;
 	using GeneralAlgorithms.Algorithms.Polygons;
@@ -13,7 +15,10 @@
 	using MapGeneration.Core.ConfigurationSpaces;
 	using MapGeneration.Core.Doors;
 	using MapGeneration.Core.Doors.DoorModes;
+	using MapGeneration.Core.Layouts;
 	using MapGeneration.Core.MapDescriptions;
+	using MapGeneration.Core.MapLayouts;
+	using MapGeneration.Interfaces.Core.LayoutGenerator;
 	using MapGeneration.Interfaces.Core.MapLayouts;
 	using MapGeneration.Utils;
 	using Payloads;
@@ -59,57 +64,32 @@
 			var stopwatch2 = new Stopwatch();
 			stopwatch2.Start();
 
-			IMapLayout<int> layout;
+			IBenchmarkableLayoutGenerator<MapDescription<int>, IMapLayout<int>> generator;
 
 			if (Config.UseCorridors)
 			{
-				var generator = LayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(new List<int>() { 2, 3 });
-				generator.InjectRandomGenerator(new System.Random());
-
-				var c = 0;
-				generator.OnPerturbed += (_) => { c++; };
-
-				var layouts = generator.GetLayouts(mapDescription, 1);
-				layout = layouts[0];
-
-				var info =
-					$"{c} iterations,{stopwatch2.ElapsedMilliseconds / 1000f:F} seconds, {c / ((float)stopwatch2.ElapsedMilliseconds / 1000f):##} iters per sec";
-
-				if (Config.ShowElapsedTime)
-				{
-					Debug.Log($"{c} iterations");
-					Debug.Log(info);
-				}
-
-				// File.AppendAllText(@"info.txt", info + Environment.NewLine);
+				var gen = LayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(new List<int>() { 2, 3 });
+				generator = gen;
 			}
 			else
 			{
-				var generator = LayoutGeneratorFactory.GetDefaultChainBasedGenerator<int>();
+				var gen = LayoutGeneratorFactory.GetDefaultChainBasedGenerator<int>();
+				generator = gen;
+			}
 
-				generator.InjectRandomGenerator(new System.Random());
+			IMapLayout<int> layout = null;
+			var task = Task.Run(() => layout = generator.GetLayouts(mapDescription, 1)[0]);
+			var taskCompleted = task.Wait(10000);
 
-				var c = 0;
-				generator.OnPerturbed += (_) => { c++; };
-
-				var layouts = generator.GetLayouts(mapDescription, 1);
-				layout = layouts[0];
-
-				var info =
-					$"{c} iterations,{stopwatch2.ElapsedMilliseconds / 1000f:F} seconds, {c / ((float)stopwatch2.ElapsedMilliseconds / 1000f):F} iters per sec";
-
-				if (Config.ShowElapsedTime)
-				{
-					Debug.Log($"{c} iterations");
-					Debug.Log(info);
-				}
-					
-				// File.AppendAllText(@"info.txt", info + Environment.NewLine);
+			if (!taskCompleted)
+			{
+				throw new DungeonGeneratorException("Timeout was reached when generating the layout");
 			}
 
 			if (Config.ShowElapsedTime)
 			{
-				Debug.Log($"Layout generated. {stopwatch.ElapsedMilliseconds / 1000f:F} s");
+				Debug.Log($"Layout generated in {generator.TimeFirst / 1000f:F} seconds");
+				Debug.Log($"{generator.IterationsCount} iterations needed, {(generator.IterationsCount / (generator.TimeFirst / 1000d)):0} iterations per second");
 			}
 
 			var parentGameObject = new GameObject("Helper objects");
@@ -280,6 +260,7 @@
 
 			var layoutGraph = Config.LayoutGraph;
 			var mapDescription = new MapDescription<int>();
+			// mapDescription.SetDefaultTransformations(new List<Transformation>() {Transformation.Identity});
 			var roomCounter = -1;
 			
 			// Setup individual rooms
@@ -317,8 +298,14 @@
 			// Add default room shapes
 			foreach (var roomTemplatesSet in layoutGraph.DefaultRoomTemplateSets)
 			{
+				if (roomTemplatesSet == null)
+					continue;
+
 				foreach (var roomTemplate in roomTemplatesSet.Rooms)
 				{
+					if (roomTemplate == null)
+						continue;
+
 					var roomDescription = GetRoomDescription(roomTemplate.Tilemap);
 					mapDescription.AddRoomShapes(roomDescription);
 				}
@@ -326,6 +313,9 @@
 
 			foreach (var roomTemplate in layoutGraph.DefaultIndividualRoomTemplates)
 			{
+				if (roomTemplate == null)
+					continue;
+
 				var roomDescription = GetRoomDescription(roomTemplate);
 				mapDescription.AddRoomShapes(roomDescription);
 			}
