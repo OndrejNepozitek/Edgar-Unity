@@ -89,6 +89,9 @@
 
 		public void Draw()
 		{
+			if (Data.Tilemap == null)
+				return;
+
 			GUI.Box(Rect, Data.Tilemap?.name, style);
 
 			if (Data.Tilemap != null)

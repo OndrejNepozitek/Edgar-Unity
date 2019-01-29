@@ -179,6 +179,9 @@
 		{
 			foreach (var roomNode in roomNodes)
 			{
+				if (roomNode.Data.Tilemap == null)
+					continue;
+
 				var startPoint = new Vector3(rect.center.x, rect.yMax);
 				var endPoint = new Vector3(roomNode.Rect.center.x, roomNode.Rect.yMin);
 				var midPoint1 = new Vector3(Vector3.Lerp(startPoint, endPoint, 0.1f).x, Vector3.Lerp(startPoint, endPoint, 0.48f).y);

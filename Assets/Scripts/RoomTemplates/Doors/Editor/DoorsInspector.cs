@@ -12,6 +12,16 @@
 	{
 		private DoorInfo highlightInfo;
 
+		private SerializedProperty doorsLength;
+
+		private SerializedProperty distanceFromCorners;
+
+		public void OnEnable()
+		{
+			doorsLength = serializedObject.FindProperty(nameof(Doors.DoorLength));
+			distanceFromCorners = serializedObject.FindProperty(nameof(Doors.DistanceFromCorners));
+		}
+
 		public void OnSceneGUI()
 		{
 			var doors = target as Doors;
@@ -167,18 +177,22 @@
 
 		public override void OnInspectorGUI()
 		{
+			// Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
+			serializedObject.Update();
+
 			var doors = target as Doors;
 
-			doors.SelectedMode = GUILayout.SelectionGrid(doors.SelectedMode, new[] {"Specific positions", "Overlap mode"}, 2);
+			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
+			selectedModeProp.intValue = GUILayout.SelectionGrid(doors.SelectedMode, new[] {"Specific positions", "Overlap mode"}, 2);
 			var shouldRedraw = false;
 
-			if (doors.SelectedMode == 1)
+			if (selectedModeProp.intValue == 1)
 			{
-				doors.DoorLength = EditorGUILayout.IntSlider(new GUIContent("Door length"), doors.DoorLength, 1, 10);
-				doors.DistanceFromCorners = EditorGUILayout.IntSlider(new GUIContent("Corner distance"), doors.DistanceFromCorners, 0, 10);
+				EditorGUILayout.IntSlider(doorsLength, 1, 10, "Door length");
+				EditorGUILayout.IntSlider(distanceFromCorners, 0, 10, "Corner distance");
 			}
 
-			if (doors.SelectedMode == 0)
+			if (selectedModeProp.intValue == 0)
 			{
 				var toRemove = new List<DoorInfo>();
 
@@ -241,6 +255,9 @@
 
 			// if (shouldRedraw)
 				SceneView.RepaintAll();
+
+
+			serializedObject.ApplyModifiedProperties();
 		}
 	}
 }

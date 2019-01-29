@@ -81,7 +81,7 @@
 					Debug.Log(info);
 				}
 
-				File.AppendAllText(@"info.txt", info + Environment.NewLine);
+				// File.AppendAllText(@"info.txt", info + Environment.NewLine);
 			}
 			else
 			{
@@ -104,7 +104,7 @@
 					Debug.Log(info);
 				}
 					
-				File.AppendAllText(@"info.txt", info + Environment.NewLine);
+				// File.AppendAllText(@"info.txt", info + Environment.NewLine);
 			}
 
 			if (Config.ShowElapsedTime)
@@ -371,6 +371,13 @@
 			tilemap.CompressBounds();
 			var polygon = RoomShapesLogic.GetPolygonFromTilemap(tilemap);
 			var doors = roomTemplate.GetComponent<Doors>();
+
+			if (doors == null)
+			{
+				Debug.LogError($"Room template \"{roomTemplate.name}\" does not have any doors assigned.", roomTemplate);
+				throw new DungeonGeneratorException();
+			}
+
 			var doorMode = doors.GetDoorMode();
 
 			var roomDescription = new RoomDescription(polygon, doorMode);

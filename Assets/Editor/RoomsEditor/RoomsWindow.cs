@@ -22,7 +22,30 @@
 		{
 			nodes = new List<IEditorNodeBase>();
 
+			RemoveDestroyedTemplates();
 			CreateNode(Data);
+		}
+
+		private void RemoveDestroyedTemplates()
+		{
+			if (Data == null)
+				return;
+
+			var toRemove = new List<RoomTemplate>();
+
+			foreach (var roomTemplate in Data.Rooms)
+			{
+				if (roomTemplate.Tilemap == null)
+				{
+					toRemove.Add(roomTemplate);
+				}
+			}
+
+			foreach (var roomTemplate in toRemove)
+			{
+				Data.Rooms.Remove(roomTemplate);
+				Object.DestroyImmediate(roomTemplate, true);
+			}
 		}
 
 		public override void OnEnable()
@@ -37,6 +60,8 @@
 			roomNodeStyle = new GUIStyle(nodeStyle);
 			roomNodeStyle.alignment = TextAnchor.UpperCenter;
 			roomNodeStyle.fontSize = 13;
+
+			RemoveDestroyedTemplates();
 		}
 
 		private Texture2D MakeTex(int width, int height, Color col)

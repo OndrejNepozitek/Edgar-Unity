@@ -64,7 +64,7 @@ MonoBehaviour:
   DoorsList: []
   SelectedMode: 1
   DoorLength: 1
-  DistanceFromCorners: 2
+  DistanceFromCorners: 1
 --- !u!1 &152
 GameObject:
   m_ObjectHideFlags: 0

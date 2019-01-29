@@ -74,6 +74,7 @@ MonoBehaviour:
     serializedGuid: 010eda5e6743594883567df9402596fc
   DefaultRoomTemplateSets:
   - {fileID: 11400000, guid: 3870582a4d416aa42a3aa40568a410db, type: 2}
+  - {fileID: 11400000, guid: 25dab4d71248aa24fb62b21510d10f78, type: 2}
   DefaultIndividualRoomTemplates: []
   CorridorRoomTemplateSets:
   - {fileID: 11400000, guid: 570613520a299bb4f83433949911239e, type: 2}
