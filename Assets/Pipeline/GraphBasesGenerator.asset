@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayoutGraph: {fileID: 11400000, guid: 379cc5e490ff7504984dd1d75d88a5fd, type: 2}
   Walls: {fileID: 1288613470811006, guid: ad2011afe0dc46a4689482925d3187d6, type: 3}
-  DoorTile: {fileID: 11400000, guid: b5bb4c5e8e00e6f4897ef31fc56123ad, type: 2}
   UseCorridors: 1
   ShowElapsedTime: 1
   AddDoors: 1
-  CorrectWalls: 0
-  CombineTilemaps: 1
+  CenterGrid: 1
   ApplyTemplate: 1

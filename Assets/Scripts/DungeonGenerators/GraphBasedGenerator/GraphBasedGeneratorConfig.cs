@@ -12,17 +12,13 @@
 
 		public GameObject Walls;
 
-		public Tile DoorTile;
-
 		public bool UseCorridors;
 
 		public bool ShowElapsedTime;
 
-		public bool AddDoors;
+		public bool AddDoorMarkers;
 
-		public bool CorrectWalls;
-
-		public bool CombineTilemaps;
+		public bool CenterGrid;
 
 		public bool ApplyTemplate;
 	}

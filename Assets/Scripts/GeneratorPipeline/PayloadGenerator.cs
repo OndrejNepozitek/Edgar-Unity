@@ -8,7 +8,7 @@
 	public class PayloadGenerator : Pipeline.PayloadGenerator
 	{
 		public int NumberOfTilemaps = 5;
-		
+
 		public override object InitializePayload()
 		{
 			var gameHolderOld = GameObject.Find("Rooms holder");
@@ -22,6 +22,12 @@
 			gridObject.AddComponent<Grid>();
 
 			var tilemaps = new List<Tilemap>();
+			//var tilemapInfos = new List<TilemapInfo>()
+			//{
+			//	new TilemapInfo("Walls", 0),
+			//	new TilemapInfo("Floor", 0),
+			//	new TilemapInfo()
+			//};
 
 			for (int i = 0; i < NumberOfTilemaps; i++)
 			{
@@ -47,6 +53,19 @@
 				Tilemaps = tilemaps,
 				GameObject = gridObject
 			};
+		}
+
+		private class TilemapInfo
+		{
+			public string Name { get; set; }
+
+			public int SortingOrder { get; set; }
+
+			public TilemapInfo(string name, int sortingOrder)
+			{
+				Name = name;
+				SortingOrder = sortingOrder;
+			}
 		}
 	}
 }

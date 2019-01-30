@@ -63,6 +63,9 @@
 
 			foreach (var pipelineScript in PipelineScripts)
 			{
+				if (pipelineScript == null)
+					continue;
+
 				var type = pipelineScript.GetType();
 				Type taskType;
 

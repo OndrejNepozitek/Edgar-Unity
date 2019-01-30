@@ -3,31 +3,20 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Diagnostics;
-	using System.IO;
 	using System.Linq;
-	using System.Threading;
 	using System.Threading.Tasks;
 	using Data.Graphs;
-	using GeneralAlgorithms.Algorithms.Common;
-	using GeneralAlgorithms.Algorithms.Polygons;
 	using GeneralAlgorithms.DataStructures.Common;
 	using GeneratorPipeline;
-	using MapGeneration.Core.ConfigurationSpaces;
-	using MapGeneration.Core.Doors;
-	using MapGeneration.Core.Doors.DoorModes;
-	using MapGeneration.Core.Layouts;
 	using MapGeneration.Core.MapDescriptions;
-	using MapGeneration.Core.MapLayouts;
 	using MapGeneration.Interfaces.Core.LayoutGenerator;
 	using MapGeneration.Interfaces.Core.MapLayouts;
 	using MapGeneration.Utils;
 	using Payloads;
 	using Pipeline;
-	using RoomRotations;
 	using RoomTemplates;
 	using RoomTemplates.Doors;
 	using RoomTemplates.Transformations;
-	using TileMapping;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 	using Utils;
@@ -162,7 +151,7 @@
 							var correctPosition = doorPoint.ToUnityIntVector3();
 							payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Floor });
 
-							if (Config.AddDoors)
+							if (Config.AddDoorMarkers)
 							{
 								payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.UnderDoor });
 								payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
@@ -172,32 +161,11 @@
 				}
 			}
 
-
-			// Correct walls
-			if (Config.CorrectWalls)
+			// Center grid
+			if (Config.CenterGrid)
 			{
-				var wallCorrection = new WallsCorrection();
-				var wallsTilemap = Config.Walls.GetComponentInChildren<Tilemap>();
-
-				foreach (var roomInfo in generatedRooms)
-				{
-					wallCorrection.CorrectWalls(roomInfo.Room, wallsTilemap);
-				}
-			}
-
-			// Combine tilemaps
-			if (Config.CombineTilemaps)
-			{
-				// Map individual rooms to the tilemap
-				foreach (var roomInfo in generatedRooms)
-				{
-					// Object.DestroyImmediate(roomInfo.Room);
-				}
-
 				payload.Tilemaps[0].ResizeBounds();
 				payload.Tilemaps[0].transform.parent.position = -payload.Tilemaps[0].cellBounds.center;
-
-				// Object.DestroyImmediate(parentGameObject);
 			}
 			
 
