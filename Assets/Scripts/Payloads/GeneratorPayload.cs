@@ -1,7 +1,7 @@
-﻿namespace Assets.Scripts.GeneratorPipeline
+﻿namespace Assets.Scripts.Payloads
 {
 	using System.Collections.Generic;
-	using Payloads;
+	using GeneratorPipeline;
 	using RoomTemplates;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;

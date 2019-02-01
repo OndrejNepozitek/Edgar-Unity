@@ -1,6 +1,8 @@
 ﻿namespace Assets.Scripts.Pipeline
 {
-	public interface IConfigurablePipelineTask<in TPayload, TConfig> : IPipelineTask<TPayload>
+	public interface IConfigurablePipelineTask<TPayload, TConfig> : IPipelineTask<TPayload>
+		where TConfig : PipelineConfig
+		where TPayload : class
 	{
 		TConfig Config { get; set; }
 	}

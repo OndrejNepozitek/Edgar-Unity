@@ -1,24 +1,22 @@
 ﻿namespace Assets.Scripts.DungeonGenerators
 {
 	using GeneratorPipeline;
+	using Payloads;
 	using Pipeline;
 	using UnityEngine;
 
 	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Simple dungeon generator")]
-	public class SimpleDungeonGenerator : PipelineTask
+	public class SimpleDungeonGenerator : PipelineConfig
 	{
 		public int Width;
 
 		public int Height;
 	}
 
-	[PipelineTaskFor(typeof(SimpleDungeonGenerator))]
-	public class SimpleDungeonGenerator<T> : IConfigurablePipelineTask<T, SimpleDungeonGenerator>
-		where T : IGeneratorPayload
+	public class SimpleDungeonGenerator<TPayload> : ConfigurablePipelineTask<TPayload, SimpleDungeonGenerator>
+		where TPayload : class, IGeneratorPayload
 	{
-		public SimpleDungeonGenerator Config { get; set; }
-
-		public void Process(T payload)
+		public override void Process()
 		{
 			for (var x = 0; x < Config.Width; x++)
 			{
@@ -26,7 +24,7 @@
 				{
 					if (x % 2 == 0 || y % 2 == 0)
 					{
-						payload.MarkerMaps[0].SetMarker(new Vector3Int(x, y, 0), new Marker() { Type = MarkerTypes.Wall });
+						Payload.MarkerMaps[0].SetMarker(new Vector3Int(x, y, 0), new Marker() { Type = MarkerTypes.Wall });
 					}
 				}
 			}

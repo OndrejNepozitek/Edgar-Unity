@@ -4,12 +4,13 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using GeneratorPipeline;
+	using Payloads;
 	using Pipeline;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
 	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline tasks/Basic templating")]
-	public class BasicTemplating : PipelineTask
+	public class BasicTemplating : PipelineTask<IGeneratorPayload>
 	{
 		public List<TileMapping> Mapping = new List<TileMapping>();
 
@@ -20,20 +21,13 @@
 
 			public TileBase Tile;
 		}
-	}
 
-	[PipelineTaskFor(typeof(BasicTemplating))]
-	public class BasicTemplating<T> : IConfigurablePipelineTask<T, BasicTemplating>
-		where T : IGeneratorPayload
-	{
-		public BasicTemplating Config { get; set; }
-
-		public void Process(T payload)
+		public override void Process()
 		{
-			for (int i = 0; i < payload.MarkerMaps.Count; i++)
+			for (int i = 0; i < Payload.MarkerMaps.Count; i++)
 			{
-				var markerMap = payload.MarkerMaps[i];
-				var tilemap = payload.Tilemaps[i];
+				var markerMap = Payload.MarkerMaps[i];
+				var tilemap = Payload.Tilemaps[i];
 
 				foreach (var position in markerMap.Bounds.allPositionsWithin)
 				{
@@ -41,7 +35,7 @@
 
 					if (marker != null)
 					{
-						var correspondingTile = Config.Mapping.FirstOrDefault(x => x.MarkerType == marker.Type);
+						var correspondingTile = Mapping.FirstOrDefault(x => x.MarkerType == marker.Type);
 
 						if (correspondingTile != null)
 						{

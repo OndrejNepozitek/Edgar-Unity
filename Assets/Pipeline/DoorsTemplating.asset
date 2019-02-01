@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: DoorsTemplating
   m_EditorClassIdentifier: 
   HorizontalDoors: {fileID: 11400000, guid: b639b85366a56e94199c6b8c12c2281d, type: 2}
-  VerticalDoors: {fileID: 11400000, guid: 39faf307486f0d84ba1c6d27f790d0d3, type: 2}
+  VerticalDoorsBottom: {fileID: 11400000, guid: 39faf307486f0d84ba1c6d27f790d0d3,
+    type: 2}
+  VerticalDoorsUpper: {fileID: 11400000, guid: b006dbeb07f8aa84d8c150f3f0eae6fa, type: 2}

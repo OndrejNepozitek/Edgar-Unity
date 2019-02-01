@@ -3,12 +3,13 @@
 	using System;
 	using System.Collections.Generic;
 	using GeneratorPipeline;
+	using Payloads;
 	using Pipeline;
 	using UnityEngine;
 	using Random = System.Random;
 
 	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Random walk generator", fileName = "Random walk generator")]
-	public class RandomWalkGeneratorConfig : PipelineTask
+	public class RandomWalkGeneratorConfig : PipelineConfig
 	{
 		public int Width = 50;
 
@@ -19,13 +20,10 @@
 		public int MaxLength = 7;
 	}
 
-	[PipelineTaskFor(typeof(RandomWalkGeneratorConfig))]
-	public class RandomWalkGenerator<T> : IConfigurablePipelineTask<T, RandomWalkGeneratorConfig>
-		where T : IGeneratorPayload
+	public class RandomWalkGenerator<TPayload> : ConfigurablePipelineTask<TPayload, RandomWalkGeneratorConfig>
+		where TPayload : class, IGeneratorPayload
 	{
-		public RandomWalkGeneratorConfig Config { get; set; }
-
-		public void Process(T payload)
+		public override void Process()
 		{
 			var remainingTunnels = Config.MaxTunnels;
 			var possibleDirections = new List<Vector2Int>
@@ -60,8 +58,8 @@
 						var position = new Vector3Int(newPosition.x, i, 0);
 						var position2 = new Vector3Int(newPosition.x + 1, i, 0);
 
-						payload.MarkerMaps[0].SetMarker(position, new Marker() { Type = MarkerTypes.Wall }); 
-						payload.MarkerMaps[0].SetMarker(position2, new Marker() { Type = MarkerTypes.Wall }); 
+						Payload.MarkerMaps[0].SetMarker(position, new Marker() { Type = MarkerTypes.Wall });
+						Payload.MarkerMaps[0].SetMarker(position2, new Marker() { Type = MarkerTypes.Wall }); 
 					}
 				}
 				else
@@ -71,8 +69,8 @@
 						var position = new Vector3Int(i, newPosition.y, 0);
 						var position2 = new Vector3Int(i, newPosition.y + 1, 0);
 
-						payload.MarkerMaps[0].SetMarker(position, new Marker() { Type = MarkerTypes.Wall });
-						payload.MarkerMaps[0].SetMarker(position2, new Marker() { Type = MarkerTypes.Wall });
+						Payload.MarkerMaps[0].SetMarker(position, new Marker() { Type = MarkerTypes.Wall });
+						Payload.MarkerMaps[0].SetMarker(position2, new Marker() { Type = MarkerTypes.Wall });
 					}
 				}
 

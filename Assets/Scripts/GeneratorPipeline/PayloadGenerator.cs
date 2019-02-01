@@ -1,11 +1,12 @@
 ﻿namespace Assets.Scripts.GeneratorPipeline
 {
 	using System.Collections.Generic;
+	using Payloads;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
 	[CreateAssetMenu(menuName = "Dungeon generator/Payload generator")]
-	public class PayloadGenerator : Pipeline.PayloadGenerator
+	public class PayloadGenerator : AbstractPayloadGenerator
 	{
 		public int NumberOfTilemaps = 5;
 

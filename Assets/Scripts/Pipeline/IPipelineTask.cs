@@ -1,7 +1,9 @@
 ﻿namespace Assets.Scripts.Pipeline
 {
-	public interface IPipelineTask<in TPayload>
+	public interface IPipelineTask<TPayload> where TPayload : class
 	{
-		void Process(TPayload payload);
+		TPayload Payload { get; set; }
+
+		void Process();
 	}
 }

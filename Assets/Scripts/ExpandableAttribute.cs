@@ -1,12 +1,11 @@
-﻿namespace Assets.Scripts.Utils
+﻿namespace Assets.Scripts
 {
-	using UnityEngine;
-
-#if UNITY_EDITOR
 	using System;
 	using System.Collections.Generic;
 	using UnityEditor;
-	
+	using UnityEngine;
+#if UNITY_EDITOR
+
 #endif
 
 	/// <summary>

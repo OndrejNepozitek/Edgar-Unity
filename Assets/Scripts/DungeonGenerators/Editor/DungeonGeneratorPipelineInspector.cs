@@ -1,22 +1,20 @@
-﻿namespace Assets.Scripts.Pipeline.POC
+﻿namespace Assets.Scripts.DungeonGenerators.Editor
 {
 	using UnityEditor;
 	using UnityEditorInternal;
 	using UnityEngine;
-	using Utils;
 
-	[CustomEditor(typeof(PipelineScript))]
-	public class PipelineScriptInspector : Editor
+	[CustomEditor(typeof(DungeonGeneratorPipeline))]
+	public class DungeonGeneratorPipelineInspector : Editor
 	{
-		
 		private ReorderableList list;
 
 		private void OnEnable()
 		{
-			var script = target as PipelineScript;
+			var script = target as DungeonGeneratorPipeline;
 
 			list = new ReorderableList(serializedObject,
-				serializedObject.FindProperty(nameof(PipelineScript.PipelineScripts)),
+				serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PipelineItems)),
 				true, true, true, true);
 
 			list.drawElementCallback =
@@ -49,16 +47,11 @@
 			list.DoLayoutList();
 			serializedObject.ApplyModifiedProperties();
 
-			var pipelineScript = (PipelineScript) target;
+			var dungeonGeneratorPipeline = (DungeonGeneratorPipeline) target;
 
-			if (GUILayout.Button("Execute"))
+			if (GUILayout.Button("Generate"))
 			{
-				pipelineScript.Execute();
-			}
-
-			if (GUILayout.Button("Execute new"))
-			{
-				pipelineScript.Execute2();
+				dungeonGeneratorPipeline.Generate();
 			}
 		}
 	}

@@ -3,10 +3,9 @@
 	using Data.Graphs;
 	using Pipeline;
 	using UnityEngine;
-	using UnityEngine.Tilemaps;
 
 	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Graph based generator", fileName = "GraphBasesGenerator")]
-	public class GraphBasedGeneratorConfig : PipelineTask
+	public class GraphBasedGeneratorConfig : PipelineConfig
 	{
 		public LayoutGraph LayoutGraph;
 

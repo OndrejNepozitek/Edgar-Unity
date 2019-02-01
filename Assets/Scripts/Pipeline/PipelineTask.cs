@@ -1,9 +1,15 @@
 ﻿namespace Assets.Scripts.Pipeline
 {
-	using UnityEngine;
-
-	public abstract class PipelineTask : ScriptableObject
+	public abstract class PipelineTask<TPayload> : PipelineItem, IPipelineTask<TPayload> 
+		where TPayload : class
 	{
-		
+		public TPayload Payload { get; set; }
+
+		public abstract void Process();
+	}
+
+	public abstract class PipelineConfig : PipelineItem
+	{
+
 	}
 }

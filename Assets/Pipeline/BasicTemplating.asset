@@ -13,11 +13,5 @@ MonoBehaviour:
   m_Name: BasicTemplating
   m_EditorClassIdentifier: 
   Mapping:
-  - MarkerType: {fileID: 11400000, guid: 241c3e383c45d3a44a7ed6f02294d392, type: 2}
-    Tile: {fileID: 11400000, guid: 64de478ea9cfcd844818e00ccdd980d3, type: 2}
-  - MarkerType: {fileID: 11400000, guid: 98fe3a0fc5cec664f82463e0159b2273, type: 2}
-    Tile: {fileID: 11400000, guid: 24de52948c551d34d896318102d92341, type: 2}
-  - MarkerType: {fileID: 11400000, guid: a28dd2d60ad54d34c880e6938f608a0d, type: 2}
-    Tile: {fileID: 11400000, guid: 37d151d7ded746f43afe29ab1d58c379, type: 2}
   - MarkerType: {fileID: 11400000, guid: 6d941c0b66e7242458b724e9b17409ac, type: 2}
     Tile: {fileID: 11400000, guid: 6a22620efe72fbf46adf1eeb47338e50, type: 2}

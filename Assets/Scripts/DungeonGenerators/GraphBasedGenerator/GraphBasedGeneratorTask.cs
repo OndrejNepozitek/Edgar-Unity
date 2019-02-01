@@ -23,23 +23,16 @@
 	using Debug = UnityEngine.Debug;
 	using Object = UnityEngine.Object;
 
-	[PipelineTaskFor(typeof(GraphBasedGeneratorConfig))]
-	public class GraphBasedGenerator<T> : IConfigurablePipelineTask<T, GraphBasedGeneratorConfig> 
-		where T : IGeneratorPayload, IRoomInfoPayload
+	public class GraphBasedGeneratorTask<TPayload> : ConfigurablePipelineTask<TPayload, GraphBasedGeneratorConfig>
+		where TPayload : class, IGeneratorPayload, IRoomInfoPayload
 	{
-		public GraphBasedGeneratorConfig Config { get; set; }
-
-		protected T Payload;
-
 		private List<RoomDescription> rooms;
 		private List<RoomDescription> corridors;
 		private TwoWayDictionary<RoomDescription, GameObject> roomDescriptionsToRoomTemplates;
 		private Dictionary<Room, int> roomToNumber;
 
-		public void Process(T payload)
+		public override void Process()
 		{
-			Payload = payload;
-
 			var stopwatch = new Stopwatch();
 			stopwatch.Start();
 
@@ -101,7 +94,7 @@
 			var generatedRooms = new List<RoomInfo<int>>();
 
 			// Initialize rooms
-			payload.RoomInfos = new List<RoomInfo<int>>();
+			Payload.RoomInfos = new List<RoomInfo<int>>();
 			foreach (var layoutRoom in layout.Rooms)
 			{
 				var room = roomDescriptionsToRoomTemplates[(RoomDescription)layoutRoom.RoomDescription];
@@ -119,7 +112,7 @@
 				generatedRooms.Add(roomInfo);
 			}
 
-			payload.RoomInfos = generatedRooms;
+			Payload.RoomInfos = generatedRooms;
 
 			// Set correct position and rotate
 			var roomTransformations = new RoomTransformations();
@@ -149,12 +142,12 @@
 						foreach (var doorPoint in door.DoorLine.GetPoints())
 						{
 							var correctPosition = doorPoint.ToUnityIntVector3();
-							payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Floor });
+							Payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Floor });
 
 							if (Config.AddDoorMarkers)
 							{
-								payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.UnderDoor });
-								payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
+								Payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.UnderDoor });
+								Payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
 							}
 						}
 					}
@@ -164,8 +157,8 @@
 			// Center grid
 			if (Config.CenterGrid)
 			{
-				payload.Tilemaps[0].ResizeBounds();
-				payload.Tilemaps[0].transform.parent.position = -payload.Tilemaps[0].cellBounds.center;
+				Payload.Tilemaps[0].CompressBounds();
+				Payload.Tilemaps[0].transform.parent.position = -Payload.Tilemaps[0].cellBounds.center;
 			}
 			
 

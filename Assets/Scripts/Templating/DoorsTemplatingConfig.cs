@@ -1,29 +1,29 @@
 ﻿namespace Assets.Scripts.Templating
 {
 	using GeneratorPipeline;
+	using Payloads;
 	using Pipeline;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
 	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline tasks/Doors templating")]
-	public class DoorsTemplating : PipelineTask
+	public class DoorsTemplatingConfig : PipelineConfig
 	{
 		public TileBase HorizontalDoors;
 
-		public TileBase VerticalDoors;
+		public TileBase VerticalDoorsBottom;
+
+		public TileBase VerticalDoorsUpper;
 	}
 
-	[PipelineTaskFor(typeof(DoorsTemplating))]
-	public class DoorsTemplating<T> : IConfigurablePipelineTask<T, DoorsTemplating>
-		where T : IGeneratorPayload
+	public class DoorsTemplatingTask<TPayload> : ConfigurablePipelineTask<TPayload, DoorsTemplatingConfig>
+		where TPayload : class, IGeneratorPayload
 	{
-		public DoorsTemplating Config { get; set; }
-
-		public void Process(T payload)
+		public override void Process()
 		{
-			var wallsMarkerMap = payload.MarkerMaps[0];
-			var doorsMarkerMap = payload.MarkerMaps[1];
-			var tilemap = payload.Tilemaps[1];
+			var wallsMarkerMap = Payload.MarkerMaps[0];
+			var doorsMarkerMap = Payload.MarkerMaps[1];
+			var tilemap = Payload.Tilemaps[1];
 
 			foreach (var position in doorsMarkerMap.Bounds.allPositionsWithin)
 			{
@@ -42,7 +42,8 @@
 					}
 					else if (upMarker?.Type == MarkerTypes.Wall && downMarker?.Type == MarkerTypes.Wall)
 					{
-						tilemap.SetTile(position, Config.VerticalDoors);
+						tilemap.SetTile(position, Config.VerticalDoorsBottom);
+						tilemap.SetTile(position + Vector3Int.up, Config.VerticalDoorsUpper);
 					}
 				}
 			}
