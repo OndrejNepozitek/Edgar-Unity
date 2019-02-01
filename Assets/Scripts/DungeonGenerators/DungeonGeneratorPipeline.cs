@@ -12,7 +12,7 @@
 		public AbstractPayloadGenerator PayloadGenerator;
 
 		[HideInInspector]
-		[Expandable]
+		[ExpandableNotFoldable]
 		public List<PipelineItem> PipelineItems;
 
 		public void Generate()

@@ -115,8 +115,8 @@
 			if (property.objectReferenceValue == null)
 				return;
 
-			// property.isExpanded = EditorGUI.Foldout(fieldRect, property.isExpanded, GUIContent.none, true);
-			property.isExpanded = true;
+			property.isExpanded = EditorGUI.Foldout(fieldRect, property.isExpanded, GUIContent.none, true);
+			// property.isExpanded = true;
 
 			if (!property.isExpanded)
 				return;

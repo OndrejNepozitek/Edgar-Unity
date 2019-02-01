@@ -8,6 +8,7 @@
 	public class DungeonGeneratorPipelineInspector : Editor
 	{
 		private ReorderableList list;
+		private bool showAdvancedSettings;
 
 		private void OnEnable()
 		{
@@ -41,8 +42,6 @@
 
 		public override void OnInspectorGUI()
 		{
-			DrawDefaultInspector();
-
 			serializedObject.Update();
 			list.DoLayoutList();
 			serializedObject.ApplyModifiedProperties();
@@ -52,6 +51,13 @@
 			if (GUILayout.Button("Generate"))
 			{
 				dungeonGeneratorPipeline.Generate();
+			}
+
+			showAdvancedSettings = EditorGUILayout.Foldout(showAdvancedSettings, "Advanced settings");
+
+			if (showAdvancedSettings)
+			{
+				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PayloadGenerator)));
 			}
 		}
 	}
