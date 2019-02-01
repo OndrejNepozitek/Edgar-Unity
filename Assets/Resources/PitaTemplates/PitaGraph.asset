@@ -40,6 +40,7 @@ MonoBehaviour:
   CorridorIndividualRoomTemplate:
   - {fileID: 5073188208015878132, guid: ebffadec765185b44914ec3f3f6d5aea, type: 3}
   - {fileID: 5344139891887179406, guid: a28cb57c0a9d117488aebf8e8ec94e74, type: 3}
+  - {fileID: 7006419862935683116, guid: 346b1ebad28c4ce429cd6ed4c11d79bf, type: 3}
 --- !u!114 &114036330818891314
 MonoBehaviour:
   m_ObjectHideFlags: 0

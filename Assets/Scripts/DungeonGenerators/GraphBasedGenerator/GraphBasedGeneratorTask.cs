@@ -8,6 +8,7 @@
 	using Data.Graphs;
 	using GeneralAlgorithms.DataStructures.Common;
 	using GeneratorPipeline;
+	using MapGeneration.Core.Doors;
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.LayoutGenerator;
 	using MapGeneration.Interfaces.Core.MapLayouts;
@@ -49,7 +50,7 @@
 			IBenchmarkableLayoutGenerator<MapDescription<int>, IMapLayout<int>> generator;
 			if (Config.UseCorridors)
 			{
-				var gen = LayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(new List<int>() { 2, 3 });
+				var gen = LayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(mapDescription.CorridorsOffsets);
 				generator = gen;
 			}
 			else
@@ -98,6 +99,9 @@
 			}
 
 			Payload.RoomInfos = generatedRooms;
+
+			TransformRooms();
+			AddDoorMarkers();
 
 			// Center grid
 			if (Config.CenterGrid)
@@ -271,22 +275,37 @@
 			// Add corridors
 			if (Config.UseCorridors)
 			{
-				mapDescription.SetWithCorridors(true, new List<int>() { 2, 3 });
+				var corridorLengths = new List<int>();
 
 				foreach (var roomTemplatesSet in layoutGraph.CorridorRoomTemplateSets)
 				{
+					if (roomTemplatesSet == null)
+						continue;
+
 					foreach (var roomTemplate in roomTemplatesSet.Rooms)
 					{
+						if (roomTemplate == null)
+							continue;
+
 						var roomDescription = GetRoomDescription(roomTemplate.Tilemap);
 						mapDescription.AddCorridorShapes(roomDescription);
+						var corridorLength = GetCorridorLength(roomDescription);
+						corridorLengths.Add(corridorLength);
 					}
 				}
 
 				foreach (var roomTemplate in layoutGraph.CorridorIndividualRoomTemplate)
 				{
+					if (roomTemplate == null)
+						continue;
+
 					var roomDescription = GetRoomDescription(roomTemplate);
 					mapDescription.AddCorridorShapes(roomDescription);
+					var corridorLength = GetCorridorLength(roomDescription);
+					corridorLengths.Add(corridorLength);
 				}
+
+				mapDescription.SetWithCorridors(true, corridorLengths.Distinct().ToList());
 			}
 
 			// Add passages
@@ -323,6 +342,31 @@
 			roomDescriptionsToRoomTemplates.Add(roomDescription, roomTemplate);
 
 			return roomDescription;
+		}
+
+		protected int GetCorridorLength(RoomDescription roomDescription)
+		{
+			var doorsHandler = DoorHandler.DefaultHandler;
+			var doorPositions = doorsHandler.GetDoorPositions(roomDescription.Shape, roomDescription.DoorsMode);
+
+			if (doorPositions.Count != 2
+			    || doorPositions.Any(x => x.Line.Length != 0)
+			    || doorPositions[0].Line.GetDirection() != OrthogonalLine.GetOppositeDirection(doorPositions[1].Line.GetDirection()))
+			{
+				throw new ArgumentException("Corridors must currently have exactly 2 door positions that are on the opposite sides of the corridor.");
+			}
+
+			var firstLine = doorPositions[0].Line;
+			var secondLine = doorPositions[1].Line;
+
+			if (firstLine.GetDirection() == OrthogonalLine.Direction.Bottom || firstLine.GetDirection() == OrthogonalLine.Direction.Top)
+			{
+				return Math.Abs(firstLine.From.X - secondLine.From.X);
+			}
+			else
+			{
+				return Math.Abs(firstLine.From.Y - secondLine.From.Y);
+			}
 		}
 	}
 }

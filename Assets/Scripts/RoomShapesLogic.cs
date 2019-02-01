@@ -46,12 +46,6 @@
 			var currentPoint = points.First();
 			var currentDirection = IntVector2Helper.Top;
 
-			var firstPoint = currentPoint;
-			var firstDirection = currentDirection;
-
-			var first = true;
-			points.Remove(currentPoint);
-
 			while (points.Count != 0)
 			{
 				var found = 0;
@@ -68,14 +62,11 @@
 					}
 				}
 
-				if (first)
+				if (pointsOriginal.Count - points.Count < 2)
 				{
-					first = false;
-
 					if (found != 2)
 						throw new ArgumentException("The first point must be connected to exactly two points");
 
-					firstDirection = foundDirection;
 				}
 				else
 				{
@@ -86,16 +77,16 @@
 					{
 						polygonPoints.Add(currentPoint);
 					}
-
-					if (points.Count == 1 && currentPoint + foundDirection + foundDirection == firstPoint && firstDirection != foundDirection)
-					{
-						polygonPoints.Add(firstPoint);
-					}
 				}
 
 				currentPoint += foundDirection;
 				currentDirection = foundDirection;
 				points.Remove(currentPoint);
+			}
+
+			if (polygonPoints.Count % 2 == 1)
+			{
+				polygonPoints.Add(currentPoint);
 			}
 
 			if (!IsClockwiseOriented(polygonPoints))
