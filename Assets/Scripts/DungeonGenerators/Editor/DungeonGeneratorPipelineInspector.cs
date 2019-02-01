@@ -8,6 +8,7 @@
 	public class DungeonGeneratorPipelineInspector : Editor
 	{
 		private ReorderableList list;
+		private bool showPipelineSettings = true;
 		private bool showAdvancedSettings;
 
 		private void OnEnable()
@@ -42,23 +43,38 @@
 
 		public override void OnInspectorGUI()
 		{
-			serializedObject.Update();
-			list.DoLayoutList();
-			serializedObject.ApplyModifiedProperties();
+			//var foldoutStyle = EditorStyles.foldout;
+			//var previousStyle = foldoutStyle.fontStyle;
+			//foldoutStyle.fontStyle = FontStyle.Bold;
 
-			var dungeonGeneratorPipeline = (DungeonGeneratorPipeline) target;
-
-			if (GUILayout.Button("Generate"))
+			EditorGUILayout.Space();
+			showPipelineSettings = EditorGUILayout.Foldout(showPipelineSettings, "Generator pipeline settings");
+			
+			if (showPipelineSettings)
 			{
-				dungeonGeneratorPipeline.Generate();
+				serializedObject.Update();
+				list.DoLayoutList();
+				serializedObject.ApplyModifiedProperties();
 			}
 
+			EditorGUILayout.Space();
 			showAdvancedSettings = EditorGUILayout.Foldout(showAdvancedSettings, "Advanced settings");
 
 			if (showAdvancedSettings)
 			{
+				EditorGUI.indentLevel++;
 				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PayloadGenerator)));
+				EditorGUI.indentLevel--;
 			}
+
+			EditorGUILayout.Space();
+			if (GUILayout.Button("Generate"))
+			{
+				var dungeonGeneratorPipeline = (DungeonGeneratorPipeline)target;
+				dungeonGeneratorPipeline.Generate();
+			}
+
+			//foldoutStyle.fontStyle = previousStyle;
 		}
 	}
 }
