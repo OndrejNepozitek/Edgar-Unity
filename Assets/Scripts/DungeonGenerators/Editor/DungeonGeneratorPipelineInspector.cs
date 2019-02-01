@@ -62,9 +62,9 @@
 
 			if (showAdvancedSettings)
 			{
-				EditorGUI.indentLevel++;
+				//EditorGUI.indentLevel++;
 				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PayloadGenerator)));
-				EditorGUI.indentLevel--;
+				//EditorGUI.indentLevel--;
 			}
 
 			EditorGUILayout.Space();
