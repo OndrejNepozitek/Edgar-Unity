@@ -30,6 +30,7 @@
 		private List<RoomDescription> corridors;
 		private TwoWayDictionary<RoomDescription, GameObject> roomDescriptionsToRoomTemplates;
 		private Dictionary<Room, int> roomToNumber;
+		private List<RoomInfo<int>> generatedRooms;
 
 		public override void Process()
 		{
@@ -41,13 +42,11 @@
 				Debug.Log("--- Script started ---"); 
 			}
 
+			// Setup map description
 			var mapDescription = SetupMapDescription();
 
-			var stopwatch2 = new Stopwatch();
-			stopwatch2.Start();
-
+			// Setup layout generator
 			IBenchmarkableLayoutGenerator<MapDescription<int>, IMapLayout<int>> generator;
-
 			if (Config.UseCorridors)
 			{
 				var gen = LayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(new List<int>() { 2, 3 });
@@ -59,6 +58,7 @@
 				generator = gen;
 			}
 
+			// Run generator
 			IMapLayout<int> layout = null;
 			var task = Task.Run(() => layout = generator.GetLayouts(mapDescription, 1)[0]);
 			var taskCompleted = task.Wait(10000);
@@ -77,23 +77,8 @@
 			var parentGameObject = new GameObject("Helper objects");
 			parentGameObject.transform.parent = Payload.GameObject.transform;
 
-			var polygons = layout.Rooms.Select(x => x.Shape + x.Position).ToList();
-			var points = polygons.SelectMany(x => x.GetPoints()).ToList();
-
-			var minx = points.Min(x => x.X);
-			var miny = points.Min(x => x.Y);
-			var maxx = points.Max(x => x.X);
-			var maxy = points.Max(x => x.Y);
-
-			var width = maxx - minx;
-			var height = maxy - miny;
-			var positionOffset = new IntVector2(width / 2, height / 2);
-
-
-			// Postprocess pipeline
-			var generatedRooms = new List<RoomInfo<int>>();
-
 			// Initialize rooms
+			generatedRooms = new List<RoomInfo<int>>();
 			Payload.RoomInfos = new List<RoomInfo<int>>();
 			foreach (var layoutRoom in layout.Rooms)
 			{
@@ -114,7 +99,43 @@
 
 			Payload.RoomInfos = generatedRooms;
 
-			// Set correct position and rotate
+			// Center grid
+			if (Config.CenterGrid)
+			{
+				Payload.Tilemaps[0].CompressBounds();
+				Payload.Tilemaps[0].transform.parent.position = -Payload.Tilemaps[0].cellBounds.center;
+			}
+			
+			if (Config.ShowElapsedTime)
+			{
+				Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
+			}
+		}
+
+		protected void AddDoorMarkers()
+		{
+			foreach (var roomInfo in generatedRooms)
+			{
+				foreach (var door in roomInfo.LayoutRoom.Doors)
+				{
+					foreach (var doorPoint in door.DoorLine.GetPoints())
+					{
+						var correctPosition = doorPoint.ToUnityIntVector3();
+						Payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Floor });
+
+						if (Config.AddDoorMarkers)
+						{
+							Payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.UnderDoor });
+							Payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
+						}
+					}
+				}
+			}
+		}
+
+		// Set correct position and rotate
+		protected void TransformRooms()
+		{
 			var roomTransformations = new RoomTransformations();
 			foreach (var roomInfo in generatedRooms)
 			{
@@ -131,40 +152,6 @@
 				roomInfo.Room.transform.position = correctPosition;
 
 				TransferRoomToMarkerMap(roomInfo);
-			}
-
-			// Add doors
-			{
-				foreach (var roomInfo in generatedRooms)
-				{
-					foreach (var door in roomInfo.LayoutRoom.Doors)
-					{
-						foreach (var doorPoint in door.DoorLine.GetPoints())
-						{
-							var correctPosition = doorPoint.ToUnityIntVector3();
-							Payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Floor });
-
-							if (Config.AddDoorMarkers)
-							{
-								Payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.UnderDoor });
-								Payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
-							}
-						}
-					}
-				}
-			}
-
-			// Center grid
-			if (Config.CenterGrid)
-			{
-				Payload.Tilemaps[0].CompressBounds();
-				Payload.Tilemaps[0].transform.parent.position = -Payload.Tilemaps[0].cellBounds.center;
-			}
-			
-
-			if (Config.ShowElapsedTime)
-			{
-				Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
 			}
 		}
 
