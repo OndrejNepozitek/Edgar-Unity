@@ -13,31 +13,33 @@
 
 		private void OnEnable()
 		{
-			var script = target as DungeonGeneratorPipeline;
-
 			list = new ReorderableList(serializedObject,
 				serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PipelineItems)),
 				true, true, true, true);
 
-			list.drawElementCallback =
-				(Rect rect, int index, bool isActive, bool isFocused) =>
-				{
-					var element = list.serializedProperty.GetArrayElementAtIndex(index);
-					rect.y += 2;
+			list.drawElementCallback = (rect, index, isActive, isFocused) =>
+			{
+				var element = list.serializedProperty.GetArrayElementAtIndex(index);
+				rect.y += 2;
 
-					var height = EditorGUI.GetPropertyHeight(element);
+				var height = EditorGUI.GetPropertyHeight(element);
 
-					EditorGUI.PropertyField(
-						new Rect(rect.x, rect.y, rect.width, height),
-						element, true);
-				};
+				EditorGUI.PropertyField(
+					new Rect(rect.x, rect.y, rect.width, height),
+					element, true);
+			};
 
 			list.elementHeightCallback = (index) =>
 			{
 				var element = list.serializedProperty.GetArrayElementAtIndex(index);
 				var height = EditorGUI.GetPropertyHeight(element);
 
-				return height;
+				return height + 10;
+			};
+
+			list.drawHeaderCallback = rect =>
+			{
+				EditorGUI.LabelField(rect, "Generator pipeline");
 			};
 		}
 
