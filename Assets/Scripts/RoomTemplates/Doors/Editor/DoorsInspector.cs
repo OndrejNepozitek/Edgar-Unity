@@ -16,10 +16,26 @@
 
 		private SerializedProperty distanceFromCorners;
 
+		private SerializedProperty doorsList;
+
+		private bool addSpecificDoorPositions;
+
+		private Vector3 firstPoint;
+
+		private bool hasFirstPoint;
+
+		private bool hasSecondPoint;
+
 		public void OnEnable()
 		{
 			doorsLength = serializedObject.FindProperty(nameof(Doors.DoorLength));
 			distanceFromCorners = serializedObject.FindProperty(nameof(Doors.DistanceFromCorners));
+			doorsList = serializedObject.FindProperty(nameof(Doors.DoorsList));
+			addSpecificDoorPositions = false;
+			hasFirstPoint = false;
+			hasSecondPoint = false;
+			highlightInfo = null;
+			SceneView.RepaintAll();
 		}
 
 		public void OnSceneGUI()
@@ -59,69 +75,77 @@
 		private void DrawSpecifPositions()
 		{
 			var doors = target as Doors;
-			var go = doors.transform.gameObject;
-			var e = Event.current;
 
-			Selection.activeGameObject = go;
-
-			var mouseWorldPosition = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition).origin;
-			mouseWorldPosition -= doors.transform.position;
-			mouseWorldPosition.z = 0;
-			mouseWorldPosition.x = (float)Math.Floor(mouseWorldPosition.x);
-			mouseWorldPosition.y = (float)Math.Floor(mouseWorldPosition.y);
-
-
-			var controlId = GUIUtility.GetControlID(FocusType.Passive);
-			HandleUtility.AddDefaultControl(controlId);
-
-			switch (e.type)
+			if (addSpecificDoorPositions)
 			{
-				case EventType.MouseDown:
+				var go = doors.transform.gameObject;
+				var e = Event.current;
 
-					doors.FirstPoint = mouseWorldPosition;
-					doors.HasFirstPoint = true;
-					doors.HasSecondPoint = false;
+				Selection.activeGameObject = go;
 
-					Event.current.Use();
-
-					break;
-
-				case EventType.MouseUp:
-					if (doors.HasFirstPoint)
-					{
-						doors.SecondPoint = mouseWorldPosition;
-						doors.HasSecondPoint = true;
-					}
+				var mouseWorldPosition = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition).origin;
+				mouseWorldPosition -= doors.transform.position;
+				mouseWorldPosition.z = 0;
+				mouseWorldPosition.x = (float)Math.Floor(mouseWorldPosition.x);
+				mouseWorldPosition.y = (float)Math.Floor(mouseWorldPosition.y);
 
 
-					Event.current.Use();
-					break;
-			}
+				var controlId = GUIUtility.GetControlID(FocusType.Passive);
+				HandleUtility.AddDefaultControl(controlId);
 
-			if (doors.HasFirstPoint)
-			{
-				highlightInfo = null;
-
-				var from = doors.FirstPoint;
-				var to = mouseWorldPosition;
-
-				if (from.x != to.x && from.y != to.y)
+				switch (e.type)
 				{
-					to.x = from.x;
+					case EventType.MouseDown:
+
+						firstPoint = mouseWorldPosition;
+						hasFirstPoint = true;
+						hasSecondPoint = false;
+
+						Event.current.Use();
+
+						break;
+
+					case EventType.MouseUp:
+						if (hasFirstPoint)
+						{
+							hasSecondPoint = true;
+						}
+
+						Event.current.Use();
+						break;
 				}
 
-				DrawOutline(from, to, Color.yellow);
-
-				if (doors.HasSecondPoint)
+				if (hasFirstPoint)
 				{
-					doors.DoorsList.Add(new DoorInfo()
-					{
-						From = from,
-						To = to,
-					});
+					highlightInfo = null;
 
-					doors.HasFirstPoint = false;
-					doors.HasSecondPoint = false;
+					var from = firstPoint;
+					var to = mouseWorldPosition;
+
+					if (from.x != to.x && from.y != to.y)
+					{
+						to.x = from.x;
+					}
+
+					DrawOutline(from, to, Color.yellow);
+
+					if (hasSecondPoint)
+					{
+						hasFirstPoint = false;
+						hasSecondPoint = false;
+
+						Undo.RecordObject(target, "Added door position");
+
+						doors.DoorsList.Add(new DoorInfo()
+						{
+							From = from,
+							To = to,
+						});
+
+						EditorUtility.SetDirty(target);
+					}
+
+					SceneView.RepaintAll();
 				}
 			}
 
@@ -177,7 +201,6 @@
 
 		public override void OnInspectorGUI()
 		{
-			// Update the serializedProperty - always do this in the beginning of OnInspectorGUI.
 			serializedObject.Update();
 
 			var doors = target as Doors;
@@ -185,6 +208,8 @@
 			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
 			selectedModeProp.intValue = GUILayout.SelectionGrid(doors.SelectedMode, new[] {"Specific positions", "Overlap mode"}, 2);
 			var shouldRedraw = false;
+
+			EditorGUILayout.Space();
 
 			if (selectedModeProp.intValue == 1)
 			{
@@ -194,68 +219,13 @@
 
 			if (selectedModeProp.intValue == 0)
 			{
-				var toRemove = new List<DoorInfo>();
+				addSpecificDoorPositions = GUILayout.Toggle(addSpecificDoorPositions, "Add door positions", GUI.skin.button);
 
-				GUILayout.Label("Doors:", EditorStyles.boldLabel);
-
-				for (int i = 0; i < doors.DoorsList.Count; i++)
+				if (GUILayout.Button("Delete all door positions"))
 				{
-					DoorInfo door = doors.DoorsList[i];
-
-					GUILayout.BeginHorizontal();
-
-					if (highlightInfo == door)
-					{
-						GUILayout.Label($"Door {i}", new GUIStyle(EditorStyles.label)
-						{
-							normal =
-							{
-								textColor = Color.yellow
-							}
-						});
-					}
-					else
-					{
-						GUILayout.Label($"Door {i}");
-					}
-
-					if (GUILayout.Button("Highlight"))
-					{
-						if (highlightInfo == door)
-						{
-							highlightInfo = null;
-							shouldRedraw = true;
-						}
-						else
-						{
-							highlightInfo = door;
-							shouldRedraw = true;
-						}
-					}
-
-					if (GUILayout.Button("Remove"))
-					{
-						toRemove.Add(door);
-						shouldRedraw = true;
-					}
-
-					GUILayout.EndHorizontal();
-				}
-
-				foreach (var doorInfo in toRemove)
-				{
-					doors.DoorsList.Remove(doorInfo);
-
-					if (highlightInfo == doorInfo)
-					{
-						highlightInfo = null;
-					}
+					doorsList.ClearArray();
 				}
 			}
-
-			// if (shouldRedraw)
-				SceneView.RepaintAll();
-
 
 			serializedObject.ApplyModifiedProperties();
 		}

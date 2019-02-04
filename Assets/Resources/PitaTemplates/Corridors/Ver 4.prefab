@@ -317,10 +317,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FirstPoint: {x: -4, y: -2, z: 0}
-  HasFirstPoint: 0
-  SecondPoint: {x: -4, y: -2, z: 0}
-  HasSecondPoint: 0
   DoorsList:
   - From: {x: -4, y: 1, z: 0}
     To: {x: -4, y: 1, z: 0}
