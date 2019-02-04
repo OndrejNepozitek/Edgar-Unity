@@ -1,6 +1,7 @@
 ﻿namespace Assets.Editor.LayoutGraphEditor
 {
 	using System.Collections.Generic;
+	using System.Linq;
 	using EditorNodes;
 	using NodeBasedEditor;
 	using RoomsEditor.EditorNodes;
@@ -28,12 +29,16 @@
 
 		private int selectedToolbar = 0;
 
-		private string[] toolbarStrings = new[] {"Test 1", "Test 2"};
+		private int currentPickerWindow;
+
+		private bool doNotDrag;
 
 		public static LayoutGraph StaticData { get; set; }
 
 		public void Initialize()
 		{
+			SetupStyles();
+
 			var roomToRoomNodes = new Dictionary<Room, RoomNode>();
 
 			roomNodes = new List<RoomNode>();
@@ -57,16 +62,22 @@
 
 		public override void OnEnable()
 		{
+			SetupStyles();
+
+			if (Data != null)
+			{
+				Initialize();
+			}
+		}
+
+		protected void SetupStyles()
+		{
 			roomNodeStyle = new GUIStyle();
 			roomNodeStyle.normal.background = MakeTex(1, 1, new Color(0.2f, 0.2f, 0.2f, 0.85f));
 			roomNodeStyle.border = new RectOffset(12, 12, 12, 12);
 			roomNodeStyle.normal.textColor = Color.white;
 			roomNodeStyle.fontSize = 12;
 			roomNodeStyle.alignment = TextAnchor.MiddleCenter;
-
-			//roomNodeStyle = new GUIStyle(nodeStyle);
-			//roomNodeStyle.alignment = TextAnchor.UpperCenter;
-			//roomNodeStyle.fontSize = 13;
 		}
 
 		public override void OnGUI()
@@ -92,52 +103,62 @@
 				roomNodes.ForEach(x => x.Mode = editorMode);
 			}
 
-			//if (Data != null)
-			//{
-			//	DrawUi();
-			//}	
-			
 			base.OnGUI();
+
+			DrawMenuBar();
 		}
 
-		private void DrawUi()
+		private void DrawMenuBar()
 		{
-			GUILayout.BeginArea(new Rect(10,10,200,600));
+			var menuBar = new Rect(0, 0, position.width, 20);
 
-			// selectedToolbar = GUILayout.Toolbar(selectedToolbar, toolbarStrings);
+			GUILayout.BeginArea(menuBar, EditorStyles.toolbar);
+			GUILayout.BeginHorizontal();
 
-			GUILayout.BeginVertical();
-
-			GUILayout.Label("Rooms groups");
-
-			var groupsToRemove = new List<RoomsGroup>();
-
-			foreach (var roomsGroup in Data.RoomsGroups)
+			if (Data != null)
 			{
-				GUILayout.BeginHorizontal();
+				GUILayout.Label($"Selected graph: {Data.name}"); 
+			}
+			else
+			{
+				GUILayout.Label($"No graph selected");
+			}
 
-				roomsGroup.Name = GUILayout.TextField(roomsGroup.Name ?? string.Empty, 10, GUILayout.Width(100));
-
-				if (GUILayout.Button("X", GUILayout.Width(30)))
+			if (GUILayout.Button(new GUIContent("Select in inspector"), EditorStyles.toolbarButton, GUILayout.Width(150)))
+			{
+				if (Data != null)
 				{
-					groupsToRemove.Add(roomsGroup);
+					Selection.activeObject = Data;
+				}
+			}
+
+			if (GUILayout.Button(new GUIContent("Select layout graph"), EditorStyles.toolbarButton, GUILayout.Width(150)))
+			{
+				// Create a window picker control ID
+				currentPickerWindow = GUIUtility.GetControlID(FocusType.Passive) + 100;
+
+				// Use the ID you just created
+				EditorGUIUtility.ShowObjectPicker<LayoutGraph>(null, false, string.Empty, currentPickerWindow);
+			}
+
+			if (Event.current.commandName == "ObjectSelectorUpdated" && EditorGUIUtility.GetObjectPickerControlID() == currentPickerWindow)
+			{
+				currentPickerWindow = -1;
+				Data = EditorGUIUtility.GetObjectPickerObject() as LayoutGraph;
+
+				if (Data != null)
+				{
+					Initialize();
+				}
+				else
+				{
+					ClearWindow();
 				}
 
-				GUILayout.EndHorizontal();
+				doNotDrag = true;
 			}
 
-			foreach (var roomsGroup in groupsToRemove)
-			{
-				Data.RoomsGroups.Remove(roomsGroup);
-			}
-
-			if (GUILayout.Button("Add room group"))
-			{
-				Data.RoomsGroups.Add(new RoomsGroup());
-			}
-
-			GUILayout.EndVertical();
-
+			GUILayout.EndHorizontal();
 			GUILayout.EndArea();
 		}
 
@@ -151,10 +172,17 @@
 					if (e.button == 1)
 					{
 						ProcessContextMenu(e.mousePosition);
+						doNotDrag = true;
 					}
 					break;
 
 				case EventType.MouseDrag:
+					if (doNotDrag)
+					{
+						doNotDrag = false;
+						break;
+					}
+
 					if (e.button == 0 && editorMode != EditorMode.MakeConnections)
 					{
 						OnDrag(e.delta);
@@ -209,7 +237,6 @@
 				connectionFrom = roomNode;
 				connectionProgress = new ConnectionProgressNode();
 				connectionProgress.From = roomNode.Rect.center;
-				connectionProgress.To = e.mousePosition;
 			}
 		}
 
@@ -238,8 +265,11 @@
 				Data.Connections.Add(connection);
 				AssetDatabase.AddObjectToAsset(connection, Data);
 
-				CreateConnection(connection, from, to);
-
+				if (!connectionNodes.Any(x => (x.From == from && x.To == to) || (x.To == from && x.From == to)))
+				{
+					CreateConnection(connection, from, to);
+				}
+				
 				connectionFrom = null;
 				connectionProgress = null;
 				GUI.changed = true;
@@ -295,11 +325,15 @@
 			connectionNodes.Remove(node);
 		}
 
+		protected void ClearWindow()
+		{
+			connectionNodes.Clear();
+			roomNodes.Clear();
+		}
+
 		private class ConnectionProgressNode : IEditorNodeBase
 		{
 			public Vector3 From;
-
-			public Vector3 To;
 
 			public bool ProcessEvents(Event e)
 			{

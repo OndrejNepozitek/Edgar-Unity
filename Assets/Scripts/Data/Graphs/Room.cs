@@ -27,10 +27,7 @@
 
 		public void OnBeforeSerialize()
 		{
-			if (RoomsGroupGuid != Guid.Empty)
-			{
-				serializedGuid = RoomsGroupGuid.ToByteArray();
-			}
+			serializedGuid = RoomsGroupGuid.ToByteArray();
 		}
 
 		public void OnAfterDeserialize()
@@ -38,6 +35,10 @@
 			if (serializedGuid != null && serializedGuid.Length == 16)
 			{
 				RoomsGroupGuid = new Guid(serializedGuid);
+			}
+			else
+			{
+				RoomsGroupGuid = Guid.Empty;
 			}
 		}
 

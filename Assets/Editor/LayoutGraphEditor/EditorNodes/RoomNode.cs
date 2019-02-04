@@ -26,6 +26,8 @@
 
 		private bool isDragged;
 
+		private bool isClickAfterContextMenu;
+
 
 		public RoomNode(Room data, float width, float height, GUIStyle style, EditorMode mode)
 		{
@@ -47,6 +49,7 @@
 						{
 							ProcessContextMenu();
 							e.Use();
+							isClickAfterContextMenu = true;
 						}
 					}
 					else if (e.button == 0 && Mode == EditorMode.MakeConnections && Rect.Contains(e.mousePosition))
@@ -66,21 +69,21 @@
 						OnEndConnection?.Invoke(this, e);
 					}
 
-					if (Rect.Contains(e.mousePosition) && e.button == 0 && Mode == EditorMode.Drag)
-					{
-						CustomInspectorWindow.OpenWindow(Data);
-					}
-
 					if (e.button == 0)
 					{
 						isDragged = false;
 					}
 
 					break;
-
 				case EventType.MouseDrag:
 					if (e.button == 0)
 					{
+						if (isClickAfterContextMenu)
+						{
+							e.Use();
+							isClickAfterContextMenu = false;
+						}
+
 						switch (Mode)
 						{
 							case EditorMode.Drag:
@@ -104,6 +107,8 @@
 		private void ProcessContextMenu()
 		{
 			var genericMenu = new GenericMenu();
+			genericMenu.AddItem(new GUIContent("Configure room"), false, OnClickConfigure);
+			genericMenu.AddSeparator("");
 			genericMenu.AddItem(new GUIContent("Delete room"), false, OnClickDelete);
 			genericMenu.ShowAsContext();
 		}
@@ -111,6 +116,11 @@
 		private void OnClickDelete()
 		{
 			OnDelete?.Invoke(this);
+		}
+
+		private void OnClickConfigure()
+		{
+			Selection.activeObject = Data;
 		}
 
 		public void Draw()

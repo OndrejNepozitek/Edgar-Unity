@@ -37,7 +37,7 @@
 
 			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LayoutGraph.RoomsGroups)), true);
 
-			if (GUILayout.Button("Setup layout graph"))
+			if (GUILayout.Button("Open graph editor"))
 			{
 				var type = Type.GetType("UnityEditor.GameView,UnityEditor");
 				var window = EditorWindow.GetWindow<LayoutGraphWindow>("Graph editor", type);
