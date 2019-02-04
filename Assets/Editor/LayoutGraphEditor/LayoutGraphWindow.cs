@@ -4,9 +4,7 @@
 	using System.Linq;
 	using EditorNodes;
 	using NodeBasedEditor;
-	using RoomsEditor.EditorNodes;
 	using Scripts.Data.Graphs;
-	using Scripts.Data.Rooms;
 	using UnityEditor;
 	using UnityEngine;
 	using RoomNode = EditorNodes.RoomNode;
@@ -20,6 +18,8 @@
 		private List<ConnectionNode> connectionNodes = new List<ConnectionNode>();
 
 		private GUIStyle roomNodeStyle;
+
+		private GUIStyle connectionHandleStyle;
 
 		private RoomNode connectionFrom;
 
@@ -78,6 +78,13 @@
 			roomNodeStyle.normal.textColor = Color.white;
 			roomNodeStyle.fontSize = 12;
 			roomNodeStyle.alignment = TextAnchor.MiddleCenter;
+
+			connectionHandleStyle = new GUIStyle();
+			connectionHandleStyle.normal.background = MakeTex(1, 1, new Color(0.3f, 0.3f, 0.3f, 0.6f));
+			connectionHandleStyle.border = new RectOffset(12, 12, 12, 12);
+			connectionHandleStyle.normal.textColor = Color.white;
+			connectionHandleStyle.fontSize = 12;
+			connectionHandleStyle.alignment = TextAnchor.MiddleCenter;
 		}
 
 		public override void OnGUI()
@@ -280,9 +287,9 @@
 		{
 			var node = new RoomNode(data, 40, 40, roomNodeStyle, editorMode);
 
-			node.OnDelete += OnDeleteRoomNode;
-			node.OnStartConnection += OnStartConnection;
-			node.OnEndConnection += OnEndConnection;
+			node.OnDelete += () => OnDeleteRoomNode(node);
+			node.OnStartConnection += (e) => OnStartConnection(node, e);
+			node.OnEndConnection += (e) => OnEndConnection(node, e);
 			roomNodes.Add(node);
 
 			return node;
@@ -290,8 +297,9 @@
 
 		protected ConnectionNode CreateConnection(Connection data, RoomNode from, RoomNode to)
 		{
-			var node = new ConnectionNode(data, from, to);
+			var node = new ConnectionNode(data, from, to, connectionHandleStyle, 12);
 
+			node.OnDelete += () => OnDeleteConnectionNode(node);
 			connectionNodes.Add(node);
 
 			return node;

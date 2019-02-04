@@ -10,11 +10,11 @@
 	{
 		public Room Data { get; set; }
 
-		public Action<RoomNode> OnDelete;
+		public Action OnDelete;
 
-		public Action<RoomNode, Event> OnStartConnection;
+		public Action<Event> OnStartConnection;
 
-		public Action<RoomNode, Event> OnEndConnection;
+		public Action<Event> OnEndConnection;
 
 		public Rect Rect;
 
@@ -54,7 +54,7 @@
 					}
 					else if (e.button == 0 && Mode == EditorMode.MakeConnections && Rect.Contains(e.mousePosition))
 					{
-						OnStartConnection?.Invoke(this, e);
+						OnStartConnection?.Invoke(e);
 					}
 					else if (Rect.Contains(e.mousePosition) && e.button == 0)
 					{
@@ -66,7 +66,7 @@
 				case EventType.MouseUp:
 					if (Rect.Contains(e.mousePosition) && e.button == 0 && Mode == EditorMode.MakeConnections)
 					{
-						OnEndConnection?.Invoke(this, e);
+						OnEndConnection?.Invoke(e);
 					}
 
 					if (e.button == 0)
@@ -115,7 +115,7 @@
 
 		private void OnClickDelete()
 		{
-			OnDelete?.Invoke(this);
+			OnDelete?.Invoke();
 		}
 
 		private void OnClickConfigure()
