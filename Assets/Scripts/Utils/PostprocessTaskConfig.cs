@@ -1,7 +1,7 @@
 ﻿namespace Assets.Scripts.Utils
 {
 	using GeneratorPipeline;
-	using Payloads;
+	using GeneratorPipeline.Payloads;
 	using Pipeline;
 	using UnityEngine;
 
