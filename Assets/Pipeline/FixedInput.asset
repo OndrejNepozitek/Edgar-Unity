@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d76562e2c968db4aa50d7f66feef81f, type: 3}
-  m_Name: Wall
+  m_Script: {fileID: 11500000, guid: 6260e18d48262f543abdc86ae5f41e54, type: 3}
+  m_Name: FixedInput
   m_EditorClassIdentifier: 
+  LayoutGraph: {fileID: 11400000, guid: 379cc5e490ff7504984dd1d75d88a5fd, type: 2}
+  UseCorridors: 1

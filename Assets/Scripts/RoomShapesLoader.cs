@@ -5,13 +5,17 @@
 	using System.Linq;
 	using GeneralAlgorithms.DataStructures.Common;
 	using GeneralAlgorithms.DataStructures.Polygons;
+	using GeneratorPipeline.DungeonGenerators;
+	using GeneratorPipeline.RoomTemplates.Doors;
+	using MapGeneration.Core.Doors;
+	using MapGeneration.Core.MapDescriptions;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 	using Utils;
 
-	public class RoomShapesLogic
+	public class RoomShapesLoader
 	{
-		private static readonly List<IntVector2> directionVectors = new List<IntVector2>()
+		private static readonly List<IntVector2> DirectionVectors = new List<IntVector2>()
 		{
 			IntVector2Helper.Top,
 			IntVector2Helper.Right,
@@ -19,7 +23,7 @@
 			IntVector2Helper.Left
 		};
 
-		private static readonly List<IntVector2> allDirectionVectors = new List<IntVector2>()
+		private static readonly List<IntVector2> AllDirectionVectors = new List<IntVector2>()
 		{
 			IntVector2Helper.Top,
 			IntVector2Helper.Right,
@@ -31,14 +35,7 @@
 			IntVector2Helper.BottomRight
 		};
 
-		private static readonly List<IntVector2> topRightVectors = new List<IntVector2>()
-		{
-			IntVector2Helper.Top,
-			IntVector2Helper.Right,
-			IntVector2Helper.TopRight
-		};
-
-		public static GridPolygon GetPolygonFromGridPoints(HashSet<IntVector2> pointsOriginal)
+		public GridPolygon GetPolygonFromOutline(HashSet<IntVector2> pointsOriginal)
 		{
 			var points = new HashSet<IntVector2>(pointsOriginal);
 			var polygonPoints = new List<IntVector2>();
@@ -51,7 +48,7 @@
 				var found = 0;
 				var foundDirection = new IntVector2(0, 0);
 
-				foreach (var directionVector in directionVectors)
+				foreach (var directionVector in DirectionVectors)
 				{
 					var newPoint = currentPoint + directionVector;
 
@@ -97,16 +94,13 @@
 			return new GridPolygon(polygonPoints);
 		}
 
-		public static GridPolygon GetPolygonFromTilemap(Tilemap tilemap)
+		public GridPolygon GetPolygonFromTilemap(Tilemap tilemap)
 		{
-			return GetPolygonFromGridPoints(GetOutline(tilemap));
+			return GetPolygonFromOutline(GetPolygonOutline(tilemap));
 		}
 
-		public static HashSet<IntVector2> GetOutline(Tilemap tilemap)
+		public HashSet<IntVector2> GetPolygonOutline(Tilemap tilemap)
 		{
-			var bounds = tilemap.cellBounds;
-			var allTiles = tilemap.GetTilesBlock(bounds);
-
 			var usedTiles = new HashSet<IntVector2>();
 			var borderPoints = new HashSet<IntVector2>();
 
@@ -122,11 +116,9 @@
 				usedTiles.Add(position.ToCustomIntVector2());
 			}
 
-			// PreprocessTilemap(usedTiles);
-
 			foreach (var tile in usedTiles)
 			{
-				foreach (var directionVector in allDirectionVectors)
+				foreach (var directionVector in AllDirectionVectors)
 				{
 					var newTile = tile + directionVector;
 
@@ -141,37 +133,47 @@
 			return borderPoints;
 		}
 
-		private static void PreprocessTilemap(HashSet<IntVector2> tiles)
+		public RoomDescription GetRoomDescription(GameObject roomTemplate)
 		{
-			var toAdd = new HashSet<IntVector2>();
+			var tilemap = roomTemplate.GetComponentInChildren<Tilemap>();
+			tilemap.CompressBounds();
+			var polygon = GetPolygonFromTilemap(tilemap);
+			var doors = roomTemplate.GetComponent<Doors>();
 
-			foreach (var tile in tiles)
+			if (doors == null)
 			{
-				foreach (var directionVector in topRightVectors)
-				{
-					var newTile = tile + directionVector;
-
-					if (!tiles.Contains(newTile) && !toAdd.Contains(newTile))
-					{
-						toAdd.Add(newTile);
-					}
-				}
+				throw new DungeonGeneratorException($"Room template \"{roomTemplate.name}\" does not have any doors assigned.");
 			}
 
-			foreach (var tile in toAdd)
-			{
-				tiles.Add(tile);
-			}
+			var doorMode = doors.GetDoorMode();
+			var roomDescription = new RoomDescription(polygon, doorMode);
+
+			return roomDescription;
 		}
 
-		private static int PositionToIndex(IntVector2 position, BoundsInt bounds)
+		public int GetCorridorLength(RoomDescription roomDescription)
 		{
-			if (position.X < 0 || position.X >= bounds.size.x || position.Y < 0 || position.Y >= bounds.size.y)
+			var doorsHandler = DoorHandler.DefaultHandler;
+			var doorPositions = doorsHandler.GetDoorPositions(roomDescription.Shape, roomDescription.DoorsMode);
+
+			if (doorPositions.Count != 2
+			    || doorPositions.Any(x => x.Line.Length != 0)
+			    || doorPositions[0].Line.GetDirection() != OrthogonalLine.GetOppositeDirection(doorPositions[1].Line.GetDirection()))
 			{
-				return -1;
+				throw new ArgumentException("Corridors must currently have exactly 2 door positions that are on the opposite sides of the corridor.");
 			}
 
-			return position.X + position.Y * bounds.size.x;
+			var firstLine = doorPositions[0].Line;
+			var secondLine = doorPositions[1].Line;
+
+			if (firstLine.GetDirection() == OrthogonalLine.Direction.Bottom || firstLine.GetDirection() == OrthogonalLine.Direction.Top)
+			{
+				return Math.Abs(firstLine.From.X - secondLine.From.X);
+			}
+			else
+			{
+				return Math.Abs(firstLine.From.Y - secondLine.From.Y);
+			}
 		}
 
 		private static bool IsClockwiseOriented(IList<IntVector2> points)

@@ -1,10 +1,11 @@
 ﻿namespace Assets.Scripts.GeneratorPipeline.Payloads
 {
 	using System.Collections.Generic;
+	using Data.Graphs;
 	using RoomTemplates;
 
 	public interface IRoomInfoPayload
 	{
-		List<RoomInfo<int>> RoomInfos { get; set; }
+		List<RoomInfo<Room>> RoomInfos { get; set; }
 	}
 }
