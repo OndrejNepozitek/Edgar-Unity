@@ -1,0 +1,140 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": "1f07015436b931e2e0129e6a8cb1124a5c66335e"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "MapGeneration/1.0.0": {
+        "dependencies": {
+          "GeneralAlgorithms": "1.0.0",
+          "MapGeneration.Interfaces": "1.0.0",
+          "NETStandard.Library": "2.0.3",
+          "Newtonsoft.Json": "11.0.1",
+          "YamlDotNet": "5.3.0"
+        },
+        "runtime": {
+          "MapGeneration.dll": {}
+        }
+      },
+      "GraphPlanarityTesting/1.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/GraphPlanarityTesting.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "NETStandard.Library/2.0.3": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0"
+        }
+      },
+      "Newtonsoft.Json/11.0.1": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.0.1.21818"
+          }
+        }
+      },
+      "RangeTree/1.0.0": {
+        "runtime": {
+          "lib/netstandard1.2/RangeTree.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "YamlDotNet/5.3.0": {
+        "runtime": {
+          "lib/netstandard1.3/YamlDotNet.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.3.0.0"
+          }
+        }
+      },
+      "GeneralAlgorithms/1.0.0": {
+        "dependencies": {
+          "GraphPlanarityTesting": "1.0.0",
+          "Newtonsoft.Json": "11.0.1",
+          "RangeTree": "1.0.0"
+        },
+        "runtime": {
+          "GeneralAlgorithms.dll": {}
+        }
+      },
+      "MapGeneration.Interfaces/1.0.0": {
+        "dependencies": {
+          "GeneralAlgorithms": "1.0.0",
+          "Newtonsoft.Json": "11.0.1"
+        },
+        "runtime": {
+          "MapGeneration.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MapGeneration/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GraphPlanarityTesting/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zpmCeI4PkZuq0EoQ3FDVuN0pR1zpTgQXcJo+YpuAfQY16l06VMuaW49YZSGaFHOxZ7GhYS0aHbBiu+Arcy/CqQ==",
+      "path": "graphplanaritytesting/1.0.0",
+      "hashPath": "graphplanaritytesting.1.0.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bLpT1f/SFlO1CzqXG12KnJzpZs6lv24uX2Rzi4Fmm0noJpNlnWRVryuO3yK18Ca04t/YHcO1e1Z0WDfjseqNzw==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "NETStandard.Library/2.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
+      "path": "netstandard.library/2.0.3",
+      "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
+    },
+    "Newtonsoft.Json/11.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-pNN4l+J6LlpIvHOeNdXlwxv39NPJ2B5klz+Rd2UQZIx30Squ5oND1Yy3wEAUoKn0GPUj6Yxt9lxlYWQqfZcvKg==",
+      "path": "newtonsoft.json/11.0.1",
+      "hashPath": "newtonsoft.json.11.0.1.nupkg.sha512"
+    },
+    "RangeTree/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-9DLvdx666KBDtUJQfIV7SkvvCaO014awy3f/XwMBofZDIDEn+ZxxqhKzPmRoi68jj8viVsT9Y5OSc76B+d5+Hg==",
+      "path": "rangetree/1.0.0",
+      "hashPath": "rangetree.1.0.0.nupkg.sha512"
+    },
+    "YamlDotNet/5.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RmVUs9DqUZtT6/eCaWbp73F6I3+eDgVjpMeELCBRNmA1cBWSYMo82dvwGqcsMCIoqC9vQxbq2yqEpUM0bLwnRw==",
+      "path": "yamldotnet/5.3.0",
+      "hashPath": "yamldotnet.5.3.0.nupkg.sha512"
+    },
+    "GeneralAlgorithms/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MapGeneration.Interfaces/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

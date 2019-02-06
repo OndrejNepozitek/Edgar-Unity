@@ -48,7 +48,7 @@
 			IBenchmarkableLayoutGenerator<MapDescription<Room>, IMapLayout<Room>> generator;
 			if (mapDescription.IsWithCorridors)
 			{
-				var gen = UnityLayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<Room>(mapDescription.CorridorsOffsets, corridorNodesCreator: new CorridorsNodeCreator(mapDescription));
+				var gen = UnityLayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors(mapDescription.CorridorsOffsets, corridorNodesCreator: new CorridorsNodeCreator(mapDescription));
 				generator = gen;
 			}
 			else
