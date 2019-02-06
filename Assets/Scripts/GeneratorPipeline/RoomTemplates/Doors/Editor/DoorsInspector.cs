@@ -136,15 +136,20 @@
 						hasFirstPoint = false;
 						hasSecondPoint = false;
 
-						Undo.RecordObject(target, "Added door position");
-
-						doors.DoorsList.Add(new DoorInfo()
+						var newDoorInfo = new DoorInfo()
 						{
 							From = from,
 							To = to,
-						});
+						};
 
-						EditorUtility.SetDirty(target);
+						if (!doors.DoorsList.Contains(newDoorInfo))
+						{
+							Undo.RecordObject(target, "Added door position");
+
+							doors.DoorsList.Add(newDoorInfo);
+
+							EditorUtility.SetDirty(target);
+						}
 					}
 
 					SceneView.RepaintAll();

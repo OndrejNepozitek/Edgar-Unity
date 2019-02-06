@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3944082e0578c544aea99ddaecb7fa1, type: 3}
-  m_Name: PayloadGenerator
+  m_Script: {fileID: 11500000, guid: bf3ecfb28a91f8b4d9d5cc228e8c41b1, type: 3}
+  m_Name: TilemapLayersHandler
   m_EditorClassIdentifier: 
-  TilemapLayersHandler: {fileID: 11400000, guid: b3d2f7be5441a9a4097e47a68529c213,
-    type: 2}
