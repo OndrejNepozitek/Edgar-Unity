@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
-using UnityEngine;
-
-namespace UnityEditor
+namespace Assets.TilemapScripts.Brushes.Prefab_Brush.Scripts.Editor
 {
-    [CreateAssetMenu(fileName = "Prefab brush", menuName = "Brushes/Prefab brush")]
+	using UnityEditor;
+	using UnityEngine;
+
+	[CreateAssetMenu(fileName = "Prefab brush", menuName = "Brushes/Prefab brush")]
 	[CustomGridBrush(false, true, false, "Prefab Brush")]
 	public class PrefabBrush : GridBrushBase
 	{

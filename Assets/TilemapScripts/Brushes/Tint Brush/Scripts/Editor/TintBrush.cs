@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-
-namespace UnityEditor
+namespace Assets.TilemapScripts.Brushes.Tint_Brush.Scripts.Editor
 {
+	using System.Linq;
+	using UnityEditor;
+	using UnityEngine;
+	using UnityEngine.Tilemaps;
+
 	[CustomGridBrush(false, false, false, "Tint Brush")]
 	public class TintBrush : GridBrushBase
 	{

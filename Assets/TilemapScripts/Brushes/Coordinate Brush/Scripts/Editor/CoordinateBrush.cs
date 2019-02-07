@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace UnityEditor
+﻿namespace Assets.TilemapScripts.Brushes.Coordinate_Brush.Scripts.Editor
 {
-    [CustomGridBrush(true, false, false, "Coordinate Brush")]
+	using UnityEditor;
+	using UnityEngine;
+
+	[CustomGridBrush(true, false, false, "Coordinate Brush")]
     [CreateAssetMenu(fileName = "New Coordinate Brush", menuName = "Brushes/Coordinate Brush")]
     public class CoordinateBrush : GridBrush {
         public int z = 0;

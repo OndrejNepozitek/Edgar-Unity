@@ -1,11 +1,10 @@
-using System;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-using Object = UnityEngine.Object;
-
-namespace UnityEditor
+namespace Assets.TilemapScripts.Brushes.GameObject_Brush.Scripts.Editor
 {
+	using System;
+	using UnityEditor;
+	using UnityEngine;
+	using Object = UnityEngine.Object;
+
 	[CustomGridBrush(true, false, false, "GameObject Brush")]
 	public class GameObjectBrush : GridBrushBase
 	{

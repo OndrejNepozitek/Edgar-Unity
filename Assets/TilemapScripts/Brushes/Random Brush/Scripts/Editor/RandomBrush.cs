@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-
-namespace UnityEditor
+﻿namespace Assets.TilemapScripts.Brushes.Random_Brush.Scripts.Editor
 {
-    [CustomGridBrush(false, true, false, "Random Brush")]
+	using System;
+	using UnityEditor;
+	using UnityEngine;
+	using UnityEngine.Tilemaps;
+
+	[CustomGridBrush(false, true, false, "Random Brush")]
     [CreateAssetMenu(fileName = "New Random Brush", menuName = "Brushes/Random Brush")]
     public class RandomBrush : GridBrush 
 	{

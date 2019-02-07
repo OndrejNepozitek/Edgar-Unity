@@ -1,6 +1,8 @@
-﻿namespace UnityEditor
+﻿namespace Assets.TilemapScripts.Tiles.Rule_Tile.Scripts.Editor
 {
-    static class CustomRuleTileMenu
+	using UnityEditor;
+
+	static class CustomRuleTileMenu
     {
         [MenuItem("Assets/Create/Custom Rule Tile Script", false, 89)]
         static void CreateCustomRuleTile()

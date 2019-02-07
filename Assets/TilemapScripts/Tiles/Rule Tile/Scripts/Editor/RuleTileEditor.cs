@@ -1,15 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Linq;
-using UnityEditorInternal;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-using Object = UnityEngine.Object;
-
-namespace UnityEditor
+namespace Assets.TilemapScripts.Tiles.Rule_Tile.Scripts.Editor
 {
-    [CustomEditor(typeof(RuleTile), true)]
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Reflection;
+	using UnityEditor;
+	using UnityEditorInternal;
+	using UnityEngine;
+	using UnityEngine.Tilemaps;
+	using Object = UnityEngine.Object;
+
+	[CustomEditor(typeof(RuleTile), true)]
     [CanEditMultipleObjects]
     internal class RuleTileEditor : Editor
     {

@@ -1,10 +1,12 @@
-using System.Linq;
-using System.Reflection;
-using UnityEngine;
-
-namespace UnityEditor
+namespace Assets.TilemapScripts.Tiles.Hexagonal_Rule_Tile.Editor
 {
-    [CustomEditor(typeof(HexagonalRuleTile), true)]
+	using System.Linq;
+	using System.Reflection;
+	using Rule_Tile.Scripts.Editor;
+	using UnityEditor;
+	using UnityEngine;
+
+	[CustomEditor(typeof(HexagonalRuleTile), true)]
     [CanEditMultipleObjects]
     internal class HexagonalRuleTileEditor : RuleTileEditor
     {

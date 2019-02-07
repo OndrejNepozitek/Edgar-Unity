@@ -1,9 +1,10 @@
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-
-namespace UnityEditor
+namespace Assets.TilemapScripts.Brushes.Tint_Brush_Smooth.Scripts.Editor
 {
+	using System.Linq;
+	using UnityEditor;
+	using UnityEngine;
+	using UnityEngine.Tilemaps;
+
 	[CustomGridBrush(false, false, false, "Tint Brush (Smooth)")]
 	public class TintBrushSmooth : GridBrushBase
 	{

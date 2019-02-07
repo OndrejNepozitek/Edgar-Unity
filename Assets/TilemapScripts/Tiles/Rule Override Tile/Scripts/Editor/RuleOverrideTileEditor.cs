@@ -1,13 +1,14 @@
-﻿using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEditor;
-using UnityEditorInternal;
-using System;
-using System.Collections.Generic;
-
-namespace UnityEditor
+﻿namespace Assets.TilemapScripts.Tiles.Rule_Override_Tile.Scripts.Editor
 {
-    [CustomEditor(typeof(RuleOverrideTile))]
+	using System;
+	using System.Collections.Generic;
+	using Rule_Tile.Scripts.Editor;
+	using UnityEditor;
+	using UnityEditorInternal;
+	using UnityEngine;
+	using UnityEngine.Tilemaps;
+
+	[CustomEditor(typeof(RuleOverrideTile))]
     internal class RuleOverrideTileEditor : Editor
     {
 

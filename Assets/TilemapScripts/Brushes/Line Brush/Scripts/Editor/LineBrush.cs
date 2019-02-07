@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Tilemaps;
-using System.Linq;
-
-namespace UnityEditor
+﻿namespace Assets.TilemapScripts.Brushes.Line_Brush.Scripts.Editor
 {
-    [CustomGridBrush(true, false, false, "Line Brush")]
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using UnityEditor;
+	using UnityEngine;
+	using UnityEngine.Tilemaps;
+
+	[CustomGridBrush(true, false, false, "Line Brush")]
     [CreateAssetMenu(fileName = "New Line Brush", menuName = "Brushes/Line Brush")]
     public class LineBrush : GridBrush
     {

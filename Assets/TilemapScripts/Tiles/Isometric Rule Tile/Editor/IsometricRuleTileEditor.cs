@@ -1,11 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using UnityEngine;
-
-namespace UnityEditor
+﻿namespace Assets.TilemapScripts.Tiles.Isometric_Rule_Tile.Editor
 {
-    [CustomEditor(typeof(IsometricRuleTile), true)]
+	using System.Linq;
+	using System.Reflection;
+	using Rule_Tile.Scripts.Editor;
+	using UnityEditor;
+	using UnityEngine;
+
+	[CustomEditor(typeof(IsometricRuleTile), true)]
     [CanEditMultipleObjects]
     internal class IsometricRuleTileEditor : RuleTileEditor
     {
