@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FixedInput
   m_EditorClassIdentifier: 
   LayoutGraph: {fileID: 11400000, guid: 379cc5e490ff7504984dd1d75d88a5fd, type: 2}
-  UseCorridors: 0
+  UseCorridors: 1

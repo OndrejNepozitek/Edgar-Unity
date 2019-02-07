@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1223b1c19527fcd4ebfa7eeb23f3e98a, type: 3}
   m_Name: GraphBasedGenerator
   m_EditorClassIdentifier: 
-  LayoutGraph: {fileID: 11400000, guid: 379cc5e490ff7504984dd1d75d88a5fd, type: 2}
-  Walls: {fileID: 1288613470811006, guid: ad2011afe0dc46a4689482925d3187d6, type: 3}
-  UseCorridors: 1
   ShowElapsedTime: 1
-  AddDoorMarkers: 1
+  AddDoorMarkers: 0
   CenterGrid: 1
   ApplyTemplate: 1

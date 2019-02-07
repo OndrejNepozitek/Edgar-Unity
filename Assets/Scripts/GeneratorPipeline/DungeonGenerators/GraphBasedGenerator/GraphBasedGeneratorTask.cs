@@ -1,24 +1,17 @@
 ﻿namespace Assets.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using System.Linq;
 	using System.Threading.Tasks;
 	using Data.Graphs;
-	using GeneralAlgorithms.DataStructures.Common;
-	using GeneratorPipeline;
 	using InputSetup;
-	using MapGeneration.Core.Doors;
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.LayoutGenerator;
 	using MapGeneration.Interfaces.Core.MapLayouts;
-	using MapGeneration.Utils;
-	using Markers;
 	using Payloads;
 	using Pipeline;
 	using RoomTemplates;
-	using RoomTemplates.Doors;
 	using RoomTemplates.Transformations;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
@@ -27,7 +20,7 @@
 	using Object = UnityEngine.Object;
 
 	public class GraphBasedGeneratorTask<TPayload> : ConfigurablePipelineTask<TPayload, GraphBasedGeneratorConfig>
-		where TPayload : class, IGeneratorPayload, IRoomInfoPayload, IGraphBasedInputPayload
+		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload
 	{
 		private List<RoomInfo<Room>> generatedRooms;
 
@@ -44,6 +37,33 @@
 			// Setup map description
 			var mapDescription = Payload.MapDescription;
 
+			// Generate layout
+			var layout = GenerateLayout(mapDescription);
+
+			// Setup room templates
+			SetupRoomTemplates(layout);
+
+			// Apply tempaltes
+			if (Config.ApplyTemplate)
+			{
+				ApplyTemplates();
+			}
+
+			// Center grid
+			if (Config.CenterGrid)
+			{
+				Payload.Tilemaps[0].CompressBounds();
+				Payload.Tilemaps[0].transform.parent.position = -Payload.Tilemaps[0].cellBounds.center;
+			}
+			
+			if (Config.ShowElapsedTime)
+			{
+				Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
+			}
+		}
+
+		protected IMapLayout<Room> GenerateLayout(MapDescription<Room> mapDescription)
+		{
 			// Setup layout generator
 			IBenchmarkableLayoutGenerator<MapDescription<Room>, IMapLayout<Room>> generator;
 			if (mapDescription.IsWithCorridors)
@@ -73,128 +93,80 @@
 				Debug.Log($"{generator.IterationsCount} iterations needed, {(generator.IterationsCount / (generator.TimeFirst / 1000d)):0} iterations per second");
 			}
 
-			var parentGameObject = new GameObject("Helper objects");
+			return layout;
+		}
+
+		protected void SetupRoomTemplates(IMapLayout<Room> layout)
+		{
+			var roomTransformations = new RoomTransformations();
+
+			// Prepare an object to hold instantiated room templates
+			var parentGameObject = new GameObject("Room template instances");
 			parentGameObject.transform.parent = Payload.GameObject.transform;
 
 			// Initialize rooms
-			generatedRooms = new List<RoomInfo<Room>>();
+			Payload.LayoutData = new Dictionary<Room, RoomInfo<Room>>();
 			foreach (var layoutRoom in layout.Rooms)
 			{
 				var roomTemplate = Payload.RoomDescriptionsToRoomTemplates[layoutRoom.RoomDescription];
-				var go = Object.Instantiate(roomTemplate);
-				go.SetActive(false);
-				go.transform.SetParent(parentGameObject.transform);
+
+				// Instatiate room template
+				var room = Object.Instantiate(roomTemplate);
+				room.SetActive(false);
+				room.transform.SetParent(parentGameObject.transform);
+
+				// Transform room template if needed
+				var transformation = layoutRoom.Transformation;
+				roomTransformations.Transform(room, transformation);
+
+				// Compute correct room position
+				// We cannot directly use layoutRoom.Position because the dungeon moves
+				// all room shapes in a way that they are in the first plane quadrant
+				// and touch the xy axes. So we have to subtract the original lowest
+				// x and y coordinates.
+				var smallestX = layoutRoom.RoomDescription.Shape.GetPoints().Min(x => x.X);
+				var smallestY = layoutRoom.RoomDescription.Shape.GetPoints().Min(x => x.Y);
+				var correctPosition = layoutRoom.Position.ToUnityIntVector3() - new Vector3Int(smallestX, smallestY, 0);
+				room.transform.position = correctPosition;
 
 				var roomInfo = new RoomInfo<Room>()
 				{
-					Room = go,
+					Room = room,
 					RoomTemplate = roomTemplate,
-					LayoutRoom = layoutRoom,
+					GeneratorData = layoutRoom,
+					Position = correctPosition,
 				};
 
-				generatedRooms.Add(roomInfo);
-			}
-
-			Payload.RoomInfos = generatedRooms;
-
-			TransformRooms();
-			AddDoorMarkers();
-
-			// Center grid
-			if (Config.CenterGrid)
-			{
-				Payload.Tilemaps[0].CompressBounds();
-				Payload.Tilemaps[0].transform.parent.position = -Payload.Tilemaps[0].cellBounds.center;
-			}
-			
-			if (Config.ShowElapsedTime)
-			{
-				Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
+				Payload.LayoutData.Add(layoutRoom.Node, roomInfo);
 			}
 		}
 
-		protected void AddDoorMarkers()
+		protected void ApplyTemplates()
 		{
-			foreach (var roomInfo in generatedRooms)
+			foreach (var pair in Payload.LayoutData)
 			{
-				foreach (var door in roomInfo.LayoutRoom.Doors)
-				{
-					foreach (var doorPoint in door.DoorLine.GetPoints())
-					{
-						var correctPosition = doorPoint.ToUnityIntVector3();
-						Payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Floor });
+				var roomInfo = pair.Value;
 
-						if (Config.AddDoorMarkers)
-						{
-							Payload.MarkerMaps[0].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.UnderDoor });
-							Payload.MarkerMaps[1].SetMarker(correctPosition, new Marker() { Type = MarkerTypes.Door });
-						}
-					}
-				}
+				ApplyTemplate(roomInfo);
 			}
 		}
 
-		// Set correct position and rotate
-		protected void TransformRooms()
+		protected void ApplyTemplate(RoomInfo<Room> roomInfo)
 		{
-			var roomTransformations = new RoomTransformations();
-			foreach (var roomInfo in generatedRooms)
-			{
-				// Rotate
-				// Rotation must precede position correction
-				var transformation = roomInfo.LayoutRoom.Transformation;
-				roomTransformations.Transform(roomInfo.Room, transformation);
+			var tilemaps = roomInfo.Room.GetComponentsInChildren<Tilemap>();
 
-				// Set correct position
-				var layoutRoomPosition = roomInfo.LayoutRoom.Position;
-
-				roomInfo.Room.GetComponentInChildren<Tilemap>().CompressBounds();
-				var correctPosition = new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) - roomInfo.Room.GetComponentInChildren<Tilemap>().cellBounds.position;
-				roomInfo.Room.transform.position = correctPosition;
-
-				TransferRoomToMarkerMap(roomInfo);
-			}
-		}
-
-		protected void TransferRoomToMarkerMap(RoomInfo<Room> roomInfo)
-		{
-			// TODO: should be done only once
-			var wallTilesList = Config.Walls.GetComponentInChildren<Tilemap>()
-				.GetAllTiles()
-				.Select(x => x.Item2)
-				.ToList();
-
-			var tilemap = roomInfo.Room.GetComponentInChildren<Tilemap>();
-			var layoutRoomPosition = roomInfo.LayoutRoom.Position;
-			var correctPosition = new Vector3Int(layoutRoomPosition.X, layoutRoomPosition.Y, 0) - tilemap.cellBounds.position;
-
-			var tilemaps = roomInfo.Room.GetComponentsInChildren<Tilemap>()
-				.OrderBy(x => x.gameObject.GetComponent<TilemapRenderer>().sortOrder).ToList();
-
-			for (int i = 0; i < tilemaps.Count; i++)
+			for (int i = 0; i < tilemaps.Length; i++)
 			{
 				var sourceTilemap = tilemaps[i];
 				var destinationTilemap = Payload.Tilemaps[i];
-				var markerMap = Payload.MarkerMaps[i];
 
-				foreach (var tileTuple in sourceTilemap.GetAllTiles())
+				foreach (var position in sourceTilemap.cellBounds.allPositionsWithin)
 				{
-					var originalTilePosition = tileTuple.Item1;
-					var tilePosition = originalTilePosition + correctPosition;
-					var tile = tileTuple.Item2;
+					var tile = sourceTilemap.GetTile(position);
 
-					if (wallTilesList.Contains(tile))
+					if (tile != null)
 					{
-						markerMap.SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Wall });
-					}
-					else
-					{
-						markerMap.SetMarker(tilePosition, new Marker() { Type = MarkerTypes.Floor });
-					}
-
-					if (Config.ApplyTemplate)
-					{
-						destinationTilemap.SetTile(tilePosition, tile);
+						destinationTilemap.SetTile(position + roomInfo.Position, tile);
 					}
 				}
 			}

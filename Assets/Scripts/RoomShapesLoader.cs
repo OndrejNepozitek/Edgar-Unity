@@ -94,26 +94,29 @@
 			return new GridPolygon(polygonPoints);
 		}
 
-		public GridPolygon GetPolygonFromTilemap(Tilemap tilemap)
+		public GridPolygon GetPolygonFromTilemap(IEnumerable<Tilemap> tilemaps)
 		{
-			return GetPolygonFromOutline(GetPolygonOutline(tilemap));
+			return GetPolygonFromOutline(GetPolygonOutline(tilemaps));
 		}
 
-		public HashSet<IntVector2> GetPolygonOutline(Tilemap tilemap)
+		public HashSet<IntVector2> GetPolygonOutline(IEnumerable<Tilemap> tilemaps)
 		{
 			var usedTiles = new HashSet<IntVector2>();
 			var borderPoints = new HashSet<IntVector2>();
 
-			foreach (var position in tilemap.cellBounds.allPositionsWithin)
+			foreach (var tilemap in tilemaps)
 			{
-				var tile = tilemap.GetTile(position);
-
-				if (tile == null)
+				foreach (var position in tilemap.cellBounds.allPositionsWithin)
 				{
-					continue;
-				}
+					var tile = tilemap.GetTile(position);
 
-				usedTiles.Add(position.ToCustomIntVector2());
+					if (tile == null)
+					{
+						continue;
+					}
+
+					usedTiles.Add(position.ToCustomIntVector2());
+				}
 			}
 
 			foreach (var tile in usedTiles)
@@ -135,9 +138,7 @@
 
 		public RoomDescription GetRoomDescription(GameObject roomTemplate)
 		{
-			var tilemap = roomTemplate.GetComponentInChildren<Tilemap>();
-			tilemap.CompressBounds();
-			var polygon = GetPolygonFromTilemap(tilemap);
+			var polygon = GetPolygonFromTilemap(roomTemplate.GetComponentsInChildren<Tilemap>());
 			var doors = roomTemplate.GetComponent<Doors>();
 
 			if (doors == null)

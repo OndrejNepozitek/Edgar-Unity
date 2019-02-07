@@ -60,8 +60,7 @@
 		{
 			var doors = target as Doors;
 			var go = doors.transform.gameObject;
-			var tilemap = go.GetComponentInChildren<Tilemap>();
-			var polygon = roomShapesLoader.GetPolygonFromTilemap(tilemap);
+			var polygon = roomShapesLoader.GetPolygonFromTilemap(go.GetComponentsInChildren<Tilemap>());
 
 			foreach (var line in polygon.GetLines())
 			{

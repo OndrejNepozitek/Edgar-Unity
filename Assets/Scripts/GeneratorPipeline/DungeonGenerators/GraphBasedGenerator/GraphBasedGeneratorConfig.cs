@@ -6,11 +6,7 @@
 	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Graph based generator", fileName = "GraphBasesGenerator")]
 	public class GraphBasedGeneratorConfig : PipelineConfig
 	{
-		public GameObject Walls;
-
 		public bool ShowElapsedTime;
-
-		public bool AddDoorMarkers;
 
 		public bool CenterGrid;
 

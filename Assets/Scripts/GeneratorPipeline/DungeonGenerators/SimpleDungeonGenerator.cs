@@ -19,16 +19,17 @@
 	{
 		public override void Process()
 		{
-			for (var x = 0; x < Config.Width; x++)
-			{
-				for (var y = 0; y < Config.Height; y++)
-				{
-					if (x % 2 == 0 || y % 2 == 0)
-					{
-						Payload.MarkerMaps[0].SetMarker(new Vector3Int(x, y, 0), new Marker() { Type = MarkerTypes.Wall });
-					}
-				}
-			}
+			// TODO:
+			//for (var x = 0; x < Config.Width; x++)
+			//{
+			//	for (var y = 0; y < Config.Height; y++)
+			//	{
+			//		if (x % 2 == 0 || y % 2 == 0)
+			//		{
+			//			Payload.MarkerMaps[0].SetMarker(new Vector3Int(x, y, 0), new Marker() { Type = MarkerTypes.Wall });
+			//		}
+			//	}
+			//}
 		}
 	}
 }

@@ -1,8 +1,6 @@
-﻿namespace Assets.Scripts.GeneratorPipeline
+﻿namespace Assets.Scripts.GeneratorPipeline.Payloads.PayloadGenerators
 {
-	using System.Collections.Generic;
 	using System.Linq;
-	using Markers;
 	using Payloads;
 	using RoomTemplates.TilemapLayers;
 	using UnityEngine;
@@ -13,31 +11,24 @@
 	{
 		public AbstractTilemapLayersHandler TilemapLayersHandler;
 
+		private static readonly string GameObjectName = "Generated dungeon";
+
 		public override object InitializePayload()
 		{
-			var gameHolderOld = GameObject.Find("Rooms holder");
+			var gameHolderOld = GameObject.Find(GameObjectName);
 
 			if (gameHolderOld != null)
 			{
 				DestroyImmediate(gameHolderOld);
 			}
 
-			var gridObject = new GameObject("Rooms holder");
+			var gridObject = new GameObject(GameObjectName);
 			gridObject.AddComponent<Grid>();
 
 			TilemapLayersHandler.InitializeTilemaps(gridObject);
 
-			var markerMaps = new List<IMarkerMap>();
-
-			// TODO: change
-			for (int i = 0; i < gridObject.GetComponentsInChildren<Tilemap>().Length; i++)
+			return new PipelinePayload()
 			{
-				markerMaps.Add(new MarkerMap());
-			}
-
-			return new GeneratorPayload()
-			{
-				MarkerMaps = markerMaps,
 				Tilemaps = gridObject.GetComponentsInChildren<Tilemap>().ToList(),
 				GameObject = gridObject
 			};

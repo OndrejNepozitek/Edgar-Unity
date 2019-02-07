@@ -45,10 +45,6 @@
 
 		public override void OnInspectorGUI()
 		{
-			//var foldoutStyle = EditorStyles.foldout;
-			//var previousStyle = foldoutStyle.fontStyle;
-			//foldoutStyle.fontStyle = FontStyle.Bold;
-
 			EditorGUILayout.Space();
 			showPipelineSettings = EditorGUILayout.Foldout(showPipelineSettings, "Generator pipeline settings");
 			
@@ -64,9 +60,9 @@
 
 			if (showAdvancedSettings)
 			{
-				//EditorGUI.indentLevel++;
+				EditorGUI.indentLevel++;
 				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PayloadGenerator)));
-				//EditorGUI.indentLevel--;
+				EditorGUI.indentLevel--;
 			}
 
 			EditorGUILayout.Space();
@@ -76,7 +72,7 @@
 				dungeonGeneratorPipeline.Generate();
 			}
 
-			//foldoutStyle.fontStyle = previousStyle;
+			serializedObject.ApplyModifiedProperties();
 		}
 	}
 }

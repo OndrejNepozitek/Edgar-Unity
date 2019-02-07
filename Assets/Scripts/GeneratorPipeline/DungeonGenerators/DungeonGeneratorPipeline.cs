@@ -1,7 +1,7 @@
 ﻿namespace Assets.Scripts.GeneratorPipeline.DungeonGenerators
 {
 	using System.Collections.Generic;
-	using GeneratorPipeline;
+	using Payloads.PayloadGenerators;
 	using Pipeline;
 	using UnityEngine;
 	using Utils;

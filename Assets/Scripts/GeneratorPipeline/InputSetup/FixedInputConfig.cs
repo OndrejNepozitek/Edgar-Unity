@@ -16,12 +16,16 @@
 	/// Pipeline task that prepares map description from a given layout graph.
 	/// </summary>
 	[CreateAssetMenu(menuName = "Dungeon generator/Input setup/Fixed input", fileName = "FixedInput")]
-	public class FixedInputTask : PipelineTask<IGraphBasedInputPayload>
+	public class FixedInputConfig : PipelineConfig
 	{
 		public LayoutGraph LayoutGraph;
 
 		public bool UseCorridors;
+	}
 
+	public class FixedInputTask<TPayload> : ConfigurablePipelineTask<TPayload, FixedInputConfig>
+		where TPayload : class, IGraphBasedGeneratorPayload, IGeneratorPayload
+	{
 		private TwoWayDictionary<IRoomDescription, GameObject> roomDescriptionsToRoomTemplates;
 
 		private RoomShapesLoader roomShapesLoader;
@@ -39,23 +43,23 @@
 			mapDescription.SetDefaultTransformations(new List<Transformation>() { Transformation.Identity });
 
 			// Setup individual rooms
-			foreach (var room in LayoutGraph.Rooms)
+			foreach (var room in Config.LayoutGraph.Rooms)
 			{
 				mapDescription.AddRoom(room);
 				SetupRoomShapesForRoom(mapDescription, room);
 			}
 
 			// Add default room shapes
-			SetupDefaultRoomShapes(mapDescription, LayoutGraph);
+			SetupDefaultRoomShapes(mapDescription, Config.LayoutGraph);
 
 			// Add corridors
-			if (UseCorridors)
+			if (Config.UseCorridors)
 			{
-				SetupCorridorRoomShapes(mapDescription, LayoutGraph);
+				SetupCorridorRoomShapes(mapDescription, Config.LayoutGraph);
 			}
 
 			// Add passages
-			foreach (var connection in LayoutGraph.Connections)
+			foreach (var connection in Config.LayoutGraph.Connections)
 			{
 				mapDescription.AddPassage(connection.From, connection.To);
 			}
@@ -78,8 +82,8 @@
 			// If the room is assigned to a Rooms group, use room templates for the group instead
 			if (room.RoomsGroupGuid != Guid.Empty)
 			{
-				roomTemplatesSets = LayoutGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).RoomTemplateSets;
-				individualRoomTemplates = LayoutGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).IndividualRoomTemplates;
+				roomTemplatesSets = Config.LayoutGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).RoomTemplateSets;
+				individualRoomTemplates = Config.LayoutGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).IndividualRoomTemplates;
 			}
 
 			var roomDescriptions = GetRoomDescriptions(roomTemplatesSets, individualRoomTemplates).Distinct();
@@ -169,7 +173,7 @@
 		{
 			if (roomDescriptionsToRoomTemplates.ContainsValue(roomTemplate))
 			{
-				return (RoomDescription) roomDescriptionsToRoomTemplates.GetByValue(roomTemplate);
+				return (RoomDescription)roomDescriptionsToRoomTemplates.GetByValue(roomTemplate);
 			}
 
 			var roomDescription = roomShapesLoader.GetRoomDescription(roomTemplate);

@@ -25,26 +25,28 @@
 
 		public override void Process()
 		{
-			for (int i = 0; i < Payload.MarkerMaps.Count; i++)
-			{
-				var markerMap = Payload.MarkerMaps[i];
-				var tilemap = Payload.Tilemaps[i];
 
-				foreach (var position in markerMap.Bounds.allPositionsWithin)
-				{
-					var marker = markerMap.GetMarker(position);
+			// TODO:
+			//for (int i = 0; i < Payload.MarkerMaps.Count; i++)
+			//{
+			//	var markerMap = Payload.MarkerMaps[i];
+			//	var tilemap = Payload.Tilemaps[i];
 
-					if (marker != null)
-					{
-						var correspondingTile = Mapping.FirstOrDefault(x => x.MarkerType == marker.Type);
+			//	foreach (var position in markerMap.Bounds.allPositionsWithin)
+			//	{
+			//		var marker = markerMap.GetMarker(position);
 
-						if (correspondingTile != null)
-						{
-							tilemap.SetTile(position, correspondingTile.Tile);
-						}
-					}
-				}
-			}
+			//		if (marker != null)
+			//		{
+			//			var correspondingTile = Mapping.FirstOrDefault(x => x.MarkerType == marker.Type);
+
+			//			if (correspondingTile != null)
+			//			{
+			//				tilemap.SetTile(position, correspondingTile.Tile);
+			//			}
+			//		}
+			//	}
+			//}
 		}
 	}
 }

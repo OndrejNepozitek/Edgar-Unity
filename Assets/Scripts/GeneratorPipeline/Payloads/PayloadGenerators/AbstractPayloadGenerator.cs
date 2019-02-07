@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.GeneratorPipeline
+﻿namespace Assets.Scripts.GeneratorPipeline.Payloads.PayloadGenerators
 {
 	using UnityEngine;
 
