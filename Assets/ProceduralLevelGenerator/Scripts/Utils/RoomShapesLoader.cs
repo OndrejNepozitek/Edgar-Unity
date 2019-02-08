@@ -18,7 +18,7 @@
 		{
 			IntVector2Helper.Top,
 			IntVector2Helper.Right,
-			IntVector2Helper.Down,
+			IntVector2Helper.Bottom,
 			IntVector2Helper.Left
 		};
 
@@ -26,7 +26,7 @@
 		{
 			IntVector2Helper.Top,
 			IntVector2Helper.Right,
-			IntVector2Helper.Down,
+			IntVector2Helper.Bottom,
 			IntVector2Helper.Left,
 			IntVector2Helper.TopLeft,
 			IntVector2Helper.TopRight,
@@ -34,61 +34,56 @@
 			IntVector2Helper.BottomRight
 		};
 
-		public GridPolygon GetPolygonFromOutline(HashSet<IntVector2> pointsOriginal)
+		public GridPolygon GetPolygonFromOutline(HashSet<IntVector2> outlinePoints, HashSet<IntVector2> allPoints)
 		{
+			var orderedDirections = new Dictionary<IntVector2, List<IntVector2>>()
+			{
+				{ IntVector2Helper.Top, new List<IntVector2>() { IntVector2Helper.Left, IntVector2Helper.Top, IntVector2Helper.Right } },
+				{ IntVector2Helper.Right, new List<IntVector2>() { IntVector2Helper.Top, IntVector2Helper.Right, IntVector2Helper.Bottom } },
+				{ IntVector2Helper.Bottom, new List<IntVector2>() { IntVector2Helper.Right, IntVector2Helper.Bottom, IntVector2Helper.Left } },
+				{ IntVector2Helper.Left, new List<IntVector2>() { IntVector2Helper.Bottom, IntVector2Helper.Left, IntVector2Helper.Top } },
+			};
+
+			var (startingPoint, startingDirection) = GetClockwiseOutlineDirection(outlinePoints, allPoints);
 			var polygonPoints = new List<IntVector2>();
-			var currentPoint = pointsOriginal.First();
-			var previousPoint = new IntVector2();
-			var firstPoint = new IntVector2();
+			var currentPoint = startingPoint + startingDirection;
+			var firstPoint = currentPoint;
+			var previousDirection = startingDirection;
 			var first = true;
 
 			while (true)
 			{
-				var neighbouringPointsDirections = new List<IntVector2>();
+				var foundNeighbour = false;
+				var currentDirection = new IntVector2();
 
-				foreach (var directionVector in DirectionVectors)
+				foreach (var directionVector in orderedDirections[previousDirection])
 				{
 					var newPoint = currentPoint + directionVector;
 
-					if (pointsOriginal.Contains(newPoint))
+					if (outlinePoints.Contains(newPoint))
 					{
-						neighbouringPointsDirections.Add(directionVector);
+						currentDirection = directionVector;
+						foundNeighbour = true;
+						break;
 					}
 				}
 
-				if (neighbouringPointsDirections.Count != 2)
-					throw new ArgumentException("Each point of the room outline must be connected to exactly two points");
+				if (!foundNeighbour)
+					throw new ArgumentException("Invalid room shape.");
 
-				var firstDirection = neighbouringPointsDirections[0];
-				var secondDirection = neighbouringPointsDirections[1];
-
-				if (firstDirection.X == 0 && secondDirection.Y == 0 || firstDirection.Y == 0 && secondDirection.X == 0)
+				if (currentDirection != previousDirection)
 				{
 					polygonPoints.Add(currentPoint);
 				}
 
+				currentPoint += currentDirection;
+				previousDirection = currentDirection;
+
 				if (first)
 				{
 					first = false;
-					firstPoint = currentPoint;
-					previousPoint = currentPoint;
-					currentPoint = currentPoint + firstDirection;
 				}
-				else
-				{
-					if (currentPoint + firstDirection == previousPoint)
-					{
-						previousPoint = currentPoint;
-						currentPoint = currentPoint + secondDirection;
-					}
-					else
-					{
-						previousPoint = currentPoint;
-						currentPoint = currentPoint + firstDirection;
-					}
-				}
-
-				if (currentPoint == firstPoint)
+				else if (currentPoint == firstPoint)
 				{
 					break;
 				}
@@ -102,15 +97,97 @@
 			return new GridPolygon(polygonPoints);
 		}
 
-		public GridPolygon GetPolygonFromTilemap(IEnumerable<Tilemap> tilemaps)
+		protected (IntVector2 point, IntVector2 direction) GetClockwiseOutlineDirection(HashSet<IntVector2> outlinePoints, HashSet<IntVector2> allPoints)
 		{
-			return GetPolygonFromOutline(GetPolygonOutline(tilemaps));
+			var startingPoint = outlinePoints.First();
+
+			foreach (var directionVectorTmp in DirectionVectors)
+			{
+				var directionVector = directionVectorTmp;
+				var firstPoint = startingPoint;
+				var secondPoint = startingPoint + directionVector;
+
+				if (!outlinePoints.Contains(secondPoint))
+					continue;
+
+				// Switch points and direction to make the computation easier.
+				// We will have to handle only Top and Right directions.
+				if (directionVector == IntVector2Helper.Bottom || directionVector == IntVector2Helper.Left)
+				{
+					var tmp = firstPoint;
+					firstPoint = secondPoint;
+					secondPoint = tmp;
+					directionVector = -1 * directionVector;
+				}
+
+				if (directionVector == IntVector2Helper.Top)
+				{
+					// Check if polygon points are on the left side or on the right side
+					var onLeftSide = allPoints.Contains(firstPoint + IntVector2Helper.Left);
+					var onRightSide = allPoints.Contains(firstPoint + IntVector2Helper.Right);
+
+					// If there are points on both sides of the edge, then the edge is not part of the outline
+					if (onLeftSide && onRightSide)
+					{
+						continue;
+					}
+
+					// If there are no points on both sides, then the room shape is not valid
+					if (!onLeftSide && !onRightSide)
+					{
+						throw new ArgumentException("Invalid room shape");
+					}
+
+					if (onLeftSide)
+					{
+						return (secondPoint, IntVector2Helper.Bottom);
+					}
+					else // if (onRightSide)
+					{
+						return (firstPoint, IntVector2Helper.Top);
+					}
+				}
+				else // if (directionVector == IntVector2Helper.Right)
+				{
+					// Check if polygon points are on the left side or on the right side
+					var onTopSide = allPoints.Contains(firstPoint + IntVector2Helper.Top);
+					var onBottomSide = allPoints.Contains(firstPoint + IntVector2Helper.Bottom);
+
+					// If there are points on both sides of the edge, then the edge is not part of the outline
+					if (onTopSide && onBottomSide)
+					{
+						continue;
+					}
+
+					// If there are no points on both sides, then the room shape is not valid
+					if (!onTopSide && !onBottomSide)
+					{
+						throw new ArgumentException("Invalid room shape");
+					}
+
+					if (onTopSide)
+					{
+						return (secondPoint, IntVector2Helper.Left);
+					}
+					else // if (onBottomSide)
+					{
+						return (firstPoint, IntVector2Helper.Right);
+					}
+				}
+			}
+
+			throw new ArgumentException("Invalid room shape");
 		}
 
-		public HashSet<IntVector2> GetPolygonOutline(IEnumerable<Tilemap> tilemaps)
+		public GridPolygon GetPolygonFromTilemap(IEnumerable<Tilemap> tilemaps)
+		{
+			var usedTiles = GetUsedTiles(tilemaps);
+			return GetPolygonFromOutline(GetPolygonOutline(usedTiles), usedTiles);
+		}
+
+		public HashSet<IntVector2> GetUsedTiles(IEnumerable<Tilemap> tilemaps)
 		{
 			var usedTiles = new HashSet<IntVector2>();
-			var borderPoints = new HashSet<IntVector2>();
 
 			foreach (var tilemap in tilemaps)
 			{
@@ -126,6 +203,18 @@
 					usedTiles.Add(position.ToCustomIntVector2());
 				}
 			}
+
+			return usedTiles;
+		}
+
+		public HashSet<IntVector2> GetPolygonOutline(IEnumerable<Tilemap> tilemaps)
+		{
+			return GetPolygonOutline(GetUsedTiles(tilemaps));
+		}
+
+		public HashSet<IntVector2> GetPolygonOutline(HashSet<IntVector2> usedTiles)
+		{
+			var borderPoints = new HashSet<IntVector2>();
 
 			foreach (var tile in usedTiles)
 			{

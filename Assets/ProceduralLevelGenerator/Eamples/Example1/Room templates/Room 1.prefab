@@ -1561,6 +1561,22 @@ MonoBehaviour:
     To: {x: -1, y: 5, z: 0}
   - From: {x: 0, y: 5, z: 0}
     To: {x: 0, y: 5, z: 0}
+  - From: {x: -3, y: 0, z: 0}
+    To: {x: -3, y: 0, z: 0}
+  - From: {x: -3, y: 3, z: 0}
+    To: {x: -3, y: 3, z: 0}
+  - From: {x: 2, y: 3, z: 0}
+    To: {x: 2, y: 3, z: 0}
+  - From: {x: 2, y: 0, z: 0}
+    To: {x: 2, y: 0, z: 0}
+  - From: {x: -2, y: -2, z: 0}
+    To: {x: -2, y: -2, z: 0}
+  - From: {x: 1, y: -2, z: 0}
+    To: {x: 1, y: -2, z: 0}
+  - From: {x: -2, y: 5, z: 0}
+    To: {x: -2, y: 5, z: 0}
+  - From: {x: 1, y: 5, z: 0}
+    To: {x: 1, y: 5, z: 0}
   SelectedMode: 0
   DoorLength: 1
   DistanceFromCorners: 0
