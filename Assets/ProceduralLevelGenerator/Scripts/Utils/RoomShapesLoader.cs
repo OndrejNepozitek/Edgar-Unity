@@ -36,53 +36,62 @@
 
 		public GridPolygon GetPolygonFromOutline(HashSet<IntVector2> pointsOriginal)
 		{
-			var points = new HashSet<IntVector2>(pointsOriginal);
 			var polygonPoints = new List<IntVector2>();
+			var currentPoint = pointsOriginal.First();
+			var previousPoint = new IntVector2();
+			var firstPoint = new IntVector2();
+			var first = true;
 
-			var currentPoint = points.First();
-			var currentDirection = IntVector2Helper.Top;
-
-			while (points.Count != 0)
+			while (true)
 			{
-				var found = 0;
-				var foundDirection = new IntVector2(0, 0);
+				var neighbouringPointsDirections = new List<IntVector2>();
 
 				foreach (var directionVector in DirectionVectors)
 				{
 					var newPoint = currentPoint + directionVector;
 
-					if (points.Contains(newPoint))
+					if (pointsOriginal.Contains(newPoint))
 					{
-						foundDirection = directionVector;
-						found++;
+						neighbouringPointsDirections.Add(directionVector);
 					}
 				}
 
-				if (pointsOriginal.Count - points.Count < 2)
-				{
-					if (found != 2)
-						throw new ArgumentException("The first point must be connected to exactly two points");
+				if (neighbouringPointsDirections.Count != 2)
+					throw new ArgumentException("Each point of the room outline must be connected to exactly two points");
 
+				var firstDirection = neighbouringPointsDirections[0];
+				var secondDirection = neighbouringPointsDirections[1];
+
+				if (firstDirection.X == 0 && secondDirection.Y == 0 || firstDirection.Y == 0 && secondDirection.X == 0)
+				{
+					polygonPoints.Add(currentPoint);
+				}
+
+				if (first)
+				{
+					first = false;
+					firstPoint = currentPoint;
+					previousPoint = currentPoint;
+					currentPoint = currentPoint + firstDirection;
 				}
 				else
 				{
-					if (found != 1)
-						throw new ArgumentException("More than one point is connected");
-
-					if (currentDirection != foundDirection)
+					if (currentPoint + firstDirection == previousPoint)
 					{
-						polygonPoints.Add(currentPoint);
+						previousPoint = currentPoint;
+						currentPoint = currentPoint + secondDirection;
+					}
+					else
+					{
+						previousPoint = currentPoint;
+						currentPoint = currentPoint + firstDirection;
 					}
 				}
 
-				currentPoint += foundDirection;
-				currentDirection = foundDirection;
-				points.Remove(currentPoint);
-			}
-
-			if (polygonPoints.Count % 2 == 1)
-			{
-				polygonPoints.Add(currentPoint);
+				if (currentPoint == firstPoint)
+				{
+					break;
+				}
 			}
 
 			if (!IsClockwiseOriented(polygonPoints))
