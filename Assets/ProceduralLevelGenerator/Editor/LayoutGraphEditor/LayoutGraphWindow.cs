@@ -249,38 +249,29 @@
 
 		protected void OnEndConnection(RoomNode roomNode, Event e)
 		{
-			if (connectionFrom != null)
+			if (connectionFrom == null)
+				return;
+
+			Debug.Log("OnEndConnection");
+
+			var from = connectionFrom;
+			var to = roomNode;
+
+			var connection = CreateInstance<Connection>();
+			connection.From = connectionFrom.Data;
+			connection.To = roomNode.Data;
+
+			if (from != to && !connectionNodes.Any(x => (x.From == @from && x.To == to) || (x.To == @from && x.From == to)))
 			{
-				Debug.Log("OnEndConnection");
-
-				var from = connectionFrom;
-				var to = roomNode;
-
-				foreach (var dataConnection in Data.Connections)
-				{
-					if ((dataConnection.From == from.Data && dataConnection.To == to.Data)
-					    || (dataConnection.From == to.Data && dataConnection.To == from.Data))
-					{
-						return;
-					}
-				}
-
-				var connection = CreateInstance<Connection>();
-				connection.From = connectionFrom.Data;
-				connection.To = roomNode.Data;
-
 				Data.Connections.Add(connection);
 				AssetDatabase.AddObjectToAsset(connection, Data);
 
-				if (!connectionNodes.Any(x => (x.From == from && x.To == to) || (x.To == from && x.From == to)))
-				{
-					CreateConnection(connection, from, to);
-				}
-				
-				connectionFrom = null;
-				connectionProgress = null;
-				GUI.changed = true;
+				CreateConnection(connection, @from, to);
 			}
+				
+			connectionFrom = null;
+			connectionProgress = null;
+			GUI.changed = true;
 		}
 
 		protected RoomNode CreateNode(Room data)
