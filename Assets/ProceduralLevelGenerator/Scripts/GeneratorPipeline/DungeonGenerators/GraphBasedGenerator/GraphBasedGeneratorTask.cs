@@ -20,7 +20,7 @@
 	using Object = UnityEngine.Object;
 
 	public class GraphBasedGeneratorTask<TPayload> : ConfigurablePipelineTask<TPayload, GraphBasedGeneratorConfig>
-		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload
+		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
 	{
 		private List<RoomInfo<Room>> generatedRooms;
 
@@ -69,11 +69,13 @@
 			if (mapDescription.IsWithCorridors)
 			{
 				var gen = UnityLayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors(mapDescription.CorridorsOffsets, corridorNodesCreator: new CorridorsNodeCreator(mapDescription));
+				gen.InjectRandomGenerator(Payload.Random);
 				generator = gen;
 			}
 			else
 			{
 				var gen = UnityLayoutGeneratorFactory.GetDefaultChainBasedGenerator<Room>();
+				gen.InjectRandomGenerator(Payload.Random);
 				generator = gen;
 			}
 

@@ -8,8 +8,9 @@
 	using RoomTemplates;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
+	using Random = System.Random;
 
-	public class PipelinePayload : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload
+	public class PipelinePayload : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload
 	{
 		public GameObject GameObject { get; set; }
 
@@ -26,5 +27,7 @@
 		public Tilemap FloorTilemap => Tilemaps[1];
 
 		public Tilemap CollideableTilemap => Tilemaps[2];
+
+		public Random Random { get; set; }
 	}
 }

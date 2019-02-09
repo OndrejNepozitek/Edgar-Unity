@@ -27,7 +27,7 @@
 
 		private bool hasSecondPoint;
 
-		private RoomShapesLoader roomShapesLoader = new RoomShapesLoader();
+		private readonly RoomShapesLoader roomShapesLoader = new RoomShapesLoader();
 
 		public void OnEnable()
 		{
@@ -77,6 +77,16 @@
 		private void DrawSpecifPositions()
 		{
 			var doors = target as Doors;
+
+			foreach (var door in doors.DoorsList)
+			{
+				DrawOutline(door.From, door.To, Color.red);
+			}
+
+			if (highlightInfo != null)
+			{
+				DrawOutline(highlightInfo.From, highlightInfo.To, Color.yellow);
+			}
 
 			if (addSpecificDoorPositions)
 			{
@@ -129,7 +139,7 @@
 						to.x = from.x;
 					}
 
-					DrawOutline(from, to, Color.yellow);
+					DrawOutline(from, to, Color.yellow, false);
 
 					if (hasSecondPoint)
 					{
@@ -155,19 +165,9 @@
 					SceneView.RepaintAll();
 				}
 			}
-
-			foreach (var door in doors.DoorsList)
-			{
-				DrawOutline(door.From, door.To, Color.red);
-			}
-
-			if (highlightInfo != null)
-			{
-				DrawOutline(highlightInfo.From, highlightInfo.To, Color.yellow);
-			}
 		}
 
-		private void DrawOutline(Vector3 from, Vector3 to, Color outlineColor)
+		private void DrawOutline(Vector3 from, Vector3 to, Color outlineColor, bool drawDiagonal = true)
 		{
 			var doors = target as Doors;
 
@@ -195,15 +195,32 @@
 				{
 					to.y += 1;
 				}
-
-				Handles.DrawSolidRectangleWithOutline(new Rect(from, to - from), Color.clear, outlineColor);
 			}
 			else
 			{
 				to = from + new Vector3(1, 1);
-
-				Handles.DrawSolidRectangleWithOutline(new Rect(from, to - from), Color.clear, outlineColor);
 			}
+
+			Handles.DrawSolidRectangleWithOutline(new Rect(from, to - from), Color.clear, outlineColor);
+
+			if (drawDiagonal)
+			{
+				DrawDiagonal(from, to, outlineColor);
+			}
+		}
+
+		protected void DrawDiagonal(Vector3 from, Vector3 to, Color color)
+		{
+			var smallestX = Math.Min(from.x, to.x);
+			var smallestY = Math.Min(from.y, to.y);
+
+			var largestX = Math.Max(from.x, to.x);
+			var largestY = Math.Max(from.y, to.y);
+
+			var oldColor = Handles.color;
+			Handles.color = color;
+			Handles.DrawLine(new Vector3(smallestX, smallestY), new Vector3(largestX, largestY));
+			Handles.color = oldColor;
 		}
 
 		public override void OnInspectorGUI()

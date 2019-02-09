@@ -8,6 +8,7 @@
 
 	public class DungeonGeneratorPipeline : MonoBehaviour
 	{
+		[Expandable]
 		public AbstractPayloadGenerator PayloadGenerator;
 
 		[HideInInspector]
