@@ -1,16 +1,15 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.TilemapLayers.Editor
 {
 	using RoomTemplateInitializers;
-	using TilemapLayers;
 	using UnityEditor;
 	using UnityEngine;
 
-	[CustomEditor(typeof(ConfigurableRoomTemplateInitializer))]
-	public class RoomTemaplteInitializerInspector : Editor
+	[CustomEditor(typeof(DefaultRoomTemplateInitializer))]
+	public class DefaultRoomTemaplteInitializerInspector : Editor
 	{
 		public override void OnInspectorGUI()
 		{
-			var roomTemplateInitializer = (ConfigurableRoomTemplateInitializer) target;
+			var roomTemplateInitializer = (DefaultRoomTemplateInitializer)target;
 
 			DrawDefaultInspector();
 
