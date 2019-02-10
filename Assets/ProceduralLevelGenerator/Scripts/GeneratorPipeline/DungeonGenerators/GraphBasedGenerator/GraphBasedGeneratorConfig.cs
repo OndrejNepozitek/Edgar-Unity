@@ -8,8 +8,8 @@
 	{
 		public bool ShowElapsedTime;
 
-		public bool CenterGrid;
+		public bool CenterGrid = true;
 
-		public bool ApplyTemplate;
+		public bool ApplyTemplate = true;
 	}
 }

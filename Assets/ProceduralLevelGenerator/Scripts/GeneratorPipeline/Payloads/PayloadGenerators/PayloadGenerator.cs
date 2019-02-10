@@ -7,12 +7,12 @@
 	using UnityEngine.Tilemaps;
 	using Random = System.Random;
 
-	[CreateAssetMenu(menuName = "Dungeon generator/Payload generator")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Payload generator", fileName = "PayloadGenerator")]
 	public class PayloadGenerator : AbstractPayloadGenerator
 	{
 		public AbstractTilemapLayersHandler TilemapLayersHandler;
 
-		public bool UseRandomSeed;
+		public bool UseRandomSeed = true;
 
 		public int RandomGeneratorSeed;
 
