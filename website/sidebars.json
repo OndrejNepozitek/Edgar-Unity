@@ -1,8 +1,10 @@
 {
   "docs": {
-    "Docusaurus": ["doc1"],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
+    "Introduction": ["doc1"],
+    "Basics": ["basics_introduction", "basics_templates", "basics_layoutGraphs"],
+    "Generator pipeline": ["generatorPipeline_tilemapLayers"],
+    "Examples": ["doc3"],
+    "API": ["doc3"]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]

@@ -14,3 +14,40 @@
 
 @media only screen and (min-width: 1500px) {
 }
+
+.templates-examples {
+    font-size: 0px;
+    text-align: center;
+}
+
+.templates-examples p {
+    display: inline-block;
+}
+
+.templates-examples img {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    margin: 0px 15px;
+}
+
+.templates-examples-image-wrapper {
+    display: inline-block;
+}
+
+.templates-examples-image-wrapper div {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+img + em {
+    text-align: center;
+    display: block;
+    margin: 10px 0px;
+    font-size: 16px;
+}
+
+.creating-tilemaps img {
+    max-width: 600px;
+}

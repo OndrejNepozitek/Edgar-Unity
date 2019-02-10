@@ -5,6 +5,18 @@
     "previous": "Previous",
     "tagline": "A website for testing",
     "docs": {
+      "basics_introduction": {
+        "title": "Introduction",
+        "sidebar_label": "Introduction"
+      },
+      "basics_layoutGraphs": {
+        "title": "Layout graphs",
+        "sidebar_label": "Layout graphs"
+      },
+      "basics_templates": {
+        "title": "Room templates",
+        "sidebar_label": "Room templates"
+      },
       "doc1": {
         "title": "Latin-ish",
         "sidebar_label": "Example Page"
@@ -20,6 +32,10 @@
       },
       "doc5": {
         "title": "Fifth Document"
+      },
+      "generatorPipeline_tilemapLayers": {
+        "title": "Tilemap layers",
+        "sidebar_label": "Tilemap layers"
       }
     },
     "links": {
@@ -29,9 +45,12 @@
       "Blog": "Blog"
     },
     "categories": {
-      "Docusaurus": "Docusaurus",
-      "First Category": "First Category",
-      "Second Category": "Second Category"
+      "Introduction": "Introduction",
+      "Basics": "Basics",
+      "Generator pipeline": "Generator pipeline",
+      "Examples": "Examples",
+      "API": "API",
+      "First Category": "First Category"
     }
   },
   "pages-strings": {
