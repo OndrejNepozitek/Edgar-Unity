@@ -4,6 +4,7 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
+	[Obsolete("Marker maps should not be used.")]
 	public class MarkerMap : IMarkerMap
 	{
 		protected readonly Dictionary<Vector3Int, Marker> Markers = new Dictionary<Vector3Int, Marker>();
