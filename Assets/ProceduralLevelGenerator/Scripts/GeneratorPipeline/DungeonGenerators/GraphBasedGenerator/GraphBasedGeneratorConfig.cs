@@ -11,5 +11,7 @@
 		public bool CenterGrid = true;
 
 		public bool ApplyTemplate = true;
+
+		public int Timeout = 10000;
 	}
 }

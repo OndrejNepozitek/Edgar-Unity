@@ -1,5 +1,6 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Diagnostics;
 	using System.Linq;
@@ -64,6 +65,11 @@
 
 		protected IMapLayout<Room> GenerateLayout(MapDescription<Room> mapDescription)
 		{
+			if (Config.Timeout <= 0)
+			{
+				throw new ArgumentException("Timeout must be a positive number.");
+			}
+
 			// Setup layout generator
 			IBenchmarkableLayoutGenerator<MapDescription<Room>, IMapLayout<Room>> generator;
 			if (mapDescription.IsWithCorridors)
@@ -82,7 +88,7 @@
 			// Run generator
 			IMapLayout<Room> layout = null;
 			var task = Task.Run(() => layout = generator.GetLayouts(mapDescription, 1)[0]);
-			var taskCompleted = task.Wait(10000);
+			var taskCompleted = task.Wait(Config.Timeout);
 
 			if (!taskCompleted)
 			{
