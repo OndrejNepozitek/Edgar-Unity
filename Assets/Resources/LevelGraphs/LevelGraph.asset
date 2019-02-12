@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8400baee4cafd34091c865089a167b2, type: 3}
-  m_Name: LayoutGraph
+  m_Name: LevelGraph
   m_EditorClassIdentifier: 
   Rooms:
   - {fileID: 114813815660382910}
@@ -74,11 +74,11 @@ MonoBehaviour:
     serializedGuid: 010eda5e6743594883567df9402596fc
   DefaultRoomTemplateSets:
   - {fileID: 11400000, guid: 3870582a4d416aa42a3aa40568a410db, type: 2}
-  - {fileID: 11400000, guid: 25dab4d71248aa24fb62b21510d10f78, type: 2}
+  - {fileID: 0}
   DefaultIndividualRoomTemplates: []
   CorridorRoomTemplateSets:
   - {fileID: 11400000, guid: 570613520a299bb4f83433949911239e, type: 2}
-  CorridorIndividualRoomTemplate: []
+  CorridorIndividualRoomTemplates: []
 --- !u!114 &114003342937918666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   Position: {x: 245, y: 169}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114050722410684908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   Position: {x: 401, y: 380}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114051432514612880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   Position: {x: 768, y: 358}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114079792522353696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   Position: {x: 587, y: 401}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114164011645288102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +205,7 @@ MonoBehaviour:
   Position: {x: 872, y: 252}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114175537968078698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ MonoBehaviour:
   Position: {x: 950, y: 88}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114233137370000480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -323,7 +323,7 @@ MonoBehaviour:
   Position: {x: 543, y: 239}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114273576455473476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ MonoBehaviour:
   Position: {x: 423, y: 35}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114309544568055666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ MonoBehaviour:
   Position: {x: 425, y: 472}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114344844116503794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
   Position: {x: 893, y: -1}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114356154472941316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   Position: {x: 573, y: 509}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114366615354051382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
   Position: {x: 669, y: 158}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114378307517010482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,7 +467,7 @@ MonoBehaviour:
   Position: {x: 440, y: 119}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114449706971856712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +526,7 @@ MonoBehaviour:
   Position: {x: 684, y: 352}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114504269973896350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
   Position: {x: 1007, y: -4}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114508720349416880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,7 +588,7 @@ MonoBehaviour:
   Position: {x: 781, y: 88}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114543367332018902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -605,7 +605,7 @@ MonoBehaviour:
   Position: {x: 502, y: 454}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114549011149298740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,7 +636,7 @@ MonoBehaviour:
   Position: {x: 783, y: 247}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114590135180144260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +681,7 @@ MonoBehaviour:
   Position: {x: 648, y: 522}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114728204450378962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
   Position: {x: 624, y: 309}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114791524537255656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -757,7 +757,7 @@ MonoBehaviour:
   Position: {x: 338, y: 65}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114813815660382910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,7 +774,7 @@ MonoBehaviour:
   Position: {x: 531, y: 145}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114819152117620902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -805,7 +805,7 @@ MonoBehaviour:
   Position: {x: 351, y: 277}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114847209453152640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ MonoBehaviour:
   Position: {x: 455, y: 292}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114898227642515092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,7 +881,7 @@ MonoBehaviour:
   Position: {x: 724, y: 9}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114986451536131558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -898,4 +898,4 @@ MonoBehaviour:
   Position: {x: 153, y: 241}
   RoomTemplateSets: []
   IndividualRoomTemplates: []
-  serializedGuid: 
+  serializedGuid: 00000000000000000000000000000000

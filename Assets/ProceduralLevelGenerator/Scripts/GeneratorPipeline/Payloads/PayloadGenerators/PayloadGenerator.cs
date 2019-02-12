@@ -16,7 +16,11 @@
 
 		public int RandomGeneratorSeed;
 
+		public bool PrintUsedSeed = true;
+
 		private static readonly string GameObjectName = "Generated dungeon";
+
+		private readonly Random seedsGenerator = new Random();
 
 		public override object InitializePayload()
 		{
@@ -32,11 +36,18 @@
 
 			TilemapLayersHandler.InitializeTilemaps(gridObject);
 
+			var seed = UseRandomSeed ? seedsGenerator.Next() : RandomGeneratorSeed;
+
+			if (PrintUsedSeed)
+			{
+				Debug.Log($"Random generator seed: {seed}");
+			}
+
 			return new PipelinePayload()
 			{
 				Tilemaps = gridObject.GetComponentsInChildren<Tilemap>().ToList(),
 				GameObject = gridObject,
-				Random = UseRandomSeed ? new Random() : new Random(RandomGeneratorSeed),
+				Random = new Random(seed),
 			};
 		}
 	}

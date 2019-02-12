@@ -30,9 +30,9 @@
 			var stopwatch = new Stopwatch();
 			stopwatch.Start();
 
-			if (Config.ShowElapsedTime)
+			if (Config.ShowDebugInfo)
 			{
-				Debug.Log("--- Script started ---"); 
+				Debug.Log("--- Generator started ---"); 
 			}
 
 			// Setup map description
@@ -57,7 +57,7 @@
 				Payload.Tilemaps[0].transform.parent.position = -Payload.Tilemaps[0].cellBounds.center;
 			}
 			
-			if (Config.ShowElapsedTime)
+			if (Config.ShowDebugInfo)
 			{
 				Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
 			}
@@ -95,7 +95,7 @@
 				throw new DungeonGeneratorException("Timeout was reached when generating the layout");
 			}
 
-			if (Config.ShowElapsedTime)
+			if (Config.ShowDebugInfo)
 			{
 				Debug.Log($"Layout generated in {generator.TimeFirst / 1000f:F} seconds");
 				Debug.Log($"{generator.IterationsCount} iterations needed, {(generator.IterationsCount / (generator.TimeFirst / 1000d)):0} iterations per second");

@@ -6,7 +6,7 @@
 	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Graph based generator", fileName = "GraphBasedGenerator")]
 	public class GraphBasedGeneratorConfig : PipelineConfig
 	{
-		public bool ShowElapsedTime;
+		public bool ShowDebugInfo = true;
 
 		public bool CenterGrid = true;
 
