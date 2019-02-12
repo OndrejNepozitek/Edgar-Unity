@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TilemapLayersHandler: {fileID: 11400000, guid: 07e713832d06ed64696090a55b0eab8b,
     type: 2}
-  UseRandomSeed: 0
+  UseRandomSeed: 1
+  RandomGeneratorSeed: 0
   PrintUsedSeed: 1
-  RandomGeneratorSeed: 207177791
