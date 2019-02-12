@@ -161,6 +161,8 @@
 
 		protected void ApplyTemplate(RoomInfo<Room> roomInfo)
 		{
+			DeleteNonNullTiles(roomInfo);
+
 			var tilemaps = roomInfo.Room.GetComponentsInChildren<Tilemap>();
 
 			for (int i = 0; i < tilemaps.Length; i++)
@@ -178,6 +180,44 @@
 					}
 				}
 			}
+		}
+
+		/// <summary>
+		/// Finds all non null tiles in a given room and then takes these positions and deletes
+		/// all such tiles on all tilemaps of the dungeon. The reason for this is that we want to
+		/// replace all existing tiles with new tiles from the room. 
+		/// </summary>
+		/// <param name="roomInfo"></param>
+		protected void DeleteNonNullTiles(RoomInfo<Room> roomInfo)
+		{
+			var tilemaps = roomInfo.Room.GetComponentsInChildren<Tilemap>();
+			var tilesToRemove = new HashSet<Vector3Int>();
+
+			// Find non-null tiles acrros all tilemaps of the room
+			foreach (var sourceTilemap in tilemaps)
+			{
+				foreach (var position in sourceTilemap.cellBounds.allPositionsWithin)
+				{
+					var tile = sourceTilemap.GetTile(position);
+
+					if (tile != null)
+					{
+						tilesToRemove.Add(position);
+					}
+				}
+			}
+
+			// Delete all found tiles acrros all tilemaps of the dungeon
+			for (int i = 0; i < tilemaps.Length; i++)
+			{
+				var destinationTilemap = Payload.Tilemaps[i];
+
+				foreach (var position in tilesToRemove)
+				{
+					destinationTilemap.SetTile(position + roomInfo.Position, null);
+				}
+			}
+
 		}
 	}
 }
