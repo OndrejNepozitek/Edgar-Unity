@@ -4,8 +4,8 @@
 	using Rooms;
 	using UnityEngine;
 
-	[CreateAssetMenu(fileName = "LayoutGraph", menuName = "Dungeon generator/Layout graph")]
-	public class LayoutGraph : ScriptableObject
+	[CreateAssetMenu(fileName = "LevelGraph", menuName = "Dungeon generator/Level graph")]
+	public class LevelGraph : ScriptableObject
 	{
 		[HideInInspector]
 		public List<Room> Rooms = new List<Room>();
@@ -21,6 +21,6 @@
 
 		public List<RoomTemplatesSet> CorridorRoomTemplateSets = new List<RoomTemplatesSet>();
 
-		public List<GameObject> CorridorIndividualRoomTemplate = new List<GameObject>();
+		public List<GameObject> CorridorIndividualRoomTemplates = new List<GameObject>();
 	}
 }

@@ -19,7 +19,7 @@
 	[CreateAssetMenu(menuName = "Dungeon generator/Input setup/Fixed input", fileName = "FixedInput")]
 	public class FixedInputConfig : PipelineConfig
 	{
-		public LayoutGraph LayoutGraph;
+		public LevelGraph LevelGraph;
 
 		public bool UseCorridors;
 	}
@@ -38,29 +38,34 @@
 
 		protected void SetupMapDescription()
 		{
+			if (Config.LevelGraph == null)
+			{
+				throw new ArgumentException("LevelGraph must not be null.");
+			}
+
 			roomDescriptionsToRoomTemplates = new TwoWayDictionary<IRoomDescription, GameObject>();
 			roomShapesLoader = new RoomShapesLoader();
 			var mapDescription = new MapDescription<Room>();
 			mapDescription.SetDefaultTransformations(new List<Transformation>() { Transformation.Identity });
 
 			// Setup individual rooms
-			foreach (var room in Config.LayoutGraph.Rooms)
+			foreach (var room in Config.LevelGraph.Rooms)
 			{
 				mapDescription.AddRoom(room);
 				SetupRoomShapesForRoom(mapDescription, room);
 			}
 
 			// Add default room shapes
-			SetupDefaultRoomShapes(mapDescription, Config.LayoutGraph);
+			SetupDefaultRoomShapes(mapDescription, Config.LevelGraph);
 
 			// Add corridors
 			if (Config.UseCorridors)
 			{
-				SetupCorridorRoomShapes(mapDescription, Config.LayoutGraph);
+				SetupCorridorRoomShapes(mapDescription, Config.LevelGraph);
 			}
 
 			// Add passages
-			foreach (var connection in Config.LayoutGraph.Connections)
+			foreach (var connection in Config.LevelGraph.Connections)
 			{
 				mapDescription.AddPassage(connection.From, connection.To);
 			}
@@ -83,8 +88,8 @@
 			// If the room is assigned to a Rooms group, use room templates for the group instead
 			if (room.RoomsGroupGuid != Guid.Empty)
 			{
-				roomTemplatesSets = Config.LayoutGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).RoomTemplateSets;
-				individualRoomTemplates = Config.LayoutGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).IndividualRoomTemplates;
+				roomTemplatesSets = Config.LevelGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).RoomTemplateSets;
+				individualRoomTemplates = Config.LevelGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).IndividualRoomTemplates;
 			}
 
 			var roomDescriptions = GetRoomDescriptions(roomTemplatesSets, individualRoomTemplates).Distinct();
@@ -100,10 +105,10 @@
 		/// These are used if a room does not have any room shapes assigned.
 		/// </summary>
 		/// <param name="mapDescription"></param>
-		/// <param name="layoutGraph"></param>
-		protected void SetupDefaultRoomShapes(MapDescription<Room> mapDescription, LayoutGraph layoutGraph)
+		/// <param name="levelGraph"></param>
+		protected void SetupDefaultRoomShapes(MapDescription<Room> mapDescription, LevelGraph levelGraph)
 		{
-			var roomDescriptions = GetRoomDescriptions(layoutGraph.DefaultRoomTemplateSets, layoutGraph.DefaultIndividualRoomTemplates).Distinct();
+			var roomDescriptions = GetRoomDescriptions(levelGraph.DefaultRoomTemplateSets, levelGraph.DefaultIndividualRoomTemplates).Distinct();
 
 			foreach (var roomDescription in roomDescriptions)
 			{
@@ -115,11 +120,16 @@
 		/// Setups corridor room shapes.
 		/// </summary>
 		/// <param name="mapDescription"></param>
-		/// <param name="layoutGraph"></param>
-		protected void SetupCorridorRoomShapes(MapDescription<Room> mapDescription, LayoutGraph layoutGraph)
+		/// <param name="levelGraph"></param>
+		protected void SetupCorridorRoomShapes(MapDescription<Room> mapDescription, LevelGraph levelGraph)
 		{
 			var corridorLengths = new List<int>();
-			var roomDescriptions = GetRoomDescriptions(layoutGraph.CorridorRoomTemplateSets, layoutGraph.CorridorIndividualRoomTemplate).Distinct();
+			var roomDescriptions = GetRoomDescriptions(levelGraph.CorridorRoomTemplateSets, levelGraph.CorridorIndividualRoomTemplates).Distinct().ToList();
+
+			if (roomDescriptions.Count == 0)
+			{
+				throw new ArgumentException("There must be at least 1 corridor room template if corridors are enabled.");
+			}
 
 			foreach (var roomDescription in roomDescriptions)
 			{

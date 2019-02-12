@@ -15,7 +15,7 @@
 		
 			DrawDefaultInspector();
 
-			var layoutGraph = LayoutGraphWindow.StaticData; 
+			var layoutGraph = LevelGraphWindow.StaticData; 
 			var room = (Room)target;
 
 			if (layoutGraph != null)

@@ -3,7 +3,7 @@
 	using Pipeline;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Graph based generator", fileName = "GraphBasesGenerator")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Generators/Graph based generator", fileName = "GraphBasedGenerator")]
 	public class GraphBasedGeneratorConfig : PipelineConfig
 	{
 		public bool ShowElapsedTime;

@@ -5,8 +5,8 @@
 	using UnityEditor;
 	using UnityEngine;
 
-	[CustomEditor(typeof(LayoutGraph))]
-	public class LayoutGraphInspector : Editor
+	[CustomEditor(typeof(LevelGraph))]
+	public class LevelGraphInspector : Editor
 	{
 		private bool defaultRoomTemplatesFoldout;
 		private bool corridorRoomTemplatesFoldout;
@@ -20,8 +20,8 @@
 			if (defaultRoomTemplatesFoldout)
 			{
 				EditorGUI.indentLevel++;
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LayoutGraph.DefaultRoomTemplateSets)), true);
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LayoutGraph.DefaultIndividualRoomTemplates)), true);
+				// EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.DefaultRoomTemplateSets)), true);
+				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.DefaultIndividualRoomTemplates)), true);
 				EditorGUI.indentLevel--;
 			}
 
@@ -30,18 +30,18 @@
 			if (corridorRoomTemplatesFoldout)
 			{
 				EditorGUI.indentLevel++;
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LayoutGraph.CorridorRoomTemplateSets)), true);
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LayoutGraph.CorridorIndividualRoomTemplate)), true);
+				// EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.CorridorRoomTemplateSets)), true);
+				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.CorridorIndividualRoomTemplates)), true);
 				EditorGUI.indentLevel--;
 			}
 
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LayoutGraph.RoomsGroups)), true);
+			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.RoomsGroups)), true);
 
 			if (GUILayout.Button("Open graph editor"))
 			{
 				var type = Type.GetType("UnityEditor.GameView,UnityEditor");
-				var window = EditorWindow.GetWindow<LayoutGraphWindow>("Graph editor", type);
-				window.Data = (LayoutGraph) target;
+				var window = EditorWindow.GetWindow<LevelGraphWindow>("Graph editor", type);
+				window.Data = (LevelGraph) target;
 				window.Initialize();
 				window.Show();
 			}

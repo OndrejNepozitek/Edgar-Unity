@@ -9,9 +9,9 @@
 	using UnityEngine;
 	using RoomNode = EditorNodes.RoomNode;
 
-	public class LayoutGraphWindow : NodeBasedEditorBase
+	public class LevelGraphWindow : NodeBasedEditorBase
 	{
-		public LayoutGraph Data { get; set; }
+		public LevelGraph Data { get; set; }
 
 		private List<RoomNode> roomNodes = new List<RoomNode>();
 
@@ -33,7 +33,7 @@
 
 		private bool doNotDrag;
 
-		public static LayoutGraph StaticData { get; set; }
+		public static LevelGraph StaticData { get; set; }
 
 		public void Initialize()
 		{
@@ -139,19 +139,19 @@
 				}
 			}
 
-			if (GUILayout.Button(new GUIContent("Select layout graph"), EditorStyles.toolbarButton, GUILayout.Width(150)))
+			if (GUILayout.Button(new GUIContent("Select level graph"), EditorStyles.toolbarButton, GUILayout.Width(150)))
 			{
 				// Create a window picker control ID
 				currentPickerWindow = GUIUtility.GetControlID(FocusType.Passive) + 100;
 
 				// Use the ID you just created
-				EditorGUIUtility.ShowObjectPicker<LayoutGraph>(null, false, string.Empty, currentPickerWindow);
+				EditorGUIUtility.ShowObjectPicker<LevelGraph>(null, false, string.Empty, currentPickerWindow);
 			}
 
 			if (Event.current.commandName == "ObjectSelectorUpdated" && EditorGUIUtility.GetObjectPickerControlID() == currentPickerWindow)
 			{
 				currentPickerWindow = -1;
-				Data = EditorGUIUtility.GetObjectPickerObject() as LayoutGraph;
+				Data = EditorGUIUtility.GetObjectPickerObject() as LevelGraph;
 
 				if (Data != null)
 				{

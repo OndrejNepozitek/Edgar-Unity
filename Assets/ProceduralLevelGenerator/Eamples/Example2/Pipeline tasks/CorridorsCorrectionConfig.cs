@@ -12,7 +12,7 @@
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
-	[CreateAssetMenu(menuName = "Dungeon generator/Example 1/Corridors correction task", fileName = "CorridorsCorrectionTask")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Examples/Example 2/Corridors correction task", fileName = "CorridorsCorrectionTask")]
 	public class CorridorsCorrectionConfig : PipelineConfig
 	{
 		public GameObject CorrectionTilemap;

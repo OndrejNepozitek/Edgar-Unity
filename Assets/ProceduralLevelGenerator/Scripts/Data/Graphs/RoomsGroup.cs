@@ -10,6 +10,7 @@
 	{
 		public string Name = "New group";
 
+		[HideInInspector]
 		public List<RoomTemplatesSet> RoomTemplateSets = new List<RoomTemplatesSet>();
 
 		public List<GameObject> IndividualRoomTemplates = new List<GameObject>();
@@ -17,6 +18,7 @@
 		[HideInInspector]
 		public Guid Guid = Guid.NewGuid();
 
+		[HideInInspector]
 		[SerializeField]
 		private byte[] serializedGuid;
 
