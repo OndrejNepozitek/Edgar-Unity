@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.LayoutGraphEditor.EditorNodes
+﻿namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor.EditorNodes
 {
 	using System;
 	using NodeBasedEditor;

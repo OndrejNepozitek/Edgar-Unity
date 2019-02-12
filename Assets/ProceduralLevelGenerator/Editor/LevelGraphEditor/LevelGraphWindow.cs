@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.LayoutGraphEditor
+﻿namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 {
 	using System.Collections.Generic;
 	using System.Linq;
