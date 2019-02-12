@@ -33,4 +33,6 @@ Level graphs must be **connected**. We say that a graph is connected if there is
 ![](assets/not_connected_level_graph.png)
 *Example of a level graph that is not connected.*
 
-## Working with level graphs
+## Creating level graphs
+
+## Room templates

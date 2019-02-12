@@ -99,6 +99,8 @@ const siteConfig = {
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity',
+
+  gaTrackingId: 'UA-31904365-15',
 };
 
 module.exports = siteConfig;
