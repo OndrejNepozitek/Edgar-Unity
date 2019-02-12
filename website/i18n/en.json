@@ -3,52 +3,63 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "A website for testing",
+    "tagline": "A configurable Unity plugin for procedural generation of 2D dungeons",
     "docs": {
-      "basics_introduction": {
-        "title": "Introduction",
-        "sidebar_label": "Introduction"
+      "basics_generatorSetup": {
+        "title": "Generator setup"
       },
-      "basics_layoutGraphs": {
-        "title": "Layout graphs",
-        "sidebar_label": "Layout graphs"
+      "basics_levelGraphs": {
+        "title": "Level graphs"
+      },
+      "basics_performanceTips": {
+        "title": "Performance tips"
       },
       "basics_templates": {
         "title": "Room templates",
         "sidebar_label": "Room templates"
       },
-      "doc1": {
-        "title": "Latin-ish",
-        "sidebar_label": "Example Page"
+      "basics": {
+        "title": "Basics"
       },
-      "doc2": {
-        "title": "document number 2"
+      "example1": {
+        "title": "Example 1"
       },
-      "doc3": {
-        "title": "This is document number 3"
-      },
-      "doc4": {
-        "title": "Other Document"
-      },
-      "doc5": {
-        "title": "Fifth Document"
+      "example2": {
+        "title": "Example 2"
       },
       "generatorPipeline_tilemapLayers": {
         "title": "Tilemap layers",
         "sidebar_label": "Tilemap layers"
+      },
+      "generatorPipeline": {
+        "title": "Generator pipeline"
+      },
+      "guides_corridorsCorrection": {
+        "title": "Corridors correction"
+      },
+      "guides_proceduralLevelGraphs": {
+        "title": "Procedural level graphs"
+      },
+      "installation": {
+        "title": "Installation"
+      },
+      "introduction": {
+        "title": "Introduction"
+      },
+      "motivation": {
+        "title": "Motivation"
       }
     },
     "links": {
       "Docs": "Docs",
-      "API": "API",
-      "Help": "Help",
-      "Blog": "Blog"
+      "Github": "Github"
     },
     "categories": {
       "Introduction": "Introduction",
       "Basics": "Basics",
-      "Generator pipeline": "Generator pipeline",
       "Examples": "Examples",
+      "Generator pipeline": "Generator pipeline",
+      "Guides": "Guides",
       "API": "API",
       "First Category": "First Category"
     }

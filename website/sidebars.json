@@ -1,10 +1,11 @@
 {
   "docs": {
-    "Introduction": ["doc1"],
-    "Basics": ["basics_introduction", "basics_templates", "basics_layoutGraphs"],
-    "Generator pipeline": ["generatorPipeline_tilemapLayers"],
-    "Examples": ["doc3"],
-    "API": ["doc3"]
+    "Introduction": ["introduction", "motivation", "installation"],
+    "Basics": ["basics", "basics_templates", "basics_levelGraphs", "basics_generatorSetup", "basics_performanceTips"],
+    "Examples": ["example1", "example2"],
+    "Generator pipeline": ["generatorPipeline", "generatorPipeline_tilemapLayers"],
+    "Guides": ["guides_proceduralLevelGraphs", "guides_corridorsCorrection"],
+    "API": []
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]
