@@ -47,14 +47,11 @@
 		public override void OnInspectorGUI()
 		{
 			EditorGUILayout.Space();
-			showPipelineSettings = EditorGUILayout.Foldout(showPipelineSettings, "Generator pipeline settings");
-			
-			if (showPipelineSettings)
-			{
-				serializedObject.Update();
-				list.DoLayoutList();
-				serializedObject.ApplyModifiedProperties();
-			}
+			EditorGUILayout.Space();
+
+			serializedObject.Update();
+			list.DoLayoutList();
+			serializedObject.ApplyModifiedProperties();
 
 			EditorGUILayout.Space();
 

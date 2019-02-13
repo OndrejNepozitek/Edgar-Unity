@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6260e18d48262f543abdc86ae5f41e54, type: 3}
-  m_Name: FixedInput
+  m_Script: {fileID: 11500000, guid: 1223b1c19527fcd4ebfa7eeb23f3e98a, type: 3}
+  m_Name: DungeonGeneratorTaskExample2
   m_EditorClassIdentifier: 
-  LevelGraph: {fileID: 11400000, guid: 639134a5fbbda6545b6bd44629323554, type: 2}
-  UseCorridors: 1
+  ShowDebugInfo: 1
+  CenterGrid: 1
+  ApplyTemplate: 1
+  Timeout: 10000

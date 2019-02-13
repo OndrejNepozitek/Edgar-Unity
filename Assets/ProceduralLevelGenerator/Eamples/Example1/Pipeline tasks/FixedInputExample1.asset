@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf3ecfb28a91f8b4d9d5cc228e8c41b1, type: 3}
-  m_Name: TilemapLayersHandler
+  m_Script: {fileID: 11500000, guid: 6260e18d48262f543abdc86ae5f41e54, type: 3}
+  m_Name: FixedInputExample1
   m_EditorClassIdentifier: 
+  LevelGraph: {fileID: 11400000, guid: 639134a5fbbda6545b6bd44629323554, type: 2}
+  UseCorridors: 1

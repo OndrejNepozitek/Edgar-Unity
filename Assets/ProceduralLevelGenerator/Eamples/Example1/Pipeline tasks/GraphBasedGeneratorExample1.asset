@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1223b1c19527fcd4ebfa7eeb23f3e98a, type: 3}
-  m_Name: DungeonGeneratorTaskExample1
+  m_Name: GraphBasedGeneratorExample1
   m_EditorClassIdentifier: 
-  ShowElapsedTime: 1
+  ShowDebugInfo: 1
   CenterGrid: 1
   ApplyTemplate: 1
+  Timeout: 10000
