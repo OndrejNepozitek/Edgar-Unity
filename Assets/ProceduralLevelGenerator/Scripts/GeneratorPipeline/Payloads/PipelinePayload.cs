@@ -3,6 +3,7 @@
 	using System.Collections.Generic;
 	using Data.Graphs;
 	using GeneralAlgorithms.DataStructures.Common;
+	using Interfaces;
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.MapDescriptions;
 	using RoomTemplates;

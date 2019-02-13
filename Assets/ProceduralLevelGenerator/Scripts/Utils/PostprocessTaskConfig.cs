@@ -1,6 +1,7 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
 	using GeneratorPipeline.Payloads;
+	using GeneratorPipeline.Payloads.Interfaces;
 	using Pipeline;
 	using UnityEngine;
 

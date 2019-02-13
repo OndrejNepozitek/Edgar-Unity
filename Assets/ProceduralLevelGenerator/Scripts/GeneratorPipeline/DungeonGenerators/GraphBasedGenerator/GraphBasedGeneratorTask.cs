@@ -11,6 +11,7 @@
 	using MapGeneration.Interfaces.Core.LayoutGenerator;
 	using MapGeneration.Interfaces.Core.MapLayouts;
 	using Payloads;
+	using Payloads.Interfaces;
 	using Pipeline;
 	using RoomTemplates;
 	using RoomTemplates.Transformations;

@@ -6,6 +6,7 @@
 	using GeneralAlgorithms.DataStructures.Common;
 	using Scripts.Data.Graphs;
 	using Scripts.GeneratorPipeline.Payloads;
+	using Scripts.GeneratorPipeline.Payloads.Interfaces;
 	using Scripts.GeneratorPipeline.RoomTemplates;
 	using Scripts.Pipeline;
 	using Scripts.Utils;

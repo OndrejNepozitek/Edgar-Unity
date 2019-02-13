@@ -9,6 +9,7 @@
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.MapDescriptions;
 	using Payloads;
+	using Payloads.Interfaces;
 	using Pipeline;
 	using UnityEngine;
 	using Utils;
