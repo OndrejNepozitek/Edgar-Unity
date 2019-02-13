@@ -20113,7 +20113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63f9fc64718261f4ca70200730781b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PayloadGenerator: {fileID: 11400000, guid: c54f2fe6f5fdf5542a5f75eebc781b73, type: 2}
+  PayloadInitializer: {fileID: 11400000, guid: c54f2fe6f5fdf5542a5f75eebc781b73, type: 2}
   PipelineItems:
   - {fileID: 11400000, guid: ca7ca0aed2cc4254daac54d6bf6b22bf, type: 2}
   - {fileID: 11400000, guid: 665b35b8137523f4aa70d97c2baefc3f, type: 2}

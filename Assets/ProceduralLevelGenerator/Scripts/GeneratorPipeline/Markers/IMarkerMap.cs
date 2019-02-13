@@ -1,7 +1,9 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Markers
 {
+	using System;
 	using UnityEngine;
 
+	[Obsolete("Marker maps should not be used.")]
 	public interface IMarkerMap
 	{
 		BoundsInt Bounds { get; set; }

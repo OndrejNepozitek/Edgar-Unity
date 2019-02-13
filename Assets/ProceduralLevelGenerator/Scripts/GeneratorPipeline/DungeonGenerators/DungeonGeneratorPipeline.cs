@@ -1,15 +1,15 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators
 {
 	using System.Collections.Generic;
-	using Payloads.PayloadGenerators;
+	using Payloads.PayloadInitializers;
 	using Pipeline;
 	using UnityEngine;
 	using Utils;
 
 	public class DungeonGeneratorPipeline : MonoBehaviour
 	{
-		[Expandable]
-		public AbstractPayloadGenerator PayloadGenerator;
+		[ExpandableNotFoldable]
+		public AbstractPayloadInitializer PayloadInitializer;
 
 		[HideInInspector]
 		[ExpandableNotFoldable]
@@ -18,7 +18,7 @@
 		public void Generate()
 		{
 			var pipelineRunner = new PipelineRunner();
-			pipelineRunner.Run(PipelineItems, PayloadGenerator.InitializePayload());
+			pipelineRunner.Run(PipelineItems, PayloadInitializer.InitializePayload());
 		}
 	}
 }

@@ -1,14 +1,14 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.PayloadGenerators
+﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.PayloadInitializers
 {
-	using System;
 	using System.Linq;
 	using RoomTemplates.TilemapLayers;
+	using UnityEditor;
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 	using Random = System.Random;
 
-	[CreateAssetMenu(menuName = "Dungeon generator/Payload generator", fileName = "PayloadGenerator")]
-	public class PayloadGenerator : AbstractPayloadGenerator
+	[CreateAssetMenu(menuName = "Dungeon generator/Payload initializer", fileName = "PayloadInitializer")]
+	public class PayloadInitializer : AbstractPayloadInitializer
 	{
 		public AbstractTilemapLayersHandler TilemapLayersHandler;
 
@@ -34,7 +34,15 @@
 			var gridObject = new GameObject(GameObjectName);
 			gridObject.AddComponent<Grid>();
 
-			TilemapLayersHandler.InitializeTilemaps(gridObject);
+			var tilemapLayersHandler = TilemapLayersHandler;
+
+			if (tilemapLayersHandler == null)
+			{
+				tilemapLayersHandler = AssetDatabase
+					.LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
+			}
+
+			tilemapLayersHandler.InitializeTilemaps(gridObject);
 
 			var seed = UseRandomSeed ? seedsGenerator.Next() : RandomGeneratorSeed;
 

@@ -41,7 +41,10 @@ MonoBehaviour:
   - {fileID: 51494900918682340, guid: 04df2001d42e0b74796f82593c442b31, type: 3}
   - {fileID: 973631761240943980, guid: f5ff56d9ad8040b4e88db15e77975252, type: 3}
   CorridorRoomTemplateSets: []
-  CorridorIndividualRoomTemplates: []
+  CorridorIndividualRoomTemplates:
+  - {fileID: 8948931599054243687, guid: fddfeebeeec50c946957bd3492143bcd, type: 3}
+  - {fileID: 2919116758800987119, guid: e1977307219417e4fa3dde5ca48be1f8, type: 3}
+  - {fileID: 4740616030248318969, guid: 95499e6c3795a054091b659f0e54fc61, type: 3}
 --- !u!114 &114051383476142906
 MonoBehaviour:
   m_ObjectHideFlags: 0

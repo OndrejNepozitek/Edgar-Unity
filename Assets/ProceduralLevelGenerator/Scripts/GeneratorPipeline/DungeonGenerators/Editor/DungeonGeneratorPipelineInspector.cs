@@ -57,16 +57,11 @@
 			}
 
 			EditorGUILayout.Space();
-			showAdvancedSettings = EditorGUILayout.Foldout(showAdvancedSettings, "Advanced settings");
 
-			if (showAdvancedSettings)
-			{
-				EditorGUI.indentLevel++;
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PayloadGenerator)));
-				EditorGUI.indentLevel--;
-			}
+			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PayloadInitializer)));
 
 			EditorGUILayout.Space();
+
 			if (GUILayout.Button("Generate"))
 			{
 				var dungeonGeneratorPipeline = (DungeonGeneratorPipeline)target;
