@@ -1,11 +1,8 @@
-﻿namespace Assets.ProceduralLevelGenerator.Eamples.Example1.Pipeline_tasks
+﻿namespace Assets.ProceduralLevelGenerator.Examples.Example2.Pipeline_tasks
 {
-	using System;
 	using System.Collections.Generic;
 	using System.Linq;
-	using GeneralAlgorithms.DataStructures.Common;
 	using Scripts.Data.Graphs;
-	using Scripts.GeneratorPipeline.Payloads;
 	using Scripts.GeneratorPipeline.Payloads.Interfaces;
 	using Scripts.GeneratorPipeline.RoomTemplates;
 	using Scripts.Pipeline;
@@ -44,84 +41,22 @@
 
 		protected void CorrectCorridor(Room room, RoomInfo<Room> roomInfo)
 		{
-			var generatorData = roomInfo.GeneratorData;
-			var doors = generatorData.Doors;
-
-			if (doors[0].DoorLine.Length > 0)
+			if (!roomInfo.Doors[0].IsHorizontal)
 			{
-				if (doors[0].DoorLine.GetDirection() != OrthogonalLine.Direction.Left &&
-				    doors[0].DoorLine.GetDirection() != OrthogonalLine.Direction.Right)
-				{
-					CorrectHorizontalCorridor(roomInfo);
-					return;
-				}
-			}
-			else
-			{
-				if (doors[0].DoorLine.From.X < doors[1].DoorLine.From.X)
-				{
-					CorrectHorizontalCorridor(roomInfo);
-					return;
-				}
+				return;
 			}
 
-			if (doors[0].DoorLine.From.Y > doors[1].DoorLine.From.Y)
-			{
-				CorrectBottomConnection(roomInfo, doors[1].DoorLine);
-				CorrectTopConnection(roomInfo, doors[0].DoorLine);
-			}
-			else
-			{
-				CorrectBottomConnection(roomInfo, doors[0].DoorLine);
-				CorrectTopConnection(roomInfo, doors[1].DoorLine);
-			}
-
-			//foreach (var tilemap in Payload.Tilemaps)
-			//{
-			//	tilemap.SetTile(doors[0].DoorLine.From.ToUnityIntVector3(), null);
-			//	tilemap.SetTile(doors[1].DoorLine.From.ToUnityIntVector3(), null);
-
-			//	tilemap.SetTile(doors[0].DoorLine.To.ToUnityIntVector3(), null);
-			//	tilemap.SetTile(doors[1].DoorLine.To.ToUnityIntVector3(), null);
-			//}
-		}
-
-		protected void CorrectHorizontalCorridor(RoomInfo<Room> roomInfo)
-		{
-			var doors = roomInfo.GeneratorData.Doors;
-			CorrectHorizontalCorridor(doors[0].DoorLine);
-			CorrectHorizontalCorridor(doors[1].DoorLine);
-		}
-
-		protected void CorrectHorizontalCorridor(OrthogonalLine doorLine)
-		{
-			var from = doorLine.From.ToUnityIntVector3();
-			var to = doorLine.To.ToUnityIntVector3();
-
-			if (from.y > to.y)
-			{
-				var tmp = from;
-				from = to;
-				to = tmp;
-			}
-
-			var tilemap = Payload.Tilemaps[2];
-
-			for (int i = 0; i < doorLine.Length; i++)
-			{
-				var tilePosition = from + Vector3Int.up * (i + 1);
-				tilemap.SetTile(tilePosition, null);
-			}
+			CorrectVerticalCorridor(roomInfo);
 		}
 
 		protected void CorrectVerticalCorridor(RoomInfo<Room> roomInfo)
 		{
-			var doors = roomInfo.GeneratorData.Doors;
+			var doors = roomInfo.Doors;
 
-			if (doors[0].DoorLine.From.Y > doors[1].DoorLine.From.Y)
+			if (doors[0].FacingDirection == Vector2Int.down)
 			{
-				CorrectBottomConnection(roomInfo, doors[1].DoorLine);
 				CorrectTopConnection(roomInfo, doors[0].DoorLine);
+				CorrectBottomConnection(roomInfo, doors[1].DoorLine);
 			}
 			else
 			{
@@ -132,8 +67,8 @@
 
 		protected void CorrectBottomConnection(RoomInfo<Room> roomInfo, OrthogonalLine doorLine)
 		{
-			var from = doorLine.From.ToUnityIntVector3();
-			var to = doorLine.To.ToUnityIntVector3();
+			var from = doorLine.From;
+			var to = doorLine.To;
 			
 			if (from.x > to.x)
 			{
@@ -181,8 +116,8 @@
 
 		protected void CorrectTopConnection(RoomInfo<Room> roomInfo, OrthogonalLine doorLine)
 		{
-			var from = doorLine.From.ToUnityIntVector3();
-			var to = doorLine.To.ToUnityIntVector3();
+			var from = doorLine.From;
+			var to = doorLine.To;
 
 			if (from.x > to.x)
 			{

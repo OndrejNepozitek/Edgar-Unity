@@ -11,7 +11,7 @@
 	[CustomEditor(typeof(Doors))]
 	public class DoorsInspector : Editor
 	{
-		private DoorInfo highlightInfo;
+		private DoorInfoEditor highlightInfo;
 
 		private SerializedProperty doorsLength;
 
@@ -146,7 +146,7 @@
 						hasFirstPoint = false;
 						hasSecondPoint = false;
 
-						var newDoorInfo = new DoorInfo()
+						var newDoorInfo = new DoorInfoEditor()
 						{
 							From = from,
 							To = to,

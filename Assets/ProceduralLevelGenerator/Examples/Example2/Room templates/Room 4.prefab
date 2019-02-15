@@ -143,6 +143,14 @@ MonoBehaviour:
     To: {x: -3, y: 3, z: 0}
   - From: {x: -3, y: 4, z: 0}
     To: {x: -3, y: 4, z: 0}
+  - From: {x: 7, y: 0, z: 0}
+    To: {x: 7, y: 0, z: 0}
+  - From: {x: -3, y: 0, z: 0}
+    To: {x: -3, y: 0, z: 0}
+  - From: {x: 7, y: 0, z: 0}
+    To: {x: 7, y: 1, z: 0}
+  - From: {x: -3, y: 0, z: 0}
+    To: {x: -3, y: 1, z: 0}
   SelectedMode: 0
   DoorLength: 3
   DistanceFromCorners: 1

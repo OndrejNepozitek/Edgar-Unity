@@ -7,12 +7,13 @@
 	using MapGeneration.Interfaces.Core.Doors;
 	using UnityEngine;
 	using Utils;
+	using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
 	[ExecuteInEditMode]
 	public class Doors : MonoBehaviour
 	{
 		[HideInInspector]
-		public List<DoorInfo> DoorsList = new List<DoorInfo>();
+		public List<DoorInfoEditor> DoorsList = new List<DoorInfoEditor>();
 
 		[HideInInspector]
 		public int SelectedMode;
@@ -25,7 +26,7 @@
 
 		public void Transform(Transformation transformation)
 		{
-			var newDoorsList = new List<DoorInfo>();
+			var newDoorsList = new List<DoorInfoEditor>();
 
 			foreach (var doorInfo in DoorsList)
 			{
@@ -33,7 +34,7 @@
 				var newFrom = doorInfo.From.RoundToUnityIntVector3().ToCustomIntVector2().Transform(transformation);
 				var newTo = doorInfo.To.RoundToUnityIntVector3().ToCustomIntVector2().Transform(transformation);
 
-				newDoorsList.Add(new DoorInfo()
+				newDoorsList.Add(new DoorInfoEditor()
 				{
 					From = new Vector3(newFrom.X, newFrom.Y),
 					To = new Vector3(newTo.X, newTo.Y),

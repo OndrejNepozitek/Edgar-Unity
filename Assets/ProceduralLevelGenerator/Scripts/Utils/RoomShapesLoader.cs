@@ -256,7 +256,7 @@
 
 			if (doorPositions.Count != 2
 			    || doorPositions.Any(x => x.Line.Length != 0)
-			    || doorPositions[0].Line.GetDirection() != OrthogonalLine.GetOppositeDirection(doorPositions[1].Line.GetDirection()))
+			    || doorPositions[0].Line.GetDirection() != GeneralAlgorithms.DataStructures.Common.OrthogonalLine.GetOppositeDirection(doorPositions[1].Line.GetDirection()))
 			{
 				throw new ArgumentException("Corridors must currently have exactly 2 door positions that are on the opposite sides of the corridor.");
 			}
@@ -264,7 +264,7 @@
 			var firstLine = doorPositions[0].Line;
 			var secondLine = doorPositions[1].Line;
 
-			if (firstLine.GetDirection() == OrthogonalLine.Direction.Bottom || firstLine.GetDirection() == OrthogonalLine.Direction.Top)
+			if (firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Bottom || firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Top)
 			{
 				return Math.Abs(firstLine.From.X - secondLine.From.X);
 			}

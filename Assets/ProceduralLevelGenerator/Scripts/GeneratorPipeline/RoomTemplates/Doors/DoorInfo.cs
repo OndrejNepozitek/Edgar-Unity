@@ -1,12 +1,24 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Doors
 {
-	using System;
 	using UnityEngine;
+	using Utils;
 
-	[Serializable]
-	public class DoorInfo
+	public class DoorInfo<TRoom>
 	{
-		public Vector3 From;
-		public Vector3 To;
+		public OrthogonalLine DoorLine { get; }
+
+		public Vector2Int FacingDirection { get; }
+
+		public bool IsHorizontal { get; }
+
+		public TRoom ConnectedRoom { get; }
+
+		public DoorInfo(OrthogonalLine doorLine, Vector2Int facingDirection, TRoom connectedRoom)
+		{
+			DoorLine = doorLine;
+			FacingDirection = facingDirection;
+			ConnectedRoom = connectedRoom;
+			IsHorizontal = FacingDirection == Vector2Int.up || FacingDirection == Vector2Int.down;
+		}
 	}
 }
