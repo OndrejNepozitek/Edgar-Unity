@@ -47,11 +47,11 @@
 
 			switch (doors.SelectedMode)
 			{
-				case 0:
+				case 1:
 					DrawSpecifPositions();
 					break;
 
-				case 1:
+				case 0:
 					DrawOverlap();
 					break;
 			}
@@ -230,18 +230,18 @@
 			var doors = target as Doors;
 
 			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
-			selectedModeProp.intValue = GUILayout.SelectionGrid(doors.SelectedMode, new[] {"Specific positions", "Overlap mode"}, 2);
+			selectedModeProp.intValue = GUILayout.SelectionGrid(doors.SelectedMode, new[] { "Simple mode", "Specific positions"}, 2);
 			var shouldRedraw = false;
 
 			EditorGUILayout.Space();
 
-			if (selectedModeProp.intValue == 1)
+			if (selectedModeProp.intValue == 0)
 			{
 				EditorGUILayout.IntSlider(doorsLength, 1, 10, "Door length");
 				EditorGUILayout.IntSlider(distanceFromCorners, 0, 10, "Corner distance");
 			}
 
-			if (selectedModeProp.intValue == 0)
+			if (selectedModeProp.intValue == 1)
 			{
 				addSpecificDoorPositions = GUILayout.Toggle(addSpecificDoorPositions, "Add door positions", GUI.skin.button);
 

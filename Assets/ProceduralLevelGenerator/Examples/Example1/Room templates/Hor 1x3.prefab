@@ -610,7 +610,7 @@ MonoBehaviour:
     To: {x: -2, y: 0, z: 0}
   - From: {x: -2, y: -2, z: 0}
     To: {x: -2, y: -2, z: 0}
-  SelectedMode: 0
+  SelectedMode: 1
   DoorLength: 1
   DistanceFromCorners: 1
 --- !u!1 &7228749263730364157

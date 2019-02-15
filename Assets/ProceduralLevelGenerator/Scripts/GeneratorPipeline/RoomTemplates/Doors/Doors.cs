@@ -46,7 +46,7 @@
 
 		public IDoorMode GetDoorMode()
 		{
-			if (SelectedMode == 0)
+			if (SelectedMode == 1)
 			{
 				var doorLines = new List<OrthogonalLine>();
 
@@ -60,7 +60,7 @@
 				return new SpecificPositionsMode(doorLines);
 			}
 
-			if (SelectedMode == 1)
+			if (SelectedMode == 0)
 			{
 				return new OverlapMode(DoorLength - 1, DistanceFromCorners);
 			}

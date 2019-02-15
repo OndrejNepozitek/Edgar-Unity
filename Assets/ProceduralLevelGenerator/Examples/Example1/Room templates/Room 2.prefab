@@ -1359,6 +1359,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorsList: []
-  SelectedMode: 1
+  SelectedMode: 0
   DoorLength: 1
   DistanceFromCorners: 2

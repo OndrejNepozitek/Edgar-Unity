@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoorsList: []
-  SelectedMode: 1
+  SelectedMode: 0
   DoorLength: 1
   DistanceFromCorners: 2
 --- !u!1 &420467177636282652
@@ -1194,8 +1194,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 2, y: -3, z: 0}
     second:
-      m_TileIndex: 7
-      m_TileSpriteIndex: 7
+      m_TileIndex: 11
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1415,15 +1415,15 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 5030fb353e5278a47a961630587f6092, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 8cec6ce68d8d7b24d8ff01aa9a3e4c72, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 47be2ba1871c1034aa677824eaab5500, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 27112a475e911da4884eb500678bd8b2, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: d6d67297aaf372142be6094d0708a5b4, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: cd206e175f3903b4a980197394c2e78c, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: f54ee492d706077439fd40b7d49c597d, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 866529499ba9d514088e9acaa672f3fa, type: 2}
@@ -1456,15 +1456,15 @@ Tilemap:
     m_Data: {fileID: 21300054, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300056, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300058, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 3
     m_Data: {fileID: 21300048, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300032, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300034, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 21300036, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300038, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
