@@ -27,12 +27,18 @@
       "example2": {
         "title": "Example 2"
       },
+      "fixedInput": {
+        "title": "Fixed input"
+      },
       "generatorPipeline_tilemapLayers": {
         "title": "Tilemap layers",
         "sidebar_label": "Tilemap layers"
       },
       "generatorPipeline": {
         "title": "Generator pipeline"
+      },
+      "graphBasedGenerator": {
+        "title": "Graph based generator"
       },
       "guides_corridorsCorrection": {
         "title": "Corridors correction"
@@ -48,6 +54,12 @@
       },
       "motivation": {
         "title": "Motivation"
+      },
+      "pipelinePayload": {
+        "title": "Pipeline payload"
+      },
+      "pipelineTasks": {
+        "title": "Pipeline tasks"
       }
     },
     "links": {
@@ -59,6 +71,7 @@
       "Basics": "Basics",
       "Examples": "Examples",
       "Generator pipeline": "Generator pipeline",
+      "Pipeline tasks": "Pipeline tasks",
       "Guides": "Guides",
       "API": "API",
       "First Category": "First Category"

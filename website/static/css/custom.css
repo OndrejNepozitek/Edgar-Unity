@@ -1,44 +1,26 @@
 /* your custom css */
 
-@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
-}
-
-@media only screen and (min-width: 1024px) {
-}
-
-@media only screen and (max-width: 1023px) {
-}
-
-@media only screen and (min-width: 1400px) {
-}
-
-@media only screen and (min-width: 1500px) {
-}
-
-.templates-examples {
+.two-columns {
     font-size: 0px;
     text-align: center;
 }
 
-.templates-examples p {
+.two-columns p {
     display: inline-block;
 }
 
-.templates-examples img {
-    height: 300px;
-    width: 300px;
+.two-columns img {
+    height: 370px;
+    width: 370px;
     object-fit: cover;
-    margin: 0px 15px;
 }
 
-.templates-examples-image-wrapper {
+.two-columns > div:nth-child(2) img {
+    margin-left: 15px;
+}
+
+.two-columns > div {
     display: inline-block;
-}
-
-.templates-examples-image-wrapper div {
-    font-size: 16px;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 img + em {
@@ -51,3 +33,35 @@ img + em {
 .creating-tilemaps img {
     max-width: 600px;
 }
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+    .two-columns img {
+        height: 312px;
+        width: 312px;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    .two-columns img {
+        height: 312px;
+        width: 312px;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .two-columns img {
+        height: 312px;
+        width: 312px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .two-columns img {
+        height: 380px;
+        width: 380px;
+    }
+}
+

@@ -3,7 +3,8 @@
     "Introduction": ["introduction", "motivation", "installation"],
     "Basics": ["basics", "basics_templates", "basics_levelGraphs", "basics_generatorSetup", "basics_performanceTips"],
     "Examples": ["example1", "example2"],
-    "Generator pipeline": ["generatorPipeline", "generatorPipeline_tilemapLayers"],
+    "Generator pipeline": ["generatorPipeline", "pipelinePayload", "pipelineTasks", "generatorPipeline_tilemapLayers"],
+    "Pipeline tasks": ["fixedInput", "graphBasedGenerator"],
     "Guides": ["guides_proceduralLevelGraphs", "guides_corridorsCorrection"],
     "API": []
   },

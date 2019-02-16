@@ -39,7 +39,7 @@ To make it easier to create room templates, there is a *DefaultRoomTeplateInitia
 ![room layout](assets/creating_tilemaps.gif)
 *Initializing tilemaps using the DefaultRoomTeplateInitializer script*
 
-<div>
+</div>
 
 If you need a different structure of tilemaps, you can override the default behaviour. See [Tilemap layers](generatorPipeline_tilemapLayers.md).
 
@@ -58,66 +58,57 @@ The underlying algorithm works with polygons, not tilemaps, tiles and sprites. W
 
 I will not go into formal definitions. The image below should be self-explanatory.
 
-<div class="templates-examples">
-
-<div class="templates-examples-image-wrapper">
+<div class="two-columns">
+<div>
 
 ![](assets/one_connected_component_nok.png)
 *Wrong*
 
 </div>
-
-<div class="templates-examples-image-wrapper">
+<div>
 
 ![](assets/one_connected_component_ok.png)
 *Correct*
 
 </div>
-
 </div>
 
 #### Each tile atleast two neighbours
 
 Each tile must be connected to at least two neigbouring tiles. In the image below, both tiles in the upper row are connected to only a single neighbour so the room shape is not valid. If we need these two tiles, we can simly fill the upper row with *empty* or transparent tiles.
 
-<div class="templates-examples">
-
-<div class="templates-examples-image-wrapper">
+<div class="two-columns">
+<div>
 
 ![](assets/at_least_two_neighbours_nok.png)
 *Wrong*
 
 </div>
-
-<div class="templates-examples-image-wrapper">
+<div>
 
 ![](assets/at_least_two_neighbours_ok.png)
 *Correct*
 
 </div>
-
 </div>
 
 #### Without holes
 
 There must be no holes in room layouts (a null tile surrounded by non-null tiles). Again, we can fill such holes with *empty* or transparent tiles if we need them there.
 
-<div class="templates-examples">
-
-<div class="templates-examples-image-wrapper">
+<div class="two-columns">
+<div>
 
 ![](assets/no_holes_nok.png)
 *Wrong*
 
 </div>
-
-<div class="templates-examples-image-wrapper">
+<div>
 
 ![](assets/no_holes_ok.png)
 *Correct*
 
 </div>
-
 </div>
 
 > **NOTE:** This is only a limitation of the current algorithm for computing room shapes from room layouts and the constraint will be probably dropped in the future.

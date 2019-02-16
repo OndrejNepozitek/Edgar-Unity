@@ -101,6 +101,10 @@ const siteConfig = {
   repoUrl: 'https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity',
 
   gaTrackingId: 'UA-31904365-15',
+  usePrism: ['csharp'],
+  highlight: {
+    theme: 'dracula'
+  }
 };
 
 module.exports = siteConfig;
