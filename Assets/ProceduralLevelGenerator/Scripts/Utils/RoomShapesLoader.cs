@@ -214,6 +214,11 @@
 
 		public HashSet<IntVector2> GetPolygonOutline(HashSet<IntVector2> usedTiles)
 		{
+			if (usedTiles.Count == 0)
+			{
+				throw new ArgumentException("There are no used tiles");
+			}
+
 			var borderPoints = new HashSet<IntVector2>();
 
 			foreach (var tile in usedTiles)

@@ -40,10 +40,11 @@
 
 				if (roomInfo.IsCorridor)
 				{
-					foreach (var doorInfo in roomInfo.Doors)
+					if (Payload.Random.NextDouble() < Config.Probability)
 					{
-						if (Payload.Random.NextDouble() < Config.Probability)
+						foreach (var doorInfo in roomInfo.Doors)
 						{
+
 							if (doorInfo.IsHorizontal)
 							{
 								AddHorizontalDoors(doorInfo);

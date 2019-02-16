@@ -177,7 +177,16 @@
 
 		protected void ApplyTemplates()
 		{
-			foreach (var pair in Payload.LayoutData)
+			// Non-corridor rooms
+			foreach (var pair in Payload.LayoutData.Where(x => !x.Value.IsCorridor))
+			{
+				var roomInfo = pair.Value;
+
+				ApplyTemplate(roomInfo);
+			}
+
+			// Corridor rooms
+			foreach (var pair in Payload.LayoutData.Where(x => x.Value.IsCorridor))
 			{
 				var roomInfo = pair.Value;
 

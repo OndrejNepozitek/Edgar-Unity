@@ -61,16 +61,24 @@
 		{
 			var doors = target as Doors;
 			var go = doors.transform.gameObject;
-			var polygon = roomShapesLoader.GetPolygonFromTilemap(go.GetComponentsInChildren<Tilemap>());
 
-			foreach (var line in polygon.GetLines())
+			try
 			{
-				if (line.Length - 2 * doors.DistanceFromCorners < doors.DoorLength - 1)
-					continue;
+				var polygon = roomShapesLoader.GetPolygonFromTilemap(go.GetComponentsInChildren<Tilemap>());
 
-				var doorLine = line.Shrink(doors.DistanceFromCorners);
+				foreach (var line in polygon.GetLines())
+				{
+					if (line.Length - 2 * doors.DistanceFromCorners < doors.DoorLength - 1)
+						continue;
 
-				DrawOutline(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3(), Color.red);
+					var doorLine = line.Shrink(doors.DistanceFromCorners);
+
+					DrawOutline(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3(), Color.red);
+				}
+			}
+			catch (ArgumentException)
+			{
+
 			}
 		}
 

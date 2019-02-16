@@ -17,4 +17,4 @@ MonoBehaviour:
   HorizontalRight: {fileID: 11400000, guid: 60a5e8edc4b8baf49929177cc7132c5d, type: 2}
   VerticalBottom: {fileID: 11400000, guid: 17a49ac5dde1c45439654d3955e28d8c, type: 2}
   VerticalTop: {fileID: 11400000, guid: 58518a279542fbc41892db9d1dd5945a, type: 2}
-  Probability: 1
+  Probability: 0.47

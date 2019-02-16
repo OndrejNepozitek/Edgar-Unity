@@ -2,6 +2,7 @@
 {
 	using TilemapLayers;
 	using UnityEditor;
+	using UnityEngine;
 
 	public class DefaultRoomTemplateInitializer : BaseRoomTemplateInitializer
 	{
@@ -9,6 +10,8 @@
 		{
 			var tilemapLayersHandler = AssetDatabase
 				.LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
+
+			gameObject.transform.position = Vector3.zero;
 
 			InitializeTilemaps(tilemapLayersHandler);
 
