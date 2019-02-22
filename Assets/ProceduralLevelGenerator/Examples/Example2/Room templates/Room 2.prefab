@@ -295,7 +295,7 @@ MonoBehaviour:
     To: {x: -3, y: 2, z: 0}
   - From: {x: -3, y: -2, z: 0}
     To: {x: -3, y: -2, z: 0}
-  SelectedMode: 0
+  SelectedMode: 1
   DoorLength: 1
   DistanceFromCorners: 1
 --- !u!1 &2731761978189903060

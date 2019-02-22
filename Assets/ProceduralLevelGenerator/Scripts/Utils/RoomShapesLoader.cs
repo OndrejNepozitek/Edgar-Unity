@@ -259,15 +259,22 @@
 			var doorsHandler = DoorHandler.DefaultHandler;
 			var doorPositions = doorsHandler.GetDoorPositions(roomDescription.Shape, roomDescription.DoorsMode);
 
-			if (doorPositions.Count != 2
+			if ((doorPositions.Count != 2
 			    || doorPositions.Any(x => x.Line.Length != 0)
 			    || doorPositions[0].Line.GetDirection() != GeneralAlgorithms.DataStructures.Common.OrthogonalLine.GetOppositeDirection(doorPositions[1].Line.GetDirection()))
+				&& !((doorPositions.Count == 3 || doorPositions.Count == 4) && doorPositions.All(x => x.Length == 0))
+				)
 			{
 				throw new ArgumentException("Corridors must currently have exactly 2 door positions that are on the opposite sides of the corridor.");
 			}
 
 			var firstLine = doorPositions[0].Line;
 			var secondLine = doorPositions[1].Line;
+
+			if (firstLine.Equals(secondLine))
+			{
+				secondLine = doorPositions.Select(x => x.Line).First(x => !x.Equals(secondLine));
+			}
 
 			if (firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Bottom || firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Top)
 			{

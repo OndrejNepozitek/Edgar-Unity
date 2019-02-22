@@ -240,7 +240,6 @@
 		{
 			if (connectionFrom == null)
 			{
-				Debug.Log("OnStartConnection");
 				connectionFrom = roomNode;
 				connectionProgress = new ConnectionProgressNode();
 				connectionProgress.From = roomNode.Rect.center;
@@ -251,8 +250,6 @@
 		{
 			if (connectionFrom == null)
 				return;
-
-			Debug.Log("OnEndConnection");
 
 			var from = connectionFrom;
 			var to = roomNode;

@@ -7,7 +7,7 @@
 	using UnityEngine.Tilemaps;
 	using Random = System.Random;
 
-	[CreateAssetMenu(menuName = "Dungeon generator/Payload initializer", fileName = "PayloadInitializer")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Payload initializer", fileName = "PayloadInitializer")]
 	public class PayloadInitializer : AbstractPayloadInitializer
 	{
 		public AbstractTilemapLayersHandler TilemapLayersHandler;

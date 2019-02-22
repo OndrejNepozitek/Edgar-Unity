@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Rooms: []
   Connections: []
-  RoomsGroups: []
+  RoomsGroups:
+  - Name: 
+    RoomTemplateSets: []
+    IndividualRoomTemplates: []
+    serializedGuid: b36993dd7861a64dbcb5271d8395d308
   DefaultRoomTemplateSets: []
   DefaultIndividualRoomTemplates: []
   CorridorRoomTemplateSets: []
-  CorridorIndividualRoomTemplate: []
+  CorridorIndividualRoomTemplates: []

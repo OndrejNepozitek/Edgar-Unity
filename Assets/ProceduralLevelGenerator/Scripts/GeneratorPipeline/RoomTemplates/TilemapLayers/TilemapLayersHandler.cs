@@ -4,7 +4,7 @@
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
-	[CreateAssetMenu(menuName = "Dungeon generator/Tilemap layers handler", fileName = "TilemapLayersHandler")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Tilemap layers handler", fileName = "TilemapLayersHandler")]
 	public class TilemapLayersHandler : AbstractTilemapLayersHandler
 	{
 		public override void InitializeTilemaps(GameObject gameObject)

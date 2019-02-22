@@ -12,8 +12,9 @@
 		[HideInInspector]
 		public Vector2 Position;
 
+		[HideInInspector]
 		public List<RoomTemplatesSet> RoomTemplateSets = new List<RoomTemplatesSet>();
-
+		
 		public List<GameObject> IndividualRoomTemplates = new List<GameObject>();
 
 		[HideInInspector]
@@ -22,6 +23,7 @@
 		// TODO: this should be done differently. It is not possible to handle every GUID manually.
 		#region Pretty ugly GUID handling
 
+		[HideInInspector]
 		[SerializeField]
 		private byte[] serializedGuid; 
 
@@ -43,7 +45,5 @@
 		}
 
 		#endregion
-
-
 	}
 }

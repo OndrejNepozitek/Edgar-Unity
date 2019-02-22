@@ -16,9 +16,9 @@
 
 		public TileBase HorizontalRight;
 
-		public TileBase VerticalBottom;
-
 		public TileBase VerticalTop;
+
+		public TileBase VerticalBottom;
 
 		[Range(0f, 1f)]
 		public float Probability = 1;
@@ -34,16 +34,24 @@
 				return;
 			}
 
+			// Iterate through all rooms
 			foreach (var pair in Payload.LayoutData)
 			{
 				var roomInfo = pair.Value;
 
+				// Check if corridor room
 				if (roomInfo.IsCorridor)
 				{
 					if (Payload.Random.NextDouble() < Config.Probability)
 					{
+						// Iterate through all used door positons
 						foreach (var doorInfo in roomInfo.Doors)
 						{
+							// We cannot handle doors with length > 2
+							if (doorInfo.DoorLine.Length > 2)
+							{
+								continue;
+							}
 
 							if (doorInfo.IsHorizontal)
 							{

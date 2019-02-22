@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54016519c172cb24cb9117d224ecbb05, type: 3}
+  m_Name: DoorsTask
+  m_EditorClassIdentifier: 
+  AddDoors: 0
+  HorizontalLeft: {fileID: 11400000, guid: 65805c0fbd4eda442b1b2f6413c45a6f, type: 2}
+  HorizontalRight: {fileID: 11400000, guid: 60a5e8edc4b8baf49929177cc7132c5d, type: 2}
+  VerticalTop: {fileID: 11400000, guid: 58518a279542fbc41892db9d1dd5945a, type: 2}
+  VerticalBottom: {fileID: 11400000, guid: 17a49ac5dde1c45439654d3955e28d8c, type: 2}
+  Probability: 1

@@ -1488,14 +1488,14 @@ Tilemap:
   - m_RefCount: 0
     m_Data:
       e00: 8.78567e-39
-      e01: 6e-45
+      e01: NaN
       e02: 831.1084
       e03: 0
       e10: 0
-      e11: 0
+      e11: 7e-45
       e12: 1e-45
       e13: 0
-      e20: 3.6622e-41
+      e20: 2.658e-41
       e21: 0
       e22: 8.785648e-39
       e23: NaN
@@ -1761,6 +1761,18 @@ MonoBehaviour:
     To: {x: 4, y: 1, z: 0}
   - From: {x: -3, y: 0, z: 0}
     To: {x: -3, y: 1, z: 0}
+  - From: {x: 4, y: 2, z: 0}
+    To: {x: 4, y: 2, z: 0}
+  - From: {x: 4, y: 1, z: 0}
+    To: {x: 4, y: 1, z: 0}
+  - From: {x: 4, y: 0, z: 0}
+    To: {x: 4, y: 0, z: 0}
+  - From: {x: -3, y: 2, z: 0}
+    To: {x: -3, y: 2, z: 0}
+  - From: {x: -3, y: 1, z: 0}
+    To: {x: -3, y: 1, z: 0}
+  - From: {x: -3, y: 0, z: 0}
+    To: {x: -3, y: 0, z: 0}
   SelectedMode: 1
   DoorLength: 3
   DistanceFromCorners: 1

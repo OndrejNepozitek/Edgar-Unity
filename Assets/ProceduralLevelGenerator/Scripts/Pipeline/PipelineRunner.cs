@@ -6,6 +6,11 @@
 
 	public class PipelineRunner
 	{
+		/// <summary>
+		/// Run given pipeline items with a given payload.
+		/// </summary>
+		/// <param name="pipelineItems"></param>
+		/// <param name="payload"></param>
 		public void Run(IEnumerable<PipelineItem> pipelineItems, object payload)
 		{
 			var payloadType = payload.GetType();

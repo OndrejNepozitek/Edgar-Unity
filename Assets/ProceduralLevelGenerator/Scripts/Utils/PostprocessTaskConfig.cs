@@ -1,11 +1,10 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
-	using GeneratorPipeline.Payloads;
 	using GeneratorPipeline.Payloads.Interfaces;
 	using Pipeline;
 	using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline tasks/Postprocess")]
+	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Postprocess")]
 	public class PostprocessTaskConfig : PipelineConfig
 	{
 		public bool CenterGrid = true;
