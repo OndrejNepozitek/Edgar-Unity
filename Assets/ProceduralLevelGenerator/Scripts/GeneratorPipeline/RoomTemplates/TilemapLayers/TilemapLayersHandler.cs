@@ -24,11 +24,6 @@
 			var other3TilemapObject = CreateTilemapGameObject("Other 3", gameObject, 5);
 		}
 
-		public override IEnumerable<Tilemap> GetTilemapsForShapeComputation(GameObject gameObject)
-		{
-			throw new System.NotImplementedException();
-		}
-
 		protected GameObject CreateTilemapGameObject(string name, GameObject parentObject, int sortingOrder)
 		{
 			var tilemapObject = new GameObject(name);

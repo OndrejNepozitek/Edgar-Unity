@@ -25,7 +25,7 @@
 
 		private ConnectionProgressNode connectionProgress;
 
-		private EditorMode editorMode = EditorMode.MakeConnections;
+		private EditorMode editorMode = EditorMode.Drag;
 
 		private int selectedToolbar = 0;
 

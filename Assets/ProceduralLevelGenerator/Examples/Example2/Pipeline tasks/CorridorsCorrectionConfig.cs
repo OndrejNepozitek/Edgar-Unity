@@ -13,7 +13,7 @@
 	[CreateAssetMenu(menuName = "Dungeon generator/Examples/Example 2/Corridors correction task", fileName = "CorridorsCorrectionTask")]
 	public class CorridorsCorrectionConfig : PipelineConfig
 	{
-		public GameObject CorrectionTilemap;
+		public GameObject CorrectionLayout;
 	}
 
 	public class CorridorsCorrectionTask<TPayload> : ConfigurablePipelineTask<TPayload, CorridorsCorrectionConfig>
@@ -24,7 +24,7 @@
 
 		public override void Process()
 		{
-			correctionTilemaps = Config.CorrectionTilemap.GetComponentsInChildren<Tilemap>().ToList();
+			correctionTilemaps = Config.CorrectionLayout.GetComponentsInChildren<Tilemap>().ToList();
 			tilemapsBound = ComputeTilemapsBound();
 
 			foreach (var pair in Payload.LayoutData)
@@ -72,46 +72,10 @@
 			
 			if (from.x > to.x)
 			{
-				var tmp = from;
 				from = to;
-				to = tmp;
 			}
 
-			for (int i = 0; i < Payload.Tilemaps.Count; i++)
-			{
-				var sourceTilemap = correctionTilemaps[i];
-				var destinationTilemap = Payload.Tilemaps[i];
-
-				// Handle left tiles
-				for (int j = 0; j < 2; j++)
-				{
-					var correctionTilePosition = tilemapsBound + Vector3Int.up * j;
-					var destionationTilePosition = from + Vector3Int.left + Vector3Int.up * (j - 1);
-
-					destinationTilemap.SetTile(destionationTilePosition, sourceTilemap.GetTile(correctionTilePosition));
-				}
-
-				// Handle middle tiles
-				for (int j = 0; j < 2; j++)
-				{
-					for (int k = 0; k < doorLine.Length + 1; k++)
-					{
-						var correctionTilePosition = tilemapsBound + Vector3Int.right + Vector3Int.up * j;
-						var destionationTilePosition = from + Vector3Int.right * k + Vector3Int.up * (j - 1);
-
-						destinationTilemap.SetTile(destionationTilePosition, sourceTilemap.GetTile(correctionTilePosition));
-					}
-				}
-
-				// Handle right tiles
-				for (int j = 0; j < 2; j++)
-				{
-					var correctionTilePosition = tilemapsBound + Vector3Int.right * 2 + Vector3Int.up * j;
-					var destionationTilePosition = to + Vector3Int.right + Vector3Int.up * (j - 1);
-
-					destinationTilemap.SetTile(destionationTilePosition, sourceTilemap.GetTile(correctionTilePosition));
-				}
-			}
+			CopyTiles(from + new Vector3Int(-1, -1, 0), tilemapsBound, doorLine.Length);
 		}
 
 		protected void CorrectTopConnection(RoomInfo<Room> roomInfo, OrthogonalLine doorLine)
@@ -121,42 +85,40 @@
 
 			if (from.x > to.x)
 			{
-				var tmp = from;
 				from = to;
-				to = tmp;
 			}
 
+			CopyTiles(from + new Vector3Int(-1, 1, 0), tilemapsBound + Vector3Int.up * 3, doorLine.Length);
+		}
+
+		protected void CopyTiles(Vector3Int destinationPosition, Vector3Int correctionPosition, int doorLength)
+		{
 			for (int i = 0; i < Payload.Tilemaps.Count; i++)
 			{
 				var sourceTilemap = correctionTilemaps[i];
 				var destinationTilemap = Payload.Tilemaps[i];
 
 				// Handle left tiles
-				for (int j = 2; j < 4; j++)
 				{
-					var correctionTilePosition = tilemapsBound + Vector3Int.up * j;
-					var destionationTilePosition = from + Vector3Int.left + Vector3Int.up * (j - 2);
+					var correctionTilePosition = correctionPosition;
+					var destionationTilePosition = destinationPosition;
 
 					destinationTilemap.SetTile(destionationTilePosition, sourceTilemap.GetTile(correctionTilePosition));
 				}
 
 				// Handle middle tiles
-				for (int j = 2; j < 4; j++)
+				for (int k = 0; k < doorLength; k++)
 				{
-					for (int k = 0; k < doorLine.Length + 1; k++)
-					{
-						var correctionTilePosition = tilemapsBound + Vector3Int.right + Vector3Int.up * j;
-						var destionationTilePosition = from + Vector3Int.right * k + Vector3Int.up * (j - 2);
+					var correctionTilePosition = correctionPosition + Vector3Int.right;
+					var destionationTilePosition = destinationPosition + Vector3Int.right * (k + 1);
 
-						destinationTilemap.SetTile(destionationTilePosition, sourceTilemap.GetTile(correctionTilePosition));
-					}
+					destinationTilemap.SetTile(destionationTilePosition, sourceTilemap.GetTile(correctionTilePosition));
 				}
 
 				// Handle right tiles
-				for (int j = 2; j < 4; j++)
 				{
-					var correctionTilePosition = tilemapsBound + Vector3Int.right * 2 + Vector3Int.up * j;
-					var destionationTilePosition = to + Vector3Int.right + Vector3Int.up * (j - 2);
+					var correctionTilePosition = correctionPosition + Vector3Int.right * 2;
+					var destionationTilePosition = destinationPosition + Vector3Int.right * (doorLength + 1);
 
 					destinationTilemap.SetTile(destionationTilePosition, sourceTilemap.GetTile(correctionTilePosition));
 				}

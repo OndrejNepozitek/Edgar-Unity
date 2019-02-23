@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95d8360a4d6d4064cbed67c3927eebb8, type: 3}
   m_Name: CorridorsCorrectionTask
   m_EditorClassIdentifier: 
-  CorrectionTilemap: {fileID: 7063836833637043560, guid: b68b5ddd25f430f41b7e2216cdd3d1bb,
+  CorrectionLayout: {fileID: 7063836833637043560, guid: b68b5ddd25f430f41b7e2216cdd3d1bb,
     type: 3}
