@@ -3,6 +3,10 @@
 	using System;
 	using TilemapLayers;
 
+	/// <summary>
+	/// Room template initializer that can be customized with different
+	/// implementaion of tilemap layers handlers.
+	/// </summary>
 	public class ConfigurableRoomTemplateInitializer : BaseRoomTemplateInitializer
 	{
 		public AbstractTilemapLayersHandler TilemapLayersHandler;

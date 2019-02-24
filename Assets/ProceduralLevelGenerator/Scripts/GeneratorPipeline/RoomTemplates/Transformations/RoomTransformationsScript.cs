@@ -4,6 +4,9 @@
 	using GeneralAlgorithms.DataStructures.Common;
 	using UnityEngine;
 
+	/// <summary>
+	/// Currently not used.
+	/// </summary>
 	public class RoomTransformationsScript : MonoBehaviour
 	{
 		public Transformation Transformation;

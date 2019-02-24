@@ -64,7 +64,7 @@
 
 			try
 			{
-				var polygon = roomShapesLoader.GetPolygonFromTilemap(go.GetComponentsInChildren<Tilemap>());
+				var polygon = roomShapesLoader.GetPolygonFromTilemaps(go.GetComponentsInChildren<Tilemap>());
 
 				foreach (var line in polygon.GetLines())
 				{

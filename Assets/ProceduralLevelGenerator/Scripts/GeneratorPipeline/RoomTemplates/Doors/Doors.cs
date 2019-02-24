@@ -9,6 +9,9 @@
 	using Utils;
 	using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
+	/// <summary>
+	/// Doors MonoBehaviour that is used to define doors for room templates.
+	/// </summary>
 	[ExecuteInEditMode]
 	public class Doors : MonoBehaviour
 	{

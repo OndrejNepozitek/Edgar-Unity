@@ -5,6 +5,9 @@
 	using TilemapLayers;
 	using UnityEngine;
 
+	/// <summary>
+	/// Base class for initializing room templates.
+	/// </summary>
 	public abstract class BaseRoomTemplateInitializer : MonoBehaviour
 	{
 		protected void InitializeTilemaps(ITilemapLayersHandler tilemapLayersHandler)

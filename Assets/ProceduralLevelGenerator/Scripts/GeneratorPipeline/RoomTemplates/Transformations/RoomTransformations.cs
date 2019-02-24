@@ -7,6 +7,9 @@
 	using UnityEngine.Tilemaps;
 	using Utils;
 
+	/// <summary>
+	/// Currently not used.
+	/// </summary>
 	public class RoomTransformations
 	{
 		public void Transform(GameObject roomTemplate, Transformation transformation)

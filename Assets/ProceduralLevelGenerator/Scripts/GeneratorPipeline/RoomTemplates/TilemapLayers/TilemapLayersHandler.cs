@@ -4,9 +4,16 @@
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
+	/// <summary>
+	/// Basic implementation of tilemap layers handler.
+	/// </summary>
 	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Tilemap layers handler", fileName = "TilemapLayersHandler")]
 	public class TilemapLayersHandler : AbstractTilemapLayersHandler
 	{
+		/// <summary>
+		/// Initializes individual tilemap layers.
+		/// </summary>
+		/// <param name="gameObject"></param>
 		public override void InitializeTilemaps(GameObject gameObject)
 		{
 			var wallsTilemapObject = CreateTilemapGameObject("Walls", gameObject, 0);

@@ -12,6 +12,10 @@
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 
+	/// <summary>
+	/// Class used to convert room templates to the representation used
+	/// in the dungeon generator library.
+	/// </summary>
 	public class RoomShapesLoader
 	{
 		private static readonly List<IntVector2> DirectionVectors = new List<IntVector2>()
@@ -34,6 +38,12 @@
 			IntVector2Helper.BottomRight
 		};
 
+		/// <summary>
+		/// Computes a polygon from its outline points.
+		/// </summary>
+		/// <param name="outlinePoints"></param>
+		/// <param name="allPoints"></param>
+		/// <returns></returns>
 		public GridPolygon GetPolygonFromOutline(HashSet<IntVector2> outlinePoints, HashSet<IntVector2> allPoints)
 		{
 			var orderedDirections = new Dictionary<IntVector2, List<IntVector2>>()
@@ -97,6 +107,13 @@
 			return new GridPolygon(polygonPoints);
 		}
 
+		/// <summary>
+		/// Gets a point on the outline of the polygon together with a clockwise direction
+		/// to the next point on the outline.
+		/// </summary>
+		/// <param name="outlinePoints"></param>
+		/// <param name="allPoints"></param>
+		/// <returns></returns>
 		protected (IntVector2 point, IntVector2 direction) GetClockwiseOutlineDirection(HashSet<IntVector2> outlinePoints, HashSet<IntVector2> allPoints)
 		{
 			var startingPoint = outlinePoints.First();
@@ -179,12 +196,22 @@
 			throw new ArgumentException("Invalid room shape");
 		}
 
-		public GridPolygon GetPolygonFromTilemap(IEnumerable<Tilemap> tilemaps)
+		/// <summary>
+		/// Computes a polygon from points on given tilemaps.
+		/// </summary>
+		/// <param name="tilemaps"></param>
+		/// <returns></returns>
+		public GridPolygon GetPolygonFromTilemaps(IEnumerable<Tilemap> tilemaps)
 		{
 			var usedTiles = GetUsedTiles(tilemaps);
 			return GetPolygonFromOutline(GetPolygonOutline(usedTiles), usedTiles);
 		}
 
+		/// <summary>
+		/// Gets all tiles that are not null in given tilemaps.
+		/// </summary>
+		/// <param name="tilemaps"></param>
+		/// <returns></returns>
 		public HashSet<IntVector2> GetUsedTiles(IEnumerable<Tilemap> tilemaps)
 		{
 			var usedTiles = new HashSet<IntVector2>();
@@ -207,11 +234,21 @@
 			return usedTiles;
 		}
 
+		/// <summary>
+		/// Computes an outline of a polygon formed by non-null tiles in given tilemaps.
+		/// </summary>
+		/// <param name="tilemaps"></param>
+		/// <returns></returns>
 		public HashSet<IntVector2> GetPolygonOutline(IEnumerable<Tilemap> tilemaps)
 		{
 			return GetPolygonOutline(GetUsedTiles(tilemaps));
 		}
 
+		/// <summary>
+		/// Computes an outline of a polygon formed by given tiles.
+		/// </summary>
+		/// <param name="usedTiles"></param>
+		/// <returns></returns>
 		public HashSet<IntVector2> GetPolygonOutline(HashSet<IntVector2> usedTiles)
 		{
 			if (usedTiles.Count == 0)
@@ -238,9 +275,14 @@
 			return borderPoints;
 		}
 
+		/// <summary>
+		/// Computes a room description from a given room template.
+		/// </summary>
+		/// <param name="roomTemplate"></param>
+		/// <returns></returns>
 		public RoomDescription GetRoomDescription(GameObject roomTemplate)
 		{
-			var polygon = GetPolygonFromTilemap(roomTemplate.GetComponentsInChildren<Tilemap>());
+			var polygon = GetPolygonFromTilemaps(roomTemplate.GetComponentsInChildren<Tilemap>());
 			var doors = roomTemplate.GetComponent<Doors>();
 
 			if (doors == null)
@@ -254,6 +296,11 @@
 			return roomDescription;
 		}
 
+		/// <summary>
+		/// Computes the length of a given corridor.
+		/// </summary>
+		/// <param name="roomDescription"></param>
+		/// <returns></returns>
 		public int GetCorridorLength(RoomDescription roomDescription)
 		{
 			var doorsHandler = DoorHandler.DefaultHandler;

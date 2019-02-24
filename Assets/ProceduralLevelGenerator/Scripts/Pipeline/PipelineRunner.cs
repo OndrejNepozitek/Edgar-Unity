@@ -7,7 +7,7 @@
 	public class PipelineRunner
 	{
 		/// <summary>
-		/// Run given pipeline items with a given payload.
+		/// Runs given pipeline items with a given payload.
 		/// </summary>
 		/// <param name="pipelineItems"></param>
 		/// <param name="payload"></param>

@@ -9,7 +9,7 @@
 	/// <summary>
 	/// Represents a room in a level graph.
 	/// </summary>
-	public class Room : ScriptableObject, ISerializationCallbackReceiver, IRoom
+	public class Room : ScriptableObject, ISerializationCallbackReceiver
 	{
 		/// <summary>
 		/// Name of the room.

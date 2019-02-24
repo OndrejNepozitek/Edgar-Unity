@@ -4,6 +4,10 @@
 	using UnityEditor;
 	using UnityEngine;
 
+	/// <summary>
+	/// Default room template initializer that uses the default
+	/// tilemap layers handler.
+	/// </summary>
 	public class DefaultRoomTemplateInitializer : BaseRoomTemplateInitializer
 	{
 		public void Initialize()

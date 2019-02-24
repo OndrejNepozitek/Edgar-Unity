@@ -5,6 +5,10 @@
 	using MapGeneration.Interfaces.Core.MapLayouts;
 	using UnityEngine;
 
+	/// <summary>
+	/// Class that holds information about a laid out room.
+	/// </summary>
+	/// <typeparam name="TRoom"></typeparam>
 	public class RoomInfo<TRoom>
 	{
 		/// <summary>
