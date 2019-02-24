@@ -66,7 +66,7 @@
 			}
 		}
 
-		protected IMapLayout<Room> GenerateLayout(MapDescription<Room> mapDescription)
+		protected IMapLayout<int> GenerateLayout(MapDescription<int> mapDescription)
 		{
 			if (Config.Timeout <= 0)
 			{
@@ -74,22 +74,22 @@
 			}
 
 			// Setup layout generator
-			IBenchmarkableLayoutGenerator<MapDescription<Room>, IMapLayout<Room>> generator;
+			IBenchmarkableLayoutGenerator<MapDescription<int>, IMapLayout<int>> generator;
 			if (mapDescription.IsWithCorridors)
 			{
-				var gen = UnityLayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors(mapDescription.CorridorsOffsets, corridorNodesCreator: new CorridorsNodeCreator(mapDescription));
+				var gen = UnityLayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(mapDescription.CorridorsOffsets);
 				gen.InjectRandomGenerator(Payload.Random);
 				generator = gen;
 			}
 			else
 			{
-				var gen = UnityLayoutGeneratorFactory.GetDefaultChainBasedGenerator<Room>();
+				var gen = UnityLayoutGeneratorFactory.GetDefaultChainBasedGenerator<int>();
 				gen.InjectRandomGenerator(Payload.Random);
 				generator = gen;
 			}
 
 			// Run generator
-			IMapLayout<Room> layout = null;
+			IMapLayout<int> layout = null;
 			var task = Task.Run(() => layout = generator.GetLayouts(mapDescription, 1)[0]);
 			var taskCompleted = task.Wait(Config.Timeout);
 
@@ -107,7 +107,7 @@
 			return layout;
 		}
 
-		protected void SetupRoomTemplates(IMapLayout<Room> layout)
+		protected void SetupRoomTemplates(IMapLayout<int> layout)
 		{
 			var roomTransformations = new RoomTransformations();
 
@@ -116,7 +116,7 @@
 			parentGameObject.transform.parent = Payload.GameObject.transform;
 
 			// Initialize rooms
-			Payload.LayoutData = new Dictionary<Room, RoomInfo<Room>>();
+			Payload.LayoutData = new Dictionary<int, RoomInfo<int>>();
 			foreach (var layoutRoom in layout.Rooms)
 			{
 				var roomTemplate = Payload.RoomDescriptionsToRoomTemplates[layoutRoom.RoomDescription];
@@ -140,35 +140,35 @@
 				var correctPosition = layoutRoom.Position.ToUnityIntVector3() - new Vector3Int(smallestX, smallestY, 0);
 				room.transform.position = correctPosition;
 
-				var roomInfo = new RoomInfo<Room>(roomTemplate, room, correctPosition, TransformDoorInfo(layoutRoom.Doors),
+				var roomInfo = new RoomInfo<int>(roomTemplate, room, correctPosition, TransformDoorInfo(layoutRoom.Doors),
 					layoutRoom.IsCorridor, layoutRoom);
 
 				Payload.LayoutData.Add(layoutRoom.Node, roomInfo);
 			}
 		}
 
-		protected List<DoorInfo<Room>> TransformDoorInfo(IEnumerable<IDoorInfo<Room>> oldDoorInfos)
+		protected List<DoorInfo<int>> TransformDoorInfo(IEnumerable<IDoorInfo<int>> oldDoorInfos)
 		{
 			return oldDoorInfos.Select(TransformDoorInfo).ToList();
 		}
 
-		protected DoorInfo<Room> TransformDoorInfo(IDoorInfo<Room> oldDoorInfo)
+		protected DoorInfo<int> TransformDoorInfo(IDoorInfo<int> oldDoorInfo)
 		{
 			var doorLine = oldDoorInfo.DoorLine;
 
 			switch (doorLine.GetDirection())
 			{
 				case OrthogonalLine.Direction.Right:
-					return new DoorInfo<Room>(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up, oldDoorInfo.Node);
+					return new DoorInfo<int>(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up, oldDoorInfo.Node);
 
 				case OrthogonalLine.Direction.Left:
-					return new DoorInfo<Room>(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down, oldDoorInfo.Node);
+					return new DoorInfo<int>(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down, oldDoorInfo.Node);
 
 				case OrthogonalLine.Direction.Top:
-					return new DoorInfo<Room>(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left, oldDoorInfo.Node);
+					return new DoorInfo<int>(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left, oldDoorInfo.Node);
 
 				case OrthogonalLine.Direction.Bottom:
-					return new DoorInfo<Room>(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right, oldDoorInfo.Node);
+					return new DoorInfo<int>(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right, oldDoorInfo.Node);
 
 				default:
 					throw new ArgumentOutOfRangeException();
@@ -194,7 +194,7 @@
 			}
 		}
 
-		protected void ApplyTemplate(RoomInfo<Room> roomInfo)
+		protected void ApplyTemplate(RoomInfo<int> roomInfo)
 		{
 			DeleteNonNullTiles(roomInfo);
 
@@ -223,7 +223,7 @@
 		/// replace all existing tiles with new tiles from the room. 
 		/// </summary>
 		/// <param name="roomInfo"></param>
-		protected void DeleteNonNullTiles(RoomInfo<Room> roomInfo)
+		protected void DeleteNonNullTiles(RoomInfo<int> roomInfo)
 		{
 			var tilemaps = roomInfo.Room.GetComponentsInChildren<Tilemap>();
 			var tilesToRemove = new HashSet<Vector3Int>();

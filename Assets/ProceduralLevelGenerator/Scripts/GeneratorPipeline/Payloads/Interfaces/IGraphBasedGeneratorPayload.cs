@@ -10,10 +10,10 @@
 
 	public interface IGraphBasedGeneratorPayload
 	{
-		MapDescription<Room> MapDescription { get; set; }
+		MapDescription<int> MapDescription { get; set; }
 
 		TwoWayDictionary<IRoomDescription, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
 
-		Dictionary<Room, RoomInfo<Room>> LayoutData { get; set; }
+		Dictionary<int, RoomInfo<int>> LayoutData { get; set; }
 	}
 }

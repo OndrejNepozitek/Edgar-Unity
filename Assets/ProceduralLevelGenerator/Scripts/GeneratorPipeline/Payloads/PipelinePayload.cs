@@ -11,17 +11,17 @@
 	using UnityEngine.Tilemaps;
 	using Random = System.Random;
 
-	public class PipelinePayload : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload
+	public class PipelinePayload<TRoom> : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<TRoom>
 	{
 		public GameObject GameObject { get; set; }
 
 		public List<Tilemap> Tilemaps { get; set; }
 
-		public MapDescription<Room> MapDescription { get; set; }
+		public MapDescription<int> MapDescription { get; set; }
 
 		public TwoWayDictionary<IRoomDescription, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
 
-		public Dictionary<Room, RoomInfo<Room>> LayoutData { get; set; }
+		public Dictionary<int, RoomInfo<int>> LayoutData { get; set; }
 
 		public Tilemap WallsTilemap => Tilemaps[0];
 
@@ -30,5 +30,7 @@
 		public Tilemap CollideableTilemap => Tilemaps[2];
 
 		public Random Random { get; set; }
+
+		public TwoWayDictionary<TRoom, int> RoomToIntMapping { get; set; }
 	}
 }

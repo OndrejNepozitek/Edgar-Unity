@@ -1,5 +1,6 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.InputSetup
 {
+	using System;
 	using System.Collections.Generic;
 	using System.Linq;
 	using Data.Graphs;
@@ -22,11 +23,14 @@
 
 		public override void Process()
 		{
+			RoomDescriptionsToRoomTemplates = new TwoWayDictionary<IRoomDescription, GameObject>();
+			RoomShapesLoader = new RoomShapesLoader();
+
 			Payload.MapDescription = SetupMapDescription();
 			Payload.RoomDescriptionsToRoomTemplates = RoomDescriptionsToRoomTemplates;
 		}
 
-		protected abstract MapDescription<Room> SetupMapDescription();
+		protected abstract MapDescription<int> SetupMapDescription();
 
 		/// <summary>
 		/// Gets all room descriptions from given template sets and individual room templates.
@@ -77,6 +81,31 @@
 			RoomDescriptionsToRoomTemplates.Add(roomDescription, roomTemplate);
 
 			return roomDescription;
+		}
+
+		/// <summary>
+		/// Setups corridor room shapes.
+		/// </summary>
+		/// <param name="mapDescription"></param> 
+		/// <param name="corridorRoomDescriptions"></param>
+		protected void SetupCorridorRoomShapes(MapDescription<int> mapDescription, List<RoomDescription> corridorRoomDescriptions)
+		{
+			var corridorLengths = new List<int>();
+
+			if (corridorRoomDescriptions.Count == 0)
+			{
+				throw new ArgumentException("There must be at least 1 corridor room template if corridors are enabled.");
+			}
+
+			foreach (var roomDescription in corridorRoomDescriptions)
+			{
+				mapDescription.AddCorridorShapes(roomDescription);
+
+				var corridorLength = RoomShapesLoader.GetCorridorLength(roomDescription);
+				corridorLengths.Add(corridorLength);
+			}
+
+			mapDescription.SetWithCorridors(true, corridorLengths.Distinct().ToList());
 		}
 	}
 }

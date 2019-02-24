@@ -4,8 +4,9 @@
 	using System.Collections.Generic;
 	using Rooms;
 	using UnityEngine;
+	using Utils;
 
-	public class Room : ScriptableObject, ISerializationCallbackReceiver
+	public class Room : ScriptableObject, ISerializationCallbackReceiver, IRoom
 	{
 		public string Name = "Room";
 

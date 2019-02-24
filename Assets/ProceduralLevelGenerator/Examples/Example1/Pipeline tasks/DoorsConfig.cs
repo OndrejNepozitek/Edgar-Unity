@@ -67,7 +67,7 @@
 			}
 		}
 
-		protected void AddHorizontalDoors(DoorInfo<Room> doorInfo)
+		protected void AddHorizontalDoors(DoorInfo<int> doorInfo)
 		{
 			Payload.CollideableTilemap.SetTile(doorInfo.DoorLine.GetNthPoint(0), Config.HorizontalLeft);
 
@@ -77,7 +77,7 @@
 			}
 		}
 
-		protected void AddVerticalDoors(DoorInfo<Room> doorInfo)
+		protected void AddVerticalDoors(DoorInfo<int> doorInfo)
 		{
 			Payload.CollideableTilemap.SetTile(doorInfo.DoorLine.GetNthPoint(0), Config.VerticalBottom);
 

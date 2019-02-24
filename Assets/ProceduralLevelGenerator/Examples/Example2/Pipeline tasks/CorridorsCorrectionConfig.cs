@@ -29,17 +29,16 @@
 
 			foreach (var pair in Payload.LayoutData)
 			{
-				var room = pair.Key;
 				var roomInfo = pair.Value;
 
 				if (roomInfo.GeneratorData.IsCorridor)
 				{
-					CorrectCorridor(room, roomInfo);
+					CorrectCorridor(roomInfo);
 				}
 			}
 		}
 
-		protected void CorrectCorridor(Room room, RoomInfo<Room> roomInfo)
+		protected void CorrectCorridor(RoomInfo<int> roomInfo)
 		{
 			if (!roomInfo.Doors[0].IsHorizontal)
 			{
@@ -49,7 +48,7 @@
 			CorrectVerticalCorridor(roomInfo);
 		}
 
-		protected void CorrectVerticalCorridor(RoomInfo<Room> roomInfo)
+		protected void CorrectVerticalCorridor(RoomInfo<int> roomInfo)
 		{
 			var doors = roomInfo.Doors;
 
@@ -65,7 +64,7 @@
 			}
 		}
 
-		protected void CorrectBottomConnection(RoomInfo<Room> roomInfo, OrthogonalLine doorLine)
+		protected void CorrectBottomConnection(RoomInfo<int> roomInfo, OrthogonalLine doorLine)
 		{
 			var from = doorLine.From;
 			var to = doorLine.To;
@@ -78,7 +77,7 @@
 			CopyTiles(from + new Vector3Int(-1, -1, 0), tilemapsBound, doorLine.Length);
 		}
 
-		protected void CorrectTopConnection(RoomInfo<Room> roomInfo, OrthogonalLine doorLine)
+		protected void CorrectTopConnection(RoomInfo<int> roomInfo, OrthogonalLine doorLine)
 		{
 			var from = doorLine.From;
 			var to = doorLine.To;

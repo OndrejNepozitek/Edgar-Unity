@@ -28,22 +28,24 @@
 	public class FixedInputTask<TPayload> : BaseInputSetupTask<TPayload, FixedInputConfig>
 		where TPayload : class, IGraphBasedGeneratorPayload, IGeneratorPayload
 	{
-		protected override MapDescription<Room> SetupMapDescription()
+		protected TwoWayDictionary<Room, int> RoomToIntMapping;
+
+		protected override MapDescription<int> SetupMapDescription()
 		{
 			if (Config.LevelGraph == null)
 			{
 				throw new ArgumentException("LevelGraph must not be null.");
 			}
 
-			RoomDescriptionsToRoomTemplates = new TwoWayDictionary<IRoomDescription, GameObject>();
-			RoomShapesLoader = new RoomShapesLoader();
-			var mapDescription = new MapDescription<Room>();
+			RoomToIntMapping = new TwoWayDictionary<Room, int>();
+			var mapDescription = new MapDescription<int>();
 			mapDescription.SetDefaultTransformations(new List<Transformation>() { Transformation.Identity });
 
 			// Setup individual rooms
 			foreach (var room in Config.LevelGraph.Rooms)
 			{
-				mapDescription.AddRoom(room);
+				RoomToIntMapping.Add(room, RoomToIntMapping.Count);
+				mapDescription.AddRoom(RoomToIntMapping[room]);
 				SetupRoomShapesForRoom(mapDescription, room);
 			}
 
@@ -59,7 +61,15 @@
 			// Add passages
 			foreach (var connection in Config.LevelGraph.Connections)
 			{
-				mapDescription.AddPassage(connection.From, connection.To);
+				var from = RoomToIntMapping[connection.From];
+				var to = RoomToIntMapping[connection.To];
+
+				mapDescription.AddPassage(from, to);
+			}
+
+			if (Payload is IRoomToIntMappingPayload<Room> payloadWithMapping)
+			{
+				payloadWithMapping.RoomToIntMapping = RoomToIntMapping;
 			}
 
 			return mapDescription;
@@ -70,7 +80,7 @@
 		/// </summary>
 		/// <param name="room"></param>
 		/// <param name="mapDescription"></param>
-		protected void SetupRoomShapesForRoom(MapDescription<Room> mapDescription, Room room)
+		protected void SetupRoomShapesForRoom(MapDescription<int> mapDescription, Room room)
 		{
 			// Get assigned room templates
 			var roomTemplatesSets = room.RoomTemplateSets;
@@ -87,7 +97,7 @@
 
 			foreach (var roomDescription in roomDescriptions)
 			{
-				mapDescription.AddRoomShapes(room, roomDescription);
+				mapDescription.AddRoomShapes(RoomToIntMapping[room], roomDescription);
 			}
 		}
 
@@ -97,7 +107,7 @@
 		/// </summary>
 		/// <param name="mapDescription"></param>
 		/// <param name="levelGraph"></param>
-		protected void SetupDefaultRoomShapes(MapDescription<Room> mapDescription, LevelGraph levelGraph)
+		protected void SetupDefaultRoomShapes(MapDescription<int> mapDescription, LevelGraph levelGraph)
 		{
 			var roomDescriptions = GetRoomDescriptions(levelGraph.DefaultRoomTemplateSets, levelGraph.DefaultIndividualRoomTemplates).Distinct();
 
@@ -112,7 +122,7 @@
 		/// </summary>
 		/// <param name="mapDescription"></param> 
 		/// <param name="levelGraph"></param>
-		protected void SetupCorridorRoomShapes(MapDescription<Room> mapDescription, LevelGraph levelGraph)
+		protected void SetupCorridorRoomShapes(MapDescription<int> mapDescription, LevelGraph levelGraph)
 		{
 			var corridorLengths = new List<int>();
 			var roomDescriptions = GetRoomDescriptions(levelGraph.CorridorRoomTemplateSets, levelGraph.CorridorIndividualRoomTemplates).Distinct().ToList();
