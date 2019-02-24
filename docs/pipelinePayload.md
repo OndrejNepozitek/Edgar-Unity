@@ -3,7 +3,7 @@ id: pipelinePayload
 title: Pipeline payload
 ---
 
-Pipeline payload is an object that flows through the pipeline. Each pipeline task can modify the payload and all the following tasks in the payload will have access to that modified object. TODO
+Pipeline payload is an object that flows through the pipeline. Each pipeline task can modify the payload and all the following tasks in the payload will have access to that modified object.
 
 ## Basic idea
 
@@ -43,9 +43,11 @@ Another reason is that with interfaces, I can provide some basic pipeline tasks 
 
 ## Extending payloads
 
-If you want to extend the payload, you can iherit from the `PipelinePayload` class and add any additional information that you need. The other option is to create your own class from scratch wihout inheriting. It should be also fairly easy because the default payload does not have any methods so you simply define all the properties.
+If you want to extend the payload, you have basically two options. The first option is to inherit from the `PipelinePayload` class and add any functionality that you need. This approach is good if you want to just add new functionality and want to keep original functionality intact. The second option is to create your own payload class from scratch without inheriting. 
 
 ## Payload initialization
 
-Before we give the payload to the first task in the pipeline, we need to create its instance. For this purpose, you need to provide an implementation of the abstract `AbstractPayloadInitializer` class and assign that instance to the *PayloadInitializer* field of the dungeon generator pipeline. This class has only a single method - `public abstract object InitializePayload();` - which should return a new instace of the payload. The default initializer (`PayloadInitializer` class) prepares the structure of pipelines and creates an instace of the random number generator.
+Before we give the payload to the first task in the pipeline, we need to create its instance. For this purpose, you need to provide an implementation of the abstract `AbstractPayloadInitializer` class and assign that instance to the *PayloadInitializer* field of the dungeon generator pipeline.
+
+ This class has only a single method - `public abstract object InitializePayload();` - which should return a new instace of the payload. There is a default initializer provided (`PayloadInitializer` class) that prepares tilemaps and creates an instace of the random number generator.
 

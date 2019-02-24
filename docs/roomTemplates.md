@@ -1,5 +1,5 @@
 ---
-id: basics_templates
+id: roomTemplates
 title: Room templates
 sidebar_label: Room templates
 ---
@@ -9,7 +9,7 @@ Room templates are one of the main concepts of the algorithm. They describe how 
 ## Terminology
 - Room layout - how a room looks, tiles with sprites, walls, floors, furniture, etc.
 - Room shape - floor plan of a room layout
-- Door - all possible positions of doors of a room layout
+- Doors - all possible positions of doors of a room layout
 - Room template - room layout together with doors
 
 ## Room layout
@@ -41,7 +41,7 @@ To make it easier to create room templates, there is a *DefaultRoomTeplateInitia
 
 </div>
 
-If you need a different structure of tilemaps, you can override the default behaviour. See [Tilemap layers](generatorPipeline_tilemapLayers.md).
+If you need a different structure of tilemaps, you can override the default behaviour. See [Tilemap layers](tilemapLayers.md).
 
 > **Feedback needed:** The default structure of tilemaps aims to provide a reasonable structure for game designers to start creating room layouts. However, I have got no experience with working with tilemaps in real projects so I would like to hear any feedback on whether this structure is a good default or not.
 
@@ -115,4 +115,52 @@ There must be no holes in room layouts (a null tile surrounded by non-null tiles
 
 ## Doors
 
-## How to create a room template
+When we have our room layout ready, we can add doors. By specifying door positions, we tell the algorithm how can individual room templates be connected together.
+
+The algorithm may connect two room templates if:
+- there exist door positions with the same length
+- the two room templates do not overlap after we connect them
+    - they may share tiles on outlines of corresponding room shapes
+
+### Door modes
+
+There are currently two ways of defining door positions. Both ways are currently controlled by the *Doors* component that is automatically added to the parent GameObject after using the *DefaultRoomTeplateInitializer*.
+
+In both modes, all door positions must be on the outline of the corresponding room shape.
+
+> **Note:** There are situations where we might want to relax this requirement and allow door positions that are not on the outline. So maybe that will be possible in the future versions of the plugin.
+
+#### Simple mode
+
+In the simple mode, you specify how long should all doors be and at least how far from corners of the room layout they should be positioned. Below you can see how this mode looks.
+
+![](assets/doors_simple1.png)
+*Simple door mode - length 1, distance from corners 2*
+
+Each red rectangle shows available door positions. You can see that there are no door positions in the bottom-right part of the layout - that is because no tile is placed at least 2 tiles from all corners. If we change the door length to 2, we will loose the door positon on the right side of the room layout because there is space only for a single tile.
+
+![](assets/doors_simple2.png)
+*Simple door mode - length 2, distance from corners 2*
+
+> **Note:** There is currently an inconsistency in how are door positions displayed. In the *simple mode*, each red rectangle represents a set of door positions, while in the *specific positions mode*, each rectangle represents exactly one door position. The reason for this is that it is exactly how the procedural dungeon generator library handles that, but it might be counter-intuitive for users of the plugin and may change in the future.
+
+#### Specific positions mode
+
+In the *Specific positions mode*, you have to manually specify all door positions of a room layout. This mode gives you a complete control over available door positions.
+
+To start adding doors, click the *Specific positions* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. Then you can simply draw door positions as seen in the video below.
+
+![](assets/doors_specific1.gif)
+*Specific positions mode*
+
+You can see that I am creating doors of various lengths. And at the end of the video, you can also see that individual door positions may overlap.
+
+> **Note:** If you accidentally add a door position that you did not want to add, you have to *Delete all door positions* and start over. This is far from ideal and should be improved in the future.
+
+> **Note:** With multiple doors overlapping, the GUI gets quite messy. In order to make it more clear, I show diagonals of individual rectangles. And it gets even more messy when you have doors of various sizes overlapping. I thought about adding a switch that would show only doors with a specified length.
+
+> **Note:** The inspector script currently lets you add door positions that are not on the outline of the room shape. It will, hovewer, result in an error when trying to generate a dungeon. It should be improved in the future.
+
+## Final steps
+
+After creating a room template GameObject, you can simply save it as an asset and it is ready to be used in a level graph.

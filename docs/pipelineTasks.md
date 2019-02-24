@@ -3,14 +3,14 @@ id: pipelineTasks
 title: Pipeline tasks
 ---
 
-TODO
+Pipeline tasks contain all the logic of the procedural dungeon generator. They are reusable and configurable components which we compose together to make the whole generator work.
 
 ## Creating pipeline tasks
 There are currently 2 ways to create pipeline tasks - the first way is simpler but less flexible and the second way is the exact opposite - slightly more complex but also more flexible.
 
 ## Inheriting from `PipelineTask`
 
-The first way to create a pipeline task is to create a class that inherits from the `PipelineTask` class below. As you can see, the `PipelineTask` class is abstract and you have to provide an implementation of the `Process` method.
+The first way to create a pipeline task is to create a class that inherits from the `PipelineTask` class below. As you can see below, the `PipelineTask` class is abstract and you have to provide an implementation of the `Process` method.
 
 ```csharp
 /// <summary>
@@ -47,7 +47,7 @@ public class Payload {
 }
 ```
 
-Let's create a pipeline task that will subtract a number from the `Payload.Number` property and we want that number to be configurable in Editor.
+Let's create a pipeline task that will subtract a number from the `Payload.Number` property and we want that number to be configurable in Editor:
 
 ```csharp
 [CreateAssetMenu(menuName = "Example tasks/Subtract task", fileName = "SubtractTask")]
@@ -62,13 +62,15 @@ public class SubtractTask : PipelineTask<Payload>
 }
 ```
 
-You can see that I added the `CreateAssetMenu` attribute because we want to be able to create an instance if the task in the Editor. The rest of the code should be quite self-explanatory.
+You can see that I added the `CreateAssetMenu` attribute because we want to be able to create an instance of the task in the Editor. The rest of the code should be quite self-explanatory.
+
+To use this task, we first create an instance of the `SubtractTask` ScriptableObject and then drag that instance to the *Generator pipeline script*.
 
 ### Pros and cons
 
-The biggest *disadvantage* is that we have to specify exactly which payload class we want to use because Unity does not allow us to have generic ScriptableObjects. However, this may not be a problem if you do not plan to ever switch payload's implementation.
+The biggest *disadvantage* is that we have to specify exactly which payload class we want to use because Unity does not allow us to have generic ScriptableObjects. However, this may not be a problem if you do not plan to ever switch the implementation of the payload.
 
-> **Note:** It is not exactly true that we have to specify which payload *class* we want to use. We can also use an *interface*. But what if we want to access properties from multiple interfaces? There are workarounds but I have yet to find one that is not ugly.
+> **Note:** It is not exactly true that we have to specify which payload *class* we want to use. We can also use an *interface*. But what if we want to access properties from multiple interfaces? We can probably work around that but it is not very nice.
 
 ## Inheriting from `PipelineConfig`
 
@@ -173,6 +175,8 @@ Note a few things regarding the task:
 - it has access to `Payload` and `Config` properties
     - `Payload` is of a generic `TPayload` type that must implement both `IDungeonPayload` and `IRandomGeneratorPayload` interfaces
     - `Config` is of the `RandomSizeConfig` type
+
+To use this task, we first create an instance of the `RandomSizeConfig` ScriptableObject and then drag that instance to the *Generator pipeline script*. We do not do anything with the `RandomSizeTask` - the pipeline runner uses some *reflection magic* to find a corresponding task to each config class.
 
 ### Pros and cons
 

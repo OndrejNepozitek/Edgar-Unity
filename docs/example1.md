@@ -3,7 +3,7 @@ id: example1
 title: Example 1
 ---
 
-In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-assetpuck) from by [@pixel_poem](https://twitter.com/pixel_poem). Be sure to check his work out if you like the tileset. We will not care about room decorations - we will use just basic walls, floor and  door tiles. 
+In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-assetpuck) by [@pixel_poem](https://twitter.com/pixel_poem). Be sure to check their work out if you like the tileset. We will not care about room decorations - we will use just basic walls, floor and  door tiles. 
 
 <div class="two-columns">
 <div>
@@ -20,6 +20,8 @@ In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-
 
 </div>
 </div>
+
+> **Note:** All files from this example can be found at *ProceduralLevelGenerator/Examples/Example1*.
 
 ## Simple example
 
@@ -72,7 +74,7 @@ We just need to make sure that we do not allow door positions of non-corridor ro
 
 ### Level graph
 
-With only two room templates for non-corridor rooms, we must think about which level graphs are possible to lay out and which are not. For example, using only the bigger room template, the algorithm is not able to lay out cycles of lengths 3 and 5 because there simply is not any way to form these cycles with such room templates. But cycles of length 4 are possible do that is what we do here.
+With only two room templates for non-corridor rooms, we must think about which level graphs are possible to lay out and which are not. For example, using only the bigger room template, the algorithm is not able to lay out cycles of lengths 3 and 5 because there simply is not any way to form these cycles with such room templates. But cycles of length 4 are possible so that is what we do here.
 
 ![](assets/example1_level_graph1.png)
 *Level graph*
@@ -150,10 +152,12 @@ Even for ordinary rooms, we can have non-rectangular room templates.
 
 ### Level graph
 
-TODO
+So the goal is to have more rooms than in the simple example and also a spawn room and a boss room. You can see one such level graph below.
 
 ![](assets/example1_level_graph2.png)
 *Level graph*
+
+You can also see that with corridors of different lengths a more room templates to choose from, we can now have cycles of various sizes. The boss and spawn rooms have assigned only a single room template.
 
 ### Results
 

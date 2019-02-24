@@ -65,3 +65,7 @@ img + em {
     }
 }
 
+
+.container.docsNavContainer::-webkit-scrollbar       {background-color:#fff; width:8px}
+.container.docsNavContainer::-webkit-scrollbar-track {background-color:#fff}
+.container.docsNavContainer::-webkit-scrollbar-thumb {background-color:#babac0; border-radius:8px; border:2px solid #fff}

@@ -1,11 +1,11 @@
 ---
-id: basics_performanceTips
+id: performanceTips
 title: Performance tips
 ---
 
 ## Room templates
 
-**Try to provide as many door positions as possible.** The core idea of the algorithm is that it picks a random room and slightly changes its position, hopefully making new connections with neighbouring rooms. If there are too few available door positions, the algorithm will often break already existing connections when trying to connect the room to other neighbours, resulting in a poor performance.
+**Try to provide as many door positions as possible.** The core idea of the algorithm is that it picks a random room and slightly changes its position, hopefully making new connections with neighbouring rooms. If there are too few available door positions, the algorithm will often break already existing connections when trying to connect the room to other neighbours, resulting in a poor performance. However, note that if you have all door positions with the same length, it usually *does not* help to add door positions with different lengths just to make the algorithm faster.
 
 ## Level graphs
 

@@ -18,3 +18,5 @@ Internally, the generator is simply an array of pipeline tasks together with a s
 
 ![](assets/pipeline_inspector.png)
 *Example pipeline as seen in the inspector window.*
+
+> **Note:** You are not forced to divide your own code into multiple tasks. If you feel like there is no benefit in doing that, you can simply create one task and put all your logic there.

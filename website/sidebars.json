@@ -1,12 +1,12 @@
 {
   "docs": {
     "Introduction": ["introduction", "motivation", "installation"],
-    "Basics": ["basics", "basics_templates", "basics_levelGraphs", "basics_generatorSetup", "basics_performanceTips"],
+    "Basics": ["basics", "roomTemplates", "levelGraphs", "generatorSetup", "performanceTips"],
     "Examples": ["example1", "example2"],
-    "Generator pipeline": ["generatorPipeline", "pipelinePayload", "pipelineTasks", "generatorPipeline_tilemapLayers"],
-    "Pipeline tasks": ["fixedInput", "graphBasedGenerator"],
-    "Guides": ["guides_proceduralLevelGraphs", "guides_corridorsCorrection"],
-    "API": []
+    "Generator pipeline": ["generatorPipeline", "pipelinePayload", "pipelineTasks", "runPipeline"],
+    "Pipeline tasks": ["fixedInput", "graphBasedGenerator", "payloadInitializer"],
+    "Guides": ["addingDoorTiles", "proceduralLevelGraphs", "corridorsCorrection"],
+    "Other": ["tilemapLayers"]
   },
   "docs-other": {
     "First Category": ["doc4", "doc5"]

@@ -5,21 +5,14 @@
     "previous": "Previous",
     "tagline": "A configurable Unity plugin for procedural generation of 2D dungeons",
     "docs": {
-      "basics_generatorSetup": {
-        "title": "Generator setup"
-      },
-      "basics_levelGraphs": {
-        "title": "Level graphs"
-      },
-      "basics_performanceTips": {
-        "title": "Performance tips"
-      },
-      "basics_templates": {
-        "title": "Room templates",
-        "sidebar_label": "Room templates"
+      "addingDoorTiles": {
+        "title": "Adding door tiles"
       },
       "basics": {
         "title": "Basics"
+      },
+      "corridorsCorrection": {
+        "title": "! Corridors correction"
       },
       "example1": {
         "title": "Example 1"
@@ -30,36 +23,51 @@
       "fixedInput": {
         "title": "Fixed input"
       },
-      "generatorPipeline_tilemapLayers": {
-        "title": "Tilemap layers",
-        "sidebar_label": "Tilemap layers"
-      },
       "generatorPipeline": {
         "title": "Generator pipeline"
+      },
+      "generatorSetup": {
+        "title": "Generator setup"
       },
       "graphBasedGenerator": {
         "title": "Graph based generator"
       },
-      "guides_corridorsCorrection": {
-        "title": "Corridors correction"
-      },
-      "guides_proceduralLevelGraphs": {
-        "title": "Procedural level graphs"
-      },
       "installation": {
-        "title": "Installation"
+        "title": "! Installation"
       },
       "introduction": {
         "title": "Introduction"
       },
+      "levelGraphs": {
+        "title": "Level graphs"
+      },
       "motivation": {
         "title": "Motivation"
+      },
+      "payloadInitializer": {
+        "title": "Payload initializer"
+      },
+      "performanceTips": {
+        "title": "Performance tips"
       },
       "pipelinePayload": {
         "title": "Pipeline payload"
       },
       "pipelineTasks": {
         "title": "Pipeline tasks"
+      },
+      "proceduralLevelGraphs": {
+        "title": "! Procedural level graphs"
+      },
+      "roomTemplates": {
+        "title": "Room templates",
+        "sidebar_label": "Room templates"
+      },
+      "runPipeline": {
+        "title": "Run pipeline"
+      },
+      "tilemapLayers": {
+        "title": "! Tilemap layers"
       }
     },
     "links": {
@@ -73,7 +81,7 @@
       "Generator pipeline": "Generator pipeline",
       "Pipeline tasks": "Pipeline tasks",
       "Guides": "Guides",
-      "API": "API",
+      "Other": "Other",
       "First Category": "First Category"
     }
   },
