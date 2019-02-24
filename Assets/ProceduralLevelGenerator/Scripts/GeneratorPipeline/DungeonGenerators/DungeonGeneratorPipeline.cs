@@ -6,6 +6,9 @@
 	using UnityEngine;
 	using Utils;
 
+	/// <summary>
+	/// MonoBehaviour script that holds the whole generator pipeline.
+	/// </summary>
 	public class DungeonGeneratorPipeline : MonoBehaviour
 	{
 		[ExpandableNotFoldable]

@@ -5,12 +5,9 @@
 	using System.Diagnostics;
 	using System.Linq;
 	using System.Threading.Tasks;
-	using Data.Graphs;
-	using InputSetup;
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.LayoutGenerator;
 	using MapGeneration.Interfaces.Core.MapLayouts;
-	using Payloads;
 	using Payloads.Interfaces;
 	using Pipeline;
 	using RoomTemplates;
@@ -23,11 +20,13 @@
 	using Object = UnityEngine.Object;
 	using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
+	/// <summary>
+	/// Actual implementation of the task that generates dungeons.
+	/// </summary>
+	/// <typeparam name="TPayload"></typeparam>
 	public class GraphBasedGeneratorTask<TPayload> : ConfigurablePipelineTask<TPayload, GraphBasedGeneratorConfig>
 		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
 	{
-		private List<RoomInfo<Room>> generatedRooms;
-
 		public override void Process()
 		{
 			var stopwatch = new Stopwatch();
@@ -175,6 +174,9 @@
 			}
 		}
 
+		/// <summary>
+		/// Copies tiles from individual room templates to the tilemaps that hold generated dungeons.
+		/// </summary>
 		protected void ApplyTemplates()
 		{
 			// Non-corridor rooms
@@ -194,6 +196,9 @@
 			}
 		}
 
+		/// <summary>
+		/// Copies tiles from a given room template to the tilemaps that hold generated dungeons.
+		/// </summary>
 		protected void ApplyTemplate(RoomInfo<int> roomInfo)
 		{
 			DeleteNonNullTiles(roomInfo);

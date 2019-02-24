@@ -4,15 +4,11 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using Data.Graphs;
-	using Data.Rooms;
 	using GeneralAlgorithms.DataStructures.Common;
 	using MapGeneration.Core.MapDescriptions;
-	using MapGeneration.Interfaces.Core.MapDescriptions;
-	using Payloads;
 	using Payloads.Interfaces;
 	using Pipeline;
 	using UnityEngine;
-	using Utils;
 
 	/// <summary>
 	/// Pipeline task that prepares map description from a given layout graph.

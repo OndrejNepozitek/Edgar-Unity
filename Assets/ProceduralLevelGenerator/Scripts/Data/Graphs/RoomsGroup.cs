@@ -5,18 +5,32 @@
 	using Rooms;
 	using UnityEngine;
 
+	/// <summary>
+	/// Represents a group of rooms that share the same room templates.
+	/// </summary>
 	[Serializable]
 	public class RoomsGroup : ISerializationCallbackReceiver
 	{
+		/// <summary>
+		/// Name of the group.
+		/// </summary>
 		public string Name = "New group";
 
 		[HideInInspector]
 		public List<RoomTemplatesSet> RoomTemplateSets = new List<RoomTemplatesSet>();
 
+		/// <summary>
+		/// Room templates assigned to the group.
+		/// </summary>
 		public List<GameObject> IndividualRoomTemplates = new List<GameObject>();
 
+		/// <summary>
+		/// GUID of the group.
+		/// </summary>
 		[HideInInspector]
 		public Guid Guid = Guid.NewGuid();
+
+		#region Ugly GUID serialization logic
 
 		[HideInInspector]
 		[SerializeField]
@@ -37,5 +51,7 @@
 				Guid = new Guid(serializedGuid);
 			}
 		}
+
+		#endregion
 	}
 }

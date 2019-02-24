@@ -2,6 +2,9 @@
 {
 	using UnityEngine.Tilemaps;
 
+	/// <summary>
+	/// Represents a payload with named tilemaps.
+	/// </summary>
 	public interface INamedTilemapsPayload
 	{
 		Tilemap WallsTilemap { get; }

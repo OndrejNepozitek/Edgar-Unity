@@ -8,6 +8,9 @@
 	using UnityEngine.Tilemaps;
 	using Random = System.Random;
 
+	/// <summary>
+	/// Basic payload initializer.
+	/// </summary>
 	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Payload initializer", fileName = "PayloadInitializer")]
 	public class PayloadInitializer : AbstractPayloadInitializer
 	{

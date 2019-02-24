@@ -17,6 +17,9 @@
 		where TConfig : PipelineConfig 
 		where TPayload : class, IGraphBasedGeneratorPayload
 	{
+		/// <summary>
+		/// Mapping between room descriptions and gameobjects.
+		/// </summary>
 		protected TwoWayDictionary<IRoomDescription, GameObject> RoomDescriptionsToRoomTemplates;
 
 		protected RoomShapesLoader RoomShapesLoader;
@@ -30,6 +33,10 @@
 			Payload.RoomDescriptionsToRoomTemplates = RoomDescriptionsToRoomTemplates;
 		}
 
+		/// <summary>
+		/// Returns map description.
+		/// </summary>
+		/// <returns></returns>
 		protected abstract MapDescription<int> SetupMapDescription();
 
 		/// <summary>

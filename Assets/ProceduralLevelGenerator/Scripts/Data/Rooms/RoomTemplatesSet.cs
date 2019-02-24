@@ -3,6 +3,9 @@
 	using System.Collections.Generic;
 	using UnityEngine;
 
+	/// <summary>
+	/// Currently not used.
+	/// </summary>
 	// [CreateAssetMenu(fileName = "RoomTemplates", menuName = "Dungeon generator/Room templates")]
 	public class RoomTemplatesSet : ScriptableObject
 	{

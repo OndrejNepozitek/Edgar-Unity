@@ -11,6 +11,10 @@
 	using UnityEngine.Tilemaps;
 	using Random = System.Random;
 
+	/// <summary>
+	/// Default pipeline payload.
+	/// </summary>
+	/// <typeparam name="TRoom"></typeparam>
 	public class PipelinePayload<TRoom> : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<TRoom>
 	{
 		public GameObject GameObject { get; set; }
