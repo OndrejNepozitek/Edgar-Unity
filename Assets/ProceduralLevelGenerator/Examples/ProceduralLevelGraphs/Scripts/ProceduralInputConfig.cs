@@ -13,28 +13,55 @@
 	[CreateAssetMenu(menuName = "Dungeon generator/Examples/Procedural level graphs/Procedural input", fileName = "ProceduralInput")]
 	public class ProceduralInputConfig : PipelineConfig
 	{
+		/// <summary>
+		/// Minimum lenght of the main path.
+		/// </summary>
 		public int MinLength = 10;
 
+		/// <summary>
+		/// Maximum length of the main path.
+		/// </summary>
 		public int MaxLength = 15;
 
+		/// <summary>
+		/// Whether to add redundant rooms.
+		/// </summary>
 		public bool AddRedundantRooms;
 
+		/// <summary>
+		/// What is the chance of adding a redundant room.
+		/// </summary>
 		[Range(0f, 1f)]
 		public float RedundantRoomChance = 0.5f;
 
+		/// <summary>
+		/// Whether to add a shortcut.
+		/// </summary>
 		public bool AddShortcuts;
 
+		/// <summary>
+		/// Room templates used for the spawn room.
+		/// </summary>
 		public GameObject[] SpawnRoomTemplates;
 
+		/// <summary>
+		/// Room templates used for the boss room.
+		/// </summary>
 		public GameObject[] BossRoomTemplates;
 
+		/// <summary>
+		/// Room templates for basic rooms.
+		/// </summary>
 		public GameObject[] BasicRoomTemplates;
 
+		/// <summary>
+		/// Room templates for corridors.
+		/// </summary>
 		public GameObject[] CorridorRoomTemplates;
 	}
 
 	public class ProceduralInputTask<TPayload> : BaseInputSetupTask<TPayload, ProceduralInputConfig>
-		where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
+		where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<Room>
 	{
 		protected TwoWayDictionary<Room, int> RoomToIntMapping;
 
@@ -75,6 +102,8 @@
 			// Setup room templates
 			SetupRoomTemplates();
 
+			Payload.RoomToIntMapping = RoomToIntMapping;
+
 			return MapDescription;
 		}
 
@@ -107,19 +136,32 @@
 			return mainPath;
 		}
 
+		/// <summary>
+		/// Setups redundant rooms.
+		/// </summary>
+		/// <remarks>
+		/// Goes through all basic and shortcut rooms and with a predefined
+		/// chance connects one or two redundant rooms.
+		/// 
+		/// To make it easier for the generator:
+		/// - consider only rooms with at most 2 neighbours
+		/// - consider only rooms whose neighbours do not have any redundant rooms connected
+		/// </remarks>
 		protected void SetupRedundantRooms()
 		{
 			var basicRooms = LevelGraph.Vertices.Where(x => x.Type == RoomType.Basic || x.Type == RoomType.Shortcut).ToList();
 
 			foreach (var room in basicRooms)
 			{
-				if (Payload.Random.NextDouble() < Config.RedundantRoomChance && LevelGraph.GetNeighbours(room).Count() < 3)
+				if (Payload.Random.NextDouble() < Config.RedundantRoomChance 
+				    && LevelGraph.GetNeighbours(room).Count() < 3
+				    && !HasNeigbourWithRedundantRoom(room))
 				{
 					var redundantRoom = new Room() { Type = RoomType.Redundant };
 					LevelGraph.AddVertex(redundantRoom);
 					LevelGraph.AddEdge(room, redundantRoom);
-
-					if (Payload.Random.NextDouble() < Config.RedundantRoomChance)
+					
+					if (Payload.Random.NextDouble() < Config.RedundantRoomChance / 2)
 					{
 						var redundantRoom2 = new Room() { Type = RoomType.Redundant };
 						LevelGraph.AddVertex(redundantRoom2);
@@ -129,15 +171,35 @@
 			}
 		}
 
+		/// <summary>
+		/// Checks if any neighbours of a given room have redundant rooms connected to them.
+		/// </summary>
+		/// <param name="room"></param>
+		/// <returns></returns>
+		protected bool HasNeigbourWithRedundantRoom(Room room)
+		{
+			return LevelGraph
+				.GetNeighbours(room)
+				.Any(x =>
+					LevelGraph.GetNeighbours(x).Any(y => y.Type == RoomType.Redundant)
+				);
+		}
+
+		/// <summary>
+		/// Setups a shortcut.
+		/// </summary>
+		/// <param name="mainPath"></param>
 		protected void SetupShortcut(List<Room> mainPath)
 		{
-			var startIndex = Payload.Random.Next(1, mainPath.Count - 4);
+			// Compute start, end and lenght of a shortcut
+			var startIndex = Payload.Random.Next(2, mainPath.Count - 5);
 			var endIndex = startIndex + Payload.Random.Next(2, 4);
 			var shortcutLength = Payload.Random.Next(2, 4);
 
 			var startRoom = mainPath[startIndex];
 			var endRoom = mainPath[endIndex];
 
+			// Add shortcut rooms
 			var shortcutRooms = new List<Room>();
 			shortcutRooms.Add(startRoom);
 			for (int i = 0; i < shortcutLength; i++)
@@ -148,12 +210,17 @@
 			}
 			shortcutRooms.Add(endRoom);
 
+			// Add connections
 			for (int i = 0; i < shortcutRooms.Count - 1; i++)
 			{
 				LevelGraph.AddEdge(shortcutRooms[i], shortcutRooms[i + 1]);
 			}
 		}
 
+		/// <summary>
+		/// Adds rooms and connections from the level graph to the map description.
+		/// </summary>
+		/// <returns></returns>
 		protected TwoWayDictionary<Room, int> SetupMapDescriptionFromLevelGraph()
 		{
 			foreach (var room in LevelGraph.Vertices)
@@ -173,6 +240,9 @@
 			return RoomToIntMapping;
 		}
 
+		/// <summary>
+		/// Setups room templates.
+		/// </summary>
 		protected void SetupRoomTemplates()
 		{
 			SetupDefaultRoomTemplates();
