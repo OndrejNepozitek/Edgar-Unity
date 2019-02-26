@@ -47,7 +47,7 @@ const siteConfig = {
 
   /* path to images for header/footer */
   // headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
+  footerIcon: false,
   favicon: 'img/favicon.png',
 
   /* Colors for website */
@@ -71,7 +71,7 @@ const siteConfig = {
   */
 
   // This copyright info is used in /core/Footer.js and blog RSS/Atom feeds.
-  copyright: `Copyright © ${new Date().getFullYear()} Your Name or Your Company Name`,
+  copyright: `Copyright © ${new Date().getFullYear()} Ondřej Nepožitek`,
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks.

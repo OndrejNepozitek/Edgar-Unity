@@ -7,6 +7,8 @@ title: Performance tips
 
 **Try to provide as many door positions as possible.** The core idea of the algorithm is that it picks a random room and slightly changes its position, hopefully making new connections with neighbouring rooms. If there are too few available door positions, the algorithm will often break already existing connections when trying to connect the room to other neighbours, resulting in a poor performance. However, note that if you have all door positions with the same length, it usually *does not* help to add door positions with different lengths just to make the algorithm faster.
 
+**Try to provide rotated versions of room templates.** If you provide rotated versions of your room templates, the algorithm will have more options to choose from and therefore usually converge faster. However, it is quite time-consuming to manually prepare all rotations - the plugin will hopefully support doing that at least semi-automatically.
+
 ## Level graphs
 
 **Limit the number of rooms.** The core idea of the algorithm is that it decomposes the level graph into smaller subgraphs and tries to lay them out one at a time, connecting them to already laid out rooms. If this step fails, the algorithm needs to backtrack to a previous configuration. If we have too many rooms, backtracking can get quite costly, making the performance bad. We successfully generated dungeons with up to 60 rooms but it also depends on the overall complexity of the level graph - see the next point.

@@ -12,7 +12,7 @@
         "title": "Basics"
       },
       "corridorsCorrection": {
-        "title": "! Corridors correction"
+        "title": "Corridors correction"
       },
       "example1": {
         "title": "Example 1"
@@ -33,7 +33,7 @@
         "title": "Graph based generator"
       },
       "installation": {
-        "title": "! Installation"
+        "title": "Installation"
       },
       "introduction": {
         "title": "Introduction"
@@ -57,7 +57,7 @@
         "title": "Pipeline tasks"
       },
       "proceduralLevelGraphs": {
-        "title": "! Procedural level graphs"
+        "title": "Procedural level graphs"
       },
       "roomTemplates": {
         "title": "Room templates",
@@ -67,7 +67,7 @@
         "title": "Run pipeline"
       },
       "tilemapLayers": {
-        "title": "! Tilemap layers"
+        "title": "Tilemap layers"
       }
     },
     "links": {

@@ -1,9 +1,9 @@
 ---
 id: corridorsCorrection
-title: ! Corridors correction
+title: Corridors correction
 ---
 
-With some tilesets, it is not possible to correctly connect corridors to rooms without the need of some postprocess. The goal of this tutorial is to demonstrate how to use pipeline tasks to correct such problems. I will use the tileset from [Example 1](example1.md) to describe the problem and show how to fix it.
+With some tilesets, it is not possible to correctly connect corridors to rooms without the need of some postprocess. The goal of this tutorial is to demonstrate how to use pipeline tasks to correct such problems. I will use the tileset from [Example 2](example2.md) to describe the problem and show how to fix it.
 
 ## Problem
 
@@ -80,4 +80,4 @@ There are probably multiple ways of doing that. I chose to draw a so-called corr
 
 > **Note:** We can use the correction layout to correct corridors with different widths by simply repeating the middle tile.
 
-TODO script
+The implementation itself is not very interesting but you can find it [here](https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/blob/master/Assets/ProceduralLevelGenerator/Examples/Example2/Pipeline%20tasks/CorridorsCorrectionConfig.cs). It is mostly just playing with indices and copying tiles from the correction layout to the dungeon.
