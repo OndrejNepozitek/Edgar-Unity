@@ -6,6 +6,8 @@ The plugin is currently in its early alpha stage of development and I am mostly 
 
 ## See the documentation and examples [here](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/introduction).
 
+I created a [Unity forum thread](https://forum.unity.com/threads/alpha-procedural-level-generator-2d-dungeons.636157/) to gather feedback on the plugin. I'm interested in anything you have to say about the plugin. Do you think that there's a place for such plugin in the Unity ecosystem? Is there a missing feature that's a dealbreaker for you? What would you like to see in future updates? Is the plugin easy to use? Etc.
+
 ## Features
 
 **Complete control over the look of individual rooms.**
