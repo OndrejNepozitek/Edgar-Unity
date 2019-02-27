@@ -2,11 +2,11 @@
 
 This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a complete control over generated layouts. Under the hood, the plugin uses my [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
 
-The plugin is currently in its early alpha stage of development and I am mostly **looking for feedback**. The main focus of my Master thesis is to further improve my dungeon generator library so any feedback is really appreciated and will most likely lead to making the library (and therefore also this plugin) closer to being usable in production scenarios. Please read the Shortcomings section before trying out the plugin.
+The plugin is currently in its early alpha stage of development and I am mostly **looking for feedback**. The main focus of my Master thesis is to further improve my dungeon generator library so any feedback is really appreciated and will most likely lead to making the library (and therefore also this plugin) closer to being usable in production scenarios. I'm interested in anything you have to say about the plugin. Do you think that there is a place for such plugin in the Unity ecosystem? Is there a missing feature that is a dealbreaker for you? What would you like to see in future updates? Is the plugin easy to use? Etc. Please use the [Unity forum thread](https://forum.unity.com/threads/alpha-procedural-level-generator-2d-dungeons.636157/) if you have any feedback.
+
+Please read the Shortcomings section before trying out the plugin.
 
 ## See the documentation and examples [here](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/introduction).
-
-I created a [Unity forum thread](https://forum.unity.com/threads/alpha-procedural-level-generator-2d-dungeons.636157/) to gather feedback on the plugin. I'm interested in anything you have to say about the plugin. Do you think that there's a place for such plugin in the Unity ecosystem? Is there a missing feature that's a dealbreaker for you? What would you like to see in future updates? Is the plugin easy to use? Etc.
 
 ## Features
 
