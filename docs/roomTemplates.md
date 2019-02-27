@@ -161,6 +161,46 @@ You can see that I am creating doors of various lengths. And at the end of the v
 
 > **Note:** The inspector script currently lets you add door positions that are not on the outline of the room shape. It will, hovewer, result in an error when trying to generate a dungeon. It should be improved in the future.
 
+## Corridors
+
+The algorithm distinguishes two types of room tamples - basic room templates and room templates for corridor rooms. There are currently 2 limitations regarding doors in corridor room templates:
+1. There must be exactly two door positions.
+2. The two door positions must be on the opposite sides of the room layout.
+
+The images below demonstrate what is a correct corridor room template and what is not.
+
+<div class="two-columns">
+<div>
+
+![](assets/corridor_ok1.png)
+*Correct*
+
+</div>
+<div>
+
+![](assets/corridor_ok2.png)
+*Correct*
+
+</div>
+</div>
+
+<div class="two-columns">
+<div>
+
+![](assets/corridor_nok1.png)
+*Wrong - Doors not on opposite sides*
+
+</div>
+<div>
+
+![](assets/corridor_nok2.png)
+*Wrong - More than 2 door positions*
+
+</div>
+</div>
+
+> **Note:** This is a limitation of the dungeon generator library and not the plugin itself. I plan to completely rework corridors in the future.
+
 ## Final steps
 
 After creating a room template GameObject, you can simply save it as an asset and it is ready to be used in a level graph.
