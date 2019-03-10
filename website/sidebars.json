@@ -2,7 +2,7 @@
   "docs": {
     "Introduction": ["introduction", "motivation", "installation"],
     "Basics": ["basics", "roomTemplates", "levelGraphs", "generatorSetup", "performanceTips"],
-    "Examples": ["example1", "example2"],
+    "Examples": ["example1", "example2", "platformers"],
     "Generator pipeline": ["generatorPipeline", "pipelinePayload", "pipelineTasks", "runPipeline"],
     "Pipeline tasks": ["fixedInput", "graphBasedGenerator", "payloadInitializer"],
     "Guides": ["addingDoorTiles", "proceduralLevelGraphs", "corridorsCorrection"],
