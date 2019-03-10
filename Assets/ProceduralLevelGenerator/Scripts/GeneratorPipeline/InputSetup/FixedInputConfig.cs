@@ -21,7 +21,7 @@
 		public bool UseCorridors;
 	}
 
-	public class FixedInputTask<TPayload> : BaseInputSetupTask<TPayload, FixedInputConfig>
+	public class FixedInputTask<TPayload> : InputSetupBaseTask<TPayload, FixedInputConfig>
 		where TPayload : class, IGraphBasedGeneratorPayload, IGeneratorPayload
 	{
 		protected TwoWayDictionary<Room, int> RoomToIntMapping;

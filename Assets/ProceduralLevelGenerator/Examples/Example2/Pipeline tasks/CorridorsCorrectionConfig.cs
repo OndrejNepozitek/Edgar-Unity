@@ -26,10 +26,8 @@
 			correctionTilemaps = Config.CorrectionLayout.GetComponentsInChildren<Tilemap>().ToList();
 			tilemapsBound = ComputeTilemapsBound();
 
-			foreach (var pair in Payload.LayoutData)
+			foreach (var roomInfo in Payload.Layout.GetAllRoomInfo())
 			{
-				var roomInfo = pair.Value;
-
 				if (roomInfo.GeneratorData.IsCorridor)
 				{
 					CorrectCorridor(roomInfo);

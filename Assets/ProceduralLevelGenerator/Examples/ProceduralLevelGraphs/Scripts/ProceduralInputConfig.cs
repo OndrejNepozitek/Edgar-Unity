@@ -60,7 +60,7 @@
 		public GameObject[] CorridorRoomTemplates;
 	}
 
-	public class ProceduralInputTask<TPayload> : BaseInputSetupTask<TPayload, ProceduralInputConfig>
+	public class ProceduralInputTask<TPayload> : InputSetupBaseTask<TPayload, ProceduralInputConfig>
 		where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<Room>
 	{
 		protected TwoWayDictionary<Room, int> RoomToIntMapping;

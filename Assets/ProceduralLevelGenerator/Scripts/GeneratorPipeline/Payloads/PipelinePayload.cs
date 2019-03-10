@@ -2,6 +2,7 @@
 {
 	using System.Collections.Generic;
 	using Data.Graphs;
+	using DungeonGenerators;
 	using GeneralAlgorithms.DataStructures.Common;
 	using Interfaces;
 	using MapGeneration.Core.MapDescriptions;
@@ -25,7 +26,7 @@
 
 		public TwoWayDictionary<IRoomDescription, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
 
-		public Dictionary<int, RoomInfo<int>> LayoutData { get; set; }
+		public Layout<int> Layout { get; set; }
 
 		public Tilemap WallsTilemap => Tilemaps[0];
 

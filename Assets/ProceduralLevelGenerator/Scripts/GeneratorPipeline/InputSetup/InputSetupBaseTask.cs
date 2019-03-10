@@ -13,7 +13,7 @@
 	using UnityEngine;
 	using Utils;
 
-	public abstract class BaseInputSetupTask<TPayload, TConfig> : ConfigurablePipelineTask<TPayload, TConfig> 
+	public abstract class InputSetupBaseTask<TPayload, TConfig> : ConfigurablePipelineTask<TPayload, TConfig> 
 		where TConfig : PipelineConfig 
 		where TPayload : class, IGraphBasedGeneratorPayload
 	{

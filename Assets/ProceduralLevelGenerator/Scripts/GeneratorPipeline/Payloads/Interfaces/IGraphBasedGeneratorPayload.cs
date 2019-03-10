@@ -1,6 +1,7 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces
 {
 	using System.Collections.Generic;
+	using DungeonGenerators;
 	using GeneralAlgorithms.DataStructures.Common;
 	using MapGeneration.Core.MapDescriptions;
 	using MapGeneration.Interfaces.Core.MapDescriptions;
@@ -16,6 +17,6 @@
 
 		TwoWayDictionary<IRoomDescription, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
 
-		Dictionary<int, RoomInfo<int>> LayoutData { get; set; }
+		Layout<int> Layout { get; set; }
 	}
 }

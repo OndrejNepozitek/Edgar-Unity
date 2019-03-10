@@ -35,10 +35,8 @@
 			}
 
 			// Iterate through all rooms
-			foreach (var pair in Payload.LayoutData)
+			foreach (var roomInfo in Payload.Layout.GetAllRoomInfo())
 			{
-				var roomInfo = pair.Value;
-
 				// Check if corridor room
 				if (roomInfo.IsCorridor)
 				{
