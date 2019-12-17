@@ -7,7 +7,7 @@
 
 	[CustomGridBrush(false, true, false, "Random Brush")]
     [CreateAssetMenu(fileName = "New Random Brush", menuName = "Brushes/Random Brush")]
-    public class RandomBrush : GridBrush 
+    public class RandomBrush : UnityEditor.Tilemaps.GridBrush 
 	{
 		public TileBase[] randomTiles;
 		
@@ -38,7 +38,7 @@
     }
 
     [CustomEditor(typeof(RandomBrush))]
-    public class RandomBrushEditor : GridBrushEditor
+    public class RandomBrushEditor : UnityEditor.Tilemaps.GridBrushEditor
     {
         private RandomBrush randomBrush { get { return target as RandomBrush; } }
 		private GameObject lastBrushTarget;
