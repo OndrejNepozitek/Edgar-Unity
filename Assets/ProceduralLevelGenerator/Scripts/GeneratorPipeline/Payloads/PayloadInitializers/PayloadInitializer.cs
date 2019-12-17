@@ -1,9 +1,13 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.PayloadInitializers
+﻿using System;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.PayloadInitializers
 {
 	using System.Linq;
 	using Data.Graphs;
 	using RoomTemplates.TilemapLayers;
+    #if UNITY_EDITOR
 	using UnityEditor;
+    #endif
 	using UnityEngine;
 	using UnityEngine.Tilemaps;
 	using Random = System.Random;
@@ -70,16 +74,23 @@
 			var dungeonHolder = new GameObject(DungeonHolderName);
 			dungeonHolder.AddComponent<Grid>();
 
-			// Initialize tilemaps
-			var tilemapLayersHandler = TilemapLayersHandler;
-
-			if (tilemapLayersHandler == null)
-			{
-				tilemapLayersHandler = AssetDatabase
-					.LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
+            #if UNITY_EDITOR
+			if (TilemapLayersHandler == null)
+            {
+                TilemapLayersHandler = AssetDatabase
+                    .LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
+                EditorUtility.SetDirty(this);
+                AssetDatabase.SaveAssets();
 			}
+            #endif
 
-			tilemapLayersHandler.InitializeTilemaps(dungeonHolder);
+            if (TilemapLayersHandler == null)
+            {
+				throw new ArgumentNullException(nameof(TilemapLayersHandler), $"{nameof(TilemapLayersHandler)} must not be null");
+            }
+
+            // Initialize tilemaps
+			TilemapLayersHandler.InitializeTilemaps(dungeonHolder);
 
 			return dungeonHolder;
 		}

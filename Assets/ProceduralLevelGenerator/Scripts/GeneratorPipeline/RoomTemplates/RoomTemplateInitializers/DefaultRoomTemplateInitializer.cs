@@ -1,8 +1,11 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.RoomTemplateInitializers
 {
 	using TilemapLayers;
-	using UnityEditor;
 	using UnityEngine;
+
+    #if UNITY_EDITOR
+    using UnityEditor;
+    #endif
 
 	/// <summary>
 	/// Default room template initializer that uses the default
@@ -10,6 +13,7 @@
 	/// </summary>
 	public class DefaultRoomTemplateInitializer : BaseRoomTemplateInitializer
 	{
+        #if UNITY_EDITOR
 		public void Initialize()
 		{
 			var tilemapLayersHandler = AssetDatabase
@@ -24,5 +28,6 @@
 			// Destroy the initializer
 			DestroyImmediate(this);
 		}
+        #endif
 	}
 }
