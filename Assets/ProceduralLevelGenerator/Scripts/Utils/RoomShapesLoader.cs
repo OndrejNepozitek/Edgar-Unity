@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Utils
+﻿using GeneralAlgorithms.Algorithms.Common;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
 	using System;
 	using System.Collections.Generic;
@@ -39,12 +41,11 @@
 		};
 
 		/// <summary>
-		/// Computes a polygon from its outline points.
+		/// Computes a polygon from its tiles.
 		/// </summary>
-		/// <param name="outlinePoints"></param>
-		/// <param name="allPoints"></param>
+        /// <param name="allPoints"></param>
 		/// <returns></returns>
-		public GridPolygon GetPolygonFromOutline(HashSet<IntVector2> outlinePoints, HashSet<IntVector2> allPoints)
+		public GridPolygon GetPolygonFromTiles(HashSet<IntVector2> allPoints)
 		{
 			var orderedDirections = new Dictionary<IntVector2, List<IntVector2>>()
 			{
@@ -54,7 +55,13 @@
 				{ IntVector2Helper.Left, new List<IntVector2>() { IntVector2Helper.Bottom, IntVector2Helper.Left, IntVector2Helper.Top } },
 			};
 
-			var (startingPoint, startingDirection) = GetClockwiseOutlineDirection(outlinePoints, allPoints);
+            var smallestX = allPoints.Min(x => x.X);
+            var smallestXPoints = allPoints.Where(x => x.X == smallestX).ToList();
+            var smallestXYPoint = smallestXPoints[smallestXPoints.MinBy(x => x.Y)];
+
+            var startingPoint = smallestXYPoint;
+            var startingDirection = IntVector2Helper.Top;
+
 			var polygonPoints = new List<IntVector2>();
 			var currentPoint = startingPoint + startingDirection;
 			var firstPoint = currentPoint;
@@ -70,7 +77,7 @@
 				{
 					var newPoint = currentPoint + directionVector;
 
-					if (outlinePoints.Contains(newPoint))
+					if (allPoints.Contains(newPoint))
 					{
 						currentDirection = directionVector;
 						foundNeighbour = true;
@@ -107,96 +114,7 @@
 			return new GridPolygon(polygonPoints);
 		}
 
-		/// <summary>
-		/// Gets a point on the outline of the polygon together with a clockwise direction
-		/// to the next point on the outline.
-		/// </summary>
-		/// <param name="outlinePoints"></param>
-		/// <param name="allPoints"></param>
-		/// <returns></returns>
-		protected (IntVector2 point, IntVector2 direction) GetClockwiseOutlineDirection(HashSet<IntVector2> outlinePoints, HashSet<IntVector2> allPoints)
-		{
-			var startingPoint = outlinePoints.First();
-
-			foreach (var directionVectorTmp in DirectionVectors)
-			{
-				var directionVector = directionVectorTmp;
-				var firstPoint = startingPoint;
-				var secondPoint = startingPoint + directionVector;
-
-				if (!outlinePoints.Contains(secondPoint))
-					continue;
-
-				// Switch points and direction to make the computation easier.
-				// We will have to handle only Top and Right directions.
-				if (directionVector == IntVector2Helper.Bottom || directionVector == IntVector2Helper.Left)
-				{
-					var tmp = firstPoint;
-					firstPoint = secondPoint;
-					secondPoint = tmp;
-					directionVector = -1 * directionVector;
-				}
-
-				if (directionVector == IntVector2Helper.Top)
-				{
-					// Check if polygon points are on the left side or on the right side
-					var onLeftSide = allPoints.Contains(firstPoint + IntVector2Helper.Left);
-					var onRightSide = allPoints.Contains(firstPoint + IntVector2Helper.Right);
-
-					// If there are points on both sides of the edge, then the edge is not part of the outline
-					if (onLeftSide && onRightSide)
-					{
-						continue;
-					}
-
-					// If there are no points on both sides, then the room shape is not valid
-					if (!onLeftSide && !onRightSide)
-					{
-						throw new ArgumentException("Invalid room shape");
-					}
-
-					if (onLeftSide)
-					{
-						return (secondPoint, IntVector2Helper.Bottom);
-					}
-					else // if (onRightSide)
-					{
-						return (firstPoint, IntVector2Helper.Top);
-					}
-				}
-				else // if (directionVector == IntVector2Helper.Right)
-				{
-					// Check if polygon points are on the left side or on the right side
-					var onTopSide = allPoints.Contains(firstPoint + IntVector2Helper.Top);
-					var onBottomSide = allPoints.Contains(firstPoint + IntVector2Helper.Bottom);
-
-					// If there are points on both sides of the edge, then the edge is not part of the outline
-					if (onTopSide && onBottomSide)
-					{
-						continue;
-					}
-
-					// If there are no points on both sides, then the room shape is not valid
-					if (!onTopSide && !onBottomSide)
-					{
-						throw new ArgumentException("Invalid room shape");
-					}
-
-					if (onTopSide)
-					{
-						return (secondPoint, IntVector2Helper.Left);
-					}
-					else // if (onBottomSide)
-					{
-						return (firstPoint, IntVector2Helper.Right);
-					}
-				}
-			}
-
-			throw new ArgumentException("Invalid room shape");
-		}
-
-		/// <summary>
+        /// <summary>
 		/// Computes a polygon from points on given tilemaps.
 		/// </summary>
 		/// <param name="tilemaps"></param>
@@ -204,7 +122,7 @@
 		public GridPolygon GetPolygonFromTilemaps(IEnumerable<Tilemap> tilemaps)
 		{
 			var usedTiles = GetUsedTiles(tilemaps);
-			return GetPolygonFromOutline(GetPolygonOutline(usedTiles), usedTiles);
+			return GetPolygonFromTiles(usedTiles);
 		}
 
 		/// <summary>
@@ -234,48 +152,7 @@
 			return usedTiles;
 		}
 
-		/// <summary>
-		/// Computes an outline of a polygon formed by non-null tiles in given tilemaps.
-		/// </summary>
-		/// <param name="tilemaps"></param>
-		/// <returns></returns>
-		public HashSet<IntVector2> GetPolygonOutline(IEnumerable<Tilemap> tilemaps)
-		{
-			return GetPolygonOutline(GetUsedTiles(tilemaps));
-		}
-
-		/// <summary>
-		/// Computes an outline of a polygon formed by given tiles.
-		/// </summary>
-		/// <param name="usedTiles"></param>
-		/// <returns></returns>
-		public HashSet<IntVector2> GetPolygonOutline(HashSet<IntVector2> usedTiles)
-		{
-			if (usedTiles.Count == 0)
-			{
-				throw new ArgumentException("There are no used tiles");
-			}
-
-			var borderPoints = new HashSet<IntVector2>();
-
-			foreach (var tile in usedTiles)
-			{
-				foreach (var directionVector in AllDirectionVectors)
-				{
-					var newTile = tile + directionVector;
-
-					if (!usedTiles.Contains(newTile))
-					{
-						borderPoints.Add(tile);
-						break;
-					}
-				}
-			}
-
-			return borderPoints;
-		}
-
-		/// <summary>
+        /// <summary>
 		/// Computes a room description from a given room template.
 		/// </summary>
 		/// <param name="roomTemplate"></param>
@@ -283,7 +160,7 @@
 		public RoomDescription GetRoomDescription(GameObject roomTemplate)
 		{
 			var polygon = GetPolygonFromTilemaps(roomTemplate.GetComponentsInChildren<Tilemap>());
-			var doors = roomTemplate.GetComponent<Doors>();
+            var doors = roomTemplate.GetComponent<Doors>();
 
 			if (doors == null)
 			{
