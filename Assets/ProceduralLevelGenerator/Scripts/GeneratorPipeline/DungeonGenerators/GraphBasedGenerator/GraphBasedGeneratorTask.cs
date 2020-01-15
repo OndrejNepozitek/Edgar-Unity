@@ -1,4 +1,7 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
+﻿using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
+using MapGeneration.Interfaces.Core.MapDescriptions;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
 {
 	using System;
 	using System.Collections.Generic;
@@ -72,23 +75,12 @@
 			}
 		}
 
-		protected IBenchmarkableLayoutGenerator<MapDescription<int>, IMapLayout<int>> GetGenerator(MapDescription<int> mapDescription)
+		protected DungeonGenerator<int> GetGenerator(IMapDescription<int> mapDescription)
 		{
-			IBenchmarkableLayoutGenerator<MapDescription<int>, IMapLayout<int>> generator;
-			if (mapDescription.IsWithCorridors)
-			{
-				var gen = UnityLayoutGeneratorFactory.GetChainBasedGeneratorWithCorridors<int>(mapDescription.CorridorsOffsets);
-				gen.InjectRandomGenerator(Payload.Random);
-				generator = gen;
-			}
-			else
-			{
-				var gen = UnityLayoutGeneratorFactory.GetDefaultChainBasedGenerator<int>();
-				gen.InjectRandomGenerator(Payload.Random);
-				generator = gen;
-			}
+			var generator = new DungeonGenerator<int>(mapDescription, new DungeonGeneratorConfiguration(mapDescription));
+			generator.InjectRandomGenerator(Payload.Random);
 
-			return generator;
+            return generator;
 		}
 
 		/// <summary>

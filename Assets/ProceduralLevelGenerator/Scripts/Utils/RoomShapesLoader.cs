@@ -1,4 +1,5 @@
 ﻿using GeneralAlgorithms.Algorithms.Common;
+using MapGeneration.Interfaces.Core.MapDescriptions;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
@@ -153,62 +154,68 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 		}
 
         /// <summary>
-		/// Computes a room description from a given room template.
-		/// </summary>
-		/// <param name="roomTemplate"></param>
-		/// <returns></returns>
-		public RoomDescription GetRoomDescription(GameObject roomTemplate)
+        /// Computes a room room template from a given room template game object.
+        /// </summary>
+        /// <param name="roomTemplateGameObject"></param>
+        /// <param name="allowedTransformations"></param>
+        /// <returns></returns>
+        public IRoomTemplate GetRoomDescription(GameObject roomTemplateGameObject, List<Transformation> allowedTransformations = null)
 		{
-			var polygon = GetPolygonFromTilemaps(roomTemplate.GetComponentsInChildren<Tilemap>());
-            var doors = roomTemplate.GetComponent<Doors>();
+            if (allowedTransformations == null)
+            {
+				allowedTransformations = new List<Transformation> { Transformation.Identity };
+            }
+
+			var polygon = GetPolygonFromTilemaps(roomTemplateGameObject.GetComponentsInChildren<Tilemap>());
+            var doors = roomTemplateGameObject.GetComponent<Doors>();
 
 			if (doors == null)
 			{
-				throw new DungeonGeneratorException($"Room template \"{roomTemplate.name}\" does not have any doors assigned.");
+				throw new DungeonGeneratorException($"Room template \"{roomTemplateGameObject.name}\" does not have any doors assigned.");
 			}
 
 			var doorMode = doors.GetDoorMode();
-			var roomDescription = new RoomDescription(polygon, doorMode);
+			var roomDescription = new RoomTemplate(polygon, doorMode, allowedTransformations);
 
 			return roomDescription;
 		}
 
-		/// <summary>
-		/// Computes the length of a given corridor.
-		/// </summary>
-		/// <param name="roomDescription"></param>
-		/// <returns></returns>
-		public int GetCorridorLength(RoomDescription roomDescription)
-		{
-			var doorsHandler = DoorHandler.DefaultHandler;
-			var doorPositions = doorsHandler.GetDoorPositions(roomDescription.Shape, roomDescription.DoorsMode);
+		///// <summary>
+		///// Computes the length of a given corridor.
+		///// </summary>
+		///// <param name="roomDescription"></param>
+		///// <returns></returns>
+		//public int GetCorridorLength(RoomDescription roomDescription)
+		//{
+		//	var doorsHandler = DoorHandler.DefaultHandler;
+		//	var doorPositions = doorsHandler.GetDoorPositions(roomDescription.Shape, roomDescription.DoorsMode);
 
-			if ((doorPositions.Count != 2
-			    || doorPositions.Any(x => x.Line.Length != 0)
-			    || doorPositions[0].Line.GetDirection() != GeneralAlgorithms.DataStructures.Common.OrthogonalLine.GetOppositeDirection(doorPositions[1].Line.GetDirection()))
-				&& !((doorPositions.Count == 3 || doorPositions.Count == 4) && doorPositions.All(x => x.Length == 0))
-				)
-			{
-				throw new ArgumentException("Corridors must currently have exactly 2 door positions that are on the opposite sides of the corridor.");
-			}
+		//	if ((doorPositions.Count != 2
+		//	    || doorPositions.Any(x => x.Line.Length != 0)
+		//	    || doorPositions[0].Line.GetDirection() != GeneralAlgorithms.DataStructures.Common.OrthogonalLine.GetOppositeDirection(doorPositions[1].Line.GetDirection()))
+		//		&& !((doorPositions.Count == 3 || doorPositions.Count == 4) && doorPositions.All(x => x.Length == 0))
+		//		)
+		//	{
+		//		throw new ArgumentException("Corridors must currently have exactly 2 door positions that are on the opposite sides of the corridor.");
+		//	}
 
-			var firstLine = doorPositions[0].Line;
-			var secondLine = doorPositions[1].Line;
+		//	var firstLine = doorPositions[0].Line;
+		//	var secondLine = doorPositions[1].Line;
 
-			if (firstLine.Equals(secondLine))
-			{
-				secondLine = doorPositions.Select(x => x.Line).First(x => !x.Equals(secondLine));
-			}
+		//	if (firstLine.Equals(secondLine))
+		//	{
+		//		secondLine = doorPositions.Select(x => x.Line).First(x => !x.Equals(secondLine));
+		//	}
 
-			if (firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Bottom || firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Top)
-			{
-				return Math.Abs(firstLine.From.X - secondLine.From.X);
-			}
-			else
-			{
-				return Math.Abs(firstLine.From.Y - secondLine.From.Y);
-			}
-		}
+		//	if (firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Bottom || firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Top)
+		//	{
+		//		return Math.Abs(firstLine.From.X - secondLine.From.X);
+		//	}
+		//	else
+		//	{
+		//		return Math.Abs(firstLine.From.Y - secondLine.From.Y);
+		//	}
+		//}
 
 		private static bool IsClockwiseOriented(IList<IntVector2> points)
 		{

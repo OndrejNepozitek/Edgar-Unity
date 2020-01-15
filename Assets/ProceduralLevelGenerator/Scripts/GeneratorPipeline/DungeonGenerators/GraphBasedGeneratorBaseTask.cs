@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators
+﻿using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators
 {
 	using System;
 	using System.Collections.Generic;
@@ -22,13 +24,15 @@
 	public abstract class GraphBasedGeneratorBaseTask<TPayload, TConfig, TRoom> : ConfigurablePipelineTask<TPayload, TConfig> 
 		where TConfig : PipelineConfig
 		where TPayload : class, IGeneratorPayload
-	{
+        where TRoom : IEquatable<TRoom>
+    {
 		public abstract override void Process();
 
-		protected IMapLayout<TRoom> GenerateLayout(MapDescription<TRoom> mapDescription, ILayoutGenerator<MapDescription<TRoom>, IMapLayout<TRoom>> generator, int timeout = 0, bool showDebugInfo = false)
+		// TODO: should probably use some interface instead of DungeonGenerator<TRoom>
+		protected IMapLayout<TRoom> GenerateLayout(IMapDescription<TRoom> mapDescription, DungeonGenerator<TRoom> generator, int timeout = 0, bool showDebugInfo = false)
 		{
 			IMapLayout<TRoom> layout = null;
-			var task = Task.Run(() => layout = generator.GetLayouts(mapDescription, 1)[0]);
+			var task = Task.Run(() => layout = generator.GenerateLayout());
 
 			if (timeout > 0)
 			{
@@ -42,19 +46,19 @@
 
 			if (showDebugInfo)
 			{
-				PrintGeneratorStats((IBenchmarkableLayoutGenerator<MapDescription<TRoom>, IMapLayout<TRoom>>) generator);
+				PrintGeneratorStats(generator);
 			}
 
 			return layout;
 		}
 
-		protected void PrintGeneratorStats(IBenchmarkableLayoutGenerator<MapDescription<TRoom>, IMapLayout<TRoom>> generator)
+		protected void PrintGeneratorStats(DungeonGenerator<TRoom> generator)
 		{
-			Debug.Log($"Layout generated in {generator.TimeFirst / 1000f:F} seconds");
-			Debug.Log($"{generator.IterationsCount} iterations needed, {(generator.IterationsCount / (generator.TimeFirst / 1000d)):0} iterations per second");
+			Debug.Log($"Layout generated in {generator.TimeTotal / 1000f:F} seconds");
+			Debug.Log($"{generator.IterationsCount} iterations needed, {(generator.IterationsCount / (generator.TimeTotal / 1000d)):0} iterations per second");
 		}
 
-		protected Layout<TRoom> TransformLayout(IMapLayout<TRoom> layout, TwoWayDictionary<IRoomDescription, GameObject> roomDescriptionsToRoomTemplates)
+		protected Layout<TRoom> TransformLayout(IMapLayout<TRoom> layout, TwoWayDictionary<IRoomTemplate, GameObject> roomDescriptionsToRoomTemplates)
 		{
 			var roomTransformations = new RoomTransformations();
 
@@ -66,9 +70,9 @@
 			var layoutData = new Dictionary<TRoom, RoomInfo<TRoom>>();
 			foreach (var layoutRoom in layout.Rooms)
 			{
-				var roomTemplate = roomDescriptionsToRoomTemplates[layoutRoom.RoomDescription];
+				var roomTemplate = roomDescriptionsToRoomTemplates[layoutRoom.RoomTemplate];
 
-				// Instatiate room template
+				// Instantiate room template
 				var room = Object.Instantiate(roomTemplate);
 				room.SetActive(false);
 				room.transform.SetParent(parentGameObject.transform);
@@ -82,8 +86,8 @@
 				// all room shapes in a way that they are in the first plane quadrant
 				// and touch the xy axes. So we have to subtract the original lowest
 				// x and y coordinates.
-				var smallestX = layoutRoom.RoomDescription.Shape.GetPoints().Min(x => x.X);
-				var smallestY = layoutRoom.RoomDescription.Shape.GetPoints().Min(x => x.Y);
+				var smallestX = layoutRoom.RoomTemplate.Shape.GetPoints().Min(x => x.X);
+				var smallestY = layoutRoom.RoomTemplate.Shape.GetPoints().Min(x => x.Y);
 				var correctPosition = layoutRoom.Position.ToUnityIntVector3() - new Vector3Int(smallestX, smallestY, 0);
 				room.transform.position = correctPosition;
 

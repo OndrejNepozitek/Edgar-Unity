@@ -25,6 +25,9 @@
 		where TPayload : class, IGraphBasedGeneratorPayload, IGeneratorPayload
 	{
 		protected TwoWayDictionary<Room, int> RoomToIntMapping;
+        protected BasicRoomDescription DefaultRoomDescription;
+        protected CorridorRoomDescription CorridorRoomDescription;
+        protected Dictionary<Guid, BasicRoomDescription> RoomsGroupRoomDescriptions = new Dictionary<Guid, BasicRoomDescription>();
 
 		protected override MapDescription<int> SetupMapDescription()
 		{
@@ -35,33 +38,46 @@
 
 			RoomToIntMapping = new TwoWayDictionary<Room, int>();
 			var mapDescription = new MapDescription<int>();
-			mapDescription.SetDefaultTransformations(new List<Transformation>() { Transformation.Identity });
+
+            // Setup default room description
+			var defaultRoomTemplates = GetRoomTemplates(Config.LevelGraph.DefaultRoomTemplateSets, Config.LevelGraph.DefaultIndividualRoomTemplates).Distinct().ToList();
+			DefaultRoomDescription = new BasicRoomDescription(defaultRoomTemplates);
 
 			// Setup individual rooms
 			foreach (var room in Config.LevelGraph.Rooms)
 			{
 				RoomToIntMapping.Add(room, RoomToIntMapping.Count);
-				mapDescription.AddRoom(RoomToIntMapping[room]);
-				SetupRoomShapesForRoom(mapDescription, room);
-			}
+				mapDescription.AddRoom(RoomToIntMapping[room], GetRoomDescription(room));
+            }
 
-			// Add default room shapes
-			SetupDefaultRoomShapes(mapDescription, Config.LevelGraph);
-
-			// Add corridors
+            // Add corridors
 			if (Config.UseCorridors)
-			{
-				SetupCorridorRoomShapes(mapDescription, Config.LevelGraph);
-			}
+            {
+                CorridorRoomDescription = GetCorridorRoomDescription();
+            }
 
 			// Add passages
+            var corridorCounter = 0;
 			foreach (var connection in Config.LevelGraph.Connections)
 			{
 				var from = RoomToIntMapping[connection.From];
 				var to = RoomToIntMapping[connection.To];
 
-				mapDescription.AddPassage(from, to);
-			}
+                if (Config.UseCorridors)
+                {
+                    var corridorRoom = new Room() { Name = $"Corridor {corridorCounter++}"};
+                    var corridorRoomNumber = RoomToIntMapping.Count;
+                    RoomToIntMapping[corridorRoom] = corridorRoomNumber;
+
+					mapDescription.AddRoom(corridorRoomNumber, CorridorRoomDescription);
+                    mapDescription.AddConnection(from, corridorRoomNumber);
+                    mapDescription.AddConnection(to, corridorRoomNumber);
+                }
+                else
+                {
+					mapDescription.AddConnection(from, to);
+                }
+            }
 
 			if (Payload is IRoomToIntMappingPayload<Room> payloadWithMapping)
 			{
@@ -75,68 +91,72 @@
 		/// Setups room shapes for a given room.
 		/// </summary>
 		/// <param name="room"></param>
-		/// <param name="mapDescription"></param>
-		protected void SetupRoomShapesForRoom(MapDescription<int> mapDescription, Room room)
+        protected BasicRoomDescription GetRoomDescription(Room room)
 		{
+            // If the room is assigned to a Rooms group, use the room descriptions assigned to that group
+            if (room.RoomsGroupGuid != Guid.Empty)
+            {
+                return GetRoomsGroupRoomDescription(room.RoomsGroupGuid);
+            }
+
 			// Get assigned room templates
 			var roomTemplatesSets = room.RoomTemplateSets;
 			var individualRoomTemplates = room.IndividualRoomTemplates;
 
-			// If the room is assigned to a Rooms group, use room templates for the group instead
-			if (room.RoomsGroupGuid != Guid.Empty)
-			{
-				roomTemplatesSets = Config.LevelGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).RoomTemplateSets;
-				individualRoomTemplates = Config.LevelGraph.RoomsGroups.Single(x => x.Guid == room.RoomsGroupGuid).IndividualRoomTemplates;
-			}
+			var roomTemplates = GetRoomTemplates(roomTemplatesSets, individualRoomTemplates).Distinct().ToList();
 
-			var roomDescriptions = GetRoomDescriptions(roomTemplatesSets, individualRoomTemplates).Distinct();
+            if (roomTemplates.Count == 0)
+            {
+                return DefaultRoomDescription;
+            }
 
-			foreach (var roomDescription in roomDescriptions)
-			{
-				mapDescription.AddRoomShapes(RoomToIntMapping[room], roomDescription);
-			}
-		}
+            var roomDescription = new BasicRoomDescription(roomTemplates);
 
-		/// <summary>
-		/// Setups default room shapes.
-		/// These are used if a room does not have any room shapes assigned.
-		/// </summary>
-		/// <param name="mapDescription"></param>
-		/// <param name="levelGraph"></param>
-		protected void SetupDefaultRoomShapes(MapDescription<int> mapDescription, LevelGraph levelGraph)
-		{
-			var roomDescriptions = GetRoomDescriptions(levelGraph.DefaultRoomTemplateSets, levelGraph.DefaultIndividualRoomTemplates).Distinct();
+            return roomDescription;
+        }
 
-			foreach (var roomDescription in roomDescriptions)
-			{
-				mapDescription.AddRoomShapes(roomDescription);
-			}
-		}
+        protected BasicRoomDescription GetRoomsGroupRoomDescription(Guid roomsGroupGuid)
+        {
+            if (roomsGroupGuid == Guid.Empty)
+            {
+				throw new ArgumentException();
+            }
 
-		/// <summary>
+            if (RoomsGroupRoomDescriptions.TryGetValue(roomsGroupGuid, out var roomsGroupRoomDescription))
+            {
+                return roomsGroupRoomDescription;
+            }
+
+            var roomTemplatesSets = Config.LevelGraph.RoomsGroups.Single(x => x.Guid == roomsGroupGuid).RoomTemplateSets;
+            var individualRoomTemplates = Config.LevelGraph.RoomsGroups.Single(x => x.Guid == roomsGroupGuid).IndividualRoomTemplates;
+
+            var roomTemplates = GetRoomTemplates(roomTemplatesSets, individualRoomTemplates);
+			var roomDescription = new BasicRoomDescription(roomTemplates);
+
+            RoomsGroupRoomDescriptions[roomsGroupGuid] = roomDescription;
+
+            return roomDescription;
+        }
+
+        /// <summary>
 		/// Setups corridor room shapes.
 		/// </summary>
-		/// <param name="mapDescription"></param> 
-		/// <param name="levelGraph"></param>
-		protected void SetupCorridorRoomShapes(MapDescription<int> mapDescription, LevelGraph levelGraph)
+        protected CorridorRoomDescription GetCorridorRoomDescription()
 		{
-			var corridorLengths = new List<int>();
-			var roomDescriptions = GetRoomDescriptions(levelGraph.CorridorRoomTemplateSets, levelGraph.CorridorIndividualRoomTemplates).Distinct().ToList();
+            var roomTemplates = GetRoomTemplates(Config.LevelGraph.CorridorRoomTemplateSets, Config.LevelGraph.CorridorIndividualRoomTemplates).Distinct().ToList();
 
-			if (roomDescriptions.Count == 0)
+			if (roomTemplates.Count == 0)
 			{
 				throw new ArgumentException("There must be at least 1 corridor room template if corridors are enabled.");
 			}
 
-			foreach (var roomDescription in roomDescriptions)
-			{
-				mapDescription.AddCorridorShapes(roomDescription);
+            foreach (var roomTemplate in roomTemplates)
+            {
+                var shape = string.Join(", ", roomTemplate.Shape.GetPoints());
+				Debug.Log(shape);
+            }
 
-				var corridorLength = RoomShapesLoader.GetCorridorLength(roomDescription);
-				corridorLengths.Add(corridorLength);
-			}
-
-			mapDescription.SetWithCorridors(true, corridorLengths.Distinct().ToList());
+            return new CorridorRoomDescription(roomTemplates);
 		}
 	}
 }

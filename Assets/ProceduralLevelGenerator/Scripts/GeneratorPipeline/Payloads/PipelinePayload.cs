@@ -22,9 +22,9 @@
 
 		public List<Tilemap> Tilemaps { get; set; }
 
-		public MapDescription<int> MapDescription { get; set; }
+		public IMapDescription<int> MapDescription { get; set; }
 
-		public TwoWayDictionary<IRoomDescription, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
+		public TwoWayDictionary<IRoomTemplate, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
 
 		public Layout<int> Layout { get; set; }
 

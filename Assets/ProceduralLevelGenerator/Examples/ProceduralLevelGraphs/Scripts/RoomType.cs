@@ -5,6 +5,6 @@
 	/// </summary>
 	public enum RoomType
 	{
-		Basic, Spawn, Boss, Redundant, Shortcut
+		Basic, Spawn, Boss, Redundant, Shortcut, Corridor
 	}
 }

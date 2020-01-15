@@ -13,9 +13,9 @@
 	/// </summary>
 	public interface IGraphBasedGeneratorPayload
 	{
-		MapDescription<int> MapDescription { get; set; }
+		IMapDescription<int> MapDescription { get; set; }
 
-		TwoWayDictionary<IRoomDescription, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
+		TwoWayDictionary<IRoomTemplate, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
 
 		Layout<int> Layout { get; set; }
 	}

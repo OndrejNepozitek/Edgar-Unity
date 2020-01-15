@@ -23,70 +23,72 @@
 
 		public override void Process()
 		{
-			if (Config.Timeout <= 0)
-			{
-				throw new ArgumentException("Timeout must be a positive number.");
-			}
+			throw new InvalidOperationException("Platformers are currently not supported");
 
-			if (Payload.MapDescription.IsWithCorridors)
-			{
-				throw new ArgumentException("Platformer levels cannot have corridors.");
-			}
+			//if (Config.Timeout <= 0)
+			//{
+			//	throw new ArgumentException("Timeout must be a positive number.");
+			//}
 
-			var stopwatch = new Stopwatch();
-			stopwatch.Start();
+			//if (Payload.MapDescription.IsWithCorridors)
+			//{
+			//	throw new ArgumentException("Platformer levels cannot have corridors.");
+			//}
 
-			if (Config.ShowDebugInfo)
-			{
-				Debug.Log("--- Generator started ---");
-			}
+			//var stopwatch = new Stopwatch();
+			//stopwatch.Start();
 
-			// Setup map description
-			var mapDescription = Payload.MapDescription;
+			//if (Config.ShowDebugInfo)
+			//{
+			//	Debug.Log("--- Generator started ---");
+			//}
 
-			// Generate layout
-			var layout = GenerateLayout(mapDescription, GetGenerator(mapDescription), Config.Timeout, Config.ShowDebugInfo);
+			//// Setup map description
+			//var mapDescription = Payload.MapDescription;
 
-			// Setup room templates
-			Payload.Layout = TransformLayout(layout, Payload.RoomDescriptionsToRoomTemplates);
+			//// Generate layout
+			//var layout = GenerateLayout(mapDescription, GetGenerator(mapDescription), Config.Timeout, Config.ShowDebugInfo);
 
-			// Apply tempaltes
-			if (Config.ApplyTemplate)
-			{
-				ApplyTemplates();
-			}
+			//// Setup room templates
+			//Payload.Layout = TransformLayout(layout, Payload.RoomDescriptionsToRoomTemplates);
 
-			// Center grid
-			if (Config.CenterGrid)
-			{
-				Payload.Tilemaps[0].CompressBounds();
-				Payload.Tilemaps[0].transform.parent.position = -Payload.Tilemaps[0].cellBounds.center;
-			}
+			//// Apply tempaltes
+			//if (Config.ApplyTemplate)
+			//{
+			//	ApplyTemplates();
+			//}
 
-			if (Config.ShowDebugInfo)
-			{
-				Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
-			}
+			//// Center grid
+			//if (Config.CenterGrid)
+			//{
+			//	Payload.Tilemaps[0].CompressBounds();
+			//	Payload.Tilemaps[0].transform.parent.position = -Payload.Tilemaps[0].cellBounds.center;
+			//}
+
+			//if (Config.ShowDebugInfo)
+			//{
+			//	Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
+			//}
 		}
 
-		protected IBenchmarkableLayoutGenerator<MapDescription<int>, IMapLayout<int>> GetGenerator(MapDescription<int> mapDescription)
-		{
-			var generator = PlatformerGeneratorFactory.GetPlatformerGenerator<int>();
-			generator.InjectRandomGenerator(Payload.Random);
+		//protected IBenchmarkableLayoutGenerator<MapDescription<int>, IMapLayout<int>> GetGenerator(MapDescription<int> mapDescription)
+		//{
+		//	var generator = PlatformerGeneratorFactory.GetPlatformerGenerator<int>();
+		//	generator.InjectRandomGenerator(Payload.Random);
 
-			return generator;
-		}
+		//	return generator;
+		//}
 
-		/// <summary>
-		/// Copies tiles from individual room templates to the tilemaps that hold generated dungeons.
-		/// </summary>
-		protected void ApplyTemplates()
-		{
-			var nonCorridors = Payload.Layout.GetAllRoomInfo().Where(x => !x.IsCorridor).ToList();
-			var corridors = Payload.Layout.GetAllRoomInfo().Where(x => x.IsCorridor).ToList();
+		///// <summary>
+		///// Copies tiles from individual room templates to the tilemaps that hold generated dungeons.
+		///// </summary>
+		//protected void ApplyTemplates()
+		//{
+		//	var nonCorridors = Payload.Layout.GetAllRoomInfo().Where(x => !x.IsCorridor).ToList();
+		//	var corridors = Payload.Layout.GetAllRoomInfo().Where(x => x.IsCorridor).ToList();
 
-			dungeonGeneratorUtils.ApplyTemplates(nonCorridors, Payload.Tilemaps);
-			dungeonGeneratorUtils.ApplyTemplates(corridors, Payload.Tilemaps);
-		}
+		//	dungeonGeneratorUtils.ApplyTemplates(nonCorridors, Payload.Tilemaps);
+		//	dungeonGeneratorUtils.ApplyTemplates(corridors, Payload.Tilemaps);
+		//}
 	}
 }

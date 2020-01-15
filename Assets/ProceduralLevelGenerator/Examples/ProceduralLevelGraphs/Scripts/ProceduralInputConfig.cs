@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Examples.ProceduralLevelGraphs.Scripts
+﻿using MapGeneration.Interfaces.Core.MapDescriptions;
+
+namespace Assets.ProceduralLevelGenerator.Examples.ProceduralLevelGraphs.Scripts
 {
 	using System.Collections.Generic;
 	using System.Linq;
@@ -58,6 +60,11 @@
 		/// Room templates for corridors.
 		/// </summary>
 		public GameObject[] CorridorRoomTemplates;
+
+		/// <summary>
+		/// Whether to use corridors;
+		/// </summary>
+        public bool UseCorridors;
 	}
 
 	public class ProceduralInputTask<TPayload> : InputSetupBaseTask<TPayload, ProceduralInputConfig>
@@ -69,16 +76,23 @@
 
 		protected MapDescription<int> MapDescription;
 
+        protected IRoomDescription BasicRoomDescription;
+        protected IRoomDescription BossRoomDescription;
+        protected IRoomDescription SpawnRoomDescription;
+        protected IRoomDescription CorridorRoomDescription;
+
 		protected override MapDescription<int> SetupMapDescription()
 		{
 			RoomToIntMapping = new TwoWayDictionary<Room, int>();
 			LevelGraph = new UndirectedAdjacencyListGraph<Room>();
 			MapDescription = new MapDescription<int>();
 
-			// Transformations of room shapes currently not available
-			MapDescription.SetDefaultTransformations(new List<Transformation>() { Transformation.Identity });
+            BasicRoomDescription = GetBasicRoomDescription();
+            BossRoomDescription = GetBossRoomDescription();
+            SpawnRoomDescription = GetSpawnRoomDescription();
+            CorridorRoomDescription = GetCorridorRoomDescription();
 
-			// Get random length of the main path
+            // Get random length of the main path
 			var mainPathLength = Payload.Random.Next(Config.MinLength, Config.MaxLength);
 
 			// Add vertices on the main path
@@ -99,10 +113,7 @@
 			// Setup map description rooms and connections
 			SetupMapDescriptionFromLevelGraph();
 
-			// Setup room templates
-			SetupRoomTemplates();
-
-			Payload.RoomToIntMapping = RoomToIntMapping;
+            Payload.RoomToIntMapping = RoomToIntMapping;
 
 			return MapDescription;
 		}
@@ -226,7 +237,7 @@
 			foreach (var room in LevelGraph.Vertices)
 			{
 				RoomToIntMapping.Add(room, RoomToIntMapping.Count);
-				MapDescription.AddRoom(RoomToIntMapping[room]);
+				MapDescription.AddRoom(RoomToIntMapping[room], GetRoomDescription(room));
 			}
 
 			foreach (var edge in LevelGraph.Edges)
@@ -234,71 +245,81 @@
 				var from = RoomToIntMapping[edge.From];
 				var to = RoomToIntMapping[edge.To];
 
-				MapDescription.AddPassage(from, to);
+                if (Config.UseCorridors)
+                {
+                    var corridorRoom = new Room() { Type = RoomType.Corridor };
+                    var corridorRoomNumber = RoomToIntMapping.Count;
+                    RoomToIntMapping[corridorRoom] = corridorRoomNumber;
+
+                    MapDescription.AddRoom(corridorRoomNumber, GetRoomDescription(corridorRoom));
+                    MapDescription.AddConnection(from, corridorRoomNumber);
+                    MapDescription.AddConnection(to, corridorRoomNumber);
+                }
+                else
+                {
+                    MapDescription.AddConnection(from, to);
+                }
 			}
 
 			return RoomToIntMapping;
 		}
 
-		/// <summary>
-		/// Setups room templates.
-		/// </summary>
-		protected void SetupRoomTemplates()
+        protected IRoomDescription GetRoomDescription(Room room)
+        {
+            switch (room.Type)
+            {
+                case RoomType.Boss:
+                    return BossRoomDescription;
+
+                case RoomType.Spawn:
+                    return SpawnRoomDescription;
+
+                case RoomType.Corridor:
+                    return CorridorRoomDescription;
+
+				default:
+                    return BasicRoomDescription;
+            }
+        }
+
+		protected BasicRoomDescription GetBasicRoomDescription()
 		{
-			SetupDefaultRoomTemplates();
-			SetupCorridorRoomTemplates();
-
-			foreach (var room in LevelGraph.Vertices)
-			{
-				switch (room.Type)
-				{
-					case RoomType.Boss:
-						SetupBossRoomTemplates(room);
-						break;
-
-					case RoomType.Spawn:
-						SetupSpawnRoomTemplates(room);
-						break;
-				}
-			}
+            var roomTemplates = Config
+                .BasicRoomTemplates
+                .Where(x => x != null)
+                .Select(GetRoomTemplate)
+                .ToList();
+            return new BasicRoomDescription(roomTemplates);
 		}
 
-		protected void SetupDefaultRoomTemplates()
+		protected BasicRoomDescription GetBossRoomDescription()
+        {
+            var roomTemplates = Config
+                .BossRoomTemplates
+                .Where(x => x != null)
+                .Select(GetRoomTemplate)
+                .ToList();
+			return new BasicRoomDescription(roomTemplates);
+        }
+
+		protected BasicRoomDescription GetSpawnRoomDescription()
 		{
-			foreach (var roomTemplate in Config.BasicRoomTemplates.Where(x => x != null))
-			{
-				var roomDescription = GetRoomDescription(roomTemplate);
-				MapDescription.AddRoomShapes(roomDescription);
-			}
+            var roomTemplates = Config
+                .SpawnRoomTemplates
+                .Where(x => x != null)
+                .Select(GetRoomTemplate)
+                .ToList();
+            return new BasicRoomDescription(roomTemplates);
 		}
 
-		protected void SetupBossRoomTemplates(Room room)
+		protected CorridorRoomDescription GetCorridorRoomDescription()
 		{
-			foreach (var roomTemplate in Config.BossRoomTemplates.Where(x => x != null))
-			{
-				var roomDescription = GetRoomDescription(roomTemplate);
-				MapDescription.AddRoomShapes(RoomToIntMapping[room], roomDescription);	
-			}
-		}
-
-		protected void SetupSpawnRoomTemplates(Room room)
-		{
-			foreach (var roomTemplate in Config.SpawnRoomTemplates.Where(x => x != null))
-			{
-				var roomDescription = GetRoomDescription(roomTemplate);
-				MapDescription.AddRoomShapes(RoomToIntMapping[room], roomDescription);
-			}
-		}
-
-		protected void SetupCorridorRoomTemplates()
-		{
-			var roomDescriptions = Config
+			var roomTemplates = Config
 				.CorridorRoomTemplates
 				.Where(x => x != null)
-				.Select(GetRoomDescription)
+				.Select(GetRoomTemplate)
 				.ToList();
-
-			SetupCorridorRoomShapes(MapDescription, roomDescriptions);
+            return new CorridorRoomDescription(roomTemplates);
 		}
 	}
 }

@@ -20,17 +20,17 @@
 		/// <summary>
 		/// Mapping between room descriptions and gameobjects.
 		/// </summary>
-		protected TwoWayDictionary<IRoomDescription, GameObject> RoomDescriptionsToRoomTemplates;
+		protected TwoWayDictionary<IRoomTemplate, GameObject> RoomTemplatesToGameObjects;
 
 		protected RoomShapesLoader RoomShapesLoader;
 
 		public override void Process()
 		{
-			RoomDescriptionsToRoomTemplates = new TwoWayDictionary<IRoomDescription, GameObject>();
+			RoomTemplatesToGameObjects = new TwoWayDictionary<IRoomTemplate, GameObject>();
 			RoomShapesLoader = new RoomShapesLoader();
 
 			Payload.MapDescription = SetupMapDescription();
-			Payload.RoomDescriptionsToRoomTemplates = RoomDescriptionsToRoomTemplates;
+			Payload.RoomDescriptionsToRoomTemplates = RoomTemplatesToGameObjects;
 		}
 
 		/// <summary>
@@ -45,16 +45,16 @@
 		/// <param name="roomTemplatesSets"></param>
 		/// <param name="individualRoomTemplates"></param>
 		/// <returns></returns>
-		protected List<RoomDescription> GetRoomDescriptions(List<RoomTemplatesSet> roomTemplatesSets, List<GameObject> individualRoomTemplates)
+		protected List<IRoomTemplate> GetRoomTemplates(List<RoomTemplatesSet> roomTemplatesSets, List<GameObject> individualRoomTemplates)
 		{
-			var result = new List<RoomDescription>();
+			var result = new List<IRoomTemplate>();
 
 			// Add room templates from template sets
 			foreach (var roomTemplatesSet in roomTemplatesSets.Where(x => x != null))
 			{
 				foreach (var roomTemplate in roomTemplatesSet.Rooms.Where(x => x != null))
 				{
-					var roomDescription = GetRoomDescription(roomTemplate.Tilemap);
+					var roomDescription = GetRoomTemplate(roomTemplate.Tilemap);
 					result.Add(roomDescription);
 				}
 			}
@@ -62,7 +62,7 @@
 			// Add room templates that are not part of a set
 			foreach (var roomTemplate in individualRoomTemplates.Where(x => x != null))
 			{
-				var roomDescription = GetRoomDescription(roomTemplate);
+				var roomDescription = GetRoomTemplate(roomTemplate);
 				result.Add(roomDescription);
 			}
 
@@ -75,44 +75,19 @@
 		/// <remarks>
 		/// Returns cached result if a given room template was already processed.
 		/// </remarks>
-		/// <param name="roomTemplate"></param>
+		/// <param name="roomTemplateGameObject"></param>
 		/// <returns></returns>
-		protected RoomDescription GetRoomDescription(GameObject roomTemplate)
+		protected IRoomTemplate GetRoomTemplate(GameObject roomTemplateGameObject)
 		{
-			if (RoomDescriptionsToRoomTemplates.ContainsValue(roomTemplate))
+			if (RoomTemplatesToGameObjects.ContainsValue(roomTemplateGameObject))
 			{
-				return (RoomDescription)RoomDescriptionsToRoomTemplates.GetByValue(roomTemplate);
+				return RoomTemplatesToGameObjects.GetByValue(roomTemplateGameObject);
 			}
 
-			var roomDescription = RoomShapesLoader.GetRoomDescription(roomTemplate);
-			RoomDescriptionsToRoomTemplates.Add(roomDescription, roomTemplate);
+			var roomTemplate = RoomShapesLoader.GetRoomDescription(roomTemplateGameObject);
+			RoomTemplatesToGameObjects.Add(roomTemplate, roomTemplateGameObject);
 
-			return roomDescription;
+			return roomTemplate;
 		}
-
-		/// <summary>
-		/// Setups corridor room shapes.
-		/// </summary>
-		/// <param name="mapDescription"></param> 
-		/// <param name="corridorRoomDescriptions"></param>
-		protected void SetupCorridorRoomShapes(MapDescription<int> mapDescription, List<RoomDescription> corridorRoomDescriptions)
-		{
-			var corridorLengths = new List<int>();
-
-			if (corridorRoomDescriptions.Count == 0)
-			{
-				throw new ArgumentException("There must be at least 1 corridor room template if corridors are enabled.");
-			}
-
-			foreach (var roomDescription in corridorRoomDescriptions)
-			{
-				mapDescription.AddCorridorShapes(roomDescription);
-
-				var corridorLength = RoomShapesLoader.GetCorridorLength(roomDescription);
-				corridorLengths.Add(corridorLength);
-			}
-
-			mapDescription.SetWithCorridors(true, corridorLengths.Distinct().ToList());
-		}
-	}
+    }
 }
