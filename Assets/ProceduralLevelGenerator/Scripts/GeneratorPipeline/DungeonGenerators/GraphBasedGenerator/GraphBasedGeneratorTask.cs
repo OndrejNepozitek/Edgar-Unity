@@ -1,5 +1,7 @@
-﻿using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
+﻿using System.IO;
+using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
 using MapGeneration.Interfaces.Core.MapDescriptions;
+using Newtonsoft.Json;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
 {
@@ -49,7 +51,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
 			// Setup map description
 			var mapDescription = Payload.MapDescription;
-
+			
 			// Generate layout
 			var layout = GenerateLayout(mapDescription, GetGenerator(mapDescription), Config.Timeout, Config.ShowDebugInfo);
 
@@ -77,7 +79,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
 		protected DungeonGenerator<int> GetGenerator(IMapDescription<int> mapDescription)
 		{
-			var generator = new DungeonGenerator<int>(mapDescription, new DungeonGeneratorConfiguration(mapDescription));
+			var generator = new DungeonGenerator<int>(mapDescription, new DungeonGeneratorConfiguration(mapDescription) { RoomsCanTouch = false });
 			generator.InjectRandomGenerator(Payload.Random);
 
             return generator;
