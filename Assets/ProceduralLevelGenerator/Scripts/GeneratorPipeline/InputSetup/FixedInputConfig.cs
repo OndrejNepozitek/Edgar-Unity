@@ -65,7 +65,9 @@
 
                 if (Config.UseCorridors)
                 {
-                    var corridorRoom = new Room() { Name = $"Corridor {corridorCounter++}"};
+                    var corridorRoom = ScriptableObject.CreateInstance<Room>();
+                    corridorRoom.Name = $"Corridor {corridorCounter++}";
+                    
                     var corridorRoomNumber = RoomToIntMapping.Count;
                     RoomToIntMapping[corridorRoom] = corridorRoomNumber;
 
@@ -149,12 +151,6 @@
 			{
 				throw new ArgumentException("There must be at least 1 corridor room template if corridors are enabled.");
 			}
-
-            foreach (var roomTemplate in roomTemplates)
-            {
-                var shape = string.Join(", ", roomTemplate.Shape.GetPoints());
-				Debug.Log(shape);
-            }
 
             return new CorridorRoomDescription(roomTemplates);
 		}
