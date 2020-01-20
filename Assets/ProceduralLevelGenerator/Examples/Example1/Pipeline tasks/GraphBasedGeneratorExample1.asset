@@ -16,3 +16,6 @@ MonoBehaviour:
   CenterGrid: 1
   ApplyTemplate: 1
   Timeout: 10000
+  UsePrecomputedLevelsOnly: 1
+  PrecomputedLevelsHandler: {fileID: 11400000, guid: b2be60c422196424c86e5723935219c8,
+    type: 2}

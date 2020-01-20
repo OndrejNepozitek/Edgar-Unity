@@ -5,6 +5,7 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 Assets/Resources/Tilemaps/
+Benchmarks/
 
 # Visual Studio cache directory
 .vs/

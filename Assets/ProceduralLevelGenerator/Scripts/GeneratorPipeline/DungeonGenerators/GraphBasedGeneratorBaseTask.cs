@@ -49,7 +49,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 				PrintGeneratorStats(generator);
 			}
 
-			return layout;
+            return layout;
 		}
 
 		protected void PrintGeneratorStats(DungeonGenerator<TRoom> generator)
@@ -66,7 +66,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 			var parentGameObject = new GameObject("Room template instances");
 			parentGameObject.transform.parent = Payload.GameObject.transform;
 
-			// Initialize rooms
+            // Initialize rooms
 			var layoutData = new Dictionary<TRoom, RoomInfo<TRoom>>();
 			foreach (var layoutRoom in layout.Rooms)
 			{

@@ -53,10 +53,32 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 			var mapDescription = Payload.MapDescription;
 			
 			// Generate layout
-			var layout = GenerateLayout(mapDescription, GetGenerator(mapDescription), Config.Timeout, Config.ShowDebugInfo);
+            var generator = GetGenerator(mapDescription);
 
-			// Setup room templates
-			Payload.Layout = TransformLayout(layout, Payload.RoomDescriptionsToRoomTemplates);
+            if (Config.UsePrecomputedLevelsOnly)
+            {
+                if (Config.PrecomputedLevelsHandler == null)
+                {
+					throw new InvalidOperationException($"{nameof(Config.PrecomputedLevelsHandler)} must not be null when {nameof(Config.UsePrecomputedLevelsOnly)} is enabled");
+                }
+
+                Config.PrecomputedLevelsHandler.LoadLevel(Payload);
+            }
+            else
+            {
+                var layout = GenerateLayout(mapDescription, generator, Config.Timeout, Config.ShowDebugInfo);
+                Payload.GeneratedLayout = layout;
+            }
+
+			// TODO: How to handle timeout when benchmarking?
+            if (Payload is IBenchmarkInfoPayload benchmarkInfoPayload)
+            {
+                benchmarkInfoPayload.TimeTotal = generator.TimeTotal;
+                benchmarkInfoPayload.Iterations = generator.IterationsCount;
+            }
+
+            // Setup room templates
+			Payload.Layout = TransformLayout(Payload.GeneratedLayout, Payload.RoomDescriptionsToRoomTemplates);
 
 			// Apply tempaltes
 			if (Config.ApplyTemplate)

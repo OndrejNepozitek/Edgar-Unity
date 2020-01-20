@@ -46,6 +46,8 @@
 
 		public override void OnInspectorGUI()
 		{
+            var pipeline = (DungeonGeneratorPipeline) target;
+
 			EditorGUILayout.Space();
 			EditorGUILayout.Space();
 
@@ -61,9 +63,33 @@
 
 			if (GUILayout.Button("Generate"))
 			{
-				var dungeonGeneratorPipeline = (DungeonGeneratorPipeline)target;
-				dungeonGeneratorPipeline.Generate();
+                pipeline.Generate();
 			}
+
+            EditorGUILayout.Space();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.BenchmarkRuns)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.ScreenshotCamera)));
+
+            if (GUILayout.Button("Run benchmark"))
+            {
+                pipeline.RunBenchmark();
+            }
+
+            EditorGUILayout.Space();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.LevelsToPrecompute)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PrecomputedLevelsHandler)));
+			
+
+            if (pipeline.IsPrecomputeRunning)
+            {
+                EditorGUILayout.LabelField($"State: Running - {pipeline.PrecomputeProgress}/{pipeline.LevelsToPrecompute}");
+            }
+
+            if (GUILayout.Button("Precompute levels"))
+            {
+                pipeline.PrecomputeLevels();
+            }
 
 			serializedObject.ApplyModifiedProperties();
 		}

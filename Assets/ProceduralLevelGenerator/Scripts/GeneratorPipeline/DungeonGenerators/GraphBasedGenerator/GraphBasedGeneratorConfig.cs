@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
+﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.PrecomputedLevels;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
 {
 	using Pipeline;
 	using UnityEngine;
@@ -26,9 +28,14 @@
 		public bool ApplyTemplate = true;
 
 		/// <summary>
-		/// Number of millisecons before the current attempt to generate
+		/// Number of milliseconds before the current attempt to generate
 		/// a layout is aborted.
 		/// </summary>
 		public int Timeout = 10000;
-	}
+
+        public bool UsePrecomputedLevelsOnly = false;
+
+		// TODO: documentation
+        public AbstractPrecomputedLevelsHandler PrecomputedLevelsHandler;
+    }
 }

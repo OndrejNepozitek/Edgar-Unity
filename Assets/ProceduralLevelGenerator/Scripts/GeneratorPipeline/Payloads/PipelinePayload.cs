@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads
+﻿using MapGeneration.Interfaces.Core.MapLayouts;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads
 {
 	using System.Collections.Generic;
 	using Data.Graphs;
@@ -16,7 +18,7 @@
 	/// Default pipeline payload.
 	/// </summary>
 	/// <typeparam name="TRoom"></typeparam>
-	public class PipelinePayload<TRoom> : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<TRoom>
+	public class PipelinePayload<TRoom> : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<TRoom>, IBenchmarkInfoPayload
 	{
 		public GameObject GameObject { get; set; }
 
@@ -37,5 +39,11 @@
 		public Random Random { get; set; }
 
 		public TwoWayDictionary<TRoom, int> RoomToIntMapping { get; set; }
-	}
+
+        public IMapLayout<int> GeneratedLayout { get; set; }
+
+        public int Iterations { get; set; }
+
+        public double TimeTotal { get; set; }
+    }
 }

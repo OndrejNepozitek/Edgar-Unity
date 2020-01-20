@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces
+﻿using MapGeneration.Interfaces.Core.MapLayouts;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces
 {
 	using System.Collections.Generic;
 	using DungeonGenerators;
@@ -11,9 +13,11 @@
 	/// <summary>
 	/// Represents data used in and produced from a graph-based dungeon generator.
 	/// </summary>
-	public interface IGraphBasedGeneratorPayload
+    public interface IGraphBasedGeneratorPayload
 	{
 		IMapDescription<int> MapDescription { get; set; }
+
+		IMapLayout<int> GeneratedLayout { get; set; }
 
 		TwoWayDictionary<IRoomTemplate, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
 
