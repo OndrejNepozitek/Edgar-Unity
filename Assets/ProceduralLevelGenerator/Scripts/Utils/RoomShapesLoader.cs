@@ -48,6 +48,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 		/// <returns></returns>
 		public GridPolygon GetPolygonFromTiles(HashSet<IntVector2> allPoints)
 		{
+            if (allPoints.Count == 0)
+            {
+                throw new ArgumentException("There must be at least one point");
+            }
+
 			var orderedDirections = new Dictionary<IntVector2, List<IntVector2>>()
 			{
 				{ IntVector2Helper.Top, new List<IntVector2>() { IntVector2Helper.Left, IntVector2Helper.Top, IntVector2Helper.Right } },
@@ -123,7 +128,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 		public GridPolygon GetPolygonFromTilemaps(IEnumerable<Tilemap> tilemaps)
 		{
 			var usedTiles = GetUsedTiles(tilemaps);
-			return GetPolygonFromTiles(usedTiles);
+
+            return GetPolygonFromTiles(usedTiles);
 		}
 
 		/// <summary>
