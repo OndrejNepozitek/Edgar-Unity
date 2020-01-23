@@ -74,6 +74,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 			var previousDirection = startingDirection;
 			var first = true;
 
+            if (!allPoints.Contains(currentPoint))
+            {
+                throw new ArgumentException("Invalid room shape.");
+            }
+
 			while (true)
 			{
 				var foundNeighbour = false;
@@ -110,7 +115,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 				{
 					break;
 				}
-			}
+            }
 
 			if (!IsClockwiseOriented(polygonPoints))
 			{
