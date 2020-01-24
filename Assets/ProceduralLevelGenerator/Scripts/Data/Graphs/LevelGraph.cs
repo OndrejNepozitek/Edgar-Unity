@@ -56,5 +56,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Data.Graphs
 		public List<GameObject> CorridorIndividualRoomTemplates = new List<GameObject>();
 
         public string RoomType = typeof(Room).FullName;
+        public string ConnectionType = typeof(Connection).FullName;
     }
 }

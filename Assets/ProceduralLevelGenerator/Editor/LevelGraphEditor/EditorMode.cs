@@ -2,6 +2,8 @@
 {
 	public enum EditorMode
 	{
-		Drag, MakeConnections
+		Basic = 0,
+		Drag = 1, 
+        MakeConnections = 2,
 	}
 }

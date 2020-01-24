@@ -24,23 +24,26 @@
 
 		private readonly GUIStyle style;
 
-		private bool isDragged;
+        private readonly GUIStyle activeStyle;
+
+        private bool isDragged;
 
 		private bool isClickAfterContextMenu;
 
 
-		public RoomNode(Room data, float width, float height, GUIStyle style, EditorMode mode)
+		public RoomNode(Room data, float width, float height, GUIStyle style, GUIStyle activeStyle, EditorMode mode)
 		{
 			Data = data;
 			this.style = style;
-			Rect = new Rect(Data.Position.x, Data.Position.y, width, height);
+            this.activeStyle = activeStyle;
+            Rect = new Rect(Data.Position.x, Data.Position.y, width, height);
 			this.Mode = mode;
 		}
 
 		// TODO: refactor
 		public bool ProcessEvents(Event e)
 		{
-			switch (e.type)
+            switch (e.type)
 			{
 				case EventType.MouseDown:
 					if (e.button == 1)
@@ -55,11 +58,21 @@
 					else if (e.button == 0 && Mode == EditorMode.MakeConnections && Rect.Contains(e.mousePosition))
 					{
 						OnStartConnection?.Invoke(e);
-					}
-					else if (Rect.Contains(e.mousePosition) && e.button == 0)
+					} else if (e.button == 0 && Mode == EditorMode.Drag && Rect.Contains(e.mousePosition) && e.clickCount > 1)
+                    {
+                        OnClickConfigure();
+                        e.Use();
+                        GUI.changed = true;
+                    }
+					else if (Mode == EditorMode.Drag && Rect.Contains(e.mousePosition) && e.button == 0)
 					{
 						isDragged = true;
 					}
+
+                    if (Rect.Contains(e.mousePosition))
+                    {
+                        e.Use();
+                    }
 
 					break;
 
@@ -125,7 +138,7 @@
 
 		public void Draw()
 		{
-			GUI.Box(Rect, Data.GetDisplayName(), style);
+			GUI.Box(Rect, Data.GetDisplayName(), Selection.activeObject == Data ? activeStyle : style);
 		}
 
 		public void Drag(Vector2 delta)

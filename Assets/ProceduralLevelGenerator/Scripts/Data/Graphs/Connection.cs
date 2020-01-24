@@ -7,8 +7,10 @@
 	/// </summary>
 	public class Connection : ScriptableObject
 	{
+		[HideInInspector]
 		public Room From;
 
+        [HideInInspector]
 		public Room To;
 	}
 }
