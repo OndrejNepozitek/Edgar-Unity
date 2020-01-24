@@ -125,7 +125,7 @@
 
 		public void Draw()
 		{
-			GUI.Box(Rect, Data.Name, style);
+			GUI.Box(Rect, Data.GetDisplayName(), style);
 		}
 
 		public void Drag(Vector2 delta)

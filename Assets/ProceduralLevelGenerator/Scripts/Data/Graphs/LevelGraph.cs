@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Data.Graphs
+﻿using System;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.Data.Graphs
 {
 	using System.Collections.Generic;
 	using Rooms;
@@ -52,5 +54,7 @@
 		/// Set of room templates that are used for corridor rooms.
 		/// </summary>
 		public List<GameObject> CorridorIndividualRoomTemplates = new List<GameObject>();
-	}
+
+        public string RoomType = typeof(Room).FullName;
+    }
 }

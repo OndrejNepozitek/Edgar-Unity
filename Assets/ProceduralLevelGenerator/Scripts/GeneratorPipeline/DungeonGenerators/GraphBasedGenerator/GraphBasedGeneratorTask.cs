@@ -51,6 +51,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
 			// Setup map description
 			var mapDescription = Payload.MapDescription;
+
+            var json = JsonConvert.SerializeObject(mapDescription, Formatting.Indented, new JsonSerializerSettings()
+            {
+				PreserveReferencesHandling = PreserveReferencesHandling.All,
+				TypeNameHandling = TypeNameHandling.All,
+            });
+			File.WriteAllText("mapDescription.json", json);
 			
 			// Generate layout
             var generator = GetGenerator(mapDescription);

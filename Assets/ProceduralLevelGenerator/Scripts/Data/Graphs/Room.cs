@@ -50,7 +50,12 @@
 
 		[HideInInspector]
 		[SerializeField]
-		private byte[] serializedGuid; 
+		private byte[] serializedGuid;
+
+        public virtual string GetDisplayName()
+        {
+            return Name;
+        }
 
 		public void OnBeforeSerialize()
 		{

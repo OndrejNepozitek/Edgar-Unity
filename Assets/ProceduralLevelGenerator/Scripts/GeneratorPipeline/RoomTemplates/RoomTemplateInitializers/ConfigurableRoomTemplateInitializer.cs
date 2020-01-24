@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.RoomTemplateInitializers
+﻿using UnityEngine;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.RoomTemplateInitializers
 {
 	using System;
 	using TilemapLayers;
@@ -15,6 +17,8 @@
 		{
 			if (TilemapLayersHandler == null) 
 				throw new ArgumentException($"{nameof(TilemapLayersHandler)} must not be null.");
+
+            gameObject.transform.position = Vector3.zero;
 
 			InitializeTilemaps(TilemapLayersHandler);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.PrecomputedLevels;
@@ -45,8 +46,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
         public void Generate()
 		{
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+            Debug.Log("--- Pipeline started ---"); 
+
 			var pipelineRunner = new PipelineRunner();
 			pipelineRunner.Run(PipelineItems, PayloadInitializer.InitializePayload());
+
+            Debug.Log($"--- Pipeline completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
 		}
 
         // TODO: maybe make this with live preview? Would it need to do the benchmark manually?

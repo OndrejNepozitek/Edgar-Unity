@@ -36,6 +36,7 @@
 			}
 
 			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.RoomsGroups)), true);
+			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.RoomType)), true);
 
 			if (GUILayout.Button("Open graph editor"))
 			{

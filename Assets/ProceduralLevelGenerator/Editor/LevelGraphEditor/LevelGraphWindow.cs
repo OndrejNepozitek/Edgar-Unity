@@ -226,8 +226,9 @@
 		}
 
 		protected void OnClickAddRoom(Vector2 mousePosition)
-		{
-			var room = CreateInstance<Room>();
+        {
+			// TODO: how to handle this properly?
+            var room = (Room) CreateInstance(Data.RoomType);
 
 			room.Position = mousePosition;
 			Data.Rooms.Add(room);
