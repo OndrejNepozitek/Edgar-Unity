@@ -3,7 +3,7 @@ using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
-    public class TheGungeonRoom : Room
+    public class GungeonRoom : Room
     {
         public RoomType Type;
 

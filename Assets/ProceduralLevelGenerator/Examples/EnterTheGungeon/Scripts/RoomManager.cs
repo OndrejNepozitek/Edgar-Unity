@@ -9,7 +9,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
     public class RoomManager : MonoBehaviour
     {
-        public TheGungeonRoom Room;
+        public GungeonRoom Room;
 
         public bool Cleared = false;
 

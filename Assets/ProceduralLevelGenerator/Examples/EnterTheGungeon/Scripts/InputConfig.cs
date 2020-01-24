@@ -71,7 +71,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
         protected void SetupMapDescriptionFromLevelGraph()
         {
-            foreach (var room in Config.LevelGraph.Rooms.Cast<TheGungeonRoom>())
+            foreach (var room in Config.LevelGraph.Rooms.Cast<GungeonRoom>())
             {
                 var intAlias = RoomToIntMapping.Count;
                 RoomToIntMapping.Add(room, intAlias);
@@ -82,7 +82,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             var corridorCounter = 0;
             foreach (var connection in Config.LevelGraph.Connections)
             {
-                var corridorRoom = ScriptableObject.CreateInstance<TheGungeonRoom>();
+                var corridorRoom = ScriptableObject.CreateInstance<GungeonRoom>();
                 corridorRoom.Name = $"Corridor {corridorCounter++}";
                 corridorRoom.Type = RoomType.Corridor;
                     
@@ -99,7 +99,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             }
         }
 
-        private BasicRoomDescription GetRoomDescription(TheGungeonRoom room)
+        private BasicRoomDescription GetRoomDescription(GungeonRoom room)
         {
             switch (room.Type)
             {

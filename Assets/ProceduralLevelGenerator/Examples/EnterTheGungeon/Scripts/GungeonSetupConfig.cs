@@ -22,7 +22,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             {
                 // TODO: this is kinda strange
                 var node = roomInfo.GeneratorData.Node;
-                var room = (TheGungeonRoom) Payload.RoomToIntMapping.GetByValue(node);
+                var room = (GungeonRoom) Payload.RoomToIntMapping.GetByValue(node);
 
                 var roomGameObject = roomInfo.Room;
                 roomGameObject.SetActive(true);
