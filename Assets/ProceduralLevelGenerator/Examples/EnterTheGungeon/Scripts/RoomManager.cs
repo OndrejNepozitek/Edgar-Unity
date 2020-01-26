@@ -11,7 +11,9 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
     {
         public GungeonRoom Room;
 
-        public bool Cleared = false;
+        public bool Cleared;
+
+        public bool EnemiesSpawned;
 
         public List<GameObject> Doors = new List<GameObject>();
 
@@ -21,54 +23,59 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
         public void OnRoomEnter(Collider2D otherCollider)
         {
-            Debug.Log($"{otherCollider.gameObject.name} enters {Room?.Type}");
+            GameManager.Instance.SetCurrentRoomType(Room.Type);
 
-            if (Cleared == false)
+            if (Cleared == false && EnemiesSpawned == false && ShouldSpawnEnemies())
             {
-                foreach (var door in Doors)
-                {
-                    door.SetActive(true);
-                }
-
-                var enemies = new List<GameObject>();
-
-                for (int i = 0; i < 100; i++)
-                {
-                    var position = RandomPointInBounds(FloorCollider.bounds);
-                    var enemyPrefab = Enemies[Random.Range(0, Enemies.Length)];
-                    var enemyCollider = enemyPrefab.GetComponent<Collider2D>();
-
-                    if (!IsPointWithinCollider(FloorCollider, position))
-                    {
-                        continue;
-                    }
-
-                    //Collider2D[] colliders = new Collider2D[10];
-                    //var contactFilter = new ContactFilter2D();
-                    //var collidersCount = Physics2D.OverlapCollider(enemyCollider, contactFilter.NoFilter(), colliders);
-
-                    // TODO: handle better
-                    //if (colliders.All(x => x == null || x.isTrigger))
-                    //{
-                    //    var enemy = Instantiate(enemyPrefab);
-                    //    enemy.transform.position = position;
-                    //}
-
-                    // TODO: handle trigger better
-                    if (Physics2D.OverlapCircleAll(position, 1).All(x => x.isTrigger))
-                    {
-                        var enemy = Instantiate(enemyPrefab);
-                        enemy.transform.position = position;
-                        enemies.Add(enemy);
-                    }
-
-                    if (enemies.Count >= 8)
-                    {
-                        break;
-                    }
-                }
+                CloseDoors();
+                SpawnEnemies();
 
                 StartCoroutine(WaitBeforeOpeningDoors());
+            }
+        }
+
+        private void SpawnEnemies()
+        {
+            var enemies = new List<GameObject>();
+
+            for (int i = 0; i < 100; i++)
+            {
+                var position = RandomPointInBounds(FloorCollider.bounds);
+                var enemyPrefab = Enemies[Random.Range(0, Enemies.Length)];
+
+                if (!IsPointWithinCollider(FloorCollider, position))
+                {
+                    continue;
+                }
+
+                // TODO: handle trigger better
+                if (Physics2D.OverlapCircleAll(position, 1).All(x => x.isTrigger))
+                {
+                    var enemy = Instantiate(enemyPrefab);
+                    enemy.transform.position = position;
+                    enemies.Add(enemy);
+                }
+
+                if (enemies.Count >= 8)
+                {
+                    break;
+                }
+            }
+        }
+
+        private void CloseDoors()
+        {
+            foreach (var door in Doors)
+            {
+                door.SetActive(true);
+            }
+        }
+
+        private void OpenDoors()
+        {
+            foreach (var door in Doors)
+            {
+                door.SetActive(false);
             }
         }
 
@@ -90,16 +97,17 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             yield return new WaitForSeconds(5);
 
             Cleared = true;
-
-            foreach (var door in Doors)
-            {
-                door.SetActive(false);
-            }
+            OpenDoors();
         }
 
         public void OnRoomLeave(Collider2D otherCollider)
         {
-            Debug.Log($"{otherCollider.gameObject.name} leaves {Room?.Type}");
+            // Debug.Log($"{otherCollider.gameObject.name} leaves {Room?.Type}");
+        }
+
+        public bool ShouldSpawnEnemies()
+        {
+            return Room.Type == RoomType.Normal || Room.Type == RoomType.Hub || Room.Type == RoomType.Boss;
         }
     }
 }

@@ -70,6 +70,7 @@
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.BenchmarkRuns)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.ScreenshotCamera)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.CameraSize)));
 
             if (GUILayout.Button("Run benchmark"))
             {

@@ -34,6 +34,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
         public Camera ScreenshotCamera;
 
+        public float CameraSize = 60;
+
         public AbstractPrecomputedLevelsHandler PrecomputedLevelsHandler;
 
         public int LevelsToPrecompute = 20;
@@ -111,6 +113,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
         // Take a "screenshot" of a camera's Render Texture.
         Texture2D RTImage(Camera camera)
         {
+            var size = ScreenshotCamera.orthographicSize;
+            ScreenshotCamera.orthographicSize = CameraSize;
+
             Debug.Log(Screen.width);
             Debug.Log(Screen.height);
 
@@ -132,6 +137,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
  
             DestroyImmediate(renderTexture);
             renderTexture = null;
+            ScreenshotCamera.orthographicSize = size;
             return screenShot;
         }
 

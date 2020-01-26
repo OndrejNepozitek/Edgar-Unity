@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1171c75e2eaf64aa475a2d2dd2ba5a, type: 3}
   m_Name: Input
   m_EditorClassIdentifier: 
-  LevelGraph: {fileID: 11400000, guid: e779be756bebf574ebdee9c2e257f3da, type: 2}
+  LevelGraph: {fileID: 11400000, guid: 0ef968e3d473ffa46b60d650fe903a5e, type: 2}
   EntranceRoomTemplates:
   - {fileID: 5620706597785849071, guid: 89dd599f38f527b4f8efa3c51f04c91e, type: 3}
   BossRoomTemplates:
@@ -20,17 +20,23 @@ MonoBehaviour:
   BossFoyersRoomTemplates:
   - {fileID: 6338651248016267127, guid: 4b1a3c9a3313c4546a6f87a2ea48fd21, type: 3}
   BasicRoomTemplates:
-  - {fileID: 5094616251206784583, guid: 06f899c2823b75c459ccceb76f10d472, type: 3}
   - {fileID: 7059988163539513014, guid: 314acab94cfbe41459c24248b73d2e8f, type: 3}
   - {fileID: 3390800798792341029, guid: e013e59a75851d74cb290f1e6c73e7ea, type: 3}
   - {fileID: 6180981981340039013, guid: b4e0ac54bb27ad64eb98c933420d259a, type: 3}
   - {fileID: 8373354045639481791, guid: 02e69b3ad33d7734fa0055cbce05243e, type: 3}
+  - {fileID: 8299917783928690752, guid: 6b0d38ff0565eff44a66d4563fc0a4fa, type: 3}
+  - {fileID: 7170233771574198550, guid: 58dcd7103964f044a9adece938e8c17e, type: 3}
   ShopRoomTemplates:
   - {fileID: 5094616251206784583, guid: 06f899c2823b75c459ccceb76f10d472, type: 3}
   RewardRoomTemplates:
-  - {fileID: 5094616251206784583, guid: 06f899c2823b75c459ccceb76f10d472, type: 3}
+  - {fileID: 4281413025099981253, guid: 933671d02411e98458182e0af2617187, type: 3}
   HubRoomTemplates:
   - {fileID: 5094616251206784583, guid: 06f899c2823b75c459ccceb76f10d472, type: 3}
+  - {fileID: 7715005024736688694, guid: 7960df6ff2de55f4a8f00f7bc7dbdce0, type: 3}
+  - {fileID: 4821109662598609090, guid: 3b26525c552584c458eff71f585fe022, type: 3}
+  DefaultRoomTemplates:
+  - {fileID: 3390800798792341029, guid: e013e59a75851d74cb290f1e6c73e7ea, type: 3}
+  - {fileID: 6180981981340039013, guid: b4e0ac54bb27ad64eb98c933420d259a, type: 3}
   CorridorRoomTemplates:
   - {fileID: 811177041180434756, guid: 99b5d7b2e5e30674d9c4001fb04a0f7a, type: 3}
   - {fileID: 5754014766446460083, guid: 5e1b112b63e63bb49851168291e23359, type: 3}
