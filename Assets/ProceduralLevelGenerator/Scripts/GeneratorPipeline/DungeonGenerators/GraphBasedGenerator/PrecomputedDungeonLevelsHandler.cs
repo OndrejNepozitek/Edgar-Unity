@@ -88,16 +88,16 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
             return new SavedData()
             {
-                JsonSerializedData = JsonConvert.SerializeObject(new JsonSerializedData()
-                {
-                    GeneratedLayout = generatorPayload.GeneratedLayout,
-                    RoomTemplates = generatorPayload.LevelDescription.GetPrefabToRoomTemplateMapping().Values.ToList(),
-                }, new JsonSerializerSettings()
-                {
-                    PreserveReferencesHandling = PreserveReferencesHandling.All,
-                    TypeNameHandling = TypeNameHandling.Auto,
-                }),
-                RoomTemplateGameObjects = generatorPayload.LevelDescription.GetPrefabToRoomTemplateMapping().Keys.ToList(),
+                //JsonSerializedData = JsonConvert.SerializeObject(new JsonSerializedData()
+                //{
+                //    GeneratedLayout = generatorPayload.GeneratedLayout,
+                //    RoomTemplates = generatorPayload.LevelDescription.GetPrefabToRoomTemplateMapping().Values.ToList(),
+                //}, new JsonSerializerSettings()
+                //{
+                //    PreserveReferencesHandling = PreserveReferencesHandling.All,
+                //    TypeNameHandling = TypeNameHandling.Auto,
+                //}),
+                //RoomTemplateGameObjects = generatorPayload.LevelDescription.GetPrefabToRoomTemplateMapping().Keys.ToList(),
             };
         }
 

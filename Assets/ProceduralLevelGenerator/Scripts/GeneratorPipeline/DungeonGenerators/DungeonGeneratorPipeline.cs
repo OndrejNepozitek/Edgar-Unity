@@ -90,11 +90,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
                     var additionalData = new AdditionalUnityData()
                     {
-                        GeneratedLayoutSvg = layoutDrawer.DrawLayout(benchmarkInfoPayload.GeneratedLayout, 800, forceSquare: true),
+                        GeneratedLayoutSvg = layoutDrawer.DrawLayout(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation(), 800, forceSquare: true),
                         ImageBase64 = base64,
                     };
 
-                    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLayout != null, stopwatch.ElapsedMilliseconds, benchmarkInfoPayload.Iterations, additionalData);
+                    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation() != null, stopwatch.ElapsedMilliseconds, benchmarkInfoPayload.Iterations, additionalData);
 
                     runs.Add(generatorRun);
                 }

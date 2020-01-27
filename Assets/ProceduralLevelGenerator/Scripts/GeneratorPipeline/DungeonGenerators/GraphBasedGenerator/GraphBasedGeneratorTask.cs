@@ -64,7 +64,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
             else
             {
                 var layout = GenerateLayout(mapDescription, generator, Config.Timeout, Config.ShowDebugInfo);
-                Payload.GeneratedLayout = layout;
+
+                // Setup room templates
+                Payload.GeneratedLevel = TransformLayout(layout, Payload.LevelDescription);
             }
 
 			// TODO: How to handle timeout when benchmarking?
@@ -73,9 +75,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                 benchmarkInfoPayload.TimeTotal = generator.TimeTotal;
                 benchmarkInfoPayload.Iterations = generator.IterationsCount;
             }
-
-            // Setup room templates
-			Payload.GeneratedLevel = TransformLayout(Payload.GeneratedLayout, Payload.LevelDescription);
 
 			// Apply tempaltes
 			if (Config.ApplyTemplate)

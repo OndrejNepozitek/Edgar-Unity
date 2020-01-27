@@ -10,9 +10,9 @@
 	public interface IGeneratorPayload
 	{
 		/// <summary>
-		/// Gameobject that holds dungeon tilemaps and possibly other game objects.
+		/// GameObject that holds dungeon tilemaps and possibly other game objects.
 		/// </summary>
-		GameObject GameObject { get; set; }
+		GameObject ParentGameObject { get; set; }
 
 		/// <summary>
 		/// Tilemaps of the generated dungeon.

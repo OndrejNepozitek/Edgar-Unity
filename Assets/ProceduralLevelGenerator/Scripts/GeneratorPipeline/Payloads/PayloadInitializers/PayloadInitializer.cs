@@ -50,7 +50,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Pay
 
 			return new PipelinePayload<TRoom>()
 			{
-				GameObject = dungeonHolder,
+				ParentGameObject = dungeonHolder,
 				Tilemaps = dungeonHolder.GetComponentsInChildren<Tilemap>().ToList(),
 				Random = random,
 			};

@@ -67,7 +67,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
 			// Prepare an object to hold instantiated room templates
 			var parentGameObject = new GameObject("Room template instances");
-			parentGameObject.transform.parent = Payload.GameObject.transform;
+			parentGameObject.transform.parent = Payload.ParentGameObject.transform;
 
             // Initialize rooms
 			var layoutData = new Dictionary<Room, RoomInstance>();
@@ -106,7 +106,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                 roomInstance.Doors = TransformDoorInfo(layoutRooms[roomInstance.Room].Doors, layoutData);
             }
 
-			return new GeneratedLevel(layoutData);
+			return new GeneratedLevel(layoutData, layout);
 		}
 
 		protected List<DoorInstance> TransformDoorInfo(IEnumerable<IDoorInfo<Room>> doorInfos, Dictionary<Room, RoomInstance> roomInstances)

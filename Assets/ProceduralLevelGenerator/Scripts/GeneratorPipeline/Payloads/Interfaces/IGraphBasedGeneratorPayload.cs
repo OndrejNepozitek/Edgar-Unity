@@ -1,6 +1,4 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
-using MapGeneration.Interfaces.Core.MapLayouts;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Utils;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces
 {
@@ -11,10 +9,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Int
 	/// </summary>
     public interface IGraphBasedGeneratorPayload
     {
+        /// <summary>
+        /// Abstract description of the level that is used as input for the generator.
+        /// </summary>
 		LevelDescription LevelDescription { get; set; }
 
+        /// <summary>
+        /// Representation of the generated level.
+        /// Each room from the level description now has a concrete position and room template assigned.
+        /// </summary>
         GeneratedLevel GeneratedLevel { get; set; }
-
-		IMapLayout<Room> GeneratedLayout { get; set; }
     }
 }

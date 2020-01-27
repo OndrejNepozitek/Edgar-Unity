@@ -1,4 +1,7 @@
-﻿namespace Assets.ProceduralLevelGenerator.Examples.Example1.Pipeline_tasks
+﻿using System;
+using System.Linq;
+
+namespace Assets.ProceduralLevelGenerator.Examples.Example1.Pipeline_tasks
 {
 	using Scripts.Data.Graphs;
 	using Scripts.GeneratorPipeline.Payloads.Interfaces;
@@ -25,14 +28,23 @@
 	}
 
 	public class DoorsTask<TPayload> : ConfigurablePipelineTask<TPayload, DoorsConfig> 
-		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload
-	{
+		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
+    {
+        private Tilemap collideableTilemap;
+
 		public override void Process()
 		{
 			if (!Config.AddDoors)
 			{
 				return;
 			}
+
+            collideableTilemap = Payload.Tilemaps.SingleOrDefault(x => x.name == "Collideable");
+
+            if (collideableTilemap == null)
+            {
+				throw new InvalidOperationException("Tilemap named \"Collideable\" not found");
+            }
 
 			// Iterate through all rooms
 			foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
@@ -67,21 +79,21 @@
 
 		protected void AddHorizontalDoors(DoorInstance doorInstance)
 		{
-			Payload.CollideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(0), Config.HorizontalLeft);
+            collideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(0), Config.HorizontalLeft);
 
 			if (doorInstance.DoorLine.Length > 1)
 			{
-				Payload.CollideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(1), Config.HorizontalRight);
+                collideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(1), Config.HorizontalRight);
 			}
 		}
 
 		protected void AddVerticalDoors(DoorInstance doorInstance)
 		{
-			Payload.CollideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(0), Config.VerticalBottom);
+            collideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(0), Config.VerticalBottom);
 
 			if (doorInstance.DoorLine.Length > 1)
 			{
-				Payload.CollideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(1), Config.VerticalTop);
+                collideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(1), Config.VerticalTop);
 			}
 		}
 	}

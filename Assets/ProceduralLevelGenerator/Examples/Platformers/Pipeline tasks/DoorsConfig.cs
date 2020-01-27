@@ -1,4 +1,7 @@
-﻿namespace Assets.ProceduralLevelGenerator.Examples.Platformer.Pipeline_tasks
+﻿using System;
+using System.Linq;
+
+namespace Assets.ProceduralLevelGenerator.Examples.Platformer.Pipeline_tasks
 {
 	using Scripts.GeneratorPipeline.Payloads.Interfaces;
 	using Scripts.Pipeline;
@@ -11,19 +14,26 @@
 	}
 
 	public class DoorsTask<TPayload> : ConfigurablePipelineTask<TPayload, DoorsConfig> 
-		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload
+		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
 	{
 		public override void Process()
 		{
+            var wallTilemap = Payload.Tilemaps.SingleOrDefault(x => x.name == "Walls");
+
+            if (wallTilemap == null)
+            {
+                throw new InvalidOperationException("Tilemap named \"Walls\" not found");
+            }
+
 			// Iterate through all rooms
 			foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
 			{
-				// Iterate through all used door positons
+				// Iterate through all used door positions
 				foreach (var doorInfo in roomInstance.Doors)
 				{
 					foreach (var point in doorInfo.DoorLine.GetPoints())
 					{
-						Payload.WallsTilemap.SetTile(point, null);
+                        wallTilemap.SetTile(point, null);
 					}
 				}
 			}
