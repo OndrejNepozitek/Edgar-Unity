@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.InputSetup;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
-using GeneralAlgorithms.DataStructures.Common;
-using GeneralAlgorithms.DataStructures.Graphs;
-using MapGeneration.Core.MapDescriptions;
-using MapGeneration.Interfaces.Core.MapDescriptions;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
@@ -34,102 +29,72 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
         public GameObject[] DefaultRoomTemplates;
 
-		/// <summary>
-		/// Room templates for corridors.
-		/// </summary>
 		public GameObject[] CorridorRoomTemplates;
+
+		public GameObject[] ExitRoomTemplates;
     }
 
-	public class InputTask<TPayload> : InputSetupBaseTask<TPayload, InputConfig>
-		where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<Room>
+	public class InputTask<TPayload> : ConfigurablePipelineTask<TPayload, InputConfig>
+		where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
 	{
-		protected TwoWayDictionary<Room, int> RoomToIntMapping;
-
-		protected IGraph<Room> LevelGraph;
-
-		protected MapDescription<int> MapDescription;
-
-        protected IRoomDescription CorridorRoomDescription;
-
         private List<GameObject> notUsedNormalRoomTemplates = new List<GameObject>();
 
-		protected override MapDescription<int> SetupMapDescription()
-		{
-			RoomToIntMapping = new TwoWayDictionary<Room, int>();
-			LevelGraph = new UndirectedAdjacencyListGraph<Room>();
-			MapDescription = new MapDescription<int>();
+        private LevelDescription levelDescription = new LevelDescription();
 
-            CorridorRoomDescription = GetCorridorRoomDescription();
-
-			// Setup map description rooms and connections
-			SetupMapDescriptionFromLevelGraph();
-
-            Payload.RoomToIntMapping = RoomToIntMapping;
-
-			return MapDescription;
-		}
-
-        protected void SetupMapDescriptionFromLevelGraph()
+        public override void Process()
         {
             foreach (var room in Config.LevelGraph.Rooms.Cast<GungeonRoom>())
             {
-                var intAlias = RoomToIntMapping.Count;
-                RoomToIntMapping.Add(room, intAlias);
-
-				MapDescription.AddRoom(intAlias, GetRoomDescription(room));
+                levelDescription.AddRoom(room, GetRoomTemplates(room));
             }
 
-            var corridorCounter = 0;
-            foreach (var connection in Config.LevelGraph.Connections)
+            foreach (var connection in Config.LevelGraph.Connections.Cast<GungeonConnection>())
             {
                 var corridorRoom = ScriptableObject.CreateInstance<GungeonRoom>();
-                corridorRoom.Name = $"Corridor {corridorCounter++}";
                 corridorRoom.Type = RoomType.Corridor;
-                    
-                var corridorRoomNumber = RoomToIntMapping.Count;
-                RoomToIntMapping.Add(corridorRoom, corridorRoomNumber);
 
-                var from = RoomToIntMapping[connection.From];
-                var to = RoomToIntMapping[connection.To];
-
-				MapDescription.AddRoom(corridorRoomNumber, CorridorRoomDescription);
-
-				MapDescription.AddConnection(from, corridorRoomNumber);
-				MapDescription.AddConnection(to, corridorRoomNumber);
+                // TODO: all these ToList()s look weird
+                levelDescription.AddCorridorConnection(connection, Config.CorridorRoomTemplates.ToList(), corridorRoom);
             }
+
+            Payload.LevelDescription = levelDescription;
         }
 
-        private BasicRoomDescription GetRoomDescription(GungeonRoom room)
+        // TODO: all these ToList()s look weird
+        private List<GameObject> GetRoomTemplates(GungeonRoom room)
         {
             switch (room.Type)
             {
                 case RoomType.Boss:
-                    return GetRoomDescription(Config.BossRoomTemplates);
+                    return Config.BossRoomTemplates.ToList();
 
                 case RoomType.BossFoyers:
-                    return GetRoomDescription(Config.BossFoyersRoomTemplates);
+                    return Config.BossFoyersRoomTemplates.ToList();
 
                 case RoomType.Shop:
-                    return GetRoomDescription(Config.ShopRoomTemplates);
+                    return Config.ShopRoomTemplates.ToList();
 
                 case RoomType.Reward:
-                    return GetRoomDescription(Config.RewardRoomTemplates);
+                    return Config.RewardRoomTemplates.ToList();
 
                 case RoomType.Hub:
-                    return GetRoomDescription(Config.HubRoomTemplates);
+                    return Config.HubRoomTemplates.ToList();
 
                 case RoomType.Entrance:
-                    return GetRoomDescription(Config.EntranceRoomTemplates);
+                    return Config.EntranceRoomTemplates.ToList();
+
+                case RoomType.Exit:
+                    return Config.ExitRoomTemplates.ToList();
 
                 case RoomType.Normal:
-                    return GetNormalRoomDescription();
+                    return GetNormalRoomTemplates();
 
                 default:
-                    return GetRoomDescription(Config.DefaultRoomTemplates);
+                    return Config.DefaultRoomTemplates.ToList();
             }
         }
 
-        private BasicRoomDescription GetNormalRoomDescription()
+        private List<GameObject> GetNormalRoomTemplates()
         {
             if (notUsedNormalRoomTemplates.Count == 0)
             {
@@ -140,22 +105,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             var roomTemplate = notUsedNormalRoomTemplates[randomIndex];
             notUsedNormalRoomTemplates.RemoveAt(randomIndex);
 
-            return new BasicRoomDescription(new List<IRoomTemplate>() { GetRoomTemplate(roomTemplate) });
+            return new List<GameObject>() { roomTemplate };
         }
-
-        private BasicRoomDescription GetRoomDescription(GameObject[] roomTemplates)
-        {
-            return new BasicRoomDescription(roomTemplates.Select(GetRoomTemplate).ToList());
-        }
-
-        protected CorridorRoomDescription GetCorridorRoomDescription()
-		{
-			var roomTemplates = Config
-				.CorridorRoomTemplates
-				.Where(x => x != null)
-				.Select(GetRoomTemplate)
-				.ToList();
-            return new CorridorRoomDescription(roomTemplates);
-		}
-	}
+    }
 }

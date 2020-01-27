@@ -35,15 +35,15 @@
 			}
 
 			// Iterate through all rooms
-			foreach (var roomInfo in Payload.Layout.GetAllRoomInfo())
+			foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
 			{
 				// Check if corridor room
-				if (roomInfo.IsCorridor)
+				if (roomInstance.IsCorridor)
 				{
 					if (Payload.Random.NextDouble() < Config.Probability)
 					{
 						// Iterate through all used door positons
-						foreach (var doorInfo in roomInfo.Doors)
+						foreach (var doorInfo in roomInstance.Doors)
 						{
 							// We cannot handle doors with length > 2
 							if (doorInfo.DoorLine.Length > 2)
@@ -65,23 +65,23 @@
 			}
 		}
 
-		protected void AddHorizontalDoors(DoorInfo<int> doorInfo)
+		protected void AddHorizontalDoors(DoorInstance doorInstance)
 		{
-			Payload.CollideableTilemap.SetTile(doorInfo.DoorLine.GetNthPoint(0), Config.HorizontalLeft);
+			Payload.CollideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(0), Config.HorizontalLeft);
 
-			if (doorInfo.DoorLine.Length > 1)
+			if (doorInstance.DoorLine.Length > 1)
 			{
-				Payload.CollideableTilemap.SetTile(doorInfo.DoorLine.GetNthPoint(1), Config.HorizontalRight);
+				Payload.CollideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(1), Config.HorizontalRight);
 			}
 		}
 
-		protected void AddVerticalDoors(DoorInfo<int> doorInfo)
+		protected void AddVerticalDoors(DoorInstance doorInstance)
 		{
-			Payload.CollideableTilemap.SetTile(doorInfo.DoorLine.GetNthPoint(0), Config.VerticalBottom);
+			Payload.CollideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(0), Config.VerticalBottom);
 
-			if (doorInfo.DoorLine.Length > 1)
+			if (doorInstance.DoorLine.Length > 1)
 			{
-				Payload.CollideableTilemap.SetTile(doorInfo.DoorLine.GetNthPoint(1), Config.VerticalTop);
+				Payload.CollideableTilemap.SetTile(doorInstance.DoorLine.GetNthPoint(1), Config.VerticalTop);
 			}
 		}
 	}

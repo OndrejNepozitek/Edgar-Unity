@@ -26,11 +26,11 @@
 			correctionTilemaps = Config.CorrectionLayout.GetComponentsInChildren<Tilemap>().ToList();
 			tilemapsBound = ComputeTilemapsBound();
 
-			foreach (var roomInfo in Payload.Layout.GetAllRoomInfo())
+			foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
 			{
-				if (roomInfo.GeneratorData.IsCorridor)
+				if (roomInstance.GeneratorData.IsCorridor)
 				{
-					CorrectCorridor(roomInfo);
+					CorrectCorridor(roomInstance);
 				}
 			}
 		}
@@ -38,43 +38,43 @@
 		/// <summary>
 		/// Corrects a given corridor room if needed.
 		/// </summary>
-		/// <param name="roomInfo"></param>
-		protected void CorrectCorridor(RoomInfo<int> roomInfo)
+		/// <param name="roomInstance"></param>
+		protected void CorrectCorridor(RoomInstance roomInstance)
 		{
-			if (!roomInfo.Doors[0].IsHorizontal)
+			if (!roomInstance.Doors[0].IsHorizontal)
 			{
 				return;
 			}
 
-			CorrectVerticalCorridor(roomInfo);
+			CorrectVerticalCorridor(roomInstance);
 		}
 
 		/// <summary>
 		/// Corrects a vertical corridor connection.
 		/// </summary>
-		/// <param name="roomInfo"></param>
-		protected void CorrectVerticalCorridor(RoomInfo<int> roomInfo)
+		/// <param name="roomInstance"></param>
+		protected void CorrectVerticalCorridor(RoomInstance roomInstance)
 		{
-			var doors = roomInfo.Doors;
+			var doors = roomInstance.Doors;
 
 			if (doors[0].FacingDirection == Vector2Int.down)
 			{
-				CorrectTopConnection(roomInfo, doors[0].DoorLine);
-				CorrectBottomConnection(roomInfo, doors[1].DoorLine);
+				CorrectTopConnection(roomInstance, doors[0].DoorLine);
+				CorrectBottomConnection(roomInstance, doors[1].DoorLine);
 			}
 			else
 			{
-				CorrectBottomConnection(roomInfo, doors[0].DoorLine);
-				CorrectTopConnection(roomInfo, doors[1].DoorLine);
+				CorrectBottomConnection(roomInstance, doors[0].DoorLine);
+				CorrectTopConnection(roomInstance, doors[1].DoorLine);
 			}
 		}
 
 		/// <summary>
 		/// Corrects bottom connection of a given corridor room.
 		/// </summary>
-		/// <param name="roomInfo"></param>
+		/// <param name="roomInstance"></param>
 		/// <param name="doorLine"></param>
-		protected void CorrectBottomConnection(RoomInfo<int> roomInfo, OrthogonalLine doorLine)
+		protected void CorrectBottomConnection(RoomInstance roomInstance, OrthogonalLine doorLine)
 		{	
 			CopyTiles(doorLine.From + new Vector3Int(-1, -1, 0), tilemapsBound, doorLine.Length);
 		}
@@ -82,9 +82,9 @@
 		/// <summary>
 		/// Corrects top connection of a given corridor room.
 		/// </summary>
-		/// <param name="roomInfo"></param>
+		/// <param name="roomInstance"></param>
 		/// <param name="doorLine"></param>
-		protected void CorrectTopConnection(RoomInfo<int> roomInfo, OrthogonalLine doorLine)
+		protected void CorrectTopConnection(RoomInstance roomInstance, OrthogonalLine doorLine)
 		{
 			CopyTiles(doorLine.From + new Vector3Int(-1, 1, 0), tilemapsBound + Vector3Int.up * 3, doorLine.Length);
 		}

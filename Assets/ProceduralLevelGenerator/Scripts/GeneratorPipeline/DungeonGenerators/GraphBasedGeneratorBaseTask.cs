@@ -1,4 +1,5 @@
-﻿using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators
 {
@@ -21,17 +22,16 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 	using Object = UnityEngine.Object;
 	using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
-	public abstract class GraphBasedGeneratorBaseTask<TPayload, TConfig, TRoom> : ConfigurablePipelineTask<TPayload, TConfig> 
+	public abstract class GraphBasedGeneratorBaseTask<TPayload, TConfig> : ConfigurablePipelineTask<TPayload, TConfig> 
 		where TConfig : PipelineConfig
 		where TPayload : class, IGeneratorPayload
-        where TRoom : IEquatable<TRoom>
     {
 		public abstract override void Process();
 
 		// TODO: should probably use some interface instead of DungeonGenerator<TRoom>
-		protected IMapLayout<TRoom> GenerateLayout(IMapDescription<TRoom> mapDescription, DungeonGenerator<TRoom> generator, int timeout = 0, bool showDebugInfo = false)
+		protected IMapLayout<Room> GenerateLayout(IMapDescription<Room> mapDescription, DungeonGenerator<Room> generator, int timeout = 0, bool showDebugInfo = false)
 		{
-			IMapLayout<TRoom> layout = null;
+			IMapLayout<Room> layout = null;
 			var task = Task.Run(() => layout = generator.GenerateLayout());
 
 			if (timeout > 0)
@@ -52,34 +52,38 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
             return layout;
 		}
 
-		protected void PrintGeneratorStats(DungeonGenerator<TRoom> generator)
+		protected void PrintGeneratorStats(DungeonGenerator<Room> generator)
 		{
 			Debug.Log($"Layout generated in {generator.TimeTotal / 1000f:F} seconds");
 			Debug.Log($"{generator.IterationsCount} iterations needed, {(generator.IterationsCount / (generator.TimeTotal / 1000d)):0} iterations per second");
 		}
 
-		protected Layout<TRoom> TransformLayout(IMapLayout<TRoom> layout, TwoWayDictionary<IRoomTemplate, GameObject> roomDescriptionsToRoomTemplates)
-		{
-			var roomTransformations = new RoomTransformations();
+		protected GeneratedLevel TransformLayout(IMapLayout<Room> layout, LevelDescription levelDescription)
+        {
+            var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
+            var corridorToConnectionMapping = levelDescription.GetCorridorToConnectionMapping();
+
+            var roomTransformations = new RoomTransformations();
 
 			// Prepare an object to hold instantiated room templates
 			var parentGameObject = new GameObject("Room template instances");
 			parentGameObject.transform.parent = Payload.GameObject.transform;
 
             // Initialize rooms
-			var layoutData = new Dictionary<TRoom, RoomInfo<TRoom>>();
-			foreach (var layoutRoom in layout.Rooms)
+			var layoutData = new Dictionary<Room, RoomInstance>();
+            var layoutRooms = layout.Rooms.ToDictionary(x => x.Node, x => x);
+			foreach (var layoutRoom in layoutRooms.Values)
 			{
-				var roomTemplate = roomDescriptionsToRoomTemplates[layoutRoom.RoomTemplate];
+				var roomTemplatePrefab = prefabToRoomTemplateMapping.GetByValue(layoutRoom.RoomTemplate);
 
 				// Instantiate room template
-				var room = Object.Instantiate(roomTemplate);
-				room.SetActive(false);
-				room.transform.SetParent(parentGameObject.transform);
+				var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
+				roomTemplateInstance.SetActive(false);
+				roomTemplateInstance.transform.SetParent(parentGameObject.transform);
 
 				// Transform room template if needed
 				var transformation = layoutRoom.Transformation;
-				roomTransformations.Transform(room, transformation);
+				roomTransformations.Transform(roomTemplateInstance, transformation);
 
 				// Compute correct room position
 				// We cannot directly use layoutRoom.Position because the dungeon moves
@@ -89,39 +93,44 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 				var smallestX = layoutRoom.RoomTemplate.Shape.GetPoints().Min(x => x.X);
 				var smallestY = layoutRoom.RoomTemplate.Shape.GetPoints().Min(x => x.Y);
 				var correctPosition = layoutRoom.Position.ToUnityIntVector3() - new Vector3Int(smallestX, smallestY, 0);
-				room.transform.position = correctPosition;
+				roomTemplateInstance.transform.position = correctPosition;
 
-				var roomInfo = new RoomInfo<TRoom>(roomTemplate, room, correctPosition, TransformDoorInfo(layoutRoom.Doors),
-					layoutRoom.IsCorridor, layoutRoom);
+                var connection = layoutRoom.IsCorridor ? corridorToConnectionMapping[layoutRoom.Node] : null;
+				var roomInfo = new RoomInstance(layoutRoom.Node, connection, roomTemplatePrefab, roomTemplateInstance, correctPosition, layoutRoom, layoutRoom.IsCorridor);
 
 				layoutData.Add(layoutRoom.Node, roomInfo);
 			}
 
-			return new Layout<TRoom>(layoutData);
+            foreach (var roomInstance in layoutData.Values)
+            {
+                roomInstance.Doors = TransformDoorInfo(layoutRooms[roomInstance.Room].Doors, layoutData);
+            }
+
+			return new GeneratedLevel(layoutData);
 		}
 
-		protected List<DoorInfo<TRoom>> TransformDoorInfo(IEnumerable<IDoorInfo<TRoom>> oldDoorInfos)
+		protected List<DoorInstance> TransformDoorInfo(IEnumerable<IDoorInfo<Room>> doorInfos, Dictionary<Room, RoomInstance> roomInstances)
 		{
-			return oldDoorInfos.Select(TransformDoorInfo).ToList();
+			return doorInfos.Select(x => TransformDoorInfo(x, roomInstances[x.Node])).ToList();
 		}
 
-		protected DoorInfo<TRoom> TransformDoorInfo(IDoorInfo<TRoom> oldDoorInfo)
+		protected DoorInstance TransformDoorInfo(IDoorInfo<Room> doorInfo, RoomInstance connectedRoom)
 		{
-			var doorLine = oldDoorInfo.DoorLine;
+			var doorLine = doorInfo.DoorLine;
 
 			switch (doorLine.GetDirection())
 			{
 				case OrthogonalLine.Direction.Right:
-					return new DoorInfo<TRoom>(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up, oldDoorInfo.Node);
+					return new DoorInstance(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up, connectedRoom);
 
 				case OrthogonalLine.Direction.Left:
-					return new DoorInfo<TRoom>(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down, oldDoorInfo.Node);
+					return new DoorInstance(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down, connectedRoom);
 
 				case OrthogonalLine.Direction.Top:
-					return new DoorInfo<TRoom>(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left, oldDoorInfo.Node);
+					return new DoorInstance(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left, connectedRoom);
 
 				case OrthogonalLine.Direction.Bottom:
-					return new DoorInfo<TRoom>(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right, oldDoorInfo.Node);
+					return new DoorInstance(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right, connectedRoom);
 
 				default:
 					throw new ArgumentOutOfRangeException();

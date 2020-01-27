@@ -11,11 +11,11 @@
 		/// <summary>
 		/// Copies tiles from individual room templates to the tilemaps that hold generated dungeons.
 		/// </summary>
-		public void ApplyTemplates<TRoom>(IEnumerable<RoomInfo<TRoom>> rooms, List<Tilemap> destinationTilemaps)
+		public void ApplyTemplates(IEnumerable<RoomInstance> rooms, List<Tilemap> destinationTilemaps)
 		{
 			foreach (var roomInfo in rooms)
 			{
-				var roomTemplateTilemaps = roomInfo.Room.GetComponentsInChildren<Tilemap>().ToList();
+				var roomTemplateTilemaps = roomInfo.RoomTemplateInstance.GetComponentsInChildren<Tilemap>().ToList();
 				ApplyTemplate(roomTemplateTilemaps, roomInfo.Position, destinationTilemaps);
 			}
 		}

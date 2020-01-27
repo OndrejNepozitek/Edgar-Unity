@@ -167,22 +167,22 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
         /// <summary>
         /// Computes a room room template from a given room template game object.
         /// </summary>
-        /// <param name="roomTemplateGameObject"></param>
+        /// <param name="roomTemplatePrefab"></param>
         /// <param name="allowedTransformations"></param>
         /// <returns></returns>
-        public IRoomTemplate GetRoomDescription(GameObject roomTemplateGameObject, List<Transformation> allowedTransformations = null)
+        public IRoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab, List<Transformation> allowedTransformations = null)
 		{
             if (allowedTransformations == null)
             {
 				allowedTransformations = new List<Transformation> { Transformation.Identity };
             }
 
-			var polygon = GetPolygonFromTilemaps(roomTemplateGameObject.GetComponentsInChildren<Tilemap>());
-            var doors = roomTemplateGameObject.GetComponent<Doors>();
+			var polygon = GetPolygonFromTilemaps(roomTemplatePrefab.GetComponentsInChildren<Tilemap>());
+            var doors = roomTemplatePrefab.GetComponent<Doors>();
 
 			if (doors == null)
 			{
-				throw new DungeonGeneratorException($"Room template \"{roomTemplateGameObject.name}\" does not have any doors assigned.");
+				throw new DungeonGeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
 			}
 
 			var doorMode = doors.GetDoorMode();

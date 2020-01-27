@@ -1,26 +1,20 @@
-﻿using MapGeneration.Interfaces.Core.MapLayouts;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using MapGeneration.Interfaces.Core.MapLayouts;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces
 {
-	using System.Collections.Generic;
-	using DungeonGenerators;
-	using GeneralAlgorithms.DataStructures.Common;
-	using MapGeneration.Core.MapDescriptions;
-	using MapGeneration.Interfaces.Core.MapDescriptions;
-	using RoomTemplates;
-	using UnityEngine;
+    using DungeonGenerators;
 
-	/// <summary>
+    /// <summary>
 	/// Represents data used in and produced from a graph-based dungeon generator.
 	/// </summary>
     public interface IGraphBasedGeneratorPayload
-	{
-		IMapDescription<int> MapDescription { get; set; }
+    {
+		LevelDescription LevelDescription { get; set; }
 
-		IMapLayout<int> GeneratedLayout { get; set; }
+        GeneratedLevel GeneratedLevel { get; set; }
 
-		TwoWayDictionary<IRoomTemplate, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
-
-		Layout<int> Layout { get; set; }
-	}
+		IMapLayout<Room> GeneratedLayout { get; set; }
+    }
 }

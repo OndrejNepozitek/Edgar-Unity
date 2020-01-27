@@ -14,34 +14,32 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
     }
 
 	public class GungeonSetupTask<TPayload> : ConfigurablePipelineTask<TPayload, GungeonSetupConfig> 
-		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<Room>
+		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
 	{
 		public override void Process()
         {
-            foreach (var roomInfo in Payload.Layout.GetAllRoomInfo())
+            foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
             {
-                // TODO: this is kinda strange
-                var node = roomInfo.GeneratorData.Node;
-                var room = (GungeonRoom) Payload.RoomToIntMapping.GetByValue(node);
+                var room = roomInstance.Room as GungeonRoom;
+                var roomTemplateInstance = roomInstance.RoomTemplateInstance;
 
-                var roomGameObject = roomInfo.Room;
-                roomGameObject.SetActive(true);
-                var roomManager = roomGameObject.GetComponent<RoomManager>();
-                
-                foreach (var tilemapRenderer in roomGameObject.GetComponentsInChildren<TilemapRenderer>())
+                // TODO: how to properly handle this block?
+                roomTemplateInstance.SetActive(true);
+                foreach (var tilemapRenderer in roomTemplateInstance.GetComponentsInChildren<TilemapRenderer>())
                 {
                     tilemapRenderer.enabled = false;
                 }
+                roomTemplateInstance.transform.Find("Walls").gameObject.GetComponent<TilemapCollider2D>().enabled = false;
 
-                roomGameObject.transform.Find("Walls").gameObject.GetComponent<TilemapCollider2D>().enabled = false;
-
+                // Get spawn position if Entrance
                 if (room.Type == RoomType.Entrance)
                 {
-                    var spawnPosition = roomGameObject.transform.Find("SpawnPosition");
+                    var spawnPosition = roomTemplateInstance.transform.Find("SpawnPosition");
                     var player = GameObject.Find("Player");
                     player.transform.position = spawnPosition.position;
                 }
 
+                var roomManager = roomTemplateInstance.GetComponent<RoomManager>();
                 if (roomManager != null)
                 {
                     roomManager.Room = room;
@@ -49,11 +47,10 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
                     if (room.Type != RoomType.Corridor)
                     {
-                        foreach (var doorInfo in roomInfo.Doors)
+                        foreach (var door in roomInstance.Doors)
                         {
-                            // TODO: too complex to get neighboring rooms
-                            var corridorRoom = Payload.Layout.GetAllRoomInfo().First(x => x.GeneratorData.Node == doorInfo.ConnectedRoom);
-                            var corridorGameObject = corridorRoom.Room;
+                            var corridorRoom = door.ConnectedRoom;
+                            var corridorGameObject = corridorRoom.RoomTemplateInstance;
                             var doorsGameObject = corridorGameObject.transform.Find("Door")?.gameObject;
 
                             if (doorsGameObject != null)

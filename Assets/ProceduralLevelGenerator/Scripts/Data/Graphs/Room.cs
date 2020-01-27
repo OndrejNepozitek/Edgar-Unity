@@ -20,7 +20,7 @@
 		/// Position of the room in the graph editor.
 		/// </summary>
 		/// <remarks>
-		/// This valus is not used by the dungeon generator.
+		/// This value is not used by the dungeon generator.
 		/// </remarks>
 		[HideInInspector]
 		public Vector2 Position;
@@ -45,19 +45,19 @@
 		[HideInInspector]
 		public Guid RoomsGroupGuid;
 
-		// TODO: this should be done differently. It is not possible to handle every GUID manually.
+        public override string ToString()
+        {
+            return Name;
+        }
+
+        // TODO: this should be done differently. It is not possible to handle every GUID manually.
 		#region Pretty ugly GUID handling
 
 		[HideInInspector]
 		[SerializeField]
 		private byte[] serializedGuid;
 
-        public virtual string GetDisplayName()
-        {
-            return Name;
-        }
-
-		public void OnBeforeSerialize()
+        public void OnBeforeSerialize()
 		{
 			serializedGuid = RoomsGroupGuid.ToByteArray();
 		}

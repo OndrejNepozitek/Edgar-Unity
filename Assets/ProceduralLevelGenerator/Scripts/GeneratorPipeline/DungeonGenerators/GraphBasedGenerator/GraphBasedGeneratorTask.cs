@@ -1,4 +1,7 @@
 ﻿using System.IO;
+using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates;
 using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using Newtonsoft.Json;
@@ -6,32 +9,18 @@ using Newtonsoft.Json;
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Diagnostics;
-	using System.Linq;
-	using System.Threading.Tasks;
-	using MapGeneration.Core.MapDescriptions;
-	using MapGeneration.Interfaces.Core.LayoutGenerator;
-	using MapGeneration.Interfaces.Core.MapLayouts;
-	using Payloads.Interfaces;
-	using Pipeline;
-	using RoomTemplates;
-	using RoomTemplates.Doors;
-	using RoomTemplates.Transformations;
-	using UnityEngine;
-	using UnityEngine.Tilemaps;
-	using Utils;
+    using System.Diagnostics;
+    using Payloads.Interfaces;
+    using Utils;
 	using Debug = UnityEngine.Debug;
-	using Object = UnityEngine.Object;
-	using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
-	/// <summary>
+    /// <summary>
 	/// Actual implementation of the task that generates dungeons.
 	/// </summary>
 	/// <typeparam name="TPayload"></typeparam>
-	public class GraphBasedGeneratorTask<TPayload> : GraphBasedGeneratorBaseTask<TPayload, GraphBasedGeneratorConfig, int>
+	public class GraphBasedGeneratorTask<TPayload> : GraphBasedGeneratorBaseTask<TPayload, GraphBasedGeneratorConfig>
 		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
-	{
+    {
 		private readonly DungeonGeneratorUtils dungeonGeneratorUtils = new DungeonGeneratorUtils();
 
 		public override void Process()
@@ -50,14 +39,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 			}
 
 			// Setup map description
-			var mapDescription = Payload.MapDescription;
+			var mapDescription = Payload.LevelDescription.GetMapDescription();
 
-            var json = JsonConvert.SerializeObject(mapDescription, Formatting.Indented, new JsonSerializerSettings()
-            {
-				PreserveReferencesHandling = PreserveReferencesHandling.All,
-				TypeNameHandling = TypeNameHandling.All,
-            });
-			File.WriteAllText("mapDescription.json", json);
+			// TODO: handle exporting map descriptions properly
+   //         var json = JsonConvert.SerializeObject(mapDescription, Formatting.Indented, new JsonSerializerSettings()
+   //         {
+			//	PreserveReferencesHandling = PreserveReferencesHandling.All,
+			//	TypeNameHandling = TypeNameHandling.All,
+   //         });
+			//File.WriteAllText("mapDescription.json", json);
 			
 			// Generate layout
             var generator = GetGenerator(mapDescription);
@@ -85,7 +75,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
             }
 
             // Setup room templates
-			Payload.Layout = TransformLayout(Payload.GeneratedLayout, Payload.RoomDescriptionsToRoomTemplates);
+			Payload.GeneratedLevel = TransformLayout(Payload.GeneratedLayout, Payload.LevelDescription);
 
 			// Apply tempaltes
 			if (Config.ApplyTemplate)
@@ -106,9 +96,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 			}
 		}
 
-		protected DungeonGenerator<int> GetGenerator(IMapDescription<int> mapDescription)
+		protected DungeonGenerator<Room> GetGenerator(IMapDescription<Room> mapDescription)
 		{
-			var generator = new DungeonGenerator<int>(mapDescription, new DungeonGeneratorConfiguration(mapDescription) { RoomsCanTouch = false });
+			var generator = new DungeonGenerator<Room>(mapDescription, new DungeonGeneratorConfiguration<Room>(mapDescription) { RoomsCanTouch = false });
 			generator.InjectRandomGenerator(Payload.Random);
 
             return generator;
@@ -119,10 +109,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 		/// </summary>
 		protected void ApplyTemplates()
 		{
-			var nonCorridors = Payload.Layout.GetAllRoomInfo().Where(x => !x.IsCorridor).ToList();
-			var corridors = Payload.Layout.GetAllRoomInfo().Where(x => x.IsCorridor).ToList();
+			var nonCorridors = Payload.GeneratedLevel.GetAllRoomInstances().Where(x => !x.IsCorridor).ToList();
+			var corridors = Payload.GeneratedLevel.GetAllRoomInstances().Where(x => x.IsCorridor).ToList();
 
-			dungeonGeneratorUtils.ApplyTemplates(nonCorridors, Payload.Tilemaps);
+            dungeonGeneratorUtils.ApplyTemplates(nonCorridors, Payload.Tilemaps);
 			dungeonGeneratorUtils.ApplyTemplates(corridors, Payload.Tilemaps);
 		}
 	}

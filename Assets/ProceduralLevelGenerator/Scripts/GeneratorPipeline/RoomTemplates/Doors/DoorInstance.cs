@@ -7,7 +7,7 @@
 	/// Class containing information about a door of a room.
 	/// </summary>
 	/// <typeparam name="TRoom"></typeparam>
-	public class DoorInfo<TRoom>
+	public class DoorInstance
 	{
 		/// <summary>
 		/// Line containing all points of the door.
@@ -26,7 +26,7 @@
 		/// |       |
 		/// ---------
 		/// 
-		/// Then the facing direction is equal to Vector2Int.up.
+		/// Then the facing direction of the door above is equal to Vector2Int.up.
 		/// 
 		/// ---------
 		/// |       O 
@@ -45,9 +45,9 @@
 		/// <summary>
 		/// To which room is the room that contains this door connected.
 		/// </summary>
-		public TRoom ConnectedRoom { get; }
+		public RoomInstance ConnectedRoom { get; }
 
-		public DoorInfo(OrthogonalLine doorLine, Vector2Int facingDirection, TRoom connectedRoom)
+		public DoorInstance(OrthogonalLine doorLine, Vector2Int facingDirection, RoomInstance connectedRoom)
 		{
 			DoorLine = doorLine;
 			FacingDirection = facingDirection;

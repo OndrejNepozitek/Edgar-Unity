@@ -16,7 +16,7 @@
 	/// Actual implementation of the task that generates platfomers.
 	/// </summary>
 	/// <typeparam name="TPayload"></typeparam>
-	public class PlatformerGeneratorTask<TPayload> : GraphBasedGeneratorBaseTask<TPayload, PlatformerGeneratorConfig, int>
+	public class PlatformerGeneratorTask<TPayload> : GraphBasedGeneratorBaseTask<TPayload, PlatformerGeneratorConfig>
 		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
 	{
 		private readonly DungeonGeneratorUtils dungeonGeneratorUtils = new DungeonGeneratorUtils();

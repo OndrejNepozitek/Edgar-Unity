@@ -138,7 +138,7 @@
 
 		public void Draw()
 		{
-			GUI.Box(Rect, Data.GetDisplayName(), Selection.activeObject == Data ? activeStyle : style);
+			GUI.Box(Rect, Data.ToString(), Selection.activeObject == Data ? activeStyle : style);
 		}
 
 		public void Drag(Vector2 delta)

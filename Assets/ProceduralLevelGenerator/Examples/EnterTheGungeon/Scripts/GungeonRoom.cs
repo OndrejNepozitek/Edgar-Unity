@@ -7,7 +7,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
     {
         public RoomType Type;
 
-        public override string GetDisplayName()
+        public override string ToString()
         {
             return Type.ToString();
         }

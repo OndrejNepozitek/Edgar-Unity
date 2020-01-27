@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.PrecomputedLevels;
 using GeneralAlgorithms.DataStructures.Common;
@@ -65,13 +66,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                 throw new InvalidOperationException();
             }
 
-            generatorPayload.GeneratedLayout = jsonSerializedData.GeneratedLayout;
-            generatorPayload.RoomDescriptionsToRoomTemplates = new TwoWayDictionary<IRoomTemplate, GameObject>();
+            // TODO: probably serialize and deserialize LevelDescription
+            throw new NotImplementedException();
+            //generatorPayload.GeneratedLayout = jsonSerializedData.GeneratedLayout;
+            //generatorPayload.RoomDescriptionsToRoomTemplates = new TwoWayDictionary<IRoomTemplate, GameObject>();
 
-            for (int i = 0; i < jsonSerializedData.RoomTemplates.Count; i++)
-            {
-                generatorPayload.RoomDescriptionsToRoomTemplates.Add(jsonSerializedData.RoomTemplates[i], savedData.RoomTemplateGameObjects[i]);
-            }
+            //for (int i = 0; i < jsonSerializedData.RoomTemplates.Count; i++)
+            //{
+            //    generatorPayload.RoomDescriptionsToRoomTemplates.Add(jsonSerializedData.RoomTemplates[i], savedData.RoomTemplateGameObjects[i]);
+            //}
         }
 
         protected SavedData SaveLevelData(object payload)
@@ -88,13 +91,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                 JsonSerializedData = JsonConvert.SerializeObject(new JsonSerializedData()
                 {
                     GeneratedLayout = generatorPayload.GeneratedLayout,
-                    RoomTemplates = generatorPayload.RoomDescriptionsToRoomTemplates.Keys.ToList(),
+                    RoomTemplates = generatorPayload.LevelDescription.GetPrefabToRoomTemplateMapping().Values.ToList(),
                 }, new JsonSerializerSettings()
                 {
                     PreserveReferencesHandling = PreserveReferencesHandling.All,
                     TypeNameHandling = TypeNameHandling.Auto,
                 }),
-                RoomTemplateGameObjects = generatorPayload.RoomDescriptionsToRoomTemplates.Values.ToList(),
+                RoomTemplateGameObjects = generatorPayload.LevelDescription.GetPrefabToRoomTemplateMapping().Keys.ToList(),
             };
         }
 
@@ -108,7 +111,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
         public class JsonSerializedData
         {
-            public IMapLayout<int> GeneratedLayout { get; set; }
+            public IMapLayout<Room> GeneratedLayout { get; set; }
 
             public List<IRoomTemplate> RoomTemplates { get; set; }
         }

@@ -1,11 +1,12 @@
-﻿using MapGeneration.Interfaces.Core.MapDescriptions;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+using MapGeneration.Interfaces.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapLayouts;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces
 {
     public interface IBenchmarkInfoPayload
     {
-        IMapLayout<int> GeneratedLayout { get; set; }
+        IMapLayout<Room> GeneratedLayout { get; set; }
 
         int Iterations { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using MapGeneration.Interfaces.Core.MapLayouts;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using MapGeneration.Interfaces.Core.MapLayouts;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads
 {
@@ -18,17 +19,17 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads
 	/// Default pipeline payload.
 	/// </summary>
 	/// <typeparam name="TRoom"></typeparam>
-	public class PipelinePayload<TRoom> : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload, IRoomToIntMappingPayload<TRoom>, IBenchmarkInfoPayload
+	public class PipelinePayload<TRoom> : IGeneratorPayload, IGraphBasedGeneratorPayload, INamedTilemapsPayload, IRandomGeneratorPayload, IBenchmarkInfoPayload
 	{
 		public GameObject GameObject { get; set; }
 
 		public List<Tilemap> Tilemaps { get; set; }
 
-		public IMapDescription<int> MapDescription { get; set; }
+        public LevelDescription LevelDescription { get; set; }
 
-		public TwoWayDictionary<IRoomTemplate, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
+        public TwoWayDictionary<IRoomTemplate, GameObject> RoomDescriptionsToRoomTemplates { get; set; }
 
-		public Layout<int> Layout { get; set; }
+		public GeneratedLevel GeneratedLevel { get; set; }
 
 		public Tilemap WallsTilemap => Tilemaps[0];
 
@@ -40,7 +41,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads
 
 		public TwoWayDictionary<TRoom, int> RoomToIntMapping { get; set; }
 
-        public IMapLayout<int> GeneratedLayout { get; set; }
+        public IMapLayout<Room> GeneratedLayout { get; set; }
 
         public int Iterations { get; set; }
 

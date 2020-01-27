@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Diagnostics;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.PrecomputedLevels;
 using MapGeneration.Benchmarks;
@@ -69,7 +70,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
         {
 			Debug.Log("Run Benchmark");
 
-            var layoutDrawer = new SVGLayoutDrawer<int>();
+            var layoutDrawer = new SVGLayoutDrawer<Room>();
             var pipelineRunner = new PipelineRunner();
             var runs = new List<GeneratorRun<AdditionalRunData>>();
 

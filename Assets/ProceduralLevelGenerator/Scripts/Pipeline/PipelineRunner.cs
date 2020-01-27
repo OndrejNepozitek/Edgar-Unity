@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+﻿using Assets.ProceduralLevelGenerator.Examples.ProceduralLevelGraphs.Scripts;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
 {
 	using System;
 	using System.Collections.Generic;
@@ -94,7 +96,7 @@
 					}
 
 					var actualPayloadType = relevantClasses[0].Item2.GenericTypeArguments[0];
-					var actualTaskType = relevantClasses[0].Item1;
+                    var actualTaskType = relevantClasses[0].Item1;
 
 					if (actualPayloadType.IsGenericParameter)
 					{

@@ -16,10 +16,10 @@
 		public override void Process()
 		{
 			// Iterate through all rooms
-			foreach (var roomInfo in Payload.Layout.GetAllRoomInfo())
+			foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
 			{
 				// Iterate through all used door positons
-				foreach (var doorInfo in roomInfo.Doors)
+				foreach (var doorInfo in roomInstance.Doors)
 				{
 					foreach (var point in doorInfo.DoorLine.GetPoints())
 					{
