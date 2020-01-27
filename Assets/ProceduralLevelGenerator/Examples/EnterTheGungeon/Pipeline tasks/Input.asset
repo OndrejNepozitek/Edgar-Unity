@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1171c75e2eaf64aa475a2d2dd2ba5a, type: 3}
   m_Name: Input
   m_EditorClassIdentifier: 
-  LevelGraph: {fileID: 11400000, guid: e779be756bebf574ebdee9c2e257f3da, type: 2}
+  LevelGraph: {fileID: 11400000, guid: 0ef968e3d473ffa46b60d650fe903a5e, type: 2}
   EntranceRoomTemplates:
   - {fileID: 5620706597785849071, guid: 89dd599f38f527b4f8efa3c51f04c91e, type: 3}
   BossRoomTemplates:

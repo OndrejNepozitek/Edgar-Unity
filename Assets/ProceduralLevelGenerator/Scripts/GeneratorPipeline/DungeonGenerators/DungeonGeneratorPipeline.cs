@@ -76,6 +76,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
             for (int i = 0; i < BenchmarkRuns; i++)
             {
+                var stopwatch = new Stopwatch();
+                stopwatch.Start();
+
                 var payload = PayloadInitializer.InitializePayload();
                 pipelineRunner.Run(PipelineItems, payload);
 
@@ -91,7 +94,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                         ImageBase64 = base64,
                     };
 
-                    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLayout != null, benchmarkInfoPayload.TimeTotal, benchmarkInfoPayload.Iterations, additionalData);
+                    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLayout != null, stopwatch.ElapsedMilliseconds, benchmarkInfoPayload.Iterations, additionalData);
 
                     runs.Add(generatorRun);
                 }
