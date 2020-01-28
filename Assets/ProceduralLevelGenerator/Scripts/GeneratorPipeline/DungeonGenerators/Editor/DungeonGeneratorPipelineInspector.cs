@@ -9,8 +9,7 @@
 	public class DungeonGeneratorPipelineInspector : Editor
 	{
 		private ReorderableList list;
-		private bool showPipelineSettings = true;
-		private bool showAdvancedSettings;
+        private bool showBenchmarks = false;
 
 		private void OnEnable()
 		{
@@ -67,10 +66,35 @@
 			}
 
             EditorGUILayout.Space();
+
+            showBenchmarks = EditorGUILayout.Foldout(showBenchmarks, "Benchmarks");
+            if (showBenchmarks)
+            {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.BenchmarkRuns)));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.ScreenshotCamera)));
+                EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.ScreenshotCameraSize)));
+
+                EditorGUI.BeginDisabledGroup(pipeline.BenchmarkIsRunning);
+                var buttonText = pipeline.BenchmarkIsRunning ? $"Running - {pipeline.BenchmarkProgress}/{pipeline.BenchmarkRuns}" : "Run benchmark";
+                if (GUILayout.Button(buttonText))
+                {
+                    pipeline.RunBenchmark();
+                }
+				EditorGUI.EndDisabledGroup();
+
+                if (pipeline.BenchmarkIsRunning)
+                {
+                    if (GUILayout.Button("Stop benchmark"))
+                    {
+                        pipeline.StopBenchmark();
+                    }
+                }
+            }
+
+            EditorGUILayout.Space();
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.LevelsToPrecompute)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PrecomputedLevelsHandler)));
-			
-
+            
             if (pipeline.IsPrecomputeRunning)
             {
                 EditorGUILayout.LabelField($"State: Running - {pipeline.PrecomputeProgress}/{pipeline.LevelsToPrecompute}");
