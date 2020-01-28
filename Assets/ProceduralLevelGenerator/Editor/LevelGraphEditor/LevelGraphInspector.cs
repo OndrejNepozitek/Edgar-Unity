@@ -36,6 +36,8 @@
 			}
 
 			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.RoomsGroups)), true);
+
+
 			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.RoomType)), true);
 			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.ConnectionType)), true);
 
