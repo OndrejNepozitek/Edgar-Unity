@@ -8,7 +8,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
     public class GungeonTilemapLayersHandler : AbstractTilemapLayersHandler
     {
         /// <summary>
-        /// Initializes individual tilemap layers.
+        ///     Initializes individual tilemap layers.
         /// </summary>
         /// <param name="gameObject"></param>
         public override void InitializeTilemaps(GameObject gameObject)

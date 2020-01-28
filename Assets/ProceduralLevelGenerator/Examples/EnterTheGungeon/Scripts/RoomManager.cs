@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
     public class RoomManager : MonoBehaviour
     {
-        public GungeonRoom Room;
-
         public bool Cleared;
-
-        public bool EnemiesSpawned;
 
         public List<GameObject> Doors = new List<GameObject>();
 
         public GameObject[] Enemies;
 
+        public bool EnemiesSpawned;
+
         public Collider2D FloorCollider;
+        public GungeonRoom Room;
 
         public void OnRoomEnter(Collider2D otherCollider)
         {
@@ -38,7 +35,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
         {
             var enemies = new List<GameObject>();
 
-            for (int i = 0; i < 100; i++)
+            for (var i = 0; i < 100; i++)
             {
                 var position = RandomPointInBounds(FloorCollider.bounds);
                 var enemyPrefab = Enemies[Random.Range(0, Enemies.Length)];
@@ -84,7 +81,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             return (collider.ClosestPoint(point) - point).sqrMagnitude < Mathf.Epsilon * Mathf.Epsilon;
         }
 
-        public static Vector3 RandomPointInBounds(Bounds bounds) {
+        public static Vector3 RandomPointInBounds(Bounds bounds)
+        {
             return new Vector3(
                 Random.Range(bounds.min.x, bounds.max.x),
                 Random.Range(bounds.min.y, bounds.max.y),

@@ -1,16 +1,15 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates;
 using MapGeneration.Interfaces.Core.MapLayouts;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators
 {
-	using System.Collections.Generic;
-	using RoomTemplates;
-
-	public class GeneratedLevel
+    public class GeneratedLevel
     {
-        private readonly Dictionary<Room, RoomInstance> roomInstances;
         private readonly IMapLayout<Room> mapLayout;
+        private readonly Dictionary<Room, RoomInstance> roomInstances;
 
         public GeneratedLevel(Dictionary<Room, RoomInstance> roomInstances, IMapLayout<Room> mapLayout)
         {

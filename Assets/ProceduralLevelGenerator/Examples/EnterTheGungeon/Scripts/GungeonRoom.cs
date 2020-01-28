@@ -1,5 +1,4 @@
-﻿using System;
-using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
@@ -13,4 +12,3 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
         }
     }
 }
-

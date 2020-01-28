@@ -1,7 +1,4 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators;
-using MapGeneration.Interfaces.Core.MapDescriptions;
-using MapGeneration.Interfaces.Core.MapLayouts;
+﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces
 {

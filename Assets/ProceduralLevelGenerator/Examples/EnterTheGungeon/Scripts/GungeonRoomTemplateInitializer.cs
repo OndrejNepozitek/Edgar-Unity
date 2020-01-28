@@ -1,22 +1,21 @@
 ﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.RoomTemplateInitializers;
-using UnityEngine.Tilemaps;
+using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
-    using ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.TilemapLayers;
-    using UnityEngine;
-
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
+
+#endif
 
     public class GungeonRoomTemplateInitializer : BaseRoomTemplateInitializer
     {
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
         public void Initialize()
         {
             var tilemapLayersHandler = AssetDatabase
-                .LoadAssetAtPath<GungeonTilemapLayersHandler>("Assets/ProceduralLevelGenerator/Examples/EnterTheGungeon/Pipeline tasks/GungeonTilemapLayersHandler.asset");
+                .LoadAssetAtPath<GungeonTilemapLayersHandler>(
+                    "Assets/ProceduralLevelGenerator/Examples/EnterTheGungeon/Pipeline tasks/GungeonTilemapLayersHandler.asset");
 
             gameObject.transform.position = Vector3.zero;
 
@@ -31,16 +30,16 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             // Destroy the initializer
             DestroyImmediate(this);
         }
-    #endif
+#endif
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CustomEditor(typeof(GungeonRoomTemplateInitializer))]
     public class GungeonRoomTemplateInitializerInspector : Editor
     {
         public override void OnInspectorGUI()
         {
-            var roomTemplateInitializer = (GungeonRoomTemplateInitializer)target;
+            var roomTemplateInitializer = (GungeonRoomTemplateInitializer) target;
 
             DrawDefaultInspector();
 
@@ -50,5 +49,5 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             }
         }
     }
-    #endif
+#endif
 }

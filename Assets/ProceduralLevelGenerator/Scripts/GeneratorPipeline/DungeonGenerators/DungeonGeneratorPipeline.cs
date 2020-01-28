@@ -1,63 +1,63 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.PayloadInitializers;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.PrecomputedLevels;
+using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Benchmarks;
 using MapGeneration.Benchmarks.ResultSaving;
 using MapGeneration.Interfaces.Benchmarks;
 using MapGeneration.MetaOptimization.Evolution.DungeonGeneratorEvolution;
 using MapGeneration.Utils.MapDrawing;
+using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators
 {
-	using System.Collections.Generic;
-	using Payloads.PayloadInitializers;
-	using Pipeline;
-	using UnityEngine;
-	using Utils;
-
-	/// <summary>
-	/// MonoBehaviour script that holds the whole generator pipeline.
-	/// </summary>
-	public class DungeonGeneratorPipeline : MonoBehaviour
-	{
-		[ExpandableNotFoldable]
-		public AbstractPayloadInitializer PayloadInitializer;
-
-		[HideInInspector]
-		[ExpandableNotFoldable]
-		public List<PipelineItem> PipelineItems;
-
+    /// <summary>
+    ///     MonoBehaviour script that holds the whole generator pipeline.
+    /// </summary>
+    public class DungeonGeneratorPipeline : MonoBehaviour
+    {
         public int BenchmarkRuns = 20;
-
-        public Camera ScreenshotCamera;
 
         public float CameraSize = 60;
 
-        public AbstractPrecomputedLevelsHandler PrecomputedLevelsHandler;
+        [HideInInspector]
+        public bool IsPrecomputeRunning;
 
         public int LevelsToPrecompute = 20;
 
+        [ExpandableNotFoldable]
+        public AbstractPayloadInitializer PayloadInitializer;
+
         [HideInInspector]
-        public bool IsPrecomputeRunning = false;
+        [ExpandableNotFoldable]
+        public List<PipelineItem> PipelineItems;
+
+        public AbstractPrecomputedLevelsHandler PrecomputedLevelsHandler;
 
         [HideInInspector]
         public int PrecomputeProgress;
 
+        public Camera ScreenshotCamera;
+
         public void Generate()
-		{
+        {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            Debug.Log("--- Pipeline started ---"); 
+            Debug.Log("--- Pipeline started ---");
 
-			var pipelineRunner = new PipelineRunner();
-			pipelineRunner.Run(PipelineItems, PayloadInitializer.InitializePayload());
+            var pipelineRunner = new PipelineRunner();
+            pipelineRunner.Run(PipelineItems, PayloadInitializer.InitializePayload());
 
             Debug.Log($"--- Pipeline completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
-		}
+        }
 
         // TODO: maybe make this with live preview? Would it need to do the benchmark manually?
         public void RunBenchmark()
@@ -68,13 +68,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
         // TODO: maybe make this with live preview? Would it need to do the benchmark manually?
         public IEnumerator RunBenchmarkCoroutine()
         {
-			Debug.Log("Run Benchmark");
+            Debug.Log("Run Benchmark");
 
             var layoutDrawer = new SVGLayoutDrawer<Room>();
             var pipelineRunner = new PipelineRunner();
             var runs = new List<GeneratorRun<AdditionalRunData>>();
 
-            for (int i = 0; i < BenchmarkRuns; i++)
+            for (var i = 0; i < BenchmarkRuns; i++)
             {
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
@@ -88,13 +88,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                     var png = screenshot.EncodeToPNG();
                     var base64 = Convert.ToBase64String(png);
 
-                    var additionalData = new AdditionalUnityData()
+                    var additionalData = new AdditionalUnityData
                     {
-                        GeneratedLayoutSvg = layoutDrawer.DrawLayout(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation(), 800, forceSquare: true),
-                        ImageBase64 = base64,
+                        GeneratedLayoutSvg = layoutDrawer.DrawLayout(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation(), 800,
+                            forceSquare: true),
+                        ImageBase64 = base64
                     };
 
-                    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation() != null, stopwatch.ElapsedMilliseconds, benchmarkInfoPayload.Iterations, additionalData);
+                    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation() != null,
+                        stopwatch.ElapsedMilliseconds, benchmarkInfoPayload.Iterations, additionalData);
 
                     runs.Add(generatorRun);
                 }
@@ -106,7 +108,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                 yield return null;
             }
 
-            var scenarioResult = new BenchmarkScenarioResult("Test", new List<BenchmarkResult>()
+            var scenarioResult = new BenchmarkScenarioResult("Test", new List<BenchmarkResult>
             {
                 new BenchmarkResult("Test", runs.Cast<IGeneratorRun>().ToList())
             });
@@ -115,7 +117,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
         }
 
         // Take a "screenshot" of a camera's Render Texture.
-        Texture2D RTImage(Camera camera)
+        private Texture2D RTImage(Camera camera)
         {
             var size = ScreenshotCamera.orthographicSize;
             ScreenshotCamera.orthographicSize = CameraSize;
@@ -126,28 +128,23 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
             var width = 500;
             var height = 500;
 
-            Rect rect = new Rect(0, 0, width, height);
-            RenderTexture renderTexture = new RenderTexture(width, height, 24);
-            Texture2D screenShot = new Texture2D(width, height, TextureFormat.RGBA32, false);
- 
+            var rect = new Rect(0, 0, width, height);
+            var renderTexture = new RenderTexture(width, height, 24);
+            var screenShot = new Texture2D(width, height, TextureFormat.RGBA32, false);
+
             ScreenshotCamera.targetTexture = renderTexture;
             ScreenshotCamera.Render();
 
             RenderTexture.active = renderTexture;
             screenShot.ReadPixels(rect, 0, 0);
- 
+
             ScreenshotCamera.targetTexture = null;
             RenderTexture.active = null;
- 
+
             DestroyImmediate(renderTexture);
             renderTexture = null;
             ScreenshotCamera.orthographicSize = size;
             return screenShot;
-        }
-
-        private class AdditionalUnityData : AdditionalRunData
-        {
-            public string ImageBase64 { get; set; }
         }
 
         public void PrecomputeLevels()
@@ -164,11 +161,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
             PrecomputedLevelsHandler.OnComputationStarted();
 
-            for (int i = 0; i < LevelsToPrecompute; i++)
+            for (var i = 0; i < LevelsToPrecompute; i++)
             {
                 var payload = PayloadInitializer.InitializePayload();
                 pipelineRunner.Run(PipelineItems, payload);
-                
+
                 PrecomputedLevelsHandler.SaveLevel(payload);
                 PrecomputeProgress = i + 1;
                 yield return null;
@@ -177,5 +174,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
             // TODO: check if not null
             PrecomputedLevelsHandler.OnComputationEnded();
         }
-	}
+
+        private class AdditionalUnityData : AdditionalRunData
+        {
+            public string ImageBase64 { get; set; }
+        }
+    }
 }

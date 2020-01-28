@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Threading.Tasks;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,27 +9,27 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        
+        private GameObject canvas;
+
         public int CurrentLevel;
-        public float LevelStartDelay = 2f;
-        public GungeonLevel[] Levels;
+        private RoomType currentRoomType;
 
         private DungeonGeneratorPipeline dungeonGeneratorPipeline;
-        private GameObject canvas;
         private GameObject levelImage;
-        private Text levelText;
         private Text levelInfoText;
-        private RoomType currentRoomType;
+        public GungeonLevel[] Levels;
+        public float LevelStartDelay = 2f;
+        private Text levelText;
 
         public void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
-            } 
+            }
             else if (Instance != this)
             {
-                Destroy(gameObject);    
+                Destroy(gameObject);
             }
 
             DontDestroyOnLoad(gameObject);

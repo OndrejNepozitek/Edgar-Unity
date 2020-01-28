@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.PrecomputedLevels;
-using GeneralAlgorithms.DataStructures.Common;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapLayouts;
 using Newtonsoft.Json;
@@ -12,6 +10,7 @@ using UnityEngine;
 using Random = System.Random;
 #if UNITY_EDITOR
 using UnityEditor;
+
 #endif
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
@@ -29,10 +28,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
         public override void OnComputationEnded()
         {
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             EditorUtility.SetDirty(this);
             AssetDatabase.SaveAssets();
-            #endif
+#endif
         }
 
         public override void LoadLevel(object payload)
@@ -52,11 +51,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
         protected void LoadLevelData(object payload, SavedData savedData)
         {
             // TODO: handle names
-            var jsonSerializedData = JsonConvert.DeserializeObject<JsonSerializedData>(savedData.JsonSerializedData, new JsonSerializerSettings()
+            var jsonSerializedData = JsonConvert.DeserializeObject<JsonSerializedData>(savedData.JsonSerializedData, new JsonSerializerSettings
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.All,
-                TypeNameHandling = TypeNameHandling.Auto,
-
+                TypeNameHandling = TypeNameHandling.Auto
             });
 
             var generatorPayload = payload as IGraphBasedGeneratorPayload;
@@ -83,22 +81,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
             if (generatorPayload == null)
             {
-                throw new InvalidOperationException($"This precomputed levels handler can only work with payload implementing {nameof(IGraphBasedGeneratorPayload)}");
+                throw new InvalidOperationException(
+                    $"This precomputed levels handler can only work with payload implementing {nameof(IGraphBasedGeneratorPayload)}");
             }
 
-            return new SavedData()
-            {
-                //JsonSerializedData = JsonConvert.SerializeObject(new JsonSerializedData()
-                //{
-                //    GeneratedLayout = generatorPayload.GeneratedLayout,
-                //    RoomTemplates = generatorPayload.LevelDescription.GetPrefabToRoomTemplateMapping().Values.ToList(),
-                //}, new JsonSerializerSettings()
-                //{
-                //    PreserveReferencesHandling = PreserveReferencesHandling.All,
-                //    TypeNameHandling = TypeNameHandling.Auto,
-                //}),
-                //RoomTemplateGameObjects = generatorPayload.LevelDescription.GetPrefabToRoomTemplateMapping().Keys.ToList(),
-            };
+            return new SavedData();
         }
 
         [Serializable]

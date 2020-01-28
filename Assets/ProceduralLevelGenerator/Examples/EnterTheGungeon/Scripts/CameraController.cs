@@ -4,8 +4,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
     public class CameraController : MonoBehaviour
     {
-        public GameObject Player;
         private Vector3 offset;
+        public GameObject Player;
 
         public void Start()
         {

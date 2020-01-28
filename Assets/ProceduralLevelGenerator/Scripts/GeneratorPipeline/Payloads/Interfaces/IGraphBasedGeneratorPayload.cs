@@ -1,22 +1,21 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Utils;
+﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces
 {
-    using DungeonGenerators;
-
     /// <summary>
-	/// Represents data used in and produced from a graph-based dungeon generator.
-	/// </summary>
+    ///     Represents data used in and produced from a graph-based dungeon generator.
+    /// </summary>
     public interface IGraphBasedGeneratorPayload
     {
         /// <summary>
-        /// Abstract description of the level that is used as input for the generator.
+        ///     Abstract description of the level that is used as input for the generator.
         /// </summary>
-		LevelDescription LevelDescription { get; set; }
+        LevelDescription LevelDescription { get; set; }
 
         /// <summary>
-        /// Representation of the generated level.
-        /// Each room from the level description now has a concrete position and room template assigned.
+        ///     Representation of the generated level.
+        ///     Each room from the level description now has a concrete position and room template assigned.
         /// </summary>
         GeneratedLevel GeneratedLevel { get; set; }
     }
