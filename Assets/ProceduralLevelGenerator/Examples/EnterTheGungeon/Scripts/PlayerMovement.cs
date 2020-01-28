@@ -4,13 +4,12 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
     public class PlayerMovement : MonoBehaviour
     {
+        private Animator animator;
+
+        private Vector2 movement;
         public float MoveSpeed = 5f;
 
         public Rigidbody2D Rigidbody;
-
-        private Vector2 movement;
-
-        private Animator animator;
 
         private SpriteRenderer spriteRenderer;
 

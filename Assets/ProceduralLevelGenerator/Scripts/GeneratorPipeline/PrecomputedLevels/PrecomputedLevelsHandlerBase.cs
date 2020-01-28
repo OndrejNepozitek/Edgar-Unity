@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.PrecomputedLevels
@@ -25,10 +24,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.PrecomputedL
 
         public override void SaveLevel(object payload)
         {
-            PrecomputedLevels.Add(JsonConvert.SerializeObject(SaveLevelData(payload), new JsonSerializerSettings()
+            PrecomputedLevels.Add(JsonConvert.SerializeObject(SaveLevelData(payload), new JsonSerializerSettings
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.All,
-                TypeNameHandling = TypeNameHandling.All,
+                TypeNameHandling = TypeNameHandling.All
             }));
         }
 

@@ -1,33 +1,34 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.RoomTemplateInitializers
+﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.TilemapLayers;
+using UnityEngine;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.RoomTemplateInitializers
 {
-	using TilemapLayers;
-	using UnityEngine;
-
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     using UnityEditor;
-    #endif
 
-	/// <summary>
-	/// Default room template initializer that uses the default
-	/// tilemap layers handler.
-	/// </summary>
-	public class DefaultRoomTemplateInitializer : BaseRoomTemplateInitializer
-	{
-        #if UNITY_EDITOR
-		public void Initialize()
-		{
-			var tilemapLayersHandler = AssetDatabase
-				.LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
+#endif
 
-			gameObject.transform.position = Vector3.zero;
+    /// <summary>
+    ///     Default room template initializer that uses the default
+    ///     tilemap layers handler.
+    /// </summary>
+    public class DefaultRoomTemplateInitializer : BaseRoomTemplateInitializer
+    {
+#if UNITY_EDITOR
+        public void Initialize()
+        {
+            var tilemapLayersHandler = AssetDatabase
+                .LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
 
-			InitializeTilemaps(tilemapLayersHandler);
+            gameObject.transform.position = Vector3.zero;
 
-			InitializeDoors();
+            InitializeTilemaps(tilemapLayersHandler);
 
-			// Destroy the initializer
-			DestroyImmediate(this);
-		}
-        #endif
-	}
+            InitializeDoors();
+
+            // Destroy the initializer
+            DestroyImmediate(this);
+        }
+#endif
+    }
 }

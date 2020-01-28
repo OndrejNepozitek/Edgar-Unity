@@ -4,7 +4,6 @@ using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Graphs;
-using JetBrains.Annotations;
 using MapGeneration.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using UnityEngine;
@@ -15,11 +14,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
     public class LevelDescription<TRoom, TConnection>
         where TConnection : IConnection<TRoom>
     {
-        private readonly MapDescription<TRoom> mapDescription = new MapDescription<TRoom>();
-        private readonly TwoWayDictionary<GameObject, IRoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, IRoomTemplate>();
-        private readonly TwoWayDictionary<TRoom, TConnection> corridorToConnectionMapping = new TwoWayDictionary<TRoom, TConnection>();
         private readonly List<TConnection> connections = new List<TConnection>();
         private readonly List<CorridorRoomDescription> corridorRoomDescriptions = new List<CorridorRoomDescription>();
+        private readonly TwoWayDictionary<TRoom, TConnection> corridorToConnectionMapping = new TwoWayDictionary<TRoom, TConnection>();
+        private readonly MapDescription<TRoom> mapDescription = new MapDescription<TRoom>();
+        private readonly TwoWayDictionary<GameObject, IRoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, IRoomTemplate>();
 
         private readonly RoomShapesLoader roomShapesLoader = new RoomShapesLoader();
 
@@ -34,7 +33,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
         {
             if (room == null) throw new ArgumentNullException(nameof(room));
 
-            AddRoom(room, new List<GameObject>() { roomTemplate });
+            AddRoom(room, new List<GameObject> {roomTemplate});
         }
 
         public void AddConnection(TConnection connection)
@@ -94,7 +93,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 
             var roomTemplate = roomShapesLoader.GetRoomTemplate(roomTemplatePrefab);
             prefabToRoomTemplateMapping.Add(roomTemplatePrefab, roomTemplate);
-            
+
             return roomTemplate;
         }
 
@@ -127,6 +126,5 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 
     public class LevelDescription : LevelDescription<Room, Connection>
     {
-
     }
 }

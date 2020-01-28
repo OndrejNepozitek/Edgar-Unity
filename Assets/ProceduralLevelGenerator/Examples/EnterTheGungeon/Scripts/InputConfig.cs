@@ -9,37 +9,35 @@ using UnityEngine;
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Enter The Gungeon/Input", fileName = "Input")]
-	public class InputConfig : PipelineConfig
+    public class InputConfig : PipelineConfig
     {
-        public LevelGraph LevelGraph;
-
-		public GameObject[] EntranceRoomTemplates;
-
-		public GameObject[] BossRoomTemplates;
+        public GameObject[] BasicRoomTemplates;
 
         public GameObject[] BossFoyersRoomTemplates;
 
-		public GameObject[] BasicRoomTemplates;
+        public GameObject[] BossRoomTemplates;
 
-        public GameObject[] ShopRoomTemplates;
-
-        public GameObject[] RewardRoomTemplates;
-
-        public GameObject[] HubRoomTemplates;
+        public GameObject[] CorridorRoomTemplates;
 
         public GameObject[] DefaultRoomTemplates;
 
-		public GameObject[] CorridorRoomTemplates;
+        public GameObject[] EntranceRoomTemplates;
 
-		public GameObject[] ExitRoomTemplates;
+        public GameObject[] ExitRoomTemplates;
+
+        public GameObject[] HubRoomTemplates;
+        public LevelGraph LevelGraph;
+
+        public GameObject[] RewardRoomTemplates;
+
+        public GameObject[] ShopRoomTemplates;
     }
 
-	public class InputTask<TPayload> : ConfigurablePipelineTask<TPayload, InputConfig>
-		where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
-	{
+    public class InputTask<TPayload> : ConfigurablePipelineTask<TPayload, InputConfig>
+        where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
+    {
+        private readonly LevelDescription levelDescription = new LevelDescription();
         private List<GameObject> notUsedNormalRoomTemplates = new List<GameObject>();
-
-        private LevelDescription levelDescription = new LevelDescription();
 
         public override void Process()
         {
@@ -105,7 +103,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             var roomTemplate = notUsedNormalRoomTemplates[randomIndex];
             notUsedNormalRoomTemplates.RemoveAt(randomIndex);
 
-            return new List<GameObject>() { roomTemplate };
+            return new List<GameObject> {roomTemplate};
         }
     }
 }

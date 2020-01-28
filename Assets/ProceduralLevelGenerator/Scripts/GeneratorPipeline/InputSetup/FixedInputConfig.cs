@@ -1,65 +1,65 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Rooms;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+using Assets.ProceduralLevelGenerator.Scripts.Data.Rooms;
+using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.InputSetup
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using Data.Graphs;
-    using Payloads.Interfaces;
-	using Pipeline;
-	using UnityEngine;
+    /// <summary>
+    ///     Pipeline task that prepares level description from a given layout graph.
+    /// </summary>
+    [CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Fixed input", fileName = "FixedInput")]
+    public class FixedInputConfig : PipelineConfig
+    {
+        public LevelGraph LevelGraph;
 
-	/// <summary>
-	/// Pipeline task that prepares level description from a given layout graph.
-	/// </summary>
-	[CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Fixed input", fileName = "FixedInput")]
-	public class FixedInputConfig : PipelineConfig
-	{ 
-		public LevelGraph LevelGraph;
+        public bool UseCorridors;
+    }
 
-		public bool UseCorridors;
-	}
-
-	public class FixedInputTask<TPayload> : ConfigurablePipelineTask<TPayload, FixedInputConfig>
-		where TPayload : class, IGraphBasedGeneratorPayload
-	{
+    public class FixedInputTask<TPayload> : ConfigurablePipelineTask<TPayload, FixedInputConfig>
+        where TPayload : class, IGraphBasedGeneratorPayload
+    {
         public override void Process()
         {
-			if (Config.LevelGraph == null)
-			{
-				throw new ArgumentException("LevelGraph must not be null.");
-			}
+            if (Config.LevelGraph == null)
+            {
+                throw new ArgumentException("LevelGraph must not be null.");
+            }
 
             if (Config.LevelGraph.Rooms.Count == 0)
             {
                 throw new ArgumentException("LevelGraph must contain at least one room.");
             }
 
-			var levelDescription = new LevelDescription();
-			
-			// Setup individual rooms
-			foreach (var room in Config.LevelGraph.Rooms)
-			{
-				levelDescription.AddRoom(room, GetRoomTemplates(room));
+            var levelDescription = new LevelDescription();
+
+            // Setup individual rooms
+            foreach (var room in Config.LevelGraph.Rooms)
+            {
+                levelDescription.AddRoom(room, GetRoomTemplates(room));
             }
 
             var typeOfRooms = Config.LevelGraph.Rooms.First().GetType();
 
-			// Add passages
+            // Add passages
             foreach (var connection in Config.LevelGraph.Connections)
-			{
+            {
                 if (Config.UseCorridors)
                 {
                     var corridorRoom = (Room) ScriptableObject.CreateInstance(typeOfRooms);
-                    corridorRoom.Name = $"Corridor";
-                    
-                    levelDescription.AddCorridorConnection(connection, GetRoomTemplates(Config.LevelGraph.CorridorRoomTemplateSets, Config.LevelGraph.CorridorIndividualRoomTemplates), corridorRoom);
+                    corridorRoom.Name = "Corridor";
+
+                    levelDescription.AddCorridorConnection(connection,
+                        GetRoomTemplates(Config.LevelGraph.CorridorRoomTemplateSets, Config.LevelGraph.CorridorIndividualRoomTemplates), corridorRoom);
                 }
                 else
                 {
-					levelDescription.AddConnection(connection);
+                    levelDescription.AddConnection(connection);
                 }
             }
 
@@ -71,23 +71,23 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.InputSetup
             return individualRoomTemplates.ToList();
         }
 
-		/// <summary>
-		/// Setups room shapes for a given room.
-		/// </summary>
-		/// <param name="room"></param>
+        /// <summary>
+        ///     Setups room shapes for a given room.
+        /// </summary>
+        /// <param name="room"></param>
         protected List<GameObject> GetRoomTemplates(Room room)
-		{
+        {
             // If the room is assigned to a Rooms group, use the room descriptions assigned to that group
             if (room.RoomsGroupGuid != Guid.Empty)
             {
                 return GetRoomsGroupRoomTemplates(room.RoomsGroupGuid);
             }
 
-			// Get assigned room templates
-			var roomTemplatesSets = room.RoomTemplateSets;
-			var individualRoomTemplates = room.IndividualRoomTemplates;
+            // Get assigned room templates
+            var roomTemplatesSets = room.RoomTemplateSets;
+            var individualRoomTemplates = room.IndividualRoomTemplates;
 
-			var roomTemplates = GetRoomTemplates(roomTemplatesSets, individualRoomTemplates).Distinct().ToList();
+            var roomTemplates = GetRoomTemplates(roomTemplatesSets, individualRoomTemplates).Distinct().ToList();
 
             if (roomTemplates.Count == 0)
             {
@@ -101,7 +101,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.InputSetup
         {
             if (roomsGroupGuid == Guid.Empty)
             {
-				throw new ArgumentException();
+                throw new ArgumentException();
             }
 
             var roomTemplatesSets = Config.LevelGraph.RoomsGroups.Single(x => x.Guid == roomsGroupGuid).RoomTemplateSets;

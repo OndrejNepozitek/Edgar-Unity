@@ -3,6 +3,6 @@
     public enum RoomType
     {
         Room = 0,
-        Corridor = 1,
+        Corridor = 1
     }
 }

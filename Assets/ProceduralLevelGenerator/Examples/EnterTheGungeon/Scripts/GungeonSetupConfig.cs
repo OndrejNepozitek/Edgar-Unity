@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
+﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -8,15 +6,15 @@ using UnityEngine.Tilemaps;
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Enter The Gungeon/Gungeon setup task", fileName = "GungeonSetupConfig")]
-	public class GungeonSetupConfig : PipelineConfig
+    public class GungeonSetupConfig : PipelineConfig
     {
         public GameObject[] Enemies;
     }
 
-	public class GungeonSetupTask<TPayload> : ConfigurablePipelineTask<TPayload, GungeonSetupConfig> 
-		where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
-	{
-		public override void Process()
+    public class GungeonSetupTask<TPayload> : ConfigurablePipelineTask<TPayload, GungeonSetupConfig>
+        where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
+    {
+        public override void Process()
         {
             foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
             {
@@ -29,6 +27,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
                 {
                     tilemapRenderer.enabled = false;
                 }
+
                 roomTemplateInstance.transform.Find("Walls").gameObject.GetComponent<TilemapCollider2D>().enabled = false;
 
                 // Get spawn position if Entrance

@@ -1,34 +1,32 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Transformations
+﻿using GeneralAlgorithms.DataStructures.Common;
+using UnityEngine;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Transformations
 {
-	using Doors;
-	using GeneralAlgorithms.DataStructures.Common;
-	using UnityEngine;
+    /// <summary>
+    ///     Currently not used.
+    /// </summary>
+    public class RoomTransformationsScript : MonoBehaviour
+    {
+        private readonly RoomTransformations roomTransformations = new RoomTransformations();
+        public Transformation Transformation;
 
-	/// <summary>
-	/// Currently not used.
-	/// </summary>
-	public class RoomTransformationsScript : MonoBehaviour
-	{
-		public Transformation Transformation;
+        public bool TransformDoors = true;
 
-		public bool TransformDoors = true;
+        public void Transform()
+        {
+            roomTransformations.Transform(gameObject, Transformation);
 
-		private readonly RoomTransformations roomTransformations = new RoomTransformations();
+            // Transform doors if enabled
+            if (TransformDoors)
+            {
+                var doors = gameObject.GetComponent<Doors.Doors>();
 
-		public void Transform()
-		{
-			roomTransformations.Transform(gameObject, Transformation);
-
-			// Transform doors if enabled
-			if (TransformDoors)
-			{
-				var doors = gameObject.GetComponent<Doors>();
-
-				if (doors != null)
-				{
-					doors.Transform(Transformation);
-				}
-			}
-		}
-	}
+                if (doors != null)
+                {
+                    doors.Transform(Transformation);
+                }
+            }
+        }
+    }
 }

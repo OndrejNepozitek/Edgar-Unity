@@ -1,10 +1,10 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Markers
-{
-	using System;
+﻿using System;
 
-	[Obsolete("Marker maps should not be used.")]
-	public class Marker
-	{
-		public MarkerType Type { get; set; }
-	}
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Markers
+{
+    [Obsolete("Marker maps should not be used.")]
+    public class Marker
+    {
+        public MarkerType Type { get; set; }
+    }
 }

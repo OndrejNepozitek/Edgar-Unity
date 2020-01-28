@@ -1,14 +1,14 @@
-﻿namespace Assets.ProceduralLevelGenerator.Examples.ProceduralLevelGraphs.Scripts
-{
-	using ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.PayloadInitializers;
-	using UnityEngine;
+﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.PayloadInitializers;
+using UnityEngine;
 
-	[CreateAssetMenu(menuName = "Dungeon generator/Examples/Procedural level graphs/Payload initializer", fileName = "PayloadInitializer")]
-	public class CustomPayloadInitializer : PayloadInitializer
-	{
-		public override object InitializePayload()
-		{
-			return InitializePayload<Room>();
-		}
-	}
+namespace Assets.ProceduralLevelGenerator.Examples.ProceduralLevelGraphs.Scripts
+{
+    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Procedural level graphs/Payload initializer", fileName = "PayloadInitializer")]
+    public class CustomPayloadInitializer : PayloadInitializer
+    {
+        public override object InitializePayload()
+        {
+            return InitializePayload<Room>();
+        }
+    }
 }

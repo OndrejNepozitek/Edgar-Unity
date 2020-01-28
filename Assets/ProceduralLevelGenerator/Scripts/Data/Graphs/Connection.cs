@@ -1,17 +1,17 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Data.Graphs
-{
-	using UnityEngine;
+﻿using UnityEngine;
 
-	/// <summary>
-	/// Represents a connection between two rooms.
-	/// </summary>
-	public class Connection : ScriptableObject, IConnection<Room>
-	{
-		[HideInInspector]
-		public Room From;
+namespace Assets.ProceduralLevelGenerator.Scripts.Data.Graphs
+{
+    /// <summary>
+    ///     Represents a connection between two rooms.
+    /// </summary>
+    public class Connection : ScriptableObject, IConnection<Room>
+    {
+        [HideInInspector]
+        public Room From;
 
         [HideInInspector]
-		public Room To;
+        public Room To;
 
         Room IConnection<Room>.From => From;
 

@@ -1,12 +1,11 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
-{
-	using UnityEngine;
+﻿using UnityEngine;
 
-	/// <summary>
-	/// Base class for all pipeline items.
-	/// </summary>
-	public abstract class PipelineItem : ScriptableObject
-	{
-		
-	}
+namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+{
+    /// <summary>
+    ///     Base class for all pipeline items.
+    /// </summary>
+    public abstract class PipelineItem : ScriptableObject
+    {
+    }
 }
