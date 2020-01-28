@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1223b1c19527fcd4ebfa7eeb23f3e98a, type: 3}
   m_Name: DungeonGenerator
   m_EditorClassIdentifier: 
-  ShowDebugInfo: 1
-  CenterGrid: 1
   ApplyTemplate: 1
-  Timeout: 10000
-  UsePrecomputedLevelsOnly: 0
+  CenterGrid: 1
   PrecomputedLevelsHandler: {fileID: 0}
+  ShowDebugInfo: 1
+  Timeout: 10000
+  ExportMapDescription: 0
+  UsePrecomputedLevelsOnly: 0

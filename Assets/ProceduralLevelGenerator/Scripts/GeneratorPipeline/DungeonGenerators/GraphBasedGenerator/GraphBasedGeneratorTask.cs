@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
+using MapGeneration.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapDescriptions;
+using MapGeneration.Utils;
+using Newtonsoft.Json;
 using Debug = UnityEngine.Debug;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.GraphBasedGenerator
@@ -37,13 +41,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
             // Setup map description
             var mapDescription = Payload.LevelDescription.GetMapDescription();
 
-            // TODO: handle exporting map descriptions properly
-            //         var json = JsonConvert.SerializeObject(mapDescription, Formatting.Indented, new JsonSerializerSettings()
-            //         {
-            //	PreserveReferencesHandling = PreserveReferencesHandling.All,
-            //	TypeNameHandling = TypeNameHandling.All,
-            //         });
-            //File.WriteAllText("mapDescription.json", json);
+            if (Config.ExportMapDescription)
+            {
+                ExportMapDescription(mapDescription);
+            }
 
             // Generate layout
             var generator = GetGenerator(mapDescription);
@@ -90,6 +91,35 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
             {
                 Debug.Log($"--- Completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
             }
+        }
+
+        private void ExportMapDescription(IMapDescription<Room> mapDescription)
+        {
+            var intMapDescription = GetIntMapDescription(mapDescription);
+            var json = JsonConvert.SerializeObject(intMapDescription, Formatting.Indented, new JsonSerializerSettings()
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.All,
+                TypeNameHandling = TypeNameHandling.Auto,
+            });
+            File.WriteAllText("exportedMapDescription.json", json);
+        }
+
+        private IMapDescription<int> GetIntMapDescription(IMapDescription<Room> mapDescription)
+        {
+            var newMapDescription = new MapDescription<int>();
+            var mapping = mapDescription.GetGraph().Vertices.CreateIntMapping();
+
+            foreach (var vertex in mapDescription.GetGraph().Vertices)
+            {
+                newMapDescription.AddRoom(mapping[vertex], mapDescription.GetRoomDescription(vertex));
+            }
+
+            foreach (var edge in mapDescription.GetGraph().Edges)
+            {
+                newMapDescription.AddConnection(mapping[edge.From], mapping[edge.To]);
+            }
+
+            return newMapDescription;
         }
 
         protected DungeonGenerator<Room> GetGenerator(IMapDescription<Room> mapDescription)

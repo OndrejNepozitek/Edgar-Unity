@@ -35,6 +35,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
         /// </summary>
         public int Timeout = 10000;
 
+        /// <summary>
+        ///     Whether map description should be exported on the next run of the generator.
+        /// </summary>
+        public bool ExportMapDescription;
+
         public bool UsePrecomputedLevelsOnly = false;
     }
 }
