@@ -24,10 +24,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
     /// </summary>
     public class DungeonGeneratorPipeline : MonoBehaviour
     {
-        public int BenchmarkRuns = 20;
-
-        public float CameraSize = 60;
-
         [HideInInspector]
         public bool IsPrecomputeRunning;
 
@@ -45,8 +41,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
         [HideInInspector]
         public int PrecomputeProgress;
 
-        public Camera ScreenshotCamera;
-
         public void Generate()
         {
             var stopwatch = new Stopwatch();
@@ -57,94 +51,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
             pipelineRunner.Run(PipelineItems, PayloadInitializer.InitializePayload());
 
             Debug.Log($"--- Pipeline completed. {stopwatch.ElapsedMilliseconds / 1000f:F} s ---");
-        }
-
-        // TODO: maybe make this with live preview? Would it need to do the benchmark manually?
-        public void RunBenchmark()
-        {
-            StartCoroutine(RunBenchmarkCoroutine());
-        }
-
-        // TODO: maybe make this with live preview? Would it need to do the benchmark manually?
-        public IEnumerator RunBenchmarkCoroutine()
-        {
-            Debug.Log("Run Benchmark");
-
-            var layoutDrawer = new SVGLayoutDrawer<Room>();
-            var pipelineRunner = new PipelineRunner();
-            var runs = new List<GeneratorRun<AdditionalRunData>>();
-
-            for (var i = 0; i < BenchmarkRuns; i++)
-            {
-                var stopwatch = new Stopwatch();
-                stopwatch.Start();
-
-                var payload = PayloadInitializer.InitializePayload();
-                pipelineRunner.Run(PipelineItems, payload);
-
-                if (payload is IBenchmarkInfoPayload benchmarkInfoPayload)
-                {
-                    var screenshot = RTImage(ScreenshotCamera);
-                    var png = screenshot.EncodeToPNG();
-                    var base64 = Convert.ToBase64String(png);
-
-                    var additionalData = new AdditionalUnityData
-                    {
-                        GeneratedLayoutSvg = layoutDrawer.DrawLayout(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation(), 800,
-                            forceSquare: true),
-                        ImageBase64 = base64
-                    };
-
-                    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation() != null,
-                        stopwatch.ElapsedMilliseconds, benchmarkInfoPayload.Iterations, additionalData);
-
-                    runs.Add(generatorRun);
-                }
-                else
-                {
-                    throw new InvalidOperationException($"Payload must implement {nameof(IBenchmarkInfoPayload)}");
-                }
-
-                yield return null;
-            }
-
-            var scenarioResult = new BenchmarkScenarioResult("Test", new List<BenchmarkResult>
-            {
-                new BenchmarkResult("Test", runs.Cast<IGeneratorRun>().ToList())
-            });
-            var resultSaver = new BenchmarkResultSaver();
-            resultSaver.SaveResult(scenarioResult, directory: "Benchmarks/");
-        }
-
-        // Take a "screenshot" of a camera's Render Texture.
-        private Texture2D RTImage(Camera camera)
-        {
-            var size = ScreenshotCamera.orthographicSize;
-            ScreenshotCamera.orthographicSize = CameraSize;
-
-            Debug.Log(Screen.width);
-            Debug.Log(Screen.height);
-
-            var width = 500;
-            var height = 500;
-
-            var rect = new Rect(0, 0, width, height);
-            var renderTexture = new RenderTexture(width, height, 24);
-            var screenShot = new Texture2D(width, height, TextureFormat.RGBA32, false);
-
-            ScreenshotCamera.targetTexture = renderTexture;
-            ScreenshotCamera.Render();
-
-            RenderTexture.active = renderTexture;
-            screenShot.ReadPixels(rect, 0, 0);
-
-            ScreenshotCamera.targetTexture = null;
-            RenderTexture.active = null;
-
-            DestroyImmediate(renderTexture);
-            renderTexture = null;
-            ScreenshotCamera.orthographicSize = size;
-            return screenShot;
         }
 
         public void PrecomputeLevels()
@@ -173,11 +79,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
             // TODO: check if not null
             PrecomputedLevelsHandler.OnComputationEnded();
-        }
-
-        private class AdditionalUnityData : AdditionalRunData
-        {
-            public string ImageBase64 { get; set; }
         }
     }
 }
