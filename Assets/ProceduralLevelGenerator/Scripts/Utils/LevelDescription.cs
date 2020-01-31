@@ -4,6 +4,7 @@ using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Graphs;
+using JetBrains.Annotations;
 using MapGeneration.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using UnityEngine;
@@ -22,9 +23,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 
         private readonly RoomShapesLoader roomShapesLoader = new RoomShapesLoader();
 
-        public void AddRoom(TRoom room, List<GameObject> roomTemplates)
+        public void AddRoom(TRoom room, [NotNull] List<GameObject> roomTemplates)
         {
             if (room == null) throw new ArgumentNullException(nameof(room));
+            if (roomTemplates == null) throw new ArgumentNullException(nameof(roomTemplates));
+            if (roomTemplates.Count == 0) throw new ArgumentException($"There must be at least one room template for each room. Room: {room}", nameof(roomTemplates));
 
             mapDescription.AddRoom(room, GetBasicRoomDescription(roomTemplates));
         }
@@ -32,6 +35,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
         public void AddRoom(TRoom room, GameObject roomTemplate)
         {
             if (room == null) throw new ArgumentNullException(nameof(room));
+            if (roomTemplate == null) throw new ArgumentNullException(nameof(roomTemplate));
 
             AddRoom(room, new List<GameObject> {roomTemplate});
         }
@@ -48,6 +52,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
             if (corridorRoom == null) throw new ArgumentNullException(nameof(corridorRoom));
+            if (corridorRoomTemplates.Count == 0) throw new ArgumentException($"There must be at least one room template for each corridor room. Room: {corridorRoom}", nameof(corridorRoom));
 
             connections.Add(connection);
             corridorToConnectionMapping.Add(corridorRoom, connection);
