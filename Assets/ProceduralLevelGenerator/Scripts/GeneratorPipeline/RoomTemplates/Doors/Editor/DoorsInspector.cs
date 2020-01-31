@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Doors.Editor
+﻿using UnityEngine.UI;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Doors.Editor
 {
 	using System;
 	using RoomTemplates.Doors;
@@ -116,22 +118,28 @@
 				switch (e.type)
 				{
 					case EventType.MouseDown:
+                        if (e.button == 0)
+                        {
+                            firstPoint = mouseWorldPosition;
+                            hasFirstPoint = true;
+                            hasSecondPoint = false;
 
-						firstPoint = mouseWorldPosition;
-						hasFirstPoint = true;
-						hasSecondPoint = false;
-
-						Event.current.Use();
+                            Event.current.Use();
+                        }
 
 						break;
 
 					case EventType.MouseUp:
-						if (hasFirstPoint)
-						{
-							hasSecondPoint = true;
-						}
+                        if (e.button == 0)
+                        {
+                            if (hasFirstPoint)
+                            {
+                                hasSecondPoint = true;
+                            }
 
-						Event.current.Use();
+                            Event.current.Use();
+                        }
+
 						break;
 				}
 
