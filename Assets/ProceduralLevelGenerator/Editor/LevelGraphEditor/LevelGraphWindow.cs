@@ -265,6 +265,7 @@
         {
 			// TODO: how to handle this properly?
             var room = (Room) CreateInstance(Data.RoomType);
+			Debug.Log(Data.RoomType);
 
 			room.Position = mousePosition - new Vector2(roomWidth / 2f, roomHeight / 2f);
 			Data.Rooms.Add(room);

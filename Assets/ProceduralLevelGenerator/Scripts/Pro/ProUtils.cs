@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Pro
 {
@@ -36,6 +40,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pro
             camera.orthographicSize = originalOrthographicSize;
 
             return screenShot;
+        }
+
+        public static List<Type> FindDerivedTypes(Type baseType)
+        {
+            return baseType
+                .Assembly
+                .GetTypes()
+                .Where(baseType.IsAssignableFrom)
+                .ToList();
         }
     }
 }

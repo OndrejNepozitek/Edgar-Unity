@@ -16,8 +16,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Data.Graphs
         [HideInInspector]
         public List<Connection> Connections = new List<Connection>();
 
-        public string ConnectionType = typeof(Connection).FullName;
-
         /// <summary>
         ///     Set of room templates that are used for corridor rooms.
         /// </summary>
@@ -56,5 +54,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Data.Graphs
         public List<RoomsGroup> RoomsGroups = new List<RoomsGroup>();
 
         public string RoomType = typeof(Room).FullName;
+
+        public string ConnectionType = typeof(Connection).FullName;
     }
 }

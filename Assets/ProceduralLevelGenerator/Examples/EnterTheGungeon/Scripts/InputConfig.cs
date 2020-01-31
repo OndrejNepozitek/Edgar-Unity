@@ -11,6 +11,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Enter The Gungeon/Input", fileName = "Input")]
     public class InputConfig : PipelineConfig
     {
+        public LevelGraph LevelGraph;
+
         public GameObject[] BasicRoomTemplates;
 
         public GameObject[] BossFoyersRoomTemplates;
@@ -26,7 +28,6 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
         public GameObject[] ExitRoomTemplates;
 
         public GameObject[] HubRoomTemplates;
-        public LevelGraph LevelGraph;
 
         public GameObject[] RewardRoomTemplates;
 

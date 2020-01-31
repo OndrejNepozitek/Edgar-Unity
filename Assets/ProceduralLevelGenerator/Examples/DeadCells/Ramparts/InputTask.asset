@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c6e7a488a00314094a453a6ff4facb, type: 3}
+  m_Name: InputTask
+  m_EditorClassIdentifier: 
+  LevelGraph: {fileID: 11400000, guid: ad3e5c5b811247249942afe74477494e, type: 2}
+  DefaultRoomTemplates:
+  - {fileID: 7412868027981395878, guid: c7e9581501dc94b4c8cba0410f006b78, type: 3}
+  - {fileID: 1746535401429253557, guid: 611f9aca25679344baf6c217d2214054, type: 3}
+  - {fileID: 235169636201765685, guid: 06264f69586da7740be67368e1879034, type: 3}
+  - {fileID: 3595500374457607627, guid: bc7c611124d0cc24d88af53616e22f6f, type: 3}
+  - {fileID: 3815573916607525192, guid: e9d8719633bc1b14a98b0c98c2618614, type: 3}
+  TeleportRoomTemplates:
+  - {fileID: 1791457873670595467, guid: 0c0a8bb95b9514b48a876bfe2fc0c87a, type: 3}
+  - {fileID: 8171704067915196999, guid: bfa1df003ebbbc940843e16c3f084bba, type: 3}
+  TreasureRoomTemplates: []
+  ExitRoomTemplates: []
+  CorridorRoomTemplates: []
+  EntranceRoomTemplates:
+  - {fileID: 255447079417331410, guid: 477f1c04f039e6e429637bbe933a1082, type: 3}
