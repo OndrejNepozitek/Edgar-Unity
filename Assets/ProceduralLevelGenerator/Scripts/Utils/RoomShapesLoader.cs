@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Doors;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
+using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using GeneralAlgorithms.Algorithms.Common;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Polygons;

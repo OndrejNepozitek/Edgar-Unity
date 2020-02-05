@@ -1,11 +1,12 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+
+namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 {
 	using System.Collections.Generic;
 	using System.Linq;
 	using EditorNodes;
 	using NodeBasedEditor;
-	using Scripts.Data.Graphs;
-	using UnityEditor;
+    using UnityEditor;
 	using UnityEngine;
 	using RoomNode = EditorNodes.RoomNode;
 

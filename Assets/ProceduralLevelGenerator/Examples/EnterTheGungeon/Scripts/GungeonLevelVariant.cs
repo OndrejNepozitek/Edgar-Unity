@@ -1,4 +1,4 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts

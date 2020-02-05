@@ -1,8 +1,9 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+
+namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 {
 	using System;
-	using Scripts.Data.Graphs;
-	using UnityEditor;
+    using UnityEditor;
 	using UnityEngine;
 
 	[CustomEditor(typeof(LevelGraph))]

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEngine;

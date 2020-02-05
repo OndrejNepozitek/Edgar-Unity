@@ -1,4 +1,4 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {

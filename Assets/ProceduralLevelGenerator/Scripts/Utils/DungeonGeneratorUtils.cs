@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

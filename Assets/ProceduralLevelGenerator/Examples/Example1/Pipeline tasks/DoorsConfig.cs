@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Doors;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using UnityEngine;
 using UnityEngine.Tilemaps;

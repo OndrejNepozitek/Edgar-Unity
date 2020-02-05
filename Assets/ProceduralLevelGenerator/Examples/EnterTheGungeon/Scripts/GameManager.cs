@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators;
+using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
