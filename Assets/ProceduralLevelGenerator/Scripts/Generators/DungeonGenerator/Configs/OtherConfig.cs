@@ -8,7 +8,5 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Co
         public bool UseRandomSeed = true;
 
         public int RandomGeneratorSeed;
-
-        public bool PrintUsedSeed = true;
     }
 }
