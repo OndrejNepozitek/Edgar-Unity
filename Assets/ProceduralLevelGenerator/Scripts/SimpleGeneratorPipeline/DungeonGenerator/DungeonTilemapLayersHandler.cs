@@ -1,19 +1,16 @@
-﻿using UnityEngine;
+﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.TilemapLayers;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.TilemapLayers
+namespace Assets.ProceduralLevelGenerator.Scripts.SimpleGeneratorPipeline.DungeonGenerator
 {
-    /// <summary>
-    ///     Basic implementation of tilemap layers handler.
-    /// </summary>
-    [CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Tilemap layers handler", fileName = "TilemapLayersHandler")]
-    public class TilemapLayersHandler : AbstractTilemapLayersHandler
+    public class DungeonTilemapLayersHandler : ITilemapLayersHandler
     {
         /// <summary>
         ///     Initializes individual tilemap layers.
         /// </summary>
         /// <param name="gameObject"></param>
-        public override void InitializeTilemaps(GameObject gameObject)
+        public void InitializeTilemaps(GameObject gameObject)
         {
             gameObject.AddComponent<Grid>();
 

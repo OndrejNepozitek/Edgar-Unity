@@ -12,7 +12,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Int
         /// <summary>
         ///     GameObject that holds dungeon tilemaps and possibly other game objects.
         /// </summary>
-        GameObject ParentGameObject { get; set; }
+        GameObject RootGameObject { get; set; }
 
         /// <summary>
         ///     Tilemaps of the generated dungeon.

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Assets.ProceduralLevelGenerator.Scripts.Data.Graphs;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Doors;
 using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Transformations;
-using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
+using Assets.ProceduralLevelGenerator.Scripts.SimpleGeneratorPipeline.DungeonGenerator.Configs;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
 using MapGeneration.Interfaces.Core.MapDescriptions;
@@ -15,56 +14,54 @@ using MapGeneration.Interfaces.Core.MapLayouts;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
+using Random = System.Random;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators
+namespace Assets.ProceduralLevelGenerator.Scripts.SimpleGeneratorPipeline.DungeonGenerator.Logic
 {
-    public abstract class GraphBasedGeneratorBaseTask<TPayload, TConfig> : ConfigurablePipelineTask<TPayload, TConfig>
-        where TConfig : PipelineConfig
-        where TPayload : class, IGeneratorPayload
+    public class GraphBasedDungeonGenerator
     {
-        public abstract override void Process();
-
-        // TODO: should probably use some interface instead of DungeonGenerator<TRoom>
-        protected IMapLayout<Room> GenerateLayout(IMapDescription<Room> mapDescription, DungeonGenerator<Room> generator, int timeout = 0,
-            bool showDebugInfo = false)
+        public GeneratedLevel Generate(LevelDescription levelDescription, Random random, DungeonGeneratorConfig config)
         {
-            IMapLayout<Room> layout = null;
-            var task = Task.Run(() => layout = generator.GenerateLayout());
+            var rootGameObject = config.RootGameObject;
 
-            if (timeout > 0)
+            if (rootGameObject == null)
             {
-                var taskCompleted = task.Wait(timeout);
+                rootGameObject = GameObject.Find("Generated Level");
 
-                if (!taskCompleted)
+                if (rootGameObject == null)
                 {
-                    throw new DungeonGeneratorException("Timeout was reached when generating the layout");
+                    rootGameObject = new GameObject("Generated Level");
                 }
             }
 
-            if (showDebugInfo)
-            {
-                PrintGeneratorStats(generator);
+            // TODO: destroy or destroy immediate?
+            foreach (var child in rootGameObject.transform.Cast<Transform>().ToList()) {
+                Object.DestroyImmediate(child.gameObject);
             }
 
-            return layout;
+            var mapDescription = levelDescription.GetMapDescription();
+            var generator = new DungeonGenerator<Room>(mapDescription, new DungeonGeneratorConfiguration<Room>(mapDescription) {RoomsCanTouch = false});
+            generator.InjectRandomGenerator(random);
+
+            var layout = generator.GenerateLayout();
+
+            var generatedLevel = TransformLayout(layout, levelDescription, rootGameObject);
+
+            return generatedLevel;
         }
 
-        protected void PrintGeneratorStats(DungeonGenerator<Room> generator)
+        // TODO: move somewhere else, may be reused in other generators
+        protected GeneratedLevel TransformLayout(IMapLayout<Room> layout, LevelDescription levelDescription, GameObject rootGameObject)
         {
-            Debug.Log($"Layout generated in {generator.TimeTotal / 1000f:F} seconds");
-            Debug.Log($"{generator.IterationsCount} iterations needed, {generator.IterationsCount / (generator.TimeTotal / 1000d):0} iterations per second");
-        }
-
-        protected GeneratedLevel TransformLayout(IMapLayout<Room> layout, LevelDescription levelDescription)
-        {
+            // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
             var corridorToConnectionMapping = levelDescription.GetCorridorToConnectionMapping();
 
             var roomTransformations = new RoomTransformations();
 
             // Prepare an object to hold instantiated room templates
-            var parentGameObject = new GameObject("Room template instances");
-            parentGameObject.transform.parent = Payload.RootGameObject.transform;
+            var roomTemplateInstancesRoot = new GameObject("Room template instances");
+            roomTemplateInstancesRoot.transform.parent = rootGameObject.transform;
 
             // Initialize rooms
             var layoutData = new Dictionary<Room, RoomInstance>();
@@ -75,8 +72,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
                 // Instantiate room template
                 var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
-                roomTemplateInstance.SetActive(false);
-                roomTemplateInstance.transform.SetParent(parentGameObject.transform);
+                roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
 
                 // Transform room template if needed
                 var transformation = layoutRoom.Transformation;
@@ -91,6 +87,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                 var smallestY = layoutRoom.RoomTemplate.Shape.GetPoints().Min(x => x.Y);
                 var correctPosition = layoutRoom.Position.ToUnityIntVector3() - new Vector3Int(smallestX, smallestY, 0);
                 roomTemplateInstance.transform.position = correctPosition;
+                // roomTemplateInstance.transform.position -= layoutCenter;
 
                 var connection = layoutRoom.IsCorridor ? corridorToConnectionMapping[layoutRoom.Node] : null;
                 var roomInfo = new RoomInstance(layoutRoom.Node, connection, roomTemplatePrefab, roomTemplateInstance, correctPosition, layoutRoom,
@@ -104,7 +101,17 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
                 roomInstance.Doors = TransformDoorInfo(layoutRooms[roomInstance.Room].Doors, layoutData);
             }
 
-            return new GeneratedLevel(layoutData, layout, Payload.RootGameObject);
+            return new GeneratedLevel(layoutData, layout, rootGameObject);
+        }
+
+        protected Vector3 GetLayoutCenter(IMapLayout<Room> layout)
+        {
+            var maxX = layout.Rooms.Max(x => x.RoomTemplate.Shape.BoundingRectangle.B.X + x.Position.X);
+            var minX = layout.Rooms.Min(x => x.RoomTemplate.Shape.BoundingRectangle.A.X + x.Position.X);
+            var maxY = layout.Rooms.Max(x => x.RoomTemplate.Shape.BoundingRectangle.B.Y + x.Position.Y);
+            var minY = layout.Rooms.Min(x => x.RoomTemplate.Shape.BoundingRectangle.A.Y + x.Position.Y);
+
+            return new Vector3((maxX - minX) / 2f, (maxY - minY) / 2f, 0);
         }
 
         protected List<DoorInstance> TransformDoorInfo(IEnumerable<IDoorInfo<Room>> doorInfos, Dictionary<Room, RoomInstance> roomInstances)
@@ -118,15 +125,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGener
 
             switch (doorLine.GetDirection())
             {
-                case OrthogonalLine.Direction.Right:
+                case GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Right:
                     return new DoorInstance(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
                         connectedRoom);
 
-                case OrthogonalLine.Direction.Left:
+                case GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Left:
                     return new DoorInstance(new Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
                         connectedRoom);
 
-                case OrthogonalLine.Direction.Top:
+                case GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Top:
                     return new DoorInstance(new Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
                         connectedRoom);
 
