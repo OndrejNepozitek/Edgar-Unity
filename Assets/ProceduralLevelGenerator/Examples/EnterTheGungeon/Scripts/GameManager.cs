@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Levels;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator;
-using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
