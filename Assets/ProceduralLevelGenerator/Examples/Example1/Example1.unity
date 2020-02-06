@@ -40251,7 +40251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c348d1efca4cc6140a9e3ec1fff95b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputType: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: e83360f8587f2824c859dbb12125395f, type: 2}
     UseCorridors: 1
@@ -40268,6 +40267,7 @@ MonoBehaviour:
     DisableRoomTemplatesRenderers: 1
     DisableRoomTemplatesColliders: 1
     TilemapLayersHandlerBase: {fileID: 0}
+  CustomPostProcessTasks: []
 --- !u!4 &1629689261
 Transform:
   m_ObjectHideFlags: 0

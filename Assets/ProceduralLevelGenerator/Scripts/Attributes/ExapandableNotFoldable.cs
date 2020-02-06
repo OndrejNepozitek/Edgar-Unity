@@ -108,7 +108,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
             {
                 marchingRect.y += marchingRect.height + EditorGUIUtility.standardVerticalSpacing;
                 marchingRect.height = EditorGUI.GetPropertyHeight(field, true);
+                marchingRect.xMax -= 14;
                 propertyRects.Add(marchingRect);
+                marchingRect.xMax += 14;
             }
 
             marchingRect.y += INNER_SPACING;

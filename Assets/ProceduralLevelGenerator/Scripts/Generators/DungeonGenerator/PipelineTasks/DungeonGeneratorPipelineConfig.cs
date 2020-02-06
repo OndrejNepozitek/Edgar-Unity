@@ -1,7 +1,6 @@
 ﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Logic;
-using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks
@@ -12,8 +11,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
         public DungeonGeneratorConfig Config;
     }
 
-    public class DungeonGeneratorPipelineTask<TPayload> : GraphBasedGeneratorBaseTask<TPayload, DungeonGeneratorPipelineConfig>
-        where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
+    public class DungeonGeneratorPipelineTask<TPayload> : ConfigurablePipelineTask<TPayload, DungeonGeneratorPipelineConfig>
+        where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
     { 
         public override void Process()
         {

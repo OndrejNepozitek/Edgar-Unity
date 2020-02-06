@@ -25,6 +25,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
         [Expandable]
         public PostProcessConfig PostProcessConfig;
 
+        [ExpandableNotFoldable]
+        public List<PipelineItem> CustomPostProcessTasks;
+
         private readonly Random seedsGenerator = new Random();
 
         public void Start()
@@ -63,6 +66,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             var postProcessPipelineConfig = ScriptableObject.CreateInstance<PostProcessPipelineConfig>();
             postProcessPipelineConfig.Config = PostProcessConfig;
             pipelineItems.Add(postProcessPipelineConfig);
+
+            // Add custom post process tasks
+            if (CustomPostProcessTasks != null)
+            {
+                foreach (var customPostProcessTask in CustomPostProcessTasks)
+                {
+                    pipelineItems.Add(customPostProcessTask);
+                }
+            }
 
             pipelineRunner.Run(pipelineItems, payload);
 

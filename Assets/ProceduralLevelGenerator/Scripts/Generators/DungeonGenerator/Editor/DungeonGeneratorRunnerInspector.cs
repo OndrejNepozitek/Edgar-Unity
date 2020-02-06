@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Editor
@@ -6,6 +7,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
     [CustomEditor(typeof(DungeonGeneratorRunner))]
     public class DungeonGeneratorRunnerInspector : UnityEditor.Editor
     {
+        private ReorderableList customPostProcessTasksList;
+
+        public void OnEnable()
+        {
+            customPostProcessTasksList = new ReorderableList(new UnityEditorInternal.ReorderableList(serializedObject,
+                serializedObject.FindProperty(nameof(DungeonGeneratorRunner.CustomPostProcessTasks)),
+                true, true, true, true), "Custom post process tasks");
+        }
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -26,6 +36,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
 
             EditorGUILayout.LabelField("Post processing config", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.PostProcessConfig)));
+            customPostProcessTasksList.DoLayoutList(); 
 
             EditorGUILayout.Space();
 

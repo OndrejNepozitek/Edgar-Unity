@@ -14,7 +14,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
     }
 
     public class PostProcessPipelineTask<TPayload> : ConfigurablePipelineTask<TPayload, PostProcessPipelineConfig>
-        where TPayload : class, IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
+        where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
     { 
         public override void Process()
         {
