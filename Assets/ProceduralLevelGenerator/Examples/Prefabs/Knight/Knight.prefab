@@ -93,8 +93,8 @@ GameObject:
   - component: {fileID: 3986202553696381929}
   - component: {fileID: 3986202553696381933}
   - component: {fileID: 3986202553696381932}
-  - component: {fileID: 2079362451}
   - component: {fileID: -6783270204120403236}
+  - component: {fileID: 192836380383215763}
   m_Layer: 0
   m_Name: Knight
   m_TagString: Player
@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingLayerID: 479310853
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ff1219cee4cbcde4895ca178adcd89d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae84db1b203207e43a50cdb606a4f489, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -176,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 3986202553696381928}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2819d3c0428cd0547b3052a84615350c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2c5b5dbd2a49cc14b895d728aaeee00b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -232,20 +232,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2079362451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3986202553696381928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f01055a1b8f5b04bb4a621494eada21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  Rigidbody: {fileID: 0}
 --- !u!114 &-6783270204120403236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,3 +244,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cc1d29d6ca0874b84b2f3842d5989a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &192836380383215763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3986202553696381928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 853804c4a55980849897f49e52dc6056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 5
+  Rigidbody: {fileID: 3986202553696381932}
