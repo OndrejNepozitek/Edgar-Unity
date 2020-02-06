@@ -25,7 +25,19 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
             EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth / 2f;
 
             EditorGUILayout.LabelField("Input config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.FixedLevelGraphConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.InputType)));
+
+            // PRO
+            switch (dungeonGenerator.InputType)
+            {
+                case DungeonGeneratorInputType.CustomInput:
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.CustomInputTask)));
+                    break;
+                case DungeonGeneratorInputType.FixedLevelGraph:
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.FixedLevelGraphConfig)));
+                    break;
+            }
+            
 
             EditorGUILayout.Space();
 

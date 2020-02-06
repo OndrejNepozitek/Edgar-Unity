@@ -66,7 +66,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Pay
 
             if (dungeonHolderOld != null)
             {
-                DestroyImmediate(dungeonHolderOld);
+                DestroyImmediate(dungeonHolderOld); 
             }
 
             // Create new dungeon holder

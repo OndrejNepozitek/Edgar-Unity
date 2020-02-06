@@ -13,6 +13,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
     // TODO: is this name ok?
     public class DungeonGeneratorRunner : MonoBehaviour
     {
+        // PRO
+        public DungeonGeneratorInputType InputType;
+
+        // PRO
+        [ExpandableScriptableObject]
+        public PipelineItem CustomInputTask;
+
         [Expandable]
         public FixedLevelGraphConfig FixedLevelGraphConfig;
 
@@ -53,9 +60,17 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             var pipelineItems = new List<PipelineItem>();
 
             // Add input setup
-            var fixedInputPipelineConfig = ScriptableObject.CreateInstance<FixedLevelGraphPipelineConfig>();
-            fixedInputPipelineConfig.Config = FixedLevelGraphConfig;
-            pipelineItems.Add(fixedInputPipelineConfig);
+            if (InputType == DungeonGeneratorInputType.CustomInput)
+            {
+                // PRO
+                pipelineItems.Add(CustomInputTask);
+            }
+            else
+            {
+                var fixedInputPipelineConfig = ScriptableObject.CreateInstance<FixedLevelGraphPipelineConfig>();
+                fixedInputPipelineConfig.Config = FixedLevelGraphConfig;
+                pipelineItems.Add(fixedInputPipelineConfig);
+            }
 
             // Add dungeon generator
             var dungeonGeneratorPipelineConfig = ScriptableObject.CreateInstance<DungeonGeneratorPipelineConfig>();
