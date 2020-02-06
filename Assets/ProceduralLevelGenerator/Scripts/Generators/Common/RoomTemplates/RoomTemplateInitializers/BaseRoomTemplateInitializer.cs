@@ -24,6 +24,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
             // Init tilemaps
             InitializeTilemaps(tilemapsRoot);
 
+            // Fix positions
+            tilemapsRoot.transform.localPosition = Vector3.zero;
+            transform.localPosition = Vector3.zero;
+
             // Add doors
             InitializeDoors();
         }
