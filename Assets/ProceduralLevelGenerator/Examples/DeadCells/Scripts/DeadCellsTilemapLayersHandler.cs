@@ -1,11 +1,11 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.TilemapLayers;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
 {
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Dead Cells/Tilemap layers handler", fileName = "TilemapLayersHandler")]
-    public class DeadCellsTilemapLayersHandler : AbstractTilemapLayersHandler
+    public class DeadCellsTilemapLayersHandler : TilemapLayersHandlerBase
     {
         /// <summary>
         ///     Initializes individual tilemap layers.
@@ -13,6 +13,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
         /// <param name="gameObject"></param>
         public override void InitializeTilemaps(GameObject gameObject)
         {
+            gameObject.AddComponent<Grid>();
+
             var wallsTilemapObject = CreateTilemapGameObject("Walls", gameObject, 0);
             wallsTilemapObject.layer = LayerMask.NameToLayer("Collisions");
             AddCompositeCollider(wallsTilemapObject);

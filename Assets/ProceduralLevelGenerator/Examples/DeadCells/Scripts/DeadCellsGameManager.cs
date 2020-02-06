@@ -2,13 +2,10 @@
 using System.Collections;
 using System.Diagnostics;
 using Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Levels;
-using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators;
-using UnityEditor;
+using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
 {
@@ -19,7 +16,6 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
         public DeadCellsLevelType LevelType;
 
         private GameObject canvas;
-        private RoomType currentRoomType;
         private DungeonGeneratorPipeline dungeonGeneratorPipeline;
         private GameObject levelImage;
         private Text levelInfoText;

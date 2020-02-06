@@ -1,5 +1,5 @@
 ﻿using Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Levels;
-using Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using UnityEngine;
 

@@ -1,10 +1,11 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+
+namespace Assets.ProceduralLevelGenerator.Editor
 {
 	using System;
 	using System.Linq;
 	using LevelGraphEditor;
-	using Scripts.Data.Graphs;
-	using UnityEditor;
+    using UnityEditor;
 
 	[CustomEditor(typeof(Room))]
 	public class RoomInspector : Editor
