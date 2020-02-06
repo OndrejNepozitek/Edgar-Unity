@@ -1,6 +1,7 @@
 ﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 
@@ -21,7 +22,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
 
             if (config.CombineTilemaps)
             {
-                var tilemapLayersHandler = (ITilemapLayersHandler) config.TilemapLayersHandler ?? new DungeonTilemapLayersHandler();
+                var tilemapLayersHandler = (ITilemapLayersHandler) config.TilemapLayersHandlerBase ?? new DungeonTilemapLayersHandler();
                 PostProcessUtils.CombineTilemaps(Payload.GeneratedLevel, tilemapLayersHandler);
             }
 

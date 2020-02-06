@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
-using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
+namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 {
     public static class PostProcessUtils
     {

@@ -1,13 +1,11 @@
-﻿using UnityEngine;
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers
+namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
-    /// <summary>
-    ///     Basic implementation of tilemap layers handler.
-    /// </summary>
-    [CreateAssetMenu(menuName = "Dungeon generator/Pipeline/Tilemap layers handler", fileName = "TilemapLayersHandler")]
-    public class TilemapLayersHandler : AbstractTilemapLayersHandler
+    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Enter The Gungeon/Tilemap layers handler", fileName = "TilemapLayersHandler")]
+    public class GungeonTilemapLayersHandlerBase : TilemapLayersHandlerBase
     {
         /// <summary>
         ///     Initializes individual tilemap layers.
@@ -15,12 +13,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         /// <param name="gameObject"></param>
         public override void InitializeTilemaps(GameObject gameObject)
         {
-            gameObject.AddComponent<Grid>();
-
             var wallsTilemapObject = CreateTilemapGameObject("Walls", gameObject, 0);
             AddCompositeCollider(wallsTilemapObject);
 
             var floorTilemapObject = CreateTilemapGameObject("Floor", gameObject, 1);
+            AddCompositeCollider(floorTilemapObject, true);
 
             var collideableTilemapObject = CreateTilemapGameObject("Collideable", gameObject, 2);
             AddCompositeCollider(collideableTilemapObject);
@@ -43,12 +40,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
             return tilemapObject;
         }
 
-        protected void AddCompositeCollider(GameObject gameObject)
+        protected void AddCompositeCollider(GameObject gameObject, bool isTrigger = false)
         {
             var tilemapCollider2D = gameObject.AddComponent<TilemapCollider2D>();
             tilemapCollider2D.usedByComposite = true;
 
-            gameObject.AddComponent<CompositeCollider2D>();
+            var compositeCollider2d = gameObject.AddComponent<CompositeCollider2D>();
+            compositeCollider2d.geometryType = CompositeCollider2D.GeometryType.Polygons;
+            compositeCollider2d.isTrigger = isTrigger;
+
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
     }

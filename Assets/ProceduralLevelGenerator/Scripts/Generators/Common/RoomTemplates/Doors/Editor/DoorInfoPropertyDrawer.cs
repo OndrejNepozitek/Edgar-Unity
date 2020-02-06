@@ -1,12 +1,9 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
+﻿using UnityEditor;
+using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Doors.Editor
+namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors.Editor
 {
-	using RoomTemplates.Doors;
-	using UnityEditor;
-	using UnityEngine;
-
-	public class DoorInfoPropertyDrawer : PropertyDrawer
+    public class DoorInfoPropertyDrawer : PropertyDrawer
 	{
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
 		{

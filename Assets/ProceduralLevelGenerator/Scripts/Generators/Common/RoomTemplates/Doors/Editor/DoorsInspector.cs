@@ -1,18 +1,13 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
-using UnityEngine.UI;
+﻿using System;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using UnityEditor;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Doors.Editor
+namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors.Editor
 {
-	using System;
-	using RoomTemplates.Doors;
-	using Scripts;
-	using UnityEditor;
-	using UnityEngine;
-	using UnityEngine.Tilemaps;
-	using Utils;
-
-	[CustomEditor(typeof(Generators.Common.RoomTemplates.Doors.Doors))]
-	public class DoorsInspector : Editor
+    [CustomEditor(typeof(Generators.Common.RoomTemplates.Doors.Doors))]
+	public class DoorsInspector : UnityEditor.Editor
 	{
 		private DoorInfoEditor highlightInfo;
 

@@ -25,7 +25,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Pay
         public bool PrintUsedSeed = true;
 
         public int RandomGeneratorSeed;
-        public AbstractTilemapLayersHandler TilemapLayersHandler;
+        public TilemapLayersHandlerBase TilemapLayersHandlerBase;
 
         public bool UseRandomSeed = true;
 
@@ -74,22 +74,24 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Pay
             dungeonHolder.AddComponent<Grid>();
 
 #if UNITY_EDITOR
-            if (TilemapLayersHandler == null)
+            if (TilemapLayersHandlerBase == null)
             {
-                TilemapLayersHandler = AssetDatabase
-                    .LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
-                EditorUtility.SetDirty(this);
-                AssetDatabase.SaveAssets();
+                // TODO:
+                throw new NotImplementedException();
+                //TilemapLayersHandlerBase = AssetDatabase
+                //    .LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
+                //EditorUtility.SetDirty(this);
+                //AssetDatabase.SaveAssets();
             }
 #endif
 
-            if (TilemapLayersHandler == null)
+            if (TilemapLayersHandlerBase == null)
             {
-                throw new ArgumentNullException(nameof(TilemapLayersHandler), $"{nameof(TilemapLayersHandler)} must not be null");
+                throw new ArgumentNullException(nameof(TilemapLayersHandlerBase), $"{nameof(TilemapLayersHandlerBase)} must not be null");
             }
 
             // Initialize tilemaps
-            TilemapLayersHandler.InitializeTilemaps(dungeonHolder);
+            TilemapLayersHandlerBase.InitializeTilemaps(dungeonHolder);
 
             return dungeonHolder;
         }

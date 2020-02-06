@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+﻿using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateInitializers
@@ -9,28 +9,31 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
     /// </summary>
     public abstract class BaseRoomTemplateInitializer : MonoBehaviour
     {
-        protected void InitializeTilemaps(ITilemapLayersHandler tilemapLayersHandler)
+        public virtual void Initialize()
         {
-            // Add Doors component
-            if (gameObject.GetComponent<Grid>() == null)
-            {
-                gameObject.AddComponent<Grid>();
-            }
-
             // Remove all children game objects
-            var children = new List<GameObject>();
-            foreach (Transform child in transform)
+            foreach (var child in transform.Cast<Transform>().ToList())
             {
-                children.Add(child.gameObject);
+                PostProcessUtils.Destroy(child.gameObject);
             }
 
-            children.ForEach(DestroyImmediate);
+            // Create tilemaps root
+            var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
+            tilemapsRoot.transform.parent = gameObject.transform;
 
-            // Initialize tilemaps
-            tilemapLayersHandler.InitializeTilemaps(gameObject);
+            // Init tilemaps
+            InitializeTilemaps(tilemapsRoot);
+
+            // Add doors
+            InitializeDoors();
         }
 
-        protected void InitializeDoors()
+        protected virtual void InitializeTilemaps(GameObject tilemapsRoot)
+        {
+
+        }
+
+        protected virtual void InitializeDoors()
         {
             // Add Doors component
             if (gameObject.GetComponent<Doors.Doors>() == null)

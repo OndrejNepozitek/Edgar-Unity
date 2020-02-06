@@ -1,13 +1,10 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations;
+﻿using UnityEditor;
+using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.RoomTemplates.Transformations.Editor
+namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations.Editor
 {
-	using Transformations;
-	using UnityEditor;
-	using UnityEngine;
-
-	[CustomEditor(typeof(RoomTransformationsScript))]
-	public class RoomTransformationsInspector : Editor
+    [CustomEditor(typeof(RoomTransformationsScript))]
+	public class RoomTransformationsInspector : UnityEditor.Editor
 	{
 		public override void OnInspectorGUI()
 		{

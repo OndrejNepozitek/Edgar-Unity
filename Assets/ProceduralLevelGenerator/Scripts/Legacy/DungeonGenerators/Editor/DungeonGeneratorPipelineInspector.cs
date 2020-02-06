@@ -1,14 +1,11 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
+﻿using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.GeneratorPipeline.DungeonGenerators.Editor
+namespace Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators.Editor
 {
-	using DungeonGenerators;
-	using UnityEditor;
-	using UnityEditorInternal;
-	using UnityEngine;
-
-	[CustomEditor(typeof(DungeonGeneratorPipeline))]
-	public class DungeonGeneratorPipelineInspector : Editor
+    [CustomEditor(typeof(DungeonGeneratorPipeline))]
+	public class DungeonGeneratorPipelineInspector : UnityEditor.Editor
 	{
 		private ReorderableList list;
 		private bool showPipelineSettings = true;

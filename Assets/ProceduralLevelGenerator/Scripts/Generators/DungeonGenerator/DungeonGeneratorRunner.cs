@@ -4,8 +4,6 @@ using Assets.ProceduralLevelGenerator.Scripts.Attributes;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
-using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Random = System.Random;
@@ -15,24 +13,27 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
     // TODO: is this name ok?
     public class DungeonGeneratorRunner : MonoBehaviour
     {
-        public DungeonGeneratorInputType InputType = DungeonGeneratorInputType.FixedLevelGraph;
-
-        [ExpandableNotFoldable]
-        public PipelineItem CustomInputTask;
-
-        [ExpandableAttributeNew]
+        [Expandable]
         public FixedLevelGraphConfig FixedLevelGraphConfig;
 
-        [ExpandableAttributeNew]
+        [Expandable]
         public DungeonGeneratorConfig Config;
 
-        [ExpandableAttributeNew]
+        [Expandable]
         public OtherConfig OtherConfig;
 
-        [ExpandableAttributeNew]
+        [Expandable]
         public PostProcessConfig PostProcessConfig;
 
         private readonly Random seedsGenerator = new Random();
+
+        public void Start()
+        {
+            if (OtherConfig.GenerateOnStart)
+            {
+                Generate();
+            }
+        }
 
         public DungeonGeneratorPayload Generate()
         {
@@ -49,16 +50,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             var pipelineItems = new List<PipelineItem>();
 
             // Add input setup
-            if (InputType == DungeonGeneratorInputType.CustomInput)
-            {
-                pipelineItems.Add(CustomInputTask);
-            }
-            else
-            {
-                var fixedInputPipelineConfig = ScriptableObject.CreateInstance<FixedLevelGraphPipelineConfig>();
-                fixedInputPipelineConfig.Config = FixedLevelGraphConfig;
-                pipelineItems.Add(fixedInputPipelineConfig);
-            }
+            var fixedInputPipelineConfig = ScriptableObject.CreateInstance<FixedLevelGraphPipelineConfig>();
+            fixedInputPipelineConfig.Config = FixedLevelGraphConfig;
+            pipelineItems.Add(fixedInputPipelineConfig);
 
             // Add dungeon generator
             var dungeonGeneratorPipelineConfig = ScriptableObject.CreateInstance<DungeonGeneratorPipelineConfig>();
@@ -83,60 +77,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             Debug.Log($"Random generator seed: {seed}");
 
             return new Random(seed);
-        }
-    }
-
-    // TODO: handle UnityEditor references
-    [CustomEditor(typeof(DungeonGeneratorRunner))]
-    public class DungeonGeneratorInspector : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            serializedObject.Update();
-
-            var dungeonGenerator = (DungeonGeneratorRunner) target;
-
-            EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth / 2f;
-
-            EditorGUILayout.LabelField("Input config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.InputType)));
-
-            switch (dungeonGenerator.InputType)
-            {
-                case DungeonGeneratorInputType.FixedLevelGraph:
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.FixedLevelGraphConfig)));
-                    break;
-
-                case DungeonGeneratorInputType.CustomInput:
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.CustomInputTask)));
-                    break;
-            }
-
-            EditorGUILayout.Space();
-
-            EditorGUILayout.LabelField("Generator config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.Config)));
-
-            EditorGUILayout.Space();
-
-            EditorGUILayout.LabelField("Post processing config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.PostProcessConfig)));
-
-            EditorGUILayout.Space();
-
-            EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.OtherConfig)));
-
-            EditorGUILayout.Space();
-
-            if (GUILayout.Button("Generate dungeon"))
-            {
-                dungeonGenerator.Generate();
-            }
-
-            EditorGUIUtility.labelWidth = 0;
-
-            serializedObject.ApplyModifiedProperties();
         }
     }
 }

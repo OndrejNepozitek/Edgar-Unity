@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections.Generic;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEngine;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
 {
-#if UNITY_EDITOR
-
-#endif
-
     /// <summary>
     ///     Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable
     ///     area that allows for changing the values on the object without having to change editor.
@@ -28,31 +27,19 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
         {
             var totalHeight = 0.0f;
 
-            totalHeight += EditorGUIUtility.singleLineHeight;
-
-            if (property.objectReferenceValue == null)
-                return totalHeight;
+            // totalHeight += EditorGUIUtility.singleLineHeight;
 
             if (!property.isExpanded)
                 return totalHeight;
-
-            var targetObject = new SerializedObject(property.objectReferenceValue);
-
-            if (targetObject == null)
-                return totalHeight;
-
-            var field = targetObject.GetIterator();
-
-            field.NextVisible(true);
 
             if (SHOW_SCRIPT_FIELD)
             {
                 totalHeight += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             }
 
-            while (field.NextVisible(false))
+            foreach (var child in property.GetVisibleChildren(false))
             {
-                totalHeight += EditorGUI.GetPropertyHeight(field, true) + EditorGUIUtility.standardVerticalSpacing;
+                totalHeight += EditorGUI.GetPropertyHeight(child, true) + EditorGUIUtility.standardVerticalSpacing;  
             }
 
             totalHeight += INNER_SPACING * 2;
@@ -66,20 +53,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
             var fieldRect = new Rect(position);
             fieldRect.height = EditorGUIUtility.singleLineHeight;
 
-            EditorGUI.PropertyField(fieldRect, property, label, true);
+            // EditorGUI.PropertyField(fieldRect, property, label, false);
 
-            if (property.objectReferenceValue == null)
-                return;
+            //if (property.objectReferenceValue == null)
+            //    return;
 
-            property.isExpanded = EditorGUI.Foldout(fieldRect, property.isExpanded, GUIContent.none, true);
-            // property.isExpanded = true;
+            //property.isExpanded = EditorGUI.Foldout(fieldRect, property.isExpanded, GUIContent.none, true);
+            property.isExpanded = true;
 
             if (!property.isExpanded)
-                return;
-
-            var targetObject = new SerializedObject(property.objectReferenceValue);
-
-            if (targetObject == null)
                 return;
 
 
@@ -90,13 +72,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
 
             var bodyRect = new Rect(fieldRect);
             bodyRect.xMin += EditorGUI.indentLevel * 14;
-            bodyRect.yMin += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing
-                                                               + OUTER_SPACING;
-
-            var field = targetObject.GetIterator();
-            field.NextVisible(true);
-
-            marchingRect.y += INNER_SPACING + OUTER_SPACING;
+            // bodyRect.yMin += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing + OUTER_SPACING;
+            marchingRect.y += INNER_SPACING;
+            marchingRect.y -= EditorGUIUtility.singleLineHeight;
 
             if (SHOW_SCRIPT_FIELD)
             {
@@ -104,11 +82,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
                 marchingRect.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
             }
 
-            while (field.NextVisible(false))
+            foreach (var child in property.GetVisibleChildren(false))
             {
                 marchingRect.y += marchingRect.height + EditorGUIUtility.standardVerticalSpacing;
-                marchingRect.height = EditorGUI.GetPropertyHeight(field, true);
+                marchingRect.height = EditorGUI.GetPropertyHeight(child, true);
+                marchingRect.xMax -= 14;
                 propertyRects.Add(marchingRect);
+                marchingRect.xMax += 14;
             }
 
             marchingRect.y += INNER_SPACING;
@@ -124,36 +104,23 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
             EditorGUI.indentLevel++;
 
             var index = 0;
-            field = targetObject.GetIterator();
-            field.NextVisible(true);
 
             if (SHOW_SCRIPT_FIELD)
             {
                 //Show the disabled script field
                 EditorGUI.BeginDisabledGroup(true);
-                EditorGUI.PropertyField(propertyRects[index], field, true);
+                EditorGUI.PropertyField(propertyRects[index], property, true);
                 EditorGUI.EndDisabledGroup();
                 index++;
             }
 
-            //Replacement for "editor.OnInspectorGUI ();" so we have more control on how we draw the editor
-            while (field.NextVisible(false))
+            foreach (var child in property.GetVisibleChildren(false))
             {
-                try
-                {
-                    EditorGUI.PropertyField(propertyRects[index], field, true);
-                }
-                catch (StackOverflowException)
-                {
-                    field.objectReferenceValue = null;
-                    Debug.LogError("Detected self-nesting cauisng a StackOverflowException, avoid using the same " +
-                                   "object iside a nested structure.");
-                }
-
+                EditorGUI.PropertyField(propertyRects[index], child, true);
                 index++;
             }
 
-            targetObject.ApplyModifiedProperties();
+            property.serializedObject.ApplyModifiedProperties();
 
             EditorGUI.indentLevel--;
 

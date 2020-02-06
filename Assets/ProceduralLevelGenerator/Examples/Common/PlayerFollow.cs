@@ -10,11 +10,15 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
         public void Start()
         {
             offset = transform.position;
-            player = GameObject.FindWithTag("Player");
         }
 
         public void LateUpdate()
         {
+            if (player == null)
+            {
+                player = GameObject.FindWithTag("Player");
+            }
+
             if (player != null)
             {
                 transform.position = player.transform.position + offset;
