@@ -24,7 +24,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
         public static void CombineTilemaps(GeneratedLevel level, ITilemapLayersHandler tilemapLayersHandler)
         {
             // Initialize GameObject that will hold tilemaps
-            var tilemapsRoot = new GameObject("Tilemaps");
+            var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
             tilemapsRoot.transform.parent = level.RootGameObject.transform;
 
             // Create individual tilemaps
@@ -127,11 +127,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
                 foreach (var tilemap in tilemaps)
                 {
-                    var tilemapCollider = tilemap.GetComponent<TilemapCollider2D>();
+                    var compositeCollider = tilemap.GetComponent<CompositeCollider2D>();
 
-                    if (tilemapCollider != null && !tilemapCollider.isTrigger)
+                    if (compositeCollider != null && !compositeCollider.isTrigger)
                     {
-                        Destroy(tilemapCollider);
+                        compositeCollider.enabled = false;
                     }
                 }
             }
@@ -139,8 +139,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
         public static List<Tilemap> GetTilemaps(GameObject gameObject)
         {
-            // TODO: do not hardcode name?
-            var tilemapsHolder = gameObject.transform.Find("Tilemaps")?.gameObject ?? gameObject;
+            var tilemapsHolder = gameObject.transform.Find(GeneratorConstants.TilemapsRootName)?.gameObject ?? gameObject;
             var tilemaps = new List<Tilemap>();
 
             foreach (var childTransform in tilemapsHolder.transform.Cast<Transform>())
