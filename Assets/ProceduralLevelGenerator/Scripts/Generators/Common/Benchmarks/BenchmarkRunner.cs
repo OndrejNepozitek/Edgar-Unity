@@ -97,7 +97,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Benchmarks
                     var additionalData = new AdditionalUnityData
                     {
                         GeneratedLayoutSvg = layoutDrawer.DrawLayout(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation(), 800,
-                            forceSquare: true),
+                            forceSquare: true, fixedFontSize: 20),
                         ImageBase64 = base64
                     };
 

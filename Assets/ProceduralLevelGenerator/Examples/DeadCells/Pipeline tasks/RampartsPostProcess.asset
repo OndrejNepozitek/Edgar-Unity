@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86cbfe14840d2764686438784e342d11, type: 3}
+  m_Script: {fileID: 11500000, guid: cac4f7f7fcefa75498131d7d10853647, type: 3}
   m_Name: RampartsPostProcess
   m_EditorClassIdentifier: 
-  WallDepth: 100
+  AddWalls: 1
+  WallDepth: 50
   WallTile: {fileID: 11400000, guid: d01e20e8e6c0d084690d815feb7c3f75, type: 2}
+  DisableOther3: 1

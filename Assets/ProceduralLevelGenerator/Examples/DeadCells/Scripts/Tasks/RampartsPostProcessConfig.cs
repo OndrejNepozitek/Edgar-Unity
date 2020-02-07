@@ -8,7 +8,6 @@ using UnityEngine.Tilemaps;
 
 namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 {
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Dead Cells/Ramparts post process", fileName = "RampartsPostProcess")]
     public class RampartsPostProcessConfig : PipelineConfig
     {
         public int WallDepth = 50;

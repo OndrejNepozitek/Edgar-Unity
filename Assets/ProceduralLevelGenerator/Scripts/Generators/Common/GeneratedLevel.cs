@@ -21,6 +21,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
             RootGameObject = rootGameObject;
         }
 
+        // TODO: maybe without "all" ?
         public List<RoomInstance> GetAllRoomInstances()
         {
             return roomInstances.Values.ToList();

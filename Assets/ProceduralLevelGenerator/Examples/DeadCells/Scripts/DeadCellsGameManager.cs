@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Diagnostics;
 using Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Levels;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator;
 using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,7 +17,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
         public DeadCellsLevelType LevelType;
 
         private GameObject canvas;
-        private DungeonGeneratorPipeline dungeonGeneratorPipeline;
+        private PlatformerGeneratorRunner generator;
         private GameObject levelImage;
         private Text levelInfoText;
         private Text levelText;
@@ -76,7 +77,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
 
         public void InitLevel()
         {
-            dungeonGeneratorPipeline = GameObject.Find("Dungeon Generator").GetComponent<DungeonGeneratorPipeline>();
+            generator = GameObject.Find("Platformer Generator").GetComponent<PlatformerGeneratorRunner>();
             canvas = GameObject.Find("Canvas");
             levelImage = canvas.transform.Find("LevelImage").gameObject;
             levelText = levelImage.transform.Find("LevelText").gameObject.GetComponent<Text>();
@@ -94,7 +95,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
             var stopwatch = new Stopwatch();
             stopwatch.Start();
 
-            dungeonGeneratorPipeline.Generate();
+            generator.Generate();
 
             levelInfoText.text = $"Current level: {LevelType}\nGenerated in {stopwatch.ElapsedMilliseconds/1000d:F}s";
 

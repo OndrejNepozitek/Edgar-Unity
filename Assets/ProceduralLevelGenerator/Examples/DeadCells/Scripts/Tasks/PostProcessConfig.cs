@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 {
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Dead Cells/Post process", fileName = "PostProcess")]
     public class PostProcessConfig : PipelineConfig
     {
 

@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Pro
@@ -49,6 +54,56 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pro
                 .GetTypes()
                 .Where(baseType.IsAssignableFrom)
                 .ToList();
+        }
+
+        // TODO: move somewhere else
+        public static List<Tilemap> GetRoomTemplateTilemaps(GameObject roomTemplate)
+        {
+            var tilemapsHolder = roomTemplate.transform.Find(GeneratorConstants.TilemapsRootName)?.gameObject ?? roomTemplate;
+            var tilemaps = new List<Tilemap>();
+
+            foreach (var childTransform in tilemapsHolder.transform.Cast<Transform>())
+            {
+                var tilemap = childTransform.gameObject.GetComponent<Tilemap>();
+
+                if (tilemap != null)
+                {
+                    tilemaps.Add(tilemap);
+                }
+            }
+
+            // TODO: return tilemaps or GameObjects?
+            return tilemaps;
+        }
+
+        // TODO: move somewhere else
+        public static void InitializeSharedTilemaps(GeneratedLevel level, ITilemapLayersHandler tilemapLayersHandler)
+        {
+            // Initialize GameObject that will hold tilemaps
+            var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
+            tilemapsRoot.transform.parent = level.RootGameObject.transform;
+
+            // Create individual tilemaps
+            tilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+        }
+
+        // TODO: move somewhere else
+        public static void CopyTilesToSharedTilemaps(GeneratedLevel level)
+        {
+            foreach (var roomInstance in level.GetAllRoomInstances().OrderBy(x => x.IsCorridor))
+            {
+                CopyTilesToSharedTilemaps(level, roomInstance);
+            }
+        }
+
+        // TODO: move somewhere else
+        public static void CopyTilesToSharedTilemaps(GeneratedLevel level, RoomInstance roomInstance)
+        {
+            var tilemapsRoot = level.RootGameObject.transform.Find(GeneratorConstants.TilemapsRootName).gameObject;
+            var destinationTilemaps = PostProcessUtils.GetTilemaps(tilemapsRoot);
+            var sourceTilemaps = PostProcessUtils.GetTilemaps(roomInstance.RoomTemplateInstance);
+
+            PostProcessUtils.CopyTiles(sourceTilemaps, destinationTilemaps, roomInstance.Position);
         }
     }
 }
