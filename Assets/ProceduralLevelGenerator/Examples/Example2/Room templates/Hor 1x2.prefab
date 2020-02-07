@@ -183,6 +183,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -217,6 +218,8 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!50 &3023074785385611539
 Rigidbody2D:
   serializedVersion: 4
@@ -285,6 +288,7 @@ CompositeCollider2D:
       - {x: 1, y: -3}
       - {x: 3, y: -3}
   m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005
 --- !u!1 &1046719360902021424
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +383,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -410,6 +415,7 @@ GameObject:
   - component: {fileID: 7331218298825220203}
   - component: {fileID: 5806575581855340005}
   - component: {fileID: 3244154448922915323}
+  - component: {fileID: 8062285281624621275}
   m_Layer: 0
   m_Name: Hor 1x2
   m_TagString: Untagged
@@ -461,14 +467,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DistanceFromCorners: 1
+  DoorLength: 1
   DoorsList:
   - From: {x: 3, y: -2, z: 0}
     To: {x: 3, y: -2, z: 0}
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
-  DoorLength: 1
-  DistanceFromCorners: 1
+--- !u!114 &8062285281624621275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3073230880973326234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905eb58faac65b14a89928c24bf6e80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5014009518268391636
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +581,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -773,6 +792,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -887,6 +907,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -999,7 +1020,7 @@ Tilemap:
   - first: {x: 3, y: -1, z: 0}
     second:
       m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -1042,12 +1063,12 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 4
     m_Data: {fileID: 21300002, guid: 512a3a5212bdfc048b89d9ef214b8cee, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300404, guid: 512a3a5212bdfc048b89d9ef214b8cee, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300310, guid: 512a3a5212bdfc048b89d9ef214b8cee, type: 3}
   - m_RefCount: 1
@@ -1142,6 +1163,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1176,6 +1198,8 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!50 &1454913665004704626
 Rigidbody2D:
   serializedVersion: 4
@@ -1274,3 +1298,4 @@ CompositeCollider2D:
       - {x: 0.5625, y: -2}
       - {x: 3.4375, y: -2}
   m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005

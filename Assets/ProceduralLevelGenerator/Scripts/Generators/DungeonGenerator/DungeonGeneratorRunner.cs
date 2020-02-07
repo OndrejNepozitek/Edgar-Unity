@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using Assets.ProceduralLevelGenerator.Scripts.Attributes;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
@@ -11,7 +12,7 @@ using Random = System.Random;
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
 {
     // TODO: is this name ok?
-    public class DungeonGeneratorRunner : MonoBehaviour
+    public class DungeonGeneratorRunner : MonoBehaviour, IGeneratorRunner
     {
         // PRO
         public DungeonGeneratorInputType InputType;
@@ -92,7 +93,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             }
 
             pipelineRunner.Run(pipelineItems, payload);
-
+            
             Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
 
             return payload;
@@ -104,6 +105,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             Debug.Log($"Random generator seed: {seed}");
 
             return new Random(seed);
+        }
+
+        object IGeneratorRunner.Generate()
+        {
+            return Generate();
         }
     }
 }

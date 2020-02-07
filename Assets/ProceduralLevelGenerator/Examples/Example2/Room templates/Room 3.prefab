@@ -94,6 +94,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -208,6 +209,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -239,8 +241,9 @@ GameObject:
   - component: {fileID: 504456259864903914}
   - component: {fileID: 1483132354419251193}
   - component: {fileID: 3413724527980039526}
+  - component: {fileID: 1006827971211107979}
   m_Layer: 0
-  m_Name: Room 2
+  m_Name: Room 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -290,14 +293,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DistanceFromCorners: 1
+  DoorLength: 1
   DoorsList:
   - From: {x: -3, y: 2, z: 0}
     To: {x: -3, y: 2, z: 0}
   - From: {x: -3, y: -2, z: 0}
     To: {x: -3, y: -2, z: 0}
   SelectedMode: 1
-  DoorLength: 1
-  DistanceFromCorners: 1
+--- !u!114 &1006827971211107979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428298871092312358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 905eb58faac65b14a89928c24bf6e80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2731761978189903060
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +407,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -661,6 +677,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -695,6 +712,8 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!50 &3118616253035961238
 Rigidbody2D:
   serializedVersion: 4
@@ -763,6 +782,7 @@ CompositeCollider2D:
       - {x: -5, y: -2}
       - {x: 0, y: -2}
   m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005
 --- !u!1 &6473775340584367665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +1054,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1068,6 +1089,8 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0.00001
 --- !u!50 &3591234441810869628
 Rigidbody2D:
   serializedVersion: 4
@@ -1154,6 +1177,7 @@ CompositeCollider2D:
       - {x: -5, y: -1}
       - {x: 0, y: -1}
   m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.000005
 --- !u!1 &7282878034200540835
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1404,7 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
