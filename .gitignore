@@ -5,7 +5,7 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 Assets/Resources/Tilemaps/
-Benchmarks/
+/Benchmarks/
 exportedMapDescription.json
 
 # Visual Studio cache directory

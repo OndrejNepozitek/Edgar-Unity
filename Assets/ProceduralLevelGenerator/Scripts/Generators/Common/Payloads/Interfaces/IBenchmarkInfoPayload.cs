@@ -1,4 +1,5 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
+﻿using System;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces
 {

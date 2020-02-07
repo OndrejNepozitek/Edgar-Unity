@@ -71220,6 +71220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 981914831}
   - component: {fileID: 981914832}
+  - component: {fileID: 981914833}
   m_Layer: 0
   m_Name: Dungeon Generator
   m_TagString: Untagged
@@ -71274,6 +71275,23 @@ MonoBehaviour:
       type: 2}
   CustomPostProcessTasks:
   - {fileID: 11400000, guid: 749dd5da8363d5d49b383a56f6838db6, type: 2}
+--- !u!114 &981914833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 981914830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6373e16582000624eb07101d12091271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Runs: 20
+  ScreenshotCamera: {fileID: 368660158}
+  ScreenshotCameraSize: 110
+  IsRunning: 0
+  Progress: 0
 --- !u!1 &990802830
 GameObject:
   m_ObjectHideFlags: 0
