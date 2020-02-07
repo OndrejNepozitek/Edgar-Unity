@@ -2,6 +2,7 @@
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Logic;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
+using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks
 {
@@ -12,13 +13,17 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
     }
 
     public class DungeonGeneratorPipelineTask<TPayload> : ConfigurablePipelineTask<TPayload, DungeonGeneratorPipelineConfig>
-        where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
+        where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IBenchmarkInfoPayload
     { 
         public override void Process()
         {
             var dungeonGenerator = new GraphBasedDungeonGenerator();
-            var generatedLevel = dungeonGenerator.Generate(Payload.LevelDescription, Payload.Random, Config.Config);
-            Payload.GeneratedLevel = generatedLevel;
+            var (generatedLevel, stats) = dungeonGenerator.Generate(Payload.LevelDescription, Payload.Random, Config.Config);
+            ((IGraphBasedGeneratorPayload) Payload).GeneratedLevel = generatedLevel;
+            Payload.GeneratorStats = stats;
+
+            Debug.Log($"Layout generated in {stats.TimeTotal / 1000f:F} seconds");
+            Debug.Log($"{stats.Iterations} iterations needed, {stats.Iterations / (stats.TimeTotal / 1000d):0} iterations per second");
         }
     }
 }

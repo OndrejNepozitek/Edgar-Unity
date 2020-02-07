@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Interfaces.Core.MapLayouts;
 using UnityEngine;
@@ -20,6 +21,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads
         public int Iterations { get; set; }
 
         public double TimeTotal { get; set; }
+
+        public GeneratorStats GeneratorStats { get; set; }
 
         public GameObject RootGameObject { get; set; }
 

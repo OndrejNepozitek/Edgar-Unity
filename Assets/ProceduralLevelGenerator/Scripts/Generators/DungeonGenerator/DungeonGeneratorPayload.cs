@@ -1,5 +1,6 @@
 ﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Random = System.Random;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
@@ -15,5 +16,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
         public int Iterations { get; set; }
 
         public double TimeTotal { get; set; }
+
+        public GeneratorStats GeneratorStats { get; set; }
     }
 }

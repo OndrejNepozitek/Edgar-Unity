@@ -76,12 +76,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Pay
 #if UNITY_EDITOR
             if (TilemapLayersHandlerBase == null)
             {
-                // TODO:
-                throw new NotImplementedException();
-                //TilemapLayersHandlerBase = AssetDatabase
-                //    .LoadAssetAtPath<TilemapLayersHandler>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
-                //EditorUtility.SetDirty(this);
-                //AssetDatabase.SaveAssets();
+                TilemapLayersHandlerBase = AssetDatabase
+                    .LoadAssetAtPath<TilemapLayersHandlerBase>("Assets/ProceduralLevelGenerator/ScriptableObjects/DefaultTilemapLayersHandler.asset");
+                EditorUtility.SetDirty(this);
+                AssetDatabase.SaveAssets();
             }
 #endif
 

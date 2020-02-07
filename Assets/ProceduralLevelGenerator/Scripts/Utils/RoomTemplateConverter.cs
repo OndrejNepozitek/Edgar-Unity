@@ -16,12 +16,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             var grid = gameObject.GetComponent<Grid>();
             if (grid != null)
             {
-                DestroyImmediate(grid);
+                DestroyImmediate(grid, true);
             }
 
             // Create tilemaps root
             var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
             tilemapsRoot.AddComponent<Grid>();
+            tilemapsRoot.transform.parent = gameObject.transform;
 
             foreach (var childTransform in transform.Cast<Transform>().ToList())
             {
@@ -36,8 +37,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             // Fix positions
             tilemapsRoot.transform.localPosition = Vector3.zero;
             transform.localPosition = Vector3.zero;
-
-            tilemapsRoot.transform.parent = gameObject.transform;
         }
     }
 
@@ -54,6 +53,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             if (GUILayout.Button("Convert"))
             {
                 converter.Convert();
+                EditorUtility.SetDirty(converter.gameObject);
                 DestroyImmediate(converter);
             }
         }

@@ -12,6 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8400baee4cafd34091c865089a167b2, type: 3}
   m_Name: SimpleLevelGraph
   m_EditorClassIdentifier: 
+  Connections:
+  - {fileID: 114412919402532190}
+  - {fileID: 114316144513955214}
+  - {fileID: 114961486820543820}
+  - {fileID: 114287242799773266}
+  - {fileID: 114309143172350546}
+  - {fileID: 114914473486473868}
+  - {fileID: 114196285255126970}
+  - {fileID: 114072506335772976}
+  - {fileID: 114939982145470694}
+  ConnectionType: Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph.Connection
+  CorridorIndividualRoomTemplates:
+  - {fileID: 3073230880973326234, guid: 268c37e38b679e24fa4843b18c520a5b, type: 3}
+  - {fileID: 8803820720606171561, guid: 51dbff7213032ce4a8130b7998e6e916, type: 3}
+  - {fileID: 4740616030248318969, guid: 95499e6c3795a054091b659f0e54fc61, type: 3}
+  - {fileID: 2919116758800987119, guid: e1977307219417e4fa3dde5ca48be1f8, type: 3}
+  DefaultIndividualRoomTemplates:
+  - {fileID: 973631761240943980, guid: f5ff56d9ad8040b4e88db15e77975252, type: 3}
+  - {fileID: 51494900918682340, guid: 04df2001d42e0b74796f82593c442b31, type: 3}
   Rooms:
   - {fileID: 114848426000696530}
   - {fileID: 114253429190548400}
@@ -23,25 +42,8 @@ MonoBehaviour:
   - {fileID: 114543471862242990}
   - {fileID: 114234632819942194}
   - {fileID: 114063910575835664}
-  Connections:
-  - {fileID: 114412919402532190}
-  - {fileID: 114316144513955214}
-  - {fileID: 114961486820543820}
-  - {fileID: 114287242799773266}
-  - {fileID: 114309143172350546}
-  - {fileID: 114914473486473868}
-  - {fileID: 114196285255126970}
-  - {fileID: 114072506335772976}
-  - {fileID: 114939982145470694}
   RoomsGroups: []
-  DefaultRoomTemplateSets: []
-  DefaultIndividualRoomTemplates:
-  - {fileID: 51494900918682340, guid: 04df2001d42e0b74796f82593c442b31, type: 3}
-  - {fileID: 973631761240943980, guid: f5ff56d9ad8040b4e88db15e77975252, type: 3}
-  CorridorRoomTemplateSets: []
-  CorridorIndividualRoomTemplates:
-  - {fileID: 3073230880973326234, guid: 268c37e38b679e24fa4843b18c520a5b, type: 3}
-  - {fileID: 4740616030248318969, guid: 95499e6c3795a054091b659f0e54fc61, type: 3}
+  RoomType: Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph.Room
 --- !u!114 &114063910575835664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,10 +56,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 804, y: 544}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 605, y: 416}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114072506335772976
 MonoBehaviour:
@@ -85,10 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 472, y: 505}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 273, y: 377}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114196285255126970
 MonoBehaviour:
@@ -116,10 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 923, y: 481}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 724, y: 353}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114253429190548400
 MonoBehaviour:
@@ -133,10 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 763, y: 415}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 564, y: 287}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114287242799773266
 MonoBehaviour:
@@ -206,10 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 663, y: 266}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 464, y: 138}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114543471862242990
 MonoBehaviour:
@@ -223,10 +220,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 622, y: 543}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 423, y: 415}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114598484866061408
 MonoBehaviour:
@@ -240,10 +236,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 798, y: 142}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 599, y: 14}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114753264885661322
 MonoBehaviour:
@@ -257,10 +252,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 513, y: 141}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 314, y: 13}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114848426000696530
 MonoBehaviour:
@@ -274,10 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 585, y: 412}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 386, y: 284}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114913392318402948
 MonoBehaviour:
@@ -291,10 +284,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 660, y: 154}
-  RoomTemplateSets: []
   IndividualRoomTemplates: []
+  Name: Room
+  Position: {x: 461, y: 26}
   serializedGuid: 00000000000000000000000000000000
 --- !u!114 &114914473486473868
 MonoBehaviour:
