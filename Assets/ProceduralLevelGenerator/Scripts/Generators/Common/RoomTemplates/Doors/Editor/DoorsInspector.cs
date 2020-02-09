@@ -215,7 +215,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 				to = from + new Vector3(1, 1);
 			}
 
-            var offset = 0.05f;
+            var offset = 0.05f; 
             if (from.x <= to.x - 1)
             {
                 from += new Vector3(offset, offset);
@@ -253,13 +253,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 		{
 			serializedObject.Update();
 
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+			var doors = target as Doors;
 
-			var selectedModeProp = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.SelectedMode));
+			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
 			selectedModeProp.intValue = GUILayout.SelectionGrid(doors.SelectedMode, new[] { "Simple mode", "Specific positions"}, 2);
-			var shouldRedraw = false;
 
-			EditorGUILayout.Space();
+            EditorGUILayout.Space();
 
 			if (selectedModeProp.intValue == 0)
 			{

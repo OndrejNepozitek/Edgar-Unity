@@ -14,17 +14,16 @@ using UnityEngine.Tilemaps;
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates
 {
     /// <summary>
-    ///     Class used to convert room templates to the representation used
-    ///     in the dungeon generator library.
+    /// Class used to convert room templates to the representation used in the dungeon generator library.
     /// </summary>
-    public class RoomTemplatesLoader
+    public static class RoomTemplatesLoader
     {
         /// <summary>
-        ///     Computes a polygon from its tiles.
+        /// Computes a polygon from its tiles.
         /// </summary>
         /// <param name="allPoints"></param>
         /// <returns></returns>
-        public GridPolygon GetPolygonFromTiles(HashSet<IntVector2> allPoints)
+        public static GridPolygon GetPolygonFromTiles(HashSet<IntVector2> allPoints)
         {
             if (allPoints.Count == 0)
             {
@@ -59,7 +58,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
             while (true)
             {
-                var foundNeighbour = false;
+                var foundNeighbor = false;
                 var currentDirection = new IntVector2();
 
                 foreach (var directionVector in orderedDirections[previousDirection])
@@ -69,12 +68,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                     if (allPoints.Contains(newPoint))
                     {
                         currentDirection = directionVector;
-                        foundNeighbour = true;
+                        foundNeighbor = true;
                         break;
                     }
                 }
 
-                if (!foundNeighbour)
+                if (!foundNeighbor)
                     throw new ArgumentException("Invalid room shape.");
 
                 if (currentDirection != previousDirection)
@@ -104,11 +103,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         }
 
         /// <summary>
-        ///     Computes a polygon from points on given tilemaps.
+        /// Computes a polygon from points on given tilemaps.
         /// </summary>
         /// <param name="tilemaps"></param>
         /// <returns></returns>
-        public GridPolygon GetPolygonFromTilemaps(ICollection<Tilemap> tilemaps)
+        public static GridPolygon GetPolygonFromTilemaps(ICollection<Tilemap> tilemaps)
         {
             var usedTiles = GetUsedTiles(RoomTemplateUtils.GetTilemapsForOutline(tilemaps));
 
@@ -116,11 +115,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         }
 
         /// <summary>
-        ///     Gets all tiles that are not null in given tilemaps.
+        /// Gets all tiles that are not null in given tilemaps.
         /// </summary>
         /// <param name="tilemaps"></param>
         /// <returns></returns>
-        public HashSet<IntVector2> GetUsedTiles(IEnumerable<Tilemap> tilemaps)
+        public static HashSet<IntVector2> GetUsedTiles(IEnumerable<Tilemap> tilemaps)
         {
             var usedTiles = new HashSet<IntVector2>();
 
@@ -148,7 +147,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         /// <param name="roomTemplatePrefab"></param>
         /// <param name="allowedTransformations"></param>
         /// <returns></returns>
-        public IRoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab, List<Transformation> allowedTransformations = null)
+        public static IRoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab, List<Transformation> allowedTransformations = null)
         {
             if (allowedTransformations == null)
             {
@@ -169,43 +168,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
             return roomDescription;
         }
-
-        ///// <summary>
-        ///// Computes the length of a given corridor.
-        ///// </summary>
-        ///// <param name="roomDescription"></param>
-        ///// <returns></returns>
-        //public int GetCorridorLength(RoomDescription roomDescription)
-        //{
-        //	var doorsHandler = DoorHandler.DefaultHandler;
-        //	var doorPositions = doorsHandler.GetDoorPositions(roomDescription.Shape, roomDescription.DoorsMode);
-
-        //	if ((doorPositions.Count != 2
-        //	    || doorPositions.Any(x => x.Line.Length != 0)
-        //	    || doorPositions[0].Line.GetDirection() != GeneralAlgorithms.DataStructures.Common.OrthogonalLine.GetOppositeDirection(doorPositions[1].Line.GetDirection()))
-        //		&& !((doorPositions.Count == 3 || doorPositions.Count == 4) && doorPositions.All(x => x.Length == 0))
-        //		)
-        //	{
-        //		throw new ArgumentException("Corridors must currently have exactly 2 door positions that are on the opposite sides of the corridor.");
-        //	}
-
-        //	var firstLine = doorPositions[0].Line;
-        //	var secondLine = doorPositions[1].Line;
-
-        //	if (firstLine.Equals(secondLine))
-        //	{
-        //		secondLine = doorPositions.Select(x => x.Line).First(x => !x.Equals(secondLine));
-        //	}
-
-        //	if (firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Bottom || firstLine.GetDirection() == GeneralAlgorithms.DataStructures.Common.OrthogonalLine.Direction.Top)
-        //	{
-        //		return Math.Abs(firstLine.From.X - secondLine.From.X);
-        //	}
-        //	else
-        //	{
-        //		return Math.Abs(firstLine.From.Y - secondLine.From.Y);
-        //	}
-        //}
 
         private static bool IsClockwiseOriented(IList<IntVector2> points)
         {

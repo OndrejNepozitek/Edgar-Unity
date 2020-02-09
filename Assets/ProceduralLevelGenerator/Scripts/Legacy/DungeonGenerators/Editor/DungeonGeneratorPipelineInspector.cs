@@ -8,8 +8,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators.Edito
 	public class DungeonGeneratorPipelineInspector : UnityEditor.Editor
 	{
 		private ReorderableList list;
-		private bool showPipelineSettings = true;
-		private bool showAdvancedSettings;
 
 		private void OnEnable()
 		{
