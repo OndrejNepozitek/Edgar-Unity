@@ -38,11 +38,7 @@ namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 
 			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.RoomsGroups)), true);
 
-
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.RoomType)), true);
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.ConnectionType)), true);
-
-			if (GUILayout.Button("Open graph editor"))
+            if (GUILayout.Button("Open graph editor"))
 			{
 				var type = Type.GetType("UnityEditor.GameView,UnityEditor");
 				var window = EditorWindow.GetWindow<LevelGraphWindow>("Graph editor", type);
