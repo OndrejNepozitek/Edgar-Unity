@@ -14,10 +14,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
         {
             gameObject.AddComponent<Grid>();
 
-            var wallsTilemapObject = CreateTilemapGameObject("Walls", gameObject, 0);
-            AddCompositeCollider(wallsTilemapObject);
+            var floorTilemapObject = CreateTilemapGameObject("Floor", gameObject, 0);
 
-            var floorTilemapObject = CreateTilemapGameObject("Floor", gameObject, 1);
+            var wallsTilemapObject = CreateTilemapGameObject("Walls", gameObject, 1);
+            AddCompositeCollider(wallsTilemapObject);
 
             var collideableTilemapObject = CreateTilemapGameObject("Collideable", gameObject, 2);
             AddCompositeCollider(collideableTilemapObject);

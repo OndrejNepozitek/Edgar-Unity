@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -10,7 +11,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
     {
         public static void CenterGrid(GeneratedLevel level)
         {
-            var tilemaps = GetTilemaps(level.RootGameObject);
+            var tilemaps = level.GetTilemaps();
             tilemaps[0].CompressBounds();
 
             var offset = tilemaps[0].cellBounds.center;
@@ -21,7 +22,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             }
         }
 
-        public static void CombineTilemaps(GeneratedLevel level, ITilemapLayersHandler tilemapLayersHandler)
+        public static void InitializeSharedTilemaps(GeneratedLevel level, ITilemapLayersHandler tilemapLayersHandler)
         {
             // Initialize GameObject that will hold tilemaps
             var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
@@ -29,20 +30,27 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
             // Create individual tilemaps
             tilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+        }
 
-            var destinationTilemaps = GetTilemaps(tilemapsRoot);
-
+        public static void CopyTilesToSharedTilemaps(GeneratedLevel level)
+        {
             foreach (var roomInstance in level.GetAllRoomInstances().OrderBy(x => x.IsCorridor))
             {
-                var sourceTilemaps = GetTilemaps(roomInstance.RoomTemplateInstance);
-
-                CopyTiles(sourceTilemaps, destinationTilemaps, roomInstance.Position);
+                CopyTilesToSharedTilemaps(level, roomInstance);
             }
+        }
+
+        public static void CopyTilesToSharedTilemaps(GeneratedLevel level, RoomInstance roomInstance)
+        {
+            var destinationTilemaps = level.GetTilemaps();
+            var sourceTilemaps = RoomTemplateUtils.GetTilemaps(roomInstance.RoomTemplateInstance);
+
+            CopyTiles(sourceTilemaps, destinationTilemaps, roomInstance.Position);
         }
 
         public static void CopyTiles(List<Tilemap> sourceTilemaps, List<Tilemap> destinationTilemaps, Vector3Int offset)
         {
-            sourceTilemaps = GeneratorUtils.GetTilemapsForCopying(sourceTilemaps);
+            sourceTilemaps = RoomTemplateUtils.GetTilemapsForCopying(sourceTilemaps);
 
             DeleteNonNullTiles(sourceTilemaps, destinationTilemaps, offset);
 
@@ -110,7 +118,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             foreach (var roomInstance in level.GetAllRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-                var tilemaps = GetTilemaps(roomTemplateInstance);
+                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
 
                 foreach (var tilemap in tilemaps)
                 {
@@ -125,7 +133,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             foreach (var roomInstance in level.GetAllRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-                var tilemaps = GetTilemaps(roomTemplateInstance);
+                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
 
                 foreach (var tilemap in tilemaps)
                 {
@@ -137,30 +145,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
                     }
                 }
             }
-        }
-
-        public static GameObject GetTilemapsRoot(GameObject gameObject)
-        {
-            return gameObject.transform.Find(GeneratorConstants.TilemapsRootName)?.gameObject ?? gameObject;
-        }
-
-        public static List<Tilemap> GetTilemaps(GameObject gameObject)
-        {
-            var tilemapsHolder = GetTilemapsRoot(gameObject);
-            var tilemaps = new List<Tilemap>();
-
-            foreach (var childTransform in tilemapsHolder.transform.Cast<Transform>())
-            {
-                var tilemap = childTransform.gameObject.GetComponent<Tilemap>();
-
-                if (tilemap != null)
-                {
-                    tilemaps.Add(tilemap);
-                }
-            }
-
-            // TODO: return tilemaps or GameObjects?
-            return tilemaps;
         }
 
         // TODO: where to put this?

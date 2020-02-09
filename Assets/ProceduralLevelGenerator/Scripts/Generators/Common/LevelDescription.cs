@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Graphs;
@@ -22,7 +23,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
         private readonly MapDescription<TRoom> mapDescription = new MapDescription<TRoom>();
         private readonly TwoWayDictionary<GameObject, IRoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, IRoomTemplate>();
 
-        private readonly RoomShapesLoader roomShapesLoader = new RoomShapesLoader();
+        private readonly RoomTemplatesLoader roomTemplatesLoader = new RoomTemplatesLoader();
 
         public void AddRoom(TRoom room, [NotNull] List<GameObject> roomTemplates)
         {
@@ -97,7 +98,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
                 return prefabToRoomTemplateMapping[roomTemplatePrefab];
             }
 
-            var roomTemplate = roomShapesLoader.GetRoomTemplate(roomTemplatePrefab);
+            var roomTemplate = roomTemplatesLoader.GetRoomTemplate(roomTemplatePrefab);
             prefabToRoomTemplateMapping.Add(roomTemplatePrefab, roomTemplate);
 
             return roomTemplate;

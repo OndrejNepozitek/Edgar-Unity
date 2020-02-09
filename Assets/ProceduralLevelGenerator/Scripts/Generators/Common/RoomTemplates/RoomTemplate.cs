@@ -21,8 +21,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         {
             try
             {
-                var roomShapesLoader = new RoomShapesLoader();
-                var tilemaps = PostProcessUtils.GetTilemaps(gameObject);
+                var roomShapesLoader = new RoomTemplatesLoader();
+                var tilemaps = RoomTemplateUtils.GetTilemaps(gameObject);
                 var polygon = roomShapesLoader.GetPolygonFromTilemaps(tilemaps);
 
                 return polygon;
@@ -40,8 +40,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 return;
             }
 
-            var tilemapsRoot = PostProcessUtils.GetTilemapsRoot(gameObject);
-
+            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
             var outlineOverride = new GameObject(GeneratorConstants.OutlineOverrideName);
             outlineOverride.transform.parent = tilemapsRoot.transform;
             outlineOverride.AddComponent<Tilemap>();
@@ -57,14 +56,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 return;
             }
 
-            var tilemapsRoot = PostProcessUtils.GetTilemapsRoot(gameObject);
+            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
             var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideName).gameObject;
             PostProcessUtils.Destroy(outlineOverride);
         }
 
         public bool HasOutlineOverride()
         {
-            var tilemapsRoot = PostProcessUtils.GetTilemapsRoot(gameObject);
+            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
             var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideName);
 
             return outlineOverride != null;

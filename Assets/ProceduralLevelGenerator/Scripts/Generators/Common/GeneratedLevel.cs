@@ -4,6 +4,7 @@ using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using MapGeneration.Interfaces.Core.MapLayouts;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
 {
@@ -34,6 +35,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
         public IMapLayout<Room> GetInternalLayoutRepresentation()
         {
             return mapLayout;
+        }
+
+        public List<Tilemap> GetTilemaps()
+        {
+            return RoomTemplateUtils.GetTilemaps(RootGameObject);
         }
     }
 }

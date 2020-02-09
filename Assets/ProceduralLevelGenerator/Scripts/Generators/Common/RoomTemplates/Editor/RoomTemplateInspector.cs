@@ -74,8 +74,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
             try
             {
                 var roomTemplate = (RoomTemplate) target;
-                var roomShapesLoader = new RoomShapesLoader();
-                var tilemaps = PostProcessUtils.GetTilemaps(roomTemplate.gameObject);
+                var roomShapesLoader = new RoomTemplatesLoader();
+                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplate.gameObject);
                 var polygon = roomShapesLoader.GetPolygonFromTilemaps(tilemaps);
                 var points = polygon.GetPoints();
 

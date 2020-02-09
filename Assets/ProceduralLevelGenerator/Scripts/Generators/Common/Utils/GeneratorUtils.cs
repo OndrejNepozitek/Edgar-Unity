@@ -102,30 +102,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             }
         }
 
-        public static List<Tilemap> GetTilemapsForCopying(ICollection<Tilemap> tilemaps)
-        {
-            return tilemaps
-                .Where(x =>
-                    x.GetComponent<OutlineOverride>() == null &&
-                    (x.GetComponent<IgnoreTilemap>() == null ||
-                    !x.GetComponent<IgnoreTilemap>().IgnoreWhenCopyingTiles)
-                ).ToList();
-        }
 
-        public static List<Tilemap> GetTilemapsForOutline(ICollection<Tilemap> tilemaps)
-        {
-            var overrideOutline = tilemaps.FirstOrDefault(x => x.GetComponent<OutlineOverride>());
-
-            if (overrideOutline != null)
-            {
-                return new List<Tilemap>() { overrideOutline };
-            }
-
-            return tilemaps
-                .Where(x =>
-                    x.GetComponent<IgnoreTilemap>() == null ||
-                    !x.GetComponent<IgnoreTilemap>().IgnoreWhenComputingOutline
-                ).ToList();
-        }
     }
 }

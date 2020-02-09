@@ -1,46 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.Algorithms.Common;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Polygons;
-using MapGeneration.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Utils
+namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates
 {
     /// <summary>
     ///     Class used to convert room templates to the representation used
     ///     in the dungeon generator library.
     /// </summary>
-    public class RoomShapesLoader
+    public class RoomTemplatesLoader
     {
-        private static readonly List<IntVector2> DirectionVectors = new List<IntVector2>
-        {
-            IntVector2Helper.Top,
-            IntVector2Helper.Right,
-            IntVector2Helper.Bottom,
-            IntVector2Helper.Left
-        };
-
-        private static readonly List<IntVector2> AllDirectionVectors = new List<IntVector2>
-        {
-            IntVector2Helper.Top,
-            IntVector2Helper.Right,
-            IntVector2Helper.Bottom,
-            IntVector2Helper.Left,
-            IntVector2Helper.TopLeft,
-            IntVector2Helper.TopRight,
-            IntVector2Helper.BottomLeft,
-            IntVector2Helper.BottomRight
-        };
-
         /// <summary>
         ///     Computes a polygon from its tiles.
         /// </summary>
@@ -132,7 +110,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
         /// <returns></returns>
         public GridPolygon GetPolygonFromTilemaps(ICollection<Tilemap> tilemaps)
         {
-            var usedTiles = GetUsedTiles(GeneratorUtils.GetTilemapsForOutline(tilemaps));
+            var usedTiles = GetUsedTiles(RoomTemplateUtils.GetTilemapsForOutline(tilemaps));
 
             return GetPolygonFromTiles(usedTiles);
         }
@@ -178,8 +156,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             }
 
             // TODO: weird to call PostProcessUtils
-            var polygon = GetPolygonFromTilemaps(PostProcessUtils.GetTilemaps(roomTemplatePrefab));
-            var doors = roomTemplatePrefab.GetComponent<Doors>();
+            var polygon = GetPolygonFromTilemaps(RoomTemplateUtils.GetTilemaps(roomTemplatePrefab));
+            var doors = roomTemplatePrefab.GetComponent<Doors.Doors>();
 
             if (doors == null)
             {
@@ -187,7 +165,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             }
 
             var doorMode = doors.GetDoorMode();
-            var roomDescription = new RoomTemplate(polygon, doorMode, allowedTransformations);
+            var roomDescription = new MapGeneration.Core.MapDescriptions.RoomTemplate(polygon, doorMode, allowedTransformations);
 
             return roomDescription;
         }

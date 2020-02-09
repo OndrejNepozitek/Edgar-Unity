@@ -25,7 +25,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		private bool hasSecondPoint;
 
-		private readonly RoomShapesLoader roomShapesLoader = new RoomShapesLoader();
+		private readonly RoomTemplatesLoader roomTemplatesLoader = new RoomTemplatesLoader();
 
 		public void OnEnable()
 		{
@@ -62,7 +62,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 			try
 			{
-				var polygon = roomShapesLoader.GetPolygonFromTilemaps(go.GetComponentsInChildren<Tilemap>());
+				var polygon = roomTemplatesLoader.GetPolygonFromTilemaps(go.GetComponentsInChildren<Tilemap>());
 
 				foreach (var line in polygon.GetLines())
 				{
