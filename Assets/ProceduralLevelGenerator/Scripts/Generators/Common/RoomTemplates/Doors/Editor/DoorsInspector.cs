@@ -25,9 +25,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		private bool hasSecondPoint;
 
-		private readonly RoomTemplatesLoader roomTemplatesLoader = new RoomTemplatesLoader();
-
-		public void OnEnable()
+        public void OnEnable()
 		{
 			doorsLength = serializedObject.FindProperty(nameof(Doors.DoorLength));
 			distanceFromCorners = serializedObject.FindProperty(nameof(Doors.DistanceFromCorners));
@@ -62,7 +60,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 			try
 			{
-				var polygon = roomTemplatesLoader.GetPolygonFromTilemaps(go.GetComponentsInChildren<Tilemap>());
+				var polygon = RoomTemplatesLoader.GetPolygonFromTilemaps(go.GetComponentsInChildren<Tilemap>());
 
 				foreach (var line in polygon.GetLines())
 				{

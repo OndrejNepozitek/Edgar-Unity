@@ -26,7 +26,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
         [Expandable]
         public PostProcessConfig PostProcessConfig;
 
-        [ExpandableNotFoldable]
+        [ExpandableScriptableObject(CanFold = false)]
         public List<PipelineItem> CustomPostProcessTasks;
 
         private readonly Random seedsGenerator = new Random();

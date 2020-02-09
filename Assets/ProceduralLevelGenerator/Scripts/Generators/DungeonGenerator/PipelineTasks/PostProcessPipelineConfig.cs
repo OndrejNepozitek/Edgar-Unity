@@ -31,6 +31,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
                 PostProcessUtils.CopyTilesToSharedTilemaps(Payload.GeneratedLevel);
             }
 
+            if (config.CenterGrid)
+            {
+                PostProcessUtils.CenterGrid(Payload.GeneratedLevel);
+            }
+
             if (config.DisableRoomTemplatesRenderers)
             {
                 PostProcessUtils.DisableRoomTemplatesRenderers(Payload.GeneratedLevel);

@@ -74,9 +74,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
             try
             {
                 var roomTemplate = (RoomTemplate) target;
-                var roomShapesLoader = new RoomTemplatesLoader();
                 var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplate.gameObject);
-                var polygon = roomShapesLoader.GetPolygonFromTilemaps(tilemaps);
+                var polygon = RoomTemplatesLoader.GetPolygonFromTilemaps(tilemaps);
                 var points = polygon.GetPoints();
 
                 Handles.color = Color.yellow;
