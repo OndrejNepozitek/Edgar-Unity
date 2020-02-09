@@ -42,6 +42,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
         public static void CopyTiles(List<Tilemap> sourceTilemaps, List<Tilemap> destinationTilemaps, Vector3Int offset)
         {
+            sourceTilemaps = GeneratorUtils.GetTilemapsForCopying(sourceTilemaps);
+
             DeleteNonNullTiles(sourceTilemaps, destinationTilemaps, offset);
 
             foreach (var sourceTilemap in sourceTilemaps)
@@ -137,9 +139,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             }
         }
 
+        public static GameObject GetTilemapsRoot(GameObject gameObject)
+        {
+            return gameObject.transform.Find(GeneratorConstants.TilemapsRootName)?.gameObject ?? gameObject;
+        }
+
         public static List<Tilemap> GetTilemaps(GameObject gameObject)
         {
-            var tilemapsHolder = gameObject.transform.Find(GeneratorConstants.TilemapsRootName)?.gameObject ?? gameObject;
+            var tilemapsHolder = GetTilemapsRoot(gameObject);
             var tilemaps = new List<Tilemap>();
 
             foreach (var childTransform in tilemapsHolder.transform.Cast<Transform>())

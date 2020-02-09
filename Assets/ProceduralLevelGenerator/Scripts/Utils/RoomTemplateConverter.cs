@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -19,10 +21,33 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
                 DestroyImmediate(grid, true);
             }
 
+            if (gameObject.GetComponent<RoomTemplate>() == null)
+            {
+                gameObject.AddComponent<RoomTemplate>();
+            }
+
+            if (transform.Find(GeneratorConstants.TilemapsRootName) != null)
+            {
+                var oldRoot = transform.Find(GeneratorConstants.TilemapsRootName).gameObject;
+
+                foreach (var childTransform in oldRoot.transform.Cast<Transform>().ToList())
+                {
+                    var tilemap = childTransform.GetComponent<Tilemap>();
+
+                    if (tilemap != null)
+                    {
+                        childTransform.parent = transform;
+                    }
+                }
+
+                DestroyImmediate(oldRoot);
+            }
+
             // Create tilemaps root
             var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
             tilemapsRoot.AddComponent<Grid>();
             tilemapsRoot.transform.parent = gameObject.transform;
+            var tilemaps = new List<Tilemap>();
 
             foreach (var childTransform in transform.Cast<Transform>().ToList())
             {
@@ -30,8 +55,23 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 
                 if (tilemap != null)
                 {
-                    childTransform.parent = tilemapsRoot.transform;
+                    tilemaps.Add(tilemap);
+                    var tilemapRenderer = childTransform.GetComponent<TilemapRenderer>();
+
+                    if (tilemap.name == "Floor")
+                    {
+                        tilemapRenderer.sortingOrder = 0;
+                    }
+                    if (tilemap.name == "Walls")
+                    {
+                        tilemapRenderer.sortingOrder = 1;
+                    }
                 }
+            }
+
+            foreach (var tilemap in tilemaps.OrderBy(x => x.GetComponent<TilemapRenderer>().sortingOrder))
+            {
+                tilemap.transform.parent = tilemapsRoot.transform;
             }
 
             // Fix positions

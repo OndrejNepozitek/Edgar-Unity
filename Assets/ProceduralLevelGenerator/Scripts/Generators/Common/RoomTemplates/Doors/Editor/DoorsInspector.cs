@@ -29,9 +29,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		public void OnEnable()
 		{
-			doorsLength = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DoorLength));
-			distanceFromCorners = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DistanceFromCorners));
-			doorsList = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DoorsList));
+			doorsLength = serializedObject.FindProperty(nameof(Doors.DoorLength));
+			distanceFromCorners = serializedObject.FindProperty(nameof(Doors.DistanceFromCorners));
+			doorsList = serializedObject.FindProperty(nameof(Doors.DoorsList));
 			addSpecificDoorPositions = false;
 			hasFirstPoint = false;
 			hasSecondPoint = false;
@@ -41,7 +41,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		public void OnSceneGUI()
 		{
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+			var doors = target as Doors;
 
 			switch (doors.SelectedMode)
 			{
@@ -57,7 +57,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		private void DrawOverlap()
 		{
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+			var doors = target as Doors;
 			var go = doors.transform.gameObject;
 
 			try
@@ -70,8 +70,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 						continue;
 
 					var doorLine = line.Shrink(doors.DistanceFromCorners);
+                    var from = doorLine.From;
+                    var to = doorLine.To;
 
-					DrawOutline(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3(), Color.red);
+					DrawOutline(new Vector3(Math.Min(from.X, to.X), Math.Min(from.Y, to.Y)), new Vector3(Math.Max(from.X, to.X), Math.Max(from.Y, to.Y)), Color.red);
 				}
 			}
 			catch (ArgumentException)
@@ -180,8 +182,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 		}
 
 		private void DrawOutline(Vector3 from, Vector3 to, Color outlineColor, bool drawDiagonal = true)
-		{
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+        {
+            var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
 
 			from = from + doors.transform.position;
 			to = to + doors.transform.position;
@@ -213,11 +215,23 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 				to = from + new Vector3(1, 1);
 			}
 
+            var offset = 0.05f;
+            if (from.x <= to.x - 1)
+            {
+                from += new Vector3(offset, offset);
+                to += new Vector3(-offset, -offset);
+            }
+            else
+            {
+				from += new Vector3(offset, -offset);
+				to += new Vector3(-offset, offset);
+			}
+
 			Handles.DrawSolidRectangleWithOutline(new Rect(from, to - from), Color.clear, outlineColor);
 
 			if (drawDiagonal)
 			{
-				DrawDiagonal(from, to, outlineColor);
+                DrawDiagonal(from, to, outlineColor);
 			}
 		}
 

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using GeneralAlgorithms.Algorithms.Common;
 using GeneralAlgorithms.DataStructures.Common;
@@ -128,9 +130,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
         /// </summary>
         /// <param name="tilemaps"></param>
         /// <returns></returns>
-        public GridPolygon GetPolygonFromTilemaps(IEnumerable<Tilemap> tilemaps)
+        public GridPolygon GetPolygonFromTilemaps(ICollection<Tilemap> tilemaps)
         {
-            var usedTiles = GetUsedTiles(tilemaps);
+            var usedTiles = GetUsedTiles(GeneratorUtils.GetTilemapsForOutline(tilemaps));
 
             return GetPolygonFromTiles(usedTiles);
         }
@@ -175,7 +177,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
                 allowedTransformations = new List<Transformation> {Transformation.Identity};
             }
 
-            var polygon = GetPolygonFromTilemaps(roomTemplatePrefab.GetComponentsInChildren<Tilemap>());
+            // TODO: weird to call PostProcessUtils
+            var polygon = GetPolygonFromTilemaps(PostProcessUtils.GetTilemaps(roomTemplatePrefab));
             var doors = roomTemplatePrefab.GetComponent<Doors>();
 
             if (doors == null)
