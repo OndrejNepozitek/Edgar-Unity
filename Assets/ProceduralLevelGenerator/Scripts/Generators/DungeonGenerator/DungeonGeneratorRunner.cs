@@ -12,13 +12,13 @@ using Random = System.Random;
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
 {
     // TODO: is this name ok?
-    public class DungeonGeneratorRunner : MonoBehaviour, IGeneratorRunner
+    public class DungeonGeneratorRunner : GeneratorRunnerBase<DungeonGeneratorPayload>, IGeneratorRunner
     {
         [Expandable]
         public FixedLevelGraphConfig FixedLevelGraphConfig;
 
         [Expandable]
-        public DungeonGeneratorConfig Config;
+        public DungeonGeneratorConfig GeneratorConfig;
 
         [Expandable]
         public OtherConfig OtherConfig;
@@ -29,8 +29,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
         [ExpandableScriptableObject(CanFold = false)]
         public List<PipelineItem> CustomPostProcessTasks;
 
-        private readonly Random seedsGenerator = new Random();
-
         public void Start()
         {
             if (OtherConfig.GenerateOnStart)
@@ -39,29 +37,21 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             }
         }
 
-        public DungeonGeneratorPayload Generate()
+        public override DungeonGeneratorPayload Generate()
         {
             Debug.Log("--- Generator started ---");
             var stopwatch = new Stopwatch();
             stopwatch.Start();
-            
-            var payload = new DungeonGeneratorPayload()
-            {
-                Random = GetRandomNumbersGenerator(),
-            };
 
-            var pipelineRunner = new PipelineRunner();
+            var payload = InitializePayload();
+
             var pipelineItems = new List<PipelineItem>();
 
             // Add input setup
-            var fixedInputPipelineConfig = ScriptableObject.CreateInstance<FixedLevelGraphPipelineConfig>();
-            fixedInputPipelineConfig.Config = FixedLevelGraphConfig;
-            pipelineItems.Add(fixedInputPipelineConfig);
+            pipelineItems.Add(GetInputTask());
 
             // Add dungeon generator
-            var dungeonGeneratorPipelineConfig = ScriptableObject.CreateInstance<DungeonGeneratorPipelineConfig>();
-            dungeonGeneratorPipelineConfig.Config = Config;
-            pipelineItems.Add(dungeonGeneratorPipelineConfig);
+            pipelineItems.Add(GetGeneratorTask());
 
             // Add post process
             var postProcessPipelineConfig = ScriptableObject.CreateInstance<PostProcessPipelineConfig>();
@@ -77,19 +67,39 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
                 }
             }
 
-            pipelineRunner.Run(pipelineItems, payload);
+            PipelineRunner.Run(pipelineItems, payload);
             
             Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
 
             return payload;
         }
 
-        protected virtual Random GetRandomNumbersGenerator()
+        private PipelineItem GetInputTask()
         {
-            var seed = OtherConfig.UseRandomSeed ? seedsGenerator.Next() : OtherConfig.RandomGeneratorSeed;
-            Debug.Log($"Random generator seed: {seed}");
+            var fixedInputPipelineConfig = ScriptableObject.CreateInstance<FixedLevelGraphPipelineConfig>();
+            fixedInputPipelineConfig.Config = FixedLevelGraphConfig;
 
-            return new Random(seed);
+            return fixedInputPipelineConfig;
+        }
+
+        private PipelineItem GetGeneratorTask()
+        {
+            var dungeonGeneratorPipelineConfig = ScriptableObject.CreateInstance<DungeonGeneratorPipelineConfig>();
+            dungeonGeneratorPipelineConfig.Config = GeneratorConfig;
+            return dungeonGeneratorPipelineConfig;
+        }
+
+        public void ExportMapDescription()
+        {
+            ExportMapDescription(GetInputTask());
+        }
+
+        protected override DungeonGeneratorPayload InitializePayload()
+        {
+            return new DungeonGeneratorPayload()
+            {
+                Random = GetRandomNumbersGenerator(OtherConfig.UseRandomSeed, OtherConfig.RandomGeneratorSeed),
+            };
         }
 
         object IGeneratorRunner.Generate()
