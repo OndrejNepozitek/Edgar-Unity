@@ -6,7 +6,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Co
     [Serializable]
     public class PostProcessConfig
     {
-        public bool CombineTilemaps = true;
+        public bool InitializeSharedTilemaps = true;
+
+        public bool CopyTilesToSharedTilemaps = true;
 
         public bool CenterGrid = true;
 

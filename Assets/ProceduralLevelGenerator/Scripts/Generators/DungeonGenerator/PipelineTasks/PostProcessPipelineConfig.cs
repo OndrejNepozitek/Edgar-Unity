@@ -20,10 +20,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
         {
             var config = Config.Config;
 
-            if (config.CombineTilemaps)
+            if (config.InitializeSharedTilemaps)
             {
                 var tilemapLayersHandler = (ITilemapLayersHandler) config.TilemapLayersHandlerBase ?? new DungeonTilemapLayersHandler();
-                PostProcessUtils.CombineTilemaps(Payload.GeneratedLevel, tilemapLayersHandler);
+                PostProcessUtils.InitializeSharedTilemaps(Payload.GeneratedLevel, tilemapLayersHandler);
+            }
+
+            if (config.CopyTilesToSharedTilemaps)
+            {
+                PostProcessUtils.CopyTilesToSharedTilemaps(Payload.GeneratedLevel);
             }
 
             if (config.CenterGrid)

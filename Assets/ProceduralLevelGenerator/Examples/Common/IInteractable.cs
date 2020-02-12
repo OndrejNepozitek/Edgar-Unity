@@ -7,5 +7,7 @@
         void Interact();
 
         void EndInteract();
+
+        bool IsInteractionAllowed();
     }
 }

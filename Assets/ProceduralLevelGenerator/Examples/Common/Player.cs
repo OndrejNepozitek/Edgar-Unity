@@ -6,11 +6,16 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
     {
         private IInteractable interactableInFocus;
 
+        public void Update()
+        {
+            interactableInFocus?.Interact();
+        }
+
         public void OnTriggerEnter2D(Collider2D collider)
         {
             var interactable = collider.GetComponent<IInteractable>();
 
-            if (interactable == null)
+            if (interactable == null || !interactable.IsInteractionAllowed())
             {
                 return;
             }
@@ -29,11 +34,6 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
                 interactableInFocus?.EndInteract();
                 interactableInFocus = null;
             }
-        }
-
-        public void OnTriggerStay2D(Collider2D collider)
-        {
-            interactableInFocus?.Interact();
         }
     }
 }

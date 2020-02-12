@@ -32,8 +32,6 @@ namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 
 		private EditorMode editorMode = EditorMode.Drag;
 
-		private int selectedToolbar = 0;
-
 		private int currentPickerWindow;
 
 		private bool doNotDrag;

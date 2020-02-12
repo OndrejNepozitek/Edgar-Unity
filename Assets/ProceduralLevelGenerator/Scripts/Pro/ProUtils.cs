@@ -100,8 +100,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pro
         public static void CopyTilesToSharedTilemaps(GeneratedLevel level, RoomInstance roomInstance)
         {
             var tilemapsRoot = level.RootGameObject.transform.Find(GeneratorConstants.TilemapsRootName).gameObject;
-            var destinationTilemaps = PostProcessUtils.GetTilemaps(tilemapsRoot);
-            var sourceTilemaps = PostProcessUtils.GetTilemaps(roomInstance.RoomTemplateInstance);
+            var destinationTilemaps = RoomTemplateUtils.GetTilemaps(tilemapsRoot);
+            var sourceTilemaps = RoomTemplateUtils.GetTilemaps(roomInstance.RoomTemplateInstance);
 
             PostProcessUtils.CopyTiles(sourceTilemaps, destinationTilemaps, roomInstance.Position);
         }

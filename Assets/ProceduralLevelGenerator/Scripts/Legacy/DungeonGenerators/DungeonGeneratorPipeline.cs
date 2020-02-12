@@ -59,11 +59,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators
 
         public int LevelsToPrecompute = 20;
 
-        [ExpandableNotFoldable]
+        [ExpandableScriptableObject(CanFold = false)]
         public AbstractPayloadInitializer PayloadInitializer;
 
         [HideInInspector]
-        [ExpandableNotFoldable]
+        [ExpandableScriptableObject(CanFold = false)]
         public List<PipelineItem> PipelineItems;
 
         public AbstractPrecomputedLevelsHandler PrecomputedLevelsHandler;

@@ -4,25 +4,14 @@ using UnityEngine.UI;
 
 namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
 {
-    public class Example1Door : MonoBehaviour, IInteractable
+    public class Example1Door : InteractableBase
     {
-        private Text interactionText;
-
-        public void Start()
+        public override void BeginInteract()
         {
-            interactionText = GameObject.Find("Canvas").transform.Find("Interaction")?.GetComponent<Text>();
+            ShowText("Press E to open doors");
         }
 
-        public void BeginInteract()
-        {
-            if (interactionText != null)
-            {
-                interactionText.gameObject.SetActive(true);
-                interactionText.text = "Press E to open doors";
-            }
-        }
-
-        public void Interact()
+        public override void Interact()
         {
             if (Input.GetKey(KeyCode.E))
             {
@@ -30,12 +19,9 @@ namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
             }
         }
 
-        public void EndInteract()
+        public override void EndInteract()
         {
-            if (interactionText != null)
-            {
-                interactionText.gameObject.SetActive(false);
-            }
+            HideText();
         }
     }
 }

@@ -25,13 +25,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		private bool hasSecondPoint;
 
-		private readonly RoomShapesLoader roomShapesLoader = new RoomShapesLoader();
-
-		public void OnEnable()
+        public void OnEnable()
 		{
-			doorsLength = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DoorLength));
-			distanceFromCorners = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DistanceFromCorners));
-			doorsList = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DoorsList));
+			doorsLength = serializedObject.FindProperty(nameof(Doors.DoorLength));
+			distanceFromCorners = serializedObject.FindProperty(nameof(Doors.DistanceFromCorners));
+			doorsList = serializedObject.FindProperty(nameof(Doors.DoorsList));
 			addSpecificDoorPositions = false;
 			hasFirstPoint = false;
 			hasSecondPoint = false;
@@ -41,7 +39,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		public void OnSceneGUI()
 		{
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+			var doors = target as Doors;
 
 			switch (doors.SelectedMode)
 			{
@@ -57,12 +55,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		private void DrawOverlap()
 		{
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+			var doors = target as Doors;
 			var go = doors.transform.gameObject;
 
 			try
 			{
-				var polygon = roomShapesLoader.GetPolygonFromTilemaps(go.GetComponentsInChildren<Tilemap>());
+				var polygon = RoomTemplatesLoader.GetPolygonFromTilemaps(go.GetComponentsInChildren<Tilemap>());
 
 				foreach (var line in polygon.GetLines())
 				{
@@ -70,8 +68,10 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 						continue;
 
 					var doorLine = line.Shrink(doors.DistanceFromCorners);
+                    var from = doorLine.From;
+                    var to = doorLine.To;
 
-					DrawOutline(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3(), Color.red);
+					DrawOutline(new Vector3(Math.Min(from.X, to.X), Math.Min(from.Y, to.Y)), new Vector3(Math.Max(from.X, to.X), Math.Max(from.Y, to.Y)), Color.red);
 				}
 			}
 			catch (ArgumentException)
@@ -180,8 +180,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 		}
 
 		private void DrawOutline(Vector3 from, Vector3 to, Color outlineColor, bool drawDiagonal = true)
-		{
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+        {
+            var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
 
 			from = from + doors.transform.position;
 			to = to + doors.transform.position;
@@ -213,11 +213,23 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 				to = from + new Vector3(1, 1);
 			}
 
+            var offset = 0.05f; 
+            if (from.x <= to.x - 1)
+            {
+                from += new Vector3(offset, offset);
+                to += new Vector3(-offset, -offset);
+            }
+            else
+            {
+				from += new Vector3(offset, -offset);
+				to += new Vector3(-offset, offset);
+			}
+
 			Handles.DrawSolidRectangleWithOutline(new Rect(from, to - from), Color.clear, outlineColor);
 
 			if (drawDiagonal)
 			{
-				DrawDiagonal(from, to, outlineColor);
+                DrawDiagonal(from, to, outlineColor);
 			}
 		}
 
@@ -239,13 +251,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 		{
 			serializedObject.Update();
 
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+			var doors = target as Doors;
 
-			var selectedModeProp = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.SelectedMode));
+			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
 			selectedModeProp.intValue = GUILayout.SelectionGrid(doors.SelectedMode, new[] { "Simple mode", "Specific positions"}, 2);
-			var shouldRedraw = false;
 
-			EditorGUILayout.Space();
+            EditorGUILayout.Space();
 
 			if (selectedModeProp.intValue == 0)
 			{

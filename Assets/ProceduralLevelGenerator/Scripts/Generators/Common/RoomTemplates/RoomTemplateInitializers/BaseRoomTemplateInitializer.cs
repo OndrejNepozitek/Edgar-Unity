@@ -17,6 +17,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 PostProcessUtils.Destroy(child.gameObject);
             }
 
+            // Add room template component
+            if (gameObject.GetComponent<RoomTemplate>() == null)
+            {
+                gameObject.AddComponent<RoomTemplate>();
+            }
+
             // Create tilemaps root
             var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
             tilemapsRoot.transform.parent = gameObject.transform;

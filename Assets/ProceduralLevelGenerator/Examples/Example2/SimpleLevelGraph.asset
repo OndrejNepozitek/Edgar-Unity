@@ -25,9 +25,7 @@ MonoBehaviour:
   ConnectionType: Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph.Connection
   CorridorIndividualRoomTemplates:
   - {fileID: 3073230880973326234, guid: 268c37e38b679e24fa4843b18c520a5b, type: 3}
-  - {fileID: 8803820720606171561, guid: 51dbff7213032ce4a8130b7998e6e916, type: 3}
   - {fileID: 4740616030248318969, guid: 95499e6c3795a054091b659f0e54fc61, type: 3}
-  - {fileID: 2919116758800987119, guid: e1977307219417e4fa3dde5ca48be1f8, type: 3}
   DefaultIndividualRoomTemplates:
   - {fileID: 973631761240943980, guid: f5ff56d9ad8040b4e88db15e77975252, type: 3}
   - {fileID: 51494900918682340, guid: 04df2001d42e0b74796f82593c442b31, type: 3}

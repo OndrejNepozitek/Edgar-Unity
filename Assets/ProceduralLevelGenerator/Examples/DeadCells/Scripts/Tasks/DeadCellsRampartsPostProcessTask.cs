@@ -20,14 +20,11 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 
         public bool DisableOther3 = true;
 
-        private RoomShapesLoader roomShapesLoader;
-
         private Tilemap wallsTilemap;
 
         protected override void Run(GeneratedLevel level, LevelDescription levelDescription)
         {
-            roomShapesLoader = new RoomShapesLoader();
-            wallsTilemap = PostProcessUtils.GetTilemaps(level.RootGameObject).Single(x => x.name == "Walls"); // TODO: add some helper for getting tilemaps
+            wallsTilemap = RoomTemplateUtils.GetTilemaps(level.RootGameObject).Single(x => x.name == "Walls"); // TODO: add some helper for getting tilemaps
 
             if (AddWalls)
             {
@@ -39,7 +36,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 
             if (DisableOther3)
             {
-                var other3Tilemap = PostProcessUtils.GetTilemaps(level.RootGameObject).Single(x => x.name == "Other 3");
+                var other3Tilemap = RoomTemplateUtils.GetTilemaps(level.RootGameObject).Single(x => x.name == "Other 3");
                 other3Tilemap.gameObject.SetActive(false);
             }
         }
@@ -48,7 +45,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
         {
             var roomTemplatePrefab = roomInstance.RoomTemplatePrefab;
             var tilemaps = roomTemplatePrefab.GetComponentsInChildren<Tilemap>().Where(x => x.name != "Other 3").ToList();
-            var usedTiles = roomShapesLoader.GetUsedTiles(tilemaps).Select(x => x.ToUnityIntVector3()).ToList(); // TODO: make better
+            var usedTiles = RoomTemplatesLoader.GetUsedTiles(tilemaps).Select(x => x.ToUnityIntVector3()).ToList(); // TODO: make better
             var minY = usedTiles.Min(x => x.y);
 
             foreach (var pos in usedTiles.Where(x => x.y == minY))

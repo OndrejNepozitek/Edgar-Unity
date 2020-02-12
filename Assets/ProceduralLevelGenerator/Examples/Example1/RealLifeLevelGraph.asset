@@ -28,7 +28,6 @@ MonoBehaviour:
   - {fileID: 114421435420765046}
   - {fileID: 114538089783873430}
   - {fileID: 114376701703822016}
-  ConnectionType: Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph.Connection
   CorridorIndividualRoomTemplates:
   - {fileID: 8411853151689980096, guid: a323bc56cc9e69d4481209cacf36e971, type: 3}
   - {fileID: 7228749262884133912, guid: d74061e19b8827440a615161e0d97668, type: 3}
@@ -61,6 +60,7 @@ MonoBehaviour:
     Name: Special rooms
     serializedGuid: 7126923393c7b544ab21f3193d3633c9
   RoomType: Assets.ProceduralLevelGenerator.Scripts.Data.Graphs.ExtendedRoom
+  ConnectionType: Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph.Connection
 --- !u!114 &114014894578984330
 MonoBehaviour:
   m_ObjectHideFlags: 0

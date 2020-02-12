@@ -8,9 +8,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators.Edito
 	public class DungeonGeneratorPipelineInspector : UnityEditor.Editor
 	{
 		private ReorderableList list;
-        private bool showBenchmarks = false;
 
-		private void OnEnable()
+        private void OnEnable()
 		{
 			list = new ReorderableList(serializedObject,
 				serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.PipelineItems)),
@@ -66,8 +65,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators.Edito
 
             EditorGUILayout.Space();
 
-            showBenchmarks = EditorGUILayout.Foldout(showBenchmarks, "Benchmarks");
-            if (showBenchmarks)
             {
                 EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.BenchmarkRuns)));
                 EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorPipeline.ScreenshotCamera)));

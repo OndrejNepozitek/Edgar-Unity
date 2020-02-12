@@ -13,6 +13,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
     /// </summary>
     public class ExpandableScriptableObjectAttribute : PropertyAttribute
     {
+        public bool CanFold { get; set; } = true;
     }
 
 #if UNITY_EDITOR
@@ -61,6 +62,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            var attr = (ExpandableScriptableObjectAttribute) attribute;
+
             var fieldRect = new Rect(position);
             fieldRect.height = EditorGUIUtility.singleLineHeight;
 
@@ -69,8 +72,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
             if (property.objectReferenceValue == null)
                 return;
 
-            property.isExpanded = EditorGUI.Foldout(fieldRect, property.isExpanded, GUIContent.none, true);
-            // property.isExpanded = true;
+            if (attr.CanFold)
+            {
+                property.isExpanded = EditorGUI.Foldout(fieldRect, property.isExpanded, GUIContent.none, true);
+            }
+            else
+            {
+                property.isExpanded = true;
+            }
 
             if (!property.isExpanded)
                 return;

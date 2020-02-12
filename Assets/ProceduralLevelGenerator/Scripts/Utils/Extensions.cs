@@ -7,6 +7,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
     public static class Extensions
     {
+        public static Vector3 ToVector3(this IntVector2 vector)
+        {
+            return new Vector3(vector.X, vector.Y);
+        }
+
         public static IntVector2 ToCustomIntVector2(this Vector2Int vector)
         {
             return new IntVector2(vector.x, vector.y);

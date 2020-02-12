@@ -35,7 +35,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
         [Expandable]
         public PostProcessConfig PostProcessConfig;
 
-        [ExpandableNotFoldable]
+        [ExpandableScriptableObject(CanFold = false)]
         public List<PipelineItem> CustomPostProcessTasks;
 
         private readonly Random seedsGenerator = new Random();

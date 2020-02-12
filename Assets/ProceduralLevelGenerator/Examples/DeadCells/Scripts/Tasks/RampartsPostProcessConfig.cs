@@ -19,7 +19,6 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
         where TPayload : class, IGraphBasedGeneratorPayload, IGeneratorPayload
     {
         private Tilemap wallsTilemap;
-        private readonly RoomShapesLoader roomShapesLoader = new RoomShapesLoader();
 
         public override void Process()
         {
@@ -37,7 +36,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
         {
             var roomTemplatePrefab = roomInstance.RoomTemplatePrefab;
             var tilemaps = roomTemplatePrefab.GetComponentsInChildren<Tilemap>().Where(x => x.name != "Other 3").ToList();
-            var usedTiles = roomShapesLoader.GetUsedTiles(tilemaps).Select(x => x.ToUnityIntVector3()); // TODO: make better
+            var usedTiles = RoomTemplatesLoader.GetUsedTiles(tilemaps).Select(x => x.ToUnityIntVector3()); // TODO: make better
             var minY = usedTiles.Min(x => x.y);
 
             foreach (var pos in usedTiles.Where(x => x.y == minY))

@@ -9,6 +9,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
     {
         private ReorderableList customPostProcessTasksList;
 
+        private static bool advancedFoldout = false;
+
         public void OnEnable()
         {
             customPostProcessTasksList = new ReorderableList(new UnityEditorInternal.ReorderableList(serializedObject,
@@ -42,7 +44,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Generator config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.Config)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.GeneratorConfig)));
 
             EditorGUILayout.Space();
 
@@ -54,6 +56,17 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
 
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.OtherConfig)));
+
+            EditorGUILayout.Space();
+
+            advancedFoldout = EditorGUILayout.Foldout(advancedFoldout, "Advanced");
+            if (advancedFoldout)
+            {
+                if (GUILayout.Button("Export map description"))
+                {
+                    dungeonGenerator.ExportMapDescription();
+                }
+            }
 
             EditorGUILayout.Space();
 
