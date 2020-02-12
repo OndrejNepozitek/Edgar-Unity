@@ -1,21 +1,21 @@
 ﻿using Assets.ProceduralLevelGenerator.Examples.Common;
+using Assets.ProceduralLevelGenerator.Examples.Example1.Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
+namespace Assets.ProceduralLevelGenerator.Examples.Example2.Scripts
 {
-    public class Example1Door : InteractableBase
+    public class Example2Exit : InteractableBase
     {
         public override void BeginInteract()
         {
-            ShowText("Press E to open doors");
+            ShowText("Press E to exit the level");
         }
 
         public override void Interact()
         {
             if (Input.GetKey(KeyCode.E))
             {
-                gameObject.SetActive(false);
+                Example2GameManager.Instance.LoadNextLevel();
             }
         }
 

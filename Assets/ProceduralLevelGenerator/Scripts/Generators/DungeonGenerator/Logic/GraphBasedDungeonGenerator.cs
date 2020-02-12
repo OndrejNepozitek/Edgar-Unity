@@ -41,9 +41,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Lo
                 }
             }
 
-            // TODO: destroy or destroy immediate?
             foreach (var child in rootGameObject.transform.Cast<Transform>().ToList()) {
-                Object.DestroyImmediate(child.gameObject);
+                child.transform.parent = null;
+                PostProcessUtils.Destroy(child.gameObject);
             }
 
             var mapDescription = levelDescription.GetMapDescription();
