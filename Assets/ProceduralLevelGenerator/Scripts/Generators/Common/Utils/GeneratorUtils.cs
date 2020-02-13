@@ -45,18 +45,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
                 roomTransformations.Transform(roomTemplateInstance, transformation);
 
                 // Compute correct room position
-                // We cannot directly use layoutRoom.Position because the dungeon moves
-                // all room shapes in a way that they are in the first plane quadrant
-                // and touch the xy axes. So we have to subtract the original lowest
-                // x and y coordinates.
-                var smallestX = layoutRoom.RoomTemplate.Shape.GetPoints().Min(x => x.X);
-                var smallestY = layoutRoom.RoomTemplate.Shape.GetPoints().Min(x => x.Y);
-                var correctPosition = layoutRoom.Position.ToUnityIntVector3() - new Vector3Int(smallestX, smallestY, 0);
-                roomTemplateInstance.transform.position = correctPosition;
-                // roomTemplateInstance.transform.position -= layoutCenter;
+                var position = layoutRoom.Position.ToUnityIntVector3();
+                roomTemplateInstance.transform.position = position;
 
                 var connection = layoutRoom.IsCorridor ? corridorToConnectionMapping[layoutRoom.Node] : null;
-                var roomInfo = new RoomInstance(layoutRoom.Node, connection, roomTemplatePrefab, roomTemplateInstance, correctPosition, layoutRoom,
+                var roomInfo = new RoomInstance(layoutRoom.Node, connection, roomTemplatePrefab, roomTemplateInstance, position, layoutRoom,
                     layoutRoom.IsCorridor);
 
                 layoutData.Add(layoutRoom.Node, roomInfo);

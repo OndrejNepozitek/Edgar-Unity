@@ -61,12 +61,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                     doorLines.Add(doorLine);
                 }
 
-                return new SpecificPositionsMode(doorLines);
+                return new ManualDoorMode(doorLines);
             }
 
             if (SelectedMode == 0)
             {
-                return new OverlapMode(DoorLength - 1, DistanceFromCorners);
+                return new SimpleDoorMode(DoorLength - 1, DistanceFromCorners);
             }
 
             throw new ArgumentException("Invalid door mode selected");
