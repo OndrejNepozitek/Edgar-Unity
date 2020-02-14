@@ -2,6 +2,9 @@
 
 namespace Assets.ProceduralLevelGenerator.Examples.Common
 {
+    /// <summary>
+    /// A simple script that should be attached to Camera GameObject and follows the player by moving the camera.
+    /// </summary>
     public class PlayerFollow : MonoBehaviour
     {
         private Vector3 offset;
