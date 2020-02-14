@@ -62602,7 +62602,7 @@ MonoBehaviour:
   OtherConfig:
     UseRandomSeed: 1
     RandomGeneratorSeed: 0
-    GenerateOnStart: 1
+    GenerateOnStart: 0
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     CopyTilesToSharedTilemaps: 1
