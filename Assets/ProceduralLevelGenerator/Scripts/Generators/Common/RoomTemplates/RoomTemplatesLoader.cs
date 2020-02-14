@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
-using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.Algorithms.Common;
 using GeneralAlgorithms.DataStructures.Common;
@@ -160,7 +159,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
             if (doors == null)
             {
-                throw new DungeonGeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
+                throw new GeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
             }
 
             var doorMode = doors.GetDoorMode();
