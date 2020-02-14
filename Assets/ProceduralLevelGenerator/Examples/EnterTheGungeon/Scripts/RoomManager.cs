@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Levels;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
@@ -10,6 +11,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
     {
         public bool Cleared;
 
+        public bool Revealed;
+
         public List<GameObject> Doors = new List<GameObject>();
 
         public GameObject[] Enemies;
@@ -17,11 +20,20 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
         public bool EnemiesSpawned;
 
         public Collider2D FloorCollider;
+
         public GungeonRoom Room;
+
+        public RoomInstance RoomInstance;
 
         public void OnRoomEnter(Collider2D otherCollider)
         {
             GameManager.Instance.SetCurrentRoomType(Room.Type);
+
+            if (!Revealed && RoomInstance != null)
+            {
+                Revealed = true;
+                GameManager.Instance.RevealRoom(Room, RoomInstance);
+            }
 
             if (Cleared == false && EnemiesSpawned == false && ShouldSpawnEnemies())
             {
@@ -32,6 +44,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
                 StartCoroutine(WaitBeforeOpeningDoors());
             }
+
+
         }
 
         private void SpawnEnemies()

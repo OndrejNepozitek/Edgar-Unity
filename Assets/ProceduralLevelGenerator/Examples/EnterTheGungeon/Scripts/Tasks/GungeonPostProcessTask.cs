@@ -1,6 +1,7 @@
 ﻿using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Levels;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks;
+using Assets.ProceduralLevelGenerator.Scripts.Pro;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
@@ -12,22 +13,27 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
 
         protected override void Run(GeneratedLevel level, LevelDescription levelDescription)
         {
+            // TODO: improve later
+            level.RootGameObject.AddComponent<LevelInfo>();
+            level.RootGameObject.GetComponent<LevelInfo>().Level = level;
+
             foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
             {
                 var room = (GungeonRoom) roomInstance.Room;
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
 
-                // Get spawn position if Entrance
-                if (room.Type == GungeonRoomType.Entrance)
+                var roomManager = roomTemplateInstance.GetComponent<RoomManager>();
+
+                if (roomManager == null)
                 {
-                    var spawnPosition = roomTemplateInstance.transform.Find("SpawnPosition");
-                    var player = GameObject.FindWithTag("Player");
-                    player.transform.position = spawnPosition.position;
+                    roomManager = roomTemplateInstance.AddComponent<RoomManager>();
                 }
 
-                var roomManager = roomTemplateInstance.GetComponent<RoomManager>();
                 if (roomManager != null)
                 {
+                    // TODO: improve later
+                    roomManager.RoomInstance = roomInstance;
+
                     roomManager.Room = room;
                     roomManager.Enemies = Enemies;
 
@@ -46,6 +52,14 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
                             }
                         }
                     }
+                }
+
+                // Get spawn position if Entrance
+                if (room.Type == GungeonRoomType.Entrance)
+                {
+                    var spawnPosition = roomTemplateInstance.transform.Find("SpawnPosition");
+                    var player = GameObject.FindWithTag("Player");
+                    player.transform.position = spawnPosition.position;
                 }
             }
         }

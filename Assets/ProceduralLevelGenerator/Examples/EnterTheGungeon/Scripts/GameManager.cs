@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Levels;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator;
+using Assets.ProceduralLevelGenerator.Scripts.Pro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,16 +12,18 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance;
-        private GameObject canvas;
-
+        
         public int CurrentLevel;
+        public GungeonLevel[] Levels;
+        public float LevelStartDelay = 2f;
+        public FogOfWar FogOfWar;
+        
         private GungeonRoomType currentRoomType;
 
+        private GameObject canvas;
         private DungeonGeneratorRunner dungeonGenerator;
         private GameObject levelImage;
         private Text levelInfoText;
-        public GungeonLevel[] Levels;
-        public float LevelStartDelay = 2f;
         private Text levelText;
 
         public void Awake()
@@ -36,6 +40,30 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             DontDestroyOnLoad(gameObject);
 
             InitLevel();
+        }
+
+        public void RevealRoom(GungeonRoom room, RoomInstance roomInstance)
+        {
+            FogOfWar.VisionGrid.AddPolygon(GetPolygon(roomInstance), (Vector2Int) roomInstance.Position, 1);
+
+            foreach (var doorInstance in roomInstance.Doors)
+            {
+                var neighbor = doorInstance.ConnectedRoom;
+
+                if (neighbor.IsCorridor)
+                {
+                    FogOfWar.VisionGrid.AddPolygon(GetPolygon(neighbor), (Vector2Int) neighbor.Position, 1);
+                }
+            }
+        }
+
+        private Polygon2D GetPolygon(RoomInstance roomInstance)
+        {
+            var tilemaps = RoomTemplateUtils.GetTilemaps(roomInstance.RoomTemplateInstance);
+            var outlineTilemaps = RoomTemplateUtils.GetTilemapsForOutline(tilemaps);
+            var usedTiles = RoomTemplatesLoaderTest.GetUsedTiles(outlineTilemaps);
+            var newPolygon = RoomTemplatesLoader.GetPolygonFromTiles(usedTiles);
+            return new Polygon2D(newPolygon);
         }
 
         private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
