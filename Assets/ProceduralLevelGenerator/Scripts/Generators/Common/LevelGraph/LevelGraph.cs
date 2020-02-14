@@ -23,9 +23,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph
         /// <summary>
         ///     Sets of corridor room templates.
         /// </summary>
-        /// <remarks>
-        ///     This functionality is not included in GUI because it is not ready.
-        /// </remarks>
         public List<RoomTemplatesSet> CorridorRoomTemplateSets = new List<RoomTemplatesSet>();
 
         /// <summary>
@@ -36,9 +33,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph
         /// <summary>
         ///     Sets of default room templates.
         /// </summary>
-        /// <remarks>
-        ///     This functionality is not included in GUI because it is not ready.
-        /// </remarks>
         public List<RoomTemplatesSet> DefaultRoomTemplateSets = new List<RoomTemplatesSet>();
 
         /// <summary>
@@ -46,11 +40,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph
         /// </summary>
         [HideInInspector]
         public List<Room> Rooms = new List<Room>();
-
-        /// <summary>
-        ///     List of rooms groups.
-        /// </summary>
-        public List<RoomsGroup> RoomsGroups = new List<RoomsGroup>();
 
         public string RoomType = typeof(Room).FullName;
 

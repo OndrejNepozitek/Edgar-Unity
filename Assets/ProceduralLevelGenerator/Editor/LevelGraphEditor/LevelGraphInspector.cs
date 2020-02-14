@@ -16,27 +16,39 @@ namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 		{
 			serializedObject.Update();
 
-			defaultRoomTemplatesFoldout = EditorGUILayout.Foldout(defaultRoomTemplatesFoldout, "Default room templates");
+            var foldoutStyle = new GUIStyle(EditorStyles.foldout) {fontStyle = FontStyle.Bold};
+
+            defaultRoomTemplatesFoldout = EditorGUILayout.Foldout(defaultRoomTemplatesFoldout, "Default room templates", foldoutStyle);
 
 			if (defaultRoomTemplatesFoldout)
 			{
 				EditorGUI.indentLevel++;
-				// EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.DefaultRoomTemplateSets)), true);
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.DefaultIndividualRoomTemplates)), true);
+                EditorGUILayout.PropertyField(
+                    serializedObject.FindProperty(nameof(LevelGraph.DefaultIndividualRoomTemplates)),
+                    new GUIContent("Room Templates"),
+                    true);
+                EditorGUILayout.PropertyField(
+                    serializedObject.FindProperty(nameof(LevelGraph.DefaultRoomTemplateSets)),
+                    new GUIContent("Room Templates Sets"),
+                    true);
 				EditorGUI.indentLevel--;
 			}
 
-			corridorRoomTemplatesFoldout = EditorGUILayout.Foldout(corridorRoomTemplatesFoldout, "Corridor room templates");
+			corridorRoomTemplatesFoldout = EditorGUILayout.Foldout(corridorRoomTemplatesFoldout, "Corridor room templates", foldoutStyle);
 
 			if (corridorRoomTemplatesFoldout)
 			{
 				EditorGUI.indentLevel++;
-				// EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.CorridorRoomTemplateSets)), true);
-				EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.CorridorIndividualRoomTemplates)), true);
+                EditorGUILayout.PropertyField(serializedObject.FindProperty(
+                    nameof(LevelGraph.CorridorIndividualRoomTemplates)),
+                    new GUIContent("Room Templates"),
+                    true);
+                EditorGUILayout.PropertyField(
+                    serializedObject.FindProperty(nameof(LevelGraph.CorridorRoomTemplateSets)),
+                    new GUIContent("Room Templates Sets"),
+                    true);
 				EditorGUI.indentLevel--;
 			}
-
-			EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(LevelGraph.RoomsGroups)), true);
 
             if (GUILayout.Button("Open graph editor"))
 			{

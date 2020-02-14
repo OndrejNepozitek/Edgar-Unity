@@ -69,7 +69,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
 
         private List<GameObject> GetRoomTemplates(List<RoomTemplatesSet> roomTemplatesSets, List<GameObject> individualRoomTemplates)
         {
-            return individualRoomTemplates.ToList();
+            return individualRoomTemplates.Union(roomTemplatesSets.SelectMany(x => x.RoomTemplates)).ToList();
         }
 
         /// <summary>
@@ -78,12 +78,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
         /// <param name="room"></param>
         protected List<GameObject> GetRoomTemplates(Room room)
         {
-            // If the room is assigned to a Rooms group, use the room descriptions assigned to that group
-            if (room.RoomsGroupGuid != Guid.Empty)
-            {
-                return GetRoomsGroupRoomTemplates(room.RoomsGroupGuid);
-            }
-
             // Get assigned room templates
             var roomTemplatesSets = room.RoomTemplateSets;
             var individualRoomTemplates = room.IndividualRoomTemplates;
@@ -96,19 +90,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
             }
 
             return roomTemplates;
-        }
-
-        protected List<GameObject> GetRoomsGroupRoomTemplates(Guid roomsGroupGuid)
-        {
-            if (roomsGroupGuid == Guid.Empty)
-            {
-                throw new ArgumentException();
-            }
-
-            var roomTemplatesSets = config.LevelGraph.RoomsGroups.Single(x => x.Guid == roomsGroupGuid).RoomTemplateSets;
-            var individualRoomTemplates = config.LevelGraph.RoomsGroups.Single(x => x.Guid == roomsGroupGuid).IndividualRoomTemplates;
-
-            return GetRoomTemplates(roomTemplatesSets, individualRoomTemplates);
         }
     }
 }
