@@ -16,6 +16,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         {
             serializedObject.Update();
 
+            DrawDefaultInspector();
+
             var roomTemplate = (RoomTemplate) target;
 
             if (roomTemplate.IsOutlineValid())

@@ -39,7 +39,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Lo
             }
 
             var mapDescription = levelDescription.GetMapDescription();
-            var generator = new DungeonGenerator<Room>(mapDescription, new DungeonGeneratorConfiguration<Room>(mapDescription) {RoomsCanTouch = false});
+            var configuration = new DungeonGeneratorConfiguration<Room>(mapDescription)
+            {
+                RoomsCanTouch = false,
+                RepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride),
+            };
+
+            var generator = new DungeonGenerator<Room>(mapDescription, configuration);
             generator.InjectRandomGenerator(random);
 
             IMapLayout<Room> layout = null;

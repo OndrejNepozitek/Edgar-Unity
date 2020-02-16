@@ -153,6 +153,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 allowedTransformations = new List<Transformation> {Transformation.Identity};
             }
 
+            
+
             // TODO: weird to call PostProcessUtils
             var polygon = GetPolygonFromTilemaps(RoomTemplateUtils.GetTilemaps(roomTemplatePrefab));
             var doors = roomTemplatePrefab.GetComponent<Doors.Doors>();
@@ -162,8 +164,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 throw new GeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
             }
 
+            var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplate>();
+            var repeatMode = roomTemplateComponent?.RepeatMode ?? RepeatMode.AllowRepeat;
             var doorMode = doors.GetDoorMode();
-            var roomDescription = new MapGeneration.Core.MapDescriptions.RoomTemplate(polygon, doorMode, allowedTransformations);
+
+            var roomDescription = new MapGeneration.Core.MapDescriptions.RoomTemplate(polygon, doorMode, allowedTransformations, repeatMode);
 
             return roomDescription;
         }

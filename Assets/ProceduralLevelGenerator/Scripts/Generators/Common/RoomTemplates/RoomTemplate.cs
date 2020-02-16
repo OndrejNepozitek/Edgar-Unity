@@ -1,17 +1,17 @@
 ﻿using System;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.DataStructures.Polygons;
-using UnityEditor;
+using MapGeneration.Interfaces.Core.MapDescriptions;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates
 {
-    [ExecuteInEditMode]
     public class RoomTemplate : MonoBehaviour
     {
+        public RepeatMode RepeatMode = RepeatMode.AllowRepeat;
+
         public bool IsOutlineValid()
         {
             return GetOutline() != null;
