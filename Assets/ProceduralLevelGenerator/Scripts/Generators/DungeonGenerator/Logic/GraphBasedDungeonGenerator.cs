@@ -1,21 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
-using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
 using MapGeneration.Interfaces.Core.MapLayouts;
 using UnityEngine;
-using Object = UnityEngine.Object;
-using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 using Random = System.Random;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Logic
@@ -47,7 +39,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Lo
             }
 
             var mapDescription = levelDescription.GetMapDescription();
-            var generator = new DungeonGenerator<Room>(mapDescription, new DungeonGeneratorConfiguration<Room>(mapDescription) {RoomsCanTouch = false});
+            var configuration = new DungeonGeneratorConfiguration<Room>(mapDescription)
+            {
+                RoomsCanTouch = false,
+                RepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride),
+            };
+
+            var generator = new DungeonGenerator<Room>(mapDescription, configuration);
             generator.InjectRandomGenerator(random);
 
             IMapLayout<Room> layout = null;

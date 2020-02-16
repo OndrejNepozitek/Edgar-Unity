@@ -11,13 +11,11 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
         public void Awake()
         {
-            Debug.Log("dasd");
-
             if (Instance == null)
             {
                 Instance = this as TGameManager;
             }
-            else if (Instance != this)
+            else if (!ReferenceEquals(Instance, this))
             {
                 Destroy(gameObject);
                 return;

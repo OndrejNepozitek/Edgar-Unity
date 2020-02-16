@@ -7,17 +7,22 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph
     /// <summary>
     ///     Represents a room in a level graph.
     /// </summary>
-    public class Room : ScriptableObject, ISerializationCallbackReceiver
+    public class Room : ScriptableObject
     {
+        /// <summary>
+        ///     Name of the room.
+        /// </summary>
+        public string Name = "Room";
+
         /// <summary>
         ///     Room templates assigned to the room.
         /// </summary>
         public List<GameObject> IndividualRoomTemplates = new List<GameObject>();
 
         /// <summary>
-        ///     Name of the room.
+        ///     Assigned room template sets.
         /// </summary>
-        public string Name = "Room";
+        public List<RoomTemplatesSet> RoomTemplateSets = new List<RoomTemplatesSet>();
 
         /// <summary>
         ///     Position of the room in the graph editor.
@@ -28,51 +33,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph
         [HideInInspector]
         public Vector2 Position;
 
-        /// <summary>
-        ///     GUID of a rooms group if the room is assigned to any.
-        /// </summary>
-        [HideInInspector]
-        public Guid RoomsGroupGuid;
-
-        /// <summary>
-        ///     Assigned room template sets.
-        /// </summary>
-        /// <remarks>
-        ///     This functionality is not included in GUI because it is not ready.
-        /// </remarks>
-        [HideInInspector]
-        public List<RoomTemplatesSet> RoomTemplateSets = new List<RoomTemplatesSet>();
-
         public override string ToString()
         {
             return Name;
         }
-
-        // TODO: this should be done differently. It is not possible to handle every GUID manually.
-
-        #region Pretty ugly GUID handling
-
-        [HideInInspector]
-        [SerializeField]
-        private byte[] serializedGuid;
-
-        public void OnBeforeSerialize()
-        {
-            serializedGuid = RoomsGroupGuid.ToByteArray();
-        }
-
-        public void OnAfterDeserialize()
-        {
-            if (serializedGuid != null && serializedGuid.Length == 16)
-            {
-                RoomsGroupGuid = new Guid(serializedGuid);
-            }
-            else
-            {
-                RoomsGroupGuid = Guid.Empty;
-            }
-        }
-
-        #endregion
     }
 }

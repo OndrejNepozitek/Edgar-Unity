@@ -7,6 +7,7 @@ using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Do
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using MapGeneration.Interfaces.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapLayouts;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -95,6 +96,25 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             }
         }
 
+        public static RepeatMode? GetRepeatMode(RepeatModeOverride repeatModeOverride)
+        {
+            switch (repeatModeOverride)
+            {
+                case RepeatModeOverride.NoOverride:
+                    return null;
 
+                case RepeatModeOverride.AllowRepeat:
+                    return RepeatMode.AllowRepeat;
+
+                case RepeatModeOverride.NoImmediate:
+                    return RepeatMode.NoImmediate;
+
+                case RepeatModeOverride.NoRepeat:
+                    return RepeatMode.NoRepeat;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }

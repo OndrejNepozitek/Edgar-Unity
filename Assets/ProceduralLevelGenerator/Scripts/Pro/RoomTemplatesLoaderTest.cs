@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
-using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.Algorithms.Common;
 using GeneralAlgorithms.DataStructures.Common;
@@ -13,9 +13,7 @@ using UnityEngine.Tilemaps;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Pro
 {
-    /// <summary>
-    /// Class used to convert room templates to the representation used in the dungeon generator library.
-    /// </summary>
+    // TODO: remove later, is used for fog of war
     public static class RoomTemplatesLoaderTest
     {
         /// <summary>
@@ -182,7 +180,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pro
 
             if (doors == null)
             {
-                throw new DungeonGeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
+                throw new GeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
             }
 
             var doorMode = doors.GetDoorMode();

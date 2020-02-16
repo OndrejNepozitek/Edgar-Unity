@@ -3,7 +3,6 @@ using System.Collections;
 using System.Diagnostics;
 using Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Levels;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator;
-using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;

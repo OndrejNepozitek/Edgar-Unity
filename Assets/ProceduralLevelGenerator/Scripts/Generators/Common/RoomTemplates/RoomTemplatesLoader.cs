@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
-using Assets.ProceduralLevelGenerator.Scripts.Legacy.DungeonGenerators;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.Algorithms.Common;
 using GeneralAlgorithms.DataStructures.Common;
@@ -154,17 +153,22 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 allowedTransformations = new List<Transformation> {Transformation.Identity};
             }
 
+            
+
             // TODO: weird to call PostProcessUtils
             var polygon = GetPolygonFromTilemaps(RoomTemplateUtils.GetTilemaps(roomTemplatePrefab));
             var doors = roomTemplatePrefab.GetComponent<Doors.Doors>();
 
             if (doors == null)
             {
-                throw new DungeonGeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
+                throw new GeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
             }
 
+            var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplate>();
+            var repeatMode = roomTemplateComponent?.RepeatMode ?? RepeatMode.AllowRepeat;
             var doorMode = doors.GetDoorMode();
-            var roomDescription = new MapGeneration.Core.MapDescriptions.RoomTemplate(polygon, doorMode, allowedTransformations);
+
+            var roomDescription = new MapGeneration.Core.MapDescriptions.RoomTemplate(polygon, doorMode, allowedTransformations, repeatMode);
 
             return roomDescription;
         }

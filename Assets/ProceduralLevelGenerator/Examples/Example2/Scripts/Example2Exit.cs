@@ -1,9 +1,11 @@
 ﻿using Assets.ProceduralLevelGenerator.Examples.Common;
-using Assets.ProceduralLevelGenerator.Examples.Example1.Scripts;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.Example2.Scripts
 {
+    /// <summary>
+    /// Example implementation of an exit is activated by pressing E and loads the next level.
+    /// </summary>
     public class Example2Exit : InteractableBase
     {
         public override void BeginInteract()

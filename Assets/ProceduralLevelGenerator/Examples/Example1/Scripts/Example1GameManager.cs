@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
 {
+    /// <summary>
+    /// Example of a simple game manager that uses the DungeonGeneratorRunner to generate levels.
+    /// </summary>
     public class Example1GameManager : GameManagerBase<Example1GameManager>
     {
         public void Update()

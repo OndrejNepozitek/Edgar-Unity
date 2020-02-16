@@ -47,7 +47,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
             var generator = new PlatformersGenerator<Room>(mapDescription, new DungeonGeneratorConfiguration<Room>(mapDescription)
             {
                 RoomsCanTouch = false,
-                RoomShapesRepeatingConfig = GetRoomShapesRepeatingConfig(config.RepeatMode)
+                RepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride),
             });
             generator.InjectRandomGenerator(random);
 
@@ -67,36 +67,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
                 Iterations = generator.IterationsCount,
                 TimeTotal = generator.TimeTotal,
             });
-        }
-
-        private RoomShapesRepeatingConfig GetRoomShapesRepeatingConfig(RepeatMode repeatMode)
-        {
-            switch (repeatMode)
-            {
-                case RepeatMode.Allow:
-                    return new RoomShapesRepeatingConfig()
-                    {
-                        Type = RoomShapesRepeating.Any,
-                        ThrowIfNotSatisfied = false,
-                    };
-
-                case RepeatMode.NeighborsDifferent:
-                    return new RoomShapesRepeatingConfig()
-                    {
-                        Type = RoomShapesRepeating.NoNeighborsRepeats,
-                        ThrowIfNotSatisfied = false,
-                    };
-
-                case RepeatMode.AllRoomsDifferent:
-                    return new RoomShapesRepeatingConfig()
-                    {
-                        Type = RoomShapesRepeating.NoRepeats,
-                        ThrowIfNotSatisfied = false,
-                    };
-
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
     }
 }

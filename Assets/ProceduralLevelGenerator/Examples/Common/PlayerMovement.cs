@@ -2,21 +2,23 @@
 
 namespace Assets.ProceduralLevelGenerator.Examples.Common
 {
+    /// <summary>
+    /// A simple player movement script.
+    /// </summary>
     public class PlayerMovement : MonoBehaviour
     {
-        private Animator animator;
-
-        private Vector2 movement;
         public float MoveSpeed = 5f;
 
-        public Rigidbody2D Rigidbody;
-
+        private Animator animator;
+        private Vector2 movement;
+        private Rigidbody2D rigidbody;
         private SpriteRenderer spriteRenderer;
 
         public void Start()
         {
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
+            rigidbody = GetComponent<Rigidbody2D>();
         }
 
         public void Update()
@@ -24,8 +26,9 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
 
-            animator.SetBool("running", Rigidbody.velocity.magnitude > float.Epsilon);
+            animator.SetBool("running", rigidbody.velocity.magnitude > float.Epsilon);
 
+            // Flip sprite if needed
             var flipSprite = spriteRenderer.flipX ? movement.x > 0.01f : movement.x < -0.01f;
             if (flipSprite)
             {
@@ -35,7 +38,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
         public void FixedUpdate()
         {
-            Rigidbody.MovePosition(Rigidbody.position + movement.normalized * MoveSpeed * Time.fixedDeltaTime);
+            rigidbody.MovePosition(rigidbody.position + movement.normalized * MoveSpeed * Time.fixedDeltaTime);
         }
     }
 }
