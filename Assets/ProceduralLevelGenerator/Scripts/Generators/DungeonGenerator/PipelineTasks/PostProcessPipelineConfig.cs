@@ -22,7 +22,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
 
             if (config.InitializeSharedTilemaps)
             {
-                var tilemapLayersHandler = (ITilemapLayersHandler) config.TilemapLayersHandlerBase ?? new DungeonTilemapLayersHandler();
+                var tilemapLayersHandler = (ITilemapLayersHandler) config.TilemapLayersHandler ?? new DungeonTilemapLayersHandler();
                 PostProcessUtils.InitializeSharedTilemaps(Payload.GeneratedLevel, tilemapLayersHandler);
             }
 

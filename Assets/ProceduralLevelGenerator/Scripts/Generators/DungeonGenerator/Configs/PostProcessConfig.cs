@@ -16,6 +16,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Co
 
         public bool DisableRoomTemplatesColliders = true;
 
-        public TilemapLayersHandlerBase TilemapLayersHandlerBase;
+        public TilemapLayersHandlerBase TilemapLayersHandler;
     }
 }

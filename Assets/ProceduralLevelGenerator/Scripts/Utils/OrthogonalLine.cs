@@ -8,10 +8,20 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
     /// <summary>
     ///     Structure representing an orthogonal line in a integer grid.
     /// </summary>
+    [Serializable]
     public struct OrthogonalLine : IEquatable<OrthogonalLine>
     {
-        public readonly Vector3Int From;
-        public readonly Vector3Int To;
+        [SerializeField] private int fromX;
+        [SerializeField] private int fromY;
+        [SerializeField] private int fromZ;
+
+        [SerializeField] private int toX;
+        [SerializeField] private int toY;
+        [SerializeField] private int toZ;
+
+        public Vector3Int From => new Vector3Int(fromX, fromY, fromZ);
+
+        public Vector3Int To => new Vector3Int(toX, toY, toZ);
 
         /// <summary>
         ///     Returns number of points.
@@ -36,8 +46,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
                 throw new ArgumentException("z values must be equal");
             }
 
-            From = from;
-            To = to;
+            fromX = from.x;
+            fromY = from.y;
+            fromZ = from.z;
+
+            toX = to.x;
+            toY = to.y;
+            toZ = to.z;
+
+            Length = 0;
             Length = GetLength(From, To);
         }
 

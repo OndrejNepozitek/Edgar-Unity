@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapLayouts;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
@@ -49,17 +47,27 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
                 var position = layoutRoom.Position.ToUnityIntVector3();
                 roomTemplateInstance.transform.position = position;
 
-                var connection = layoutRoom.IsCorridor ? corridorToConnectionMapping[layoutRoom.Node] : null;
-                var roomInfo = new RoomInstance(layoutRoom.Node, connection, roomTemplatePrefab, roomTemplateInstance, position, layoutRoom,
-                    layoutRoom.IsCorridor);
+                // Compute outline polygon
+                var polygon = new Polygon2D(layoutRoom.Shape + layoutRoom.Position);
 
-                layoutData.Add(layoutRoom.Node, roomInfo);
+                var connection = layoutRoom.IsCorridor ? corridorToConnectionMapping[layoutRoom.Node] : null;
+                var roomInstance = new RoomInstance(layoutRoom.Node, layoutRoom.IsCorridor, connection, roomTemplatePrefab, roomTemplateInstance, position, polygon);
+
+                // Add room info to the GameObject
+                var roomInfo = roomTemplateInstance.AddComponent<RoomInfo>();
+                roomInfo.RoomInstance = roomInstance;
+
+                layoutData.Add(layoutRoom.Node, roomInstance);
             }
 
             foreach (var roomInstance in layoutData.Values)
             {
-                roomInstance.Doors = TransformDoorInfo(layoutRooms[roomInstance.Room].Doors, layoutData);
+                roomInstance.SetDoors(TransformDoorInfo(layoutRooms[roomInstance.Room].Doors, layoutData));
             }
+
+            // Add level info
+            var levelInfo = rootGameObject.AddComponent<LevelInfo>();
+            levelInfo.RoomInstances = layoutData.Values.ToList();
 
             return new GeneratedLevel(layoutData, layout, rootGameObject);
         }
@@ -69,7 +77,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             return doorInfos.Select(x => TransformDoorInfo(x, roomInstances[x.Node])).ToList();
         }
 
-        private static DoorInstance TransformDoorInfo(IDoorInfo<Room> doorInfo, RoomInstance connectedRoom)
+        private static DoorInstance TransformDoorInfo(IDoorInfo<Room> doorInfo, RoomInstance connectedRoomInstance)
         {
             var doorLine = doorInfo.DoorLine;
 
@@ -77,19 +85,19 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             {
                 case OrthogonalLine.Direction.Right:
                     return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
-                        connectedRoom);
+                        connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Left:
                     return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
-                        connectedRoom);
+                        connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Top:
                     return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
-                        connectedRoom);
+                        connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Bottom:
                     return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right,
-                        connectedRoom);
+                        connectedRoomInstance.Room, connectedRoomInstance);
 
                 default:
                     throw new ArgumentOutOfRangeException();
