@@ -54,7 +54,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
                 var roomInstance = new RoomInstance(layoutRoom.Node, layoutRoom.IsCorridor, connection, roomTemplatePrefab, roomTemplateInstance, position, polygon);
 
                 // Add room info to the GameObject
-                var roomInfo = roomTemplateInstance.AddComponent<RoomInfo>();
+                var roomInfo = roomTemplateInstance.GetComponent<RoomInfo>();
+
+                if (roomInfo != null)
+                {
+                    PostProcessUtils.Destroy(roomInfo);
+                }
+
+                roomInfo = roomTemplateInstance.AddComponent<RoomInfo>();
                 roomInfo.RoomInstance = roomInstance;
 
                 layoutData.Add(layoutRoom.Node, roomInstance);
@@ -66,7 +73,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             }
 
             // Add level info
-            var levelInfo = rootGameObject.AddComponent<LevelInfo>();
+            var levelInfo = rootGameObject.GetComponent<LevelInfo>();
+
+            if (levelInfo != null)
+            {
+                PostProcessUtils.Destroy(levelInfo);
+            }
+
+            levelInfo = rootGameObject.AddComponent<LevelInfo>();
             levelInfo.RoomInstances = layoutData.Values.ToList();
 
             return new GeneratedLevel(layoutData, layout, rootGameObject);
