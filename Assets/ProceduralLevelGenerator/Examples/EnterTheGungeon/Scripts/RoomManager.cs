@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Levels;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using UnityEngine;
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Pro

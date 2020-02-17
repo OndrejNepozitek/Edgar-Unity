@@ -49,7 +49,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
                     {
                         foreach (var door in roomInstance.Doors)
                         {
-                            var corridorRoom = door.ConnectedRoom;
+                            var corridorRoom = door.ConnectedRoomInstance;
                             var corridorGameObject = corridorRoom.RoomTemplateInstance;
                             var doorsGameObject = corridorGameObject.transform.Find("Door")?.gameObject;
 

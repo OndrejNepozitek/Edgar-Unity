@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;

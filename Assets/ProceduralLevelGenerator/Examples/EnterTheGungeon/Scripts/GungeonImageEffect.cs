@@ -1,6 +1,7 @@
 ﻿using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Levels;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Pro;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.Algorithms.Polygons;
 using GeneralAlgorithms.DataStructures.Polygons;
 using UnityEngine;
@@ -59,8 +60,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
                                 var usedTiles = RoomTemplatesLoaderTest.GetUsedTiles(outlineTilemaps);
                                 var newPolygon = RoomTemplatesLoader.GetPolygonFromTiles(usedTiles);
 
-                                var roomPolygon = roomInstance.GeneratorData.Shape;
-                                visionGrid.AddPolygon(new Polygon2D(newPolygon), (Vector2Int) roomInstance.Position, 0);
+                                visionGrid.AddPolygon(roomInstance.OutlinePolygon, (Vector2Int) roomInstance.Position, 0);
                             }
                         }
 

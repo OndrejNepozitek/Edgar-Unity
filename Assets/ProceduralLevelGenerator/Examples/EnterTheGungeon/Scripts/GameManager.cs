@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Levels;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator;
 using Assets.ProceduralLevelGenerator.Scripts.Pro;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -48,7 +50,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
             foreach (var doorInstance in roomInstance.Doors)
             {
-                var neighbor = doorInstance.ConnectedRoom;
+                var neighbor = doorInstance.ConnectedRoomInstance;
 
                 if (neighbor.IsCorridor)
                 {

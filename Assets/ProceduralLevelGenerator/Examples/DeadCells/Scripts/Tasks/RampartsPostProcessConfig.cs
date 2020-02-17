@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;

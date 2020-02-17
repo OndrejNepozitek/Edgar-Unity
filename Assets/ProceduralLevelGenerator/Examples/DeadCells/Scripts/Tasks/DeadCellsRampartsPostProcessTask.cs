@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator.PipelineTasks;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEngine;
