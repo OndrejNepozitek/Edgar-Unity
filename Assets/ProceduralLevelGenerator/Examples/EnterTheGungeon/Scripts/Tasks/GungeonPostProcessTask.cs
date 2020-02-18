@@ -22,19 +22,15 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
                 var room = (GungeonRoom) roomInstance.Room;
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
 
-                var roomManager = roomTemplateInstance.GetComponent<RoomManager>();
+                var roomManager = roomTemplateInstance.GetComponent<GungeonRoomManager>();
 
                 if (roomManager == null)
                 {
-                    roomManager = roomTemplateInstance.AddComponent<RoomManager>();
+                    roomManager = roomTemplateInstance.AddComponent<GungeonRoomManager>();
                 }
 
                 if (roomManager != null)
                 {
-                    // TODO: improve later
-                    roomManager.RoomInstance = roomInstance;
-
-                    roomManager.Room = room;
                     roomManager.Enemies = Enemies;
 
                     if (room.Type != GungeonRoomType.Corridor)

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Levels;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
-    public class RoomManager : MonoBehaviour
+    public class GungeonRoomManager : MonoBehaviour
     {
         public bool Cleared;
 
@@ -22,18 +22,24 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
         public Collider2D FloorCollider;
 
-        public GungeonRoom Room;
+        private RoomInstance roomInstance;
 
-        public RoomInstance RoomInstance;
+        private GungeonRoom room;
+
+        public void Start()
+        {
+            roomInstance = GetComponent<RoomInfo>()?.RoomInstance;
+            room = roomInstance?.Room as GungeonRoom;
+        }
 
         public void OnRoomEnter(Collider2D otherCollider)
         {
-            GameManager.Instance.SetCurrentRoomType(Room.Type);
+            GungeonGameManager.Instance.SetCurrentRoomType(room.Type);
 
-            if (!Revealed && RoomInstance != null)
+            if (!Revealed && roomInstance != null)
             {
                 Revealed = true;
-                GameManager.Instance.RevealRoom(Room, RoomInstance);
+                GungeonGameManager.Instance.RevealRoom(roomInstance);
             }
 
             if (Cleared == false && EnemiesSpawned == false && ShouldSpawnEnemies())
@@ -45,8 +51,6 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
                 StartCoroutine(WaitBeforeOpeningDoors());
             }
-
-
         }
 
         private void SpawnEnemies()
@@ -123,7 +127,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
         public bool ShouldSpawnEnemies()
         {
-            return Room.Type == GungeonRoomType.Normal || Room.Type == GungeonRoomType.Hub || Room.Type == GungeonRoomType.Boss;
+            return room.Type == GungeonRoomType.Normal || room.Type == GungeonRoomType.Hub || room.Type == GungeonRoomType.Boss;
         }
     }
 }

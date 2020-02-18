@@ -10,7 +10,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             base.Initialize();
 
             // Custom behaviour
-            gameObject.AddComponent<RoomManager>();
+            gameObject.AddComponent<GungeonRoomManager>();
         }
 
         protected override void InitializeTilemaps(GameObject tilemapsRoot)

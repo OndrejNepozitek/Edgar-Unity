@@ -4,12 +4,12 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 {
     public class RoomEnterHandler : MonoBehaviour
     {
-        private RoomManager parentRoomManager;
+        private GungeonRoomManager parentGungeonRoomManager;
 
         public void Start()
         {
-            parentRoomManager = transform.parent.gameObject.GetComponent<RoomManager>();
-            parentRoomManager.FloorCollider = GetComponent<CompositeCollider2D>();
+            parentGungeonRoomManager = transform.parent.parent.gameObject.GetComponent<GungeonRoomManager>();
+            parentGungeonRoomManager.FloorCollider = GetComponent<CompositeCollider2D>();
         }
 
         public void OnTriggerEnter2D(Collider2D otherCollider)
@@ -17,7 +17,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             // TODO: handle better
             if (otherCollider.gameObject.name == "Player")
             {
-                parentRoomManager.OnRoomEnter(otherCollider);
+                parentGungeonRoomManager.OnRoomEnter(otherCollider);
             }
         }
 
@@ -25,7 +25,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
         {
             if (otherCollider.gameObject.name == "Player")
             {
-                parentRoomManager.OnRoomLeave(otherCollider);
+                parentGungeonRoomManager.OnRoomLeave(otherCollider);
             }
         }
     }

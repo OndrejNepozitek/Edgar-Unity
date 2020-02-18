@@ -37,6 +37,9 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
 
         protected override LevelDescription GetLevelDescription()
         {
+            // TODO: why does this must be here?
+            notUsedNormalRoomTemplates = BasicRoomTemplates.Where(x => x != null).ToList();
+
             var levelDescription = new LevelDescription();
 
             foreach (var room in LevelGraph.Rooms.Cast<GungeonRoom>())
