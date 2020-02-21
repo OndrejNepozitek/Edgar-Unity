@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b5b0d06428d324ea102b6e0f9672a0, type: 3}
   m_Name: Gungeon Input Setup
   m_EditorClassIdentifier: 
-  LevelGraph: {fileID: 11400000, guid: 22bbd706dc04a964186d0701547c9821, type: 2}
+  LevelGraph: {fileID: 11400000, guid: 1a284592d0302134bb72a0b9e9a471ef, type: 2}
   BasicRoomTemplates:
   - {fileID: 3390800798792341029, guid: e013e59a75851d74cb290f1e6c73e7ea, type: 3}
   - {fileID: 8373354045639481791, guid: 02e69b3ad33d7734fa0055cbce05243e, type: 3}
@@ -31,7 +31,6 @@ MonoBehaviour:
   - {fileID: 4918662368713491466, guid: b61690b71ca4a7b43b9978691f3c2a10, type: 3}
   - {fileID: 7521161337606586001, guid: 1d579129e41cf694885e05811764361e, type: 3}
   - {fileID: 6732729840625090531, guid: 608d0afefc24040499c451586fc45b85, type: 3}
-  DefaultRoomTemplates: []
   EntranceRoomTemplates:
   - {fileID: 5620706597785849071, guid: 89dd599f38f527b4f8efa3c51f04c91e, type: 3}
   ExitRoomTemplates:

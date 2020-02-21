@@ -21,8 +21,6 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
 
         public GameObject[] CorridorRoomTemplates;
 
-        public GameObject[] DefaultRoomTemplates;
-
         public GameObject[] EntranceRoomTemplates;
 
         public GameObject[] ExitRoomTemplates;
@@ -85,11 +83,14 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
                 case GungeonRoomType.Exit:
                     return ExitRoomTemplates.ToList();
 
+                //case GungeonRoomType.Normal:
+                //    return GetNormalRoomTemplates();
+
                 case GungeonRoomType.Normal:
-                    return GetNormalRoomTemplates();
+                    return BasicRoomTemplates.ToList();
 
                 default:
-                    return DefaultRoomTemplates.ToList();
+                    return BasicRoomTemplates.ToList();
             }
         }
 
