@@ -20,32 +20,71 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
         public override void Process()
         {
             var config = Config.Config;
+            var callbacks = new PriorityCallbacks<PlatformerPostProcessCallback>();
+
+            // Register default callbacks
+            RegisterCallbacks(callbacks);
+
+            // Register custom callbacks
+            if (config.CustomPostProcessTasks != null)
+            {
+                foreach (var postProcessTask in config.CustomPostProcessTasks)
+                {
+                    postProcessTask.RegisterCallbacks(callbacks);
+                    callbacks.RegisterAfterAll(postProcessTask.Run);
+                }
+            }
+
+            // Run callbacks
+            foreach (var callback in callbacks.GetCallbacks())
+            {
+                callback(Payload.GeneratedLevel, Payload.LevelDescription);
+            }
+        }
+
+        private void RegisterCallbacks(PriorityCallbacks<PlatformerPostProcessCallback> callbacks)
+        {
+            var config = Config.Config;
 
             if (config.InitializeSharedTilemaps)
             {
-                // TODO: change the default handler
-                var tilemapLayersHandler = (ITilemapLayersHandler) config.TilemapLayersHandlerBase ?? new DungeonTilemapLayersHandler();
-                ProUtils.InitializeSharedTilemaps(Payload.GeneratedLevel, tilemapLayersHandler);
+                callbacks.RegisterCallback(PostProcessPriorities.InitializeSharedTilemaps, (level, description) =>
+                {
+                    var tilemapLayersHandler = (ITilemapLayersHandler) config.TilemapLayersHandlerBase ?? new PlatformerTilemapLayersHandler();
+                    PostProcessUtils.InitializeSharedTilemaps(level, tilemapLayersHandler);
+                });
             }
 
             if (config.CopyTilesToSharedTilemaps)
             {
-                ProUtils.CopyTilesToSharedTilemaps(Payload.GeneratedLevel);
+                callbacks.RegisterCallback(PostProcessPriorities.CopyTilesToSharedTilemaps, (level, description) =>
+                {
+                    ProUtils.CopyTilesToSharedTilemaps(level);
+                });
             }
 
             if (config.CenterGrid)
             {
-                PostProcessUtils.CenterGrid(Payload.GeneratedLevel);
+                callbacks.RegisterCallback(PostProcessPriorities.CenterGrid, (level, description) =>
+                {
+                    PostProcessUtils.CenterGrid(level);
+                });
             }
 
             if (config.DisableRoomTemplatesRenderers)
             {
-                PostProcessUtils.DisableRoomTemplatesRenderers(Payload.GeneratedLevel);
+                callbacks.RegisterCallback(PostProcessPriorities.DisableRoomTemplateRenderers, (level, description) =>
+                {
+                    PostProcessUtils.DisableRoomTemplatesRenderers(level);
+                });
             }
 
             if (config.DisableRoomTemplatesColliders)
             {
-                PostProcessUtils.DisableRoomTemplatesColliders(Payload.GeneratedLevel);
+                callbacks.RegisterCallback(PostProcessPriorities.DisableRoomTemplateColliders, (level, description) =>
+                {
+                    PostProcessUtils.DisableRoomTemplatesColliders(level);
+                });
             }
         }
     }

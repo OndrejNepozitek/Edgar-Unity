@@ -25,6 +25,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
         public GameObject[] CorridorRoomTemplates;
 
         public GameObject[] EntranceRoomTemplates;
+
+        public GameObject[] NormalInsideRoomTemplates;
     }
 
     public class RampartsInputTask<TPayload> : ConfigurablePipelineTask<TPayload, RampartsInputConfig>
@@ -79,6 +81,9 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 
                 case DeadCellsRoomType.Entrance:
                     return Config.EntranceRoomTemplates.ToList();
+
+                case DeadCellsRoomType.Normal when !room.Outside:
+                    return Config.NormalInsideRoomTemplates.ToList();
 
                 default:
                     return Config.DefaultRoomTemplates.ToList();

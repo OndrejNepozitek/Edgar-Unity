@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
 {
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Enter The Gungeon/Post process", fileName = "GungeonPostProcess")]
+    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Enter The Gungeon/Post process", fileName = "Gungeon Post Process")]
     public class GungeonPostProcessTask : DungeonGeneratorPostProcessBase
     {
         public GameObject[] Enemies;

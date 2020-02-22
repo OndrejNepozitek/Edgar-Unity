@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator.PipelineTasks;
+using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator.Configs
 {
@@ -17,5 +20,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
         public bool DisableRoomTemplatesColliders = true;
 
         public TilemapLayersHandlerBase TilemapLayersHandlerBase;
+
+        [HideInInspector]
+        public List<PlatformerGeneratorPostProcessBase> CustomPostProcessTasks;
     }
 }

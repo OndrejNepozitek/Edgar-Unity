@@ -1,15 +1,17 @@
 ﻿using System.Linq;
+using Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Levels;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator.PipelineTasks;
+using Assets.ProceduralLevelGenerator.Scripts.Pro;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 {
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Dead Cells/Ramparts post process", fileName = "RampartsPostProcess")]
+    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Dead Cells/Ramparts post process", fileName = "Dead Cells Ramparts Post Process")]
     public class DeadCellsRampartsPostProcessTask : PlatformerGeneratorPostProcessBase
     {
         public bool AddWalls = true;
@@ -17,27 +19,29 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
         public int WallDepth = 50;
 
         public TileBase WallTile;
-
-        public bool DisableOther3 = true;
-
+        
         private Tilemap wallsTilemap;
 
-        protected override void Run(GeneratedLevel level, LevelDescription levelDescription)
+        public override void RegisterCallbacks(PriorityCallbacks<PlatformerPostProcessCallback> callbacks)
+        {
+            if (AddWalls)
+            {
+                callbacks.RegisterCallbackAfter(PostProcessPriorities.InitializeSharedTilemaps, AddWallsUnderRoom);
+            }
+        }
+
+        private void AddWallsUnderRoom(GeneratedLevel level, LevelDescription levelDescription)
         {
             wallsTilemap = RoomTemplateUtils.GetTilemaps(level.RootGameObject).Single(x => x.name == "Walls"); // TODO: add some helper for getting tilemaps
 
-            if (AddWalls)
+            foreach (var roomInstance in level.GetAllRoomInstances())
             {
-                foreach (var roomInstance in level.GetAllRoomInstances())
+                var room = (DeadCellsRoom) roomInstance.Room;
+
+                if (room.Outside)
                 {
                     AddWallsUnderRoom(roomInstance);
                 }
-            }
-
-            if (DisableOther3)
-            {
-                var other3Tilemap = RoomTemplateUtils.GetTilemaps(level.RootGameObject).Single(x => x.name == "Other 3");
-                other3Tilemap.gameObject.SetActive(false);
             }
         }
 

@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/ProceduralLevelGenerator/Examples/EnterTheGungeon/EnterTheGungeon.unity
     guid: 1b515d7be25d4bd48b7d60d8f2c3bc4a
   - enabled: 1
-    path: Assets/ProceduralLevelGenerator/Examples/DeadCells/Ramparts/DeadCells Ramparts.unity
+    path: Assets/ProceduralLevelGenerator/Examples/DeadCells/Ramparts/DeadCellsRamparts.unity
     guid: ea8b3207a956a894c9e3ce968df1ee01
+  - enabled: 1
+    path: Assets/ProceduralLevelGenerator/Examples/DeadCells/DeadCellsUnderground.unity
+    guid: 7ed53d0ac15278b45baa49fc8aa61643
   m_configObjects: {}

@@ -36,7 +36,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
         public PostProcessConfig PostProcessConfig;
 
         [ExpandableScriptableObject(CanFold = false)]
-        public List<PipelineItem> CustomPostProcessTasks;
+        public List<PlatformerGeneratorPostProcessBase> CustomPostProcessTasks;
 
         private readonly Random seedsGenerator = new Random();
 
@@ -83,16 +83,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
             // Add post process
             var postProcessPipelineConfig = ScriptableObject.CreateInstance<PlatformerPostProcessPipelineConfig>();
             postProcessPipelineConfig.Config = PostProcessConfig;
+            PostProcessConfig.CustomPostProcessTasks = CustomPostProcessTasks;
             pipelineItems.Add(postProcessPipelineConfig);
-
-            // Add custom post process tasks
-            if (CustomPostProcessTasks != null)
-            {
-                foreach (var customPostProcessTask in CustomPostProcessTasks)
-                {
-                    pipelineItems.Add(customPostProcessTask);
-                }
-            }
 
             pipelineRunner.Run(pipelineItems, payload);
             

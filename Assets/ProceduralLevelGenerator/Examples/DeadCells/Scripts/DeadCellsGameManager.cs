@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Diagnostics;
+using Assets.ProceduralLevelGenerator.Examples.Common;
 using Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Levels;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator;
 using UnityEngine;
@@ -9,34 +10,11 @@ using UnityEngine.UI;
 
 namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
 {
-    public class DeadCellsGameManager : MonoBehaviour
+    public class DeadCellsGameManager : GameManagerBase<DeadCellsGameManager>
     {
-        public static DeadCellsGameManager Instance;
-        public float LevelStartDelay = 2f;
         public DeadCellsLevelType LevelType;
-
-        private GameObject canvas;
-        private PlatformerGeneratorRunner generator;
-        private GameObject levelImage;
-        private Text levelInfoText;
-        private Text levelText;
-
-        public void Awake()
-        {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else if (Instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
-
-            DontDestroyOnLoad(gameObject);
-            InitLevel();
-        }
-
+        private long generatorElapsedMilliseconds;
+        
         public void Update()
         {
             if (Input.GetKey(KeyCode.T))
@@ -46,7 +24,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
 
             if (Input.GetKey(KeyCode.G))
             {
-                InitLevel();
+                LoadNextLevel();
             }
         }
 
@@ -69,47 +47,40 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
             }
         }
 
-        private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+        public override void LoadNextLevel()
         {
-            InitLevel();
+            // Show loading screen
+            ShowLoadingScreen($"Dead Cells - {LevelType}", "loading..");
+
+            // Find the generator runner
+            var generator = GameObject.Find($"Platformer Generator").GetComponent<PlatformerGeneratorRunner>();
+
+            // Start the generator coroutine
+            StartCoroutine(GeneratorCoroutine(generator));
         }
 
-        public void InitLevel()
-        {
-            generator = GameObject.Find("Platformer Generator").GetComponent<PlatformerGeneratorRunner>();
-            canvas = GameObject.Find("Canvas");
-            levelImage = canvas.transform.Find("LevelImage").gameObject;
-            levelText = levelImage.transform.Find("LevelText").gameObject.GetComponent<Text>();
-            levelInfoText = canvas.transform.Find("LevelInfo").gameObject.GetComponent<Text>();
-            levelText.text = $"{LevelType} level";
 
-            levelImage.SetActive(true);
-            StartCoroutine(GeneratorCoroutine());
-        }
-
-        private IEnumerator GeneratorCoroutine()
+        private IEnumerator GeneratorCoroutine(PlatformerGeneratorRunner generator)
         {
             yield return null;
 
             var stopwatch = new Stopwatch();
+
             stopwatch.Start();
 
             generator.Generate();
 
-            levelInfoText.text = $"Current level: {LevelType}\nGenerated in {stopwatch.ElapsedMilliseconds/1000d:F}s";
+            yield return null;
 
-            yield return new WaitForSeconds(1);
-            levelImage.SetActive(false);
+            stopwatch.Stop();
+            generatorElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+            RefreshLevelInfo();
+            HideLoadingScreen();
         }
 
-        public void OnEnable()
+        private void RefreshLevelInfo()
         {
-            SceneManager.sceneLoaded += OnLevelFinishedLoading;
-        }
-
-        public void OnDisable()
-        {
-            SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+            SetLevelInfo($"Generated in {generatorElapsedMilliseconds / 1000d:F}s\nLevel type: {LevelType}");
         }
     }
 }

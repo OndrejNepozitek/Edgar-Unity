@@ -1,15 +1,22 @@
 ﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
+using Assets.ProceduralLevelGenerator.Scripts.Pro;
+using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator.PipelineTasks
 {
-    public abstract class PlatformerGeneratorPostProcessBase : PipelineTask<PlatformerGeneratorPayload>
+    public delegate void PlatformerPostProcessCallback(GeneratedLevel level, LevelDescription levelDescription);
+
+    public abstract class PlatformerGeneratorPostProcessBase : ScriptableObject, IPostProcessTask<PlatformerPostProcessCallback>
     {
-        public override void Process()
+        public virtual void RegisterCallbacks(PriorityCallbacks<PlatformerPostProcessCallback> callbacks)
         {
-            Run(Payload.GeneratedLevel, Payload.LevelDescription);
+
         }
 
-        protected abstract void Run(GeneratedLevel level, LevelDescription levelDescription);
+        public virtual void Run(GeneratedLevel level, LevelDescription levelDescription)
+        {
+
+        }
     }
 }

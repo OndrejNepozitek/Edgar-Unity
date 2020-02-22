@@ -7,10 +7,10 @@ using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 {
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Dead Cells/Post process", fileName = "DeadCellsPostProcess")]
+    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Dead Cells/Post process", fileName = "Dead Cells Post Process")]
     public class DeadCellsPostProcessTask : PlatformerGeneratorPostProcessBase
     {
-        protected override void Run(GeneratedLevel level, LevelDescription levelDescription)
+        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
         {
             SetSpawnPosition(level);
         }
