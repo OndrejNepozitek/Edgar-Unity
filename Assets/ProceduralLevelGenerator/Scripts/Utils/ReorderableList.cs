@@ -6,6 +6,7 @@ using UnityEditor;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
+#if UNITY_EDITOR
     public class ReorderableList
     {
         private readonly UnityEditorInternal.ReorderableList list;
@@ -16,7 +17,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             this.list = list;
             this.label = label;
 
-#if UNITY_EDITOR
             list.drawElementCallback = (rect, index, isActive, isFocused) =>
             {
                 var element = list.serializedProperty.GetArrayElementAtIndex(index);
@@ -44,7 +44,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
                     EditorGUI.LabelField(rect, label);
                 };
             }
-#endif
+
         }
 
         public void DoLayoutList()
@@ -52,4 +52,5 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             list.DoLayoutList();
         }
     }
+#endif
 }
