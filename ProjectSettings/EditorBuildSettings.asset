@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/ProceduralLevelGenerator/Examples/Example1/Example1.unity
     guid: a9ad2caf46ee98f4da5d6e52bb2d9b06
   - enabled: 0

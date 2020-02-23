@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using GeneralAlgorithms.DataStructures.Common;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
@@ -49,32 +51,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             return new HashSet<T>(source, comparer);
         }
 
-        /// <summary>
-        /// Gets all children of `SerializedProperty` at 1 level depth.
-        /// </summary>
-        /// <param name="serializedProperty">Parent `SerializedProperty`.</param>
-        /// <returns>Collection of `SerializedProperty` children.</returns>
-        public static IEnumerable<SerializedProperty> GetChildren(this SerializedProperty serializedProperty)
-        {
-            SerializedProperty currentProperty = serializedProperty.Copy();
-            SerializedProperty nextSiblingProperty = serializedProperty.Copy();
-            {
-                nextSiblingProperty.Next(false);
-            }
- 
-            if (currentProperty.Next(true))
-            {
-                do
-                {
-                    if (SerializedProperty.EqualContents(currentProperty, nextSiblingProperty))
-                        break;
- 
-                    yield return currentProperty;
-                }
-                while (currentProperty.Next(false));
-            }
-        }
- 
+#if UNITY_EDITOR
         /// <summary>
         /// Gets visible children of `SerializedProperty` at 1 level depth.
         /// </summary>
@@ -98,5 +75,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
                 while (currentProperty.NextVisible(includeNested));
             }
         }
+#endif
     }
 }
