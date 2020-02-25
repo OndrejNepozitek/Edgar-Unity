@@ -30,6 +30,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
             {
                 foreach (var postProcessTask in config.CustomPostProcessTasks)
                 {
+                    postProcessTask.SetRandomGenerator(Payload.Random);
                     postProcessTask.RegisterCallbacks(callbacks);
                     callbacks.RegisterAfterAll(postProcessTask.Run);
                 }

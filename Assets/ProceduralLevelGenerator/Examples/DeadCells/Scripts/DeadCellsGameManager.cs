@@ -74,6 +74,9 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
 
             stopwatch.Stop();
             generatorElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
+
+            yield return null;
+
             RefreshLevelInfo();
             HideLoadingScreen();
         }

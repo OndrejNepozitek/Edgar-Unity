@@ -58,7 +58,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
         {
             if (Follow != null && !isZoomedOut)
             {
-                transform.position = Follow.transform.position + offset;
+                // TODO: why like this?
+                transform.position = new Vector3(Follow.transform.position.x, Follow.transform.position.y, transform.position.z);
             }
         }
     }

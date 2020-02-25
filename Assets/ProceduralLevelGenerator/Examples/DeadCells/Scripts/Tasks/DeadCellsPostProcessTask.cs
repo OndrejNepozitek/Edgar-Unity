@@ -10,9 +10,42 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Dead Cells/Post process", fileName = "Dead Cells Post Process")]
     public class DeadCellsPostProcessTask : PlatformerGeneratorPostProcessBase
     {
+        public bool SpawnEnemies = false;
+        public GameObject[] Enemies;
+
         public override void Run(GeneratedLevel level, LevelDescription levelDescription)
         {
             SetSpawnPosition(level);
+
+            if (SpawnEnemies)
+            {
+                DoSpawnEnemies(level);
+            }
+        }
+
+        private void DoSpawnEnemies(GeneratedLevel level)
+        {
+            if (Enemies == null || Enemies.Length == 0)
+            {
+                throw new InvalidOperationException("There must be at least one enemy prefab to spawn enemies");
+            }
+
+            foreach (var roomInstance in level.GetAllRoomInstances())
+            {
+                var roomTemplate = roomInstance.RoomTemplateInstance;
+                var enemySpawnPoints = roomTemplate.transform.Find("EnemySpawnPoints");
+
+                if (enemySpawnPoints != null)
+                {
+                    foreach (Transform enemySpawnPoint in enemySpawnPoints)
+                    {
+                        var enemyPrefab = Enemies[Random.Next(Enemies.Length)];
+                        var enemy = Instantiate(enemyPrefab);
+                        enemy.transform.parent = roomTemplate.transform;
+                        enemy.transform.position = enemySpawnPoint.position;
+                    }
+                }
+            }
         }
 
         private void SetSpawnPosition(GeneratedLevel level)

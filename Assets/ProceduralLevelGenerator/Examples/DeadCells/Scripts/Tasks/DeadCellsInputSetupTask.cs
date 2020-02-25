@@ -19,6 +19,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 
         public GameObject[] TreasureRoomTemplates;
 
+        public GameObject[] EntranceRoomTemplates;
+
         public GameObject[] ExitRoomTemplates;
 
         public GameObject[] CorridorRoomTemplates;
@@ -57,6 +59,9 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
 
                 case DeadCellsRoomType.CursedTreasure:
                     return TreasureRoomTemplates.ToList();
+
+                case DeadCellsRoomType.Entrance:
+                    return EntranceRoomTemplates.ToList();
 
                 case DeadCellsRoomType.Exit:
                     return ExitRoomTemplates.ToList();

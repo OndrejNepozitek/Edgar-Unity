@@ -24,6 +24,8 @@ MonoBehaviour:
   - {fileID: 6132469063964213302, guid: ad0fd52192d6e244c8623ba80be90fe9, type: 3}
   TreasureRoomTemplates:
   - {fileID: 1817739559876681515, guid: 020be4182f8e73e4b9eecd2420b5cf52, type: 3}
+  EntranceRoomTemplates:
+  - {fileID: 8093408015206753515, guid: 0322c1c5c14953e4196487f88bb9fd46, type: 3}
   ExitRoomTemplates:
   - {fileID: 8189861737835552189, guid: cf884b385ca0d424e9331932067b9c28, type: 3}
   CorridorRoomTemplates:

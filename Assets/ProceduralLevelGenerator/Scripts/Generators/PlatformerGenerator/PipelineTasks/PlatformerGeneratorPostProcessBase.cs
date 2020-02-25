@@ -2,6 +2,7 @@
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using Assets.ProceduralLevelGenerator.Scripts.Pro;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator.PipelineTasks
 {
@@ -9,6 +10,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
 
     public abstract class PlatformerGeneratorPostProcessBase : ScriptableObject, IPostProcessTask<PlatformerPostProcessCallback>
     {
+        protected Random Random;
+
         public virtual void RegisterCallbacks(PriorityCallbacks<PlatformerPostProcessCallback> callbacks)
         {
 
@@ -17,6 +20,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
         public virtual void Run(GeneratedLevel level, LevelDescription levelDescription)
         {
 
+        }
+
+        public void SetRandomGenerator(Random random)
+        {
+            Random = random;
         }
     }
 }

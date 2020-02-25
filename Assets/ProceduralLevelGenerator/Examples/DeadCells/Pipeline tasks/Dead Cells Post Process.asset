@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ef4d6150ab304419a6d090cfda4aed, type: 3}
   m_Name: Dead Cells Post Process
   m_EditorClassIdentifier: 
+  SpawnEnemies: 1
+  Enemies:
+  - {fileID: 2710922332313855318, guid: 5abe4d5ad036b89449ca67fe4964ac54, type: 3}
+  - {fileID: 4964679070677169101, guid: 9932637cb7a104a4095b3572f591b797, type: 3}
