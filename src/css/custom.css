@@ -1,0 +1,75 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #db4d3f;
+  --ifm-color-primary-dark: #d63828;
+  --ifm-color-primary-darker: #ca3526;
+  --ifm-color-primary-darkest: #a62b1f;
+  --ifm-color-primary-light: #df6357;
+  --ifm-color-primary-lighter: #e26e63;
+  --ifm-color-primary-lightest: #e88f86;
+  --ifm-code-font-size: 95%;
+  --ifm-navbar-background-color: #db4d3f;
+  --ifm-navbar-link-color: white;
+  --ifm-navbar-link-hover-color: white;
+  --ifm-menu-link-padding-horizontal: 0px;
+  --ifm-menu-link-padding-vertical: 2px;
+  --ifm-menu-color-background-active: none;
+  --ifm-menu-color-background-hover: none;
+}
+
+html[data-theme='dark'] {
+  --ifm-navbar-background-color: #1e2125;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+.navbar {
+  box-shadow: none;
+}
+
+.hero.hero--primary {
+  background-color: var(--ifm-background-primary);
+  color: var(--ifm-color-primary);
+}
+
+blockquote {
+  background-color: rgba(255,229,100,.3);
+  border-left: 8px solid #ffe564;
+  padding: 15px 30px 15px 15px;
+}
+
+.menu>ul.menu__list>li.menu__list-item div.title {
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.menu .menu__list {
+  margin-left: 0px !important;
+  margin-bottom: 30px;
+}
+
+.menu .menu__list .menu__list .menu__link {
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.menu {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.menu .menu__link:hover {
+  color: var(--ifm-menu-color-active);
+}

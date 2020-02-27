@@ -3,6 +3,8 @@ id: introduction
 title: Introduction
 ---
 
+import { Gallery, GalleryImage } from "@theme/Gallery";
+
 This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a complete control over generated layouts. Under the hood, the plugin uses my [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
 
 The plugin is currently in its early alpha stage of development and I am mostly **looking for feedback**. The main focus of my Master thesis is to further improve my dungeon generator library so any feedback is really appreciated and will most likely lead to making the library (and therefore also this plugin) closer to being usable in production scenarios. Please read the Shortcomings section before trying out the plugin.
@@ -22,7 +24,7 @@ You can draw room templates using Unity built-in Tilemap feature. You can use al
 
 **Alpha version.** There are probably bugs tham I am not aware of (and also bugs that I am aware of but not yet fixed). Moreover, there will be **breaking changes** in the API.
 
-**Not everything can be configured via editor.** You  need to have programming knowledge in order to generate anything non-trivial. The plugin currently does not help you to handle monster spawns, triggers, etc. It handles only positions and shapes of rooms and basic templating.
+**Not everything can be configured via editor.** You need to have programming knowledge in order to generate anything non-trivial. The plugin currently does not help you to handle monster spawns, triggers, etc. It handles only positions and shapes of rooms and basic templating.
 
 **Performance hiccups.** The underlying algorithm searches through a space of possible layouts until it finds a layout that satisfies all contraints given by the level graph. And because the algorithm is stochastic, the number of iterations needed to find a layout may greatly vary. And if the algorithm is very unlucky, it may struggle even on simpler inputs. This will be addressed in the future.
 
@@ -42,34 +44,9 @@ The plugin can be used in bot commercial and non-commerical projects but **canno
 
 ## Examples
 
-<div class="two-columns">
-<div>
-
-![](assets/example1_result1.png)
-*Example 1*
-
-</div>
-
-<div>
-
-![](assets/example1_result_reallife1.png)
-*Example 1*
-
-</div>
-</div>
-
-<div class="two-columns">
-<div>
-
-![](assets/example2_result1.png)
-*Example 2*
-
-</div>
-
-<div>
-
-![](assets/example2_result_reallife1.png)
-*Example 2*
-
-</div>
-</div>
+<Gallery cols={2} fixedHeight>
+    <GalleryImage src="img/original/example1_result1.png" caption="Example 1" />
+    <GalleryImage src="img/original/example1_result_reallife1.png" caption="Example 1" />
+    <GalleryImage src="img/original/example2_result1.png" caption="Example 2" />
+    <GalleryImage src="img/original/example2_result_reallife1.png" caption="Example 2" />
+</Gallery>
