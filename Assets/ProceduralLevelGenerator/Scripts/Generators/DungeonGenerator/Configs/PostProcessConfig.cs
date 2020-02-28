@@ -8,6 +8,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Co
     {
         public bool InitializeSharedTilemaps = true;
 
+        public TilemapLayersHandlerBase TilemapLayersHandler;
+
         public bool CopyTilesToSharedTilemaps = true;
 
         public bool CenterGrid = true;
@@ -15,7 +17,5 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Co
         public bool DisableRoomTemplatesRenderers = true;
 
         public bool DisableRoomTemplatesColliders = true;
-
-        public TilemapLayersHandlerBase TilemapLayersHandler;
     }
 }
