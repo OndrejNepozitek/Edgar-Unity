@@ -45,6 +45,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Lo
                 RepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride),
             };
 
+            Debug.Log(configuration.RepeatModeOverride);
+
             var generator = new DungeonGenerator<Room>(mapDescription, configuration);
             generator.InjectRandomGenerator(random);
 

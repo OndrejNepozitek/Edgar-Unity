@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -8,6 +9,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
         where TGameManager : class
     {
         public static TGameManager Instance;
+
+        public GameObject Canvas;
 
         public void Awake()
         {
@@ -19,6 +22,11 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
             {
                 Destroy(gameObject);
                 return;
+            }
+
+            if (Canvas != null)
+            {
+                Canvas.SetActive(true);
             }
 
             DontDestroyOnLoad(gameObject);
@@ -39,7 +47,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
         protected void SetLevelInfo(string text)
         {
-            var canvas = GameObject.Find("Canvas");
+            var canvas = GetCanvas();
             var levelInfo = canvas.transform.Find("LevelInfo")?.gameObject.GetComponent<Text>();
 
             if (levelInfo != null)
@@ -50,7 +58,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
         protected void ShowLoadingScreen(string primaryText, string secondaryText)
         {
-            var canvas = GameObject.Find("Canvas");
+            var canvas = GetCanvas();
             var loadingImage = canvas.transform.Find("LoadingImage")?.gameObject;
             var primaryTextComponent = loadingImage?.transform.Find("PrimaryText")?.gameObject.GetComponent<Text>();
             var secondaryTextComponent = loadingImage?.transform.Find("SecondaryText")?.gameObject.GetComponent<Text>();
@@ -71,9 +79,21 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
             }
         }
 
+        protected GameObject GetCanvas()
+        {
+            var canvas = Canvas ?? GameObject.Find("Canvas");
+
+            if (canvas == null)
+            {
+                throw new InvalidOperationException($"Canvas was not found. Please set the {nameof(Canvas)} variable of the GameManager");
+            }
+
+            return canvas;
+        }
+
         protected void HideLoadingScreen()
         {
-            var canvas = GameObject.Find("Canvas");
+            var canvas = GetCanvas();
             var loadingImage = canvas.transform.Find("LoadingImage")?.gameObject;
 
             if (loadingImage != null)
