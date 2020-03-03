@@ -1,3 +1,5 @@
+const [latestVersion] = require('./versions.json');
+
 module.exports = {
   title: "Procedural level generator - Unity",
   tagline:
@@ -11,11 +13,11 @@ module.exports = {
     navbar: {
       title: "Procedural level generator - Unity",
       links: [
-        { to: "versions", label: "v1.0.3", position: "left" },
+        { to: "versions", label: `v${latestVersion}`, position: "left" },
         { to: "docs/introduction", label: "Docs", position: "right" },
         {
           href: "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/",
-          label: "GitHub",
+          label: "GitHub", 
           position: "right"
         }
       ]
