@@ -130,7 +130,7 @@ The algorithm distinguishes two types of room tamples - basic room templates and
 The images below demonstrate what is a correct corridor room template and what is not.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/original/corridor_ok1.png" caption="Wrong" />
+    <GalleryImage src="img/original/corridor_ok1.png" caption="Correct" />
     <GalleryImage src="img/original/corridor_ok2.png" caption="Correct" />
     <GalleryImage src="img/original/corridor_nok1.png" caption="Wrong - Doors not on opposite sides" />
     <GalleryImage src="img/original/corridor_nok2.png" caption="Wrong - More than 2 door positions" />

@@ -57,12 +57,13 @@ blockquote {
 
 .menu .menu__list {
   margin-left: 0px !important;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .menu .menu__list .menu__list .menu__link {
   font-size: 0.8rem;
   font-weight: 400;
+  padding: 0px;
 }
 
 .menu {
@@ -72,4 +73,12 @@ blockquote {
 
 .menu .menu__link:hover {
   color: var(--ifm-menu-color-active);
+}
+
+.config-table table {
+  display: table;
+}
+
+.config-table table th:first-child {
+  width: 300px;
 }

@@ -9,7 +9,8 @@ const StyledImage = props => (
       margin: gutter,
       overflow: "hidden",
       position: "relative",
-      width: `calc(${100 / props.cols}% - ${gutter * 2}px)`
+      width: `calc(${100 / props.cols}% - ${gutter * 2}px)`,
+      verticalAlign: "top"
     }}
   >
     {props.children}
@@ -56,9 +57,13 @@ const Caption = props => (
   </div>
 );
 
-export const Image = props => (
-  <div style={{ textAlign: 'center' }}>
-    <img src={useBaseUrl(props.src)} />
-    {props.caption !== undefined && <Caption>{props.caption}</Caption>}
-  </div>
-);
+export const Image = props => {
+  const { src, caption, ...otherProps } = props;
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <img src={useBaseUrl(props.src)} {...otherProps} />
+      {props.caption !== undefined && <Caption>{props.caption}</Caption>}
+    </div>
+  );
+};

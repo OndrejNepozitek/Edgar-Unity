@@ -6,108 +6,128 @@ import { Image, Gallery, GalleryImage } from "@theme/Gallery";
 
 Room templates are one of the main concepts of the algorithm. They describe how individual rooms in the dungeon look and how they can be connected to one another. 
 
-## Terminology
-- Room layout - how a room looks, tiles with sprites, walls, floors, furniture, etc.
-- Room shape - floor plan of a room layout
-- Doors - all possible positions of doors of a room layout
-- Room template - room layout together with doors
+<Image src="img/v2/room_templates/room_template_complete.png" caption="Example of a complete room template. Outline of the room template is hightlighted with yellow and possible door positions are red." />
 
-## Room layout
+## Creating room templates
 
-We will use Unity [Tilemaps](https://docs.unity3d.com/Manual/class-Tilemap.html) to design our room layouts so you should be familiar with that. The whole room template consists of a *Grid* *GameObject* that has one or more child *Tilemap* *GameObjects* and a *Doors* script attached. You can use all available tools (brushes, rule tiles, etc.) to paint tilemaps. 
+To create a new room template, we have to:
+- create an empty game object
+- add *Dungeon Room Template Initializer* component
+- click the *Initialize room template* button
+- create a prefab from that game object
 
-<Image src="img/original/room_layout.png" caption="Example room layout" />
+The whole process can be seen on the video below:
 
-### Tilemaps
+<Image src="img/v2/room_templates/creating_room_templates.gif" caption="Initializing room template using the Dungeon room template initializer script" />
 
-The plugin is also prepared to handle layouts consisting of multiple tilemaps if you want to have multiple layers of tiles. In fact, the default configuration of the plugin uses several tilemaps because you cannot really do that much with a single layer of tiles. The default structure of tilemaps is as follows:
+### Room template structure
 
-- **Walls** - order 0, with collider
-- **Floor** - order 1 
+Below you can see the room template structure after we use the room template initializer:
+- **Tilemaps** game object that contains several tilemaps attached as children
+- **Room Template** script attached to the root game object
+- **Doors** script attached to the root game object
+
+<Image src="img/v2/room_templates/room_template_inspector.png" caption="Room template structure" />
+
+## Designing room templates
+
+We will use Unity [Tilemaps](https://docs.unity3d.com/Manual/class-Tilemap.html) to design our room templates so you should be familiar with that. By default, room templates come with several tilemap layers that are children of the *Tilemap* game object:
+
+- **Floor** - order 0 
+- **Walls** - order 1, with collider
 - **Collideable** - order 2, with collider
-- **Other** 1 - order 3
+- **Other 1** - order 3
 - **Other 2** - order 4
 - **Other 3** - order 5
 
-It is **VERY IMPORTANT** that all room layouts are structured exactly like this because tiles from tile layouts will be copied to correspoding tilemaps of generated dungeon layouts. The names of individual tilemaps are not really important - I just thought that it may be better than simply numbering them and the algorithm currently does not care whether there are walls in the first tilemap or not.
+It is **VERY IMPORTANT** that all the room templates have exactly the same structure of tilemaps because the generator will copy all the tiles from individual room templates to shared tilemaps. If you need a different structure of tilemaps, you can override the default behaviour. See [Tilemap layers](../other/tilemap-layers.md).
 
-To make it easier to create room templates, there is a *DefaultRoomTeplateInitializer* script that can be added to an empty *GameObject* and then used to create the correct structure of tilemaps. See the video below.
+<Image src="img/v2/room_templates/room_template_drawing.gif" caption="You can use all the available tools (brushes, rule tiles, etc.) to draw room templates" />
 
-<Image src="img/original/creating_tilemaps.gif" caption="Initializing tilemaps using the DefaultRoomTeplateInitializer script" />
+### Limitations
 
-If you need a different structure of tilemaps, you can override the default behaviour. See [Tilemap layers](tilemapLayers.md).
+The underlying algorithm works with polygons, not tilemaps, tiles and sprites. We are interested in the outlines of individual room templates. However, there are some limitations as to how a room template may look like in order for the algorithm to be able to compute its outline. The goal of this section is to describe which rules we should follow when designing room templates.
 
-> **Feedback needed:** The default structure of tilemaps aims to provide a reasonable structure for game designers to start creating room layouts. However, I have got no experience with working with tilemaps in real projects so I would like to hear any feedback on whether this structure is a good default or not.
+<Image src="img/v2/room_templates/outline.png" caption="The yellow color shows the outline of the room template as it is seen by the generator" />
 
-### Room shape
+<Image src="img/v2/room_templates/invalid_outline.png" caption="If the outline is invalid, we can see a warning in the *Room Template* script" />
 
-The underlying algorithm works with polygons, not tilemaps, tiles and sprites. We call these polygons room shapes and they are simply outlines/floor plans of corresponding room layouts. However, not all room shapes are valid in the context of the algorithm. The goal of this section is to describe how can room shapes look like.
-
-<Image src="img/original/room_shape.png" caption="The green outline shows the room shape of a corresponding room layout" />
-
-> **Note:** Because we are only interested in the outline of a room layout, the internal structure (number, order) of tilemaps is irrelevant. For the purpose of the computation we can imagine that all tiles are in a single tilemap.
+> **Note:** The underlying algorithm does not care about individual tilemaps layers. Instead, it merges all the layers together and then finds all the non-null tiles. Therefore, the outline of the room template will be the same no matter which tilemap layers we use.
 
 #### One connected component
 
 I will not go into formal definitions. The image below should be self-explanatory.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/original/one_connected_component_nok.png" caption="Wrong" />
-    <GalleryImage src="img/original/one_connected_component_ok.png" caption="Correct" />
+    <GalleryImage src="img/v2/room_templates/one_connected_component_nok.png" caption="Wrong" />
+    <GalleryImage src="img/v2/room_templates/one_connected_component_ok.png" caption="Correct" />
 </Gallery>
+
+> **Note:** You can see that the algorithm computed some outline (yellow) in in the wrong room template. The current implementation stops after any outline is found and does not check whether all tiles are contained in that outline. This will be improved in the future.
 
 #### Each tile atleast two neighbours
 
-Each tile must be connected to at least two neigbouring tiles. In the image below, both tiles in the upper row are connected to only a single neighbour so the room shape is not valid. If we need these two tiles, we can simly fill the upper row with *empty* or transparent tiles.
+Each tile must be connected to at least two neigbouring tiles. In the image below, both tiles in the upper row are connected to only a single neighbour so the room shape is not valid. If we need these two tiles, we can use **Outline override** that is described in the next section.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/original/at_least_two_neighbours_nok.png" caption="Wrong" />
-    <GalleryImage src="img/original/at_least_two_neighbours_ok.png" caption="Correct" />
+    <GalleryImage src="img/v2/room_templates/at_least_two_neighbors_nok.png" caption="Wrong" />
+    <GalleryImage src="img/v2/room_templates/at_least_two_neighbors_ok.png" caption="Correct" />
 </Gallery>
 
-#### Without holes
+#### May contain holes
 
-There must be no holes in room layouts (a null tile surrounded by non-null tiles). Again, we can fill such holes with *empty* or transparent tiles if we need them there.
+There may be holes inside the room template.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/original/no_holes_nok.png" caption="Wrong" />
-    <GalleryImage src="img/original/no_holes_ok.png" caption="Correct" />
+    <GalleryImage src="img/v2/room_templates/no_holes_ok_1.png" caption="Correct" />
+    <GalleryImage src="img/v2/room_templates/no_holes_ok_2.png" caption="Correct" />
 </Gallery>
 
-> **NOTE:** This is only a limitation of the current algorithm for computing room shapes from room layouts and the constraint will be probably dropped in the future.
+> **NOTE:** This was not possible in the 1.x.x version.
 
-## Doors
+### Outline override
 
-When we have our room layout ready, we can add doors. By specifying door positions, we tell the algorithm how can individual room templates be connected together.
+If we really need to have a room template whose outline is not valid, we can use the so-called *Outline override*. It can be enabled by clicking the *Add outline override* button in the *Room template* script. As a result, a new tilemap layer called *Outline override* is created. With this functionality enabled, the algorithm ignores all the other layers when computing the outline. Moreover, nothing that is drawn on this layer will be used in the resulting level, so we can use any tiles to draw on this layer. 
+
+> **Note:** When we are done with drawing the outline, we can make the layer (game object) inactive so that we can see how the room template actually looks like. However, **we must not destroy the game object**.
+
+<Gallery cols={2} fixedHeight>
+    <GalleryImage src="img/v2/room_templates/outline_override_active.png" caption="We can use any tiles to draw the outline" />
+    <GalleryImage src="img/v2/room_templates/outline_override_inactive.png" caption="If we disable the Outline override game object, we should still see that the outline is overriden" />
+</Gallery>
+
+## Adding doors
+
+When we are happy with how the room template looks, we can add doors. By specifying door positions, we tell the algorithm how can individual room templates be connected together.
 
 The algorithm may connect two room templates if:
 - there exist door positions with the same length
 - the two room templates do not overlap after we connect them
     - they may share tiles on outlines of corresponding room shapes
 
+> **Note:** In some procedural level generators, all the doors must be used by the algorithm to connect the room to other rooms. That is not the case here, we define all the possible door positions and the generator may pick only some of them.
+
 ### Door modes
 
-There are currently two ways of defining door positions. Both ways are currently controlled by the *Doors* component that is automatically added to the parent GameObject after using the *DefaultRoomTeplateInitializer*.
+There are currently two ways of defining door positions. Both ways are currently controlled by the *Doors* component that is automatically added to the room game object after using the room template initializer.
 
-In both modes, all door positions must be on the outline of the corresponding room shape.
-
-> **Note:** There are situations where we might want to relax this requirement and allow door positions that are not on the outline. So maybe that will be possible in the future versions of the plugin.
+In both modes, all door positions must be on the outline of the corresponding room template.
 
 #### Simple mode
 
-In the simple mode, you specify how long should all doors be and at least how far from corners of the room layout they should be positioned. Below you can see how this mode looks.
+In the simple mode, you specify how long should all doors be and at least how far from corners of the room template they should be positioned. Below you can see how this mode looks.
 
-<Image src="img/original/doors_simple1.png" caption="Simple door mode - length 1, distance from corners 2" />
+<Image src="img/v2/room_templates/doors_simple1.png" caption="Simple door mode - length 1, distance from corners 2" />
 
-Each red rectangle shows available door positions. You can see that there are no door positions in the bottom-right part of the layout - that is because no tile is placed at least 2 tiles from all corners. If we change the door length to 2, we will loose the door positon on the right side of the room layout because there is space only for a single tile.
+Each red rectangle shows available door positions. You can see that there are no door positions in the bottom-right part of the room template - that is because no tile is placed at least 2 tiles from all corners. If we change the door length to 2, we will loose the door positon on the right side of the room template because there is space only for a single tile.
 
-<Image src="img/original/doors_simple2.png" caption="Simple door mode - length 2, distance from corners 2" />
+<Image src="img/v2/room_templates/doors_simple2.png" caption="Simple door mode - length 2, distance from corners 2" />
 
 > **Note:** There is currently an inconsistency in how are door positions displayed. In the *simple mode*, each red rectangle represents a set of door positions, while in the *specific positions mode*, each rectangle represents exactly one door position. The reason for this is that it is exactly how the procedural dungeon generator library handles that, but it might be counter-intuitive for users of the plugin and may change in the future.
 
 #### Specific positions mode
 
-In the *Specific positions mode*, you have to manually specify all door positions of a room layout. This mode gives you a complete control over available door positions.
+In the *Specific positions mode*, you have to manually specify all door positions of the room template. This mode gives you a complete control over available door positions.
 
 To start adding doors, click the *Specific positions* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. Then you can simply draw door positions as seen in the video below.
 
@@ -121,23 +141,35 @@ You can see that I am creating doors of various lengths. And at the end of the v
 
 > **Note:** The inspector script currently lets you add door positions that are not on the outline of the room shape. It will, hovewer, result in an error when trying to generate a dungeon. It should be improved in the future.
 
+## Repeat mode
+
+Each *Room template* script has a field called *Repeat Mode* that is initially set to *Allow Repeat*. Using this field, we can tell the algorithm whether the room template can be used more than once in generated levels. There are the following possibilities:
+
+- **Allow repeat** - The room tamplate may repeat in generated levels.
+- **No immeadiate** - Neighbors of the room template must be different.
+- **No repeat** - The room template can be used at most once.
+
+<Image src="img/v2/room_templates/repeat_mode.png" caption="Specific positions mode" />
+
+> **Note:** Instead of setting the *Repeat mode* on a per room template basis, you can use global override which is configured directly in the dungeon generator.
+
+> **Note:** If you provide too few room templates, they may repeat in generated levels even if you choose the **No immeadiate** or **No repeat** options. To make sure that the repeat mode is satisifed, please provide enough room templates to choose from.
+
 ## Corridors
 
-The algorithm distinguishes two types of room tamples - basic room templates and room templates for corridor rooms. There are currently 2 limitations regarding doors in corridor room templates:
-1. There must be exactly two door positions.
-2. The two door positions must be on the opposite sides of the room layout.
+The algorithm distinguishes two types of room templates - basic room templates and room templates for corridor rooms. In theory, we can use any any room template with at least two doors to act as a corridor room template. **However, to make the algorithm fast, we should follow these recommendations**:
 
-The images below demonstrate what is a correct corridor room template and what is not.
+1. There should be exactly two door positions.
+2. The two door should be on the opposite sides of the room template.
+3. The corridor should not be too long or too wide.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/original/corridor_ok1.png" caption="Wrong" />
-    <GalleryImage src="img/original/corridor_ok2.png" caption="Correct" />
-    <GalleryImage src="img/original/corridor_nok1.png" caption="Wrong - Doors not on opposite sides" />
-    <GalleryImage src="img/original/corridor_nok2.png" caption="Wrong - More than 2 door positions" />
+    <GalleryImage src="img/original/corridor_ok1.png" caption="Recommended - narrow straight corridor" />
+    <GalleryImage src="img/original/corridor_ok2.png" caption="OK - little too wide but should be ok" />
+    <GalleryImage src="img/original/corridor_nok1.png" caption="Not recommended - doors not on opposite sides" />
+    <GalleryImage src="img/original/corridor_nok2.png" caption="Not recommended - more than 2 door positions" />
 </Gallery>
-
-> **Note:** This is a limitation of the dungeon generator library and not the plugin itself. I plan to completely rework corridors in the future.
 
 ## Final steps
 
-After creating a room template GameObject, you can simply save it as an asset and it is ready to be used in a level graph.
+After creating a room template GameObject, you can simply save it as a prefab and it is ready to be used in a level graph.

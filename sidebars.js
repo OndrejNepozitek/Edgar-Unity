@@ -32,23 +32,18 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Generators",
+      items: ["generators/dungeon-generator", "generators/platformer-generator", "generators/custom-input", "generators/post-process"]
+    },
+    {
+      type: "category",
       label: "Examples",
-      items: ["examples/example-1", "examples/example-2", "examples/platformers"]
-    },
-    {
-      type: "category",
-      label: "Generator pipeline",
-      items: ["generator-pipeline/introduction", "generator-pipeline/pipeline-payload", "generator-pipeline/pipeline-tasks", "generator-pipeline/run-pipeline"]
-    },
-    {
-      type: "category",
-      label: "Pipeline tasks",
-      items: ["pipeline-tasks/fixed-input", "pipeline-tasks/graph-based-generator", "pipeline-tasks/payload-initializer"]
+      items: ["examples/example-1", "examples/example-2", "examples/platformers", "examples/enter-the-gungeon", "examples/dead-cells"]
     },
     {
       type: "category",
       label: "Guides",
-      items: ["guides/adding-door-tiles", "guides/procedural-level-graphs", "guides/corridors-correction"]
+      items: ["guides/procedural-level-graphs", "guides/fog-of-war", "guides/benchmarks"]
     },
     {
       type: "category",
