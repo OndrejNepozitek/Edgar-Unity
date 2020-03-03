@@ -23,7 +23,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
             RootGameObject = rootGameObject;
         }
 
-        public List<RoomInstance> GetAllRoomInstances()
+        public List<RoomInstance> GetRoomInstances()
         {
             return roomInstances.Values.ToList();
         }

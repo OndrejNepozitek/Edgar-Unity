@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using MapGeneration.Core.Doors;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -40,7 +41,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 		public void OnSceneGUI()
 		{
 			var doors = target as Doors;
-
+			
 			switch (doors.SelectedMode)
 			{
 				case 1:
@@ -51,7 +52,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 					DrawOverlap();
 					break;
 			}
-		}
+        }
 
 		private void DrawOverlap()
 		{
@@ -60,7 +61,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 			try
 			{
-				var polygon = RoomTemplatesLoader.GetPolygonFromTilemaps(go.GetComponentsInChildren<Tilemap>());
+				var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
 
 				foreach (var line in polygon.GetLines())
 				{
@@ -252,7 +253,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 			serializedObject.Update();
 
 			var doors = target as Doors;
-
+			
 			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
 			selectedModeProp.intValue = GUILayout.SelectionGrid(doors.SelectedMode, new[] { "Simple mode", "Specific positions"}, 2);
 
@@ -272,7 +273,22 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 				{
 					doorsList.ClearArray();
 				}
-			}
+
+                try
+                {
+                    var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
+                    var doorPositions = DoorHandler.DefaultHandler.GetDoorPositions(polygon, doors.GetDoorMode());
+
+                    if (doorPositions.Count != doors.DoorsList.Count)
+                    {
+                        EditorGUILayout.HelpBox("There seems to be a door of length 1 that is at the corner of the outline, which is currently not supported. Either use outline override to change the outline or remove the door position.", MessageType.Error);
+                    }
+                }
+                catch (Exception)
+                {
+
+                }
+            }
 
 			serializedObject.ApplyModifiedProperties();
 		}

@@ -114,6 +114,19 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         }
 
         /// <summary>
+        /// Computes a polygon from points on given tilemaps.
+        /// </summary>
+        /// <param name="roomTemplate"></param>
+        /// <returns></returns>
+        public static GridPolygon GetPolygonFromRoomTemplate(GameObject roomTemplate)
+        {
+            var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplate);
+            var outline = RoomTemplateUtils.GetTilemapsForOutline(tilemaps);
+
+            return GetPolygonFromTilemaps(outline);
+        }
+
+        /// <summary>
         /// Gets all tiles that are not null in given tilemaps.
         /// </summary>
         /// <param name="tilemaps"></param>

@@ -7,14 +7,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
     /// </summary>
     public class PlayerFollow : MonoBehaviour
     {
-        private Vector3 offset;
         private GameObject player;
-
-        public void Start()
-        {
-            offset = transform.position;
-        }
-
         public void LateUpdate()
         {
             if (player == null)
@@ -24,7 +17,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
             if (player != null)
             {
-                transform.position = player.transform.position + offset;
+                transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
             }
         }
     }

@@ -205,12 +205,6 @@ namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 			switch (e.type)
 			{
 				case EventType.MouseDown:
-					if (e.button == 1)
-					{
-						ProcessContextMenu(e.mousePosition);
-						doNotDrag = true;
-					}
-
                     if (e.button == 0 && e.clickCount > 1)
                     {
 						OnClickAddRoom(e.mousePosition);
@@ -225,7 +219,7 @@ namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 						break;
 					}
 
-					if (e.button == 0 && editorMode != EditorMode.MakeConnections)
+					if (e.button == 1 && editorMode != EditorMode.MakeConnections)
 					{
 						OnDrag(e.delta);
 					}

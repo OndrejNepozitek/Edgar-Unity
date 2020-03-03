@@ -1,4 +1,5 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
+﻿using System;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 
@@ -6,8 +7,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
 {
     public abstract class DungeonGeneratorPostProcessBase : PipelineTask<DungeonGeneratorPayload>
     {
+        protected Random Random;
+
         public override void Process()
         {
+            Random = Payload.Random;
             Run(Payload.GeneratedLevel, Payload.LevelDescription);
         }
 
