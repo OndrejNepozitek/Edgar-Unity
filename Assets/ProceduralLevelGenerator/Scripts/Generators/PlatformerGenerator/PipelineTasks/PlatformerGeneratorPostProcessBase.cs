@@ -1,5 +1,4 @@
 ﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
-using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using Assets.ProceduralLevelGenerator.Scripts.Pro;
 using UnityEngine;
 using Random = System.Random;

@@ -1,4 +1,5 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
+﻿using System.Collections;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator;
@@ -17,7 +18,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
     public class PlatformerPostProcessPipelineTask<TPayload> : ConfigurablePipelineTask<TPayload, PlatformerPostProcessPipelineConfig>
         where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
     { 
-        public override void Process()
+        public override IEnumerator Process()
         {
             var config = Config.Config;
             var callbacks = new PriorityCallbacks<PlatformerPostProcessCallback>();
@@ -40,6 +41,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
             foreach (var callback in callbacks.GetCallbacks())
             {
                 callback(Payload.GeneratedLevel, Payload.LevelDescription);
+                yield return null;
             }
         }
 

@@ -30,7 +30,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
                 throw new InvalidOperationException("There must be at least one enemy prefab to spawn enemies");
             }
 
-            foreach (var roomInstance in level.GetAllRoomInstances())
+            foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplate = roomInstance.RoomTemplateInstance;
                 var enemySpawnPoints = roomTemplate.transform.Find("EnemySpawnPoints");
@@ -51,7 +51,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
         private void SetSpawnPosition(GeneratedLevel level)
         {
             var entranceRoomInstance = level
-                .GetAllRoomInstances()
+                .GetRoomInstances()
                 .FirstOrDefault(x => ((DeadCellsRoom) x.Room).Type == DeadCellsRoomType.Entrance);
 
             if (entranceRoomInstance == null)

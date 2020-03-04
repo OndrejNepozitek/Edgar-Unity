@@ -17,7 +17,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
             level.RootGameObject.AddComponent<LevelInfo>();
             level.RootGameObject.GetComponent<LevelInfo>().Level = level;
 
-            foreach (var roomInstance in Payload.GeneratedLevel.GetAllRoomInstances())
+            foreach (var roomInstance in Payload.GeneratedLevel.GetRoomInstances())
             {
                 var room = (GungeonRoom) roomInstance.Room;
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;

@@ -21,8 +21,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         {
             try
             {
-                var tilemaps = RoomTemplateUtils.GetTilemaps(gameObject);
-                var polygon = RoomTemplatesLoader.GetPolygonFromTilemaps(tilemaps);
+                var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(gameObject);
 
                 return polygon;
             }

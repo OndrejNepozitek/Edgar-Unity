@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Editor
 {
-    [CustomEditor(typeof(DungeonGeneratorRunner))]
-    public class DungeonGeneratorRunnerInspector : UnityEditor.Editor
+    [CustomEditor(typeof(DungeonGenerator))]
+    public class DungeonGeneratorInspector : UnityEditor.Editor
     {
         private ReorderableList customPostProcessTasksList;
 
@@ -14,7 +14,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
         public void OnEnable()
         {
             customPostProcessTasksList = new ReorderableList(new UnityEditorInternal.ReorderableList(serializedObject,
-                serializedObject.FindProperty(nameof(DungeonGeneratorRunner.CustomPostProcessTasks)),
+                serializedObject.FindProperty(nameof(DungeonGenerator.CustomPostProcessTasks)),
                 true, true, true, true), "Custom post process tasks");
         }
 
@@ -22,46 +22,47 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
         {
             serializedObject.Update();
 
-            var dungeonGenerator = (DungeonGeneratorRunner) target;
+            var dungeonGenerator = (DungeonGenerator) target;
 
             EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth / 2f;
 
             EditorGUILayout.LabelField("Input config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.InputType)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.InputType)));
 
             // PRO
             switch (dungeonGenerator.InputType)
             {
                 case DungeonGeneratorInputType.CustomInput:
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.CustomInputTask)));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.CustomInputTask)));
                     break;
                 case DungeonGeneratorInputType.FixedLevelGraph:
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.FixedLevelGraphConfig)));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.FixedLevelGraphConfig)));
                     break;
             }
-            
 
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Generator config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.GeneratorConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.GeneratorConfig)));
 
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Post processing config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.PostProcessConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.PostProcessConfig)));
             customPostProcessTasksList.DoLayoutList(); 
 
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorRunner.OtherConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.OtherConfig)));
 
             EditorGUILayout.Space();
 
             advancedFoldout = EditorGUILayout.Foldout(advancedFoldout, "Advanced");
             if (advancedFoldout)
             {
+                EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.AdvancedConfig)));
+
                 if (GUILayout.Button("Export map description"))
                 {
                     dungeonGenerator.ExportMapDescription();

@@ -34,7 +34,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Tasks
         {
             wallsTilemap = RoomTemplateUtils.GetTilemaps(level.RootGameObject).Single(x => x.name == "Walls"); // TODO: add some helper for getting tilemaps
 
-            foreach (var roomInstance in level.GetAllRoomInstances())
+            foreach (var roomInstance in level.GetRoomInstances())
             {
                 var room = (DeadCellsRoom) roomInstance.Room;
 

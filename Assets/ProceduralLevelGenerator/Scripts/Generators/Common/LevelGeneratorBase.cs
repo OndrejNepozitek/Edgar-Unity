@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
@@ -13,7 +14,7 @@ using Random = System.Random;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
 {
-    public abstract class GeneratorRunnerBase<TPayload> : MonoBehaviour, IGeneratorRunner
+    public abstract class LevelGeneratorBase<TPayload> : MonoBehaviour, ILevelGenerator
     {
         private readonly Random seedsGenerator = new Random();
 
@@ -31,7 +32,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
             return new Random(seed);
         }
 
-        public abstract TPayload Generate();
+        public abstract void Generate();
 
         protected abstract TPayload InitializePayload();
 
@@ -42,6 +43,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
             if (payload is IGraphBasedGeneratorPayload graphBasedGeneratorPayload)
             {
                 var pipelineItems = new List<PipelineItem> {inputSetup};
+
                 PipelineRunner.Run(pipelineItems, graphBasedGeneratorPayload);
 
                 var levelDescription = graphBasedGeneratorPayload.LevelDescription;
@@ -79,11 +81,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
             }
 
             return newMapDescription;
-        }
-
-        object IGeneratorRunner.Generate()
-        {
-            return Generate();
         }
     }
 }

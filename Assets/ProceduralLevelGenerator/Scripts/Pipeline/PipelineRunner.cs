@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,6 +13,15 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
         /// <param name="pipelineItems"></param>
         /// <param name="payload"></param>
         public void Run(IEnumerable<PipelineItem> pipelineItems, object payload)
+        {
+            var enumerator = GetEnumerator(pipelineItems, payload);
+            while (enumerator.MoveNext())
+            {
+                /* empty */
+            }
+        }
+
+        public IEnumerator GetEnumerator(IEnumerable<PipelineItem> pipelineItems, object payload)
         {
             var payloadType = payload.GetType();
 
@@ -54,9 +64,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
                         .SetValue(pipelineItem, payload);
 
                     // Do pipelineScript.Process();
-                    actualInterfaceType
+                    var enumerator = (IEnumerator) actualInterfaceType
                         .GetMethod(nameof(IPipelineTask<object>.Process))
                         .Invoke(pipelineItem, new object[0]);
+
+                    while (enumerator.MoveNext())
+                    {
+                        yield return enumerator.Current;
+                    }
                 }
                 else if (pipelineItem is PipelineConfig)
                 {
@@ -122,9 +137,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
                         .SetValue(taskInstance, pipelineItem);
 
                     // Do taskInstance.Process();
-                    actualTaskType
+                    var enumerator = (IEnumerator) actualTaskType
                         .GetMethod(nameof(IConfigurablePipelineTask<object, PipelineConfig>.Process))
                         .Invoke(taskInstance, new object[0]);
+
+                    while (enumerator.MoveNext())
+                    {
+                        yield return enumerator.Current;
+                    }
                 }
                 else
                 {

@@ -49,14 +49,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Benchmarks
 
         public void RunBenchmark()
         {
-            var generatorRunner = GetComponent<IGeneratorRunner>();
+            var generator = GetComponent<ILevelGenerator>();
 
-            if (generatorRunner == null)
+            if (generator == null)
             {
                 throw new InvalidOperationException("There is no generator runner attached to the GameObject. Make sure that the benchmark runner is attached to a GameObject with a generator runner component.");
             }
 
-            benchmarkCoroutine = RunBenchmarkCoroutine(generatorRunner);
+            benchmarkCoroutine = RunBenchmarkCoroutine(generator);
             StartCoroutine(benchmarkCoroutine);
         }
 
@@ -70,7 +70,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Benchmarks
             IsRunning = false;
         }
 
-        public IEnumerator RunBenchmarkCoroutine(IGeneratorRunner generatorRunner)
+        public IEnumerator RunBenchmarkCoroutine(ILevelGenerator generator)
         {
             IsRunning = true;
             var path = Path.Combine("Benchmarks", FileNamesHelper.PrefixWithTimestamp("benchmark.json"));
@@ -86,30 +86,31 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Benchmarks
                 var stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                var payload = generatorRunner.Generate();
+                // TODO: fix
+                //var payload = generator.Generate();
 
-                if (payload is IBenchmarkInfoPayload benchmarkInfoPayload)
-                {
-                    var screenshot = ProUtils.TakeScreenshot(ScreenshotCamera, ScreenshotCameraSize, 1000, 1000);
-                    var png = screenshot.EncodeToPNG();
-                    var base64 = Convert.ToBase64String(png);
+                //if (payload is IBenchmarkInfoPayload benchmarkInfoPayload)
+                //{
+                //    var screenshot = ProUtils.TakeScreenshot(ScreenshotCamera, ScreenshotCameraSize, 1000, 1000);
+                //    var png = screenshot.EncodeToPNG();
+                //    var base64 = Convert.ToBase64String(png);
 
-                    var additionalData = new AdditionalUnityData
-                    {
-                        GeneratedLayoutSvg = layoutDrawer.DrawLayout(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation(), 800,
-                            forceSquare: true, fixedFontSize: 20),
-                        ImageBase64 = base64
-                    };
+                //    var additionalData = new AdditionalUnityData
+                //    {
+                //        GeneratedLayoutSvg = layoutDrawer.DrawLayout(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation(), 800,
+                //            forceSquare: true, fixedFontSize: 20),
+                //        ImageBase64 = base64
+                //    };
 
-                    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation() != null,
-                        stopwatch.ElapsedMilliseconds, benchmarkInfoPayload.GeneratorStats.Iterations, additionalData);
+                //    var generatorRun = new GeneratorRun<AdditionalRunData>(benchmarkInfoPayload.GeneratedLevel.GetInternalLayoutRepresentation() != null,
+                //        stopwatch.ElapsedMilliseconds, benchmarkInfoPayload.GeneratorStats.Iterations, additionalData);
 
-                    runs.Add(generatorRun);
-                }
-                else
-                {
-                    throw new InvalidOperationException($"Payload must implement {nameof(IBenchmarkInfoPayload)}");
-                }
+                //    runs.Add(generatorRun);
+                //}
+                //else
+                //{
+                //    throw new InvalidOperationException($"Payload must implement {nameof(IBenchmarkInfoPayload)}");
+                //}
 
                 yield return null; 
             }

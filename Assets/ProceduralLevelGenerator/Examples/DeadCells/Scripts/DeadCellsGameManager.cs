@@ -53,14 +53,14 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
             ShowLoadingScreen($"Dead Cells - {LevelType}", "loading..");
 
             // Find the generator runner
-            var generator = GameObject.Find($"Platformer Generator").GetComponent<PlatformerGeneratorRunner>();
+            var generator = GameObject.Find($"Platformer Generator").GetComponent<PlatformerGenerator>();
 
             // Start the generator coroutine
             StartCoroutine(GeneratorCoroutine(generator));
         }
 
 
-        private IEnumerator GeneratorCoroutine(PlatformerGeneratorRunner generator)
+        private IEnumerator GeneratorCoroutine(PlatformerGenerator generator)
         {
             yield return null;
 

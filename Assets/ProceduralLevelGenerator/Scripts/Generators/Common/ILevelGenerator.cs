@@ -1,7 +1,7 @@
 ﻿namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
 {
-    public interface IGeneratorRunner
+    public interface ILevelGenerator
     {
-        object Generate();
+        void Generate();
     }
 }

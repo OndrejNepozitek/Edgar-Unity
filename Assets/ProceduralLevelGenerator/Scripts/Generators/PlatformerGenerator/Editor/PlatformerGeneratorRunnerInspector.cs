@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator.Editor
 {
-    [CustomEditor(typeof(PlatformerGeneratorRunner))]
+    [CustomEditor(typeof(PlatformerGenerator))]
     public class PlatformerGeneratorRunnerInspector : UnityEditor.Editor
     {
         private ReorderableList customPostProcessTasksList;
@@ -13,7 +13,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
         public void OnEnable()
         {
             customPostProcessTasksList = new ReorderableList(new UnityEditorInternal.ReorderableList(serializedObject,
-                serializedObject.FindProperty(nameof(PlatformerGeneratorRunner.CustomPostProcessTasks)),
+                serializedObject.FindProperty(nameof(PlatformerGenerator.CustomPostProcessTasks)),
                 true, true, true, true), "Custom post process tasks");
         }
 
@@ -21,21 +21,21 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
         {
             serializedObject.Update();
 
-            var generator = (PlatformerGeneratorRunner) target;
+            var generator = (PlatformerGenerator) target;
 
             EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth / 2f;
 
             EditorGUILayout.LabelField("Input config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGeneratorRunner.InputType)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGenerator.InputType)));
 
             // PRO
             switch (generator.InputType)
             {
                 case PlatformerGeneratorInputType.CustomInput:
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGeneratorRunner.CustomInputTask)));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGenerator.CustomInputTask)));
                     break;
                 case PlatformerGeneratorInputType.FixedLevelGraph:
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGeneratorRunner.FixedLevelGraphConfig)));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGenerator.FixedLevelGraphConfig)));
                     break;
             }
             
@@ -43,18 +43,18 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Generator config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGeneratorRunner.GeneratorConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGenerator.GeneratorConfig)));
 
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Post processing config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGeneratorRunner.PostProcessConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGenerator.PostProcessConfig)));
             customPostProcessTasksList.DoLayoutList(); 
 
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGeneratorRunner.OtherConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(PlatformerGenerator.OtherConfig)));
 
             EditorGUILayout.Space();
 

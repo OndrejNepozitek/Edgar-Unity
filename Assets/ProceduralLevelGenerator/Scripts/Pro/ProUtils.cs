@@ -91,7 +91,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pro
         // TODO: move somewhere else
         public static void CopyTilesToSharedTilemaps(GeneratedLevel level)
         {
-            foreach (var roomInstance in level.GetAllRoomInstances().OrderBy(x => x.IsCorridor))
+            foreach (var roomInstance in level.GetRoomInstances().OrderBy(x => x.IsCorridor))
             {
                 CopyTilesToSharedTilemaps(level, roomInstance);
             }

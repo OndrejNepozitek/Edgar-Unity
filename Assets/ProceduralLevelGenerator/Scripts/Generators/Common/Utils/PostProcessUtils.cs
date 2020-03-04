@@ -35,7 +35,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
         public static void CopyTilesToSharedTilemaps(GeneratedLevel level)
         {
-            foreach (var roomInstance in level.GetAllRoomInstances().OrderBy(x => x.IsCorridor))
+            foreach (var roomInstance in level.GetRoomInstances().OrderBy(x => x.IsCorridor))
             {
                 CopyTilesToSharedTilemaps(level, roomInstance);
             }
@@ -116,7 +116,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
         public static void DisableRoomTemplatesRenderers(GeneratedLevel level)
         {
-            foreach (var roomInstance in level.GetAllRoomInstances())
+            foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
                 var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
@@ -131,7 +131,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
         public static void DisableRoomTemplatesColliders(GeneratedLevel level)
         {
-            foreach (var roomInstance in level.GetAllRoomInstances())
+            foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
                 var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);

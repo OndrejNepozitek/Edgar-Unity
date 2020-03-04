@@ -38,7 +38,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             FogOfWar?.Reset();
 
             // Find the generator runner
-            var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGeneratorRunner>();
+            var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGenerator>();
 
             // Start the generator coroutine
             StartCoroutine(GeneratorCoroutine(generator));
@@ -51,7 +51,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
         /// It is also sometimes useful to yield return before we hide the loading screen to make sure that
         /// all the scripts that were possibly created during the process are properly initialized.
         /// </summary>
-        private IEnumerator GeneratorCoroutine(DungeonGeneratorRunner generator)
+        private IEnumerator GeneratorCoroutine(DungeonGenerator generator)
         {
             yield return null;
 
