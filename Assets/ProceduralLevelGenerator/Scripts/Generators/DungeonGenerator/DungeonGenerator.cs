@@ -1,18 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Assets.ProceduralLevelGenerator.Scripts.Attributes;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
-using Random = System.Random;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
 {
-    // TODO: is this name ok?
-    public class DungeonGeneratorRunner : GeneratorRunnerBase<DungeonGeneratorPayload>, IGeneratorRunner
+    public class DungeonGenerator : LevelGeneratorBase<DungeonGeneratorPayload>
     {
         [Expandable]
         public FixedLevelGraphConfig FixedLevelGraphConfig;
@@ -29,6 +29,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
         [ExpandableScriptableObject(CanFold = false)]
         public List<PipelineItem> CustomPostProcessTasks;
 
+        [Expandable]
+        public AdvancedConfig AdvancedConfig;
+
         public void Start()
         {
             if (OtherConfig.GenerateOnStart)
@@ -37,14 +40,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             }
         }
 
-        public override DungeonGeneratorPayload Generate()
+        protected (List<PipelineItem> pipelineItems, DungeonGeneratorPayload payload) GetPipelineItemsAndPayload()
         {
-            Debug.Log("--- Generator started ---");
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
             var payload = InitializePayload();
-
             var pipelineItems = new List<PipelineItem>();
 
             // Add input setup
@@ -67,11 +65,20 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
                 }
             }
 
-            PipelineRunner.Run(pipelineItems, payload);
-            
-            Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
+            return (pipelineItems, payload);
+        }
 
-            return payload;
+        public override void Generate()
+        {
+            Debug.Log("--- Generator started ---");
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            var (pipelineItems, payload) = GetPipelineItemsAndPayload();
+
+            PipelineRunner.Run(pipelineItems, payload);
+
+            Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
         }
 
         private PipelineItem GetInputTask()
@@ -100,11 +107,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             {
                 Random = GetRandomNumbersGenerator(OtherConfig.UseRandomSeed, OtherConfig.RandomGeneratorSeed),
             };
-        }
-
-        object IGeneratorRunner.Generate()
-        {
-            return Generate();
         }
     }
 }

@@ -30,7 +30,6 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
             }
 
             DontDestroyOnLoad(gameObject);
-            LoadNextLevel();
         }
 
         protected virtual void SingletonAwake()

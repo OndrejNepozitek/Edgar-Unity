@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+﻿using System.Collections;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
 {
     /// <summary>
     ///     Base class for configurable pipeline tasks.
@@ -25,6 +27,6 @@
         /// <remarks>
         ///     When this method is called, both Payload and Config properties are already set.
         /// </remarks>
-        public abstract void Process();
+        public abstract IEnumerator Process();
     }
 }

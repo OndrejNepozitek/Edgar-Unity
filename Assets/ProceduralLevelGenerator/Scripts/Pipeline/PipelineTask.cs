@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+﻿using System.Collections;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
 {
     /// <summary>
     ///     Base class for pipeline tasks. Used in simpler scenarios.
@@ -18,6 +20,6 @@
         /// <remarks>
         ///     When this method is called, the Payload property is already set.
         /// </remarks>
-        public abstract void Process();
+        public abstract IEnumerator Process();
     }
 }

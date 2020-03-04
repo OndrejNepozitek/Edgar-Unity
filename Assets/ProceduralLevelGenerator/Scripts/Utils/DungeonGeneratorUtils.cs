@@ -57,7 +57,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
         {
             var tilesToRemove = new HashSet<Vector3Int>();
 
-            // Find non-null tiles acrros all tilemaps of the room
+            // Find non-null tiles across all tilemaps of the room
             foreach (var sourceTilemap in roomTemplateTilemaps)
             {
                 foreach (var tilemapPosition in sourceTilemap.cellBounds.allPositionsWithin)
@@ -71,7 +71,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
                 }
             }
 
-            // Delete all found tiles acrros all tilemaps of the dungeon
+            // Delete all found tiles across all tilemaps of the dungeon
             for (var i = 0; i < roomTemplateTilemaps.Count; i++)
             {
                 var destinationTilemap = destinationTilemaps[i];

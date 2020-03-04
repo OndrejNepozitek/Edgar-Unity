@@ -1,4 +1,5 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
+﻿using System.Collections;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
@@ -16,7 +17,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
     public class PostProcessPipelineTask<TPayload> : ConfigurablePipelineTask<TPayload, PostProcessPipelineConfig>
         where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
     { 
-        public override void Process()
+        public override IEnumerator Process()
         {
             var config = Config.Config;
 
@@ -45,6 +46,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
             {
                 PostProcessUtils.DisableRoomTemplatesColliders(Payload.GeneratedLevel);
             }
+
+            yield return null;
         }
     }
 }

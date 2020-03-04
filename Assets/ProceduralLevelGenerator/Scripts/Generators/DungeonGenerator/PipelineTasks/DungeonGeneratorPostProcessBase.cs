@@ -1,6 +1,6 @@
 ﻿using System;
+﻿using System.Collections;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks
@@ -9,10 +9,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
     {
         protected Random Random;
 
-        public override void Process()
+        public override IEnumerator Process()
         {
             Random = Payload.Random;
             Run(Payload.GeneratedLevel, Payload.LevelDescription);
+            yield return null;
         }
 
         protected abstract void Run(GeneratedLevel level, LevelDescription levelDescription);

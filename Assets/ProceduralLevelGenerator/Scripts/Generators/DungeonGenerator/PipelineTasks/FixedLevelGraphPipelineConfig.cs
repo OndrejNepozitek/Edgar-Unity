@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
@@ -22,7 +23,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
     {
         private FixedLevelGraphConfig config;
 
-        public override void Process()
+        public override IEnumerator Process()
         {
             // TODO: kind of weird
             config = Config.Config;
@@ -65,6 +66,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
             }
 
             Payload.LevelDescription = levelDescription;
+
+            yield return null;
         }
 
         private List<GameObject> GetRoomTemplates(List<RoomTemplatesSet> roomTemplatesSets, List<GameObject> individualRoomTemplates)

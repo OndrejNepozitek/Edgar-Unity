@@ -1,4 +1,6 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+﻿using System.Collections;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
 {
     public interface IPipelineTask<TPayload> where TPayload : class
     {
@@ -13,6 +15,6 @@
         /// <remarks>
         ///     When this method is called, the Payload property is already set.
         /// </remarks>
-        void Process();
+        IEnumerator Process();
     }
 }
