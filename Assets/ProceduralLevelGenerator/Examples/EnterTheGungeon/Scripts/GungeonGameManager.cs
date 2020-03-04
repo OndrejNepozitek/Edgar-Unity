@@ -21,9 +21,12 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
         private GungeonRoomType currentRoomType;
         private long generatorElapsedMilliseconds;
 
+        // To make sure that we do not start the generator multiple times
+        private bool isGenerating;
+
         public void Update()
         {
-            if (Input.GetKey(KeyCode.G))
+            if (Input.GetKey(KeyCode.G) && !isGenerating)
             {
                 LoadNextLevel();
             }
@@ -31,6 +34,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
         public override void LoadNextLevel()
         {
+            isGenerating = true;
+
             // Show loading screen
             ShowLoadingScreen("Enter the Gungeon", "loading..");
 
@@ -59,11 +64,17 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
             stopwatch.Start();
 
-            generator.Generate();
+            var generatorCoroutine = this.StartCoroutineWithData<object>(generator.GenerateCoroutine());
+
+            yield return generatorCoroutine.Coroutine;
 
             stopwatch.Stop();
 
             yield return null;
+
+            isGenerating = false;
+
+            generatorCoroutine.ThrowIfNotSuccessful();
 
             generatorElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
             RefreshLevelInfo();
@@ -91,12 +102,20 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
                 {
                     var neighbor = doorInstance.ConnectedRoomInstance;
 
-                    if (neighbor.IsCorridor)
+                    if (neighbor != null)
                     {
-                        FogOfWar.VisionGrid.AddPolygon(GetPolygon(neighbor), (Vector2Int) neighbor.Position, 1);
+                        if (neighbor.IsCorridor)
+                        {
+                            FogOfWar.VisionGrid.AddPolygon(GetPolygon(neighbor), (Vector2Int) neighbor.Position, 1);
+                        }
                     }
                 }
             }
+        }
+
+        public void ResetFogOfWar()
+        {
+            FogOfWar.VisionGrid = new VisionGrid();
         }
 
         // TODO: remove later

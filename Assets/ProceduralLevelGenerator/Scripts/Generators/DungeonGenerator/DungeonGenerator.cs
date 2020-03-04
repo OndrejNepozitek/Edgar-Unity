@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Assets.ProceduralLevelGenerator.Scripts.Attributes;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks;
 using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
+using Assets.ProceduralLevelGenerator.Scripts.Pro;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -82,6 +84,34 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             var (pipelineItems, payload) = GetPipelineItemsAndPayload();
 
             PipelineRunner.Run(pipelineItems, payload);
+
+            Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
+        }
+
+        public override IEnumerator GenerateCoroutine()
+        {
+            Debug.Log("--- Generator started ---");
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
+
+            var (pipelineItems, payload) = GetPipelineItemsAndPayload();
+
+            var pipelineIterator = PipelineRunner.GetEnumerator(pipelineItems, payload);
+            
+            if (Application.isPlaying)
+            {
+                var pipelineCoroutine = this.StartCoroutineWithData<DungeonGeneratorPayload>(pipelineIterator, AdvancedConfig.ThrowExceptionsImmediately);
+
+                yield return pipelineCoroutine.Coroutine;
+                yield return pipelineCoroutine.Value;
+            }
+            else
+            {
+                while (pipelineIterator.MoveNext())
+                {
+
+                }
+            }
 
             Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
         }

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Assets.ProceduralLevelGenerator.Examples.Common;
 using Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts.Levels;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.PlatformerGenerator;
+using Assets.ProceduralLevelGenerator.Scripts.Pro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,14 +16,17 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
         public DeadCellsLevelType LevelType;
         private long generatorElapsedMilliseconds;
         
+        // To make sure that we do not start the generator multiple times
+        private bool isGenerating;
+
         public void Update()
         {
-            if (Input.GetKey(KeyCode.T))
+            if (Input.GetKey(KeyCode.T) && !isGenerating)
             {
                 SwitchLevel();
             }
 
-            if (Input.GetKey(KeyCode.G))
+            if (Input.GetKey(KeyCode.G) && !isGenerating)
             {
                 LoadNextLevel();
             }
@@ -49,6 +53,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
 
         public override void LoadNextLevel()
         {
+            isGenerating = true;
+
             // Show loading screen
             ShowLoadingScreen($"Dead Cells - {LevelType}", "loading..");
 
@@ -68,15 +74,19 @@ namespace Assets.ProceduralLevelGenerator.Examples.DeadCells.Scripts
 
             stopwatch.Start();
 
-            generator.Generate();
+            var generatorCoroutine = this.StartCoroutineWithData<object>(generator.GenerateCoroutine());
 
-            yield return null;
+            yield return generatorCoroutine.Coroutine;
 
             stopwatch.Stop();
-            generatorElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
 
             yield return null;
 
+            isGenerating = false;
+
+            generatorCoroutine.ThrowIfNotSuccessful();
+
+            generatorElapsedMilliseconds = stopwatch.ElapsedMilliseconds;
             RefreshLevelInfo();
             HideLoadingScreen();
         }

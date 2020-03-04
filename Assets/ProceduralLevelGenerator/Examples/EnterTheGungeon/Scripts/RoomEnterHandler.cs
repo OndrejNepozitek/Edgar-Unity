@@ -8,8 +8,17 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
         public void Start()
         {
+            Setup();
+        }
+
+        public void Setup()
+        {
             parentGungeonRoomManager = transform.parent.parent.gameObject.GetComponent<GungeonRoomManager>();
-            parentGungeonRoomManager.FloorCollider = GetComponent<CompositeCollider2D>();
+
+            if (parentGungeonRoomManager != null)
+            {
+                parentGungeonRoomManager.FloorCollider = GetComponent<CompositeCollider2D>();
+            }
         }
 
         public void OnTriggerEnter2D(Collider2D otherCollider)
@@ -17,7 +26,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
             // TODO: handle better
             if (otherCollider.gameObject.name == "Player")
             {
-                parentGungeonRoomManager.OnRoomEnter(otherCollider);
+                parentGungeonRoomManager?.OnRoomEnter(otherCollider);
             }
         }
 
@@ -25,7 +34,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
         {
             if (otherCollider.gameObject.name == "Player")
             {
-                parentGungeonRoomManager.OnRoomLeave(otherCollider);
+                parentGungeonRoomManager?.OnRoomLeave(otherCollider);
             }
         }
     }

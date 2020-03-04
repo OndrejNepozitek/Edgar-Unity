@@ -34,6 +34,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
 
         public abstract void Generate();
 
+        public abstract IEnumerator GenerateCoroutine();
+
         protected abstract TPayload InitializePayload();
 
         protected void ExportMapDescription(PipelineItem inputSetup)

@@ -64,7 +64,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Pro
 
             if (GeneratedLevelRoot != null)
             {
-                offset += GeneratedLevelRoot.gameObject.transform.Find("Tilemaps").localPosition;
+                var tilemapsRoot = GeneratedLevelRoot.gameObject.transform.Find("Tilemaps");
+
+                if (tilemapsRoot != null)
+                {
+                    offset += tilemapsRoot.localPosition;
+                }
             }
             
             material.SetMatrix("_ViewProjInv", viewProjMat.inverse);
