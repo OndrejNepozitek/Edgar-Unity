@@ -40,17 +40,17 @@ namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
         /// </summary>
         private IEnumerator GeneratorCoroutine(DungeonGenerator generator)
         {
-            yield return null;
-
             var stopwatch = new Stopwatch();
 
             stopwatch.Start();
 
+            yield return null;
+
             generator.Generate();
 
-            stopwatch.Stop();
-
             yield return null;
+
+            stopwatch.Stop();
 
             SetLevelInfo($"Generated in {stopwatch.ElapsedMilliseconds/1000d:F}s");
             HideLoadingScreen();
