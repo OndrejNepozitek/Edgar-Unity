@@ -13,7 +13,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
 
         protected override void Run(GeneratedLevel level, LevelDescription levelDescription)
         {
-            GungeonGameManager.Instance.ResetFogOfWar();
+            // Instance may be null in Editor mode
+            GungeonGameManager.Instance?.ResetFogOfWar();
 
             foreach (var roomInstance in Payload.GeneratedLevel.GetRoomInstances())
             {
@@ -60,7 +61,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts.Tasks
                     var player = GameObject.FindWithTag("Player");
                     player.transform.position = spawnPosition.position;
 
-                    GungeonGameManager.Instance.RevealRoom(roomInstance);
+                    // Instance may be null in Editor mode 
+                    GungeonGameManager.Instance?.RevealRoom(roomInstance);
                 }
             }
         }

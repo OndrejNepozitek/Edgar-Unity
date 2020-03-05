@@ -100,7 +100,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.EnterTheGungeon.Scripts
 
         public static bool IsPointWithinCollider(Collider2D collider, Vector2 point)
         {
-            return (collider.ClosestPoint(point) - point).sqrMagnitude < Mathf.Epsilon * Mathf.Epsilon;
+            return collider.OverlapPoint(point); 
         }
 
         public static Vector3 RandomPointInBounds(Bounds bounds)
