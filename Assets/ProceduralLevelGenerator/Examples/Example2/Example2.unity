@@ -54,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 0
     m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
-    serializedVersion: 12
+    serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
     m_AtlasSize: 1024
@@ -62,7 +62,6 @@ LightmapSettings:
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
     m_CompAOExponentDirect: 0
-    m_ExtractAmbientOcclusion: 0
     m_Padding: 2
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
@@ -77,16 +76,10 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVREnvironmentSampleCount: 500
-    m_PVREnvironmentReferencePointCount: 2048
-    m_PVRFilteringMode: 2
-    m_PVRDenoiserTypeDirect: 0
-    m_PVRDenoiserTypeIndirect: 0
-    m_PVRDenoiserTypeAO: 0
     m_PVRFilterTypeDirect: 0
     m_PVRFilterTypeIndirect: 0
     m_PVRFilterTypeAO: 0
-    m_PVREnvironmentMIS: 0
+    m_PVRFilteringMode: 2
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
@@ -94,8 +87,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ExportTrainingData: 0
-    m_TrainingDataDestination: TrainingData
+    m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -231,7 +223,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1090908
 Rigidbody2D:
   serializedVersion: 4
@@ -267,8 +258,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1090910
 Tilemap:
   m_ObjectHideFlags: 0
@@ -501,7 +490,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -4384,7 +4372,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &239296068
 Rigidbody2D:
   serializedVersion: 4
@@ -4420,8 +4407,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &239296070
 Tilemap:
   m_ObjectHideFlags: 0
@@ -4682,7 +4667,6 @@ CompositeCollider2D:
       - {x: 0, y: 0.9999942}
       - {x: 0.0000058, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &253057372
 Rigidbody2D:
   serializedVersion: 4
@@ -4718,8 +4702,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &253057374
 Tilemap:
   m_ObjectHideFlags: 0
@@ -5048,7 +5030,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -5193,7 +5174,6 @@ CompositeCollider2D:
       - {x: 7.5625, y: 6.9999943}
       - {x: 7.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &271289203
 Rigidbody2D:
   serializedVersion: 4
@@ -5229,8 +5209,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &271289205
 Tilemap:
   m_ObjectHideFlags: 0
@@ -6353,7 +6331,6 @@ CompositeCollider2D:
       - {x: -1, y: -0.0000058}
       - {x: -0.9999942, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &340089911
 Rigidbody2D:
   serializedVersion: 4
@@ -6389,8 +6366,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &340089913
 Tilemap:
   m_ObjectHideFlags: 0
@@ -7388,7 +7363,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &372369662
 Rigidbody2D:
   serializedVersion: 4
@@ -7424,8 +7398,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &372369664
 Tilemap:
   m_ObjectHideFlags: 0
@@ -7826,7 +7798,6 @@ CompositeCollider2D:
       - {x: -10, y: -5.0000057}
       - {x: -9.999994, y: -6}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &397106970
 Rigidbody2D:
   serializedVersion: 4
@@ -7862,8 +7833,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &397106972
 Tilemap:
   m_ObjectHideFlags: 0
@@ -8286,7 +8255,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -8572,7 +8540,6 @@ CompositeCollider2D:
       - {x: -1, y: 0.9999942}
       - {x: -0.9999942, y: 0}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &449155930
 Rigidbody2D:
   serializedVersion: 4
@@ -8608,8 +8575,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &449155932
 Tilemap:
   m_ObjectHideFlags: 0
@@ -8830,7 +8795,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &462379972
 Rigidbody2D:
   serializedVersion: 4
@@ -8866,8 +8830,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &462379974
 Tilemap:
   m_ObjectHideFlags: 0
@@ -9128,7 +9090,6 @@ CompositeCollider2D:
       - {x: 0, y: 0.9999942}
       - {x: 0.0000058, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &466332668
 Rigidbody2D:
   serializedVersion: 4
@@ -9164,8 +9125,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &466332670
 Tilemap:
   m_ObjectHideFlags: 0
@@ -12081,7 +12040,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &525668929
 Rigidbody2D:
   serializedVersion: 4
@@ -12117,8 +12075,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &525668931
 Tilemap:
   m_ObjectHideFlags: 0
@@ -13080,7 +13036,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &547990500
 Rigidbody2D:
   serializedVersion: 4
@@ -13116,8 +13071,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &547990502
 Tilemap:
   m_ObjectHideFlags: 0
@@ -13586,7 +13539,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &561330127
 Rigidbody2D:
   serializedVersion: 4
@@ -13622,8 +13574,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &561330129
 Tilemap:
   m_ObjectHideFlags: 0
@@ -15305,7 +15255,6 @@ CompositeCollider2D:
       - {x: 15.999992, y: -30.375008}
       - {x: 16.125, y: -30.56251}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &578173438
 Rigidbody2D:
   serializedVersion: 4
@@ -15341,8 +15290,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &578173440
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -15368,7 +15315,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -21184,10 +21130,9 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.122641504, g: 0.104708076, b: 0.104708076, a: 0}
   m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
+  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -21642,7 +21587,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &606398358
 Rigidbody2D:
   serializedVersion: 4
@@ -21678,8 +21622,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &606398360
 Tilemap:
   m_ObjectHideFlags: 0
@@ -23423,7 +23365,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &642936183
 Rigidbody2D:
   serializedVersion: 4
@@ -23459,8 +23400,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &642936185
 Tilemap:
   m_ObjectHideFlags: 0
@@ -23991,7 +23930,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &685423736
 Rigidbody2D:
   serializedVersion: 4
@@ -24027,8 +23965,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &685423738
 Tilemap:
   m_ObjectHideFlags: 0
@@ -24503,7 +24439,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -24610,7 +24545,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -24721,7 +24655,6 @@ CompositeCollider2D:
       - {x: 7.5625, y: 6.9999943}
       - {x: 7.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &701281719
 Rigidbody2D:
   serializedVersion: 4
@@ -24757,8 +24690,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &701281721
 Tilemap:
   m_ObjectHideFlags: 0
@@ -25858,7 +25789,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -26302,7 +26232,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &770527427
 Rigidbody2D:
   serializedVersion: 4
@@ -26338,8 +26267,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &770527429
 Tilemap:
   m_ObjectHideFlags: 0
@@ -26900,7 +26827,6 @@ CompositeCollider2D:
       - {x: -1, y: -0.0000058}
       - {x: -0.9999942, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &794036983
 Rigidbody2D:
   serializedVersion: 4
@@ -26936,8 +26862,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &794036985
 Tilemap:
   m_ObjectHideFlags: 0
@@ -27128,7 +27052,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &795366664
 Rigidbody2D:
   serializedVersion: 4
@@ -27164,8 +27087,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &795366666
 Tilemap:
   m_ObjectHideFlags: 0
@@ -27532,7 +27453,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &810829797
 Rigidbody2D:
   serializedVersion: 4
@@ -27568,8 +27488,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &810829799
 Tilemap:
   m_ObjectHideFlags: 0
@@ -27874,7 +27792,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &815860464
 Rigidbody2D:
   serializedVersion: 4
@@ -27910,8 +27827,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &815860466
 Tilemap:
   m_ObjectHideFlags: 0
@@ -28740,7 +28655,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -29061,7 +28975,6 @@ CompositeCollider2D:
       - {x: -1, y: 0.9999942}
       - {x: -0.9999942, y: 0}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &823766255
 Rigidbody2D:
   serializedVersion: 4
@@ -29097,8 +29010,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &823766257
 Tilemap:
   m_ObjectHideFlags: 0
@@ -29580,7 +29491,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -40514,7 +40424,6 @@ CompositeCollider2D:
       - {x: -1, y: 0.9999942}
       - {x: -0.9999942, y: 0}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &864397118
 Rigidbody2D:
   serializedVersion: 4
@@ -40550,8 +40459,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &864397120
 Tilemap:
   m_ObjectHideFlags: 0
@@ -42206,7 +42113,6 @@ CompositeCollider2D:
       - {x: 0, y: -0.0000058}
       - {x: 0.0000058, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &899070318
 Rigidbody2D:
   serializedVersion: 4
@@ -42242,8 +42148,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &899070320
 Tilemap:
   m_ObjectHideFlags: 0
@@ -43522,7 +43426,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &956670896
 Rigidbody2D:
   serializedVersion: 4
@@ -43558,8 +43461,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &956670898
 Tilemap:
   m_ObjectHideFlags: 0
@@ -44698,7 +44599,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1007227465
 Rigidbody2D:
   serializedVersion: 4
@@ -44734,8 +44634,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1007227467
 Tilemap:
   m_ObjectHideFlags: 0
@@ -44996,7 +44894,6 @@ CompositeCollider2D:
       - {x: 0, y: 0.9999942}
       - {x: 0.0000058, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1009651419
 Rigidbody2D:
   serializedVersion: 4
@@ -45032,8 +44929,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1009651421
 Tilemap:
   m_ObjectHideFlags: 0
@@ -45250,7 +45145,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1010534012
 Rigidbody2D:
   serializedVersion: 4
@@ -45286,8 +45180,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1010534014
 Tilemap:
   m_ObjectHideFlags: 0
@@ -46439,7 +46331,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1014698109
 Rigidbody2D:
   serializedVersion: 4
@@ -46475,8 +46366,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1014698111
 Tilemap:
   m_ObjectHideFlags: 0
@@ -46805,7 +46694,6 @@ CompositeCollider2D:
       - {x: -1, y: 0.9999942}
       - {x: -0.9999942, y: 0}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1015252431
 Rigidbody2D:
   serializedVersion: 4
@@ -46841,8 +46729,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1015252433
 Tilemap:
   m_ObjectHideFlags: 0
@@ -47679,7 +47565,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1041426597
 Rigidbody2D:
   serializedVersion: 4
@@ -47715,8 +47600,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1041426599
 Tilemap:
   m_ObjectHideFlags: 0
@@ -48119,7 +48002,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1049689903
 Rigidbody2D:
   serializedVersion: 4
@@ -48155,8 +48037,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1049689905
 Tilemap:
   m_ObjectHideFlags: 0
@@ -48593,7 +48473,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -49255,7 +49134,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1110332793
 Rigidbody2D:
   serializedVersion: 4
@@ -49291,8 +49169,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1110332795
 Tilemap:
   m_ObjectHideFlags: 0
@@ -50546,7 +50422,6 @@ CompositeCollider2D:
       - {x: 13.99999, y: -35.000004}
       - {x: 14.000002, y: -36.00001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1116389196
 Rigidbody2D:
   serializedVersion: 4
@@ -50582,8 +50457,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!483693784 &1116389198
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -50609,7 +50482,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -54533,7 +54405,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1175254835
 Rigidbody2D:
   serializedVersion: 4
@@ -54569,8 +54440,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1175254837
 Tilemap:
   m_ObjectHideFlags: 0
@@ -54841,7 +54710,6 @@ CompositeCollider2D:
       - {x: -1, y: -0.0000058}
       - {x: -0.9999942, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1188301750
 Rigidbody2D:
   serializedVersion: 4
@@ -54877,8 +54745,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1188301752
 Tilemap:
   m_ObjectHideFlags: 0
@@ -55075,7 +54941,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1191719697
 Rigidbody2D:
   serializedVersion: 4
@@ -55111,8 +54976,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1191719699
 Tilemap:
   m_ObjectHideFlags: 0
@@ -55513,7 +55376,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1193365640
 Rigidbody2D:
   serializedVersion: 4
@@ -55549,8 +55411,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1193365642
 Tilemap:
   m_ObjectHideFlags: 0
@@ -55909,7 +55769,6 @@ CompositeCollider2D:
       - {x: 7.5625, y: 6.9999943}
       - {x: 7.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1205567581
 Rigidbody2D:
   serializedVersion: 4
@@ -55945,8 +55804,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1205567583
 Tilemap:
   m_ObjectHideFlags: 0
@@ -56495,6 +56352,145 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!1001 &1213777140
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2063402436501277691, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 2063402436501277691, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3772962384457071523, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Press WASD to move around
+
+        Press E to interact with objects
+
+        Press G or find the exit to load next level'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187377649382880055, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2347b5c691fe67f4891d76bc53ee2d53, type: 3}
+--- !u!1 &1213777141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2063402436501277691, guid: 2347b5c691fe67f4891d76bc53ee2d53,
+    type: 3}
+  m_PrefabInstance: {fileID: 1213777140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1222837113
 GameObject:
   m_ObjectHideFlags: 0
@@ -56668,7 +56664,6 @@ CompositeCollider2D:
       - {x: -1, y: -0.0000058}
       - {x: -0.9999942, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1223867007
 Rigidbody2D:
   serializedVersion: 4
@@ -56704,8 +56699,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1223867009
 Tilemap:
   m_ObjectHideFlags: 0
@@ -57178,7 +57171,6 @@ CompositeCollider2D:
       - {x: 7.5625, y: 6.9999943}
       - {x: 7.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1239039041
 Rigidbody2D:
   serializedVersion: 4
@@ -57214,8 +57206,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1239039043
 Tilemap:
   m_ObjectHideFlags: 0
@@ -57857,7 +57847,6 @@ CompositeCollider2D:
       - {x: -1, y: 0.9999942}
       - {x: -0.9999942, y: 0}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1293300475
 Rigidbody2D:
   serializedVersion: 4
@@ -57893,8 +57882,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1293300477
 Tilemap:
   m_ObjectHideFlags: 0
@@ -58478,7 +58465,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1312886249
 Rigidbody2D:
   serializedVersion: 4
@@ -58514,8 +58500,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1312886251
 Tilemap:
   m_ObjectHideFlags: 0
@@ -59571,7 +59555,6 @@ CompositeCollider2D:
       - {x: -1, y: -0.0000058}
       - {x: -0.9999942, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1324853140
 Rigidbody2D:
   serializedVersion: 4
@@ -59607,8 +59590,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1324853142
 Tilemap:
   m_ObjectHideFlags: 0
@@ -59855,7 +59836,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1352557044
 Rigidbody2D:
   serializedVersion: 4
@@ -59891,8 +59871,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1352557046
 Tilemap:
   m_ObjectHideFlags: 0
@@ -60986,7 +60964,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1372868650
 Rigidbody2D:
   serializedVersion: 4
@@ -61022,8 +60999,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1372868652
 Tilemap:
   m_ObjectHideFlags: 0
@@ -61470,7 +61445,6 @@ CompositeCollider2D:
       - {x: 0, y: -0.0000058}
       - {x: 0.0000058, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1382916919
 Rigidbody2D:
   serializedVersion: 4
@@ -61506,8 +61480,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1382916921
 Tilemap:
   m_ObjectHideFlags: 0
@@ -61852,7 +61824,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1385411565
 Rigidbody2D:
   serializedVersion: 4
@@ -61888,8 +61859,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1385411567
 Tilemap:
   m_ObjectHideFlags: 0
@@ -62501,7 +62470,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1417718727
 Rigidbody2D:
   serializedVersion: 4
@@ -62537,8 +62505,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1417718729
 Tilemap:
   m_ObjectHideFlags: 0
@@ -62693,7 +62659,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -64037,7 +64002,6 @@ CompositeCollider2D:
       - {x: -1, y: -0.0000058}
       - {x: -0.9999942, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1467388784
 Rigidbody2D:
   serializedVersion: 4
@@ -64073,8 +64037,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1467388786
 Tilemap:
   m_ObjectHideFlags: 0
@@ -64265,7 +64227,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1469837345
 Rigidbody2D:
   serializedVersion: 4
@@ -64301,8 +64262,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1469837347
 Tilemap:
   m_ObjectHideFlags: 0
@@ -64847,7 +64806,6 @@ CompositeCollider2D:
       - {x: 7.5625, y: 6.9999943}
       - {x: 7.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1488459931
 Rigidbody2D:
   serializedVersion: 4
@@ -64883,8 +64841,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1488459933
 Tilemap:
   m_ObjectHideFlags: 0
@@ -65501,7 +65457,6 @@ CompositeCollider2D:
       - {x: 2.0000007, y: -0.3750016}
       - {x: 2.1250026, y: -0.5625}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1493555705
 Rigidbody2D:
   serializedVersion: 4
@@ -65537,8 +65492,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1493555707
 Tilemap:
   m_ObjectHideFlags: 0
@@ -66700,7 +66653,6 @@ CompositeCollider2D:
       - {x: -9, y: -5.0000057}
       - {x: -8.999994, y: -6}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1517940428
 Rigidbody2D:
   serializedVersion: 4
@@ -66736,8 +66688,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1517940430
 Tilemap:
   m_ObjectHideFlags: 0
@@ -67844,7 +67794,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1575154654
 Rigidbody2D:
   serializedVersion: 4
@@ -67880,8 +67829,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1575154656
 Tilemap:
   m_ObjectHideFlags: 0
@@ -68396,7 +68343,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1597873371
 Rigidbody2D:
   serializedVersion: 4
@@ -68432,8 +68378,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1597873373
 Tilemap:
   m_ObjectHideFlags: 0
@@ -68694,7 +68638,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1603851993
 Rigidbody2D:
   serializedVersion: 4
@@ -68730,8 +68673,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1603851995
 Tilemap:
   m_ObjectHideFlags: 0
@@ -69036,7 +68977,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1607015406
 Rigidbody2D:
   serializedVersion: 4
@@ -69072,8 +69012,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1607015408
 Tilemap:
   m_ObjectHideFlags: 0
@@ -70709,7 +70647,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1625210686
 Rigidbody2D:
   serializedVersion: 4
@@ -70745,8 +70682,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1625210688
 Tilemap:
   m_ObjectHideFlags: 0
@@ -71429,7 +71364,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1644832496
 Rigidbody2D:
   serializedVersion: 4
@@ -71465,8 +71399,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1644832498
 Tilemap:
   m_ObjectHideFlags: 0
@@ -72110,7 +72042,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1711821897
 Rigidbody2D:
   serializedVersion: 4
@@ -72146,8 +72077,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1711821899
 Tilemap:
   m_ObjectHideFlags: 0
@@ -74153,7 +74082,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1768109419
 Rigidbody2D:
   serializedVersion: 4
@@ -74189,8 +74117,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1768109421
 Tilemap:
   m_ObjectHideFlags: 0
@@ -74509,7 +74435,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -74682,7 +74607,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1786935238
 Rigidbody2D:
   serializedVersion: 4
@@ -74718,8 +74642,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1786935240
 Tilemap:
   m_ObjectHideFlags: 0
@@ -74966,7 +74888,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1792984473
 Rigidbody2D:
   serializedVersion: 4
@@ -75002,8 +74923,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1792984475
 Tilemap:
   m_ObjectHideFlags: 0
@@ -75404,7 +75323,6 @@ CompositeCollider2D:
       - {x: -9, y: -3.0000057}
       - {x: -8.999994, y: -5}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1798533395
 Rigidbody2D:
   serializedVersion: 4
@@ -75440,8 +75358,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1798533397
 Tilemap:
   m_ObjectHideFlags: 0
@@ -76984,7 +76900,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1855957913
 Rigidbody2D:
   serializedVersion: 4
@@ -77020,8 +76935,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1855957915
 Tilemap:
   m_ObjectHideFlags: 0
@@ -77322,7 +77235,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1863091254
 MonoBehaviour:
@@ -77336,7 +77249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c63c277433eea42bd706569683d929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Canvas: {fileID: 2028903384}
+  Canvas: {fileID: 1213777141}
 --- !u!1 &1876526759
 GameObject:
   m_ObjectHideFlags: 0
@@ -78107,7 +78020,6 @@ CompositeCollider2D:
       - {x: 7.5625, y: 6.9999943}
       - {x: 7.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1894234755
 Rigidbody2D:
   serializedVersion: 4
@@ -78143,8 +78055,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1894234757
 Tilemap:
   m_ObjectHideFlags: 0
@@ -78639,7 +78549,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1894376076
 Rigidbody2D:
   serializedVersion: 4
@@ -78675,8 +78584,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1894376078
 Tilemap:
   m_ObjectHideFlags: 0
@@ -79364,7 +79271,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -79567,7 +79473,6 @@ CompositeCollider2D:
       - {x: 0.5625, y: -1.7500024}
       - {x: 0.5625058, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1951609745
 Rigidbody2D:
   serializedVersion: 4
@@ -79603,8 +79508,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1951609747
 Tilemap:
   m_ObjectHideFlags: 0
@@ -80081,7 +79984,6 @@ CompositeCollider2D:
       - {x: -1, y: 0.9999942}
       - {x: -0.9999942, y: 0}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1975485019
 Rigidbody2D:
   serializedVersion: 4
@@ -80117,8 +80019,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1975485021
 Tilemap:
   m_ObjectHideFlags: 0
@@ -80801,7 +80701,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &1987502068
 Rigidbody2D:
   serializedVersion: 4
@@ -80837,8 +80736,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &1987502070
 Tilemap:
   m_ObjectHideFlags: 0
@@ -81745,7 +81642,6 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -81942,7 +81838,6 @@ CompositeCollider2D:
       - {x: 0, y: -0.0000058}
       - {x: 0.0000058, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &2022224758
 Rigidbody2D:
   serializedVersion: 4
@@ -81978,8 +81873,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &2022224760
 Tilemap:
   m_ObjectHideFlags: 0
@@ -82335,170 +82228,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1001 &2028903383
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 9184811892439602044, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439602044, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601792, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811892439601795, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 589247298}
-    - target: {fileID: 1130693109218390711, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Press WASD to move around
-
-        Press E to interact with objects
-
-        Press G or find the exit to load next level'
-      objectReference: {fileID: 0}
-    - target: {fileID: 1130693109218390711, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_FontData.m_RichText
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1130693109218390711, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3345041547197740440, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9184811893440083168, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8, type: 3}
---- !u!1 &2028903384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9184811892439602044, guid: 8a8a427a6efbb9e4b8da3ea59d0d99c8,
-    type: 3}
-  m_PrefabInstance: {fileID: 2028903383}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2031316216
 GameObject:
   m_ObjectHideFlags: 0
@@ -82716,7 +82445,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &2051818260
 Rigidbody2D:
   serializedVersion: 4
@@ -82752,8 +82480,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &2051818262
 Tilemap:
   m_ObjectHideFlags: 0
@@ -83359,7 +83085,6 @@ CompositeCollider2D:
       - {x: 1, y: -2.0000057}
       - {x: 1.0000058, y: -3}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!50 &2073860230
 Rigidbody2D:
   serializedVersion: 4
@@ -83395,8 +83120,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!1839735485 &2073860232
 Tilemap:
   m_ObjectHideFlags: 0
