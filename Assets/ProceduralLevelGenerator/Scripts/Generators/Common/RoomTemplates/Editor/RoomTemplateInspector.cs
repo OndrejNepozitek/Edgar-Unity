@@ -51,25 +51,31 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
         public void OnSceneGUI()
         {
+            #if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui -= OnSceneGUITest;
 
             if (PrefabStageUtility.GetCurrentPrefabStage() != null)
             {
                 SceneView.duringSceneGui += OnSceneGUITest;
             }
+            #endif
         }
 
         public void OnSceneGUITest(SceneView sceneView)
         {
             if (target == null)
             {
+                #if UNITY_2019_1_OR_NEWER
                 SceneView.duringSceneGui -= OnSceneGUITest;
+                #endif
                 return;
             }
 
             if (PrefabStageUtility.GetCurrentPrefabStage() == null)
             {
+                #if UNITY_2019_1_OR_NEWER
                 SceneView.duringSceneGui -= OnSceneGUITest;
+                #endif
                 return;
             }
             
@@ -84,7 +90,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 for (int i = 0; i < points.Count; i++)
                 {
                     var point1 = new Vector3(points[i].X, points[i].Y, -1);
-                    var point2 = new Vector3(points[(i + 1) % points.Count].X, points[(i + 1) % points.Count].Y, -1);
+                    var point2 = new Vector3(points[(i + 1) % points.Count].X, points[(i + 1) % points.Count].Y, - 1);
                     // Handles.DrawLine(point1 + new Vector3(0.5f, 0.5f), point2 + new Vector3(0.5f, 0.5f));
                     DrawOutline(point1, point2, Color.green);
                 }
