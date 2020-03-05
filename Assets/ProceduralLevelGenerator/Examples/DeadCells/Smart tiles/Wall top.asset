@@ -25,7 +25,7 @@ MonoBehaviour:
     e13: 0
     e20: 0
     e21: 0
-    e22: 1
+    e22: 0
     e23: 0
     e30: 0
     e31: 0
@@ -35,8 +35,4 @@ MonoBehaviour:
   m_Flags: 1
   m_ColliderType: 1
   m_Sprites:
-  - {fileID: 3476739193793682195, guid: 8e5a311b6a19ba24c99de24f6e428317, type: 3}
-  - {fileID: -4964059160939747986, guid: 8e5a311b6a19ba24c99de24f6e428317, type: 3}
-  - {fileID: 2733483858526708977, guid: 8e5a311b6a19ba24c99de24f6e428317, type: 3}
-  - {fileID: 4554884612160548212, guid: 8e5a311b6a19ba24c99de24f6e428317, type: 3}
-  - {fileID: -7699477089096638638, guid: 8e5a311b6a19ba24c99de24f6e428317, type: 3}
+  - {fileID: 21300108, guid: 8e5a311b6a19ba24c99de24f6e428317, type: 3}
