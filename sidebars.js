@@ -48,7 +48,7 @@ module.exports = {
     {
       type: "category",
       label: "Other",
-      items: ["other/tilemap-layers"]
+      items: ["other/tilemap-layers", "other/migration-v1-v2"]
     }
   ]
 };

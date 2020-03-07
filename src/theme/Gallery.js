@@ -35,7 +35,7 @@ export const GalleryImage = props => (
         src={useBaseUrl(props.src)}
         alt="result"
         style={{
-          height: props.fixedHeight === true ? "400px" : "auto",
+          height: props.fixedHeight === true ? (800 / props.cols) + "px" : "auto",
           objectFit: props.fixedHeight === true ? "cover" : "initial"
         }}
       />

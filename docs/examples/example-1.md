@@ -115,7 +115,7 @@ If we now generate the dungeon, we will see that it contains all the enemies tha
 
 If we are happy with the results, we can stop here. However, to showcase how we can add some post processing logic to the generator, we will try to spawn each monster with some predefined probability so that different monsters spawn every time. The result can be found below.
 
-We have to create a class that inherits from `DungeonGeneratorPostProcessBase` and because the base class is a ScriptableObject, we need to the `CreateAssetMenu` attribute so we are able to create an instance of that ScriptableObject. After a level is generated, the `Run` method is called a that is the place where we call out post process logic.
+We have to create a class that inherits from `DungeonGeneratorPostProcessBase` and because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute so we are able to create an instance of that ScriptableObject. After a level is generated, the `Run` method is called and that is the place where we call our post process logic.
 
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Example 1/Post process", fileName = "Example1PostProcess")]
     public class Example1PostProcess : DungeonGeneratorPostProcessBase

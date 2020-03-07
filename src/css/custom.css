@@ -23,6 +23,13 @@
   --ifm-menu-color-background-hover: none;
 }
 
+@media screen and (min-width: 997px) {
+  :root {
+    --ifm-font-size-base: 15px;
+  }
+}
+
+
 html[data-theme='dark'] {
   --ifm-navbar-background-color: #1e2125;
 }

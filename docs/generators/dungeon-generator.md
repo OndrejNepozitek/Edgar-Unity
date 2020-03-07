@@ -10,7 +10,7 @@ import { Image, Gallery, GalleryImage } from "@theme/Gallery";
 - Assign your level graph to the **Level Graph** field.
 - Hit the **Generate dungeon** button or enable **Generate on start** and enter play mode
 
-<Image src="img/v2/generators/dungen_generator_inspector.png" caption="Dungeon generator runner" width="500px" />
+<Image src="img/v2/generators/dungeon_generator_inspector.png" caption="Dungeon generator runner" width="500px" />
 
 ## Configuration
 
@@ -50,4 +50,18 @@ Please refer see the [Post processing](../generators/post-process) page to find 
 - **Random Generator Seed** - Random generator seed that will be used when **Use Random Seed** is disabled. Useful for debugging.
 - **Generate On Start** - Whether to generate a new level when play mode is entered.
 
-## (TODO) Call the generator from script
+## Call the generator from script
+
+It is very simple to call the generator from a script:
+
+1. Get the `DungeonGenerator` component from the game object that holds the generator
+2. Call the `Generate()` method
+
+Example:
+
+    var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGenerator>();
+    generator.Generate();
+
+> **Note:** The `Generate()` method blocks the main Unity thread so the game may freeze while the dungeon is generated. The PRO version comes with an implementation that uses coroutines to make sure that the games does not freeze.
+
+### (PRO) With coroutines
