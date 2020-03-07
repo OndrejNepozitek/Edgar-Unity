@@ -4,9 +4,13 @@ This project is a Unity plugin for procedural generation of 2D dungeons and aims
 
 Similar approaches are used in games like [**Enter the Gungeon**](https://www.boristhebrave.com/2019/07/28/dungeon-generation-in-enter-the-gungeon/) or [**Dead Cells**](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania).
 
-> This is an alpha version of the improved v2 of the plugin. The current state is not ideal yet, but I think that it is better to use v2 if you are a new user. If you already use v1.x, there are some breaking changes in v2 so you have to think about whether to migrate or not (I would recommend to do so). You can find the latest v1.x release [here](https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/tree/v1.0.3).
-
 ## See the documentation and examples [here](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/introduction).
+
+## Current state of the plugin
+
+This is an alpha version of the improved version 2 of the plugin. The current state is not ideal yet, but I think that it is better to use v2 if you are a new user. If you already use v1.x, there are some breaking changes in v2 so you have to think about whether to migrate or not (I would recommend to do so). You can find the latest v1.x release [here](https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/tree/v1.0.3).
+
+I am also working on a **PRO version** of the plugin that will be paid and will contain additional features like **platformers generator**, performance benchmarking tools, more control over the inputs for the generator, simple **fog of war**, more example scenes and other.
 
 ## Features
 
