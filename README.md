@@ -1,50 +1,52 @@
 # ProceduralLevelGenerator-Unity
 
-This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a complete control over generated layouts. Under the hood, the plugin uses my [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
+This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a **complete control** over generated levels. It combines procedural generation and **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses my .NET [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
 
-The plugin is currently in its early alpha stage of development and I am mostly **looking for feedback**. The main focus of my Master thesis is to further improve my dungeon generator library so any feedback is really appreciated and will most likely lead to making the library (and therefore also this plugin) closer to being usable in production scenarios. I'm interested in anything you have to say about the plugin. Do you think that there is a place for such plugin in the Unity ecosystem? Is there a missing feature that is a dealbreaker for you? What would you like to see in future updates? Is the plugin easy to use? Etc. Please use the [Unity forum thread](https://forum.unity.com/threads/alpha-procedural-level-generator-2d-dungeons.636157/) if you have any feedback.
+Similar approaches are used in games like [**Enter the Gungeon**](https://www.boristhebrave.com/2019/07/28/dungeon-generation-in-enter-the-gungeon/) or [**Dead Cells**](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania).
 
-Please read the Shortcomings section before trying out the plugin.
+> This is an alpha version of the improved v2 of the plugin. The current state is not ideal yet, but I think that it is better to use v2 if you are a new user. If you already use v1.x, there are some breaking changes in v2 so you have to think about whether to migrate or not (I would recommend to do so). You can find the latest v1.x release [here](https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/tree/v1.0.3).
 
 ## See the documentation and examples [here](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/introduction).
 
 ## Features
 
-**Complete control over the look of individual rooms.**
-You can draw room templates using Unity built-in Tilemap feature. You can use all available tools (brushes, rule tiles, etc.) to design room templates.
+- **Complete control over the structure of generated level.** Instead of generating completely random dungeons, you specify how many rooms you want and how they should be connected and the algorithm generates levels that follow exactly that structure.
+- **Complete control over the look of individual rooms.** You can draw room templates using Unity built-in Tilemap feature. You can use all available tools (brushes, rule tiles, etc.) to design room templates.
+- **Rooms either directly connected by doors or connected by corridors.** You can choose to either connect rooms by corridors or directly via doors.
+- **Easy to customize.** The plugin is ready to be customized and extended.
 
-**Complete control over the structure of generated layouts.** Instead of generating completely random dungeons, you specify how many rooms you want and how they should be connected and the generator finds dungeons that follow exactly that structure.
+## Limitations
+- **Alpha version.** There may be some **breaking changes** in the API.
+- **Some inputs are too hard for the generator.** You need to follow some guidelines in order to achieve good performance.
+- **Not suitable for large levels.** The generator usually works best for levels with less than 30 rooms.
+- **Not everything can be configured via editor.** You need to have programming knowledge in order to generate anything non-trivial.
 
-**Rooms either directly connected by doors or connected by corridors.** You can choose to either connect all rooms by corridors or to not use corridors at all. But I plan to make it possible to configure that on a per-connection basis in the future.
+## Workflow 
 
-**Easy to customize.** The plugin is ready to be customized and extended. All important parts of the plugin can be replaced with a different implementation.
+### 1. Draw rooms and corridors
 
-## Shortcomings
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/v2/room_templates_multiple.png)
 
-**Alpha version.** There are probably bugs tham I am not aware of (and also bugs that I am aware of but not yet fixed). Moreover, there will be **breaking changes** in the API.
+### 2. Prepare the structure of the level
 
-**Not everything can be configured via editor.** You  need to have programming knowledge in order to generate anything non-trivial. The plugin currently does not help you to handle monster spawns, triggers, etc. It handles only positions and shapes of rooms and basic templating.
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/v2/examples/example1_level_graph2.png)
 
-**Performance hiccups.** The underlying algorithm searches through a space of possible layouts until it finds a layout that satisfies all contraints given by the level graph. And because the algorithm is stochastic, the number of iterations needed to find a layout may greatly vary. And if the algorithm is very unlucky, it may struggle even on simpler inputs. This will be addressed in the future.
+### 3. Generate levels
 
-**.NET CLR vs Mono CLR performance.** After performing a really simply benchmark of the dungeon generator algorithm using .NET CLR and Mono CLR, it seems like on Mono CLR the algorithm is up to 3 times slower. Unfortunately, Mono is the runtime of choice in Unity so I cannot really do much with that. If Unity ever switches to CoreCLR, we may see a significant performace gain.
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/v2/generated_levels_multiple.png)
 
-## Planned features
+## Examples
 
-**Improved corridors.** Currently, we have to manually specify all corridor room templates. That means specifying a room template for each possible length of corridors. But we usually do not care that much about the length - it would be more convenient to simply say that we want to have corridors of lenghts 3 to 10 than having to do that manually. Moreover, the algorithm currently works well only with straight corridors and cannot really handle i.e. l-shaped corridors.
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example1_result1.png)
 
-**Support for caves and other organic shapes.** If we want to introduce caves to our generated dungeons, we have 2 options. The first option is to create a room template for the cave. The problem is that all our caves will look exactly the same even though there is a big potential to make caves procedural, making generated dungeons less repetetive. The second option is to make a simple rectangular room template and apply postprocessing afterwards to make it look like a cave. This approach solves the problem with all caves being identical. However, the problem with this approach is that the algorithm internally works with the rectangular shape and is therefore limited. It would be better to tell the algorithm that we do not really care if the shape is exactly rectangular, which would give the algorithm more freedom and it would converge faster.
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example1_result_reallife1.png)
+
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example2_result1.png)
+
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example2_result_reallife1.png)
 
 ## Terms of use
 
 The plugin can be used in bot commercial and non-commerical projects but **cannot be redistributed or reselled**. If you want to include this plugin in your own asset, please contact me and we will figure that out.
 
-## Examples
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/assets/example1_result1.png)
-
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/assets/example1_result_reallife1.png)
-
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/assets/example2_result1.png)
-
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/assets/example2_result_reallife1.png)
