@@ -37,13 +37,13 @@ Similar approaches are used in games like [**Enter the Gungeon**](https://www.bo
 
 ## Examples
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/assets/example1_result1.png)
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example1_result1.png)
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/assets/example1_result_reallife1.png)
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example1_result_reallife1.png)
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/assets/example2_result1.png)
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example2_result1.png)
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/assets/example2_result_reallife1.png)
+![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example2_result_reallife1.png)
 
 ## Terms of use
 
