@@ -11,7 +11,7 @@ using UnityEditor;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
-    public class RoomTemplateConverter : MonoBehaviour
+    public class RoomTemplateMigrationV1ToV2 : MonoBehaviour
     {
         public void Convert()
         {
@@ -81,12 +81,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
     }
 
     #if UNITY_EDITOR
-    [CustomEditor(typeof(RoomTemplateConverter))]
-    public class RoomTemplateConverterInspector : Editor
+    [CustomEditor(typeof(RoomTemplateMigrationV1ToV2))]
+    public class RoomTemplateMigrationV1ToV2Inspector : Editor
     {
         public override void OnInspectorGUI()
         {
-            var converter = (RoomTemplateConverter) target;
+            var converter = (RoomTemplateMigrationV1ToV2) target;
 
             DrawDefaultInspector();
 

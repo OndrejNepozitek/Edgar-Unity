@@ -10,7 +10,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
         [Range(0, 1)]
         public float EnemySpawnChance = 0.5f;
 
-        protected override void Run(GeneratedLevel level, LevelDescription levelDescription)
+        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
         { 
             HandleEnemies(level);
         }

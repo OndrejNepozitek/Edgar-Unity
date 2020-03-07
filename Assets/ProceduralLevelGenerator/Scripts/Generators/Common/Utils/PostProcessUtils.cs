@@ -12,7 +12,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
     {
         public static void CenterGrid(GeneratedLevel level)
         {
-            var tilemaps = level.GetTilemaps();
+            var tilemaps = level.GetSharedTilemaps();
             tilemaps[0].CompressBounds();
 
             var offset = tilemaps[0].cellBounds.center;
@@ -43,7 +43,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
         public static void CopyTilesToSharedTilemaps(GeneratedLevel level, RoomInstance roomInstance)
         {
-            var destinationTilemaps = level.GetTilemaps();
+            var destinationTilemaps = level.GetSharedTilemaps();
             var sourceTilemaps = RoomTemplateUtils.GetTilemaps(roomInstance.RoomTemplateInstance);
 
             CopyTiles(sourceTilemaps, destinationTilemaps, roomInstance.Position);

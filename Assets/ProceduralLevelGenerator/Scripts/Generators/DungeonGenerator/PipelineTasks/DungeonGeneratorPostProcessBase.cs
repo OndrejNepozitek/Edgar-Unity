@@ -16,6 +16,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Pi
             yield return null;
         }
 
-        protected abstract void Run(GeneratedLevel level, LevelDescription levelDescription);
+        public abstract void Run(GeneratedLevel level, LevelDescription levelDescription);
     }
 }

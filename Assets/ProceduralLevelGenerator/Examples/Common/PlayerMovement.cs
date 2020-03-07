@@ -11,7 +11,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
         private Animator animator;
         private Vector2 movement;
-        private Rigidbody2D rigidbody;
+        private new Rigidbody2D rigidbody;
         private SpriteRenderer spriteRenderer;
 
         public void Start()

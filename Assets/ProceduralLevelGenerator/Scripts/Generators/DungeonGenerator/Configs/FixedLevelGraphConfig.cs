@@ -8,6 +8,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Co
     {
         public LevelGraph LevelGraph;
 
-        public bool UseCorridors;
+        public bool UseCorridors = true;
     }
 }
