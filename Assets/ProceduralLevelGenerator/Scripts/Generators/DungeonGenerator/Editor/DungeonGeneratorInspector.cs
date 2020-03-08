@@ -50,8 +50,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Ed
             advancedFoldout = EditorGUILayout.Foldout(advancedFoldout, "Advanced");
             if (advancedFoldout)
             {
-                EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.AdvancedConfig)));
-
                 if (GUILayout.Button("Export map description"))
                 {
                     dungeonGenerator.ExportMapDescription();

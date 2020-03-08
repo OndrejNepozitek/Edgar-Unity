@@ -14,7 +14,9 @@ PrefabInstance:
 
         Press E to interact with objects
 
-        Press G or find the exit to generate new level'
+        Press G or find the exit to generate new level
+
+        Hold CTRL to zoom out'
       objectReference: {fileID: 0}
     - target: {fileID: 2345865362095543346, guid: 2ba33a6a1ee59bc4981469b61cafb32c,
         type: 3}

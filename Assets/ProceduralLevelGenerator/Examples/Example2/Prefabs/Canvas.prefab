@@ -7,6 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 608228697802400874, guid: 2ba33a6a1ee59bc4981469b61cafb32c,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Press WASD to move around
+
+        Press E to interact with objects
+
+        Press G or find the exit to generate new level
+
+        Hold CTRL to zoom out'
+      objectReference: {fileID: 0}
     - target: {fileID: 2345865362095543346, guid: 2ba33a6a1ee59bc4981469b61cafb32c,
         type: 3}
       propertyPath: m_Name

@@ -5,11 +5,21 @@ using UnityEngine.UI;
 
 namespace Assets.ProceduralLevelGenerator.Examples.Common
 {
+    /// <summary>
+    /// Game manager base class.
+    /// </summary>
+    /// <typeparam name="TGameManager">Actual type of the game manager</typeparam>
     public abstract class GameManagerBase<TGameManager> : MonoBehaviour 
         where TGameManager : class
     {
+        /// <summary>
+        /// Singleton instance of the game manager.
+        /// </summary>
         public static TGameManager Instance;
 
+        /// <summary>
+        /// UI canvas.
+        /// </summary>
         public GameObject Canvas;
 
         public void Awake()
@@ -29,6 +39,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
                 Canvas.SetActive(true);
             }
 
+            SingletonAwake();
             DontDestroyOnLoad(gameObject);
         }
 
@@ -37,13 +48,25 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
         }
 
+        /// <summary>
+        /// Load next level.
+        /// </summary>
         public abstract void LoadNextLevel();
 
-        protected virtual void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+        /// <summary>
+        /// Load next level on scene finished loading.
+        /// </summary>
+        /// <param name="scene"></param>
+        /// <param name="mode"></param>
+        protected virtual void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
         {
             LoadNextLevel();
         }
 
+        /// <summary>
+        /// Display information about the level like time to generate the level, etc.
+        /// </summary>
+        /// <param name="text"></param>
         protected void SetLevelInfo(string text)
         {
             var canvas = GetCanvas();
@@ -55,6 +78,11 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
             }
         }
 
+        /// <summary>
+        /// Show loading screen with primary and secondary text.
+        /// </summary>
+        /// <param name="primaryText"></param>
+        /// <param name="secondaryText"></param>
         protected void ShowLoadingScreen(string primaryText, string secondaryText)
         {
             var canvas = GetCanvas();
@@ -78,6 +106,10 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
             }
         }
 
+        /// <summary>
+        /// Get canvas game object.
+        /// </summary>
+        /// <returns></returns>
         protected GameObject GetCanvas()
         {
             var canvas = Canvas ?? GameObject.Find("Canvas");
@@ -90,6 +122,9 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
             return canvas;
         }
 
+        /// <summary>
+        /// Hide loading screen.
+        /// </summary>
         protected void HideLoadingScreen()
         {
             var canvas = GetCanvas();
@@ -103,12 +138,12 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
         public virtual void OnEnable()
         {
-            SceneManager.sceneLoaded += OnLevelFinishedLoading;
+            SceneManager.sceneLoaded += OnSceneFinishedLoading;
         }
 
         public virtual void OnDisable()
         {
-            SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+            SceneManager.sceneLoaded -= OnSceneFinishedLoading;
         }
     }
 }
