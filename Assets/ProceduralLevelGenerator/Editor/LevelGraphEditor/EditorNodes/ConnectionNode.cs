@@ -1,9 +1,10 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor.EditorNodes
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+
+namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor.EditorNodes
 {
 	using System;
 	using NodeBasedEditor;
-	using Scripts.Data.Graphs;
-	using UnityEditor;
+    using UnityEditor;
 	using UnityEngine;
 
 	public class ConnectionNode : IEditorNode<Connection>
@@ -17,18 +18,20 @@
 		public Action OnDelete;
 
 		private GUIStyle handleStyle;
+        private readonly GUIStyle activeStyle;
 
-		private int handleWidth;
+        private int handleWidth;
 
 		private bool isClickAfterContextMenu;
 
-		public ConnectionNode(Connection data, RoomNode from, RoomNode to, GUIStyle handleStyle, int handleWidth)
+		public ConnectionNode(Connection data, RoomNode from, RoomNode to, GUIStyle handleStyle, GUIStyle activeStyle, int handleWidth)
 		{
 			Data = data;
 			From = from;
 			To = to;
 			this.handleStyle = handleStyle;
-			this.handleWidth = handleWidth;
+            this.activeStyle = activeStyle;
+            this.handleWidth = handleWidth;
 		}
 
 		public bool ProcessEvents(Event e)
@@ -45,6 +48,12 @@
 							isClickAfterContextMenu = true;
 						}
 					}
+                    if (e.button == 0 && GetHandleRect().Contains(e.mousePosition) && e.clickCount > 1)
+                    {
+                        Selection.activeObject = Data;
+                        e.Use();
+                        GUI.changed = true;
+                    }
 
 					break;
 
@@ -77,7 +86,7 @@
 		public void Draw()
 		{
 			Handles.DrawLine(From.Rect.center, To.Rect.center);
-			GUI.Box(GetHandleRect(), string.Empty, handleStyle);
+			GUI.Box(GetHandleRect(), string.Empty, Selection.activeObject == Data ? activeStyle : handleStyle);
 		}
 
 		public void Drag(Vector2 delta)

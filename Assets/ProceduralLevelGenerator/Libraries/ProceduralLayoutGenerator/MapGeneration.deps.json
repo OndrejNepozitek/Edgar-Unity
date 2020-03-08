@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "1f07015436b931e2e0129e6a8cb1124a5c66335e"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
@@ -9,6 +9,7 @@
     ".NETStandard,Version=v2.0/": {
       "MapGeneration/1.0.0": {
         "dependencies": {
+          "BenchmarkUtils": "1.2.1",
           "GeneralAlgorithms": "1.0.0",
           "MapGeneration.Interfaces": "1.0.0",
           "NETStandard.Library": "2.0.3",
@@ -17,6 +18,14 @@
         },
         "runtime": {
           "MapGeneration.dll": {}
+        }
+      },
+      "BenchmarkUtils/1.2.1": {
+        "runtime": {
+          "lib/netstandard2.0/BenchmarkUtils.dll": {
+            "assemblyVersion": "1.2.1.0",
+            "fileVersion": "1.2.1.0"
+          }
         }
       },
       "GraphPlanarityTesting/1.0.0": {
@@ -84,6 +93,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "BenchmarkUtils/1.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-klwttHvY6DCvO3iPlL05bxkB+3nN0nbwMifgsw8tD8m0xc53S6+GfA5lDR6CiSWedpBcUekMhzo0HpVR2OvCmg==",
+      "path": "benchmarkutils/1.2.1",
+      "hashPath": "benchmarkutils.1.2.1.nupkg.sha512"
+    },
     "GraphPlanarityTesting/1.0.0": {
       "type": "package",
       "serviceable": true,
@@ -94,7 +110,7 @@
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bLpT1f/SFlO1CzqXG12KnJzpZs6lv24uX2Rzi4Fmm0noJpNlnWRVryuO3yK18Ca04t/YHcO1e1Z0WDfjseqNzw==",
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
@@ -122,7 +138,7 @@
     "YamlDotNet/5.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RmVUs9DqUZtT6/eCaWbp73F6I3+eDgVjpMeELCBRNmA1cBWSYMo82dvwGqcsMCIoqC9vQxbq2yqEpUM0bLwnRw==",
+      "sha512": "sha512-w9oY3x4qZ9PR5fj5P9NIxXFyx47ZTHy30J7JKkYwDABh8quAs5H66Rv+9F5ib9je9lEdm2vrBRlLPght9erRQg==",
       "path": "yamldotnet/5.3.0",
       "hashPath": "yamldotnet.5.3.0.nupkg.sha512"
     },

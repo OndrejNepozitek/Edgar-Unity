@@ -1,11 +1,12 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
+﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+
+namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
 {
 	using System.Collections.Generic;
 	using System.Linq;
 	using EditorNodes;
 	using NodeBasedEditor;
-	using Scripts.Data.Graphs;
-	using UnityEditor;
+    using UnityEditor;
 	using UnityEngine;
 	using RoomNode = EditorNodes.RoomNode;
 
@@ -19,7 +20,11 @@
 
 		private GUIStyle roomNodeStyle;
 
+		private GUIStyle roomNodeStyleActive;
+
 		private GUIStyle connectionHandleStyle;
+
+		private GUIStyle connectionHandleStyleActive;
 
 		private RoomNode connectionFrom;
 
@@ -27,11 +32,12 @@
 
 		private EditorMode editorMode = EditorMode.Drag;
 
-		private int selectedToolbar = 0;
-
 		private int currentPickerWindow;
 
 		private bool doNotDrag;
+
+        private int roomWidth = 80;
+        private int roomHeight = 25;
 
 		public static LevelGraph StaticData { get; set; }
 
@@ -79,12 +85,26 @@
 			roomNodeStyle.fontSize = 12;
 			roomNodeStyle.alignment = TextAnchor.MiddleCenter;
 
+            roomNodeStyleActive = new GUIStyle();
+            roomNodeStyleActive.normal.background = MakeTex(1, 1, new Color(0.2f, 0.2f, 0.2f, 0.85f));
+            roomNodeStyleActive.border = new RectOffset(12, 12, 12, 12);
+            roomNodeStyleActive.normal.textColor = Color.red;
+            roomNodeStyleActive.fontSize = 12;
+            roomNodeStyleActive.alignment = TextAnchor.MiddleCenter;
+
 			connectionHandleStyle = new GUIStyle();
 			connectionHandleStyle.normal.background = MakeTex(1, 1, new Color(0.3f, 0.3f, 0.3f, 0.6f));
 			connectionHandleStyle.border = new RectOffset(12, 12, 12, 12);
 			connectionHandleStyle.normal.textColor = Color.white;
 			connectionHandleStyle.fontSize = 12;
 			connectionHandleStyle.alignment = TextAnchor.MiddleCenter;
+
+            connectionHandleStyleActive = new GUIStyle();
+            connectionHandleStyleActive.normal.background = MakeTex(1, 1, new Color(0.8f, 0f, 0f, 0.2f));
+            connectionHandleStyleActive.border = new RectOffset(12, 12, 12, 12);
+            connectionHandleStyleActive.normal.textColor = Color.white;
+            connectionHandleStyleActive.fontSize = 12;
+            connectionHandleStyleActive.alignment = TextAnchor.MiddleCenter;
 		}
 
 		public override void OnGUI()
@@ -101,7 +121,16 @@
 			{
 				modeChanged = true;
 				editorMode = EditorMode.Drag;
-			}
+			} 
+            //else if (!e.shift && editorMode == EditorMode.Drag)
+            //{
+            //    modeChanged = true;
+            //    editorMode = EditorMode.Basic;
+            //} else if (e.shift && editorMode == EditorMode.Basic)
+            //{
+            //    modeChanged = true;
+            //    editorMode = EditorMode.Drag;
+            //}
 
 			if (modeChanged)
 			{
@@ -176,11 +205,11 @@
 			switch (e.type)
 			{
 				case EventType.MouseDown:
-					if (e.button == 1)
-					{
-						ProcessContextMenu(e.mousePosition);
-						doNotDrag = true;
-					}
+                    if (e.button == 0 && e.clickCount > 1)
+                    {
+						OnClickAddRoom(e.mousePosition);
+                        doNotDrag = true;
+                    }
 					break;
 
 				case EventType.MouseDrag:
@@ -190,13 +219,13 @@
 						break;
 					}
 
-					if (e.button == 0 && editorMode != EditorMode.MakeConnections)
+					if (e.button == 1 && editorMode != EditorMode.MakeConnections)
 					{
 						OnDrag(e.delta);
 					}
 					break;
 			}
-		}
+        }
 
 		protected override IEnumerable<IEditorNodeBase> GetAllNodes()
 		{
@@ -226,15 +255,19 @@
 		}
 
 		protected void OnClickAddRoom(Vector2 mousePosition)
-		{
-			var room = CreateInstance<Room>();
+        {
+			// TODO: how to handle this properly?
+            var room = (Room) CreateInstance(Data.RoomType);
 
-			room.Position = mousePosition;
+			room.Position = mousePosition - new Vector2(roomWidth / 2f, roomHeight / 2f);
 			Data.Rooms.Add(room);
 			AssetDatabase.AddObjectToAsset(room, Data);
 
 			CreateNode(room);
-		}
+
+            Selection.activeObject = room;
+            GUI.changed = true;
+        }
 
 		protected void OnStartConnection(RoomNode roomNode, Event e)
 		{
@@ -254,8 +287,9 @@
 			var from = connectionFrom;
 			var to = roomNode;
 
-			var connection = CreateInstance<Connection>();
-			connection.From = connectionFrom.Data;
+            // TODO: how to handle this properly?
+            var connection = (Connection) CreateInstance(Data.ConnectionType);
+            connection.From = connectionFrom.Data;
 			connection.To = roomNode.Data;
 
 			if (from != to && !connectionNodes.Any(x => (x.From == @from && x.To == to) || (x.To == @from && x.From == to)))
@@ -273,7 +307,7 @@
 
 		protected RoomNode CreateNode(Room data)
 		{
-			var node = new RoomNode(data, 40, 40, roomNodeStyle, editorMode);
+			var node = new RoomNode(data, roomWidth, roomHeight, roomNodeStyle, roomNodeStyleActive, editorMode);
 
 			node.OnDelete += () => OnDeleteRoomNode(node);
 			node.OnStartConnection += (e) => OnStartConnection(node, e);
@@ -285,7 +319,7 @@
 
 		protected ConnectionNode CreateConnection(Connection data, RoomNode from, RoomNode to)
 		{
-			var node = new ConnectionNode(data, from, to, connectionHandleStyle, 12);
+			var node = new ConnectionNode(data, from, to, connectionHandleStyle, connectionHandleStyleActive, 12);
 
 			node.OnDelete += () => OnDeleteConnectionNode(node);
 			connectionNodes.Add(node);

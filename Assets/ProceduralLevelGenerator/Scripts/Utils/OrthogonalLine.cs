@@ -1,316 +1,341 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Utils
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using UnityEngine;
+
+namespace Assets.ProceduralLevelGenerator.Scripts.Utils
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Diagnostics.Contracts;
-	using UnityEngine;
+    /// <summary>
+    ///     Structure representing an orthogonal line in a integer grid.
+    /// </summary>
+    [Serializable]
+    public struct OrthogonalLine : IEquatable<OrthogonalLine>
+    {
+        [SerializeField] private int fromX;
+        [SerializeField] private int fromY;
+        [SerializeField] private int fromZ;
 
-	/// <summary>
-	/// Structure representing an orthogonal line in a integer grid.
-	/// </summary>
-	public struct OrthogonalLine : IEquatable<OrthogonalLine>
-	{
-		public readonly Vector3Int From;
-		public readonly Vector3Int To;
+        [SerializeField] private int toX;
+        [SerializeField] private int toY;
+        [SerializeField] private int toZ;
 
-		/// <summary>
-		/// Returns number of points.
-		/// </summary>
-		public int Length { get; }
+        public Vector3Int From => new Vector3Int(fromX, fromY, fromZ);
 
-		/// <summary>
-		/// Construct an orthogonal line from given endpoints.
-		/// </summary>
-		/// <param name="from"></param>
-		/// <param name="to"></param>
-		/// <exception cref="ArgumentException">Thrown when given points do not form an orthogonal line.</exception>
-		public OrthogonalLine(Vector3Int from, Vector3Int to)
-		{
-			if (from.x != to.x && from.y != to.y)
-			{
-				throw new ArgumentException("The line is not orthogonal");
-			}
+        public Vector3Int To => new Vector3Int(toX, toY, toZ);
 
-			if (from.z != to.z)
-			{
-				throw new ArgumentException("z values must be equal");
-			}
+        /// <summary>
+        ///     Returns number of points.
+        /// </summary>
+        public int Length { get; }
 
-			From = from;
-			To = to;
-			Length = GetLength(From, To);
-		}
+        /// <summary>
+        ///     Construct an orthogonal line from given endpoints.
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <exception cref="ArgumentException">Thrown when given points do not form an orthogonal line.</exception>
+        public OrthogonalLine(Vector3Int from, Vector3Int to)
+        {
+            if (from.x != to.x && from.y != to.y)
+            {
+                throw new ArgumentException("The line is not orthogonal");
+            }
 
-		private static int GetLength(Vector3Int from, Vector3Int to)
-		{
-			return Math.Abs(from.x - to.x) + Math.Abs(from.y - to.y) + 1;
-		}
+            if (from.z != to.z)
+            {
+                throw new ArgumentException("z values must be equal");
+            }
 
-		/// <summary>
-		/// Returns a direction of the line.
-		/// </summary>
-		/// <returns></returns>
-		private Direction GetDirection()
-		{
-			if (From == To)
-			{
-				return Direction.Undefined;
-			}
+            fromX = from.x;
+            fromY = from.y;
+            fromZ = from.z;
 
-			return GetDirection(From, To);
-		}
+            toX = to.x;
+            toY = to.y;
+            toZ = to.z;
 
-		/// <summary>
-		/// Gets a direction of an orthogonal lined formed by given points.
-		/// </summary>
-		/// <param name="from"></param>
-		/// <param name="to"></param>
-		/// <exception cref="ArgumentException">Thrown when given points do not form an orthogonal line</exception>
-		/// <returns></returns>
-		private static Direction GetDirection(Vector3Int from, Vector3Int to)
-		{
-			if (from == to)
-			{
-				return Direction.Undefined;
-			}
+            Length = 0;
+            Length = GetLength(From, To);
+        }
 
-			if (from.x == to.x)
-			{
-				return from.y > to.y ? Direction.Bottom : Direction.Top;
-			}
+        private static int GetLength(Vector3Int from, Vector3Int to)
+        {
+            return Math.Abs(from.x - to.x) + Math.Abs(from.y - to.y) + 1;
+        }
 
-			if (from.y == to.y)
-			{
-				return from.x > to.x ? Direction.Left : Direction.Right;
-			}
+        /// <summary>
+        ///     Returns a direction of the line.
+        /// </summary>
+        /// <returns></returns>
+        private Direction GetDirection()
+        {
+            if (From == To)
+            {
+                return Direction.Undefined;
+            }
 
-			throw new ArgumentException("Given points do not form an orthogonal line");
-		}
+            return GetDirection(From, To);
+        }
 
-		/// <summary>
-		/// Gets all points of the line. Both "From" and "To" are inclusive.
-		/// The direction is from "From" to "To";
-		/// </summary>
-		/// <returns></returns>
-		public List<Vector3Int> GetPoints()
-		{
-			var points = new List<Vector3Int>();
+        /// <summary>
+        ///     Gets a direction of an orthogonal lined formed by given points.
+        /// </summary>
+        /// <param name="from"></param>
+        /// <param name="to"></param>
+        /// <exception cref="ArgumentException">Thrown when given points do not form an orthogonal line</exception>
+        /// <returns></returns>
+        private static Direction GetDirection(Vector3Int from, Vector3Int to)
+        {
+            if (from == to)
+            {
+                return Direction.Undefined;
+            }
 
-			switch (GetDirection())
-			{
-				case var _ when (From == To):
-					points.Add(From);
-					break;
+            if (from.x == to.x)
+            {
+                return from.y > to.y ? Direction.Bottom : Direction.Top;
+            }
 
-				case Direction.Top:
-					for (var i = From.y; i <= To.y; i++)
-						points.Add(new Vector3Int(From.x, i, From.z));
-					break;
-				case Direction.Bottom:
-					for (var i = From.y; i >= To.y; i--)
-						points.Add(new Vector3Int(From.x, i, From.z));
-					break;
-				case Direction.Right:
-					for (var i = From.x; i <= To.x; i++)
-						points.Add(new Vector3Int(i, From.y, From.z));
-					break;
-				case Direction.Left:
-					for (var i = From.x; i >= To.x; i--)
-						points.Add(new Vector3Int(i, From.x, From.z));
-					break;
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
+            if (from.y == to.y)
+            {
+                return from.x > to.x ? Direction.Left : Direction.Right;
+            }
 
-			return points;
-		}
+            throw new ArgumentException("Given points do not form an orthogonal line");
+        }
 
-		/// <summary>
-		/// Gets nth point on the line. (Counted from From)
-		/// </summary>
-		/// <param name="n"></param>
-		/// <returns></returns>
-		[Pure]
-		public Vector3Int GetNthPoint(int n)
-		{
-			if (n > Length)
-				throw new ArgumentException("n is greater than the length of the line.", nameof(n));
+        /// <summary>
+        ///     Gets all points of the line. Both "From" and "To" are inclusive.
+        ///     The direction is from "From" to "To";
+        /// </summary>
+        /// <returns></returns>
+        public List<Vector3Int> GetPoints()
+        {
+            var points = new List<Vector3Int>();
 
-			var direction = GetDirection();
+            switch (GetDirection())
+            {
+                case var _ when From == To:
+                    points.Add(From);
+                    break;
 
-			switch (direction)
-			{
-				case Direction.Top:
-					return From + new Vector3Int(0, n, 0);
-				case Direction.Right:
-					return From + new Vector3Int(n, 0, 0);
-				case Direction.Bottom:
-					return From - new Vector3Int(0, n, 0);
-				case Direction.Left:
-					return From - new Vector3Int(n, 0, 0);
-				case Direction.Undefined:
-					{
-						if (n > 0)
-							throw new ArgumentException();
+                case Direction.Top:
+                    for (var i = From.y; i <= To.y; i++)
+                        points.Add(new Vector3Int(From.x, i, From.z));
+                    break;
+                case Direction.Bottom:
+                    for (var i = From.y; i >= To.y; i--)
+                        points.Add(new Vector3Int(From.x, i, From.z));
+                    break;
+                case Direction.Right:
+                    for (var i = From.x; i <= To.x; i++)
+                        points.Add(new Vector3Int(i, From.y, From.z));
+                    break;
+                case Direction.Left:
+                    for (var i = From.x; i >= To.x; i--)
+                        points.Add(new Vector3Int(i, From.x, From.z));
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
-						return From;
-					}
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
-		}
+            return points;
+        }
 
-		/// <summary>
-		/// Checks if the orthogonal line contains a given point.
-		/// </summary>
-		/// <remarks>
-		/// Index is 0 for From and Count + 1 for To.
-		/// </remarks>
-		/// <param name="point"></param>
-		/// <returns>Index of a given point on the line or -1.</returns>
-		[Pure]
-		public int Contains(Vector3Int point)
-		{
-			var direction = GetDirection();
+        /// <summary>
+        ///     Gets nth point on the line. (Counted from From)
+        /// </summary>
+        /// <param name="n"></param>
+        /// <returns></returns>
+        [Pure]
+        public Vector3Int GetNthPoint(int n)
+        {
+            if (n > Length)
+                throw new ArgumentException("n is greater than the length of the line.", nameof(n));
 
-			switch (direction)
-			{
-				case Direction.Top:
-					{
-						if (point.x == From.x && point.y <= To.y && point.y >= From.y)
-						{
-							return point.y - From.y;
-						}
-						break;
-					}
-				case Direction.Right:
-					{
-						if (point.y == From.y && point.x <= To.x && point.x >= From.x)
-						{
-							return point.x - From.x;
-						}
-						break;
-					}
-				case Direction.Bottom:
-					{
-						if (point.x == From.x && point.y >= To.y && point.y <= From.y)
-						{
-							return From.y - point.y;
-						}
-						break;
-					}
-				case Direction.Left:
-					{
-						if (point.y == From.y && point.x >= To.x && point.x <= From.x)
-						{
-							return From.x - point.x;
-						}
-						break;
-					}
-				case Direction.Undefined:
-					{
-						if (point == From)
-						{
-							return 0;
-						}
+            var direction = GetDirection();
 
-						break;
-					}
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
+            switch (direction)
+            {
+                case Direction.Top:
+                    return From + new Vector3Int(0, n, 0);
+                case Direction.Right:
+                    return From + new Vector3Int(n, 0, 0);
+                case Direction.Bottom:
+                    return From - new Vector3Int(0, n, 0);
+                case Direction.Left:
+                    return From - new Vector3Int(n, 0, 0);
+                case Direction.Undefined:
+                {
+                    if (n > 0)
+                        throw new ArgumentException();
 
-			return -1;
-		}
+                    return From;
+                }
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
 
-		/// <summary>
-		/// Gets a direction vector of the line. 
-		/// </summary>
-		/// <remarks>
-		/// That is a vector that satisfies that From + Length * direction_vector = To.
-		/// </remarks>
-		/// <returns></returns>
-		[Pure]
-		public Vector3Int GetDirectionVector()
-		{
-			switch (GetDirection())
-			{
-				case Direction.Top:
-					return new Vector3Int(0, 1, 0);
-				case Direction.Right:
-					return new Vector3Int(1, 0, 0);
-				case Direction.Bottom:
-					return new Vector3Int(0, -1, 0);
-				case Direction.Left:
-					return new Vector3Int(-1, 0, 0);
-				case Direction.Undefined:
-					throw new InvalidOperationException("Degenerated lines without a direction set do not have a direction vector.");
-				default:
-					throw new ArgumentOutOfRangeException();
-			}
-		}
+        /// <summary>
+        ///     Checks if the orthogonal line contains a given point.
+        /// </summary>
+        /// <remarks>
+        ///     Index is 0 for From and Count + 1 for To.
+        /// </remarks>
+        /// <param name="point"></param>
+        /// <returns>Index of a given point on the line or -1.</returns>
+        [Pure]
+        public int Contains(Vector3Int point)
+        {
+            var direction = GetDirection();
 
-		#region Operators
+            switch (direction)
+            {
+                case Direction.Top:
+                {
+                    if (point.x == From.x && point.y <= To.y && point.y >= From.y)
+                    {
+                        return point.y - From.y;
+                    }
 
-		/// <summary>
-		/// Adds given IntVector2 to both endpoints of a given orthogonal line.
-		/// </summary>
-		/// <param name="line"></param>
-		/// <param name="point"></param>
-		/// <returns></returns>
-		public static OrthogonalLine operator +(OrthogonalLine line, Vector3Int point)
-		{
-			return new OrthogonalLine(line.From + point, line.To + point);
-		}
+                    break;
+                }
+                case Direction.Right:
+                {
+                    if (point.y == From.y && point.x <= To.x && point.x >= From.x)
+                    {
+                        return point.x - From.x;
+                    }
 
-		/// <summary>
-		/// Adds given IntVector2 to both endpoints of a given orthogonal line.
-		/// </summary>
-		/// <param name="line"></param>
-		/// <param name="point"></param>
-		/// <returns></returns>
-		public static OrthogonalLine operator +(Vector3Int point, OrthogonalLine line)
-		{
-			return line + point;
-		}
+                    break;
+                }
+                case Direction.Bottom:
+                {
+                    if (point.x == From.x && point.y >= To.y && point.y <= From.y)
+                    {
+                        return From.y - point.y;
+                    }
 
-		#endregion
+                    break;
+                }
+                case Direction.Left:
+                {
+                    if (point.y == From.y && point.x >= To.x && point.x <= From.x)
+                    {
+                        return From.x - point.x;
+                    }
 
-		/// <inheritdoc />
-		public bool Equals(OrthogonalLine other)
-		{
-			return From.Equals(other.From) && To.Equals(other.To);
-		}
+                    break;
+                }
+                case Direction.Undefined:
+                {
+                    if (point == From)
+                    {
+                        return 0;
+                    }
 
-		/// <inheritdoc />
-		public override bool Equals(object obj)
-		{
-			if (obj is null) return false;
+                    break;
+                }
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
-			return obj is OrthogonalLine line && Equals(line);
-		}
+            return -1;
+        }
 
-		/// <inheritdoc />
-		public override int GetHashCode()
-		{
-			unchecked
-			{
-				return (From.GetHashCode() * 397) ^ To.GetHashCode();
-			}
-		}
+        /// <summary>
+        ///     Gets a direction vector of the line.
+        /// </summary>
+        /// <remarks>
+        ///     That is a vector that satisfies that From + Length * direction_vector = To.
+        /// </remarks>
+        /// <returns></returns>
+        [Pure]
+        public Vector3Int GetDirectionVector()
+        {
+            switch (GetDirection())
+            {
+                case Direction.Top:
+                    return new Vector3Int(0, 1, 0);
+                case Direction.Right:
+                    return new Vector3Int(1, 0, 0);
+                case Direction.Bottom:
+                    return new Vector3Int(0, -1, 0);
+                case Direction.Left:
+                    return new Vector3Int(-1, 0, 0);
+                case Direction.Undefined:
+                    throw new InvalidOperationException("Degenerated lines without a direction set do not have a direction vector.");
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
 
-		/// <inheritdoc />
-		public override string ToString()
-		{
-			return $"IntLine: {From} -> {To} ({GetDirection()})";
-		}
+        #region Operators
 
-		/// <summary>
-		/// Enum that holds a direction of an orthogonal line.
-		/// </summary>
-		public enum Direction
-		{
-			Top, Right, Bottom, Left, Undefined
-		}
-	}
+        /// <summary>
+        ///     Adds given IntVector2 to both endpoints of a given orthogonal line.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public static OrthogonalLine operator +(OrthogonalLine line, Vector3Int point)
+        {
+            return new OrthogonalLine(line.From + point, line.To + point);
+        }
+
+        /// <summary>
+        ///     Adds given IntVector2 to both endpoints of a given orthogonal line.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public static OrthogonalLine operator +(Vector3Int point, OrthogonalLine line)
+        {
+            return line + point;
+        }
+
+        #endregion
+
+        /// <inheritdoc />
+        public bool Equals(OrthogonalLine other)
+        {
+            return From.Equals(other.From) && To.Equals(other.To);
+        }
+
+        /// <inheritdoc />
+        public override bool Equals(object obj)
+        {
+            if (obj is null) return false;
+
+            return obj is OrthogonalLine line && Equals(line);
+        }
+
+        /// <inheritdoc />
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (From.GetHashCode() * 397) ^ To.GetHashCode();
+            }
+        }
+
+        /// <inheritdoc />
+        public override string ToString()
+        {
+            return $"IntLine: {From} -> {To} ({GetDirection()})";
+        }
+
+        /// <summary>
+        ///     Enum that holds a direction of an orthogonal line.
+        /// </summary>
+        public enum Direction
+        {
+            Top,
+            Right,
+            Bottom,
+            Left,
+            Undefined
+        }
+    }
 }
