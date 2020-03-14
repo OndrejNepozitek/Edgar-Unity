@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.Algorithms.Common;
@@ -120,6 +121,13 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
         /// <returns></returns>
         public static GridPolygon GetPolygonFromRoomTemplate(GameObject roomTemplate)
         {
+            var outlineHandler = roomTemplate.GetComponent<IRoomTemplateOutlineHandler>();
+            if (outlineHandler != null)
+            {
+                var polygon2d = outlineHandler.GetRoomTemplateOutline();
+                return polygon2d?.GetGridPolygon();
+            }
+
             var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplate);
             var outline = RoomTemplateUtils.GetTilemapsForOutline(tilemaps);
 
@@ -166,10 +174,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 allowedTransformations = new List<Transformation> {Transformation.Identity};
             }
 
-            
+            var polygon = GetPolygonFromRoomTemplate(roomTemplatePrefab);
 
-            // TODO: weird to call PostProcessUtils
-            var polygon = GetPolygonFromTilemaps(RoomTemplateUtils.GetTilemaps(roomTemplatePrefab));
             var doors = roomTemplatePrefab.GetComponent<Doors.Doors>();
 
             if (doors == null)
@@ -186,7 +192,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
             return roomDescription;
         }
 
-        private static bool IsClockwiseOriented(IList<IntVector2> points)
+        public static bool IsClockwiseOriented(IList<IntVector2> points)
         {
             var previous = points[points.Count - 1];
             var sum = 0L;

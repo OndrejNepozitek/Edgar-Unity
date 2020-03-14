@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Editor
 {
@@ -45,6 +47,23 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                 if (GUILayout.Button("Add outline override", EditorStyles.miniButton))
                 {
                     roomTemplate.AddOutlineOverride();
+                }
+            }
+
+            var boundingBoxOutlineHandler = roomTemplate.GetComponent<BoundingBoxOutlineHandler>();
+
+            if (boundingBoxOutlineHandler == null)
+            {
+                if (GUILayout.Button("Add bounding box outline handler", EditorStyles.miniButton))
+                {
+                    roomTemplate.gameObject.AddComponent<BoundingBoxOutlineHandler>();
+                }
+            }
+            else
+            {
+                if (GUILayout.Button("Remove bounding box outline handler", EditorStyles.miniButton))
+                {
+                    EditorApplication.delayCall += () => DestroyImmediate(boundingBoxOutlineHandler);
                 }
             }
         }
@@ -93,9 +112,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
             try
             {
                 var roomTemplate = (RoomTemplate) target;
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplate.gameObject);
-                var polygon = RoomTemplatesLoader.GetPolygonFromTilemaps(tilemaps);
-                var points = polygon.GetPoints();
+                var outline = roomTemplate.GetOutline();
+
+                if (outline == null)
+                {
+                    return;
+                }
+
+                var points = outline.GetPoints();
 
                 Handles.color = Color.yellow;
                 for (int i = 0; i < points.Count; i++)

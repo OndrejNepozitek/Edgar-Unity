@@ -1,4 +1,5 @@
 ﻿using System;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using GeneralAlgorithms.DataStructures.Polygons;

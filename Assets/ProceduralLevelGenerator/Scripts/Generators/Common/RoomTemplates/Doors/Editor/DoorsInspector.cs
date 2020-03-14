@@ -65,6 +65,11 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 			{
 				var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
 
+                if (polygon == null)
+                {
+                    return;
+                }
+
 				foreach (var line in polygon.GetLines())
 				{
 					if (line.Length - 2 * doors.DistanceFromCorners < doors.DoorLength - 1)
