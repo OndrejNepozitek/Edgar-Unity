@@ -19,6 +19,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 		private SerializedProperty doorsList;
 
 		private bool addSpecificDoorPositions;
+		private bool deleteDoorPositions;
 
 		private Vector3 firstPoint;
 
@@ -32,6 +33,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 			distanceFromCorners = serializedObject.FindProperty(nameof(Doors.DistanceFromCorners));
 			doorsList = serializedObject.FindProperty(nameof(Doors.DoorsList));
 			addSpecificDoorPositions = false;
+			deleteDoorPositions = false;
 			hasFirstPoint = false;
 			hasSecondPoint = false;
 			highlightInfo = null;
@@ -83,7 +85,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 		private void DrawSpecifPositions()
 		{
-			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
+			var doors = target as Doors;
 
 			foreach (var door in doors.DoorsList)
 			{
@@ -94,6 +96,41 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 			{
 				DrawOutline(highlightInfo.From, highlightInfo.To, Color.yellow);
 			}
+
+            if (deleteDoorPositions)
+            {
+                var go = doors.transform.gameObject;
+                var e = Event.current;
+
+                Selection.activeGameObject = go;
+
+                var mouseWorldPosition = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition).origin;
+                mouseWorldPosition -= doors.transform.position;
+                mouseWorldPosition.z = 0;
+                mouseWorldPosition.x = (float)Math.Floor(mouseWorldPosition.x);
+                mouseWorldPosition.y = (float)Math.Floor(mouseWorldPosition.y);
+
+                var controlId = GUIUtility.GetControlID(FocusType.Passive);
+                HandleUtility.AddDefaultControl(controlId);
+
+                if (e.type == EventType.MouseUp)
+                {
+                    for (int i = doors.DoorsList.Count - 1; i >= 0; i--)
+                    {
+                        var door = doors.DoorsList[i];
+                        var orthogonalLine = new OrthogonalLine(door.From.RoundToUnityIntVector3(), door.To.RoundToUnityIntVector3());
+
+                        if (orthogonalLine.Contains(mouseWorldPosition.RoundToUnityIntVector3()) != -1)
+                        {
+                            Undo.RecordObject(target, "Deleted door position");
+                            doors.DoorsList.RemoveAt(i);
+                            EditorUtility.SetDirty(target);
+                        }
+                    }
+
+                    Event.current.Use();
+                }
+            }
 
 			if (addSpecificDoorPositions)
 			{
@@ -107,7 +144,6 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 				mouseWorldPosition.z = 0;
 				mouseWorldPosition.x = (float)Math.Floor(mouseWorldPosition.x);
 				mouseWorldPosition.y = (float)Math.Floor(mouseWorldPosition.y);
-
 
 				var controlId = GUIUtility.GetControlID(FocusType.Passive);
 				HandleUtility.AddDefaultControl(controlId);
@@ -267,9 +303,30 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
 			if (selectedModeProp.intValue == 1)
 			{
-				addSpecificDoorPositions = GUILayout.Toggle(addSpecificDoorPositions, "Add door positions", GUI.skin.button);
+                var addDoorPositionsNew = GUILayout.Toggle(addSpecificDoorPositions, "Add door positions", GUI.skin.button);
+				var deleteDoorPositionsNew = GUILayout.Toggle(deleteDoorPositions, "Delete door positions", GUI.skin.button);
 
-				if (GUILayout.Button("Delete all door positions"))
+                if (addDoorPositionsNew && !addSpecificDoorPositions)
+                {
+                    addSpecificDoorPositions = true;
+                    deleteDoorPositions = false;
+                } else if (deleteDoorPositionsNew && !deleteDoorPositions)
+                {
+                    deleteDoorPositions = true;
+                    addSpecificDoorPositions = false;
+                }
+
+                if (addDoorPositionsNew == false)
+                {
+                    addSpecificDoorPositions = false;
+                }
+
+                if (deleteDoorPositionsNew == false)
+                {
+                    deleteDoorPositions = false;
+                }
+
+                if (GUILayout.Button("Delete all door positions"))
 				{
 					doorsList.ClearArray();
 				}
