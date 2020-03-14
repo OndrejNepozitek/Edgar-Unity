@@ -51,31 +51,42 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 
         public void OnSceneGUI()
         {
-            #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui -= OnSceneGUITest;
+#else
+            SceneView.onSceneGUIDelegate -= OnSceneGUITest;
+#endif
 
             if (PrefabStageUtility.GetCurrentPrefabStage() != null)
             {
+                
+#if UNITY_2019_1_OR_NEWER
                 SceneView.duringSceneGui += OnSceneGUITest;
+#else
+                SceneView.onSceneGUIDelegate += OnSceneGUITest;
+#endif
             }
-            #endif
         }
 
         public void OnSceneGUITest(SceneView sceneView)
         {
             if (target == null)
             {
-                #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
                 SceneView.duringSceneGui -= OnSceneGUITest;
-                #endif
+#else
+                SceneView.onSceneGUIDelegate -= OnSceneGUITest;
+#endif
                 return;
             }
 
             if (PrefabStageUtility.GetCurrentPrefabStage() == null)
             {
-                #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
                 SceneView.duringSceneGui -= OnSceneGUITest;
-                #endif
+#else
+                SceneView.onSceneGUIDelegate -= OnSceneGUITest;
+#endif
                 return;
             }
             
