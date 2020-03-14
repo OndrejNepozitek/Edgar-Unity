@@ -51,20 +51,31 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
             }
 
             var boundingBoxOutlineHandler = roomTemplate.GetComponent<BoundingBoxOutlineHandler>();
+            var boundingBoxRemoved = false;
 
             if (boundingBoxOutlineHandler == null)
             {
                 if (GUILayout.Button("Add bounding box outline handler", EditorStyles.miniButton))
                 {
                     roomTemplate.gameObject.AddComponent<BoundingBoxOutlineHandler>();
+                    EditorUtility.SetDirty(roomTemplate);
                 }
             }
             else
             {
                 if (GUILayout.Button("Remove bounding box outline handler", EditorStyles.miniButton))
                 {
-                    EditorApplication.delayCall += () => DestroyImmediate(boundingBoxOutlineHandler);
+                    DestroyImmediate(boundingBoxOutlineHandler, true);
+                    boundingBoxRemoved = true;
+                    EditorUtility.SetDirty(roomTemplate);
                 }
+            }
+
+            serializedObject.ApplyModifiedProperties();
+
+            if (boundingBoxRemoved)
+            {
+                GUIUtility.ExitGUI();
             }
         }
 

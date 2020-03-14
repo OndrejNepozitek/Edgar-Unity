@@ -7,6 +7,9 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
 {
     public class BoundingBoxOutlineHandler : MonoBehaviour, IRoomTemplateOutlineHandler
     {
+        [Min(0)]
+        public int PaddingTop = 0;
+
         public Polygon2D GetRoomTemplateOutline()
         {
             var tilemaps = RoomTemplateUtils.GetTilemaps(gameObject);
@@ -21,7 +24,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
             var minX = usedTiles.Min(x => x.x);
             var maxX = usedTiles.Max(x => x.x);
             var minY = usedTiles.Min(x => x.y);
-            var maxY = usedTiles.Max(x => x.y);
+            var maxY = usedTiles.Max(x => x.y) + PaddingTop;
 
             var polygonPoints = new List<Vector2Int>()
             {
