@@ -15,6 +15,8 @@ Similar approaches are used in games like [**Enter the Gungeon**](https://www.bo
 - **Complete control over the look of individual rooms.** You can draw room templates using Unity built-in Tilemap feature. You can use all available tools (brushes, rule tiles, etc.) to design room templates.
 - **Rooms either directly connected by doors or connected by corridors.** You can choose to either connect rooms by corridors or directly via doors.
 - **Easy to customize.** The plugin is ready to be customized and extended.
+- **Supports Unity 2018.4 and newer**.
+- **2 example scenes included.**
 
 ## Limitations
 - **Alpha version.** There may be some **breaking changes** in the API.

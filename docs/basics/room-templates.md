@@ -10,7 +10,18 @@ Room templates are one of the main concepts of the algorithm. They describe how 
 
 ## Creating room templates
 
+There are currently two ways of creating room templates: either via the *Create asset* menu dialog or manually.
+
+### Create via *Create* menu dialog
+
 To create a new room template, we have to:
+- navigate to the folder where should the room template prefab be saved
+- right click in the Project window and choose *Create -> Dungeon generator -> Dungeon room template*
+- (optional) rename the prefab file to anything you want
+
+### Create manually
+
+To create a new room template manually, we have to:
 - create an empty game object
 - add *Dungeon Room Template Initializer* component
 - click the *Initialize room template* button
@@ -96,6 +107,22 @@ If we really need to have a room template whose outline is not valid, we can use
     <GalleryImage src="img/v2/room_templates/outline_override_inactive.png" caption="If we disable the Outline override game object, we should still see that the outline is overriden" />
 </Gallery>
 
+### Bounding box outline handler
+
+In some situations, it would be useful to have an outline which looks like the bounding box of all the tiles in the room template. For example, it can be used to handle outline of some platformer levels (see the images below). It is also possible to add padding to the top of the outline, which is convenient if we need to add doors that are higher than the outline.
+
+To add the *Bounding box outline handler* click the **Add bounding box outline handler** button in the *Room template* inspector.
+
+<Gallery cols={2} fixedHeight>
+    <GalleryImage src="img/v2/room_templates/bounding_box_invalid.png" caption="Invalid outline" />
+    <GalleryImage src="img/v2/room_templates/bounding_box_override.png" caption="Corrected manually with Outline override" />
+    <GalleryImage src="img/v2/room_templates/bounding_box.png" caption="Corrected automatically with Bounding box outline handler" />
+    <GalleryImage src="img/v2/room_templates/bounding_box_padding_top.png" caption="Example of Padding top 3" />
+</Gallery>
+
+<Image src="img/v2/room_templates/bounding_box.gif" caption="Example bounding box outline usage" />
+
+
 ## Adding doors
 
 When we are happy with how the room template looks, we can add doors. By specifying door positions, we tell the algorithm how can individual room templates be connected together.
@@ -135,7 +162,10 @@ To start adding doors, click the *Specific positions* button in the *Doors* scri
 
 You can see that I am creating doors of various lengths. And at the end of the video, you can also see that individual door positions may overlap.
 
-> **Note:** If you accidentally add a door position that you did not want to add, you have to *Delete all door positions* and start over. This is far from ideal and should be improved in the future.
+> **Note:** If you accidentally add a door position that you did not want to add, there are two ways of removing doors:
+>
+> 1. Click the *Delete all door positions* to delete all the door positions.
+> 2. dsa
 
 > **Note:** With multiple doors overlapping, the GUI gets quite messy. In order to make it more clear, I show diagonals of individual rectangles. And it gets even more messy when you have doors of various sizes overlapping. I thought about adding a switch that would show only doors with a specified length.
 
