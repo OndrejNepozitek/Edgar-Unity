@@ -2,6 +2,8 @@
 using System.Linq;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
+using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using GeneralAlgorithms.DataStructures.Common;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -87,6 +89,33 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                     x.GetComponent<IgnoreTilemap>() == null ||
                     !x.GetComponent<IgnoreTilemap>().IgnoreWhenComputingOutline
                 ).ToList();
+        }
+
+        /// <summary>
+        /// Gets all tiles that are not null in given tilemaps.
+        /// </summary>
+        /// <param name="tilemaps"></param>
+        /// <returns></returns>
+        public static HashSet<Vector2Int> GetUsedTiles(IEnumerable<Tilemap> tilemaps)
+        {
+            var usedTiles = new HashSet<Vector2Int>();
+
+            foreach (var tilemap in tilemaps)
+            {
+                foreach (var position in tilemap.cellBounds.allPositionsWithin)
+                {
+                    var tile = tilemap.GetTile(position);
+
+                    if (tile == null)
+                    {
+                        continue;
+                    }
+
+                    usedTiles.Add((Vector2Int) position);
+                }
+            }
+
+            return usedTiles;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using GeneralAlgorithms.Algorithms.Polygons;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Polygons;
@@ -21,6 +22,12 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
         public Polygon2D(List<Vector2Int> points)
         {
             this.points = points;
+
+            if (!RoomTemplatesLoader.IsClockwiseOriented(points.Select(x => x.ToCustomIntVector2()).ToList()))
+            {
+                this.points.Reverse();
+            }
+
             CheckValidity();
         }
 
@@ -68,7 +75,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Utils
             GetGridPolygon();
         }
 
-        private GridPolygon GetGridPolygon()
+        public GridPolygon GetGridPolygon()
         {
             if (gridPolygon == null)
             {

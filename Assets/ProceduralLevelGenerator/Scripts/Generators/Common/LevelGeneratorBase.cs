@@ -32,7 +32,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
             return new Random(seed);
         }
 
-        public abstract void Generate();
+        public abstract object Generate();
 
         protected abstract TPayload InitializePayload();
 

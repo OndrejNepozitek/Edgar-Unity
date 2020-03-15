@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
+using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
 using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Editor
 {
@@ -47,44 +49,88 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplate
                     roomTemplate.AddOutlineOverride();
                 }
             }
+
+            var boundingBoxOutlineHandler = roomTemplate.GetComponent<BoundingBoxOutlineHandler>();
+            var boundingBoxRemoved = false;
+
+            if (boundingBoxOutlineHandler == null)
+            {
+                if (GUILayout.Button("Add bounding box outline handler", EditorStyles.miniButton))
+                {
+                    roomTemplate.gameObject.AddComponent<BoundingBoxOutlineHandler>();
+                    EditorUtility.SetDirty(roomTemplate);
+                }
+            }
+            else
+            {
+                if (GUILayout.Button("Remove bounding box outline handler", EditorStyles.miniButton))
+                {
+                    DestroyImmediate(boundingBoxOutlineHandler, true);
+                    boundingBoxRemoved = true;
+                    EditorUtility.SetDirty(roomTemplate);
+                }
+            }
+
+            serializedObject.ApplyModifiedProperties();
+
+            if (boundingBoxRemoved)
+            {
+                GUIUtility.ExitGUI();
+            }
         }
 
         public void OnSceneGUI()
         {
-            #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui -= OnSceneGUITest;
+#else
+            SceneView.onSceneGUIDelegate -= OnSceneGUITest;
+#endif
 
             if (PrefabStageUtility.GetCurrentPrefabStage() != null)
             {
+                
+#if UNITY_2019_1_OR_NEWER
                 SceneView.duringSceneGui += OnSceneGUITest;
+#else
+                SceneView.onSceneGUIDelegate += OnSceneGUITest;
+#endif
             }
-            #endif
         }
 
         public void OnSceneGUITest(SceneView sceneView)
         {
             if (target == null)
             {
-                #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
                 SceneView.duringSceneGui -= OnSceneGUITest;
-                #endif
+#else
+                SceneView.onSceneGUIDelegate -= OnSceneGUITest;
+#endif
                 return;
             }
 
             if (PrefabStageUtility.GetCurrentPrefabStage() == null)
             {
-                #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
                 SceneView.duringSceneGui -= OnSceneGUITest;
-                #endif
+#else
+                SceneView.onSceneGUIDelegate -= OnSceneGUITest;
+#endif
                 return;
             }
             
             try
             {
                 var roomTemplate = (RoomTemplate) target;
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplate.gameObject);
-                var polygon = RoomTemplatesLoader.GetPolygonFromTilemaps(tilemaps);
-                var points = polygon.GetPoints();
+                var outline = roomTemplate.GetOutline();
+
+                if (outline == null)
+                {
+                    return;
+                }
+
+                var points = outline.GetPoints();
 
                 Handles.color = Color.yellow;
                 for (int i = 0; i < points.Count; i++)

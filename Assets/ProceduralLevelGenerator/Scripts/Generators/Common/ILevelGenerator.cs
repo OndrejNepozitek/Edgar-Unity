@@ -2,6 +2,6 @@
 {
     public interface ILevelGenerator
     {
-        void Generate();
+        object Generate();
     }
 }
