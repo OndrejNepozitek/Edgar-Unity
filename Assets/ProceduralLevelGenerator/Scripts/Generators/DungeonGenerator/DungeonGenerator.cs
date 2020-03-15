@@ -68,7 +68,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             return (pipelineItems, payload);
         }
 
-        public override void Generate()
+        public override object Generate()
         {
             Debug.Log("--- Generator started ---");
             var stopwatch = new Stopwatch();
@@ -79,6 +79,8 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
             PipelineRunner.Run(pipelineItems, payload);
 
             Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
+
+            return payload;
         }
 
         private PipelineItem GetInputTask()
