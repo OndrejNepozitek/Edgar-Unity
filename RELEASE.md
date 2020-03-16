@@ -4,5 +4,6 @@
 - prepare new release
 - tag and name v2.0.0-alpha.X
 - create changelog
+- attach unity package
 - npm run version 2.0.0-alpha.1
 - cmd /C "set "GIT_USER=OndrejNepozitek" && npm run deploy"
