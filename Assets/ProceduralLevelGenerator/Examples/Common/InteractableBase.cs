@@ -68,12 +68,17 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
         }
 
         /// <summary>
-        /// Override if needed. Base implementation returns always true.
+        /// Override if needed. Base implementation returns always true if game object is active.
         /// </summary>
         /// <inheritdoc/> 
         public virtual bool IsInteractionAllowed()
         {
-            return true;
+            return gameObject.activeSelf;
+        }
+
+        public void OnDisable()
+        {
+            EndInteract();
         }
     }
 }
