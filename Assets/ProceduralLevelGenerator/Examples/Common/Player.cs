@@ -55,6 +55,8 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
         /// <param name="collider"></param>
         public void OnTriggerExit2D(Collider2D collider)
         {
+            Debug.Log("exit");
+
             var interactable = collider.GetComponent<IInteractable>();
 
             if (interactable == interactableInFocus)
