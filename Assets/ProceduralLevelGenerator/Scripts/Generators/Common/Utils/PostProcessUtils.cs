@@ -129,8 +129,14 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             }
         }
 
+        /// <summary>
+        /// Disables colliders of individual room template tilemaps in the generated level.
+        /// The goal is to try to keep triggers functioning.
+        /// </summary>
+        /// <param name="level"></param>
         public static void DisableRoomTemplatesColliders(GeneratedLevel level)
         {
+            // Iterate through all the rooms
             foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
@@ -138,11 +144,22 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
 
                 foreach (var tilemap in tilemaps)
                 {
-                    var compositeCollider = tilemap.GetComponent<CompositeCollider2D>();
-
-                    if (compositeCollider != null && !compositeCollider.isTrigger)
+                    // Iterate through all the colliders
+                    foreach (var collider in tilemap.GetComponents<Collider2D>())
                     {
-                        compositeCollider.enabled = false;
+                        // If the collider is not used by composite collider and it is not a trigger, destroy it
+                        if (!collider.usedByComposite && !collider.isTrigger)
+                        {
+                            Destroy(collider);
+                        } 
+                        else if (collider.usedByComposite)
+                        {
+                            // If the collider is used by composite but that composite does not exist or is not a trigger, destroy it
+                            if (collider.composite == null || !collider.composite.isTrigger)
+                            {
+                                Destroy(collider);
+                            }
+                        }
                     }
                 }
             }
