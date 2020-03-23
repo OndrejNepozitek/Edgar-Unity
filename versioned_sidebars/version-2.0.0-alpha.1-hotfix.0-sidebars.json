@@ -1,0 +1,128 @@
+{
+  "version-2.0.0-alpha.1-hotfix.0/docs": [
+    {
+      "type": "category",
+      "label": "Introduction",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/introduction"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/motivation"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/installation"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Basics",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/basics/introduction"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/basics/room-templates"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/basics/level-graphs"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/basics/generator-setup"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/basics/performance-tips"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Generators",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/generators/dungeon-generator"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/generators/platformer-generator"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/generators/custom-input"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/generators/post-process"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Examples",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/examples/example-1"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/examples/example-2"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/examples/platformers"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/examples/enter-the-gungeon"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/examples/dead-cells"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Guides",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/guides/procedural-level-graphs"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/guides/fog-of-war"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/guides/benchmarks"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Other",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/other/tilemap-layers"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.1-hotfix.0/other/migration-v1-v2"
+        }
+      ]
+    }
+  ]
+}
