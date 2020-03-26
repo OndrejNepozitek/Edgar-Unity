@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs
 {
     [Serializable]
     public class OtherConfig

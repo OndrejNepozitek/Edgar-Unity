@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Editor
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Editor
 {
     [CustomEditor(typeof(RoomTemplate))]
     public class RoomTemplateInspector : UnityEditor.Editor

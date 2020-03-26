@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Interfaces.Core.MapLayouts;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
+using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads
 {
     /// <summary>
     ///     Default pipeline payload.

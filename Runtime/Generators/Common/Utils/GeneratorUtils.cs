@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapLayouts;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Transformations;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public static class GeneratorUtils
     {
@@ -98,19 +98,19 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             switch (doorLine.GetDirection())
             {
                 case OrthogonalLine.Direction.Right:
-                    return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
+                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Left:
-                    return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
+                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Top:
-                    return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
+                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Bottom:
-                    return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right,
+                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 default:

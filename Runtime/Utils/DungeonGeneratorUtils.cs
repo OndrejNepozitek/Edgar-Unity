@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
+using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Utils
+namespace ProceduralLevelGenerator.Unity.Utils
 {
     public class DungeonGeneratorUtils
     {

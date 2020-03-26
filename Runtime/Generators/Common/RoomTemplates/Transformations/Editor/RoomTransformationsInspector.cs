@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations.Editor
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Transformations.Editor
 {
     [CustomEditor(typeof(RoomTransformationsScript))]
 	public class RoomTransformationsInspector : UnityEditor.Editor

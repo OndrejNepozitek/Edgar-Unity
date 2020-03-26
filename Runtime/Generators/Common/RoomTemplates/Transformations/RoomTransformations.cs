@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.DataStructures.Common;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Transformations
 {
     /// <summary>
     ///     Currently not used.

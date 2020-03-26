@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Common
+namespace ProceduralLevelGenerator.Unity.Examples.Common
 {
     /// <summary>
     /// Very simple implementation of a player that can interact with objects.

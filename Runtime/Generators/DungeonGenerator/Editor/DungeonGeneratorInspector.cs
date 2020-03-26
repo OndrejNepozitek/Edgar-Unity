@@ -1,8 +1,8 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Utils;
+﻿using ProceduralLevelGenerator.Unity.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Editor
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Editor
 {
     [CustomEditor(typeof(DungeonGenerator))]
     public class DungeonGeneratorInspector : UnityEditor.Editor

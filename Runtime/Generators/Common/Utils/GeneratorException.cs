@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public class GeneratorException : Exception
     {

@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
+using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
 #if UNITY_EDITOR
-using UnityEditor;
+
 #endif
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Utils
+namespace ProceduralLevelGenerator.Unity.Utils
 {
     public class RoomTemplateMigrationV1ToV2 : MonoBehaviour
     {

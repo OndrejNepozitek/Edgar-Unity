@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
+﻿namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
 {
 	public enum EditorMode
 	{

@@ -1,7 +1,7 @@
-﻿using Assets.ProceduralLevelGenerator.Examples.Common;
+﻿using ProceduralLevelGenerator.Unity.Examples.Common;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Example2.Scripts
+namespace ProceduralLevelGenerator.Unity.Examples.Example2.Scripts
 {
     /// <summary>
     /// Example implementation of a chest that is opened (sprite change) when the players interacts with it.

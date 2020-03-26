@@ -1,9 +1,9 @@
 ﻿using System.IO;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator;
+using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Utils
+namespace ProceduralLevelGenerator.Unity.Utils
 {
     public static class MenuItems
     {

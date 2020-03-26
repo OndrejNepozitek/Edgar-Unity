@@ -1,7 +1,7 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Attributes;
+﻿using ProceduralLevelGenerator.Unity.Attributes;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Rooms
 {
     public class RoomInfo : MonoBehaviour
     {

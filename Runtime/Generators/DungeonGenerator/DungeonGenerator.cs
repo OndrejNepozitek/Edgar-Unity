@@ -1,16 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using Assets.ProceduralLevelGenerator.Scripts.Attributes;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks;
-using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using ProceduralLevelGenerator.Unity.Attributes;
+using ProceduralLevelGenerator.Unity.Generators.Common;
+using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
+using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
+using ProceduralLevelGenerator.Unity.Pipeline;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 {
     public class DungeonGenerator : LevelGeneratorBase<DungeonGeneratorPayload>
     {

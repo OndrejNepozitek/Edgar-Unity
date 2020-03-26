@@ -1,11 +1,10 @@
 ﻿using System;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Core.Doors;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors.Editor
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors.Editor
 {
     [CustomEditor(typeof(Generators.Common.RoomTemplates.Doors.Doors))]
 	public class DoorsInspector : UnityEditor.Editor

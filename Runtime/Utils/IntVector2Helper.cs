@@ -1,6 +1,6 @@
 ﻿using GeneralAlgorithms.DataStructures.Common;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Utils
+namespace ProceduralLevelGenerator.Unity.Utils
 {
     public static class IntVector2Helper
     {

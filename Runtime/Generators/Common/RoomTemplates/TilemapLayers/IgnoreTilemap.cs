@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers
 {
     public class IgnoreTilemap : MonoBehaviour
     {

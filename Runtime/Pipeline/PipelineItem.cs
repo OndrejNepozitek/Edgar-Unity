@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+namespace ProceduralLevelGenerator.Unity.Pipeline
 {
     /// <summary>
     ///     Base class for all pipeline items.

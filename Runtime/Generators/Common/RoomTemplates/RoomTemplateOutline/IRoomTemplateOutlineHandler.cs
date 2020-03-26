@@ -1,6 +1,6 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Utils;
+﻿using ProceduralLevelGenerator.Unity.Utils;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline
 {
     public interface IRoomTemplateOutlineHandler
     {

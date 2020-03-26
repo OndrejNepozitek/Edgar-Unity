@@ -1,8 +1,8 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateInitializers;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers;
 using UnityEditor;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers.Editor
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers.Editor
 {
     [CustomEditor(typeof(BaseRoomTemplateInitializer), true)]
 	public class RoomTemplateInitializerInspector : UnityEditor.Editor

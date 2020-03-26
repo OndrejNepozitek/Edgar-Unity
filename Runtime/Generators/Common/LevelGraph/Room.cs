@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph
+namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
 {
     /// <summary>
     ///     Represents a room in a level graph.

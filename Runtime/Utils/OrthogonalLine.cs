@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Utils
+namespace ProceduralLevelGenerator.Unity.Utils
 {
     /// <summary>
     ///     Structure representing an orthogonal line in a integer grid.

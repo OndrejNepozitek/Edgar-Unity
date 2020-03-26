@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline
 {
     public class BoundingBoxOutlineHandler : MonoBehaviour, IRoomTemplateOutlineHandler
     {

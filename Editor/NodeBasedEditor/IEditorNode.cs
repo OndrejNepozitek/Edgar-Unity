@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.NodeBasedEditor
+﻿namespace ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor
 {
 	public interface IEditorNode<TData> : IEditorNodeBase
 	{

@@ -1,13 +1,12 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+﻿using System;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using UnityEditor;
+using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
+namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
 {
-	using System;
-    using UnityEditor;
-	using UnityEngine;
-
-	[CustomEditor(typeof(LevelGraph))]
-	public class LevelGraphInspector : Editor
+    [CustomEditor(typeof(LevelGraph))]
+	public class LevelGraphInspector : UnityEditor.Editor
 	{
 		private bool defaultRoomTemplatesFoldout;
 		private bool corridorRoomTemplatesFoldout;

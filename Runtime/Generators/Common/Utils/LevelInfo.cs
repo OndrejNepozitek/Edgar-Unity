@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Assets.ProceduralLevelGenerator.Scripts.Attributes;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
+using ProceduralLevelGenerator.Unity.Attributes;
+using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public class LevelInfo : MonoBehaviour
     {

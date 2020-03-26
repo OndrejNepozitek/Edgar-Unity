@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+﻿namespace ProceduralLevelGenerator.Unity.Pipeline
 {
     /// <summary>
     ///     Represents configurable pipeline tasks.

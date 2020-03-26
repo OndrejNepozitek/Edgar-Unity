@@ -1,7 +1,7 @@
 ﻿using System;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs
 {
     [Serializable]
     public class PostProcessConfig

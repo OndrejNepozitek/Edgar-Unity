@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph
+namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
 {
     /// <summary>
     ///     Represents a connection between two rooms.

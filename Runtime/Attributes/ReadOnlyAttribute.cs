@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 #if UNITY_EDITOR
-using UnityEditor;
+
 #endif
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
+namespace ProceduralLevelGenerator.Unity.Attributes
 {
     public class ReadOnlyAttribute : PropertyAttribute
     {

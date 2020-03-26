@@ -1,11 +1,11 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor
-{
-	using System;
-	using UnityEditor;
+﻿using System;
+using UnityEditor;
 
-	public class CustomInspectorWindow : EditorWindow
+namespace ProceduralLevelGenerator.Unity.Editor
+{
+    public class CustomInspectorWindow : EditorWindow
 	{
-		private Editor editor;
+		private UnityEditor.Editor editor;
 
 		public void OnGUI()
 		{
@@ -21,7 +21,7 @@
 		{
 			var type = Type.GetType("UnityEditor.InspectorWindow,UnityEditor.dll");
 			var window = GetWindow<CustomInspectorWindow>("Custom inspector", type);
-			window.editor = Editor.CreateEditor(data);
+			window.editor = UnityEditor.Editor.CreateEditor(data);
 			window.Show();
 		}
 	}

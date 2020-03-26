@@ -1,7 +1,7 @@
 ﻿using GeneralAlgorithms.DataStructures.Common;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Transformations
 {
     /// <summary>
     ///     Currently not used.

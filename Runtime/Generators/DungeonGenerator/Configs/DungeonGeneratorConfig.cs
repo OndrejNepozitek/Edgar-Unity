@@ -1,8 +1,8 @@
 ﻿using System;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
+using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs
 {
     [Serializable]
     public class DungeonGeneratorConfig

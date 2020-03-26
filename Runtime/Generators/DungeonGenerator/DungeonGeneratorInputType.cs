@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
+﻿namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 {
     public enum DungeonGeneratorInputType
     {

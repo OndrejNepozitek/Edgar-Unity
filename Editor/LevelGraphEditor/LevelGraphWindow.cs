@@ -1,14 +1,14 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+﻿using System.Collections.Generic;
+using System.Linq;
+using ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes;
+using ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using UnityEditor;
+using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor
+namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
 {
-	using System.Collections.Generic;
-	using System.Linq;
-	using EditorNodes;
-	using NodeBasedEditor;
-    using UnityEditor;
-	using UnityEngine;
-	using RoomNode = EditorNodes.RoomNode;
+    using RoomNode = EditorNodes.RoomNode;
 
 	public class LevelGraphWindow : NodeBasedEditorBase
 	{

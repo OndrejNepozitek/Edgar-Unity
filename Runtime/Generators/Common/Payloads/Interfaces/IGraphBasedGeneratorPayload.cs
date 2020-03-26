@@ -1,6 +1,4 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Utils;
-
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces
+﻿namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces
 {
     /// <summary>
     ///     Represents data used in and produced from a graph-based dungeon generator.

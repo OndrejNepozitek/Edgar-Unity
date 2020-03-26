@@ -1,7 +1,7 @@
-﻿using Assets.ProceduralLevelGenerator.Examples.Common;
+﻿using ProceduralLevelGenerator.Unity.Examples.Common;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
+namespace ProceduralLevelGenerator.Unity.Examples.Example1.Scripts
 {
     /// <summary>
     /// Example implementation of an exit is activated by pressing E and loads the next level.

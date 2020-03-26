@@ -1,9 +1,9 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.NodeBasedEditor
-{
-	using System;
-	using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-	public enum ConnectionPointType { Left, Top, Right, Bottom }
+namespace ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor
+{
+    public enum ConnectionPointType { Left, Top, Right, Bottom }
 
 	public class ConnectionPoint
 	{

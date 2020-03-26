@@ -1,12 +1,13 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 #if UNITY_EDITOR
-using UnityEditor;
+
 #endif
 
-namespace Assets.ProceduralLevelGenerator.Examples.Common.Random_Tile.Scripts
+namespace ProceduralLevelGenerator.Unity.Examples.Common.Random_Tile.Scripts
 {
     [Serializable]
     [CreateAssetMenu(fileName = "New Random Tile", menuName = "Dungeon generator/Examples/Random Tile")]

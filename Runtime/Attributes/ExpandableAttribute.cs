@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
-using UnityEngine;
-
-#if UNITY_EDITOR
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEditor;
+using UnityEngine;
+#if UNITY_EDITOR
+
 #endif
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
+namespace ProceduralLevelGenerator.Unity.Attributes
 {
     /// <summary>
     ///     Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable

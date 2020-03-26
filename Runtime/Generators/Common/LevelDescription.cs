@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Graphs;
 using JetBrains.Annotations;
 using MapGeneration.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapDescriptions;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
+namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
     // TODO: where to place this file?
     public class LevelDescription<TRoom, TConnection>

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Common
+namespace ProceduralLevelGenerator.Unity.Examples.Common
 {
     /// <summary>
     /// Very simple implementation of an interactable object.

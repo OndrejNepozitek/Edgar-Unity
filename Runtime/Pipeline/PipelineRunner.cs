@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+namespace ProceduralLevelGenerator.Unity.Pipeline
 {
     public class PipelineRunner
     {

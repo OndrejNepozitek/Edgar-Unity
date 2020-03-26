@@ -1,10 +1,10 @@
 ﻿using System;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
 {
     /// <summary>
     ///     Class containing information about a door of a room.

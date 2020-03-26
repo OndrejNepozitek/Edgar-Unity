@@ -1,9 +1,9 @@
 ﻿using System;
-﻿using System.Collections;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
-using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
+using System.Collections;
+using ProceduralLevelGenerator.Unity.Generators.Common;
+using ProceduralLevelGenerator.Unity.Pipeline;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
     public abstract class DungeonGeneratorPostProcessBase : PipelineTask<DungeonGeneratorPayload>
     {
