@@ -1,0 +1,11 @@
+{
+    "name": "com.ondrejnepozitek.procedurallevelgenerator",
+    "version": "2.0.0-alpha.1-hotfix.0",
+    "displayName": "Edgar - Procedural Level Generator",
+    "description": "2D procedural level generator",
+    "unity": "2018.4",
+    "author": {
+        "name": "Ondřej Nepožitek",
+        "email": "ondra@nepozitek.cz"
+    }
+}
