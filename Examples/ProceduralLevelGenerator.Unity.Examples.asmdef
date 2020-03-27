@@ -1,6 +1,8 @@
 {
-    "name": "ProceduralLevelGenerator",
-    "references": [],
+    "name": "ProceduralLevelGenerator.Unity.Examples",
+    "references": [
+        "ProceduralLevelGenerator.Unity"
+    ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
