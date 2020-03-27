@@ -27,7 +27,8 @@ MonoBehaviour:
   - {fileID: 8411853151689980096, guid: a323bc56cc9e69d4481209cacf36e971, type: 3}
   CorridorRoomTemplateSets: []
   DefaultIndividualRoomTemplates:
-  - {fileID: 4938271001061371832, guid: 73a4bbcd582377c43829062db486eb91, type: 3}
+  - {fileID: 4938271001061371832, guid: 6ade3e5491d32b349a89377e30c03752, type: 3}
+  - {fileID: 7942234720005364981, guid: a2479107eee1f1e48a045ab46a5f4ea5, type: 3}
   DefaultRoomTemplateSets: []
   Rooms:
   - {fileID: 114486660170381796}
