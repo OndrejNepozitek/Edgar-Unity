@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers.Editor
+namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
 {
     [CustomEditor(typeof(BaseRoomTemplateInitializer), true)]
 	public class RoomTemplateInitializerInspector : UnityEditor.Editor

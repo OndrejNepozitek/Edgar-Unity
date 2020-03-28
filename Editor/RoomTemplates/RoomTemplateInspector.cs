@@ -1,10 +1,11 @@
 ﻿using System;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Editor
+namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
 {
     [CustomEditor(typeof(RoomTemplate))]
     public class RoomTemplateInspector : UnityEditor.Editor

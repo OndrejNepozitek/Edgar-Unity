@@ -1,8 +1,8 @@
-﻿using ProceduralLevelGenerator.Generators.Common;
-using ProceduralLevelGenerator.Generators.DungeonGenerator.PipelineTasks;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common;
+using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
 using UnityEngine;
 
-namespace Assets.Resources.Docs
+namespace ProceduralLevelGenerator.Unity.Examples.Resources.Docs
 {
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Docs/My custom post process", fileName = "MyCustomPostProcess")]
     public class MyCustomPostProcess : DungeonGeneratorPostProcessBase

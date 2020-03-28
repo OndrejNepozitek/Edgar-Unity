@@ -3,7 +3,7 @@ using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Utils
+namespace ProceduralLevelGenerator.Unity.Editor
 {
     public static class MenuItems
     {

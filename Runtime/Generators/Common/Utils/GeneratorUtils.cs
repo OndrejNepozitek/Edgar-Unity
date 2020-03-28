@@ -6,7 +6,6 @@ using MapGeneration.Interfaces.Core.MapLayouts;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Transformations;
 using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -21,9 +20,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
             var corridorToConnectionMapping = levelDescription.GetCorridorToConnectionMapping();
-
-            var roomTransformations = new RoomTransformations();
-
+            
             // Prepare an object to hold instantiated room templates
             var roomTemplateInstancesRoot = new GameObject("Room template instances");
             roomTemplateInstancesRoot.transform.parent = rootGameObject.transform;
@@ -38,11 +35,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
                 // Instantiate room template
                 var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
-
-                // Transform room template if needed
-                var transformation = layoutRoom.Transformation;
-                roomTransformations.Transform(roomTemplateInstance, transformation);
-
+                
                 // Compute correct room position
                 var position = layoutRoom.Position.ToUnityIntVector3();
                 roomTemplateInstance.transform.position = position;

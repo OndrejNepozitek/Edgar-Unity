@@ -1,10 +1,12 @@
 ﻿using System;
 using MapGeneration.Core.Doors;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
 using ProceduralLevelGenerator.Unity.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors.Editor
+namespace ProceduralLevelGenerator.Unity.Editor.Doors
 {
     [CustomEditor(typeof(Generators.Common.RoomTemplates.Doors.Doors))]
 	public class DoorsInspector : UnityEditor.Editor
@@ -28,9 +30,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors.E
 
         public void OnEnable()
 		{
-			doorsLength = serializedObject.FindProperty(nameof(Doors.DoorLength));
-			distanceFromCorners = serializedObject.FindProperty(nameof(Doors.DistanceFromCorners));
-			doorsList = serializedObject.FindProperty(nameof(Doors.DoorsList));
+			doorsLength = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DoorLength));
+			distanceFromCorners = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DistanceFromCorners));
+			doorsList = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.DoorsList));
 			addSpecificDoorPositions = false;
 			deleteDoorPositions = false;
 			hasFirstPoint = false;
@@ -41,7 +43,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors.E
 
 		public void OnSceneGUI()
 		{
-			var doors = target as Doors;
+			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
 			
 			switch (doors.SelectedMode)
 			{
@@ -57,7 +59,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors.E
 
 		private void DrawOverlap()
 		{
-			var doors = target as Doors;
+			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
 			var go = doors.transform.gameObject;
 
 			try
@@ -89,7 +91,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors.E
 
 		private void DrawSpecifPositions()
 		{
-			var doors = target as Doors;
+			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
 
 			foreach (var door in doors.DoorsList)
 			{
@@ -292,9 +294,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors.E
 		{
 			serializedObject.Update();
 
-			var doors = target as Doors;
+			var doors = target as Generators.Common.RoomTemplates.Doors.Doors;
 			
-			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
+			var selectedModeProp = serializedObject.FindProperty(nameof(Generators.Common.RoomTemplates.Doors.Doors.SelectedMode));
 			selectedModeProp.intValue = GUILayout.SelectionGrid(doors.SelectedMode, new[] { "Simple mode", "Specific positions"}, 2);
 
             EditorGUILayout.Space();
