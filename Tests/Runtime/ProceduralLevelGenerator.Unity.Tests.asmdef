@@ -1,0 +1,17 @@
+{
+    "name": "ProceduralLevelGenerator.Unity.Tests",
+    "references": [
+        "ProceduralLevelGenerator.Unity",
+        "ProceduralLevelGenerator.Unity.Examples"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

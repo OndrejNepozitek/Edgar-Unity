@@ -47,6 +47,11 @@
 //                rootNamespace.Value = "ProceduralLevelGenerator.Unity";
 //            }
 
+//            if (assemblyName == "ProceduralLevelGenerator.Unity.Tests")
+//            {
+//                rootNamespace.Value = "ProceduralLevelGenerator.Unity";
+//            }
+
 //            document.Root.Add(new XComment($"{assemblyName},{name}"));
 
 //            // save the changes using the Utf8StringWriter
