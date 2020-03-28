@@ -13,7 +13,7 @@ namespace ProceduralLevelGenerator.Unity.Examples.Common
 
         public void Start()
         {
-            InteractionText = GameObject.Find("Canvas").transform.Find("Interaction")?.GetComponent<Text>();
+            InteractionText = GameObject.Find("Canvas")?.transform.Find("Interaction")?.GetComponent<Text>();
         }
 
         /// <summary>

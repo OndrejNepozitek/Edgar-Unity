@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ProceduralLevelGenerator.Unity.Examples.Example1.Scripts;
+using ProceduralLevelGenerator.Unity.Examples.Example2.Scripts;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
@@ -12,12 +12,12 @@ using UnityEngine.TestTools;
 
 namespace ProceduralLevelGenerator.Unity.Tests.Runtime.Examples
 {
-    public class Example1Tests : ExampleTestsBase
+    public class Example2Tests : ExampleTestsBase
     {
         [UnitySetUp]
         public IEnumerator SetUp()
         {
-            LoadScene("Example1");
+            LoadScene("Example2");
             yield return null;
         }
 
@@ -51,8 +51,8 @@ namespace ProceduralLevelGenerator.Unity.Tests.Runtime.Examples
         {
             var levelGraphNames = new List<string>()
             {
-                "Assets/ProceduralLevelGenerator/Examples/Example1/SimpleLevelGraph.asset",
-                "Assets/ProceduralLevelGenerator/Examples/Example1/RealLifeLevelGraph.asset",
+                "Assets/ProceduralLevelGenerator/Examples/Example2/SimpleLevelGraph.asset",
+                "Assets/ProceduralLevelGenerator/Examples/Example2/RealLifeLevelGraph.asset",
             };
 
             var dungeonGeneratorGameObject = GameObject.Find("Dungeon Generator");
@@ -75,7 +75,7 @@ namespace ProceduralLevelGenerator.Unity.Tests.Runtime.Examples
         [UnityTearDown]
         public IEnumerator TearDown()
         {
-            Object.Destroy(Example1GameManager.Instance);
+            Object.Destroy(Example2GameManager.Instance);
             yield return null;
         }
     }
