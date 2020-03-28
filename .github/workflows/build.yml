@@ -1,0 +1,89 @@
+name: Build
+
+on: push
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  UNITY_VERSION: 2018.4.18f1
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    
+      # Checkout Unity project structure
+      - name: Checkout Unity project structure
+        uses: actions/checkout@v2
+        with:
+          repository: OndrejNepozitek/ProceduralLevelGenerator-UnityProjectStructure
+
+      # Checkout this repository
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+        with:
+          path: Assets/ProceduralLevelGenerator
+    
+      # Test
+      - name: Run tests
+        uses: webbertakken/unity-test-runner@v1.3
+        with:
+          unityVersion: ${{ env.UNITY_VERSION }}
+
+      # Build
+      - name: Build project
+        uses: webbertakken/unity-builder@v0.10
+        with:
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: StandaloneWindows64
+
+      # Upload build
+      - name: Upload project
+        uses: actions/upload-artifact@v1
+        with:
+          name: Build
+          path: build
+
+      # Prepare unitypackage file list
+      - name: Prepare unitypackage file list
+        run: |
+          echo "Assets/ProceduralLevelGenerator.meta" > unitypackageFiles
+          find ./Assets/ProceduralLevelGenerator/ -name \*.meta >> unitypackageFiles
+
+      # Package files
+      - name: Package files
+        uses: pCYSl5EDgo/create-unitypackage@master
+        with:
+          package-path: 'ProceduralLevelGenerator.unitypackage'
+          include-files: unitypackageFiles
+      
+      # Upload unitypackage
+      - name: Upload unitypackage
+        uses: actions/upload-artifact@v2-preview
+        with:
+          path: ProceduralLevelGenerator.unitypackage
+          name: ProceduralLevelGenerator.unitypackage
+
+      # Prepare release package name
+      - name: Prepare release package name
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          ref="${GITHUB_REF}"
+          ref="${ref/refs\/tags\/v/}"
+          ref="${ref//./_}"
+          ref="${ref//-/_}"
+          package_name="ProceduralLevelGenerator_$ref.unitypackage"
+          echo "::set-output name=PACKAGE_NAME::${package_name}"
+          cp ProceduralLevelGenerator.unitypackage $package_name
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        id: get_package_name
+
+      # Release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          files: ${{ steps.get_package_name.outputs.PACKAGE_NAME }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
