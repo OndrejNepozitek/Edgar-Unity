@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Common
+namespace ProceduralLevelGenerator.Unity.Examples.Common
 {
     /// <summary>
     /// A simple player movement script.

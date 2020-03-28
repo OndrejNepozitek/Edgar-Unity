@@ -1,18 +1,17 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
-using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
 using MapGeneration.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using MapGeneration.Utils;
 using Newtonsoft.Json;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
+using ProceduralLevelGenerator.Unity.Pipeline;
 using UnityEngine;
 using Random = System.Random;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
+namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
     public abstract class LevelGeneratorBase<TPayload> : MonoBehaviour, ILevelGenerator
     {

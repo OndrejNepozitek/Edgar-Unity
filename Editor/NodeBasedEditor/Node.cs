@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEditor;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Editor.NodeBasedEditor
+namespace ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor
 {
-	using UnityEditor;
-
-	public class Node
+    public class Node
 	{
 		public Rect rect;
 		public string title;

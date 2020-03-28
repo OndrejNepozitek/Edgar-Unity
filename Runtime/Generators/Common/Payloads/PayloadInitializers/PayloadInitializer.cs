@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.PayloadInitializers
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads.PayloadInitializers
 {
 #if UNITY_EDITOR
 #endif

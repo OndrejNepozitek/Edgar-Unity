@@ -1,7 +1,7 @@
 ﻿using System;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs
 {
     [Serializable]
     public class FixedLevelGraphConfig

@@ -1,8 +1,8 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common;
+using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
+namespace ProceduralLevelGenerator.Unity.Examples.Example1.Scripts
 {
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Example 1/Post process", fileName = "Example1PostProcess")]
     public class Example1PostProcess : DungeonGeneratorPostProcessBase

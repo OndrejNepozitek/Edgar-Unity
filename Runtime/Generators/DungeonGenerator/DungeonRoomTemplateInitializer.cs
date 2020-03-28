@@ -1,7 +1,7 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateInitializers;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 {
     public class DungeonRoomTemplateInitializer : BaseRoomTemplateInitializer
     {

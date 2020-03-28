@@ -1,11 +1,11 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor
+﻿using System;
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
+
+namespace ProceduralLevelGenerator.Unity.Editor
 {
 #if UNITY_EDITOR
-	using System;
-	using System.Collections.Generic;
-	using UnityEditor;
-	using UnityEngine;
-
 #endif
 
 	/// <summary>

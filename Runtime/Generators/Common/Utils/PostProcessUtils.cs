@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public static class PostProcessUtils
     {

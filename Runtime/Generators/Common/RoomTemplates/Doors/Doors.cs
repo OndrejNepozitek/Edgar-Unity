@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.DataStructures.Common;
 using MapGeneration.Core.Doors.DoorModes;
 using MapGeneration.Interfaces.Core.Doors;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
 {
     /// <summary>
     ///     Doors MonoBehaviour that is used to define doors for room templates.

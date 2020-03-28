@@ -2,15 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.Configs;
-using Assets.ProceduralLevelGenerator.Scripts.Pipeline;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
+using ProceduralLevelGenerator.Unity.Generators.Common;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
+using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
+using ProceduralLevelGenerator.Unity.Pipeline;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
     // TODO: add asset menu
     public class FixedLevelGraphPipelineConfig : PipelineConfig

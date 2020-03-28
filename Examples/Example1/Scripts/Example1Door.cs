@@ -1,7 +1,7 @@
-﻿using Assets.ProceduralLevelGenerator.Examples.Common;
+﻿using ProceduralLevelGenerator.Unity.Examples.Common;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Example1.Scripts
+namespace ProceduralLevelGenerator.Unity.Examples.Example1.Scripts
 {
     /// <summary>
     /// Example implementation of doors that are opened (disabled) after pressing E if the player is near enough.

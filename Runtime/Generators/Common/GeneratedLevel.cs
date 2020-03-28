@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using MapGeneration.Interfaces.Core.MapLayouts;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
+namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
     /// <summary>
     /// Holds information about the generated level.

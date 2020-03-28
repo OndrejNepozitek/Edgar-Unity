@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using GeneralAlgorithms.Algorithms.Common;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Polygons;
 using MapGeneration.Interfaces.Core.MapDescriptions;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
+using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
 {
     /// <summary>
     /// Class used to convert room templates to the representation used in the dungeon generator library.

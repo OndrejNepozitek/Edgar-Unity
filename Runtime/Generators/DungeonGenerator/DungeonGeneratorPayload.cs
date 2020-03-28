@@ -1,9 +1,9 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common;
+using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
+using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 using Random = System.Random;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 {
     public class DungeonGeneratorPayload : IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IBenchmarkInfoPayload
     {

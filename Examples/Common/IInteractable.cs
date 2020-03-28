@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Examples.Common
+﻿namespace ProceduralLevelGenerator.Unity.Examples.Common
 {
     /// <summary>
     /// An interface for all objects that the player can interact with.

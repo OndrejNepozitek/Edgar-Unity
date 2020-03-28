@@ -1,13 +1,12 @@
 ﻿using System;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.RoomTemplateOutline;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
 using GeneralAlgorithms.DataStructures.Polygons;
 using MapGeneration.Interfaces.Core.MapDescriptions;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
+using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
 {
     public class RoomTemplate : MonoBehaviour
     {

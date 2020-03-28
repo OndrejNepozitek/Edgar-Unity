@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates;
 using GeneralAlgorithms.Algorithms.Polygons;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Polygons;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Utils
+namespace ProceduralLevelGenerator.Unity.Utils
 {
     [Serializable]
     public class Polygon2D

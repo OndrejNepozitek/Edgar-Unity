@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
+﻿namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public static class GeneratorConstants
     {

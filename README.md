@@ -1,4 +1,5 @@
 # ProceduralLevelGenerator-Unity
+![Build](https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/workflows/Build/badge.svg)
 
 This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a **complete control** over generated levels. It combines procedural generation and **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses my .NET [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
 

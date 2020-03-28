@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Common
+namespace ProceduralLevelGenerator.Unity.Examples.Common
 {
     /// <summary>
     /// Basic camera controller that follows the player and zooms out if you hold CTRL.

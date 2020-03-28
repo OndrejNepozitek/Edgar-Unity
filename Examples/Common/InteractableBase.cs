@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.ProceduralLevelGenerator.Examples.Common
+namespace ProceduralLevelGenerator.Unity.Examples.Common
 {
     /// <summary>
     /// Very simple implementation of an interactable object.
@@ -13,7 +13,7 @@ namespace Assets.ProceduralLevelGenerator.Examples.Common
 
         public void Start()
         {
-            InteractionText = GameObject.Find("Canvas").transform.Find("Interaction")?.GetComponent<Text>();
+            InteractionText = GameObject.Find("Canvas")?.transform.Find("Interaction")?.GetComponent<Text>();
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Pipeline
+namespace ProceduralLevelGenerator.Unity.Pipeline
 {
     /// <summary>
     ///     Base class for pipeline tasks. Used in simpler scenarios.

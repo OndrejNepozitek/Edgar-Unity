@@ -1,8 +1,8 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.NodeBasedEditor
-{
-	using UnityEngine;
+﻿using UnityEngine;
 
-	public interface IEditorNodeBase
+namespace ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor
+{
+    public interface IEditorNodeBase
 	{
 		bool ProcessEvents(Event e);
 

@@ -1,13 +1,12 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
+﻿using System;
+using ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using UnityEditor;
+using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Editor.LevelGraphEditor.EditorNodes
+namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
 {
-	using System;
-	using NodeBasedEditor;
-    using UnityEditor;
-	using UnityEngine;
-
-	public class ConnectionNode : IEditorNode<Connection>
+    public class ConnectionNode : IEditorNode<Connection>
 	{
 		public Connection Data { get; set; }
 

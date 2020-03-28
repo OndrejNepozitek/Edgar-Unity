@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph
+﻿namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
 {
     public interface IConnection<out TRoom>
     {

@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Rooms;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Doors;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.Transformations;
-using Assets.ProceduralLevelGenerator.Scripts.Utils;
 using MapGeneration.Interfaces.Core.MapDescriptions;
 using MapGeneration.Interfaces.Core.MapLayouts;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
+using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public static class GeneratorUtils
     {
@@ -21,9 +20,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
             var corridorToConnectionMapping = levelDescription.GetCorridorToConnectionMapping();
-
-            var roomTransformations = new RoomTransformations();
-
+            
             // Prepare an object to hold instantiated room templates
             var roomTemplateInstancesRoot = new GameObject("Room template instances");
             roomTemplateInstancesRoot.transform.parent = rootGameObject.transform;
@@ -38,11 +35,7 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
                 // Instantiate room template
                 var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
-
-                // Transform room template if needed
-                var transformation = layoutRoom.Transformation;
-                roomTransformations.Transform(roomTemplateInstance, transformation);
-
+                
                 // Compute correct room position
                 var position = layoutRoom.Position.ToUnityIntVector3();
                 roomTemplateInstance.transform.position = position;
@@ -98,19 +91,19 @@ namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils
             switch (doorLine.GetDirection())
             {
                 case OrthogonalLine.Direction.Right:
-                    return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
+                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Left:
-                    return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
+                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Top:
-                    return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
+                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLine.Direction.Bottom:
-                    return new DoorInstance(new Scripts.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right,
+                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 default:

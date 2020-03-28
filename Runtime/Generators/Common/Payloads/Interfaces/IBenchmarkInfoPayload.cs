@@ -1,6 +1,6 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Utils;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.Interfaces
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces
 {
     public interface IBenchmarkInfoPayload
     {

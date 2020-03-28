@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common.Payloads.PayloadInitializers
+namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads.PayloadInitializers
 {
     /// <summary>
     ///     Class that is able to initializer a pipeline payload.

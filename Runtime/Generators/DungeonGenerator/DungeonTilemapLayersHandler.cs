@@ -1,8 +1,8 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common.RoomTemplates.TilemapLayers;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator
+namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 {
     public class DungeonTilemapLayersHandler : ITilemapLayersHandler
     {

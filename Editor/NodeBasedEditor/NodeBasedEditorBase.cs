@@ -1,10 +1,10 @@
-﻿namespace Assets.ProceduralLevelGenerator.Editor.NodeBasedEditor
-{
-	using System.Collections.Generic;
-	using UnityEditor;
-	using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
-	public abstract class NodeBasedEditorBase : EditorWindow
+namespace ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor
+{
+    public abstract class NodeBasedEditorBase : EditorWindow
 	{
 		protected Vector2 Offset;
 		protected Vector2 Drag;

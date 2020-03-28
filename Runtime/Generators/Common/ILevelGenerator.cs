@@ -1,4 +1,4 @@
-﻿namespace Assets.ProceduralLevelGenerator.Scripts.Generators.Common
+﻿namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
     public interface ILevelGenerator
     {

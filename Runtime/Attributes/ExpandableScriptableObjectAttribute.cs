@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-namespace Assets.ProceduralLevelGenerator.Scripts.Attributes
+namespace ProceduralLevelGenerator.Unity.Attributes
 {
     /// <summary>
     ///     Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable
