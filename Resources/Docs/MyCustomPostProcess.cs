@@ -1,5 +1,5 @@
-﻿using Assets.ProceduralLevelGenerator.Scripts.Generators.Common;
-using Assets.ProceduralLevelGenerator.Scripts.Generators.DungeonGenerator.PipelineTasks;
+﻿using ProceduralLevelGenerator.Generators.Common;
+using ProceduralLevelGenerator.Generators.DungeonGenerator.PipelineTasks;
 using UnityEngine;
 
 namespace Assets.Resources.Docs

@@ -1,0 +1,14 @@
+{
+    "name": "ProceduralLevelGenerator.Examples",
+    "references": [
+        "ProceduralLevelGenerator"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
