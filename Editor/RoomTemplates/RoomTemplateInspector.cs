@@ -27,6 +27,13 @@ namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
                 EditorGUILayout.HelpBox("The outline of the room template is not valid. Please make sure to follow the rules from the documentation.", MessageType.Error);
             }
 
+            var doors = roomTemplate.GetComponent<Generators.Common.RoomTemplates.Doors.Doors>();
+
+            if (doors == null)
+            {
+                EditorGUILayout.HelpBox("The Doors component is missing. Please add it to this game object.", MessageType.Error);
+            }
+
             var hasOutlineOverride = roomTemplate.HasOutlineOverride();
 
             EditorGUILayout.HelpBox($"Using outline override: {hasOutlineOverride}", MessageType.None);
