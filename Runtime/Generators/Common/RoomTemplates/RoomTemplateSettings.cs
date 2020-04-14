@@ -1,6 +1,6 @@
 ﻿using System;
 using GeneralAlgorithms.DataStructures.Polygons;
-using MapGeneration.Interfaces.Core.MapDescriptions;
+using MapGeneration.Core.MapDescriptions.Interfaces;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
 using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 using UnityEngine;
@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
 {
-    public class RoomTemplate : MonoBehaviour
+    public class RoomTemplateSettings : MonoBehaviour
     {
         public RepeatMode RepeatMode = RepeatMode.AllowRepeat;
 

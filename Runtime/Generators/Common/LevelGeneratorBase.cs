@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using MapGeneration.Core.MapDescriptions;
-using MapGeneration.Interfaces.Core.MapDescriptions;
+using MapGeneration.Core.MapDescriptions.Interfaces;
 using MapGeneration.Utils;
 using Newtonsoft.Json;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
@@ -64,7 +64,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             }
         }
 
-        private IMapDescription<int> GetIntMapDescription(IMapDescription<Room> mapDescription)
+        private MapDescription<int> GetIntMapDescription(MapDescription<Room> mapDescription)
         {
             var newMapDescription = new MapDescription<int>();
             var mapping = mapDescription.GetGraph().Vertices.CreateIntMapping();

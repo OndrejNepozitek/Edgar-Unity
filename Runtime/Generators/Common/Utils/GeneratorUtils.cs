@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MapGeneration.Interfaces.Core.MapDescriptions;
-using MapGeneration.Interfaces.Core.MapLayouts;
+using MapGeneration.Core.MapDescriptions.Interfaces;
+using MapGeneration.Core.MapLayouts;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
@@ -15,7 +15,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public static class GeneratorUtils
     {
-        public static GeneratedLevel TransformLayout(IMapLayout<Room> layout, LevelDescription levelDescription, GameObject rootGameObject)
+        public static GeneratedLevel TransformLayout(MapLayout<Room> layout, LevelDescription levelDescription, GameObject rootGameObject)
         {
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
@@ -79,12 +79,12 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
             return new GeneratedLevel(layoutData, layout, rootGameObject);
         }
 
-        private static List<DoorInstance> TransformDoorInfo(IEnumerable<IDoorInfo<Room>> doorInfos, Dictionary<Room, RoomInstance> roomInstances)
+        private static List<DoorInstance> TransformDoorInfo(IEnumerable<DoorInfo<Room>> doorInfos, Dictionary<Room, RoomInstance> roomInstances)
         {
             return doorInfos.Select(x => TransformDoorInfo(x, roomInstances[x.Node])).ToList();
         }
 
-        private static DoorInstance TransformDoorInfo(IDoorInfo<Room> doorInfo, RoomInstance connectedRoomInstance)
+        private static DoorInstance TransformDoorInfo(DoorInfo<Room> doorInfo, RoomInstance connectedRoomInstance)
         {
             var doorLine = doorInfo.DoorLine;
 

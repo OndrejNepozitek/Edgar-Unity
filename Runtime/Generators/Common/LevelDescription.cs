@@ -5,10 +5,10 @@ using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Graphs;
 using JetBrains.Annotations;
 using MapGeneration.Core.MapDescriptions;
-using MapGeneration.Interfaces.Core.MapDescriptions;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
+using RoomTemplate = MapGeneration.Core.MapDescriptions.RoomTemplate;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
@@ -20,7 +20,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         private readonly List<CorridorRoomDescription> corridorRoomDescriptions = new List<CorridorRoomDescription>();
         private readonly TwoWayDictionary<TRoom, TConnection> corridorToConnectionMapping = new TwoWayDictionary<TRoom, TConnection>();
         private readonly MapDescription<TRoom> mapDescription = new MapDescription<TRoom>();
-        private readonly TwoWayDictionary<GameObject, IRoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, IRoomTemplate>();
+        private readonly TwoWayDictionary<GameObject, RoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplate>();
 
         public void AddRoom(TRoom room, [NotNull] List<GameObject> roomTemplates)
         {
@@ -88,7 +88,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             return corridorRoomDescription;
         }
 
-        private IRoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab)
+        private RoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab)
         {
             if (prefabToRoomTemplateMapping.ContainsKey(roomTemplatePrefab))
             {
@@ -102,7 +102,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         }
 
         // TODO: how to name this?
-        public IMapDescription<TRoom> GetMapDescription()
+        public MapDescription<TRoom> GetMapDescription()
         {
             return mapDescription;
         }
@@ -117,7 +117,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             return mapDescription.GetStageOneGraph();
         }
 
-        public TwoWayDictionary<GameObject, IRoomTemplate> GetPrefabToRoomTemplateMapping()
+        public TwoWayDictionary<GameObject, RoomTemplate> GetPrefabToRoomTemplateMapping()
         {
             return prefabToRoomTemplateMapping;
         }

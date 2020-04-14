@@ -7,16 +7,16 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
 {
-    [CustomEditor(typeof(RoomTemplate))]
+    [CustomEditor(typeof(RoomTemplateSettings))]
     public class RoomTemplateInspector : UnityEditor.Editor
     {
-        public override void OnInspectorGUI()
+        public override void OnInspectorGUI() 
         {
             serializedObject.Update();
 
             DrawDefaultInspector();
 
-            var roomTemplate = (RoomTemplate) target;
+            var roomTemplate = (RoomTemplateSettings) target;
 
             if (roomTemplate.IsOutlineValid())
             {
@@ -125,7 +125,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
             
             try
             {
-                var roomTemplate = (RoomTemplate) target;
+                var roomTemplate = (RoomTemplateSettings) target;
                 var outline = roomTemplate.GetOutline();
 
                 if (outline == null)
@@ -152,7 +152,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
 
         private void DrawOutline(Vector3 from, Vector3 to, Color outlineColor, bool drawDiagonal = true)
         {
-            var roomTemplate = (RoomTemplate) target;
+            var roomTemplate = (RoomTemplateSettings) target;
             from = from + roomTemplate.transform.position;
             to = to + roomTemplate.transform.position;
 

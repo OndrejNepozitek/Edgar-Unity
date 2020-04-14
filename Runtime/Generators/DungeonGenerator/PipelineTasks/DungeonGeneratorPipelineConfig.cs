@@ -3,7 +3,7 @@ using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
 using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
-using MapGeneration.Interfaces.Core.MapLayouts;
+using MapGeneration.Core.MapLayouts;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
 using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
@@ -49,7 +49,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
             }
 
             var mapDescription = levelDescription.GetMapDescription();
-            var configuration = new DungeonGeneratorConfiguration<Room>(mapDescription)
+            var configuration = new DungeonGeneratorConfiguration<Room>()
             {
                 RoomsCanTouch = false,
                 RepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride),
@@ -59,7 +59,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
             var generator = new DungeonGenerator<Room>(mapDescription, configuration);
             generator.InjectRandomGenerator(Payload.Random);
 
-            IMapLayout<Room> layout = null;
+            MapLayout<Room> layout = null;
             var task = Task.Run(() => layout = generator.GenerateLayout());
 
             while (!task.IsCompleted)

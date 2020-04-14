@@ -4,7 +4,8 @@ using System.Linq;
 using GeneralAlgorithms.Algorithms.Common;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Polygons;
-using MapGeneration.Interfaces.Core.MapDescriptions;
+using MapGeneration.Core.MapDescriptions;
+using MapGeneration.Core.MapDescriptions.Interfaces;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
 using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 using ProceduralLevelGenerator.Unity.Utils;
@@ -167,7 +168,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
         /// <param name="roomTemplatePrefab"></param>
         /// <param name="allowedTransformations"></param>
         /// <returns></returns>
-        public static IRoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab, List<Transformation> allowedTransformations = null)
+        public static RoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab, List<Transformation> allowedTransformations = null)
         {
             if (allowedTransformations == null)
             {
@@ -183,7 +184,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
                 throw new GeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
             }
 
-            var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplate>();
+            var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplateSettings>();
             var repeatMode = roomTemplateComponent?.RepeatMode ?? RepeatMode.AllowRepeat;
             var doorMode = doors.GetDoorMode();
 

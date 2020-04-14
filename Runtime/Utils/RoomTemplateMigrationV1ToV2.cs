@@ -21,9 +21,9 @@ namespace ProceduralLevelGenerator.Unity.Utils
                 DestroyImmediate(grid, true);
             }
 
-            if (gameObject.GetComponent<RoomTemplate>() == null)
+            if (gameObject.GetComponent<RoomTemplateSettings>() == null)
             {
-                gameObject.AddComponent<RoomTemplate>();
+                gameObject.AddComponent<RoomTemplateSettings>();
             }
 
             if (transform.Find(GeneratorConstants.TilemapsRootName) != null)

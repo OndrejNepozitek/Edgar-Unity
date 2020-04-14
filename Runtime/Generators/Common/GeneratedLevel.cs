@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MapGeneration.Interfaces.Core.MapLayouts;
+using MapGeneration.Core.MapLayouts;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
@@ -20,10 +20,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// </summary>
         public GameObject RootGameObject { get; }
 
-        private readonly IMapLayout<Room> mapLayout;
+        private readonly MapLayout<Room> mapLayout;
         private readonly Dictionary<Room, RoomInstance> roomInstances;
 
-        public GeneratedLevel(Dictionary<Room, RoomInstance> roomInstances, IMapLayout<Room> mapLayout, GameObject rootGameObject)
+        public GeneratedLevel(Dictionary<Room, RoomInstance> roomInstances, MapLayout<Room> mapLayout, GameObject rootGameObject)
         {
             this.roomInstances = roomInstances;
             this.mapLayout = mapLayout;
@@ -53,7 +53,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// Gets the internal representation of the generated layout.
         /// </summary>
         /// <returns></returns>
-        public IMapLayout<Room> GetInternalLayoutRepresentation()
+        public MapLayout<Room> GetInternalLayoutRepresentation()
         {
             return mapLayout;
         }

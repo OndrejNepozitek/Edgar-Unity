@@ -18,9 +18,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTem
             }
 
             // Add room template component
-            if (gameObject.GetComponent<RoomTemplate>() == null)
+            if (gameObject.GetComponent<RoomTemplateSettings>() == null)
             {
-                gameObject.AddComponent<RoomTemplate>();
+                gameObject.AddComponent<RoomTemplateSettings>();
             }
 
             // Create tilemaps root
