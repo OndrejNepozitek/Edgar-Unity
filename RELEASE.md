@@ -3,7 +3,7 @@
 - merge dev to master
 - prepare new release
 - tag and name v2.0.0-alpha.X
-- create changelog
+- create changelog (do not forget RoomTemplate component was renamed to RoomTemplateSettings)
 - attach unity package
 - npm run version 2.0.0-alpha.1
 - cmd /C "set "GIT_USER=OndrejNepozitek" && npm run deploy"
