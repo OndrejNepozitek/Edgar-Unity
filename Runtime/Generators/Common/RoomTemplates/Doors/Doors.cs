@@ -25,31 +25,11 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
         public List<DoorInfoEditor> DoorsList = new List<DoorInfoEditor>();
 
         [HideInInspector]
-        public int SelectedMode;
-
-        public void Transform(Transformation transformation)
-        {
-            var newDoorsList = new List<DoorInfoEditor>();
-
-            foreach (var doorInfo in DoorsList)
-            {
-                // TODO: ugly
-                var newFrom = doorInfo.From.RoundToUnityIntVector3().ToCustomIntVector2().Transform(transformation);
-                var newTo = doorInfo.To.RoundToUnityIntVector3().ToCustomIntVector2().Transform(transformation);
-
-                newDoorsList.Add(new DoorInfoEditor
-                {
-                    From = new Vector3(newFrom.X, newFrom.Y),
-                    To = new Vector3(newTo.X, newTo.Y)
-                });
-            }
-
-            DoorsList = newDoorsList;
-        }
+        public DoorMode SelectedMode;
 
         public IDoorMode GetDoorMode()
         {
-            if (SelectedMode == 1)
+            if (SelectedMode == DoorMode.Manual)
             {
                 var doorLines = new List<OrthogonalLine>();
 
@@ -64,12 +44,18 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
                 return new ManualDoorMode(doorLines);
             }
 
-            if (SelectedMode == 0)
+            if (SelectedMode == DoorMode.Simple)
             {
                 return new SimpleDoorMode(DoorLength - 1, DistanceFromCorners);
             }
 
             throw new ArgumentException("Invalid door mode selected");
+        }
+
+        public enum DoorMode
+        {
+            Simple = 0,
+            Manual = 1,
         }
     }
 }

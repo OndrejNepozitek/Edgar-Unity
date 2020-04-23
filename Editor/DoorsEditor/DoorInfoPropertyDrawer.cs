@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.Doors
+namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
 {
     public class DoorInfoPropertyDrawer : PropertyDrawer
 	{
