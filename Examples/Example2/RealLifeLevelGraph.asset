@@ -61,6 +61,9 @@ MonoBehaviour:
   - {fileID: 114362041104750574}
   - {fileID: 114181481821469818}
   - {fileID: 114887611470947104}
+  EditorData:
+    PanOffset: {x: 61.388832, y: 41.597504}
+    Zoom: 0.80189997
   RoomType: Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph.Room
   ConnectionType: Assets.ProceduralLevelGenerator.Scripts.Generators.Common.LevelGraph.Connection
 --- !u!114 &114037397136089240
@@ -106,7 +109,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 405, y: 263}
+  Position: {x: 400, y: 320}
 --- !u!114 &114089868467452678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +154,7 @@ MonoBehaviour:
   IndividualRoomTemplates:
   - {fileID: 7407620799752357740, guid: 55f31baef526567448a9b115d6cf136f, type: 3}
   RoomTemplateSets: []
-  Position: {x: 418, y: 445}
+  Position: {x: 400, y: 448}
 --- !u!114 &114181481821469818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,7 +171,7 @@ MonoBehaviour:
   IndividualRoomTemplates:
   - {fileID: 2171578542849103085, guid: 55ba6f1cdc2513d4a8b3cf7a21cfb160, type: 3}
   RoomTemplateSets: []
-  Position: {x: 888, y: 284}
+  Position: {x: 752, y: 384}
 --- !u!114 &114217988931947320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,7 +201,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 747, y: 167}
+  Position: {x: 624, y: 96}
 --- !u!114 &114268992582898586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +245,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 758, y: 266}
+  Position: {x: 752, y: 240}
 --- !u!114 &114406968771112752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +275,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 636, y: 251}
+  Position: {x: 640, y: 240}
 --- !u!114 &114533433856889188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +291,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 396, y: 111}
+  Position: {x: 400, y: 160}
 --- !u!114 &114574138715132996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,7 +307,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 533, y: 213}
+  Position: {x: 512, y: 160}
 --- !u!114 &114576633709352658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +351,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 159, y: 235}
+  Position: {x: 112, y: 256}
 --- !u!114 &114674809112907160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +395,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 328, y: 192}
+  Position: {x: 400, y: 256}
 --- !u!114 &114765324194000454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +411,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 673, y: 354}
+  Position: {x: 640, y: 304}
 --- !u!114 &114774267484716976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,7 +427,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 499, y: 40}
+  Position: {x: 400, y: 96}
 --- !u!114 &114784964067501396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,7 +457,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 170, y: 81}
+  Position: {x: 224, y: 192}
 --- !u!114 &114804362080621142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +473,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 337, y: 361}
+  Position: {x: 320, y: 384}
 --- !u!114 &114824353970097678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +531,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 476, y: 359}
+  Position: {x: 480, y: 384}
 --- !u!114 &114887611470947104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +547,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 775, y: 373}
+  Position: {x: 864, y: 240}
 --- !u!114 &114896554555281372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,7 +563,7 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 217, y: 160}
+  Position: {x: 224, y: 256}
 --- !u!114 &114939762163973488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,4 +621,4 @@ MonoBehaviour:
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 625, y: 126}
+  Position: {x: 512, y: 96}

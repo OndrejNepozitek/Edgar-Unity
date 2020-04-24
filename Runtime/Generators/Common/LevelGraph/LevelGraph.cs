@@ -41,6 +41,11 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
         [HideInInspector]
         public List<Room> Rooms = new List<Room>();
 
+        /// <summary>
+        ///     Editor data like zoom, etc.
+        /// </summary>
+        public LevelGraphEditorData EditorData = new LevelGraphEditorData();
+
         public string RoomType = typeof(Room).FullName;
 
         public string ConnectionType = typeof(Connection).FullName;

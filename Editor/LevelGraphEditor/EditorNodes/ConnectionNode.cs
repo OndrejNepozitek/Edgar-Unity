@@ -1,104 +1,40 @@
-﻿using System;
-using ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using UnityEditor;
 using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
 {
-    public class ConnectionNode : IEditorNode<Connection>
-	{
-		public Connection Data { get; set; }
+    public class ConnectionNode
+    {
+        public Connection Connection { get; }
 
-		public RoomNode From { get; set; }
+        public RoomNode From { get; }
 
-		public RoomNode To { get; set; }
+        public RoomNode To { get; }
 
-		public Action OnDelete;
+        public ConnectionNode(Connection connection, RoomNode from, RoomNode to)
+        {
+            Connection = connection;
+            From = from;
+            To = to;
+        }
 
-		private GUIStyle handleStyle;
-        private readonly GUIStyle activeStyle;
+        public void Draw(float zoom, Vector2 panOffset)
+        {
+            Handles.DrawLine(From.GetRect(zoom, panOffset).center, To.GetRect(zoom, panOffset).center);
 
-        private int handleWidth;
+            var style = new GUIStyle(Selection.activeObject == Connection ? LevelGraphEditorStyles.ConnectionHandleActive : LevelGraphEditorStyles.ConnectionHandle);
+            GUI.Box(GetHandleRect(zoom, panOffset), string.Empty, style);
+        }
 
-		private bool isClickAfterContextMenu;
+        public Rect GetHandleRect(float zoom, Vector2 panOffset)
+        {
+            var width = zoom * 12;
 
-		public ConnectionNode(Connection data, RoomNode from, RoomNode to, GUIStyle handleStyle, GUIStyle activeStyle, int handleWidth)
-		{
-			Data = data;
-			From = from;
-			To = to;
-			this.handleStyle = handleStyle;
-            this.activeStyle = activeStyle;
-            this.handleWidth = handleWidth;
-		}
+            var handleCenter = Vector2.Lerp(From.GetRect(zoom, panOffset).center, To.GetRect(zoom, panOffset).center, 0.5f);
+            var rect = new Rect(handleCenter.x - width / 2.0f, handleCenter.y - width / 2.0f, width, width);
 
-		public bool ProcessEvents(Event e)
-		{
-			switch (e.type)
-			{
-				case EventType.MouseDown:
-					if (e.button == 1)
-					{
-						if (GetHandleRect().Contains(e.mousePosition))
-						{
-							ProcessContextMenu();
-							e.Use();
-							isClickAfterContextMenu = true;
-						}
-					}
-                    if (e.button == 0 && GetHandleRect().Contains(e.mousePosition) && e.clickCount > 1)
-                    {
-                        Selection.activeObject = Data;
-                        e.Use();
-                        GUI.changed = true;
-                    }
-
-					break;
-
-				case EventType.MouseDrag:
-					if (isClickAfterContextMenu)
-					{
-						isClickAfterContextMenu = false;
-						e.Use();
-					}
-
-					break;
-			}
-
-
-			return false;
-		}
-
-		private void ProcessContextMenu()
-		{
-			var genericMenu = new GenericMenu();
-			genericMenu.AddItem(new GUIContent("Delete connection"), false, OnClickDelete);
-			genericMenu.ShowAsContext();
-		}
-
-		private void OnClickDelete()
-		{
-			OnDelete?.Invoke();
-		}
-
-		public void Draw()
-		{
-			Handles.DrawLine(From.Rect.center, To.Rect.center);
-			GUI.Box(GetHandleRect(), string.Empty, Selection.activeObject == Data ? activeStyle : handleStyle);
-		}
-
-		public void Drag(Vector2 delta)
-		{
-			
-		}
-
-		private Rect GetHandleRect()
-		{
-			var handleCenter = Vector2.Lerp(From.Rect.center, To.Rect.center, 0.5f);
-			var rect = new Rect(handleCenter.x - handleWidth / 2.0f, handleCenter.y - handleWidth / 2.0f, handleWidth, handleWidth);
-
-			return rect;
-		}
-	}
+            return rect;
+        }
+    }
 }

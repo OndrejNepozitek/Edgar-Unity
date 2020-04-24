@@ -94,7 +94,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -209,7 +208,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -327,7 +325,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -362,8 +359,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &2709741279090504797
 Rigidbody2D:
   serializedVersion: 4
@@ -408,7 +403,6 @@ CompositeCollider2D:
   m_CompositePaths:
     m_Paths: []
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!1 &5442571832897403891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1090,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1131,8 +1124,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &8478309088764885514
 Rigidbody2D:
   serializedVersion: 4
@@ -1174,34 +1165,33 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1532825358172491400}
     m_ColliderPaths:
-    - - X: 79999971
-        Y: -20000000
-      - X: 79999971
+    - - X: 80000000
         Y: 30000000
       - X: 30000000
-        Y: 29999971
-      - X: 30000029
+        Y: 30000000
+      - X: 30000000
         Y: -20000000
-    - - X: 19999971
+      - X: 80000000
         Y: -20000000
-      - X: 19999971
+    - - X: 20000000
         Y: 30000000
       - X: -30000000
-        Y: 29999971
-      - X: -29999971
+        Y: 30000000
+      - X: -30000000
+        Y: -20000000
+      - X: 20000000
         Y: -20000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 1.9999943, y: -2}
-      - {x: 1.9999943, y: 3}
-      - {x: -3, y: 2.9999943}
-      - {x: -2.9999943, y: -2}
-    - - {x: 7.9999943, y: -2}
-      - {x: 7.9999943, y: 3}
-      - {x: 3, y: 2.9999943}
-      - {x: 3.0000057, y: -2}
+    - - {x: 8, y: 3}
+      - {x: 3, y: 3}
+      - {x: 3, y: -2}
+      - {x: 8, y: -2}
+    - - {x: 2, y: 3}
+      - {x: -3, y: 3}
+      - {x: -3, y: -2}
+      - {x: 2, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!1 &6207736466791592969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,7 +1286,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1505,7 +1494,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

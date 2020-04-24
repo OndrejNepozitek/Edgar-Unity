@@ -1,150 +1,34 @@
-﻿using System;
-using ProceduralLevelGenerator.Unity.Editor.NodeBasedEditor;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using UnityEditor;
 using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
 {
-    public class RoomNode : IEditorNode<Room>
-	{
-		public Room Data { get; set; }
+    public class RoomNode
+    {
+        public Room Room { get; }
 
-		public Action OnDelete;
+        public RoomNode(Room room)
+        {
+            Room = room;
+        }
 
-		public Action<Event> OnStartConnection;
+        public Rect GetRect(float zoom, Vector2 gridOffset)
+        {
+            var width = 80 * zoom;
+            var height = 32 * zoom;
+            
+            return new Rect((Room.Position.x + gridOffset.x) * zoom, (Room.Position.y + gridOffset.y) * zoom, width, height);
+        }
 
-		public Action<Event> OnEndConnection;
+        public void Draw(float zoom, Vector2 gridOffset)
+        {
+            var rect = GetRect(zoom, gridOffset);
 
-		public Rect Rect;
+            var style = new GUIStyle(Selection.activeObject == Room ? LevelGraphEditorStyles.RoomNodeActive : LevelGraphEditorStyles.RoomNode);
+            style.fontSize = (int) (style.fontSize * zoom);
 
-		public bool IsConnectionMade;
-
-		public EditorMode Mode;
-
-		private readonly GUIStyle style;
-
-        private readonly GUIStyle activeStyle;
-
-        private bool isDragged;
-
-		private bool isClickAfterContextMenu;
-
-
-		public RoomNode(Room data, float width, float height, GUIStyle style, GUIStyle activeStyle, EditorMode mode)
-		{
-			Data = data;
-			this.style = style;
-            this.activeStyle = activeStyle;
-            Rect = new Rect(Data.Position.x, Data.Position.y, width, height);
-			this.Mode = mode;
-		}
-
-		// TODO: refactor
-		public bool ProcessEvents(Event e)
-		{
-            switch (e.type)
-			{
-				case EventType.MouseDown:
-					if (e.button == 1)
-					{
-						if (Rect.Contains(e.mousePosition))
-						{
-							ProcessContextMenu();
-							e.Use();
-							isClickAfterContextMenu = true;
-						}
-					}
-					else if (e.button == 0 && Mode == EditorMode.MakeConnections && Rect.Contains(e.mousePosition))
-					{
-						OnStartConnection?.Invoke(e);
-					} else if (e.button == 0 && Mode == EditorMode.Drag && Rect.Contains(e.mousePosition) && e.clickCount > 1)
-                    {
-                        OnClickConfigure();
-                        e.Use();
-                        GUI.changed = true;
-                    }
-					else if (Mode == EditorMode.Drag && Rect.Contains(e.mousePosition) && e.button == 0)
-					{
-						isDragged = true;
-					}
-
-                    if (Rect.Contains(e.mousePosition))
-                    {
-                        e.Use();
-                    }
-
-					break;
-
-				case EventType.MouseUp:
-					if (Rect.Contains(e.mousePosition) && e.button == 0 && Mode == EditorMode.MakeConnections)
-					{
-						OnEndConnection?.Invoke(e);
-					}
-
-					if (e.button == 0)
-					{
-						isDragged = false;
-					}
-
-					break;
-				case EventType.MouseDrag:
-					if (e.button == 0)
-					{
-						if (isClickAfterContextMenu)
-						{
-							e.Use();
-							isClickAfterContextMenu = false;
-						}
-
-						switch (Mode)
-						{
-							case EditorMode.Drag:
-								if (isDragged)
-								{
-									Drag(e.delta);
-									e.Use();
-								}
-
-								break;
-						}
-					}
-					break;
-
-			}
-
-
-			return false;
-		}
-
-		private void ProcessContextMenu()
-		{
-			var genericMenu = new GenericMenu();
-			genericMenu.AddItem(new GUIContent("Configure room"), false, OnClickConfigure);
-			genericMenu.AddSeparator("");
-			genericMenu.AddItem(new GUIContent("Delete room"), false, OnClickDelete);
-			genericMenu.ShowAsContext();
-		}
-
-		private void OnClickDelete()
-		{
-			OnDelete?.Invoke();
-		}
-
-		private void OnClickConfigure()
-		{
-			Selection.activeObject = Data;
-		}
-
-		public void Draw()
-		{
-			GUI.Box(Rect, Data.ToString(), Selection.activeObject == Data ? activeStyle : style);
-		}
-
-		public void Drag(Vector2 delta)
-		{
-			Rect.position += delta;
-			Data.Position += delta;
-		}
-	}
+            GUI.Box(rect, Room.ToString(), style);
+        }
+    }
 }

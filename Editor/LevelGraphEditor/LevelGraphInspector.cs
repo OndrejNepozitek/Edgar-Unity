@@ -50,15 +50,35 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
 			}
 
             if (GUILayout.Button("Open graph editor"))
-			{
-				var type = Type.GetType("UnityEditor.GameView,UnityEditor");
-				var window = EditorWindow.GetWindow<LevelGraphWindow>("Graph editor", type);
-				window.Data = (LevelGraph) target;
-				window.Initialize();
-				window.Show();
-			}
+            {
+                OpenWindow((LevelGraph) target);
+            }
 
 			serializedObject.ApplyModifiedProperties(); 
 		}
+
+        [UnityEditor.Callbacks.OnOpenAsset(1)]
+        public static bool OnOpenAsset(int instanceID, int line)
+        {
+            var assetPath = AssetDatabase.GetAssetPath(instanceID);
+            var levelGraph = AssetDatabase.LoadAssetAtPath<LevelGraph>(assetPath);
+
+            if (levelGraph != null)
+            {
+                OpenWindow(levelGraph);
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private static void OpenWindow(LevelGraph levelGraph)
+        {
+            var type = Type.GetType("UnityEditor.GameView,UnityEditor");
+            var window = EditorWindow.GetWindow<LevelGraphEditor>("Graph editor", type);
+            window.Initialize(levelGraph);
+            window.Show();
+        }
 	}
 }
