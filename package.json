@@ -7,5 +7,12 @@
     "author": {
         "name": "Ondřej Nepožitek",
         "email": "ondra@nepozitek.cz"
-    }
+    },
+    "samples": [
+        {
+          "displayName": "Examples",
+          "description": "All example scenes. They currently cannot be added individualy because of package manager limitations.",
+          "path": "Examples~"
+        }
+    ]
 }
