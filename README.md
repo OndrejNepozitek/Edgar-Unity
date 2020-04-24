@@ -1,4 +1,4 @@
-# ProceduralLevelGenerator-Unity
+# Edgar - Procedural Level Generator
 ![Build](https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/workflows/Build/badge.svg)
 
 This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a **complete control** over generated levels. It combines procedural generation and **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses my .NET [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
@@ -20,8 +20,9 @@ There are several ways of installing the plugin:
 ### via Package Manager
 Add the following line to the `packages/manifest.json` file under the `dependencies` section (you must have git installed):
 ```
- "com.ondrejnepozitek.procedurallevelgenerator": "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity.git"
+ "com.ondrejnepozitek.procedurallevelgenerator": "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity.git#upm"
 ```
+To try the examples, go to the Package Manager, find this plugin in the list of installed assets and import examples.
 
 > Note: When importing the package, I've got some weird "DirectoryNotFoundException: Could not find a part of the path" errors even though all the files are there. If that happens to you, just ignore that.
 
