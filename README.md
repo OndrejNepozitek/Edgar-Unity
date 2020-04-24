@@ -33,7 +33,7 @@ After installing the package, Unity adds something like this to your `manifest.j
   "lock": {
     "com.ondrejnepozitek.procedurallevelgenerator": {
       "hash": "fc2e2ea5a50ec4d1d23806e30b87d13cf74af04e",
-      "revision": "master"
+      "revision": "upm"
     }
   }
 ```
