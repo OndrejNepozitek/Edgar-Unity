@@ -13,6 +13,41 @@ This is an alpha version of the improved version 2 of the plugin. The current st
 
 I am also working on a **PRO version** of the plugin that will be paid and will contain additional features like **platformers generator**, performance benchmarking tools, more control over the inputs for the generator, simple **fog of war**, more example scenes and other.
 
+## Installation
+
+There are several ways of installing the plugin:
+
+### via Package Manager
+Add the following line to the `packages/manifest.json` file under the `dependencies` section (you must have git installed):
+```
+ "com.ondrejnepozitek.procedurallevelgenerator": "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity.git"
+```
+
+> Note: When importing the package, I've got some weird "DirectoryNotFoundException: Could not find a part of the path" errors even though all the files are there. If that happens to you, just ignore that.
+
+#### How to update
+After installing the package, Unity adds something like this to your `manifest.json`:
+
+```
+  "lock": {
+    "com.ondrejnepozitek.procedurallevelgenerator": {
+      "hash": "fc2e2ea5a50ec4d1d23806e30b87d13cf74af04e",
+      "revision": "master"
+    }
+  }
+```
+
+Remove it to let Unity download a new version of the plugin.
+
+### via .unitypackage
+
+Go to Releases and download the unitypackage that's included in every release. Then import the package to Unity project (*Assets -> Import package -> Custom package*).
+
+#### How to update
+In order to be able to download a new version of the plugin, **we recommend to not change anything inside the Assets/ProceduralLevelGenerator folder**. At this stage of the project, files are often moved, renamed or deleted, and Unity does not handle that very well.
+
+The safest way to update to the new version is to completely remove the old version (*Assets/ProceduralLevelGenerator* directory) and then import the new version. (Make sure to backup your project before deleting anything.)
+
 ## Features
 
 - **Complete control over the structure of generated level.** Instead of generating completely random dungeons, you specify how many rooms you want and how they should be connected and the algorithm generates levels that follow exactly that structure.
