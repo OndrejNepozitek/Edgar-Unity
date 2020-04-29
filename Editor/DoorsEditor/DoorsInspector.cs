@@ -234,7 +234,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
 			var doors = target as Doors;
 			
 			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
-			selectedModeProp.intValue = GUILayout.SelectionGrid((int) doors.SelectedMode, new[] { "Simple mode", "Specific positions"}, 2);
+			selectedModeProp.intValue = GUILayout.SelectionGrid((int) doors.SelectedMode, new[] { "Simple mode", "Manual mode"}, 2);
 
             EditorGUILayout.Space();
 
