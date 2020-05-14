@@ -130,6 +130,12 @@ namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
 
                 Event.current.Use();
             }
+
+            // Mouse down must be also used, otherwise there were some bugs after removing doors
+            if (e.type == EventType.MouseDown)
+            {
+                Event.current.Use();
+            }
         }
 
         private void HandleAddDoors()
