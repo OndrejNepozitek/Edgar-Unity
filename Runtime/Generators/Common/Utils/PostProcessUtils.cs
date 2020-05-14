@@ -97,6 +97,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
                     if (tile != null)
                     {
                         destinationTilemap.SetTile(tilemapPosition + offset, tile);
+                        destinationTilemap.SetTransformMatrix(tilemapPosition + offset, sourceTilemap.GetTransformMatrix(tilemapPosition));
                     }
                 }
             }
