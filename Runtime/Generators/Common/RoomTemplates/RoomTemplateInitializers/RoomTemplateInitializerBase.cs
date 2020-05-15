@@ -7,7 +7,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTem
     /// <summary>
     ///     Base class for initializing room templates.
     /// </summary>
-    public abstract class BaseRoomTemplateInitializer : MonoBehaviour
+    public abstract class RoomTemplateInitializerBase : MonoBehaviour
     {
         public virtual void Initialize()
         {

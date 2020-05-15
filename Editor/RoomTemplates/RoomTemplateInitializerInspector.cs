@@ -4,12 +4,12 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
 {
-    [CustomEditor(typeof(BaseRoomTemplateInitializer), true)]
+    [CustomEditor(typeof(RoomTemplateInitializerBase), true)]
 	public class RoomTemplateInitializerInspector : UnityEditor.Editor
 	{
 		public override void OnInspectorGUI()
 		{
-			var roomTemplateInitializer = (BaseRoomTemplateInitializer) target;
+			var roomTemplateInitializer = (RoomTemplateInitializerBase) target;
 
 			DrawDefaultInspector();
 
