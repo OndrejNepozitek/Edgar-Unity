@@ -13,6 +13,8 @@ This is an alpha version of the improved version 2 of the plugin. The current st
 
 I am also working on a **PRO version** of the plugin that will be paid and will contain additional features like **platformers generator**, performance benchmarking tools, more control over the inputs for the generator, simple **fog of war**, more example scenes and other.
 
+**If you want to try the PRO version before it is officially released, you can buy it now on [itch.io](https://ondrejnepozitek.itch.io/edgar-pro) at a discounted price.**
+
 Current state of the PRO version:
 
 | Feature     | Description                                                                                | State                                                                                                                                                                                                                                       |
