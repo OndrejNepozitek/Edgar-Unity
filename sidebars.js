@@ -38,17 +38,17 @@ module.exports = {
     {
       type: "category",
       label: "Examples",
-      items: ["examples/example-1", "examples/example-2", "examples/platformers", "examples/enter-the-gungeon", "examples/dead-cells"]
+      items: ["examples/example-1", "examples/example-2", "examples/platformer-1", "examples/isometric-1", "examples/enter-the-gungeon", "examples/dead-cells"]
     },
     {
       type: "category",
       label: "Guides",
-      items: ["guides/procedural-level-graphs", "guides/fog-of-war", "guides/benchmarks"]
+      items: ["guides/room-template-customization", "guides/procedural-level-graphs", "guides/fog-of-war", "guides/benchmarks"]
     },
     {
       type: "category",
       label: "Other",
-      items: ["other/tilemap-layers", "other/migration-v1-v2"]
+      items: ["other/migration-v1-v2"]
     }
   ]
 };

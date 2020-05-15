@@ -65,3 +65,50 @@ Example:
 > **Note:** The `Generate()` method blocks the main Unity thread so the game may freeze while the dungeon is generated. The PRO version comes with an implementation that uses coroutines to make sure that the games does not freeze.
 
 ### (PRO) With coroutines
+
+If we do not want to block the main Unity thread when the level is generating, we can use a coroutine. There are two ways of doing that.
+
+The simple approach uses only built-in Unity coroutines and works like this:
+
+    var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGenerator>();
+    StartCoroutine(generator.GenerateCoroutine());
+
+There is one problem with the simple approach - coroutines cannot really handle exceptions. So if there is some problem with the generator or with custom post processing logic, the coroutine just dies and we are not able to do any cleanup. Therefore, I implemented a smarter coroutine that lets us handle any errors. Example usage:
+
+    using System.Collections;
+    using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
+    using ProceduralLevelGenerator.Unity.Pro;
+    using UnityEngine;
+
+    public class CoroutineWithDataExampleAdvanced : MonoBehaviour
+    {
+        public void Start()
+        {
+            var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGenerator>();
+            StartCoroutine(GeneratorCoroutine(generator));
+        }
+
+        private IEnumerator GeneratorCoroutine(DungeonGenerator generator)
+        {
+            // Start the smart coroutine
+            // StartCoroutineWithData is a custom extension method of MonoBehaviour, be sure to use the ProceduralLevelGenerator.Unity.Pro namespace
+            var generatorCoroutine = this.StartCoroutineWithData(generator.GenerateCoroutine());
+
+            // Wait until the smart coroutine is completed
+            // Make sure to yield return the Coroutine property and not the generator coroutine itself!!
+            yield return generatorCoroutine.Coroutine;
+
+            // Check if the coroutine was successful
+            if (generatorCoroutine.IsSuccessful)
+            {
+                Debug.Log("Level generated!");
+            }
+            // If there were any errors, we can access the Exception object
+            // Or we can also rethrow the exception by calling generatorCoroutine.ThrowIfNotSuccessful();
+            else
+            {
+                Debug.LogError("There was an error when generating the level!");
+                Debug.LogError(generatorCoroutine.Exception.Message);
+            }
+        }
+    }

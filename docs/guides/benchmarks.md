@@ -1,3 +1,3 @@
 ---
-title: (Pro) Performance benchmarks
+title: (PRO) Performance benchmarks
 ---

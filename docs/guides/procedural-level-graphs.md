@@ -1,3 +1,3 @@
 ---
-title: (Pro) Procedural level graphs
+title: (PRO) Procedural level graphs
 ---

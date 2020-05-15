@@ -1,3 +1,3 @@
 ---
-title: (Pro) Fog of war
+title: (PRO) Fog of war
 ---

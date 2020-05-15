@@ -51,7 +51,7 @@ We will use Unity [Tilemaps](https://docs.unity3d.com/Manual/class-Tilemap.html)
 - **Other 2** - order 4
 - **Other 3** - order 5
 
-It is **VERY IMPORTANT** that all the room templates have exactly the same structure of tilemaps because the generator will copy all the tiles from individual room templates to shared tilemaps. If you need a different structure of tilemaps, you can override the default behaviour. See [Tilemap layers](../other/tilemap-layers.md).
+It is **VERY IMPORTANT** that all the room templates have exactly the same structure of tilemaps because the generator will copy all the tiles from individual room templates to shared tilemaps. If you need a different structure of tilemaps, you can override the default behaviour. See [Room template customization](../guides/room-template-customization).
 
 <Image src="img/v2/room_templates/room_template_drawing.gif" caption="You can use all the available tools (brushes, rule tiles, etc.) to draw room templates" />
 

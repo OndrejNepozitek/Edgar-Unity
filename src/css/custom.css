@@ -89,3 +89,7 @@ blockquote {
 .config-table table th:first-child {
   width: 300px;
 }
+
+p {
+  text-align: justify;
+}
