@@ -1,5 +1,7 @@
 ﻿using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers
@@ -8,6 +10,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTem
     {
         public static void CreateRoomTemplatePrefab<TRoomTemplateInitializer>() where TRoomTemplateInitializer : RoomTemplateInitializerBase
         {
+#if UNITY_EDITOR
             // Create empty game object
             var roomTemplate = new GameObject();
 
@@ -22,9 +25,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTem
 
             // Remove game object from scene
             Object.DestroyImmediate(roomTemplate);
+#endif
         }
 
-        
+#if UNITY_EDITOR
         private static string GetCurrentPath()
         {
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);
@@ -40,5 +44,6 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTem
 
             return path;
         }
+#endif
     }
 }
