@@ -4,6 +4,7 @@ using System.Linq;
 using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
+using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
@@ -13,14 +14,13 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
     public static class PostProcessUtils
     {
         /// <summary>
-        /// Center the grid so that the level is centered at (0,0).
+        /// Gets the center point of given tilemaps
         /// </summary>
-        /// <param name="level"></param>
+        /// <param name="tilemaps"></param>
         /// <param name="compressBounds">Whether to compress bounds of individual tilemaps before computing the center.</param>
-        public static void CenterGrid(GeneratedLevel level, bool compressBounds = false)
+        /// <returns></returns>
+        public static Vector3 GetTilemapsCenter(List<Tilemap> tilemaps, bool compressBounds = false)
         {
-            var tilemaps = level.GetSharedTilemaps();
-
             var minX = int.MaxValue;
             var maxX = int.MinValue;
             var minY = int.MaxValue;
@@ -43,9 +43,28 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 
             var offset = new Vector3((maxX + minX) / 2f, (maxY + minY) / 2f);
 
+            var grid = tilemaps[0].layoutGrid;
+
+            if (grid != null)
+            {
+                offset = grid.GetCellCenterLocal(offset.RoundToUnityIntVector3());
+            }
+
+            return offset;
+        }
+
+        /// <summary>
+        /// Center the grid so that the level is centered at (0,0).
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="compressBounds">Whether to compress bounds of individual tilemaps before computing the center.</param>
+        public static void CenterGrid(GeneratedLevel level, bool compressBounds = false)
+        {
+            var center = GetTilemapsCenter(level.GetSharedTilemaps(), compressBounds);
+
             foreach (Transform transform in level.RootGameObject.transform)
             {
-                transform.position -= offset;
+                transform.position -= center;
             }
         }
 
