@@ -54,15 +54,15 @@ jobs:
       - name: Package files
         uses: pCYSl5EDgo/create-unitypackage@master
         with:
-          package-path: 'ProceduralLevelGenerator.unitypackage'
+          package-path: 'Edgar.unitypackage'
           include-files: unitypackageFiles
       
       # Upload unitypackage
       - name: Upload unitypackage
         uses: actions/upload-artifact@v2-preview
         with:
-          path: ProceduralLevelGenerator.unitypackage
-          name: ProceduralLevelGenerator.unitypackage
+          path: Edgar.unitypackage
+          name: Edgar.unitypackage
 
       # Prepare release package name
       - name: Prepare release package name
@@ -72,9 +72,9 @@ jobs:
           ref="${ref/refs\/tags\/v/}"
           ref="${ref//./_}"
           ref="${ref//-/_}"
-          package_name="ProceduralLevelGenerator_$ref.unitypackage"
+          package_name="Edgar_$ref.unitypackage"
           echo "::set-output name=PACKAGE_NAME::${package_name}"
-          cp ProceduralLevelGenerator.unitypackage $package_name
+          cp Edgar.unitypackage $package_name
         env:
           GITHUB_REF: ${{ github.ref }}
         id: get_package_name
