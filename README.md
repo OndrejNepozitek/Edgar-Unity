@@ -13,6 +13,16 @@ This is an alpha version of the improved version 2 of the plugin. The current st
 
 I am also working on a **PRO version** of the plugin that will be paid and will contain additional features like **platformers generator**, performance benchmarking tools, more control over the inputs for the generator, simple **fog of war**, more example scenes and other.
 
+**If you want to try the PRO version before it is officially released, you can buy it now on [itch.io](https://ondrejnepozitek.itch.io/edgar-pro) at a discounted price.**
+
+Current state of the PRO version:
+
+| Feature     | Description                                                                                | State                                                                                                                                                                                                                                       |
+|-------------|--------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Coroutines  | Call the generator as a coroutine so that the game does not freeze when generating a level | Done ([docs](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/generators/dungeon-generator#pro-with-coroutines))                                                                                                       |
+| Platformers | Generator that is able to produce platformer levels                                        | Prototype ([docs](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/next/generators/platformer-generator), [example](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/next/examples/platformer-1)) |
+| Isometric   | Simple example of isometric levels                                                         | Prototype ([example](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/next/examples/isometric-1))                                                                                                                      |
+
 ## Installation
 
 There are several ways of installing the plugin:
