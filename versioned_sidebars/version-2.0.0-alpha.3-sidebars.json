@@ -1,0 +1,132 @@
+{
+  "version-2.0.0-alpha.3/docs": [
+    {
+      "type": "category",
+      "label": "Introduction",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/introduction"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/motivation"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/installation"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Basics",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/basics/introduction"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/basics/room-templates"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/basics/level-graphs"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/basics/generator-setup"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/basics/performance-tips"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Generators",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/generators/dungeon-generator"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/generators/platformer-generator"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/generators/custom-input"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/generators/post-process"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Examples",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/examples/example-1"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/examples/example-2"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/examples/platformer-1"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/examples/isometric-1"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/examples/enter-the-gungeon"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/examples/dead-cells"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Guides",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/guides/room-template-customization"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/guides/procedural-level-graphs"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/guides/fog-of-war"
+        },
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/guides/benchmarks"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Other",
+      "items": [
+        {
+          "type": "doc",
+          "id": "version-2.0.0-alpha.3/other/migration-v1-v2"
+        }
+      ]
+    }
+  ]
+}
