@@ -1,20 +1,21 @@
 ﻿using System.IO;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor
+namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers
 {
-    public static class MenuItems
+    public static class RoomTemplateInitializerUtils
     {
-        [MenuItem("Assets/Create/Dungeon generator/Dungeon room template")]
-        public static void CreateDungeonRoomTemplate()
+        public static void CreateRoomTemplatePrefab<TRoomTemplateInitializer>() where TRoomTemplateInitializer : RoomTemplateInitializerBase
         {
+#if UNITY_EDITOR
             // Create empty game object
             var roomTemplate = new GameObject();
 
             // Add room template initializer, initialize room template, destroy initializer
-            var roomTemplateInitializer = roomTemplate.AddComponent<DungeonRoomTemplateInitializer>();
+            var roomTemplateInitializer = roomTemplate.AddComponent<TRoomTemplateInitializer>();
             roomTemplateInitializer.Initialize();
             Object.DestroyImmediate(roomTemplateInitializer);
 
@@ -24,8 +25,10 @@ namespace ProceduralLevelGenerator.Unity.Editor
 
             // Remove game object from scene
             Object.DestroyImmediate(roomTemplate);
+#endif
         }
 
+#if UNITY_EDITOR
         private static string GetCurrentPath()
         {
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);
@@ -36,10 +39,11 @@ namespace ProceduralLevelGenerator.Unity.Editor
             }
             else if (Path.GetExtension(path) != "")
             {
-                path = path.Replace(Path.GetFileName (AssetDatabase.GetAssetPath (Selection.activeObject)), "");
+                path = path.Replace(Path.GetFileName(AssetDatabase.GetAssetPath(Selection.activeObject)), "");
             }
 
             return path;
         }
+#endif
     }
 }

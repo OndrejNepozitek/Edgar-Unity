@@ -7,7 +7,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
     public class DungeonTilemapLayersHandler : ITilemapLayersHandler
     {
         /// <summary>
-        ///     Initializes individual tilemap layers.
+        ///  Initializes individual tilemap layers.
         /// </summary>
         /// <param name="gameObject"></param>
         public void InitializeTilemaps(GameObject gameObject)

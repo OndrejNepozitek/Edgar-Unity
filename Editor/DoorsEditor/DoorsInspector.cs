@@ -130,6 +130,12 @@ namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
 
                 Event.current.Use();
             }
+
+            // Mouse down must be also used, otherwise there were some bugs after removing doors
+            if (e.type == EventType.MouseDown)
+            {
+                Event.current.Use();
+            }
         }
 
         private void HandleAddDoors()
@@ -234,7 +240,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
 			var doors = target as Doors;
 			
 			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
-			selectedModeProp.intValue = GUILayout.SelectionGrid((int) doors.SelectedMode, new[] { "Simple mode", "Specific positions"}, 2);
+			selectedModeProp.intValue = GUILayout.SelectionGrid((int) doors.SelectedMode, new[] { "Simple mode", "Manual mode"}, 2);
 
             EditorGUILayout.Space();
 
