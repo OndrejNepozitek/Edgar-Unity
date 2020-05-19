@@ -22,7 +22,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
             var corridorToConnectionMapping = levelDescription.GetCorridorToConnectionMapping();
             
             // Prepare an object to hold instantiated room templates
-            var roomTemplateInstancesRoot = new GameObject("Room template instances");
+            var roomTemplateInstancesRoot = new GameObject(GeneratorConstants.RoomsRootName);
             roomTemplateInstancesRoot.transform.parent = rootGameObject.transform;
 
             // Initialize rooms
@@ -35,6 +35,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
                 // Instantiate room template
                 var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
+                roomTemplateInstance.name = $"{layoutRoom.Node} - {roomTemplatePrefab.name}";
                 
                 // Compute correct room position
                 var position = layoutRoom.Position.ToUnityIntVector3();
