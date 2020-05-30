@@ -90,6 +90,6 @@ blockquote {
   width: 300px;
 }
 
-p {
+.markdown p {
   text-align: justify;
 }
