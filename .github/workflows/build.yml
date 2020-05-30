@@ -38,11 +38,11 @@ jobs:
           targetPlatform: StandaloneWindows64
 
       # Upload build
-      - name: Upload project
-        uses: actions/upload-artifact@v1
-        with:
-          name: Build
-          path: build
+      # - name: Upload project
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: Build
+      #     path: build
 
       # Prepare unitypackage file list
       - name: Prepare unitypackage file list
