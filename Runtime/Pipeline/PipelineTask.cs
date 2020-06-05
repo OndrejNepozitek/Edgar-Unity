@@ -6,7 +6,7 @@ namespace ProceduralLevelGenerator.Unity.Pipeline
     ///     Base class for pipeline tasks. Used in simpler scenarios.
     /// </summary>
     /// <typeparam name="TPayload">Type of the payload</typeparam>
-    public abstract class PipelineTask<TPayload> : PipelineItem, IPipelineTask<TPayload>
+    public abstract class PipelineTask<TPayload> : IPipelineTask<TPayload>
         where TPayload : class
     {
         /// <summary>

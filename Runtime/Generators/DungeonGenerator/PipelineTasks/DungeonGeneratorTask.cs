@@ -13,17 +13,18 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
-    public class DungeonGeneratorPipelineConfig : PipelineConfig
-    {
-        public DungeonGeneratorConfig Config;
-    }
-
-    public class DungeonGeneratorPipelineTask<TPayload> : ConfigurablePipelineTask<TPayload, DungeonGeneratorPipelineConfig>
+    public class DungeonGeneratorTask<TPayload> : PipelineTask<TPayload>
         where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IBenchmarkInfoPayload
-    { 
+    {
+        private readonly DungeonGeneratorConfig config;
+
+        public DungeonGeneratorTask(DungeonGeneratorConfig config)
+        {
+            this.config = config;
+        }
+
         public override IEnumerator Process()
         {
-            var config = Config.Config;
             var levelDescription = Payload.LevelDescription;
 
             if (config.Timeout <= 0)

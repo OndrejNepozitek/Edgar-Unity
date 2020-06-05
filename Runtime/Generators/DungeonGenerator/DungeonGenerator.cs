@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
 using ProceduralLevelGenerator.Unity.Attributes;
 using ProceduralLevelGenerator.Unity.Generators.Common;
 using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
 using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
 using ProceduralLevelGenerator.Unity.Pipeline;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 {
@@ -19,29 +18,39 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
         public DungeonGeneratorConfig GeneratorConfig;
 
         [Expandable]
-        public OtherConfig OtherConfig;
-
-        [Expandable]
         public PostProcessConfig PostProcessConfig;
 
         [ExpandableScriptableObject(CanFold = false)]
-        public List<PipelineItem> CustomPostProcessTasks;
+        public List<DungeonGeneratorPostProcessBase> CustomPostProcessTasks;
 
         [Expandable]
+        [Obsolete("Please use directly the properties UseRandomSeed, RandomGeneratorSeed and GenerateOnStart")]
+        public OtherConfig OtherConfig;
+
+        [Expandable]
+        [Obsolete("Please use directly the property ThrowExceptionsImmediately")]
         public AdvancedConfig AdvancedConfig;
+
+        public bool UseRandomSeed = true;
+
+        public int RandomGeneratorSeed;
+
+        public bool GenerateOnStart = true;
+
+        public bool ThrowExceptionsImmediately = false;
 
         public void Start()
         {
-            if (OtherConfig.GenerateOnStart)
+            if (GenerateOnStart)
             {
                 Generate();
             }
         }
 
-        protected (List<PipelineItem> pipelineItems, DungeonGeneratorPayload payload) GetPipelineItemsAndPayload()
+        protected override (List<IPipelineTask<DungeonGeneratorPayload>> pipelineItems, DungeonGeneratorPayload payload) GetPipelineItemsAndPayload()
         {
             var payload = InitializePayload();
-            var pipelineItems = new List<PipelineItem>();
+            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>>();
 
             // Add input setup
             pipelineItems.Add(GetInputTask());
@@ -50,9 +59,8 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
             pipelineItems.Add(GetGeneratorTask());
 
             // Add post process
-            var postProcessPipelineConfig = ScriptableObject.CreateInstance<PostProcessPipelineConfig>();
-            postProcessPipelineConfig.Config = PostProcessConfig;
-            pipelineItems.Add(postProcessPipelineConfig);
+            var postProcessTask = new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig);
+            pipelineItems.Add(postProcessTask);
 
             // Add custom post process tasks
             if (CustomPostProcessTasks != null)
@@ -66,34 +74,22 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
             return (pipelineItems, payload);
         }
 
-        public override object Generate()
+        private PipelineTask<DungeonGeneratorPayload> GetInputTask()
         {
-            Debug.Log("--- Generator started ---");
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            var (pipelineItems, payload) = GetPipelineItemsAndPayload();
-
-            PipelineRunner.Run(pipelineItems, payload);
-
-            Debug.Log($"--- Level generated in {stopwatch.ElapsedMilliseconds / 1000f:F}s ---");
-
-            return payload;
+            return new FixedLevelGraphInputTask<DungeonGeneratorPayload>(FixedLevelGraphConfig);
         }
 
-        private PipelineItem GetInputTask()
+        private PipelineTask<DungeonGeneratorPayload> GetGeneratorTask()
         {
-            var fixedInputPipelineConfig = ScriptableObject.CreateInstance<FixedLevelGraphPipelineConfig>();
-            fixedInputPipelineConfig.Config = FixedLevelGraphConfig;
-
-            return fixedInputPipelineConfig;
+            return new DungeonGeneratorTask<DungeonGeneratorPayload>(GeneratorConfig);
         }
 
-        private PipelineItem GetGeneratorTask()
+        protected override DungeonGeneratorPayload InitializePayload()
         {
-            var dungeonGeneratorPipelineConfig = ScriptableObject.CreateInstance<DungeonGeneratorPipelineConfig>();
-            dungeonGeneratorPipelineConfig.Config = GeneratorConfig;
-            return dungeonGeneratorPipelineConfig;
+            return new DungeonGeneratorPayload()
+            {
+                Random = GetRandomNumbersGenerator(UseRandomSeed, RandomGeneratorSeed),
+            };
         }
 
         public void ExportMapDescription()
@@ -101,12 +97,23 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
             ExportMapDescription(GetInputTask());
         }
 
-        protected override DungeonGeneratorPayload InitializePayload()
+        protected override int OnUpgradeSerializedData(int version)
         {
-            return new DungeonGeneratorPayload()
+#pragma warning disable 618
+            if (OtherConfig != null)
             {
-                Random = GetRandomNumbersGenerator(OtherConfig.UseRandomSeed, OtherConfig.RandomGeneratorSeed),
-            };
+                UseRandomSeed = OtherConfig.UseRandomSeed;
+                RandomGeneratorSeed = OtherConfig.RandomGeneratorSeed;
+                GenerateOnStart = OtherConfig.GenerateOnStart;
+            }
+
+            if (AdvancedConfig != null)
+            {
+                ThrowExceptionsImmediately = AdvancedConfig.ThrowExceptionsImmediately;
+            }
+#pragma warning restore 618
+
+            return 2;
         }
     }
 }

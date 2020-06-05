@@ -2,6 +2,7 @@
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs
 {
+    [Obsolete]
     [Serializable]
     public class OtherConfig
     {

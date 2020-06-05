@@ -7,22 +7,21 @@ using ProceduralLevelGenerator.Unity.Pipeline;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
-    // TODO: add asset menu
-    public class PostProcessPipelineConfig : PipelineConfig
-    {
-        public PostProcessConfig Config;
-    }
-
-    public class PostProcessPipelineTask<TPayload> : ConfigurablePipelineTask<TPayload, PostProcessPipelineConfig>
+    public class PostProcessTask<TPayload> : PipelineTask<TPayload>
         where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
-    { 
+    {
+        private readonly PostProcessConfig config;
+
+        public PostProcessTask(PostProcessConfig config)
+        {
+            this.config = config;
+        }
+
         public override IEnumerator Process()
         {
-            var config = Config.Config;
-
             if (config.InitializeSharedTilemaps)
             {
-                var tilemapLayersHandler = (ITilemapLayersHandler) config.TilemapLayersHandler ?? new DungeonTilemapLayersHandler();
+                var tilemapLayersHandler = config.TilemapLayersHandler ? config.TilemapLayersHandler : GetDefaultTilemapLayersHandler();
                 PostProcessUtils.InitializeSharedTilemaps(Payload.GeneratedLevel, tilemapLayersHandler);
             }
 
@@ -47,6 +46,11 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
             }
 
             yield return null;
+        }
+
+        protected virtual ITilemapLayersHandler GetDefaultTilemapLayersHandler()
+        {
+            return new DungeonTilemapLayersHandler();
         }
     }
 }

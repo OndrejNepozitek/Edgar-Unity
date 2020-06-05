@@ -1,12 +1,13 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common;
+using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
 using ProceduralLevelGenerator.Unity.Utils;
 using UnityEditor;
 using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
 {
-    [CustomEditor(typeof(DungeonGenerator))]
-    public class DungeonGeneratorInspector : UnityEditor.Editor
+    [CustomEditor(typeof(DungeonGenerator))] 
+    public class DungeonGeneratorInspector : UnityEditor.Editor 
     {
         private ReorderableList customPostProcessTasksList;
 
@@ -23,28 +24,24 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
         {
             serializedObject.Update();
 
-            var dungeonGenerator = (DungeonGenerator) target;
+            var levelGenerator = (ILevelGenerator) target;
 
             EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth / 2f;
 
             EditorGUILayout.LabelField("Input config", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.FixedLevelGraphConfig)));
-
-            EditorGUILayout.Space();
-
+            
             EditorGUILayout.LabelField("Generator config", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.GeneratorConfig)));
-
-            EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("Post processing config", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.PostProcessConfig)));
             customPostProcessTasksList.DoLayoutList(); 
 
-            EditorGUILayout.Space();
-
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.OtherConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.UseRandomSeed)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.RandomGeneratorSeed)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.GenerateOnStart)));
 
             EditorGUILayout.Space();
 
@@ -53,15 +50,21 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
             {
                 if (GUILayout.Button("Export map description"))
                 {
-                    dungeonGenerator.ExportMapDescription();
+                    if (levelGenerator is DungeonGenerator dungeonGenerator)
+                    {
+                        dungeonGenerator.ExportMapDescription();
+                    }
                 }
             }
 
             EditorGUILayout.Space();
 
-            if (GUILayout.Button("Generate dungeon"))
+            if (levelGenerator is DungeonGenerator)
             {
-                dungeonGenerator.Generate();
+                if (GUILayout.Button("Generate dungeon"))
+                {
+                    levelGenerator.Generate();
+                }
             }
 
             EditorGUIUtility.labelWidth = 0;

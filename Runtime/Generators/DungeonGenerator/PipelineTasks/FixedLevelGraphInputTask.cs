@@ -11,22 +11,18 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
-    // TODO: add asset menu
-    public class FixedLevelGraphPipelineConfig : PipelineConfig
-    {
-        public FixedLevelGraphConfig Config;
-    }
-
-    public class FixedInputPipelineTask<TPayload> : ConfigurablePipelineTask<TPayload, FixedLevelGraphPipelineConfig>
+    public class FixedLevelGraphInputTask<TPayload> : PipelineTask<TPayload>
         where TPayload : class, IGraphBasedGeneratorPayload
     {
-        private FixedLevelGraphConfig config;
+        private readonly FixedLevelGraphConfig config;
+
+        public FixedLevelGraphInputTask(FixedLevelGraphConfig config)
+        {
+            this.config = config;
+        }
 
         public override IEnumerator Process()
         {
-            // TODO: kind of weird
-            config = Config.Config;
-
             if (config.LevelGraph == null)
             {
                 throw new ArgumentException("LevelGraph must not be null.");
