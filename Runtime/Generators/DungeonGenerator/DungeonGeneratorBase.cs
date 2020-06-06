@@ -64,7 +64,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
             pipelineItems.Add(GetGeneratorTask());
 
             // Add post process
-            pipelineItems.AddRange(GetPostProcessingTasks());
+            pipelineItems.Add(GetPostProcessingTask());
 
             return (pipelineItems, payload);
         }
@@ -79,23 +79,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
             return new DungeonGeneratorTask<DungeonGeneratorPayload>(GeneratorConfig);
         }
 
-        protected virtual List<IPipelineTask<DungeonGeneratorPayload>> GetPostProcessingTasks()
+        protected virtual IPipelineTask<DungeonGeneratorPayload> GetPostProcessingTask()
         {
-            var tasks = new List<IPipelineTask<DungeonGeneratorPayload>>();
-
-            var postProcessTask = new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig);
-            tasks.Add(postProcessTask);
-
-            // Add custom post process tasks
-            if (CustomPostProcessTasks != null)
-            {
-                foreach (var customPostProcessTask in CustomPostProcessTasks)
-                {
-                    tasks.Add(customPostProcessTask);
-                }
-            }
-
-            return tasks;
+            return new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig, () => new DungeonTilemapLayersHandler(), CustomPostProcessTasks);
         }
 
         protected virtual DungeonGeneratorPayload InitializePayload()
