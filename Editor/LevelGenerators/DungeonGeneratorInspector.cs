@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
 {
-    [CustomEditor(typeof(DungeonGenerator))] 
+    [CustomEditor(typeof(DungeonGeneratorBase), true)] 
     public class DungeonGeneratorInspector : UnityEditor.Editor 
     {
         private ReorderableList customPostProcessTasksList;
@@ -16,7 +16,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
         public void OnEnable()
         {
             customPostProcessTasksList = new ReorderableList(new UnityEditorInternal.ReorderableList(serializedObject,
-                serializedObject.FindProperty(nameof(DungeonGenerator.CustomPostProcessTasks)),
+                serializedObject.FindProperty(nameof(DungeonGeneratorBase.CustomPostProcessTasks)),
                 true, true, true, true), "Custom post process tasks");
         }
 
@@ -24,7 +24,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
         {
             serializedObject.Update();
 
-            var levelGenerator = (ILevelGenerator) target;
+            var levelGenerator = (DungeonGeneratorBase) target;
 
             EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth / 2f;
 
@@ -50,10 +50,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
             {
                 if (GUILayout.Button("Export map description"))
                 {
-                    if (levelGenerator is DungeonGenerator dungeonGenerator)
-                    {
-                        dungeonGenerator.ExportMapDescription();
-                    }
+                    levelGenerator.ExportMapDescription();
                 }
             }
 
@@ -61,7 +58,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
 
             if (levelGenerator is DungeonGenerator)
             {
-                if (GUILayout.Button("Generate dungeon"))
+                if (GUILayout.Button("Generate level"))
                 {
                     levelGenerator.Generate();
                 }

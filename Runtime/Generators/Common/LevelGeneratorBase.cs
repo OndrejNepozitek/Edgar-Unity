@@ -50,54 +50,5 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         }
 
         protected abstract (List<IPipelineTask<TPayload>> pipelineItems, TPayload payload) GetPipelineItemsAndPayload();
-
-        protected abstract TPayload InitializePayload();
-
-        protected void ExportMapDescription(PipelineTask<TPayload> inputSetup)
-        {
-            var payload = InitializePayload();
-
-            if (payload is IGraphBasedGeneratorPayload graphBasedGeneratorPayload)
-            {
-                var pipelineItems = new List<PipelineTask<TPayload>> {inputSetup};
-
-                PipelineRunner.Run(pipelineItems, payload);
-
-                var levelDescription = graphBasedGeneratorPayload.LevelDescription;
-                var mapDescription = levelDescription.GetMapDescription();
-                var intMapDescription = GetIntMapDescription(mapDescription);
-                var json = JsonConvert.SerializeObject(intMapDescription, Formatting.Indented, new JsonSerializerSettings()
-                {
-                    PreserveReferencesHandling = PreserveReferencesHandling.All,
-                    TypeNameHandling = TypeNameHandling.Auto,
-                });
-
-                var filename = "exportedMapDescription.json";
-                File.WriteAllText(filename, json);
-                Debug.Log($"Map description exported to {filename}");
-            }
-            else
-            {
-                throw new InvalidOperationException($"The payload must implement {nameof(IGraphBasedGeneratorPayload)} to export map descriptions");
-            }
-        }
-
-        private MapDescription<int> GetIntMapDescription(MapDescription<Room> mapDescription)
-        {
-            var newMapDescription = new MapDescription<int>();
-            var mapping = mapDescription.GetGraph().Vertices.CreateIntMapping();
-
-            foreach (var vertex in mapDescription.GetGraph().Vertices)
-            {
-                newMapDescription.AddRoom(mapping[vertex], mapDescription.GetRoomDescription(vertex));
-            }
-
-            foreach (var edge in mapDescription.GetGraph().Edges)
-            {
-                newMapDescription.AddConnection(mapping[edge.From], mapping[edge.To]);
-            }
-
-            return newMapDescription;
-        }
     }
 }

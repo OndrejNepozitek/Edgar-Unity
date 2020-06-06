@@ -55497,16 +55497,17 @@ MonoBehaviour:
     CenterGrid: 1
     DisableRoomTemplatesRenderers: 1
     DisableRoomTemplatesColliders: 1
-  CustomPostProcessTasks: []
+  CustomPostProcessTasks:
+  - {fileID: 11400000, guid: 7f55404d70a5023419dac6625fd37d39, type: 2}
   OtherConfig:
     UseRandomSeed: 1
     RandomGeneratorSeed: 0
     GenerateOnStart: 0
+  AdvancedConfig:
+    ThrowExceptionsImmediately: 0
   UseRandomSeed: 1
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
-  AdvancedConfig:
-    ThrowExceptionsImmediately: 0
   ThrowExceptionsImmediately: 0
 --- !u!4 &1629689261
 Transform:
