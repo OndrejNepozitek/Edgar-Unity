@@ -35,6 +35,11 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 
                 var cellBounds = tilemap.cellBounds;
 
+                if (cellBounds.size.x + cellBounds.size.y == 0)
+                {
+                    continue;
+                }
+
                 minX = Math.Min(minX, cellBounds.xMin);
                 maxX = Math.Max(maxX, cellBounds.xMax);
                 minY = Math.Min(minY, cellBounds.yMin);
@@ -47,7 +52,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 
             if (grid != null)
             {
-                offset = grid.GetCellCenterLocal(offset.RoundToUnityIntVector3());
+                offset = grid.GetCellCenterLocal((offset * 100).RoundToUnityIntVector3()) / 100;
             }
 
             return offset;
