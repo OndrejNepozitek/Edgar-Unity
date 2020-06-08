@@ -24,7 +24,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
         /// </summary>
         /// <param name="allPoints"></param>
         /// <returns></returns>
-        public static GridPolygon GetPolygonFromTiles(HashSet<IntVector2> allPoints)
+        public static GridPolygon GetPolygonFromTiles(HashSet<Vector3Int> allPoints)
         {
             if (allPoints.Count == 0)
             {
@@ -39,8 +39,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
                 {IntVector2Helper.Left, new List<IntVector2> {IntVector2Helper.Bottom, IntVector2Helper.Left, IntVector2Helper.Top}}
             };
 
-            var smallestX = allPoints.Min(x => x.X);
-            var smallestXPoints = allPoints.Where(x => x.X == smallestX).ToList();
+            var allPointsInternal = allPoints.Select(x => x.ToCustomIntVector2()).ToHashSet();
+            var smallestX = allPointsInternal.Min(x => x.X);
+            var smallestXPoints = allPointsInternal.Where(x => x.X == smallestX).ToList();
             var smallestXYPoint = smallestXPoints[smallestXPoints.MinBy(x => x.Y)];
 
             var startingPoint = smallestXYPoint;
@@ -52,7 +53,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
             var previousDirection = startingDirection;
             var first = true;
 
-            if (!allPoints.Contains(currentPoint))
+            if (!allPointsInternal.Contains(currentPoint))
             {
                 throw new ArgumentException("Invalid room shape.");
             }
@@ -66,7 +67,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
                 {
                     var newPoint = currentPoint + directionVector;
 
-                    if (allPoints.Contains(newPoint))
+                    if (allPointsInternal.Contains(newPoint))
                     {
                         currentDirection = directionVector;
                         foundNeighbor = true;
@@ -140,9 +141,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
         /// </summary>
         /// <param name="tilemaps"></param>
         /// <returns></returns>
-        public static HashSet<IntVector2> GetUsedTiles(IEnumerable<Tilemap> tilemaps)
+        public static HashSet<Vector3Int> GetUsedTiles(IEnumerable<Tilemap> tilemaps)
         {
-            var usedTiles = new HashSet<IntVector2>();
+            var usedTiles = new HashSet<Vector3Int>();
 
             foreach (var tilemap in tilemaps)
             {
@@ -155,7 +156,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
                         continue;
                     }
 
-                    usedTiles.Add(position.ToCustomIntVector2());
+                    usedTiles.Add(position);
                 }
             }
 
