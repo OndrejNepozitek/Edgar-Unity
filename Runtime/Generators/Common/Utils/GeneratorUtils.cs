@@ -35,7 +35,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
                 // Instantiate room template
                 var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
-                roomTemplateInstance.name = $"{layoutRoom.Node} - {roomTemplatePrefab.name}";
+                roomTemplateInstance.name = $"{layoutRoom.Node.GetDisplayName()} - {roomTemplatePrefab.name}";
                 
                 // Compute correct room position
                 var position = layoutRoom.Position.ToUnityIntVector3();

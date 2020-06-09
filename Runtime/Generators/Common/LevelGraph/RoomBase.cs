@@ -27,5 +27,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
         /// Gets the display name of the room that is display in the graph editor.
         /// </summary>
         public abstract string GetDisplayName();
+
+        public override string ToString()
+        {
+            return GetDisplayName();
+        }
     }
 }
