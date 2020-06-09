@@ -66,14 +66,21 @@ Our underground level is inspired by the Prisoners Quarters level in Dead Cells.
 
 In the level graph above, we used custom room and conenction types. The implementation of the custom room type can be seen below. Each room has its type (entrance, treasure, etc) and also a flag that indicates where it is outside (which is used for rooftop levels). Additionaly, we override the `ToString()` implementation so that the type of the room is displayed in the level graph.
 
-    public class DeadCellsRoom : Room
+    public class DeadCellsRoom : RoomBase
     {
         public DeadCellsRoomType Type;
 
         public bool Outside;
 
-        public override string ToString()
+        public override List<GameObject> GetRoomTemplates()
         {
+            // We do not need any room templates here because they are resolved based on the type of the room.
+            return null;
+        }
+
+        public override string GetDisplayName()
+        {
+            // Use the type of the room as its display name.
             return Type.ToString();
         }
     }

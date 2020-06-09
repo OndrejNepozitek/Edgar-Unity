@@ -4,9 +4,9 @@ const [latestVersion] = require('./versions.json');
 const remarkBookmarks = require('remark-bookmarks')
 
 module.exports = {
-  title: "Procedural level generator - Unity",
+  title: "Edgar - Procedural Level Generator",
   tagline:
-    "A configurable Unity plugin for procedural generation of 2D dungeons",
+    "Configurable Unity asset for procedural generation of 2D levels",
   url: "https://ondrejnepozitek.github.io",
   baseUrl: "/ProceduralLevelGenerator-Unity/",
   favicon: "img/favicon.ico",
@@ -15,7 +15,7 @@ module.exports = {
   themeConfig: {
     sidebarCollapsible: false,
     navbar: {
-      title: "Procedural level generator - Unity",
+      title: "Edgar - Procedural Level Generator",
       links: [
         { to: "versions", label: `v${latestVersion}`, position: "left" },
         {

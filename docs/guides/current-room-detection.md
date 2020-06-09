@@ -136,7 +136,8 @@ We could handle all the logic inside the handler that we created in the previous
         /// <param name="player"></param>
         public void OnRoomEnter(GameObject player)
         {
-            Debug.Log($"Room enter. Room name: {RoomInstance.Room.Name}, Room template: {RoomInstance.RoomTemplatePrefab.name}");
+            Debug.Log($"Room enter. Room name: {RoomInstance.Room.GetDisplayName()}, Room template: {RoomInstance.RoomTemplatePrefab.name}");
+            CurrentRoomDetectionGameManager.Instance.OnRoomEnter(RoomInstance);
         }
 
         /// <summary>
@@ -145,7 +146,8 @@ We could handle all the logic inside the handler that we created in the previous
         /// <param name="player"></param>
         public void OnRoomLeave(GameObject player)
         {
-            Debug.Log($"Room leave {RoomInstance.Room.Name}");
+            Debug.Log($"Room leave {RoomInstance.Room.GetDisplayName()}");
+            CurrentRoomDetectionGameManager.Instance.OnRoomLeave(RoomInstance);
         }
     }
 

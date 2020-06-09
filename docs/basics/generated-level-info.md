@@ -21,4 +21,5 @@ The generator also produces information about individual rooms in the level - th
 
 There are at least two ways of getting an instance of this class:
 
-- **From the game object of the room.**
+- **From the game object of the room.** All the room template instances that were described in the previous section have a [RoomInfo] component attached. This component has a reference to the corresponding *RoomInstance*.
+- **From a post-processing task**. Each [custom post-processing task](../generators/post-process#custom-post-processing) receives an instance of the [GeneratedLevel][GeneratedLevel#methods] class which has a method `GetRoomInstances()` that can be used to retrieve all the room instances from the level.

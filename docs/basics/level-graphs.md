@@ -98,3 +98,29 @@ If we double click on a room in the Graph editor, it gets selected and we can co
 <Image src="img/v2/level_graphs/room_inspector1.png" caption="Configuration of a spawn room" />
 
 ## (PRO) Custom rooms and connections
+
+It may be often useful to add additional information to individual rooms (or connections). For example, we may want to add a type to each of the rooms and then do something based on the type. To achieve that, we can provide our own implementation of the [RoomBase][] and [ConnectionBase][] classes. There are at least two possible approaches.
+
+### Inherit from [Room][]
+
+The first approach is that we create a class that inherits from the [Room][] class which is the default implementation that is used in level graphs. This approach is good if we want to just add something and do not want to change how the room works. We can also override the `GetDisplayName()` method to change how is the room displayed in the level graph editor.
+
+This is the recommended approach for the majority of users.
+
+### Inherit from [RoomBase][]
+
+The second approach is that we inherit directly from the [RoomBase][] class. If we do that, we have to implement all the abstract methods (currently `GetDisplayName()` and `GetRoomTemplates()`). An advantage of this approach is that in some situations, we may not need any logic related to room templates so we just return null from the method and we will not see anything related to room templates in the inspector of the room. This may be useful in a situation where we resolve room templates manually based on the type of the room.
+
+> **Note:** The same logic applies to inheriting from [Connection][] or [ConnectionBase][].
+
+### Configure level graph
+
+When we have our custom room or connection type ready, we have to configure the level graph to use them. If we open the level graph in the inspector, we should be able to choose the custom types from the dropdown.
+
+<Image src="img/v2/level_graphs/custom_rooms.png" caption="Custom room and connection types (PRO version)" />
+
+> **Note:** It is not possible to easily convert a level graph from using one room/connection type to another. Therefore, it is important to decide if you want to use a custom room/connection before you create your level graphs. Otherwise, you will have to recreate them later with the correct types.
+
+### Accessing room information
+
+If we add some additional information to the rooms or connection, we probably expect to somehow use this information later. The first step is to get access to the [RoomInstance][RoomInstance#properties] class which is described [here](../basics/generated-level-info.md). When we have an instance of this class, we can use the `RoomInstance.Room` property. This property is of the `RoomBase` type so we have to cast it to our custom room type.
