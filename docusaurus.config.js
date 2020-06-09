@@ -1,3 +1,4 @@
+const versions = require('./versions.json');
 const [latestVersion] = require('./versions.json');
 
 module.exports = {
@@ -14,7 +15,28 @@ module.exports = {
       title: "Procedural level generator - Unity",
       links: [
         { to: "versions", label: `v${latestVersion}`, position: "left" },
-        { to: "docs/introduction", label: "Docs", position: "right" },
+        {
+          label: 'Docs',
+          to: 'docs', // "fake" link
+          position: 'right',
+          activeBaseRegex: `docs/(?!next/(support|team|resources))`,
+          items: [
+            {
+              label: versions[0],
+              to: 'docs/introduction',
+              activeBaseRegex: `docs/(?!${versions.join('|')}|next)`,
+            },
+            ...versions.slice(1).map((version) => ({
+              label: version,
+              to: `docs/${version}/introduction`,
+            })),
+            {
+              label: 'Master/Unreleased',
+              to: 'docs/next/introduction',
+              activeBaseRegex: `docs/next/(?!support|team|resources)`,
+            },
+          ],
+        },
         {
           href: "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/",
           label: "GitHub", 
@@ -66,7 +88,7 @@ module.exports = {
   },
   presets: [
     [
-      "@docusaurus/preset-classic",
+      require.resolve("@docusaurus/preset-classic"),
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
