@@ -96,3 +96,5 @@ Array of room templates sets that will be used for corridor rooms. Room template
 If we double click on a room in the Graph editor, it gets selected and we can configure it in the inspector. We can set the name of the room which will be displayed in the Graph editor. We can also assign room templates and room templates sets that will be used only for this room. By assigning any room template or room template set, we override the default room templates that are set in the level graph itself.
 
 <Image src="img/v2/level_graphs/room_inspector1.png" caption="Configuration of a spawn room" />
+
+## (PRO) Custom rooms and connections

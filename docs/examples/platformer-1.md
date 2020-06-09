@@ -46,7 +46,7 @@ Moreover, there is a small problem with doors because there are no background ti
 The solution is quite simple. We have to create a simple post process task that goes through all door positions and deletes all the door tiles.
 
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Platformer 1/Post process", fileName = "Platformer1PostProcess")]
-    public class Platformer1PostProcess : PlatformerGeneratorPostProcessBase
+    public class Platformer1PostProcess : DungeonGeneratorPostProcessBase
     {
         public override void Run(GeneratedLevel level, LevelDescription levelDescription)
         {

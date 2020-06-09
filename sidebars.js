@@ -28,7 +28,7 @@ module.exports = {
     {
       type: "category",
       label: "Basics",
-      items: ["basics/introduction", "basics/room-templates", "basics/level-graphs", "basics/generator-setup", "basics/performance-tips"]
+      items: ["basics/introduction", "basics/room-templates", "basics/level-graphs", "basics/generator-setup", "basics/generated-level-info", "basics/performance-tips"]
     },
     {
       type: "category",
