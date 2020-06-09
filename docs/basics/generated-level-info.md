@@ -13,11 +13,11 @@ In the image below, we can see the structure of a level. The game object that ho
 
 <Image src="img/v2/basics/level_structure.png" caption="Structure of the level" />
 
-> **Note:** If you want to retrieve any of the game object from a script, the best-practice is to use the [GeneratorConstants](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-UnityApiDocs/master/api/ProceduralLevelGenerator.Unity.Generators.Common.Utils.GeneratorConstants.html#fields) static fields instead of using hardcoded names.
+> **Note:** If you want to retrieve any of the game object from a script, the best-practice is to use the [GeneratorConstants][GeneratorConstants#fields] static fields instead of using hardcoded names.
 
 ## Rooms information
 
-The generator also produces information about individual rooms in the level - their positions, which room template is used, what are neighbours of the room, etc. All this information is exposed through the [RoomInstance](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-UnityApiDocs/master/api/ProceduralLevelGenerator.Unity.Generators.Common.Rooms.RoomInstance.html#properties) class.
+The generator also produces information about individual rooms in the level - their positions, which room template is used, what are neighbours of the room, etc. All this information is exposed through the [RoomInstance][RoomInstance#properties] class.
 
 There are at least two ways of getting an instance of this class:
 

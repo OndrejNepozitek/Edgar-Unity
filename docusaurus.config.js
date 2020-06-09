@@ -1,5 +1,7 @@
 const versions = require('./versions.json');
+const getBookmarks = require("./src/bookmarks")
 const [latestVersion] = require('./versions.json');
+const remarkBookmarks = require('remark-bookmarks')
 
 module.exports = {
   title: "Procedural level generator - Unity",
@@ -11,6 +13,7 @@ module.exports = {
   organizationName: "OndrejNepozitek", // Usually your GitHub org/user name.
   projectName: "ProceduralLevelGenerator-Unity", // Usually your repo name.
   themeConfig: {
+    sidebarCollapsible: false,
     navbar: {
       title: "Procedural level generator - Unity",
       links: [
@@ -88,11 +91,18 @@ module.exports = {
   },
   presets: [
     [
-      require.resolve("@docusaurus/preset-classic"),
+      "@docusaurus/preset-classic",
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/tree/docusaurus"
+          editUrl: "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/tree/docusaurus",
+          remarkPlugins: [
+            [
+              remarkBookmarks, { 
+                bookmarks: getBookmarks(),
+              }
+            ]
+          ],
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css")

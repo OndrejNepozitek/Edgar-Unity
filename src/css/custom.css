@@ -21,6 +21,8 @@
   --ifm-menu-link-padding-vertical: 2px;
   --ifm-menu-color-background-active: none;
   --ifm-menu-color-background-hover: none;
+  --ifm-font-color-base: rgb(28, 30, 33);
+  --ifm-font-weight-bold: 600;
 }
 
 @media screen and (min-width: 997px) {
@@ -45,6 +47,11 @@ html[data-theme='dark'] {
   box-shadow: none;
 }
 
+.navbar__title {
+  font-weight: 600;
+  color: white !important;
+}
+
 .hero.hero--primary {
   background-color: var(--ifm-background-primary);
   color: var(--ifm-color-primary);
@@ -56,7 +63,7 @@ blockquote {
   padding: 15px 30px 15px 15px;
 }
 
-.menu>ul.menu__list>li.menu__list-item div.title {
+.menu>ul.menu__list>li.menu__list-item>a {
   text-transform: uppercase;
   font-size: 12px;
   margin-bottom: 8px;
