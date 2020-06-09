@@ -13,16 +13,16 @@ using RoomTemplate = MapGeneration.Core.MapDescriptions.RoomTemplate;
 namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
     // TODO: where to place this file?
-    public class LevelDescription<TRoom, TConnection>
-        where TConnection : IConnection<TRoom>
+    public class LevelDescription
     {
-        private readonly List<TConnection> connections = new List<TConnection>();
+        private readonly List<ConnectionBase> connections = new List<ConnectionBase>();
         private readonly List<CorridorRoomDescription> corridorRoomDescriptions = new List<CorridorRoomDescription>();
-        private readonly TwoWayDictionary<TRoom, TConnection> corridorToConnectionMapping = new TwoWayDictionary<TRoom, TConnection>();
-        private readonly MapDescription<TRoom> mapDescription = new MapDescription<TRoom>();
-        private readonly TwoWayDictionary<GameObject, RoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplate>();
 
-        public void AddRoom(TRoom room, [NotNull] List<GameObject> roomTemplates)
+        private readonly TwoWayDictionary<RoomBase, ConnectionBase> corridorToConnectionMapping = new TwoWayDictionary<RoomBase, ConnectionBase>();
+        private readonly MapDescription<RoomBase> mapDescription = new MapDescription<RoomBase>();
+        private readonly TwoWayDictionary<GameObject, RoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplate>();
+        
+        public void AddRoom(RoomBase room, [NotNull] List<GameObject> roomTemplates)
         {
             if (room == null) throw new ArgumentNullException(nameof(room));
             if (roomTemplates == null) throw new ArgumentNullException(nameof(roomTemplates));
@@ -31,7 +31,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             mapDescription.AddRoom(room, GetBasicRoomDescription(roomTemplates));
         }
 
-        public void AddRoom(TRoom room, GameObject roomTemplate)
+        public void AddRoom(RoomBase room, GameObject roomTemplate)
         {
             if (room == null) throw new ArgumentNullException(nameof(room));
             if (roomTemplate == null) throw new ArgumentNullException(nameof(roomTemplate));
@@ -39,7 +39,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             AddRoom(room, new List<GameObject> {roomTemplate});
         }
 
-        public void AddConnection(TConnection connection)
+        public void AddConnection(ConnectionBase connection)
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
 
@@ -47,7 +47,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             mapDescription.AddConnection(connection.From, connection.To);
         }
 
-        public void AddCorridorConnection(TConnection connection, List<GameObject> corridorRoomTemplates, TRoom corridorRoom)
+        public void AddCorridorConnection(ConnectionBase connection, List<GameObject> corridorRoomTemplates, RoomBase corridorRoom)
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
             if (corridorRoom == null) throw new ArgumentNullException(nameof(corridorRoom));
@@ -102,19 +102,37 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         }
 
         // TODO: how to name this?
-        public MapDescription<TRoom> GetMapDescription()
+        public MapDescription<RoomBase> GetMapDescription()
         {
             return mapDescription;
         }
 
-        public IGraph<TRoom> GetGraph()
-        {
-            return mapDescription.GetGraph();
-        }
-
-        public IGraph<TRoom> GetGraphWithoutCorridors()
+        /// <summary>
+        /// Gets the graph of rooms.
+        /// </summary>
+        /// <remarks>
+        /// The graph is not updated when new rooms are added to the level description.
+        /// Adding rooms to the graph does not update the level description.
+        /// This behaviour may change in the future.
+        /// </remarks>
+        /// <returns></returns>
+        public IGraph<RoomBase> GetGraph()
         {
             return mapDescription.GetStageOneGraph();
+        }
+
+        /// <summary>
+        /// Gets the graph of rooms where also corridors are considered to be rooms.
+        /// </summary>
+        /// <remarks>
+        /// The graph is not updated when new rooms are added to the level description.
+        /// Adding rooms to the graph does not update the level description.
+        /// This behaviour may change in the future.
+        /// </remarks>
+        /// <returns></returns>
+        public IGraph<RoomBase> GetGraphWithCorridors()
+        {
+            return mapDescription.GetGraph();
         }
 
         public TwoWayDictionary<GameObject, RoomTemplate> GetPrefabToRoomTemplateMapping()
@@ -122,13 +140,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             return prefabToRoomTemplateMapping;
         }
 
-        public TwoWayDictionary<TRoom, TConnection> GetCorridorToConnectionMapping()
+        public TwoWayDictionary<RoomBase, ConnectionBase> GetCorridorToConnectionMapping()
         {
             return corridorToConnectionMapping;
         }
-    }
-
-    public class LevelDescription : LevelDescription<RoomBase, ConnectionBase>
-    {
     }
 }
