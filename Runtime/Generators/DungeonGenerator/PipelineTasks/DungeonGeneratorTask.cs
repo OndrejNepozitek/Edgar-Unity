@@ -50,17 +50,17 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
             }
 
             var mapDescription = levelDescription.GetMapDescription();
-            var configuration = new DungeonGeneratorConfiguration<Room>()
+            var configuration = new DungeonGeneratorConfiguration<RoomBase>()
             {
                 RoomsCanTouch = false,
                 RepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride),
                 EarlyStopIfTimeExceeded = TimeSpan.FromMilliseconds(config.Timeout),
             };
 
-            var generator = new DungeonGenerator<Room>(mapDescription, configuration);
+            var generator = new DungeonGenerator<RoomBase>(mapDescription, configuration);
             generator.InjectRandomGenerator(Payload.Random);
 
-            MapLayout<Room> layout = null;
+            MapLayout<RoomBase> layout = null;
             var task = Task.Run(() => layout = generator.GenerateLayout());
 
             while (!task.IsCompleted)
@@ -73,7 +73,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
                 throw new InvalidOperationException("Timeout was reached when generating level");
             }
 
-            var generatedLevel = GeneratorUtils.TransformLayout(layout, levelDescription, rootGameObject);
+            var generatedLevel = GeneratorUtils.TransformLayout(layout, levelDescription, rootGameObject); 
             var stats = new GeneratorStats()
             {
                 Iterations = generator.IterationsCount,

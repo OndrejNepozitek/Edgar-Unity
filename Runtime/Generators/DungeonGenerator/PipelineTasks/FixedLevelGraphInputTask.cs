@@ -74,15 +74,11 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
         ///     Setups room shapes for a given room.
         /// </summary>
         /// <param name="room"></param>
-        protected List<GameObject> GetRoomTemplates(Room room)
+        protected List<GameObject> GetRoomTemplates(RoomBase room)
         {
-            // Get assigned room templates
-            var roomTemplatesSets = room.RoomTemplateSets;
-            var individualRoomTemplates = room.IndividualRoomTemplates;
+            var roomTemplates = room.GetRoomTemplates();
 
-            var roomTemplates = GetRoomTemplates(roomTemplatesSets, individualRoomTemplates).Distinct().ToList();
-
-            if (roomTemplates.Count == 0)
+            if (roomTemplates == null || roomTemplates.Count == 0)
             {
                 return GetRoomTemplates(config.LevelGraph.DefaultRoomTemplateSets, config.LevelGraph.DefaultIndividualRoomTemplates);
             }

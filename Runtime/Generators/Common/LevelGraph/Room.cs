@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
@@ -6,7 +7,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
     /// <summary>
     ///     Represents a room in a level graph.
     /// </summary>
-    public class Room : ScriptableObject
+    public class Room : RoomBase
     {
         /// <summary>
         ///     Name of the room.
@@ -23,16 +24,15 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
         /// </summary>
         public List<RoomTemplatesSet> RoomTemplateSets = new List<RoomTemplatesSet>();
 
-        /// <summary>
-        ///     Position of the room in the graph editor.
-        /// </summary>
-        /// <remarks>
-        ///     This value is not used by the dungeon generator.
-        /// </remarks>
-        [HideInInspector]
-        public Vector2 Position;
+        public override List<GameObject> GetRoomTemplates()
+        {
+            return IndividualRoomTemplates
+                .Union(RoomTemplateSets.SelectMany(x => x.RoomTemplates))
+                .Distinct()
+                .ToList();
+        }
 
-        public override string ToString()
+        public override string GetDisplayName()
         {
             return Name;
         }

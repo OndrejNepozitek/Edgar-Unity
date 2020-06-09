@@ -115,7 +115,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
             Debug.Log($"Map description exported to {filename}");
         }
 
-        private MapDescription<int> GetIntMapDescription(MapDescription<Room> mapDescription)
+        private MapDescription<int> GetIntMapDescription(MapDescription<RoomBase> mapDescription)
         {
             var newMapDescription = new MapDescription<int>();
             var mapping = mapDescription.GetGraph().Vertices.CreateIntMapping();

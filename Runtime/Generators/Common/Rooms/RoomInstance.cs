@@ -21,8 +21,8 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Rooms
         ///     serialized and later deserialized, because Unity cannot serialize such ScriptableObjects
         ///     outside of Unity without creating corresponding asset files.
         /// </remarks>
-        public Room Room => room;
-        [SerializeField] private Room room;
+        public RoomBase Room => room;
+        [SerializeField] private RoomBase room;
 
         /// <summary>
         ///     Whether the room instance corresponds to a Room or to a Corridor.
@@ -34,8 +34,8 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Rooms
         ///     If this is a corridor room, this property contains the corresponding connection.
         ///     Otherwise it is null.
         /// </summary>
-        public Connection Connection => connection;
-        [SerializeField] private Connection connection;
+        public ConnectionBase Connection => connection;
+        [SerializeField] private ConnectionBase connection;
 
         /// <summary>
         ///     Room template that was selected for a given room.
@@ -84,7 +84,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Rooms
         public Polygon2D OutlinePolygon => outlinePolygon;
         [SerializeField] private Polygon2D outlinePolygon;
 
-        public RoomInstance(Room room, bool isCorridor, Connection connection, GameObject roomTemplatePrefab, GameObject roomTemplateInstance, Vector3Int position, Polygon2D outlinePolygon)
+        public RoomInstance(RoomBase room, bool isCorridor, ConnectionBase connection, GameObject roomTemplatePrefab, GameObject roomTemplateInstance, Vector3Int position, Polygon2D outlinePolygon)
         {
             this.room = room;
             this.connection = connection;

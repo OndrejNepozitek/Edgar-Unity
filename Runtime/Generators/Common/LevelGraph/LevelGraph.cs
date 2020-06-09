@@ -13,7 +13,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
         ///     List of connections in the graph.
         /// </summary>
         [HideInInspector]
-        public List<Connection> Connections = new List<Connection>();
+        public List<ConnectionBase> Connections = new List<ConnectionBase>();
 
         /// <summary>
         ///     Set of room templates that are used for corridor rooms.
@@ -39,7 +39,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
         ///     List of rooms in the graph.
         /// </summary>
         [HideInInspector]
-        public List<Room> Rooms = new List<Room>();
+        public List<RoomBase> Rooms = new List<RoomBase>();
 
         /// <summary>
         ///     Editor data like zoom, etc.

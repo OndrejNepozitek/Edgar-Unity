@@ -16,7 +16,7 @@ namespace ProceduralLevelGenerator.Unity.Examples.CurrentRoomDetection.Scripts
         /// <param name="player"></param>
         public void OnRoomEnter(GameObject player)
         {
-            Debug.Log($"Room enter. Room name: {RoomInstance.Room.Name}, Room template: {RoomInstance.RoomTemplatePrefab.name}");
+            Debug.Log($"Room enter. Room name: {RoomInstance.Room.GetDisplayName()}, Room template: {RoomInstance.RoomTemplatePrefab.name}");
             CurrentRoomDetectionGameManager.Instance.OnRoomEnter(RoomInstance);
         }
 
@@ -26,7 +26,7 @@ namespace ProceduralLevelGenerator.Unity.Examples.CurrentRoomDetection.Scripts
         /// <param name="player"></param>
         public void OnRoomLeave(GameObject player)
         {
-            Debug.Log($"Room leave {RoomInstance.Room.Name}");
+            Debug.Log($"Room leave {RoomInstance.Room.GetDisplayName()}");
             CurrentRoomDetectionGameManager.Instance.OnRoomLeave(RoomInstance);
         }
     }

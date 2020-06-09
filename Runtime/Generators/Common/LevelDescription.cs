@@ -128,7 +128,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         }
     }
 
-    public class LevelDescription : LevelDescription<Room, Connection>
+    public class LevelDescription : LevelDescription<RoomBase, ConnectionBase>
     {
     }
 }

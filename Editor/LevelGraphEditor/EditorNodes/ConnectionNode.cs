@@ -6,13 +6,13 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
 {
     public class ConnectionNode
     {
-        public Connection Connection { get; }
+        public ConnectionBase Connection { get; }
 
         public RoomNode From { get; }
 
         public RoomNode To { get; }
 
-        public ConnectionNode(Connection connection, RoomNode from, RoomNode to)
+        public ConnectionNode(ConnectionBase connection, RoomNode from, RoomNode to)
         {
             Connection = connection;
             From = from;

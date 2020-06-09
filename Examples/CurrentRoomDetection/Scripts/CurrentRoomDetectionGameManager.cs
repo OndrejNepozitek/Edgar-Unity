@@ -87,7 +87,7 @@ namespace ProceduralLevelGenerator.Unity.Examples.CurrentRoomDetection.Scripts
         {
             var canvas = GetCanvas();
             var currentRoomInfo = canvas.transform.Find("CurrentRoomInfo").GetComponent<Text>();
-            currentRoomInfo.text = $"Room name: {currentRoom?.Room.Name}, Room template: {currentRoom?.RoomTemplatePrefab.name}";
+            currentRoomInfo.text = $"Room name: {currentRoom?.Room.GetDisplayName()}, Room template: {currentRoom?.RoomTemplatePrefab.name}";
         }
     }
 }
