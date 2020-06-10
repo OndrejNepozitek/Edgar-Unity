@@ -7,7 +7,7 @@
     "build": "node getApiUrls.js && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "version": "docusaurus docs:version",
-    "deploy": "docusaurus deploy"
+    "deploy": "node getApiUrls.js && docusaurus deploy"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.56",
