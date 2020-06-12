@@ -39,7 +39,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
             }
 
             var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
-            var outlineOverride = new GameObject(GeneratorConstants.OutlineOverrideName);
+            var outlineOverride = new GameObject(GeneratorConstants.OutlineOverrideLayerName);
             outlineOverride.transform.parent = tilemapsRoot.transform;
             outlineOverride.AddComponent<Tilemap>();
             outlineOverride.AddComponent<TilemapRenderer>();
@@ -55,14 +55,14 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
             }
 
             var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
-            var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideName).gameObject;
+            var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideLayerName).gameObject;
             PostProcessUtils.Destroy(outlineOverride);
         }
 
         public bool HasOutlineOverride()
         {
             var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
-            var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideName);
+            var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideLayerName);
 
             return outlineOverride != null;
         }

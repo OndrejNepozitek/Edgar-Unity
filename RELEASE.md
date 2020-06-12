@@ -3,9 +3,12 @@
 - merge dev to master
 - merge master to upm
 - git tag v2.0.0-alpha.2
-- git push origin --tags
+- git push origin v2.0.0-alpha.2
 - wait for build to finish
 - release should be created as draft, add changelog
+
+### PRO
+- git push pro PRO-v2.0.0-alpha.2
 
 ### Old
 - export Unity package

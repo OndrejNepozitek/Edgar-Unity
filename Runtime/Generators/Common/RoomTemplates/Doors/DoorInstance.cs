@@ -47,8 +47,8 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
         /// <summary>
         ///     To which room is the room that contains this door connected.
         /// </summary>
-        public Room ConnectedRoom => connectedRoom;
-        [SerializeField] private Room connectedRoom;
+        public RoomBase ConnectedRoom => connectedRoom;
+        [SerializeField] private RoomBase connectedRoom;
 
         /// <summary>
         ///     To which room instance is the room that contains this door connected.
@@ -60,7 +60,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
         public RoomInstance ConnectedRoomInstance => connectedRoomInstance;
         [NonSerialized] private RoomInstance connectedRoomInstance;
 
-        public DoorInstance(OrthogonalLine doorLine, Vector2Int facingDirection, Room connectedRoom, RoomInstance connectedRoomInstance)
+        public DoorInstance(OrthogonalLine doorLine, Vector2Int facingDirection, RoomBase connectedRoom, RoomInstance connectedRoomInstance)
         {
             this.doorLine = doorLine;
             this.facingDirection = facingDirection;

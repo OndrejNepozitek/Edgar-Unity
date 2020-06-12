@@ -20,10 +20,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// </summary>
         public GameObject RootGameObject { get; }
 
-        private readonly MapLayout<Room> mapLayout;
-        private readonly Dictionary<Room, RoomInstance> roomInstances;
+        private readonly MapLayout<RoomBase> mapLayout;
+        private readonly Dictionary<RoomBase, RoomInstance> roomInstances;
 
-        public GeneratedLevel(Dictionary<Room, RoomInstance> roomInstances, MapLayout<Room> mapLayout, GameObject rootGameObject)
+        public GeneratedLevel(Dictionary<RoomBase, RoomInstance> roomInstances, MapLayout<RoomBase> mapLayout, GameObject rootGameObject)
         {
             this.roomInstances = roomInstances;
             this.mapLayout = mapLayout;
@@ -44,7 +44,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        public RoomInstance GetRoomInstance(Room room)
+        public RoomInstance GetRoomInstance(RoomBase room)
         {
             return roomInstances[room];
         }
@@ -53,7 +53,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// Gets the internal representation of the generated layout.
         /// </summary>
         /// <returns></returns>
-        public MapLayout<Room> GetInternalLayoutRepresentation()
+        public MapLayout<RoomBase> GetInternalLayoutRepresentation()
         {
             return mapLayout;
         }

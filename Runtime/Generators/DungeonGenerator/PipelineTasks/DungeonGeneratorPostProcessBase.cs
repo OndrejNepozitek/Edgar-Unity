@@ -1,21 +1,23 @@
-﻿using System;
-using System.Collections;
-using ProceduralLevelGenerator.Unity.Generators.Common;
-using ProceduralLevelGenerator.Unity.Pipeline;
+﻿using ProceduralLevelGenerator.Unity.Generators.Common;
+using UnityEngine;
+using Random = System.Random;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
-    public abstract class DungeonGeneratorPostProcessBase : PipelineTask<DungeonGeneratorPayload>
+    public delegate void DungeonGeneratorPostProcessCallback(GeneratedLevel level, LevelDescription levelDescription);
+
+    public abstract class DungeonGeneratorPostProcessBase : ScriptableObject
     {
         protected Random Random;
 
-        public override IEnumerator Process()
+        public virtual void Run(GeneratedLevel level, LevelDescription levelDescription)
         {
-            Random = Payload.Random;
-            Run(Payload.GeneratedLevel, Payload.LevelDescription);
-            yield return null;
+
         }
 
-        public abstract void Run(GeneratedLevel level, LevelDescription levelDescription);
+        public void SetRandomGenerator(Random random)
+        {
+            Random = random;
+        }
     }
 }

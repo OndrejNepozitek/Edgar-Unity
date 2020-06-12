@@ -6,9 +6,9 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
 {
     public class RoomNode
     {
-        public Room Room { get; }
+        public RoomBase Room { get; }
 
-        public RoomNode(Room room)
+        public RoomNode(RoomBase room)
         {
             Room = room;
         }
@@ -28,7 +28,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
             var style = new GUIStyle(Selection.activeObject == Room ? LevelGraphEditorStyles.RoomNodeActive : LevelGraphEditorStyles.RoomNode);
             style.fontSize = (int) (style.fontSize * zoom);
 
-            GUI.Box(rect, Room.ToString(), style);
+            GUI.Box(rect, Room.GetDisplayName(), style);
         }
     }
 }

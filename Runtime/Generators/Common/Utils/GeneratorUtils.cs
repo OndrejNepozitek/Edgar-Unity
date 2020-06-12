@@ -15,18 +15,18 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public static class GeneratorUtils
     {
-        public static GeneratedLevel TransformLayout(MapLayout<Room> layout, LevelDescription levelDescription, GameObject rootGameObject)
+        public static GeneratedLevel TransformLayout(MapLayout<RoomBase> layout, LevelDescription levelDescription, GameObject rootGameObject)
         {
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
             var corridorToConnectionMapping = levelDescription.GetCorridorToConnectionMapping();
             
             // Prepare an object to hold instantiated room templates
-            var roomTemplateInstancesRoot = new GameObject("Room template instances");
+            var roomTemplateInstancesRoot = new GameObject(GeneratorConstants.RoomsRootName);
             roomTemplateInstancesRoot.transform.parent = rootGameObject.transform;
 
             // Initialize rooms
-            var layoutData = new Dictionary<Room, RoomInstance>();
+            var layoutData = new Dictionary<RoomBase, RoomInstance>();
             var layoutRooms = layout.Rooms.ToDictionary(x => x.Node, x => x);
             foreach (var layoutRoom in layoutRooms.Values)
             {
@@ -35,6 +35,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
                 // Instantiate room template
                 var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
+                roomTemplateInstance.name = $"{layoutRoom.Node.GetDisplayName()} - {roomTemplatePrefab.name}";
                 
                 // Compute correct room position
                 var position = layoutRoom.Position.ToUnityIntVector3();
@@ -79,12 +80,12 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
             return new GeneratedLevel(layoutData, layout, rootGameObject);
         }
 
-        private static List<DoorInstance> TransformDoorInfo(IEnumerable<DoorInfo<Room>> doorInfos, Dictionary<Room, RoomInstance> roomInstances)
+        private static List<DoorInstance> TransformDoorInfo(IEnumerable<DoorInfo<RoomBase>> doorInfos, Dictionary<RoomBase, RoomInstance> roomInstances)
         {
             return doorInfos.Select(x => TransformDoorInfo(x, roomInstances[x.Node])).ToList();
         }
 
-        private static DoorInstance TransformDoorInfo(DoorInfo<Room> doorInfo, RoomInstance connectedRoomInstance)
+        private static DoorInstance TransformDoorInfo(DoorInfo<RoomBase> doorInfo, RoomInstance connectedRoomInstance)
         {
             var doorLine = doorInfo.DoorLine;
 

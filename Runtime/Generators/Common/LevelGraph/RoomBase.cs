@@ -1,0 +1,36 @@
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
+{
+    public abstract class RoomBase : ScriptableObject
+    {
+        /// <summary>
+        /// Position of the room in the graph editor.
+        /// </summary>
+        /// <remarks>
+        /// This value is not used by the dungeon generator.
+        /// </remarks>
+        [HideInInspector]
+        public Vector2 Position;
+
+        /// <summary>
+        /// Gets all the room templates that are available for the room.
+        /// </summary>
+        /// <remarks>
+        /// This method is used in the default implementation of the input setup task.
+        /// If null or an empty list is returned, the input setup will use the default room template from the level graph.
+        /// </remarks>
+        public abstract List<GameObject> GetRoomTemplates();
+
+        /// <summary>
+        /// Gets the display name of the room that is display in the graph editor.
+        /// </summary>
+        public abstract string GetDisplayName();
+
+        public override string ToString()
+        {
+            return GetDisplayName();
+        }
+    }
+}

@@ -212,7 +212,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        private RoomNode CreateRoomNode(Room room)
+        private RoomNode CreateRoomNode(RoomBase room)
         {
             var roomNode = new RoomNode(room);
             roomNodes.Add(roomNode);
@@ -259,7 +259,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
         /// </summary>
         /// <param name="connection"></param>
         /// <returns></returns>
-        public ConnectionNode CreateConnectionNode(Connection connection)
+        public ConnectionNode CreateConnectionNode(ConnectionBase connection)
         {
             var from = roomNodes.Single(x => x.Room == connection.From);
             var to = roomNodes.Single(x => x.Room == connection.To);
