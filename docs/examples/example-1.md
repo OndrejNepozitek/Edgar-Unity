@@ -3,6 +3,7 @@ title: Example 1
 ---
 
 import { Image, Gallery, GalleryImage } from "@theme/Gallery";
+import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
 
 In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-assetpuck) by [@pixel_poem](https://twitter.com/pixel_poem). Be sure to check their work out if you like the tileset. We will not care about room decorations - we will use just basic walls, floor and  door tiles. 
 
@@ -12,6 +13,8 @@ In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-
 </Gallery>
 
 > **Note:** All files from this example can be found at *ProceduralLevelGenerator/Examples/Example1*.
+
+<ExampleFeatures id="example-1" />
 
 ## Simple example
 

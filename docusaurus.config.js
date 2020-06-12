@@ -2,6 +2,7 @@ const versions = require('./versions.json');
 const getBookmarks = require("./src/bookmarks")
 const [latestVersion] = require('./versions.json');
 const remarkBookmarks = require('remark-bookmarks')
+const path = require('path');
 
 module.exports = {
   title: "Edgar - Procedural Level Generator",
@@ -15,6 +16,7 @@ module.exports = {
   themeConfig: {
     sidebarCollapsible: false,
     navbar: {
+      hideOnScroll: false,
       title: "Edgar - Procedural Level Generator",
       links: [
         { to: "versions", label: `v${latestVersion}`, position: "left" },
@@ -109,5 +111,6 @@ module.exports = {
         }
       }
     ]
-  ]
+  ],
+  plugins: [require.resolve("./src/customPLugin.js")],
 };

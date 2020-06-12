@@ -3,6 +3,7 @@ title: Level graphs
 ---
 
 import { Image, Gallery, GalleryImage } from "@theme/Gallery";
+import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
 
 Level graph is an abstraction that lets us control the structure of generated levels. 
 
@@ -100,6 +101,8 @@ If we double click on a room in the Graph editor, it gets selected and we can co
 ## (PRO) Custom rooms and connections
 
 It may be often useful to add additional information to individual rooms (or connections). For example, we may want to add a type to each of the rooms and then do something based on the type. To achieve that, we can provide our own implementation of the [RoomBase][] and [ConnectionBase][] classes. There are at least two possible approaches.
+
+<FeatureUsage id="custom-rooms-and-connections" />
 
 ### Inherit from [Room][]
 

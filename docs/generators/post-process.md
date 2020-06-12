@@ -3,6 +3,7 @@ title: Post-processing
 ---
 
 import { Image, Gallery, GalleryImage } from "@theme/Gallery";
+import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
 
 After a level is generated, we may often want to run some additional logic like spawning enemies, etc. This can be achieved by providing your own post processing logic that will be called after the level is generated and provided with information about the level. 
 
@@ -41,5 +42,9 @@ If we want to add our own post processing logic, we have to create a class that 
 With the implementation ready, we now have to create an instance of that ScriptableObject by right clicking in the project view and *Create -> Dungeon generator -> Examples -> Docs -> My custom post process*. And the last step is to drag and drop this GameObject in the *Custom post process tasks* section of the dungeon generator.
 
 <Image src="img/v2/examples/example1/custom_post_process.png" caption="Add the ScriptableObject to the Custom post process tasks array" />
+
+<FeatureUsage id="custom-post-processing" />
+
+[Example 1](examples/example-1.md#enemies)
 
 ### (PRO) Priority callbacks

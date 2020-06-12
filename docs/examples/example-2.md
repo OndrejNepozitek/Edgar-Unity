@@ -3,6 +3,7 @@ title: Example 2
 ---
 
 import { Image, Gallery, GalleryImage } from "@theme/Gallery";
+import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
 
 In this tutorial, we will use [this tileset](https://0x72.itch.io/dungeontileset-ii) by [0x72](https://0x72.itch.io/). Be sure to check their work out if you like the tileset. We will not care about room decorations - we will use just basic walls, floor and  door tiles.
 
@@ -14,6 +15,8 @@ In this tutorial, we will use [this tileset](https://0x72.itch.io/dungeontileset
 > **Note:** I recommend reading [Example 1](example1.md) first as this is a little bit harder to setup and I will not repeat the basics here.
 
 > **Note:** All files from this example can be found at *ProceduralLevelGenerator/Examples/Example2*.
+
+<ExampleFeatures id="example-2" />
 
 ## Simple example
 
