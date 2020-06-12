@@ -45,6 +45,4 @@ With the implementation ready, we now have to create an instance of that Scripta
 
 <FeatureUsage id="custom-post-processing" />
 
-[Example 1](examples/example-1.md#enemies)
-
 ### (PRO) Priority callbacks
