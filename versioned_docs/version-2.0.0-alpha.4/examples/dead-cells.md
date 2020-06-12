@@ -326,6 +326,7 @@ The last step is to add wall tiles under individual rooms so that the level look
         var roomTemplate = roomInstance.RoomTemplateInstance;
         var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplate);
         var usedTiles = RoomTemplatesLoader.GetUsedTiles(tilemaps).ToList();
+        var roomTemplateWalls = tilemaps.Single(x => x.name == "Walls");
 
         // Find the minimum y coordinate of all the tiles and use it to find the bottom layer of tiles
         var minY = usedTiles.Min(x => x.y);
@@ -339,7 +340,7 @@ The last step is to add wall tiles under individual rooms so that the level look
             // That means we only use it if the tile is the border tile of a tower
             var leftTilePos = pos + Vector3Int.left;
             var rightTilePos = pos + Vector3Int.right;
-            if (wallsTilemap.GetTile(pos) != null && !(bottomLayerTiles.Contains(leftTilePos) && bottomLayerTiles.Contains(rightTilePos)))
+            if (roomTemplateWalls.GetTile(pos) != null && !(bottomLayerTiles.Contains(leftTilePos) && bottomLayerTiles.Contains(rightTilePos)))
             {
                 tilemap = wallsTilemap;
             }
