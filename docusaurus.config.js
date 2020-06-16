@@ -9,11 +9,14 @@ module.exports = {
   tagline:
     "Configurable Unity asset for procedural generation of 2D levels",
   url: "https://ondrejnepozitek.github.io",
-  baseUrl: "/ProceduralLevelGenerator-Unity/",
+  baseUrl: "/Edgar-Unity/",
   favicon: "img/favicon.ico",
   organizationName: "OndrejNepozitek", // Usually your GitHub org/user name.
-  projectName: "ProceduralLevelGenerator-Unity", // Usually your repo name.
+  projectName: "Edgar-Unity", // Usually your repo name.
   themeConfig: {
+    googleAnalytics: {
+      trackingID: 'UA-31904365-17',
+    },
     sidebarCollapsible: false,
     navbar: {
       hideOnScroll: false,
@@ -43,7 +46,7 @@ module.exports = {
           ],
         },
         {
-          href: "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/",
+          href: "https://github.com/OndrejNepozitek/Edgar-Unity/",
           label: "GitHub", 
           position: "right"
         }
@@ -83,7 +86,7 @@ module.exports = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity"
+              href: "https://github.com/OndrejNepozitek/Edgar-Unity"
             },
           ]
         }
@@ -97,7 +100,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/tree/docusaurus",
+          editUrl: "https://github.com/OndrejNepozitek/Edgar-Unity/tree/docusaurus",
           remarkPlugins: [
             [
               remarkBookmarks, { 
