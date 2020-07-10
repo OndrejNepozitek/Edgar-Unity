@@ -21,10 +21,18 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
 
         public void Draw(float zoom, Vector2 panOffset)
         {
-            Handles.DrawLine(From.GetRect(zoom, panOffset).center, To.GetRect(zoom, panOffset).center);
+            var style = Connection.GetEditorStyle(Selection.activeObject == Connection);
 
-            var style = new GUIStyle(Selection.activeObject == Connection ? LevelGraphEditorStyles.ConnectionHandleActive : LevelGraphEditorStyles.ConnectionHandle);
-            GUI.Box(GetHandleRect(zoom, panOffset), string.Empty, style);
+            var oldColor = Handles.color;
+            Handles.color = style.LineColor;
+            Handles.DrawLine(From.GetRect(zoom, panOffset).center, To.GetRect(zoom, panOffset).center);
+            Handles.color = oldColor;
+
+            var oldBackgroundColor = GUI.backgroundColor;
+            GUI.backgroundColor = style.HandleBackgroundColor;
+            var rectStyle = new GUIStyle(LevelGraphEditorStyles.ConnectionHandle);
+            GUI.Box(GetHandleRect(zoom, panOffset), string.Empty, rectStyle);
+            GUI.backgroundColor = oldBackgroundColor;
         }
 
         public Rect GetHandleRect(float zoom, Vector2 panOffset)

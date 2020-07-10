@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.EditorStyles;
 using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
@@ -31,6 +32,26 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
         public override string ToString()
         {
             return GetDisplayName();
+        }
+
+        /// <summary>
+        /// Gets the style for the level graph editor.
+        /// Override this to change how are room nodes displayed in the editor.
+        /// </summary>
+        public virtual RoomEditorStyle GetEditorStyle(bool isFocused)
+        {
+            if (isFocused)
+            {
+                return new RoomEditorStyle()
+                {
+                    TextColor = Color.red
+                };
+                
+            }
+            else
+            {
+                return new RoomEditorStyle();
+            }
         }
     }
 }
