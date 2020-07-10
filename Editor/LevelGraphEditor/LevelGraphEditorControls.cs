@@ -175,9 +175,9 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
-        private Room CreateRoom(Vector2 position)
+        private RoomBase CreateRoom(Vector2 position)
         {
-            var room = (Room) CreateInstance(LevelGraph.RoomType);
+            var room = (RoomBase) CreateInstance(LevelGraph.RoomType);
 
             // Add room to the level graph
             LevelGraph.Rooms.Add(room);
@@ -226,7 +226,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        public Connection CreateConnection(RoomNode from, RoomNode to)
+        public ConnectionBase CreateConnection(RoomNode from, RoomNode to)
         {
             // Do not create the connection if the from room is same as the to room
             if (from.Room == to.Room)
@@ -240,7 +240,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
                 return null;
             }
 
-            var connection = (Connection) CreateInstance(LevelGraph.ConnectionType);
+            var connection = (ConnectionBase) CreateInstance(LevelGraph.ConnectionType);
             connection.From = from.Room;
             connection.To = to.Room;
 
