@@ -177,7 +177,10 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
         /// <returns></returns>
         private Room CreateRoom(Vector2 position)
         {
-            var room = (Room) CreateInstance(LevelGraph.RoomType);
+            var type = Type.GetType(LevelGraph.RoomType);
+            var roomType = type != null ? LevelGraph.RoomType : typeof(Room).FullName;
+
+            var room = (Room) CreateInstance(roomType);
 
             // Add room to the level graph
             LevelGraph.Rooms.Add(room);
@@ -240,7 +243,10 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
                 return null;
             }
 
-            var connection = (Connection) CreateInstance(LevelGraph.ConnectionType);
+            var type = Type.GetType(LevelGraph.RoomType);
+            var connectionType = type != null ? LevelGraph.RoomType : typeof(Connection).FullName;
+
+            var connection = (Connection) CreateInstance(connectionType);
             connection.From = from.Room;
             connection.To = to.Room;
 
