@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using UnityEditor;
@@ -175,12 +176,11 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
-        private Room CreateRoom(Vector2 position)
+        private RoomBase CreateRoom(Vector2 position)
         {
-            var type = Type.GetType(LevelGraph.RoomType);
+            var type = FindType(LevelGraph.RoomType);
             var roomType = type != null ? LevelGraph.RoomType : typeof(Room).FullName;
-
-            var room = (Room) CreateInstance(roomType);
+            var room = (RoomBase) CreateInstance(roomType);
 
             // Add room to the level graph
             LevelGraph.Rooms.Add(room);
@@ -210,6 +210,15 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
             return room;
         }
 
+        private static Type FindType(string fullName)
+        {
+            return
+                AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(a => !a.IsDynamic)
+                    .SelectMany(a => a.GetTypes())
+                    .FirstOrDefault(t => t.FullName.Equals(fullName));
+        }
+
         /// <summary>
         /// Creates a room node from a given room.
         /// </summary>
@@ -229,7 +238,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        public Connection CreateConnection(RoomNode from, RoomNode to)
+        public ConnectionBase CreateConnection(RoomNode from, RoomNode to)
         {
             // Do not create the connection if the from room is same as the to room
             if (from.Room == to.Room)
@@ -243,10 +252,10 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
                 return null;
             }
 
-            var type = Type.GetType(LevelGraph.RoomType);
-            var connectionType = type != null ? LevelGraph.RoomType : typeof(Connection).FullName;
+            var type = FindType(LevelGraph.RoomType);
+            var connectionType = type != null ? LevelGraph.ConnectionType : typeof(Connection).FullName;
+            var connection = (ConnectionBase) CreateInstance(connectionType);
 
-            var connection = (Connection) CreateInstance(connectionType);
             connection.From = from.Room;
             connection.To = to.Room;
 
