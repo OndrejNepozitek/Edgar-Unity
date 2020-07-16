@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using UnityEditor;
@@ -177,7 +178,9 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
         /// <returns></returns>
         private RoomBase CreateRoom(Vector2 position)
         {
-            var room = (RoomBase) CreateInstance(LevelGraph.RoomType);
+            var type = FindType(LevelGraph.RoomType);
+            var roomType = type != null ? LevelGraph.RoomType : typeof(Room).FullName;
+            var room = (RoomBase) CreateInstance(roomType);
 
             // Add room to the level graph
             LevelGraph.Rooms.Add(room);
@@ -205,6 +208,15 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
             EditorUtility.SetDirty(LevelGraph);
 
             return room;
+        }
+
+        private static Type FindType(string fullName)
+        {
+            return
+                AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(a => !a.IsDynamic)
+                    .SelectMany(a => a.GetTypes())
+                    .FirstOrDefault(t => t.FullName.Equals(fullName));
         }
 
         /// <summary>
@@ -240,7 +252,10 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
                 return null;
             }
 
-            var connection = (ConnectionBase) CreateInstance(LevelGraph.ConnectionType);
+            var type = FindType(LevelGraph.RoomType);
+            var connectionType = type != null ? LevelGraph.ConnectionType : typeof(Connection).FullName;
+            var connection = (ConnectionBase) CreateInstance(connectionType);
+
             connection.From = from.Room;
             connection.To = to.Room;
 
