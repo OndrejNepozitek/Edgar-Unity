@@ -1,15 +1,15 @@
 # Edgar - Procedural Level Generator
-![Build](https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/workflows/Build/badge.svg)
+![Build](https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg)
 
 This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a **complete control** over generated levels. It combines procedural generation and **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses my .NET [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
 
 Similar approaches are used in games like [**Enter the Gungeon**](https://www.boristhebrave.com/2019/07/28/dungeon-generation-in-enter-the-gungeon/) or [**Dead Cells**](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania).
 
-## See the documentation and examples [here](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/introduction).
+## See the documentation and examples [here](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction).
 
 ## Current state of the plugin
 
-This is an alpha version of the improved version 2 of the plugin. The current state is not ideal yet, but I think that it is better to use v2 if you are a new user. If you already use v1.x, there are some breaking changes in v2 so you have to think about whether to migrate or not (I would recommend to do so). You can find the latest v1.x release [here](https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity/tree/v1.0.3).
+This is an alpha version of the improved version 2 of the plugin. The current state is not ideal yet, but I think that it is better to use v2 if you are a new user. If you already use v1.x, there are some breaking changes in v2 so you have to think about whether to migrate or not (I would recommend to do so). You can find the latest v1.x release [here](https://github.com/OndrejNepozitek/Edgar-Unity/tree/v1.0.3).
 
 I am also working on a **PRO version** of the plugin that will be paid and will contain additional features like **platformers generator**, performance benchmarking tools, more control over the inputs for the generator, simple **fog of war**, more example scenes and other.
 
@@ -19,11 +19,11 @@ Current state of the PRO version:
 
 | Feature      | Description                                                                                | State                                                                                                                                                                                                                                       |
 |--------------|--------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Coroutines   | Call the generator as a coroutine so that the game does not freeze when generating a level | Done ([docs](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/generators/dungeon-generator#pro-with-coroutines))                                                                                                       |
-| Custom rooms | It is possible to add additional fields to rooms and connections in a level graph          | Done ([docs](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/basics/level-graphs#pro-custom-rooms-and-connections))                                                                                                   |
-| Platformers  | Generator that is able to produce platformer levels                                        | Prototype ([docs](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/generators/platformer-generator), [example](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/examples/platformer-1)) |
-| Isometric    | Simple example of isometric levels                                                         | Prototype ([example](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/examples/isometric-1))                                                                                                                      |
-| Dead Cells   | Tutorial on how to generate levels that are similar to Dead Cells                         | Done ([docs](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/docs/examples/dead-cells))                                                                                                                                    |
+| Coroutines   | Call the generator as a coroutine so that the game does not freeze when generating a level | Done ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/dungeon-generator#pro-with-coroutines))                                                                                                       |
+| Custom rooms | It is possible to add additional fields to rooms and connections in a level graph          | Done ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/basics/level-graphs#pro-custom-rooms-and-connections))                                                                                                   |
+| Platformers  | Generator that is able to produce platformer levels                                        | Prototype ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/platformer-generator), [example](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/platformer-1)) |
+| Isometric    | Simple example of isometric levels                                                         | Prototype ([example](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/isometric-1))                                                                                                                      |
+| Dead Cells   | Tutorial on how to generate levels that are similar to Dead Cells                         | Done ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/dead-cells))                                                                                                                                    |
 
 ## Installation
 
@@ -80,25 +80,25 @@ The safest way to update to the new version is to completely remove the old vers
 
 ### 1. Draw rooms and corridors
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/v2/room_templates_multiple.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/img/v2/room_templates_multiple.png)
 
 ### 2. Prepare the structure of the level
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/v2/examples/example1_level_graph2.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/img/v2/examples/example1_level_graph2.png)
 
 ### 3. Generate levels
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/v2/generated_levels_multiple.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/img/v2/generated_levels_multiple.png)
 
 ## Examples
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example1_result1.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example1_result1.png)
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example1_result_reallife1.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example1_result_reallife1.png)
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example2_result1.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example2_result1.png)
 
-![](https://ondrejnepozitek.github.io/ProceduralLevelGenerator-Unity/img/original/example2_result_reallife1.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example2_result_reallife1.png)
 
 ## Terms of use
 
