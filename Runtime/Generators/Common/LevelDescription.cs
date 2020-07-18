@@ -53,9 +53,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// Adds a given connection together with a corridor room between the two rooms.
         /// </summary>
         /// <param name="connection">Connection that is added to the level description</param>
-        /// <param name="corridorRoomTemplates">Room templates that are available for the corridor</param>
         /// <param name="corridorRoom">Room that represents the corridor room between the two rooms from the connection</param>
-        public void AddCorridorConnection(ConnectionBase connection, List<GameObject> corridorRoomTemplates, RoomBase corridorRoom)
+        /// <param name="corridorRoomTemplates">Room templates that are available for the corridor</param>
+        public void AddCorridorConnection(ConnectionBase connection,RoomBase corridorRoom, List<GameObject> corridorRoomTemplates)
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
             if (corridorRoom == null) throw new ArgumentNullException(nameof(corridorRoom));

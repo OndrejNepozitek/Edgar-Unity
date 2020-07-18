@@ -48,11 +48,15 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
             {
                 if (config.UseCorridors)
                 {
-                    var corridorRoom = (Room) ScriptableObject.CreateInstance(typeOfRooms);
-                    corridorRoom.Name = "Corridor";
+                    var corridorRoom = (RoomBase) ScriptableObject.CreateInstance(typeOfRooms);
 
-                    levelDescription.AddCorridorConnection(connection,
-                        GetRoomTemplates(config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates), corridorRoom);
+                    if (corridorRoom is Room basicRoom)
+                    {
+                        basicRoom.Name = "Corridor";
+                    }
+                    
+                    levelDescription.AddCorridorConnection(connection, corridorRoom,
+                        GetRoomTemplates(config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates));
                 }
                 else
                 {
