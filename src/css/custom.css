@@ -151,3 +151,27 @@ blockquote {
   margin: 0px !important;
   display: none !important;
 }
+
+.quickOverview {
+  padding: 50px 0px;
+}
+
+.quickOverview__description {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quickOverview__outter {
+  border-top: 1px solid #eee;
+}
+
+.features {
+  background-color: #f4f4f4;
+  padding: 40px 0px;
+  border-top: 1px solid #eee;
+}
+
+.prism-code {
+  font-size: 12px !important;
+}

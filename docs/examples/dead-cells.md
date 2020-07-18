@@ -1,5 +1,5 @@
 ---
-title: (PRO) Dead Cells case study
+title: (PRO) Dead Cells
 ---
 
 import { Image, Gallery, GalleryImage } from "@theme/Gallery";
@@ -67,7 +67,7 @@ Our underground level is inspired by the Prisoners Quarters level in Dead Cells.
 
 ### Custom room and connection types
 
-In the level graph above, we used custom room and conenction types. The implementation of the custom room type can be seen below. Each room has its type (entrance, treasure, etc) and also a flag that indicates where it is outside (which is used for rooftop levels). Additionaly, we override the `ToString()` implementation so that the type of the room is displayed in the level graph.
+In the level graph above, we used custom room and connection types. The implementation of the custom room type can be seen below. Each room has its type (entrance, treasure, etc) and also a flag that indicates where it is outside (which is used for rooftop levels). Additionaly, we override the `ToString()` implementation so that the type of the room is displayed in the level graph.
 
     public class DeadCellsRoom : RoomBase
     {

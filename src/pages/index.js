@@ -2,41 +2,38 @@ import React from "react";
 import classnames from "classnames";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
+import {Video} from "@theme/Video";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
 const features = [
   {
-    title: <>Easy to Use</>,
-    imageUrl: "img/undraw_docusaurus_mountain.svg",
+    title: <>Easy to use</>,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Well, it's not a one-click setup, but after you read about the basic concepts of the generator, you should be ready to easily generate your first level. 
       </>
-    )
+    ),
   },
   {
-    title: <>Focus on What Matters</>,
-    imageUrl: "img/undraw_docusaurus_tree.svg",
+    title: <>Packed with features</>,
     description: (
       <>
         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
         ahead and move your docs into the <code>docs</code> directory.
       </>
-    )
+    ),
   },
   {
-    title: <>Powered by React</>,
-    imageUrl: "img/undraw_docusaurus_react.svg",
+    title: <>Easy to customize</>,
     description: (
       <>
         Extend or customize your website layout by reusing React. Docusaurus can
         be extended while reusing the same header and footer.
       </>
-    )
-  }
+    ),
+  },
 ];
 
 function Feature({ imageUrl, title, description }) {
@@ -58,10 +55,7 @@ function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
   return (
-    <Layout
-      title={`${siteConfig.title}`}
-      description={`${siteConfig.tagline}`}
-    >
+    <Layout title={`${siteConfig.title}`} description={`${siteConfig.tagline}`}>
       <header className={classnames("hero hero--primary", styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
@@ -80,6 +74,79 @@ function Home() {
         </div>
       </header>
       <main>
+        {features && features.length && (
+          <section className={classnames(
+            "features",
+            styles.features
+          )}>
+            <div className="container">
+              <div className="row">
+                {features.map((props, idx) => (
+                  <Feature key={idx} {...props} />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+        <div className="quickOverview__outter">
+          <div className="container quickOverview">
+            <div className="row">
+              <div className="col col--5 quickOverview__description">
+                <h2>1. Create room templates</h2>
+                <p>
+                  The first step is to create so-called room templates which
+                  describe how individual rooms look and how they can be
+                  connected to each other. The basic visuals are created with
+                  Unity Tilemaps but it is also possible to include game objects
+                  like enemies, loot, etc.
+                </p>
+              </div>
+              <div className="col col--6 col--offset-1">
+                <Video src="videos/room_template.mp4" timeout={5000} />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="quickOverview__outter">
+          <div className="container quickOverview">
+            <div className="row">
+              <div className="col col--6">
+                <Video src="videos/level_graph.mp4" timeout={5000} />
+              </div>
+              <div className="col col--5 col--offset-1 quickOverview__description">
+                <h2>2. Describe level structure</h2>
+                <p>
+                  The second step is to create a so-called level graph. The
+                  generator comes with a graph editor where you can specify how
+                  many rooms you want and how they are connected. You can also
+                  choose that some rooms will have different room templates than
+                  other rooms - e.g. a spawn room will look different than a
+                  boss room. Just make sure that the graph is not too
+                  big/complex.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="quickOverview__outter">
+          <div className="container quickOverview">
+            <div className="row">
+              <div className="col col--5 quickOverview__description">
+                <h2>3. Generate levels</h2>
+                <p>
+                  The last step is to add the generator component to a game
+                  object, assign the level graph from the previous step and you
+                  are ready to generate levels.
+                </p>
+              </div>
+              <div className="col col--6 col--offset-1">
+                <Video src="videos/levels.mp4" timeout={5000} />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/*features && features.length && (
           <section className={styles.features}>
             <div className="container">

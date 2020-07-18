@@ -33,7 +33,7 @@ module.exports = {
     {
       type: "category",
       label: "Generators",
-      items: ["generators/dungeon-generator", "generators/platformer-generator", "generators/custom-input", "generators/post-process"]
+      items: ["generators/dungeon-generator", "generators/post-process", "generators/platformer-generator", "generators/custom-input"]
     },
     {
       type: "category",
@@ -43,7 +43,7 @@ module.exports = {
     {
       type: "category",
       label: "Guides",
-      items: ["guides/room-template-customization", "guides/current-room-detection", "guides/procedural-level-graphs", "guides/fog-of-war", "guides/benchmarks"]
+      items: ["guides/room-template-customization", "guides/current-room-detection"]
     },
     {
       type: "category",

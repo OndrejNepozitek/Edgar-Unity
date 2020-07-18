@@ -17,6 +17,15 @@ module.exports = {
     googleAnalytics: {
       trackingID: 'UA-31904365-17',
     },
+    algolia: {
+      apiKey: 'b81526b8f4babcdebfa613315ee05014',
+      appId: '9O7CEE19VJ', // Add your own Application ID
+      apiKey: '8110932a343db6ca7c086dae2e16edf5', // Set it to your own *search* API key
+      indexName: 'edgar-unity',
+      algoliaOptions: {
+        facetFilters: [`version:${versions[0]}`],
+      },
+    },
     sidebarCollapsible: false,
     navbar: {
       hideOnScroll: false,
