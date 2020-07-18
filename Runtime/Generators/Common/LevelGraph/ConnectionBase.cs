@@ -3,17 +3,13 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
 {
-    public abstract class ConnectionBase : ScriptableObject, IConnection<RoomBase>
+    public abstract class ConnectionBase : ScriptableObject
     {
         [HideInInspector]
         public RoomBase From;
 
         [HideInInspector]
         public RoomBase To;
-
-        RoomBase IConnection<RoomBase>.From => From;
-
-        RoomBase IConnection<RoomBase>.To => To;
 
         /// <summary>
         /// Gets the style for the level graph editor.
