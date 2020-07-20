@@ -14,6 +14,9 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 {
+    /// <summary>
+    /// Base class for various dungeon generators.
+    /// </summary>
     public abstract class DungeonGeneratorBase : LevelGeneratorBase<DungeonGeneratorPayload>
     {
         [Expandable]

@@ -8,6 +8,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTem
 {
     public static class RoomTemplateInitializerUtils
     {
+        /// <summary>
+        /// Creates a room template prefab using a given room template initializer.
+        /// </summary>
+        /// <typeparam name="TRoomTemplateInitializer"></typeparam>
         public static void CreateRoomTemplatePrefab<TRoomTemplateInitializer>() where TRoomTemplateInitializer : RoomTemplateInitializerBase
         {
 #if UNITY_EDITOR

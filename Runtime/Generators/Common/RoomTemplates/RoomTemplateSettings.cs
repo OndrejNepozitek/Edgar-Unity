@@ -8,6 +8,9 @@ using UnityEngine.Tilemaps;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
 {
+    /// <summary>
+    /// Component that is attached to each room template game objects and contains basic settings.
+    /// </summary>
     public class RoomTemplateSettings : MonoBehaviour
     {
         public RepeatMode RepeatMode = RepeatMode.AllowRepeat;

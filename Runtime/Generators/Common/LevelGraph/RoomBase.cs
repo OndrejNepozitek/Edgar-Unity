@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
 {
+    /// <summary>
+    /// Base class for room in a level graph.
+    /// </summary>
     public abstract class RoomBase : ScriptableObject
     {
         /// <summary>

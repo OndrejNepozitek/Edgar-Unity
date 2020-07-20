@@ -3,6 +3,10 @@ using System.Linq;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
+    /// <summary>
+    /// Class that makes it possible to run callbacks with given priorities (order).
+    /// </summary>
+    /// <typeparam name="TCallback"></typeparam>
     public class PriorityCallbacks<TCallback>
     {
         private readonly Dictionary<int, List<TCallback>> callbacks = new Dictionary<int, List<TCallback>>();

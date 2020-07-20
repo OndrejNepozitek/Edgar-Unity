@@ -5,6 +5,9 @@ using Random = System.Random;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 {
+    /// <summary>
+    /// Payload that is used to transfer data between individual stages of the generator.
+    /// </summary>
     public class DungeonGeneratorPayload : IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IBenchmarkInfoPayload
     {
         public LevelDescription LevelDescription { get; set; }

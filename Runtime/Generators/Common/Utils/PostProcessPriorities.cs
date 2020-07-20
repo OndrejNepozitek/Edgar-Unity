@@ -1,5 +1,8 @@
 ﻿namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
+    /// <summary>
+    /// Priorities of post-processing steps.
+    /// </summary>
     public static class PostProcessPriorities
     {
         public static int InitializeSharedTilemaps = 100;

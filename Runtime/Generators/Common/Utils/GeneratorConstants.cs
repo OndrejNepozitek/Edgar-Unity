@@ -1,5 +1,8 @@
 ﻿namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
+    /// <summary>
+    /// Constants that are used in the generator.
+    /// </summary>
     public static class GeneratorConstants
     {
         /// <summary>

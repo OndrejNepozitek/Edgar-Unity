@@ -11,6 +11,9 @@ using Object = UnityEngine.Object;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
+    /// <summary>
+    /// Utility post-processing functions
+    /// </summary>
     public static class PostProcessUtils
     {
         /// <summary>

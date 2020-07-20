@@ -13,6 +13,10 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
+    /// <summary>
+    /// The actual generator logic that call the .NET generator.
+    /// </summary>
+    /// <typeparam name="TPayload"></typeparam>
     public class DungeonGeneratorTask<TPayload> : PipelineTask<TPayload>
         where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IBenchmarkInfoPayload
     {
@@ -34,6 +38,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
 
             var rootGameObject = config.RootGameObject;
 
+            // If the root game objects was not set in the config, we do the following:
+            // 1. Check if there already exists a game objects with a name reserved for the generated level
+            // 2. Otherwise, we create a new empty game object
             if (rootGameObject == null)
             {
                 rootGameObject = GameObject.Find("Generated Level");
@@ -44,11 +51,13 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
                 }
             }
 
+            // We delete all the children from the root game object - we do not want to combine levels from different runs of the algorithm
             foreach (var child in rootGameObject.transform.Cast<Transform>().ToList()) {
                 child.transform.parent = null;
                 PostProcessUtils.Destroy(child.gameObject);
             }
 
+            // The LevelDescription class must be converted to MapDescription
             var mapDescription = levelDescription.GetMapDescription();
             var configuration = new DungeonGeneratorConfiguration<RoomBase>()
             {
@@ -57,9 +66,11 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
                 EarlyStopIfTimeExceeded = TimeSpan.FromMilliseconds(config.Timeout),
             };
 
+            // We create the instance of the dungeon generator and inject the correct Random instance
             var generator = new DungeonGenerator<RoomBase>(mapDescription, configuration);
             generator.InjectRandomGenerator(Payload.Random);
 
+            // Run the generator in a different class so that the computation is not blocking
             MapLayout<RoomBase> layout = null;
             var task = Task.Run(() => layout = generator.GenerateLayout());
 
@@ -68,12 +79,16 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
                 yield return null;
             }
 
+            // Throw an exception when a timeout is reached
+            // TODO: this should be our own exception and not a generic exception
             if (layout == null)
             {
                 throw new InvalidOperationException("Timeout was reached when generating level");
             }
 
+            // Transform the level to its Unity representation
             var generatedLevel = GeneratorUtils.TransformLayout(layout, levelDescription, rootGameObject); 
+
             var stats = new GeneratorStats()
             {
                 Iterations = generator.IterationsCount,
