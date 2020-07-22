@@ -20,8 +20,7 @@ const features = [
     title: <>Packed with features</>,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        The generator gives you complete control over the structure of levels and look of individual rooms. Generate dungeons, platformers or even isometric levels.
       </>
     ),
   },
@@ -29,8 +28,7 @@ const features = [
     title: <>Easy to customize</>,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        It's easy to customize generated levels. Add enemies, treasures, secret rooms. Almost anything is possible!
       </>
     ),
   },
@@ -46,7 +44,7 @@ function Feature({ imageUrl, title, description }) {
         </div>
       )}
       <h3>{title}</h3>
-      <p>{description}</p>
+      <p className="text--justify">{description}</p>
     </div>
   );
 }

@@ -110,7 +110,7 @@ function scrollToElement(hash) {
         if (element) {
             element.scrollIntoView();
           }
-    }, 750);
+    }, 1000);
 }
 
 export const FeatureUsage = (props) => {

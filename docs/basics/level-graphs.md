@@ -126,4 +126,44 @@ When we have our custom room or connection type ready, we have to configure the 
 
 ### Accessing room information
 
-If we add some additional information to the rooms or connection, we probably expect to somehow use this information later. The first step is to get access to the [RoomInstance][RoomInstance#properties] class which is described [here](../basics/generated-level-info.md). When we have an instance of this class, we can use the `RoomInstance.Room` property. This property is of the `RoomBase` type so we have to cast it to our custom room type.
+If we add some additional information to a room or connection, we probably expect to somehow use this information later. The first step is to get access to the [RoomInstance][RoomInstance#properties] class which is described [here](../basics/generated-level-info.md). When we have an instance of this class, we can use the `RoomInstance.Room` property. This property is of the `RoomBase` type so we have to cast it to our custom room type.
+
+### Custom colours in level graph editor
+
+It is also possible to change how custom rooms and connections look in the level graph editor. We just have to override the `GetEditorStyle()` method and return an instance of [RoomEditorStyle][RoomEditorStyle#properties] or [ConnectionEditorStyle][ConnectionEditorStyle#properties].
+
+    public class GungeonRoom : RoomBase
+    {
+        public GungeonRoomType Type;
+
+        /* ... */
+
+        public override RoomEditorStyle GetEditorStyle(bool isFocused)
+        {
+            var style = base.GetEditorStyle(isFocused);
+
+            var backgroundColor = style.BackgroundColor;
+
+            // Use different colors for different types of rooms
+            switch (Type)
+            {
+                case GungeonRoomType.Entrance:
+                    backgroundColor = new Color(38/256f, 115/256f, 38/256f);
+                    break;
+
+                /* ... */
+            }
+
+            style.BackgroundColor = backgroundColor;
+
+            // Darken the color when focused
+            if (isFocused)
+            {
+                style.BackgroundColor = Color.Lerp(style.BackgroundColor, Color.black, 0.7f);
+            }
+
+            return style;
+        }
+    }
+
+<Image src="img/v2/examples/gungeon/level_graph_1.png" caption="Different colours for special types of rooms" /> 

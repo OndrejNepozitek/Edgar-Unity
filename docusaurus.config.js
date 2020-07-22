@@ -5,9 +5,9 @@ const remarkBookmarks = require('remark-bookmarks')
 const path = require('path');
 
 module.exports = {
-  title: "Edgar - Procedural Level Generator",
+  title: "Edgar - Unity",
   tagline:
-    "Configurable Unity asset for procedural generation of 2D levels",
+    "Configurable 2D procedural level generator for Unity",
   url: "https://ondrejnepozitek.github.io",
   baseUrl: "/Edgar-Unity/",
   favicon: "img/favicon.ico",
@@ -17,7 +17,7 @@ module.exports = {
     googleAnalytics: {
       trackingID: 'UA-31904365-17',
     },
-    algolia: {
+    /*algolia: {
       apiKey: 'b81526b8f4babcdebfa613315ee05014',
       appId: '9O7CEE19VJ', // Add your own Application ID
       apiKey: '8110932a343db6ca7c086dae2e16edf5', // Set it to your own *search* API key
@@ -25,11 +25,11 @@ module.exports = {
       algoliaOptions: {
         facetFilters: [`version:${versions[0]}`],
       },
-    },
+    },*/
     sidebarCollapsible: false,
     navbar: {
       hideOnScroll: false,
-      title: "Edgar - Procedural Level Generator",
+      title: "Edgar - Unity",
       links: [
         { to: "versions", label: `v${latestVersion}`, position: "left" },
         {

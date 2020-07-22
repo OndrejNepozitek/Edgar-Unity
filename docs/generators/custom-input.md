@@ -86,3 +86,41 @@ Both ```LevelGraph``` and ```LevelDescription``` revolve around rooms and connec
     }
 
 ## Custom input implementation
+
+Custom inputs are quite similar to [Custom post-processing](../generators/post-process.md) logic. We have to create a class that inherits from `DungeonGeneratorInputBase`. And because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute so we are able to create an instance of that ScriptableObject. The `DungeonGeneratorInputBase` class has one abstract method that we need to implement - `LevelDescription GetLevelDescription()`:
+
+    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Docs/My custom input", fileName = "MyCustomInputSetup")]
+    public class CustomInputExample : DungeonGeneratorInputBase
+    {
+        protected override LevelDescription GetLevelDescription()
+        {
+            // Create level description
+        }
+    }
+
+After we implement the logic, we have to create an instance of that ScriptableObject by right clicking in the project view and *Create -> Dungeon generator -> Examples -> Docs -> My custom input*. And the last step is to switch the *Input Type* in the generator inspector to *Custom Input* and drag and drop the ScriptableObject instance to the *Custom Input Task* field.
+
+## Typical use cases
+
+### Add rooms to the level graph
+
+One typical use case is adding additional rooms (for example a random secret room) to an existing level graph. The workflow is usually as follows:
+
+1. Create static part of the level graph in the GUI
+2. Create a custom input task with a public level graph field that we will assign our level graph to
+3. Convert the `LevelGraph` to `LevelDescription` (as discussed above)
+4. Create additional rooms and connect them to existing rooms in the level description
+
+To make it easier to work with the graph of rooms and connections, `LevelDescription` has a `IGraph<RoomBase> GetGraph()` method to get the current graph of rooms. The graphs contains all the expected methods like getting all rooms or checking if two rooms are neighbours.
+
+For an example of how can this be implemented, see the [Enter the Gungeon](../examples/enter-the-gungeon.md) example where we connect a secret room to a random room in the graph.
+
+> **Note:** The graph which is returned by the `GetGraph()` method currently does not get updated when you modify the level description. You need to call the method again to get a new graph.
+
+### Assign room templates automatically
+
+Another typical use case is implementing custom logic for assigning room templates to individual rooms. For example, if we use [custom rooms](../basics/level-graphs#pro-custom-rooms-and-connections), we may want to assign room templates based on the type of the room instead of manually assigning room templates to individual rooms. This can be seen both in [Enter the Gungeon](../examples/enter-the-gungeon.md) and [Dead Cells](../examples/dead-cells.md) examples.
+
+### Procedural graphs
+
+It is also possible to have completely procedural structure of levels by creating the whole level description on the fly without any static parts.

@@ -5,7 +5,7 @@ title: (PRO) Dead Cells
 import { Image, Gallery, GalleryImage } from "@theme/Gallery";
 import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
 
-In this tutorial, we will look into how to generate levels similar to what we can see in [Dead Cells](https://store.steampowered.com/app/588650/Dead_Cells/).
+In this tutorial, we will look into how to generate levels similar to what we can see in [Dead Cells](https://store.steampowered.com/app/588650/Dead_Cells/). We will use [this tileset](https://szadiart.itch.io/pixel-platformer-castle) by [Szadi art.](https://szadiart.itch.io/) - be sure to check out their work if you like the tileset.
 
 > **Disclaimer:** We are in no way affiliated with the authors of the Dead Cells game and this plugin is not used in the game. This is only a case study about how to use this plugin to create something similar to what is done in that game.
 
