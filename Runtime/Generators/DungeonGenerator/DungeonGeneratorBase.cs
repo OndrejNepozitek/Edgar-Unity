@@ -139,16 +139,19 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
         protected override int OnUpgradeSerializedData(int version)
         {
 #pragma warning disable 618
-            if (OtherConfig != null)
+            if (version < 2)
             {
-                UseRandomSeed = OtherConfig.UseRandomSeed;
-                RandomGeneratorSeed = OtherConfig.RandomGeneratorSeed;
-                GenerateOnStart = OtherConfig.GenerateOnStart;
-            }
+                if (OtherConfig != null)
+                {
+                    UseRandomSeed = OtherConfig.UseRandomSeed;
+                    RandomGeneratorSeed = OtherConfig.RandomGeneratorSeed;
+                    GenerateOnStart = OtherConfig.GenerateOnStart;
+                }
 
-            if (AdvancedConfig != null)
-            {
-                ThrowExceptionsImmediately = AdvancedConfig.ThrowExceptionsImmediately;
+                if (AdvancedConfig != null)
+                {
+                    ThrowExceptionsImmediately = AdvancedConfig.ThrowExceptionsImmediately;
+                }
             }
 #pragma warning restore 618
 
