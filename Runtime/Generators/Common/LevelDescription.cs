@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using GeneralAlgorithms.DataStructures.Common;
 using GeneralAlgorithms.DataStructures.Graphs;
-using JetBrains.Annotations;
 using MapGeneration.Core.MapDescriptions;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
@@ -12,7 +11,9 @@ using RoomTemplate = MapGeneration.Core.MapDescriptions.RoomTemplate;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
-    // TODO: where to place this file?
+    /// <summary>
+    /// Class that describes the structure of a level. It contains all the rooms, connections and available room templates.
+    /// </summary>
     public class LevelDescription
     {
         private readonly List<ConnectionBase> connections = new List<ConnectionBase>();
@@ -22,7 +23,12 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         private readonly MapDescription<RoomBase> mapDescription = new MapDescription<RoomBase>();
         private readonly TwoWayDictionary<GameObject, RoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplate>();
         
-        public void AddRoom(RoomBase room, [NotNull] List<GameObject> roomTemplates)
+        /// <summary>
+        /// Adds a given room together with a list of available room templates.
+        /// </summary>
+        /// <param name="room">Room that is added to the level description.</param>
+        /// <param name="roomTemplates">Room templates that are available for the room.</param>
+        public void AddRoom(RoomBase room, List<GameObject> roomTemplates)
         {
             if (room == null) throw new ArgumentNullException(nameof(room));
             if (roomTemplates == null) throw new ArgumentNullException(nameof(roomTemplates));
@@ -31,14 +37,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             mapDescription.AddRoom(room, GetBasicRoomDescription(roomTemplates));
         }
 
-        public void AddRoom(RoomBase room, GameObject roomTemplate)
-        {
-            if (room == null) throw new ArgumentNullException(nameof(room));
-            if (roomTemplate == null) throw new ArgumentNullException(nameof(roomTemplate));
-
-            AddRoom(room, new List<GameObject> {roomTemplate});
-        }
-
+        /// <summary>
+        /// Adds a given connection without a corridor between the two rooms.
+        /// </summary>
+        /// <param name="connection">Connection that is added to the level description</param>
         public void AddConnection(ConnectionBase connection)
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
@@ -47,7 +49,13 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             mapDescription.AddConnection(connection.From, connection.To);
         }
 
-        public void AddCorridorConnection(ConnectionBase connection, List<GameObject> corridorRoomTemplates, RoomBase corridorRoom)
+        /// <summary>
+        /// Adds a given connection together with a corridor room between the two rooms.
+        /// </summary>
+        /// <param name="connection">Connection that is added to the level description</param>
+        /// <param name="corridorRoom">Room that represents the corridor room between the two rooms from the connection</param>
+        /// <param name="corridorRoomTemplates">Room templates that are available for the corridor</param>
+        public void AddCorridorConnection(ConnectionBase connection,RoomBase corridorRoom, List<GameObject> corridorRoomTemplates)
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
             if (corridorRoom == null) throw new ArgumentNullException(nameof(corridorRoom));
@@ -101,10 +109,32 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             return roomTemplate;
         }
 
-        // TODO: how to name this?
-        public MapDescription<RoomBase> GetMapDescription()
+        /// <summary>
+        /// Gets the map description.
+        /// </summary>
+        /// <returns></returns>
+        internal MapDescription<RoomBase> GetMapDescription()
         {
             return mapDescription;
+        }
+
+        
+        /// <summary>
+        /// Gets the mapping from room template game objects to room template instances.
+        /// </summary>
+        /// <returns></returns>
+        internal TwoWayDictionary<GameObject, RoomTemplate> GetPrefabToRoomTemplateMapping()
+        {
+            return prefabToRoomTemplateMapping;
+        }
+
+        /// <summary>
+        /// Gets the mapping from corridor rooms to corresponding connections.
+        /// </summary>
+        /// <returns></returns>
+        internal TwoWayDictionary<RoomBase, ConnectionBase> GetCorridorToConnectionMapping()
+        {
+            return corridorToConnectionMapping;
         }
 
         /// <summary>
@@ -133,16 +163,6 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         public IGraph<RoomBase> GetGraphWithCorridors()
         {
             return mapDescription.GetGraph();
-        }
-
-        public TwoWayDictionary<GameObject, RoomTemplate> GetPrefabToRoomTemplateMapping()
-        {
-            return prefabToRoomTemplateMapping;
-        }
-
-        public TwoWayDictionary<RoomBase, ConnectionBase> GetCorridorToConnectionMapping()
-        {
-            return corridorToConnectionMapping;
         }
     }
 }

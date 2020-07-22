@@ -29,19 +29,21 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
             EditorGUIUtility.labelWidth = EditorGUIUtility.currentViewWidth / 2f;
 
             EditorGUILayout.LabelField("Input config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.FixedLevelGraphConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBase.FixedLevelGraphConfig)));
             
             EditorGUILayout.LabelField("Generator config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.GeneratorConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBase.GeneratorConfig)));
 
             EditorGUILayout.LabelField("Post processing config", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.PostProcessConfig)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBase.PostProcessConfig)));
             customPostProcessTasksList.DoLayoutList(); 
 
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.UseRandomSeed)));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.RandomGeneratorSeed)));
-            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGenerator.GenerateOnStart)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBase.UseRandomSeed)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBase.RandomGeneratorSeed)));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBase.GenerateOnStart)));
+
+            serializedObject.ApplyModifiedProperties();
 
             EditorGUILayout.Space();
 

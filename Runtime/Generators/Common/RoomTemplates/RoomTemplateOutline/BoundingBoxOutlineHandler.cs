@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline
 {
+    /// <summary>
+    /// Bounding box outline handler.
+    /// </summary>
     public class BoundingBoxOutlineHandler : MonoBehaviour, IRoomTemplateOutlineHandler
     {
         [Min(0)]

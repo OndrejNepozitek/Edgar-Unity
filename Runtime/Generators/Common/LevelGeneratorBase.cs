@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using MapGeneration.Core.MapDescriptions;
-using MapGeneration.Utils;
-using Newtonsoft.Json;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
 using ProceduralLevelGenerator.Unity.Pipeline;
 using ProceduralLevelGenerator.Unity.Utils;
-using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Random = System.Random;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
+    /// <summary>
+    /// Base class for level generators.
+    /// </summary>
+    /// <typeparam name="TPayload"></typeparam>
     public abstract class LevelGeneratorBase<TPayload> : VersionedMonoBehaviour, ILevelGenerator where TPayload : class
     {
         private readonly Random seedsGenerator = new Random();

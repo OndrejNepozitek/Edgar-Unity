@@ -23,12 +23,18 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
 
         public void Draw(float zoom, Vector2 gridOffset)
         {
+            var style = Room.GetEditorStyle(Selection.activeObject == Room);
+
             var rect = GetRect(zoom, gridOffset);
 
-            var style = new GUIStyle(Selection.activeObject == Room ? LevelGraphEditorStyles.RoomNodeActive : LevelGraphEditorStyles.RoomNode);
-            style.fontSize = (int) (style.fontSize * zoom);
+            var rectStyle = new GUIStyle(LevelGraphEditorStyles.RoomNode);
+            rectStyle.fontSize = (int) (rectStyle.fontSize * zoom);
+            rectStyle.normal.textColor = style.TextColor;
 
-            GUI.Box(rect, Room.GetDisplayName(), style);
+            var oldBackgroundColor = GUI.backgroundColor;
+            GUI.backgroundColor = style.BackgroundColor;
+            GUI.Box(rect, Room.GetDisplayName(), rectStyle);
+            GUI.backgroundColor = oldBackgroundColor;
         }
     }
 }

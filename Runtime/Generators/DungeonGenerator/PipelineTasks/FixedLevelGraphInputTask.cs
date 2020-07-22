@@ -11,6 +11,10 @@ using UnityEngine;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
+    /// <summary>
+    /// Creates an input for the generator from a given level graph.
+    /// </summary>
+    /// <typeparam name="TPayload"></typeparam>
     public class FixedLevelGraphInputTask<TPayload> : PipelineTask<TPayload>
         where TPayload : class, IGraphBasedGeneratorPayload
     {
@@ -48,11 +52,15 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
             {
                 if (config.UseCorridors)
                 {
-                    var corridorRoom = (Room) ScriptableObject.CreateInstance(typeOfRooms);
-                    corridorRoom.Name = "Corridor";
+                    var corridorRoom = (RoomBase) ScriptableObject.CreateInstance(typeOfRooms);
 
-                    levelDescription.AddCorridorConnection(connection,
-                        GetRoomTemplates(config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates), corridorRoom);
+                    if (corridorRoom is Room basicRoom)
+                    {
+                        basicRoom.Name = "Corridor";
+                    }
+                    
+                    levelDescription.AddCorridorConnection(connection, corridorRoom,
+                        GetRoomTemplates(config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates));
                 }
                 else
                 {

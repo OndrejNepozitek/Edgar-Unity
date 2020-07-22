@@ -9,6 +9,10 @@ using ProceduralLevelGenerator.Unity.Pipeline;
 
 namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
 {
+    /// <summary>
+    /// Handles individual post-processing steps.
+    /// </summary>
+    /// <typeparam name="TPayload"></typeparam>
     public class PostProcessTask<TPayload> : PipelineTask<TPayload>
         where TPayload : class, IGraphBasedGeneratorPayload, IRandomGeneratorPayload
     {
