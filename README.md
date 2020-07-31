@@ -1,9 +1,3 @@
-<div></div>
-
-<p align="center">
-<img src="http://zuzka.nepozitek.cz/top5.png" width='800' />
-</p>
-
 <h1 align="center">
   <br>
   Edgar for Unity
