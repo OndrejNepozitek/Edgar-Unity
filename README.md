@@ -1,14 +1,14 @@
 <div></div>
 
+<p align="center">
+<img src="http://zuzka.nepozitek.cz/top5.png" width='800' />
+</p>
+
 <h1 align="center">
   <br>
   Edgar for Unity
   <br>
 </h1>
-
-<p align="center">
-<img src="http://zuzka.nepozitek.cz/top5.png" width='800' />
-</p>
 
 <h4 align="center">Procedural dungeon and platformer generator for Unity</h4>
 
