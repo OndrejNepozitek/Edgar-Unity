@@ -1,5 +1,31 @@
-# Edgar - Procedural Level Generator
-![Build](https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg)
+<h1 align="center">
+  <br>
+  Edgar for Unity
+  <br>
+</h1>
+
+<h4 align="center">Procedural dungeon and platformer generator for Unity</h4>
+
+<p align="center">
+  <a href="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg">
+     <img src="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg" />
+  </a>
+  <a href="https://github.com/OndrejNepozitek/Edgar-Unity/releases/tag/v2.0.0-alpha.5">
+     <img src="https://img.shields.io/github/v/release/OndrejNepozitek/Edgar-Unity" />
+  </a>
+  <a href="https://ondrejnepozitek.itch.io/edgar-pro">
+     <img src="https://img.shields.io/badge/itch.io-Edgar%20PRO-important" />
+  </a>
+  <a href="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue">
+     <img src="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue" />
+  </a>
+</p>
+
+
+                                                             
+<p align="center">
+<img src="http://zuzka.nepozitek.cz/output4.gif" width='600'"
+</p>
 
 This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a **complete control** over generated levels. It combines procedural generation and **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses my .NET [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
 
