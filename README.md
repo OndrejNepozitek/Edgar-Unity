@@ -39,48 +39,19 @@ The appearance of individual rooms is controlled with so-called room templates. 
 
 ## Key features
 
-- Graph-based approach
-- 
-- **Rooms either directly connected by doors or connected by corridors.** You can choose to either connect rooms by corridors or directly via doors.
+- **Graph-based approach** Control the structure of a level with a graph of rooms and connection
+- **Handmade room templates** Control the appearance of individual rooms with pre-authored room templates
+- Rooms either directly **connected by doors** or **connected by corridors.**
 - **Easy to customize.** The plugin is ready to be customized and extended.
 - **Supports Unity 2018.4 and newer**.
 - **2 example scenes included.**
 
 ## Limitations
-                                                             
-                                                             
-                                                             
-                                                             
-                                                             
-                                                             
-                                                             
-
-This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a **complete control** over generated levels. It combines procedural generation and **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses my .NET [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
-
-Similar approaches are used in games like [**Enter the Gungeon**](https://www.boristhebrave.com/2019/07/28/dungeon-generation-in-enter-the-gungeon/) or [**Dead Cells**](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania).
-
-## See the documentation and examples [here](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction).
-
-## Current state of the plugin
-
-This is an alpha version of the improved version 2 of the plugin. The current state is not ideal yet, but I think that it is better to use v2 if you are a new user. If you already use v1.x, there are some breaking changes in v2 so you have to think about whether to migrate or not (I would recommend to do so). You can find the latest v1.x release [here](https://github.com/OndrejNepozitek/Edgar-Unity/tree/v1.0.3).
-
-I am also working on a **PRO version** of the plugin that will be paid and will contain additional features like **platformers generator**, performance benchmarking tools, more control over the inputs for the generator, simple **fog of war**, more example scenes and other.
-
-**If you want to try the PRO version before it is officially released, you can buy it now on [itch.io](https://ondrejnepozitek.itch.io/edgar-pro) at a discounted price.**
-
-Current state of the PRO version:
-
-| Feature           | Description                                                                                                       | State                                                                                                                                                                                       |
-|-------------------|-------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Coroutines        | Call the generator as a coroutine so that the game does not freeze when generating a level                        | Done ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/dungeon-generator#pro-with-coroutines))                                                                          |
-| Custom rooms      | It is possible to add additional fields to rooms and connections in a level graph                                 | Done ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/basics/level-graphs#pro-custom-rooms-and-connections))                                                                      |
-| Platformers       | Generator that is able to produce platformer levels                                                               | Prototype ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/platformer-generator), [example](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/platformer-1)) |
-| Isometric         | Simple example of isometric levels                                                                                | Prototype ([example](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/isometric-1))                                                                                              |
-| Dead Cells        | Tutorial on how to generate levels that are similar to Dead Cells                                                 | Done ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/dead-cells))                                                                                                       |
-| Enter the Gungeon | Tutorial on how to generate levels that are similar to Enter the Gungeon                                          | Done ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/enter-the-gungeon/))                                                                                                |
-| Custom input      | Use custom input setup to modify a level graph before it is used in the generator (e.g. add a random secret room) | Done ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/custom-input))                                                                                                   |                                                                                                                     
-
+- **Alpha version.** There may be some **breaking changes** in the API.
+- **Some inputs are too hard for the generator.** You need to follow some guidelines in order to achieve good performance.
+- **Not suitable for large levels.** The generator usually works best for levels with less than 30 rooms.
+- **Not everything can be configured via editor.** You need to have programming knowledge in order to generate anything non-trivial.
+                                                                                                                    
 ## Installation
 
 There are several ways of installing the plugin:
@@ -115,23 +86,8 @@ Go to Releases and download the unitypackage that's included in every release. T
 #### How to update
 In order to be able to download a new version of the plugin, **we recommend to not change anything inside the Assets/ProceduralLevelGenerator folder**. At this stage of the project, files are often moved, renamed or deleted, and Unity does not handle that very well.
 
-The safest way to update to the new version is to completely remove the old version (*Assets/ProceduralLevelGenerator* directory) and then import the new version. (Make sure to backup your project before deleting anything.)
-
-## Features
-
-- **Complete control over the structure of generated level.** Instead of generating completely random dungeons, you specify how many rooms you want and how they should be connected and the algorithm generates levels that follow exactly that structure.
-- **Complete control over the look of individual rooms.** You can draw room templates using Unity built-in Tilemap feature. You can use all available tools (brushes, rule tiles, etc.) to design room templates.
-- **Rooms either directly connected by doors or connected by corridors.** You can choose to either connect rooms by corridors or directly via doors.
-- **Easy to customize.** The plugin is ready to be customized and extended.
-- **Supports Unity 2018.4 and newer**.
-- **2 example scenes included.**
-
-## Limitations
-- **Alpha version.** There may be some **breaking changes** in the API.
-- **Some inputs are too hard for the generator.** You need to follow some guidelines in order to achieve good performance.
-- **Not suitable for large levels.** The generator usually works best for levels with less than 30 rooms.
-- **Not everything can be configured via editor.** You need to have programming knowledge in order to generate anything non-trivial.
-
+The safest way to update to the new version is to completely remove the old version (*Assets/ProceduralLevelGenerator* directory) and then import the new version. (Make sure to backup your project before deleting anything.)                                                         
+                                                             
 ## Workflow 
 
 ### 1. Draw rooms and corridors
