@@ -17,6 +17,13 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 
 <ExampleFeatures id="dead-cells" />
 
+## Prerequisites
+
+To run the example, you need to:
+
+- Add a layer called *"StaticEnvironment"*
+- Enable *"Auto Sync Transforms"* in Physics2D settings
+
 ## Introduction
 
 Dead Cells is a rogue-lite, metroidvania inspired, action-platformer. They use procedural generation techniques to generate levels of the game. An article about their approach can be found [here](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania) and a video [here](https://www.youtube.com/watch?v=tyMrRW-Li_I).
