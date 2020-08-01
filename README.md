@@ -7,6 +7,9 @@
 <h4 align="center">Configurable procedural level generator for Unity</h4>
 
 <p align="center">
+  <a href="https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/">
+     <img src="https://img.shields.io/badge/online-docs-important" />
+  </a>
   <a href="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg">
      <img src="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg" />
   </a>
@@ -25,6 +28,7 @@
   <a href="#introduction">Introduction</a> |
   <a href="#key-features">Key features</a> |
   <a href="#limitations">Limitations</a> |
+  <a href="#getting-started">Getting started</a> |
   <a href="#installation">Installation</a> |
   <a href="#workflow">Example</a>
 </p>
@@ -63,13 +67,17 @@ The appearance of individual rooms is controlled with so-called room templates. 
 
 ## Key features
 
+- Procedural dungeon generator
 - Describe the structure of levels with a graph of rooms and connections 
 - Control the appearance of rooms with handmade room templates 
 - Connect rooms either directly with doors or with short corridors
 - Easy to customize with custom post-processing logic
 - Supports Unity 2018.4 and newer
-- [Detailed documentation](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/)
-- Example scenes included 
+- Currently works only in 2D but may support 3D in future
+- Comprehensive [documentation](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/)
+- Multiple example scenes included
+- (PRO) Procedural platformer generator
+- (PRO) Isometric levels support
 
 ## Limitations
 
@@ -77,7 +85,11 @@ The appearance of individual rooms is controlled with so-called room templates. 
 - Some level graphs may bee to hard for the generator - see the [guidelines](https://ondrejnepozitek.github.io/Edgar-Unity/docs/basics/performance-tips)
 - The graph-based approach is not suitable for large levels - we recommend less than 30 rooms
 - Not everything can be configured via editor - some programming knowledge is needed for more advanced setups
-                                                                                                                    
+                      
+## Getting started
+
+Install the asset (instructions are below) and head to the [documentation](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction). The documentation describes all the basics also contains information about multiple example scenes that should help you get started. 
+                      
 ## Installation
 
 There are several ways of installing the plugin:
