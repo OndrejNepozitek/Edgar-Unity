@@ -147,7 +147,7 @@ The safest way to update to the new version is to completely remove the old vers
 
 ### 2. Prepare the structure of the level
 
-![](https://ondrejnepozitek.github.io/Edgar-Unity/img/v2/examples/example1_level_graph2.png)
+<img src="https://ondrejnepozitek.github.io/Edgar-Unity/img/v2/examples/example1_level_graph2.png" height="500" />
 
 ### 3. Generate levels
 
