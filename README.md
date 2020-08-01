@@ -20,6 +20,30 @@
      <img src="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue" />
   </a>
 </p>
+
+<p align="center">
+  <a href="#introduction">Introduction</a> |
+  <a href="#key-features">Key features</a> |
+  <a href="#limitations">Limitations</a> |
+  <a href="#installation">Installation</a> |
+  <a href="#workflow>Example</a>
+</p>
+
+<!--
+<p align="center">
+  <a href="https://ondrejnepozitek.github.io/Edgar-Unity/">Website</a> |
+  <a href="https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/">Documentation</a> |
+  <a href="https://github.com/OndrejNepozitek/Edgar-Unity/releases">Releases</a> |
+  <a href="https://ondrejnepozitek.itch.io/edgar-pro">PRO version on itch.io</a> |
+</p>
+-->
+
+<!--
+<p align="center">
+  Need info? Check the <a href="https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/">docs</a> or <a href="https://ondrejnepozitek.github.io/Edgar-Unity/">website</a> |
+  Or <a href="https://github.com/OndrejNepozitek/Edgar-Unity/issues/new">create an issue</a>
+</p>
+-->
                                                    
 <p align="center">
 <img src="http://zuzka.nepozitek.cz/output4.gif" width='600'"
