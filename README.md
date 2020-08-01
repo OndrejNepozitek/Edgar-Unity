@@ -20,12 +20,40 @@
      <img src="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue" />
   </a>
 </p>
-
-
-                                                             
+                                                   
 <p align="center">
 <img src="http://zuzka.nepozitek.cz/output4.gif" width='600'"
 </p>
+                                                             
+## Introduction
+
+This project is a Unity plugin for procedural generation of 2D dungeons (and platformers) and aims to give game designers a **complete control** over generated levels. It combines **graph-based approach** to procedural generation with **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses [Edgar for .NET](https://github.com/OndrejNepozitek/Edgar-DotNet).
+
+### Graph-based approach
+
+You decide exactly how many rooms you want in a level and how they should be connected, and the generator produces levels that follow exactly that structure. Do you want a boss room at the end of each level? Or da shop room halfway through the level? Everything is possible with a graph-based approach.
+
+### Handmade room templates
+
+The appearance of individual rooms is controlled with so-called room templates. These are pre-authored building blocks from which the algorithm chooses when generating a level. They are created with Unity tilemaps but they can also contain additional game objects such as lights, enemies or chests with loot. You can also assign different room templates to different types of rooms. For example, a spawn room should probably look different than a boss room.
+
+## Key features
+
+- Graph-based approach
+- 
+- **Rooms either directly connected by doors or connected by corridors.** You can choose to either connect rooms by corridors or directly via doors.
+- **Easy to customize.** The plugin is ready to be customized and extended.
+- **Supports Unity 2018.4 and newer**.
+- **2 example scenes included.**
+
+## Limitations
+                                                             
+                                                             
+                                                             
+                                                             
+                                                             
+                                                             
+                                                             
 
 This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a **complete control** over generated levels. It combines procedural generation and **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses my .NET [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
 
