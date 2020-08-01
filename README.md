@@ -17,7 +17,7 @@
      <img src="https://img.shields.io/github/v/release/OndrejNepozitek/Edgar-Unity" />
   </a>
   <a href="https://ondrejnepozitek.itch.io/edgar-pro">
-     <img src="https://img.shields.io/badge/itch.io-Edgar%20PRO-important" />
+     <img src="https://img.shields.io/badge/itch.io-PRO%20version-important" />
   </a>
   <a href="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue">
      <img src="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue" />
@@ -26,6 +26,7 @@
 
 <p align="center">
   <a href="#introduction">Introduction</a> |
+  <a href="#pro-version">PRO version</a> |
   <a href="#key-features">Key features</a> |
   <a href="#limitations">Limitations</a> |
   <a href="#getting-started">Getting started</a> |
@@ -65,6 +66,8 @@ You decide exactly how many rooms you want in a level and how they should be con
 
 The appearance of individual rooms is controlled with so-called room templates. These are pre-authored building blocks from which the algorithm chooses when generating a level. They are created with Unity tilemaps but they can also contain additional game objects such as lights, enemies or chests with loot. You can also assign different room templates to different types of rooms. For example, a spawn room should probably look different than a boss room.
 
+## PRO version
+
 ## Key features
 
 - Procedural dungeon generator
@@ -88,7 +91,7 @@ The appearance of individual rooms is controlled with so-called room templates. 
                       
 ## Getting started
 
-Install the asset (instructions are below) and head to the [documentation](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction). The documentation describes all the basics also contains information about multiple example scenes that should help you get started. 
+Install the asset (instructions are below) and head to the [documentation](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction). The documentation describes all the basics and also multiple example scenes that should help you get started. 
                       
 ## Installation
 
