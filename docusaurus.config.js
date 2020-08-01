@@ -17,20 +17,25 @@ module.exports = {
     googleAnalytics: {
       trackingID: 'UA-31904365-17',
     },
-    /*algolia: {
+    algolia: {
       apiKey: 'b81526b8f4babcdebfa613315ee05014',
-      appId: '9O7CEE19VJ', // Add your own Application ID
-      apiKey: '8110932a343db6ca7c086dae2e16edf5', // Set it to your own *search* API key
       indexName: 'edgar-unity',
-      algoliaOptions: {
+      searchParameters: {
         facetFilters: [`version:${versions[0]}`],
       },
+    },
+    /*announcementBar: {
+      id: 'support_us',
+      content:
+        'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
+      backgroundColor: '#fafbfc', // Defaults to `#fff`.
+      textColor: '#091E42', // Defaults to `#000`.
     },*/
     sidebarCollapsible: false,
     navbar: {
       hideOnScroll: false,
       title: "Edgar - Unity",
-      links: [
+      items: [
         { to: "versions", label: `v${latestVersion}`, position: "left" },
         {
           label: 'Docs',

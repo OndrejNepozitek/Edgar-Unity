@@ -67,7 +67,7 @@ We must not forget to use this payload initializer when we setup the generator p
 
 #### Task config
 
-![](assets/procedural_level_graph_inspector.png)
+<Image src="img/original/procedural_level_graph_inspector.png" />
 
 ## Performance
 
