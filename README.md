@@ -26,8 +26,8 @@
 
 <p align="center">
   <a href="#introduction">Introduction</a> |
-  <a href="#pro-version">PRO version</a> |
   <a href="#key-features">Key features</a> |
+  <a href="#pro-version">PRO version</a> |
   <a href="#limitations">Limitations</a> |
   <a href="#getting-started">Getting started</a> |
   <a href="#installation">Installation</a> |
@@ -66,8 +66,6 @@ You decide exactly how many rooms you want in a level and how they should be con
 
 The appearance of individual rooms is controlled with so-called room templates. These are pre-authored building blocks from which the algorithm chooses when generating a level. They are created with Unity tilemaps but they can also contain additional game objects such as lights, enemies or chests with loot. You can also assign different room templates to different types of rooms. For example, a spawn room should probably look different than a boss room.
 
-## PRO version
-
 ## Key features
 
 - Procedural dungeon generator
@@ -79,8 +77,20 @@ The appearance of individual rooms is controlled with so-called room templates. 
 - Currently works only in 2D but may support 3D in future
 - Comprehensive [documentation](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/)
 - Multiple example scenes included
-- (PRO) Procedural platformer generator
-- (PRO) Isometric levels support
+
+## PRO version
+
+There are two versions of this asset - free version and PRO version. The free version contains the core functions of the generator and should be fine for simple procedural dungeons. The PRO version can be bought at [itch.io](https://ondrejnepozitek.itch.io/edgar-pro) and contains some additional features. As of now, the PRO version contains features like platformer generator or isometric levels and also two advanced example scenes. If you like this asset, please consider buying the PRO version to support the development.
+
+- Coroutines - Call the generator as a coroutine so that the game does not freeze when generating a level ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/dungeon-generator#pro-with-coroutines))
+- Custom rooms - It is possible to add additional fields to rooms and connections in a level graph ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/basics/level-graphs#pro-custom-rooms-and-connections))      
+- Platformers - Generator that is able to produce platformer levels ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/platformer-generator), [example](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/platformer-1))
+- Isometric - Simple example of isometric levels ([example](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/isometric-1))
+- Dead Cells - Tutorial on how to generate levels that are similar to Dead Cells ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/dead-cells))
+- Enter the Gungeon - Tutorial on how to generate levels that are similar to Enter the Gungeon ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/enter-the-gungeon/))
+- Custom input - Modify a level graph before it is used in the generator (e.g. add a random secret room) ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/custom-input))
+- (Planned) Fog of War
+- (Planned) Additional generators
 
 ## Limitations
 
