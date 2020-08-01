@@ -7,21 +7,11 @@
 <h4 align="center">Configurable procedural level generator for Unity</h4>
 
 <p align="center">
-  <a href="https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/">
-     <img src="https://img.shields.io/badge/online-docs-important" />
-  </a>
-  <a href="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg">
-     <img src="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg" />
-  </a>
-  <a href="https://github.com/OndrejNepozitek/Edgar-Unity/releases/tag/v2.0.0-alpha.5">
-     <img src="https://img.shields.io/github/v/release/OndrejNepozitek/Edgar-Unity" />
-  </a>
-  <a href="https://ondrejnepozitek.itch.io/edgar-pro">
-     <img src="https://img.shields.io/badge/itch.io-PRO%20version-important" />
-  </a>
-  <a href="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue">
-     <img src="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue" />
-  </a>
+  <a href="https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/"><img src="https://img.shields.io/badge/online-docs-important" /></a>
+  <a href="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg"><img src="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg" /></a>
+  <a href="https://github.com/OndrejNepozitek/Edgar-Unity/releases/tag/v2.0.0-alpha.5"><img src="https://img.shields.io/github/v/release/OndrejNepozitek/Edgar-Unity" /></a>
+  <a href="https://ondrejnepozitek.itch.io/edgar-pro"><img src="https://img.shields.io/badge/itch.io-PRO%20version-important" /></a>
+  <a href="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue"><img src="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue" /></a>
 </p>
 
 <p align="center">
