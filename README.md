@@ -21,7 +21,8 @@
   <a href="#limitations">Limitations</a> |
   <a href="#getting-started">Getting started</a> |
   <a href="#installation">Installation</a> |
-  <a href="#workflow">Example</a>
+  <a href="#workflow">Example</a> |
+  <a href="#get-in-touch">Get in touch</a>
 </p>
 
 <!--
@@ -152,6 +153,10 @@ The safest way to update to the new version is to completely remove the old vers
 ![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example2_result1.png)
 
 ![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example2_result_reallife1.png)
+
+## Get in touch
+
+If you have any questions, let me know at ondra-at-nepozitek.cz or create an issue here on github.
 
 ## Terms of use
 
