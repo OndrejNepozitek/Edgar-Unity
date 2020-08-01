@@ -24,13 +24,13 @@ module.exports = {
         facetFilters: [`version:${versions[0]}`],
       },
     },
-    /*announcementBar: {
+    announcementBar: {
       id: 'support_us',
       content:
-        'We are looking to revamp our docs, please fill <a target="_blank" rel="noopener noreferrer" href="#">this survey</a>',
+        'Check out the PRO version of the generator at <a href="https://ondrejnepozitek.itch.io/edgar-pro" target="_blank">itch.io</a>!',
       backgroundColor: '#fafbfc', // Defaults to `#fff`.
       textColor: '#091E42', // Defaults to `#000`.
-    },*/
+    },
     sidebarCollapsible: false,
     navbar: {
       hideOnScroll: false,
