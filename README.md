@@ -4,7 +4,7 @@
   <br>
 </h1>
 
-<h4 align="center">Procedural dungeon and platformer generator for Unity</h4>
+<h4 align="center">Configurable procedural level generator for Unity</h4>
 
 <p align="center">
   <a href="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg">
