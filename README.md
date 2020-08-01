@@ -39,14 +39,11 @@ The appearance of individual rooms is controlled with so-called room templates. 
 
 ## Key features
 
-- Describe the structure of levels with a graph of rooms and connections
-- Control the appearance of rooms with handmade room templates
+- Describe the structure of levels with a graph of rooms and connections 
+- Control the appearance of rooms with handmade room templates 
 - Connect rooms either directly with doors or with short corridors
 - Easy to customize with custom post-processing logic
-
-- **Easy to customize.** The plugin is ready to be customized and extended.
-- **Supports Unity 2018.4 and newer**.
-- **2 example scenes included.**
+- Supports Unity 2018.4 and newer
 
 ## Limitations
 - **Alpha version.** There may be some **breaking changes** in the API.
