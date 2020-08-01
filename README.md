@@ -44,12 +44,15 @@ The appearance of individual rooms is controlled with so-called room templates. 
 - Connect rooms either directly with doors or with short corridors
 - Easy to customize with custom post-processing logic
 - Supports Unity 2018.4 and newer
+- [Detailed documentation](https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/)
+- Example scenes included 
 
 ## Limitations
-- **Alpha version.** There may be some **breaking changes** in the API.
-- **Some inputs are too hard for the generator.** You need to follow some guidelines in order to achieve good performance.
-- **Not suitable for large levels.** The generator usually works best for levels with less than 30 rooms.
-- **Not everything can be configured via editor.** You need to have programming knowledge in order to generate anything non-trivial.
+
+- Still in alpha version - there may be some breaking changes in the API
+- Some level graphs may bee to hard for the generator - see the [guidelines](https://ondrejnepozitek.github.io/Edgar-Unity/docs/basics/performance-tips)
+- The graph-based approach is not suitable for large levels - we recommend less than 30 rooms
+- Not everything can be configured via editor - some programming knowledge is needed for more advanced setups
                                                                                                                     
 ## Installation
 
