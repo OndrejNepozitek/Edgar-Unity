@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using MapGeneration.Core.MapLayouts;
+using Edgar.GraphBasedGenerator.Grid2D;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
@@ -20,10 +20,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// </summary>
         public GameObject RootGameObject { get; }
 
-        private readonly MapLayout<RoomBase> mapLayout;
+        private readonly LayoutGrid2D<RoomBase> mapLayout;
         private readonly Dictionary<RoomBase, RoomInstance> roomInstances;
 
-        public GeneratedLevel(Dictionary<RoomBase, RoomInstance> roomInstances, MapLayout<RoomBase> mapLayout, GameObject rootGameObject)
+        public GeneratedLevel(Dictionary<RoomBase, RoomInstance> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject)
         {
             this.roomInstances = roomInstances;
             this.mapLayout = mapLayout;
@@ -53,7 +53,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// Gets the internal representation of the generated layout.
         /// </summary>
         /// <returns></returns>
-        public MapLayout<RoomBase> GetInternalLayoutRepresentation()
+        public LayoutGrid2D<RoomBase> GetInternalLayoutRepresentation()
         {
             return mapLayout;
         }

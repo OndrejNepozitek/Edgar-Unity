@@ -1,5 +1,4 @@
 ﻿using System;
-using MapGeneration.Core.Doors;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
 using ProceduralLevelGenerator.Unity.Utils;
@@ -297,7 +296,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
             try
             {
                 var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
-                var doorPositions = DoorHandler.DefaultHandler.GetDoorPositions(polygon, doors.GetDoorMode());
+                var doorPositions = doors.GetDoorMode().GetDoors(polygon);
 
                 if (doorPositions.Count != doors.DoorsList.Count)
                 {

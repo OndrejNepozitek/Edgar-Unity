@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using MapGeneration.Core.MapDescriptions;
-using MapGeneration.Utils;
-using Newtonsoft.Json;
 using ProceduralLevelGenerator.Unity.Attributes;
 using ProceduralLevelGenerator.Unity.Generators.Common;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
@@ -97,44 +94,44 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 
         public void ExportMapDescription()
         {
-            var payload = InitializePayload();
-            var inputSetup = GetInputTask();
+            //var payload = InitializePayload();
+            //var inputSetup = GetInputTask();
 
-            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>> {inputSetup};
+            //var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>> {inputSetup};
 
-            PipelineRunner.Run(pipelineItems, payload);
+            //PipelineRunner.Run(pipelineItems, payload);
 
-            var levelDescription = payload.LevelDescription;
-            var mapDescription = levelDescription.GetMapDescription();
-            var intMapDescription = GetIntMapDescription(mapDescription);
-            var json = JsonConvert.SerializeObject(intMapDescription, Formatting.Indented, new JsonSerializerSettings()
-            {
-                PreserveReferencesHandling = PreserveReferencesHandling.All,
-                TypeNameHandling = TypeNameHandling.Auto,
-            });
+            //var levelDescription = payload.LevelDescription;
+            //var mapDescription = levelDescription.GetMapDescription();
+            //var intMapDescription = GetIntMapDescription(mapDescription);
+            //var json = JsonConvert.SerializeObject(intMapDescription, Formatting.Indented, new JsonSerializerSettings()
+            //{
+            //    PreserveReferencesHandling = PreserveReferencesHandling.All,
+            //    TypeNameHandling = TypeNameHandling.Auto,
+            //});
 
-            var filename = "exportedMapDescription.json";
-            File.WriteAllText(filename, json);
-            Debug.Log($"Map description exported to {filename}");
+            //var filename = "exportedMapDescription.json";
+            //File.WriteAllText(filename, json);
+            //Debug.Log($"Map description exported to {filename}");
         }
 
-        private MapDescription<int> GetIntMapDescription(MapDescription<RoomBase> mapDescription)
-        {
-            var newMapDescription = new MapDescription<int>();
-            var mapping = mapDescription.GetGraph().Vertices.CreateIntMapping();
+        //private MapDescription<int> GetIntMapDescription(MapDescription<RoomBase> mapDescription)
+        //{
+        //    var newMapDescription = new MapDescription<int>();
+        //    var mapping = mapDescription.GetGraph().Vertices.CreateIntMapping();
 
-            foreach (var vertex in mapDescription.GetGraph().Vertices)
-            {
-                newMapDescription.AddRoom(mapping[vertex], mapDescription.GetRoomDescription(vertex));
-            }
+        //    foreach (var vertex in mapDescription.GetGraph().Vertices)
+        //    {
+        //        newMapDescription.AddRoom(mapping[vertex], mapDescription.GetRoomDescription(vertex));
+        //    }
 
-            foreach (var edge in mapDescription.GetGraph().Edges)
-            {
-                newMapDescription.AddConnection(mapping[edge.From], mapping[edge.To]);
-            }
+        //    foreach (var edge in mapDescription.GetGraph().Edges)
+        //    {
+        //        newMapDescription.AddConnection(mapping[edge.From], mapping[edge.To]);
+        //    }
 
-            return newMapDescription;
-        }
+        //    return newMapDescription;
+        //}
 
         protected override int OnUpgradeSerializedData(int version)
         {

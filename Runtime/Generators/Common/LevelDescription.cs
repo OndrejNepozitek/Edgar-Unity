@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneralAlgorithms.DataStructures.Common;
-using GeneralAlgorithms.DataStructures.Graphs;
-using MapGeneration.Core.MapDescriptions;
+using Edgar.GraphBasedGenerator.Grid2D;
+using Edgar.Graphs;
+using Edgar.Legacy.GeneralAlgorithms.DataStructures.Common;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
-using RoomTemplate = MapGeneration.Core.MapDescriptions.RoomTemplate;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common
 {
@@ -17,11 +16,11 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
     public class LevelDescription
     {
         private readonly List<ConnectionBase> connections = new List<ConnectionBase>();
-        private readonly List<CorridorRoomDescription> corridorRoomDescriptions = new List<CorridorRoomDescription>();
+        private readonly List<RoomDescriptionGrid2D> corridorRoomDescriptions = new List<RoomDescriptionGrid2D>();
 
         private readonly TwoWayDictionary<RoomBase, ConnectionBase> corridorToConnectionMapping = new TwoWayDictionary<RoomBase, ConnectionBase>();
-        private readonly MapDescription<RoomBase> mapDescription = new MapDescription<RoomBase>();
-        private readonly TwoWayDictionary<GameObject, RoomTemplate> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplate>();
+        private readonly LevelDescriptionGrid2D<RoomBase> levelDescription = new LevelDescriptionGrid2D<RoomBase>();
+        private readonly TwoWayDictionary<GameObject, RoomTemplateGrid2D> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplateGrid2D>();
         
         /// <summary>
         /// Adds a given room together with a list of available room templates.
@@ -34,7 +33,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             if (roomTemplates == null) throw new ArgumentNullException(nameof(roomTemplates));
             if (roomTemplates.Count == 0) throw new ArgumentException($"There must be at least one room template for each room. Room: {room}", nameof(roomTemplates));
 
-            mapDescription.AddRoom(room, GetBasicRoomDescription(roomTemplates));
+            levelDescription.AddRoom(room, GetBasicRoomDescription(roomTemplates));
         }
 
         /// <summary>
@@ -46,7 +45,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             if (connection == null) throw new ArgumentNullException(nameof(connection));
 
             connections.Add(connection);
-            mapDescription.AddConnection(connection.From, connection.To);
+            levelDescription.AddConnection(connection.From, connection.To);
         }
 
         /// <summary>
@@ -65,17 +64,17 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
             corridorToConnectionMapping.Add(corridorRoom, connection);
 
             var corridorRoomDescription = GetCorridorRoomDescription(corridorRoomTemplates);
-            mapDescription.AddRoom(corridorRoom, corridorRoomDescription);
-            mapDescription.AddConnection(connection.From, corridorRoom);
-            mapDescription.AddConnection(connection.To, corridorRoom);
+            levelDescription.AddRoom(corridorRoom, corridorRoomDescription);
+            levelDescription.AddConnection(connection.From, corridorRoom);
+            levelDescription.AddConnection(connection.To, corridorRoom);
         }
 
-        private BasicRoomDescription GetBasicRoomDescription(List<GameObject> roomTemplatePrefabs)
+        private RoomDescriptionGrid2D GetBasicRoomDescription(List<GameObject> roomTemplatePrefabs)
         {
-            return new BasicRoomDescription(roomTemplatePrefabs.Select(GetRoomTemplate).ToList());
+            return new RoomDescriptionGrid2D(false, roomTemplatePrefabs.Select(GetRoomTemplate).ToList());
         }
 
-        private CorridorRoomDescription GetCorridorRoomDescription(List<GameObject> roomTemplatePrefabs)
+        private RoomDescriptionGrid2D GetCorridorRoomDescription(List<GameObject> roomTemplatePrefabs)
         {
             foreach (var existingRoomDescription in corridorRoomDescriptions)
             {
@@ -90,13 +89,13 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
                 }
             }
 
-            var corridorRoomDescription = new CorridorRoomDescription(roomTemplatePrefabs.Select(GetRoomTemplate).ToList());
+            var corridorRoomDescription = new RoomDescriptionGrid2D(true,roomTemplatePrefabs.Select(GetRoomTemplate).ToList());
             corridorRoomDescriptions.Add(corridorRoomDescription);
 
             return corridorRoomDescription;
         }
 
-        private RoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab)
+        private RoomTemplateGrid2D GetRoomTemplate(GameObject roomTemplatePrefab)
         {
             if (prefabToRoomTemplateMapping.ContainsKey(roomTemplatePrefab))
             {
@@ -113,9 +112,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// Gets the map description.
         /// </summary>
         /// <returns></returns>
-        internal MapDescription<RoomBase> GetMapDescription()
+        internal LevelDescriptionGrid2D<RoomBase> GetLevelDescription()
         {
-            return mapDescription;
+            return levelDescription;
         }
 
         
@@ -123,7 +122,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// Gets the mapping from room template game objects to room template instances.
         /// </summary>
         /// <returns></returns>
-        internal TwoWayDictionary<GameObject, RoomTemplate> GetPrefabToRoomTemplateMapping()
+        internal TwoWayDictionary<GameObject, RoomTemplateGrid2D> GetPrefabToRoomTemplateMapping()
         {
             return prefabToRoomTemplateMapping;
         }
@@ -148,7 +147,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// <returns></returns>
         public IGraph<RoomBase> GetGraph()
         {
-            return mapDescription.GetStageOneGraph();
+            return levelDescription.GetGraphWithoutCorridors();
         }
 
         /// <summary>
@@ -162,7 +161,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common
         /// <returns></returns>
         public IGraph<RoomBase> GetGraphWithCorridors()
         {
-            return mapDescription.GetGraph();
+            return levelDescription.GetGraph();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using MapGeneration.Core.MapLayouts;
+using Edgar.GraphBasedGenerator.Grid2D;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
 using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
@@ -15,7 +15,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads
     /// <typeparam name="TRoom"></typeparam>
     public class PipelinePayload<TRoom> : IGeneratorPayload, IGraphBasedGeneratorPayload, IRandomGeneratorPayload, IBenchmarkInfoPayload
     {
-        public MapLayout<Room> GeneratedLayout { get; set; }
+        public LayoutGrid2D<Room> GeneratedLayout { get; set; }
 
         public int Iterations { get; set; }
 

@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Linq;
 using System.Threading.Tasks;
-using MapGeneration.Core.LayoutGenerators.DungeonGenerator;
-using MapGeneration.Core.MapLayouts;
+using Edgar.GraphBasedGenerator.Common;
+using Edgar.GraphBasedGenerator.Grid2D;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
 using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
@@ -58,20 +58,21 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
             }
 
             // The LevelDescription class must be converted to MapDescription
-            var mapDescription = levelDescription.GetMapDescription();
-            var configuration = new DungeonGeneratorConfiguration<RoomBase>()
+            var levelDescriptionGrid2D = levelDescription.GetLevelDescription();
+            levelDescriptionGrid2D.MinimumRoomDistance = 1;
+            levelDescriptionGrid2D.RoomTemplateRepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride);
+
+            var configuration = new GraphBasedGeneratorConfiguration<RoomBase>()
             {
-                RoomsCanTouch = false,
-                RepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride),
                 EarlyStopIfTimeExceeded = TimeSpan.FromMilliseconds(config.Timeout),
             };
 
             // We create the instance of the dungeon generator and inject the correct Random instance
-            var generator = new DungeonGenerator<RoomBase>(mapDescription, configuration);
+            var generator = new GraphBasedGeneratorGrid2D<RoomBase>(levelDescriptionGrid2D, configuration);
             generator.InjectRandomGenerator(Payload.Random);
 
             // Run the generator in a different class so that the computation is not blocking
-            MapLayout<RoomBase> layout = null;
+            LayoutGrid2D<RoomBase> layout = null;
             var task = Task.Run(() => layout = generator.GenerateLayout());
 
             while (!task.IsCompleted)

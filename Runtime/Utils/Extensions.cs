@@ -1,31 +1,31 @@
 ﻿using System.Collections.Generic;
-using GeneralAlgorithms.DataStructures.Common;
-using UnityEditor;
+using Edgar.Geometry;
 using UnityEngine;
+using Vector2Int = UnityEngine.Vector2Int;
 #if UNITY_EDITOR
-
+using UnityEditor;
 #endif
 
 namespace ProceduralLevelGenerator.Unity.Utils
 {
     public static class Extensions
     {
-        public static Vector3 ToVector3(this IntVector2 vector)
+        public static Vector3 ToVector3(this Edgar.Geometry.Vector2Int vector)
         {
             return new Vector3(vector.X, vector.Y);
         }
 
-        public static IntVector2 ToCustomIntVector2(this Vector2Int vector)
+        public static Edgar.Geometry.Vector2Int ToCustomIntVector2(this Vector2Int vector)
         {
-            return new IntVector2(vector.x, vector.y);
+            return new Edgar.Geometry.Vector2Int(vector.x, vector.y);
         }
 
-        public static IntVector2 ToCustomIntVector2(this Vector3Int vector)
+        public static Edgar.Geometry.Vector2Int ToCustomIntVector2(this Vector3Int vector)
         {
-            return new IntVector2(vector.x, vector.y);
+            return new Edgar.Geometry.Vector2Int(vector.x, vector.y);
         }
 
-        public static Vector3Int ToUnityIntVector3(this IntVector2 vector)
+        public static Vector3Int ToUnityIntVector3(this Edgar.Geometry.Vector2Int vector)
         {
             return new Vector3Int(vector.X, vector.Y, 0);
         }
@@ -42,7 +42,7 @@ namespace ProceduralLevelGenerator.Unity.Utils
         }
 
         // TODO: not nice
-        public static Vector3Int Transform(this Vector3Int vector, Transformation transformation)
+        public static Vector3Int Transform(this Vector3Int vector, TransformationGrid2D transformation)
         {
             return vector.ToCustomIntVector2().Transform(transformation).ToUnityIntVector3();
         }

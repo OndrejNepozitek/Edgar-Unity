@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneralAlgorithms.Algorithms.Polygons;
-using GeneralAlgorithms.DataStructures.Common;
-using GeneralAlgorithms.DataStructures.Polygons;
+using Edgar.Geometry;
+using Edgar.Legacy.GeneralAlgorithms.Algorithms.Polygons;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
+using Vector2Int = UnityEngine.Vector2Int;
 
 namespace ProceduralLevelGenerator.Unity.Utils
 {
@@ -15,7 +15,7 @@ namespace ProceduralLevelGenerator.Unity.Utils
         [SerializeField]
         private List<Vector2Int> points;
 
-        private GridPolygon gridPolygon;
+        private PolygonGrid2D gridPolygon;
 
         private static readonly IPolygonPartitioning PolygonPartitioning = new CachedPolygonPartitioning(new GridPolygonPartitioning());
 
@@ -31,7 +31,7 @@ namespace ProceduralLevelGenerator.Unity.Utils
             CheckValidity();
         }
 
-        public Polygon2D(GridPolygon polygon)
+        public Polygon2D(PolygonGrid2D polygon)
         {
             points = polygon.GetPoints().Select(x => (Vector2Int) x.ToUnityIntVector3()).ToList();
             gridPolygon = polygon;
@@ -75,17 +75,17 @@ namespace ProceduralLevelGenerator.Unity.Utils
             GetGridPolygon();
         }
 
-        public GridPolygon GetGridPolygon()
+        public PolygonGrid2D GetGridPolygon()
         {
             if (gridPolygon == null)
             {
-                gridPolygon = new GridPolygon(points.Select(x => x.ToCustomIntVector2()));
+                gridPolygon = new PolygonGrid2D(points.Select(x => x.ToCustomIntVector2()));
             }
 
             return gridPolygon;
         }
 
-        private List<Vector2Int> GetAllPoints(GridRectangle rectangle)
+        private List<Vector2Int> GetAllPoints(RectangleGrid2D rectangle)
         {
             var points = new List<Vector2Int>();
 
@@ -93,7 +93,7 @@ namespace ProceduralLevelGenerator.Unity.Utils
             {
                 for (int j = 0; j < rectangle.Height; j++)
                 {
-                    points.Add((Vector2Int) (rectangle.A + new IntVector2(i, j)).ToUnityIntVector3());
+                    points.Add((Vector2Int) (rectangle.A + new Edgar.Geometry.Vector2Int(i, j)).ToUnityIntVector3());
                 }
             }
 

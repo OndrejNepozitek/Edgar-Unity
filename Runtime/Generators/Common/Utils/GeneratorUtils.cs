@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using MapGeneration.Core.MapDescriptions.Interfaces;
-using MapGeneration.Core.MapLayouts;
+using Edgar.Geometry;
+using Edgar.GraphBasedGenerator.Common;
+using Edgar.GraphBasedGenerator.Grid2D;
 using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
 using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
-using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
+using Vector2Int = UnityEngine.Vector2Int;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 {
     public static class GeneratorUtils
     {
-        public static GeneratedLevel TransformLayout(MapLayout<RoomBase> layout, LevelDescription levelDescription, GameObject rootGameObject)
+        public static GeneratedLevel TransformLayout(LayoutGrid2D<RoomBase> layout, LevelDescription levelDescription, GameObject rootGameObject)
         {
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
@@ -27,7 +28,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
 
             // Initialize rooms
             var layoutData = new Dictionary<RoomBase, RoomInstance>();
-            var layoutRooms = layout.Rooms.ToDictionary(x => x.Node, x => x);
+            var layoutRooms = layout.Rooms.ToDictionary(x => x.Room, x => x);
             foreach (var layoutRoom in layoutRooms.Values)
             {
                 var roomTemplatePrefab = prefabToRoomTemplateMapping.GetByValue(layoutRoom.RoomTemplate);
@@ -35,17 +36,17 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
                 // Instantiate room template
                 var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
-                roomTemplateInstance.name = $"{layoutRoom.Node.GetDisplayName()} - {roomTemplatePrefab.name}";
+                roomTemplateInstance.name = $"{layoutRoom.Room.GetDisplayName()} - {roomTemplatePrefab.name}";
                 
                 // Compute correct room position
                 var position = layoutRoom.Position.ToUnityIntVector3();
                 roomTemplateInstance.transform.position = position;
 
                 // Compute outline polygon
-                var polygon = new Polygon2D(layoutRoom.Shape + layoutRoom.Position);
+                var polygon = new Polygon2D(layoutRoom.Outline + layoutRoom.Position);
 
-                var connection = layoutRoom.IsCorridor ? corridorToConnectionMapping[layoutRoom.Node] : null;
-                var roomInstance = new RoomInstance(layoutRoom.Node, layoutRoom.IsCorridor, connection, roomTemplatePrefab, roomTemplateInstance, position, polygon);
+                var connection = layoutRoom.IsCorridor ? corridorToConnectionMapping[layoutRoom.Room] : null;
+                var roomInstance = new RoomInstance(layoutRoom.Room, layoutRoom.IsCorridor, connection, roomTemplatePrefab, roomTemplateInstance, position, polygon);
 
                 // Add room info to the GameObject
                 var roomInfo = roomTemplateInstance.GetComponent<RoomInfo>();
@@ -58,7 +59,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
                 roomInfo = roomTemplateInstance.AddComponent<RoomInfo>();
                 roomInfo.RoomInstance = roomInstance;
 
-                layoutData.Add(layoutRoom.Node, roomInstance);
+                layoutData.Add(layoutRoom.Room, roomInstance);
             }
 
             foreach (var roomInstance in layoutData.Values)
@@ -80,30 +81,30 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
             return new GeneratedLevel(layoutData, layout, rootGameObject);
         }
 
-        private static List<DoorInstance> TransformDoorInfo(IEnumerable<DoorInfo<RoomBase>> doorInfos, Dictionary<RoomBase, RoomInstance> roomInstances)
+        private static List<DoorInstance> TransformDoorInfo(IEnumerable<LayoutDoorGrid2D<RoomBase>> doorInfos, Dictionary<RoomBase, RoomInstance> roomInstances)
         {
-            return doorInfos.Select(x => TransformDoorInfo(x, roomInstances[x.Node])).ToList();
+            return doorInfos.Select(x => TransformDoorInfo(x, roomInstances[x.ToRoom])).ToList();
         }
 
-        private static DoorInstance TransformDoorInfo(DoorInfo<RoomBase> doorInfo, RoomInstance connectedRoomInstance)
+        private static DoorInstance TransformDoorInfo(LayoutDoorGrid2D<RoomBase> doorInfo, RoomInstance connectedRoomInstance)
         {
             var doorLine = doorInfo.DoorLine;
 
             switch (doorLine.GetDirection())
             {
-                case OrthogonalLine.Direction.Right:
+                case OrthogonalLineGrid2D.Direction.Right:
                     return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
-                case OrthogonalLine.Direction.Left:
+                case OrthogonalLineGrid2D.Direction.Left:
                     return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
-                case OrthogonalLine.Direction.Top:
+                case OrthogonalLineGrid2D.Direction.Top:
                     return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
-                case OrthogonalLine.Direction.Bottom:
+                case OrthogonalLineGrid2D.Direction.Bottom:
                     return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
@@ -112,7 +113,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
             }
         }
 
-        public static RepeatMode? GetRepeatMode(RepeatModeOverride repeatModeOverride)
+        public static RoomTemplateRepeatMode? GetRepeatMode(RepeatModeOverride repeatModeOverride)
         {
             switch (repeatModeOverride)
             {
@@ -120,13 +121,13 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
                     return null;
 
                 case RepeatModeOverride.AllowRepeat:
-                    return RepeatMode.AllowRepeat;
+                    return RoomTemplateRepeatMode.AllowRepeat;
 
                 case RepeatModeOverride.NoImmediate:
-                    return RepeatMode.NoImmediate;
+                    return RoomTemplateRepeatMode.NoImmediate;
 
                 case RepeatModeOverride.NoRepeat:
-                    return RepeatMode.NoRepeat;
+                    return RoomTemplateRepeatMode.NoRepeat;
 
                 default:
                     throw new ArgumentOutOfRangeException();
