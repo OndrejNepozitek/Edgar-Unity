@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Edgar.Geometry;
 using UnityEngine;
-using Vector2Int = UnityEngine.Vector2Int;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -10,22 +9,22 @@ namespace ProceduralLevelGenerator.Unity.Utils
 {
     public static class Extensions
     {
-        public static Vector3 ToVector3(this Edgar.Geometry.Vector2Int vector)
+        public static Vector3 ToVector3(this Edgar.Geometry.EdgarVector2Int vector)
         {
             return new Vector3(vector.X, vector.Y);
         }
 
-        public static Edgar.Geometry.Vector2Int ToCustomIntVector2(this Vector2Int vector)
+        public static EdgarVector2Int ToCustomIntVector2(this Vector2Int vector)
         {
-            return new Edgar.Geometry.Vector2Int(vector.x, vector.y);
+            return new Edgar.Geometry.EdgarVector2Int(vector.x, vector.y);
         }
 
-        public static Edgar.Geometry.Vector2Int ToCustomIntVector2(this Vector3Int vector)
+        public static EdgarVector2Int ToCustomIntVector2(this Vector3Int vector)
         {
-            return new Edgar.Geometry.Vector2Int(vector.x, vector.y);
+            return new Edgar.Geometry.EdgarVector2Int(vector.x, vector.y);
         }
 
-        public static Vector3Int ToUnityIntVector3(this Edgar.Geometry.Vector2Int vector)
+        public static Vector3Int ToUnityIntVector3(this EdgarVector2Int vector)
         {
             return new Vector3Int(vector.X, vector.Y, 0);
         }

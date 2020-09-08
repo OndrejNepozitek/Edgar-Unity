@@ -93,7 +93,7 @@ namespace ProceduralLevelGenerator.Unity.Utils
             {
                 for (int j = 0; j < rectangle.Height; j++)
                 {
-                    points.Add((Vector2Int) (rectangle.A + new Edgar.Geometry.Vector2Int(i, j)).ToUnityIntVector3());
+                    points.Add((Vector2Int) (rectangle.A + new EdgarVector2Int(i, j)).ToUnityIntVector3());
                 }
             }
 

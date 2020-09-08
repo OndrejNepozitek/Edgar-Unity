@@ -11,7 +11,6 @@ using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
 using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Vector2Int = Edgar.Geometry.Vector2Int;
 
 namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
 {
@@ -32,12 +31,12 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
                 throw new ArgumentException("There must be at least one point");
             }
 
-            var orderedDirections = new Dictionary<Vector2Int, List<Vector2Int>>
+            var orderedDirections = new Dictionary<EdgarVector2Int, List<EdgarVector2Int>>
             {
-                {IntVector2Helper.Top, new List<Vector2Int> {IntVector2Helper.Left, IntVector2Helper.Top, IntVector2Helper.Right}},
-                {IntVector2Helper.Right, new List<Vector2Int> {IntVector2Helper.Top, IntVector2Helper.Right, IntVector2Helper.Bottom}},
-                {IntVector2Helper.Bottom, new List<Vector2Int> {IntVector2Helper.Right, IntVector2Helper.Bottom, IntVector2Helper.Left}},
-                {IntVector2Helper.Left, new List<Vector2Int> {IntVector2Helper.Bottom, IntVector2Helper.Left, IntVector2Helper.Top}}
+                {IntVector2Helper.Top, new List<EdgarVector2Int> {IntVector2Helper.Left, IntVector2Helper.Top, IntVector2Helper.Right}},
+                {IntVector2Helper.Right, new List<EdgarVector2Int> {IntVector2Helper.Top, IntVector2Helper.Right, IntVector2Helper.Bottom}},
+                {IntVector2Helper.Bottom, new List<EdgarVector2Int> {IntVector2Helper.Right, IntVector2Helper.Bottom, IntVector2Helper.Left}},
+                {IntVector2Helper.Left, new List<EdgarVector2Int> {IntVector2Helper.Bottom, IntVector2Helper.Left, IntVector2Helper.Top}}
             };
 
             var allPointsInternal = allPoints.Select(x => x.ToCustomIntVector2()).ToHashSet();
@@ -48,7 +47,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
             var startingPoint = smallestXYPoint;
             var startingDirection = IntVector2Helper.Top;
 
-            var polygonPoints = new List<Vector2Int>();
+            var polygonPoints = new List<EdgarVector2Int>();
             var currentPoint = startingPoint + startingDirection;
             var firstPoint = currentPoint;
             var previousDirection = startingDirection;
@@ -62,7 +61,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
             while (true)
             {
                 var foundNeighbor = false;
-                var currentDirection = new Vector2Int();
+                var currentDirection = new EdgarVector2Int();
 
                 foreach (var directionVector in orderedDirections[previousDirection])
                 {
@@ -195,7 +194,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
             return roomDescription;
         }
 
-        public static bool IsClockwiseOriented(IList<Vector2Int> points)
+        public static bool IsClockwiseOriented(IList<EdgarVector2Int> points)
         {
             var previous = points[points.Count - 1];
             var sum = 0L;
