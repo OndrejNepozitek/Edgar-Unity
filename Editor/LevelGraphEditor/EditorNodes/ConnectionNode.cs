@@ -1,8 +1,8 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+﻿using Edgar.Unity.Generators.Common.LevelGraph;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
+namespace Edgar.Unity.Editor.LevelGraphEditor.EditorNodes
 {
     public class ConnectionNode
     {

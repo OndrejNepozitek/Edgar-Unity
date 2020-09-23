@@ -1,16 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ProceduralLevelGenerator.Unity.Examples.Example2.Scripts;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
+using Edgar.Unity.Examples.Example2.Scripts;
+using Edgar.Unity.Generators.Common.LevelGraph;
+using Edgar.Unity.Generators.Common.Utils;
+using Edgar.Unity.Generators.DungeonGenerator;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.TestTools;
 
-namespace ProceduralLevelGenerator.Unity.Tests.Runtime.Examples
+namespace Edgar.Unity.Tests.Runtime.Examples
 {
     public class Example2Tests : ExampleTestsBase
     {

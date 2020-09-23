@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Utils
+namespace Edgar.Unity.Utils
 {
     public class VersionedMonoBehaviour : MonoBehaviour, ISerializationCallbackReceiver
     {

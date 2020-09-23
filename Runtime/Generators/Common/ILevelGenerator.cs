@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevelGenerator.Unity.Generators.Common
+﻿namespace Edgar.Unity.Generators.Common
 {
     /// <summary>
     /// Interface that represents a level generator.

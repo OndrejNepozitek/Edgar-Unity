@@ -1,6 +1,6 @@
 ﻿using Edgar.Geometry;
 
-namespace ProceduralLevelGenerator.Unity.Utils
+namespace Edgar.Unity.Utils
 {
     public static class IntVector2Helper
     {

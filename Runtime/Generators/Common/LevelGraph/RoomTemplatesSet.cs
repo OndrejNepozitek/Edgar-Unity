@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
+namespace Edgar.Unity.Generators.Common.LevelGraph
 {
     /// <summary>
     /// Set of room templates that can be stored inside a scriptable object.

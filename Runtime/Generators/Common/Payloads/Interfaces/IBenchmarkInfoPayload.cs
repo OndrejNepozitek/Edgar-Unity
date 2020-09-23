@@ -1,6 +1,6 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+﻿using Edgar.Unity.Generators.Common.Utils;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces
+namespace Edgar.Unity.Generators.Common.Payloads.Interfaces
 {
     /// <summary>
     /// Represents a payload with additional benchmark information.

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers
+namespace Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers
 {
     public abstract class TilemapLayersHandlerBase : ScriptableObject, ITilemapLayersHandler
     {

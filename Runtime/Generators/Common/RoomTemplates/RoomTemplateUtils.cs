@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
+using Edgar.Unity.Generators.Common.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
+namespace Edgar.Unity.Generators.Common.RoomTemplates
 {
     public static class RoomTemplateUtils
     {

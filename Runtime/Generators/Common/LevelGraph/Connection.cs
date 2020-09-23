@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
+﻿namespace Edgar.Unity.Generators.Common.LevelGraph
 {
     /// <summary>
     /// Represents a connection between two rooms.

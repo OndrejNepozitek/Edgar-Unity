@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
-using ProceduralLevelGenerator.Unity.Pipeline;
+using Edgar.Unity.Generators.Common.Payloads.Interfaces;
+using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
+using Edgar.Unity.Generators.Common.Utils;
+using Edgar.Unity.Generators.DungeonGenerator.Configs;
+using Edgar.Unity.Pipeline;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
+namespace Edgar.Unity.Generators.DungeonGenerator.PipelineTasks
 {
     /// <summary>
     /// Handles individual post-processing steps.

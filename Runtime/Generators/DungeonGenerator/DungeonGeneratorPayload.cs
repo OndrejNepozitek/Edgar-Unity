@@ -1,9 +1,9 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+﻿using Edgar.Unity.Generators.Common;
+using Edgar.Unity.Generators.Common.Payloads.Interfaces;
+using Edgar.Unity.Generators.Common.Utils;
 using Random = System.Random;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
+namespace Edgar.Unity.Generators.DungeonGenerator
 {
     /// <summary>
     /// Payload that is used to transfer data between individual stages of the generator.

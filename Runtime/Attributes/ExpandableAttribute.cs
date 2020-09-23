@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.Unity.Utils;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace ProceduralLevelGenerator.Unity.Attributes
+namespace Edgar.Unity.Attributes
 {
     /// <summary>
     ///     Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable

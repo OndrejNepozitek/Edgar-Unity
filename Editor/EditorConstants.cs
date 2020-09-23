@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevelGenerator.Unity.Editor
+﻿namespace Edgar.Unity.Editor
 {
     public static class EditorConstants
     {

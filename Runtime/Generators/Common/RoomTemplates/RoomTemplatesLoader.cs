@@ -4,15 +4,14 @@ using System.Linq;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common;
 using Edgar.GraphBasedGenerator.Grid2D;
-using Edgar.Legacy.Core.MapDescriptions;
 using Edgar.Legacy.GeneralAlgorithms.Algorithms.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
+using Edgar.Unity.Generators.Common.Utils;
+using Edgar.Unity.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
+namespace Edgar.Unity.Generators.Common.RoomTemplates
 {
     /// <summary>
     /// Class used to convert room templates to the representation used in the dungeon generator library.

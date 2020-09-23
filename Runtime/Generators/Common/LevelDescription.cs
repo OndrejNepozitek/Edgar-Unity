@@ -4,11 +4,11 @@ using System.Linq;
 using Edgar.GraphBasedGenerator.Grid2D;
 using Edgar.Graphs;
 using Edgar.Legacy.GeneralAlgorithms.DataStructures.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
+using Edgar.Unity.Generators.Common.LevelGraph;
+using Edgar.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common
+namespace Edgar.Unity.Generators.Common
 {
     /// <summary>
     /// Class that describes the structure of a level. It contains all the rooms, connections and available room templates.

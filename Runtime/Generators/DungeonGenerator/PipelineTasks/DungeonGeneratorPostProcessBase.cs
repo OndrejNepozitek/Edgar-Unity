@@ -1,8 +1,8 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common;
+﻿using Edgar.Unity.Generators.Common;
 using UnityEngine;
 using Random = System.Random;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
+namespace Edgar.Unity.Generators.DungeonGenerator.PipelineTasks
 {
     public delegate void DungeonGeneratorPostProcessCallback(GeneratedLevel level, LevelDescription levelDescription);
 

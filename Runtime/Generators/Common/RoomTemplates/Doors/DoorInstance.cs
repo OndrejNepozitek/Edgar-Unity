@@ -1,10 +1,10 @@
 ﻿using System;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.Unity.Generators.Common.LevelGraph;
+using Edgar.Unity.Generators.Common.Rooms;
+using Edgar.Unity.Utils;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
+namespace Edgar.Unity.Generators.Common.RoomTemplates.Doors
 {
     /// <summary>
     ///     Class containing information about a door of a room.

@@ -1,10 +1,9 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
-using ProceduralLevelGenerator.Unity.Utils;
+﻿using Edgar.Unity.Generators.DungeonGenerator;
+using Edgar.Unity.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
+namespace Edgar.Unity.Editor.LevelGenerators
 {
     [CustomEditor(typeof(DungeonGeneratorBase), true)] 
     public class DungeonGeneratorInspector : UnityEditor.Editor 

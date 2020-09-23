@@ -1,8 +1,8 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
+﻿using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
+namespace Edgar.Unity.Generators.DungeonGenerator
 {
     public class DungeonTilemapLayersHandler : ITilemapLayersHandler
     {

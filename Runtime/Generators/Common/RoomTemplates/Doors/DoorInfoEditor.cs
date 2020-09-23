@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
+namespace Edgar.Unity.Generators.Common.RoomTemplates.Doors
 {
     /// <summary>
     ///     Door information for editor usage.

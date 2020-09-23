@@ -1,12 +1,12 @@
 ﻿using System;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
+using Edgar.Unity.Generators.Common.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
+namespace Edgar.Unity.Generators.Common.RoomTemplates
 {
     /// <summary>
     /// Component that is attached to each room template game objects and contains basic settings.

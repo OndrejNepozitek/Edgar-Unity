@@ -1,12 +1,13 @@
 ﻿using System;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.Unity.Generators.Common.RoomTemplates;
+using Edgar.Unity.Generators.Common.RoomTemplates.Doors;
+using Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
+using Edgar.Unity.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
+namespace Edgar.Unity.Editor.RoomTemplates
 {
     [CustomEditor(typeof(RoomTemplateSettings))]
     public class RoomTemplateInspector : UnityEditor.Editor
@@ -28,7 +29,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.RoomTemplates
                 EditorGUILayout.HelpBox("The outline of the room template is not valid. Please make sure to follow the rules from the documentation.", MessageType.Error);
             }
 
-            var doors = roomTemplate.GetComponent<Generators.Common.RoomTemplates.Doors.Doors>();
+            var doors = roomTemplate.GetComponent<Doors>();
 
             if (doors == null)
             {

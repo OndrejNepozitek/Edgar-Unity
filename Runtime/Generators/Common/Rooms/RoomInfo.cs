@@ -1,7 +1,7 @@
-﻿using ProceduralLevelGenerator.Unity.Attributes;
+﻿using Edgar.Unity.Attributes;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.Rooms
+namespace Edgar.Unity.Generators.Common.Rooms
 {
     /// <summary>
     /// Component that holds information about corresponding room instance.

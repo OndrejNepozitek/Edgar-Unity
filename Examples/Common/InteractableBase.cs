@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProceduralLevelGenerator.Unity.Examples.Common
+namespace Edgar.Unity.Examples.Common
 {
     /// <summary>
     /// Very simple implementation of an interactable object.

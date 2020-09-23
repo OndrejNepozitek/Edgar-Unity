@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using ProceduralLevelGenerator.Unity.Attributes;
-using ProceduralLevelGenerator.Unity.Generators.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
-using ProceduralLevelGenerator.Unity.Pipeline;
-using UnityEngine;
+using Edgar.Unity.Attributes;
+using Edgar.Unity.Generators.Common;
+using Edgar.Unity.Generators.DungeonGenerator.Configs;
+using Edgar.Unity.Generators.DungeonGenerator.PipelineTasks;
+using Edgar.Unity.Pipeline;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
+namespace Edgar.Unity.Generators.DungeonGenerator
 {
     /// <summary>
     /// Base class for various dungeon generators.

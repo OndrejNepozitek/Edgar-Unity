@@ -4,14 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Edgar.GraphBasedGenerator.Common;
 using Edgar.GraphBasedGenerator.Grid2D;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
-using ProceduralLevelGenerator.Unity.Pipeline;
+using Edgar.Unity.Generators.Common.LevelGraph;
+using Edgar.Unity.Generators.Common.Payloads.Interfaces;
+using Edgar.Unity.Generators.Common.Utils;
+using Edgar.Unity.Generators.DungeonGenerator.Configs;
+using Edgar.Unity.Pipeline;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
+namespace Edgar.Unity.Generators.DungeonGenerator.PipelineTasks
 {
     /// <summary>
     /// The actual generator logic that call the .NET generator.

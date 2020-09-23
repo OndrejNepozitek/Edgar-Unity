@@ -1,7 +1,7 @@
-﻿using ProceduralLevelGenerator.Unity.Examples.Common;
+﻿using Edgar.Unity.Examples.Common;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Examples.Example2.Scripts
+namespace Edgar.Unity.Examples.Example2.Scripts
 {
     /// <summary>
     /// Example implementation of a chest that is opened (sprite change) when the players interacts with it.

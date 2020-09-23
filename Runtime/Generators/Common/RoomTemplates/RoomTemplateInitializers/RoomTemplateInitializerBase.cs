@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+using Edgar.Unity.Generators.Common.Utils;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers
+namespace Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers
 {
     /// <summary>
     ///     Base class for initializing room templates.

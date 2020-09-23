@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevelGenerator.Unity.Examples.Common
+﻿namespace Edgar.Unity.Examples.Common
 {
     /// <summary>
     /// An interface for all objects that the player can interact with.

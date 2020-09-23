@@ -1,11 +1,11 @@
 ﻿using System.Linq;
-using ProceduralLevelGenerator.Unity.Generators.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
+using Edgar.Unity.Generators.Common;
+using Edgar.Unity.Generators.Common.RoomTemplates;
+using Edgar.Unity.Generators.DungeonGenerator.PipelineTasks;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ProceduralLevelGenerator.Unity.Examples.CurrentRoomDetection.Scripts
+namespace Edgar.Unity.Examples.CurrentRoomDetection.Scripts
 {
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Current room detection/Post process", fileName = "CurrentRoomDetectionPostProcess")]
     public class CurrentRoomDetectionPostProcess : DungeonGeneratorPostProcessBase

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace ProceduralLevelGenerator.Unity.Pipeline
+namespace Edgar.Unity.Pipeline
 {
     public class PipelineRunner<TPayload> where TPayload : class
     {

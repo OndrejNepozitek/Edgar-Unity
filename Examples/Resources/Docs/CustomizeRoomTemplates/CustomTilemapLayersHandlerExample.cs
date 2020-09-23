@@ -1,9 +1,9 @@
-﻿namespace ProceduralLevelGenerator.Unity.Examples.Resources.Docs.CustomizeRoomTemplates
-{
-    using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-    using UnityEngine;
-    using UnityEngine.Tilemaps;
+﻿using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
+using UnityEngine;
+using UnityEngine.Tilemaps;
 
+namespace Edgar.Unity.Examples.Resources.Docs.CustomizeRoomTemplates
+{
     // TilemapLayersHandlerBase inherit from ScriptableObject so we need to create an asset
     // menu item that we will use to create the scriptable object instance.
     // The menu name can be changed to anything you want.

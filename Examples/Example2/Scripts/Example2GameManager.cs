@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Diagnostics;
-using ProceduralLevelGenerator.Unity.Examples.Common;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
+using Edgar.Unity.Examples.Common;
+using Edgar.Unity.Generators.DungeonGenerator;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Examples.Example2.Scripts
+namespace Edgar.Unity.Examples.Example2.Scripts
 {
     /// <summary>
     /// Example of a simple game manager that uses the DungeonGeneratorRunner to generate levels.

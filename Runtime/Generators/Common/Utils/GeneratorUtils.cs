@@ -4,15 +4,15 @@ using System.Linq;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common;
 using Edgar.GraphBasedGenerator.Grid2D;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.Unity.Generators.Common.LevelGraph;
+using Edgar.Unity.Generators.Common.Rooms;
+using Edgar.Unity.Generators.Common.RoomTemplates.Doors;
+using Edgar.Unity.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Vector2Int = UnityEngine.Vector2Int;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
+namespace Edgar.Unity.Generators.Common.Utils
 {
     public static class GeneratorUtils
     {

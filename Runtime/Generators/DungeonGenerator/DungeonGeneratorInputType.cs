@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
+﻿namespace Edgar.Unity.Generators.DungeonGenerator
 {
     public enum DungeonGeneratorInputType
     {

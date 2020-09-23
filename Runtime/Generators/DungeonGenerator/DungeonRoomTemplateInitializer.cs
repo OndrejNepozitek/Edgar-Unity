@@ -1,10 +1,10 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers;
-#if UNITY_EDITOR
+﻿using Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers;
 using UnityEditor;
-#endif
 using UnityEngine;
+#if UNITY_EDITOR
+#endif
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
+namespace Edgar.Unity.Generators.DungeonGenerator
 {
     /// <summary>
     /// Basic dungeon room template initializer.

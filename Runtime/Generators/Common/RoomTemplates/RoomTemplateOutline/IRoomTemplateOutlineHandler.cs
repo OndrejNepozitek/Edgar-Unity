@@ -1,6 +1,6 @@
-﻿using ProceduralLevelGenerator.Unity.Utils;
+﻿using Edgar.Unity.Utils;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline
+namespace Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline
 {
     /// <summary>
     /// Interface for custom room template outline handlers.

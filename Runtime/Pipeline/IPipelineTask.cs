@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace ProceduralLevelGenerator.Unity.Pipeline
+namespace Edgar.Unity.Pipeline
 {
     public interface IPipelineTask<TPayload> where TPayload : class
     {

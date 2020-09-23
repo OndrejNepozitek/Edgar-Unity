@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace ProceduralLevelGenerator.Unity.Examples.Common
+namespace Edgar.Unity.Examples.Common
 {
     /// <summary>
     /// Game manager base class.

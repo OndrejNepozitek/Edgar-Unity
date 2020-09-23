@@ -1,11 +1,11 @@
 ﻿using System;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.Unity.Generators.Common.RoomTemplates;
+using Edgar.Unity.Generators.Common.RoomTemplates.Doors;
+using Edgar.Unity.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
+namespace Edgar.Unity.Editor.DoorsEditor
 {
     [CustomEditor(typeof(Doors))]
 	public class DoorsInspector : UnityEditor.Editor

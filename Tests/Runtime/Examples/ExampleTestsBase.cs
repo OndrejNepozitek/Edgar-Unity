@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine.SceneManagement;
 
-namespace ProceduralLevelGenerator.Unity.Tests.Runtime.Examples
+namespace Edgar.Unity.Tests.Runtime.Examples
 {
     public abstract class ExampleTestsBase
     {

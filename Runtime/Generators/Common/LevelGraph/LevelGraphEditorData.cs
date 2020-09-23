@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
+namespace Edgar.Unity.Generators.Common.LevelGraph
 {
     /// <summary>
     /// Additional editor data that are stored with level graphs.

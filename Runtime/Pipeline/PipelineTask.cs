@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace ProceduralLevelGenerator.Unity.Pipeline
+namespace Edgar.Unity.Pipeline
 {
     /// <summary>
     ///     Base class for pipeline tasks. Used in simpler scenarios.

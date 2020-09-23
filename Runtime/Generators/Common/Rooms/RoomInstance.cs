@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.Unity.Generators.Common.LevelGraph;
+using Edgar.Unity.Generators.Common.RoomTemplates.Doors;
+using Edgar.Unity.Utils;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.Rooms
+namespace Edgar.Unity.Generators.Common.Rooms
 {
     /// <summary>
     ///     Class that holds information about a laid out room.

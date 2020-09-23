@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
+namespace Edgar.Unity.Generators.Common.Utils
 {
     /// <summary>
     /// Exception that is used inside the generator.

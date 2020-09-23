@@ -1,8 +1,8 @@
 ﻿using System;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+using Edgar.Unity.Generators.Common.Utils;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs
+namespace Edgar.Unity.Generators.DungeonGenerator.Configs
 {
     [Serializable]
     public class DungeonGeneratorConfig

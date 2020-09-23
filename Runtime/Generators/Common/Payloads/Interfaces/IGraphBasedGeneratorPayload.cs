@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces
+﻿namespace Edgar.Unity.Generators.Common.Payloads.Interfaces
 {
     /// <summary>
     ///     Represents data used in and produced from a graph-based dungeon generator.

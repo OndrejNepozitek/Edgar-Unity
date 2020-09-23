@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
+namespace Edgar.Unity.Generators.Common.LevelGraph
 {
     /// <summary>
     ///     Represents a room in a level graph.

@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 #endif
 
-namespace ProceduralLevelGenerator.Unity.Examples.Common.Random_Tile.Scripts
+namespace Edgar.Unity.Examples.Common.Random_Tile.Scripts
 {
     [Serializable]
     [CreateAssetMenu(fileName = "New Random Tile", menuName = "Dungeon generator/Examples/Random Tile")]

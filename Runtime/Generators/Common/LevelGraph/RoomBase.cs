@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.EditorStyles;
+using Edgar.Unity.Generators.Common.LevelGraph.EditorStyles;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
+namespace Edgar.Unity.Generators.Common.LevelGraph
 {
     /// <summary>
     /// Base class for room in a level graph.

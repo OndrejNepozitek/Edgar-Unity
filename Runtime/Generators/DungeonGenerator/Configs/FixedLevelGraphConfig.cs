@@ -1,7 +1,7 @@
 ﻿using System;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
+using Edgar.Unity.Generators.Common.LevelGraph;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs
+namespace Edgar.Unity.Generators.DungeonGenerator.Configs
 {
     /// <summary>
     /// Config for the default input for the generator - a fixed level graph.

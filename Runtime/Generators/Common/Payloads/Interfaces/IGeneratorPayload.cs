@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces
+namespace Edgar.Unity.Generators.Common.Payloads.Interfaces
 {
     /// <summary>
     ///     Basic generator pipeline payload.
