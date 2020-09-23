@@ -1,12 +1,9 @@
 {
-    "name": "ProceduralLevelGenerator.Unity.Tests",
+    "name": "Edgar.Unity.Examples",
     "references": [
-        "ProceduralLevelGenerator.Unity",
-        "ProceduralLevelGenerator.Unity.Examples"
+        "Edgar.Unity"
     ],
-    "optionalUnityReferences": [
-        "TestAssemblies"
-    ],
+    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

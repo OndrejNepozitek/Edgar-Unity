@@ -1,7 +1,12 @@
 {
-    "name": "ProceduralLevelGenerator.Unity",
+    "name": "Edgar.Unity.Editor",
+    "references": [
+        "Edgar.Unity"
+    ],
     "optionalUnityReferences": [],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

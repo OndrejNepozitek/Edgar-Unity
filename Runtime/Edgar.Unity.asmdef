@@ -1,8 +1,6 @@
 {
-    "name": "ProceduralLevelGenerator.Unity.Examples",
-    "references": [
-        "ProceduralLevelGenerator.Unity"
-    ],
+    "name": "Edgar.Unity",
+    "references": [],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
