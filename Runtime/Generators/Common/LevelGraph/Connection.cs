@@ -1,4 +1,4 @@
-﻿namespace Edgar.Unity.Generators.Common.LevelGraph
+﻿namespace Edgar.Unity
 {
     /// <summary>
     /// Represents a connection between two rooms.

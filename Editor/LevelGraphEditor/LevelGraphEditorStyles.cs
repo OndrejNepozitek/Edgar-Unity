@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Edgar.Unity.Editor.LevelGraphEditor
+namespace Edgar.Unity.Editor
 {
     public class LevelGraphEditorStyles
     {

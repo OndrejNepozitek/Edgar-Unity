@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Edgar.Unity.Generators.DungeonGenerator.Configs
+namespace Edgar.Unity
 {
     [Serializable]
     [Obsolete]

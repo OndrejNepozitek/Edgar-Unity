@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Edgar.Unity.Examples.Common
+namespace Edgar.Unity.Examples
 {
     /// <summary>
     /// Game manager base class.

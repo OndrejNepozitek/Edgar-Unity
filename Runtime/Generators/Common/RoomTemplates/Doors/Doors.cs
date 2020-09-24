@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Edgar.GraphBasedGenerator.Grid2D;
-using Edgar.Unity.Utils;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.RoomTemplates.Doors
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Doors MonoBehaviour that is used to define doors for room templates.

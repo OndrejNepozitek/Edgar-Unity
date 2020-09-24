@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.LevelGraph
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Represents a level graph.

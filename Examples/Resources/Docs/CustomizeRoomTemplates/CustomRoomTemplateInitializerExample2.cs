@@ -1,7 +1,6 @@
-﻿using Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Edgar.Unity.Examples.Resources.Docs.CustomizeRoomTemplates
+namespace Edgar.Unity.Examples.Resources
 {
 #if UNITY_EDITOR
 

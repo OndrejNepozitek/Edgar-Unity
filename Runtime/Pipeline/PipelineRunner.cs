@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Edgar.Unity.Pipeline
+namespace Edgar.Unity
 {
     public class PipelineRunner<TPayload> where TPayload : class
     {

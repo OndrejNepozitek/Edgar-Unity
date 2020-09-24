@@ -1,8 +1,7 @@
 ﻿using System;
-using Edgar.Unity.Generators.Common.Utils;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.DungeonGenerator.Configs
+namespace Edgar.Unity
 {
     [Serializable]
     public class DungeonGeneratorConfig

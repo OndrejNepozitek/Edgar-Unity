@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Edgar.Unity.Generators.Common.Payloads.Interfaces
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Represents a payload with an instance of a random numbers generator.

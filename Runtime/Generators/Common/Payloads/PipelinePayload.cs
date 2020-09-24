@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using Edgar.GraphBasedGenerator.Grid2D;
-using Edgar.Unity.Generators.Common.LevelGraph;
-using Edgar.Unity.Generators.Common.Payloads.Interfaces;
-using Edgar.Unity.Generators.Common.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
-namespace Edgar.Unity.Generators.Common.Payloads
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Default pipeline payload.

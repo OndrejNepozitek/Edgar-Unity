@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Edgar.Unity.Pipeline
+namespace Edgar.Unity
 {
     public interface IPipelineTask<TPayload> where TPayload : class
     {

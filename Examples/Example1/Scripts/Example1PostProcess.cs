@@ -1,8 +1,6 @@
-﻿using Edgar.Unity.Generators.Common;
-using Edgar.Unity.Generators.DungeonGenerator.PipelineTasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Edgar.Unity.Examples.Example1.Scripts
+namespace Edgar.Unity.Examples.Example1
 {
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Example 1/Post process", fileName = "Example1PostProcess")]
     public class Example1PostProcess : DungeonGeneratorPostProcessBase

@@ -3,7 +3,7 @@
 using UnityEditor;
 #endif
 
-namespace Edgar.Unity.Attributes
+namespace Edgar.Unity
 {
     public class ReadOnlyAttribute : PropertyAttribute
     {

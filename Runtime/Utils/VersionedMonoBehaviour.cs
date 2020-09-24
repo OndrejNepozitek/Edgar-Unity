@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Edgar.Unity.Utils
+namespace Edgar.Unity
 {
     public class VersionedMonoBehaviour : MonoBehaviour, ISerializationCallbackReceiver
     {

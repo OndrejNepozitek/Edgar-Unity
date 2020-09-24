@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Linq;
-using Edgar.Unity.Generators.Common.LevelGraph;
-using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = System.Random;
 
-namespace Edgar.Unity.Generators.Common.Payloads.PayloadInitializers
+namespace Edgar.Unity
 {
 #if UNITY_EDITOR
 #endif

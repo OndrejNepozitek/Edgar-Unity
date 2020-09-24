@@ -1,8 +1,7 @@
-﻿using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Edgar.Unity.Examples.Resources.Docs.CustomizeRoomTemplates
+namespace Edgar.Unity.Examples.Resources
 {
     // TilemapLayersHandlerBase inherit from ScriptableObject so we need to create an asset
     // menu item that we will use to create the scriptable object instance.

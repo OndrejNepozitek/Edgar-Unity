@@ -1,4 +1,4 @@
-﻿namespace Edgar.Unity.Generators.DungeonGenerator
+﻿namespace Edgar.Unity
 {
     public enum DungeonGeneratorInputType
     {

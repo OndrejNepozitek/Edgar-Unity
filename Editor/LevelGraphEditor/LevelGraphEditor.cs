@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Edgar.Unity.Editor.LevelGraphEditor.EditorNodes;
-using Edgar.Unity.Generators.Common.LevelGraph;
 using UnityEditor;
 using UnityEngine;
-using ConnectionNode = Edgar.Unity.Editor.LevelGraphEditor.EditorNodes.ConnectionNode;
 
-namespace Edgar.Unity.Editor.LevelGraphEditor
+namespace Edgar.Unity.Editor
 {
     public partial class LevelGraphEditor : EditorWindow
     {

@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using Edgar.Unity.Generators.Common.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Edgar.Unity.Generators.Common.RoomTemplates
+namespace Edgar.Unity
 {
     public static class RoomTemplateUtils
     {

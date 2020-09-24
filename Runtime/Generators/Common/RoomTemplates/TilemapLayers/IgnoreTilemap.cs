@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers
+namespace Edgar.Unity
 {
     /// <summary>
     /// Component that can be used as a flag to ignore a tilemap layer to which it is attached.

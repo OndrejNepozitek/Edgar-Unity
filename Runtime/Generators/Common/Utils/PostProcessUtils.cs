@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Edgar.Unity.Generators.Common.Rooms;
-using Edgar.Unity.Generators.Common.RoomTemplates;
-using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using Edgar.Unity.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 
-namespace Edgar.Unity.Generators.Common.Utils
+namespace Edgar.Unity
 {
     /// <summary>
     /// Utility post-processing functions

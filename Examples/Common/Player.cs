@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Edgar.Unity.Examples.Common
+namespace Edgar.Unity.Examples
 {
     /// <summary>
     /// Very simple implementation of a player that can interact with objects.

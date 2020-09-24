@@ -1,7 +1,6 @@
 ﻿using System;
-using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
 
-namespace Edgar.Unity.Generators.DungeonGenerator.Configs
+namespace Edgar.Unity
 {
     [Serializable]
     public class PostProcessConfig

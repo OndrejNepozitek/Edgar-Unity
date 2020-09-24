@@ -1,8 +1,7 @@
-﻿using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Edgar.Unity.Generators.DungeonGenerator
+namespace Edgar.Unity
 {
     public class DungeonTilemapLayersHandler : ITilemapLayersHandler
     {

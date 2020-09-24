@@ -1,10 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Edgar.Unity.Examples.Example1.Scripts;
-using Edgar.Unity.Generators.Common.LevelGraph;
-using Edgar.Unity.Generators.Common.Utils;
-using Edgar.Unity.Generators.DungeonGenerator;
+using Edgar.Unity.Examples.Example1;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;

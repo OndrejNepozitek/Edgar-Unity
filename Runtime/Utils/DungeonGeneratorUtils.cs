@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Edgar.Unity.Generators.Common.Rooms;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Edgar.Unity.Utils
+namespace Edgar.Unity
 {
     public class DungeonGeneratorUtils
     {

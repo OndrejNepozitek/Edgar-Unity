@@ -4,15 +4,11 @@ using System.Linq;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common;
 using Edgar.GraphBasedGenerator.Grid2D;
-using Edgar.Unity.Generators.Common.LevelGraph;
-using Edgar.Unity.Generators.Common.Rooms;
-using Edgar.Unity.Generators.Common.RoomTemplates.Doors;
-using Edgar.Unity.Utils;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Vector2Int = UnityEngine.Vector2Int;
 
-namespace Edgar.Unity.Generators.Common.Utils
+namespace Edgar.Unity
 {
     public static class GeneratorUtils
     {
@@ -93,19 +89,19 @@ namespace Edgar.Unity.Generators.Common.Utils
             switch (doorLine.GetDirection())
             {
                 case OrthogonalLineGrid2D.Direction.Right:
-                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
+                    return new DoorInstance(new OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.up,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLineGrid2D.Direction.Left:
-                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
+                    return new DoorInstance(new OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.down,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLineGrid2D.Direction.Top:
-                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
+                    return new DoorInstance(new OrthogonalLine(doorLine.From.ToUnityIntVector3(), doorLine.To.ToUnityIntVector3()), Vector2Int.left,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 case OrthogonalLineGrid2D.Direction.Bottom:
-                    return new DoorInstance(new Unity.Utils.OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right,
+                    return new DoorInstance(new OrthogonalLine(doorLine.To.ToUnityIntVector3(), doorLine.From.ToUnityIntVector3()), Vector2Int.right,
                         connectedRoomInstance.Room, connectedRoomInstance);
 
                 default:

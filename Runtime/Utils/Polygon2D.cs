@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Edgar.Geometry;
 using Edgar.Legacy.GeneralAlgorithms.Algorithms.Polygons;
-using Edgar.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
 using Vector2Int = UnityEngine.Vector2Int;
 
-namespace Edgar.Unity.Utils
+namespace Edgar.Unity
 {
     [Serializable]
     public class Polygon2D

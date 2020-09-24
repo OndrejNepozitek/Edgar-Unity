@@ -1,4 +1,4 @@
-﻿namespace Edgar.Unity.Generators.Common.Utils
+﻿namespace Edgar.Unity
 {
     /// <summary>
     /// Priorities of post-processing steps.

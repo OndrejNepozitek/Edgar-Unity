@@ -1,8 +1,7 @@
-﻿using Edgar.Unity.Generators.Common.LevelGraph;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace Edgar.Unity.Editor.LevelGraphEditor.EditorNodes
+namespace Edgar.Unity.Editor
 {
     public class ConnectionNode
     {

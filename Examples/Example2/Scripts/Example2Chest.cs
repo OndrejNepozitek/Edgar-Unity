@@ -1,7 +1,6 @@
-﻿using Edgar.Unity.Examples.Common;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Edgar.Unity.Examples.Example2.Scripts
+namespace Edgar.Unity.Examples.Example2
 {
     /// <summary>
     /// Example implementation of a chest that is opened (sprite change) when the players interacts with it.

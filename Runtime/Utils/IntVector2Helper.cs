@@ -1,6 +1,6 @@
 ﻿using Edgar.Geometry;
 
-namespace Edgar.Unity.Utils
+namespace Edgar.Unity
 {
     public static class IntVector2Helper
     {

@@ -1,11 +1,8 @@
 ﻿using System;
-using Edgar.Unity.Generators.Common.RoomTemplates;
-using Edgar.Unity.Generators.Common.RoomTemplates.Doors;
-using Edgar.Unity.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace Edgar.Unity.Editor.DoorsEditor
+namespace Edgar.Unity.Editor
 {
     [CustomEditor(typeof(Doors))]
 	public class DoorsInspector : UnityEditor.Editor

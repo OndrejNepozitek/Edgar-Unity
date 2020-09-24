@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.Payloads.PayloadInitializers
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Class that is able to initializer a pipeline payload.

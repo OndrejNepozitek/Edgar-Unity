@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Edgar.Unity.Generators.Common.LevelGraph;
-using Edgar.Unity.Generators.Common.RoomTemplates.Doors;
-using Edgar.Unity.Utils;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.Rooms
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Class that holds information about a laid out room.

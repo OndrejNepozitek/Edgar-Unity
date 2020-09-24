@@ -1,7 +1,6 @@
 ﻿using System;
-using Edgar.Unity.Generators.Common.LevelGraph;
 
-namespace Edgar.Unity.Generators.DungeonGenerator.Configs
+namespace Edgar.Unity
 {
     /// <summary>
     /// Config for the default input for the generator - a fixed level graph.

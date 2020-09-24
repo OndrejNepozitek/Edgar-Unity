@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using Edgar.Unity.Generators.Common.LevelGraph.EditorStyles;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.LevelGraph
+namespace Edgar.Unity
 {
     /// <summary>
     /// Base class for room in a level graph.

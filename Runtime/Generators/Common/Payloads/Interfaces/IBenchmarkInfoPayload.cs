@@ -1,6 +1,4 @@
-﻿using Edgar.Unity.Generators.Common.Utils;
-
-namespace Edgar.Unity.Generators.Common.Payloads.Interfaces
+﻿namespace Edgar.Unity
 {
     /// <summary>
     /// Represents a payload with additional benchmark information.

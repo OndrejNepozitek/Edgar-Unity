@@ -1,7 +1,6 @@
-﻿using Edgar.Unity.Generators.Common.Rooms;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Edgar.Unity.Examples.CurrentRoomDetection.Scripts
+namespace Edgar.Unity.Examples.CurrentRoomDetection
 {
     public class CurrentRoomDetectionRoomManager : MonoBehaviour
     {

@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using Edgar.Unity.Attributes;
-using Edgar.Unity.Generators.Common.Rooms;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.Utils
+namespace Edgar.Unity
 {
     public class LevelInfo : MonoBehaviour
     {

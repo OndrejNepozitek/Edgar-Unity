@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using Edgar.Unity.Generators.Common.Utils;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Base class for initializing room templates.
@@ -46,9 +45,9 @@ namespace Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers
         protected virtual void InitializeDoors()
         {
             // Add Doors component
-            if (gameObject.GetComponent<Doors.Doors>() == null)
+            if (gameObject.GetComponent<Doors>() == null)
             {
-                gameObject.AddComponent<Doors.Doors>();
+                gameObject.AddComponent<Doors>();
             }
         }
     }

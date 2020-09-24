@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Edgar.Unity.Generators.Common.Utils
+namespace Edgar.Unity
 {
     /// <summary>
     /// Class that makes it possible to run callbacks with given priorities (order).

@@ -4,14 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Edgar.GraphBasedGenerator.Common;
 using Edgar.GraphBasedGenerator.Grid2D;
-using Edgar.Unity.Generators.Common.LevelGraph;
-using Edgar.Unity.Generators.Common.Payloads.Interfaces;
-using Edgar.Unity.Generators.Common.Utils;
-using Edgar.Unity.Generators.DungeonGenerator.Configs;
-using Edgar.Unity.Pipeline;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.DungeonGenerator.PipelineTasks
+namespace Edgar.Unity
 {
     /// <summary>
     /// The actual generator logic that call the .NET generator.

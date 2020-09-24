@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Interface for handling tilemap layers.

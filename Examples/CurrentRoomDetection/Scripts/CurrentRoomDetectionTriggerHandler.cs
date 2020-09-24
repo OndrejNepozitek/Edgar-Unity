@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Edgar.Unity.Examples.CurrentRoomDetection.Scripts
+namespace Edgar.Unity.Examples.CurrentRoomDetection
 {
     public class CurrentRoomDetectionTriggerHandler : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace Edgar.Unity.Generators.Common
+﻿namespace Edgar.Unity
 {
     /// <summary>
     /// Interface that represents a level generator.

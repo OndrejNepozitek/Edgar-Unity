@@ -1,13 +1,9 @@
 ﻿using System;
-using Edgar.Unity.Generators.Common.RoomTemplates;
-using Edgar.Unity.Generators.Common.RoomTemplates.Doors;
-using Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
-using Edgar.Unity.Utils;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
 
-namespace Edgar.Unity.Editor.RoomTemplates
+namespace Edgar.Unity.Editor
 {
     [CustomEditor(typeof(RoomTemplateSettings))]
     public class RoomTemplateInspector : UnityEditor.Editor

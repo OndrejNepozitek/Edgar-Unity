@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace Edgar.Unity.Pipeline
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Base class for pipeline tasks. Used in simpler scenarios.

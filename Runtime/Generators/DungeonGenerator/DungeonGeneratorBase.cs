@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Edgar.Unity.Attributes;
-using Edgar.Unity.Generators.Common;
-using Edgar.Unity.Generators.DungeonGenerator.Configs;
-using Edgar.Unity.Generators.DungeonGenerator.PipelineTasks;
-using Edgar.Unity.Pipeline;
 
-namespace Edgar.Unity.Generators.DungeonGenerator
+namespace Edgar.Unity
 {
     /// <summary>
     /// Base class for various dungeon generators.

@@ -1,9 +1,6 @@
-﻿using Edgar.Unity.Generators.Common;
-using Edgar.Unity.Generators.Common.Payloads.Interfaces;
-using Edgar.Unity.Generators.Common.Utils;
-using Random = System.Random;
+﻿using Random = System.Random;
 
-namespace Edgar.Unity.Generators.DungeonGenerator
+namespace Edgar.Unity
 {
     /// <summary>
     /// Payload that is used to transfer data between individual stages of the generator.

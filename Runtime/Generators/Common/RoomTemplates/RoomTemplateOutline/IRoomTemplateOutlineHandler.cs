@@ -1,6 +1,4 @@
-﻿using Edgar.Unity.Utils;
-
-namespace Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline
+﻿namespace Edgar.Unity
 {
     /// <summary>
     /// Interface for custom room template outline handlers.

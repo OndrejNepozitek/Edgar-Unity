@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Edgar.Unity.Examples.Common
+namespace Edgar.Unity.Examples
 {
     /// <summary>
     /// Very simple implementation of an interactable object.

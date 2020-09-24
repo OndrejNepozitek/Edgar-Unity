@@ -5,13 +5,10 @@ using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common;
 using Edgar.GraphBasedGenerator.Grid2D;
 using Edgar.Legacy.GeneralAlgorithms.Algorithms.Common;
-using Edgar.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
-using Edgar.Unity.Generators.Common.Utils;
-using Edgar.Unity.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Edgar.Unity.Generators.Common.RoomTemplates
+namespace Edgar.Unity
 {
     /// <summary>
     /// Class used to convert room templates to the representation used in the dungeon generator library.
@@ -177,7 +174,7 @@ namespace Edgar.Unity.Generators.Common.RoomTemplates
 
             var polygon = GetPolygonFromRoomTemplate(roomTemplatePrefab);
 
-            var doors = roomTemplatePrefab.GetComponent<Doors.Doors>();
+            var doors = roomTemplatePrefab.GetComponent<Doors>();
 
             if (doors == null)
             {

@@ -1,10 +1,7 @@
 ﻿using System;
-using Edgar.Unity.Generators.Common.LevelGraph;
-using Edgar.Unity.Generators.Common.Rooms;
-using Edgar.Unity.Utils;
 using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.RoomTemplates.Doors
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Class containing information about a door of a room.

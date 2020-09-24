@@ -1,9 +1,8 @@
 ﻿using System;
-using Edgar.Unity.Generators.Common.LevelGraph;
 using UnityEditor;
 using UnityEngine;
 
-namespace Edgar.Unity.Editor.LevelGraphEditor
+namespace Edgar.Unity.Editor
 {
     [CustomEditor(typeof(LevelGraph))]
 	public class LevelGraphInspector : UnityEditor.Editor

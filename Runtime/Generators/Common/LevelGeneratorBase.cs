@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
-using Edgar.Unity.Pipeline;
-using Edgar.Unity.Utils;
 using Debug = UnityEngine.Debug;
 using Random = System.Random;
 
-namespace Edgar.Unity.Generators.Common
+namespace Edgar.Unity
 {
     /// <summary>
     /// Base class for level generators.

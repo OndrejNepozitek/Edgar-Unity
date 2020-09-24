@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Edgar.Unity.Generators.Common.Payloads.Interfaces;
-using Edgar.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using Edgar.Unity.Generators.Common.Utils;
-using Edgar.Unity.Generators.DungeonGenerator.Configs;
-using Edgar.Unity.Pipeline;
 
-namespace Edgar.Unity.Generators.DungeonGenerator.PipelineTasks
+namespace Edgar.Unity
 {
     /// <summary>
     /// Handles individual post-processing steps.

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Edgar.Unity.Examples.Common
+namespace Edgar.Unity.Examples
 {
     /// <summary>
     /// Basic camera controller that follows the player and zooms out if you hold CTRL.

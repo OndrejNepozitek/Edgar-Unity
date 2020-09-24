@@ -1,13 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Edgar.GraphBasedGenerator.Grid2D;
-using Edgar.Unity.Generators.Common.LevelGraph;
-using Edgar.Unity.Generators.Common.Rooms;
-using Edgar.Unity.Generators.Common.RoomTemplates;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Edgar.Unity.Generators.Common
+namespace Edgar.Unity
 {
     /// <summary>
     /// Holds information about the generated level.

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Edgar.Unity.Generators.Common.Utils
+namespace Edgar.Unity
 {
     /// <summary>
     /// Exception that is used inside the generator.

@@ -1,7 +1,6 @@
-﻿using Edgar.Unity.Attributes;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Edgar.Unity.Generators.Common.Rooms
+namespace Edgar.Unity
 {
     /// <summary>
     /// Component that holds information about corresponding room instance.

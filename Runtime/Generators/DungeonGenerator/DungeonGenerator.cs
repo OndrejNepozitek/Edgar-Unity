@@ -1,4 +1,4 @@
-﻿namespace Edgar.Unity.Generators.DungeonGenerator
+﻿namespace Edgar.Unity
 {
     /// <summary>
     /// Dungeon generator. All logic is currently inherited from DungeonGeneratorBase.

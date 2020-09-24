@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using Edgar.Unity.Utils;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-namespace Edgar.Unity.Attributes
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable

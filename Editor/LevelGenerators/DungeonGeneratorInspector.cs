@@ -1,9 +1,7 @@
-﻿using Edgar.Unity.Generators.DungeonGenerator;
-using Edgar.Unity.Utils;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace Edgar.Unity.Editor.LevelGenerators
+namespace Edgar.Unity.Editor
 {
     [CustomEditor(typeof(DungeonGeneratorBase), true)] 
     public class DungeonGeneratorInspector : UnityEditor.Editor 
