@@ -19,7 +19,7 @@ namespace Edgar.Unity
         }
 
 #if UNITY_EDITOR
-        [MenuItem("Assets/Create/Dungeon generator/Dungeon room template")]
+        [MenuItem("Assets/Create/Edgar/Dungeon room template")]
         public static void CreateRoomTemplatePrefab()
         {
             RoomTemplateInitializerUtils.CreateRoomTemplatePrefab<DungeonRoomTemplateInitializer>();

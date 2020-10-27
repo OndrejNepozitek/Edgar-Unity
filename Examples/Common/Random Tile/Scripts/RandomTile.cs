@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 namespace Edgar.Unity.Examples
 {
     [Serializable]
-    [CreateAssetMenu(fileName = "New Random Tile", menuName = "Dungeon generator/Examples/Random Tile")]
+    [CreateAssetMenu(fileName = "New Random Tile", menuName = "Edgar/Examples/Random Tile")]
     public class RandomTile : Tile
     {
         [SerializeField]
