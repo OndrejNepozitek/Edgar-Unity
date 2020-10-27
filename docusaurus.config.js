@@ -13,6 +13,7 @@ module.exports = {
   favicon: "img/favicon.ico",
   organizationName: "OndrejNepozitek", // Usually your GitHub org/user name.
   projectName: "Edgar-Unity", // Usually your repo name.
+  onBrokenLinks: "warn",
   themeConfig: {
     googleAnalytics: {
       trackingID: 'UA-31904365-17',

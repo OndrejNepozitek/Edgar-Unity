@@ -91,8 +91,8 @@ There is one problem with the simple approach - coroutines cannot really handle 
         private IEnumerator GeneratorCoroutine(DungeonGenerator generator)
         {
             // Start the smart coroutine
-            // StartCoroutineWithData is a custom extension method of MonoBehaviour, be sure to use the ProceduralLevelGenerator.Unity.Pro namespace
-            var generatorCoroutine = this.StartCoroutineWithData(generator.GenerateCoroutine());
+            // StartSmartCoroutine is a custom extension method of MonoBehaviour, be sure to use the ProceduralLevelGenerator.Unity.Pro namespace
+            var generatorCoroutine = this.StartSmartCoroutine(generator.GenerateCoroutine());
 
             // Wait until the smart coroutine is completed
             // Make sure to yield return the Coroutine property and not the generator coroutine itself!!
