@@ -12,7 +12,7 @@ We want to make the generator as easy to use as possible and the whole pipeline 
 
 - Read the [Generator setup](../basic/generator-setup) page and add the **Dungeon Generator** script to an empty game object
 - Instead of using the **Fixed Input** task, assign your level graph directly to the *Level Graph* field in the generator
-- Instead of using *pipeline tasks* to implement post processing logic, see the [Post processing](../generators/post-process) and move your logic to a post process task
+- Instead of using *pipeline tasks* to implement post-processing logic, see the [Post processing](../generators/post-process) and move your logic to a post-processing task
 
 ### Room templates migration
 

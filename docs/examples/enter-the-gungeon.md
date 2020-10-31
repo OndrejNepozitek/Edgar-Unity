@@ -50,11 +50,11 @@ In the level graph above, we used custom room and connection types. We use this 
 
 #### Rooms
 
-Each room in Enter the Gungeon has its type - there are rooms with enemies, treasure rooms, shops, etc. We use a custom room implementation to add the `GungGungeonRoomType Type` field to each room. Moreover, we use different colors to distinguish different types of rooms in the level graph editor.
+Each room in Enter the Gungeon has its type - there are rooms with enemies, treasure rooms, shops, etc. We use a custom room implementation to add the `GungGungeonRoomType Type` field to each room. Moreover, we use different colours to distinguish different types of rooms in the level graph editor.
 
 #### Connections
 
-Some corridors in Enter the Gungeon are locked and can be unlocked only from the other side of the door. This is usually used to force the player to go trough a loop that ends with a treasure or shop room and the door then serves as a shortcut to get back to the main path. We use a custom connection implementation to add the `bool IsLocked` field. If the door is locked, we use red color to draw the line between the two rooms.
+Some corridors in Enter the Gungeon are locked and can be unlocked only from the other side of the door. This is usually used to force the player to go trough a loop that ends with a treasure or shop room and the door then serves as a shortcut to get back to the main path. We use a custom connection implementation to add the `bool IsLocked` field. If the door is locked, we use red colour to draw the line between the two rooms.
 
 <Tabs
 defaultValue="room"
@@ -182,7 +182,7 @@ Then we just assign level graphs to the two arrays. The last step is to control 
 
 Even though all the levels are primarily guided by hand-made level graphs, there is a little bit of randomness included. When we setup the input for the algorithm, we roll a dice to determine if we want to add a secret room to the level. We can add a `float SecretRoomChance` field to the input setup and configure this value directly in the generator inspector. In Enter the Gungeon, they also choose whether to connect the room to a dead-end room or to any rooms - this is controlled with `SecretRoomDeadEndChance`.
 
-To add the secret room to the level, we first get all the rooms from the level description and randomly choose one of them to attach the secret room to. Then we have to do 3 things. First, we create an instance of the secret room - this corresponds to a room node in the level graph. Second, we create an instance of the connection between the two rooms - this correspongs to an edge in the level graph. And third, because we use corridors, we also need to create an instance of the corridor room that is between the two rooms.
+To add the secret room to the level, we first get all the rooms from the level description and randomly choose one of them to attach the secret room to. Then we have to do 3 things. First, we create an instance of the secret room - this corresponds to a room node in the level graph. Second, we create an instance of the connection between the two rooms - this corresponds to an edge in the level graph. And third, because we use corridors, we also need to create an instance of the corridor room that is between the two rooms.
 
 > **Note:** Our secret rooms are not really secret as we do not hide them in any way. I may revisit this in the future to make them really secret.
 
@@ -254,7 +254,7 @@ To add the secret room to the level, we first get all the rooms from the level d
 
 ## Room manager
 
-In Enter the Gungeon, when a player visits a (combat oriented) room for the first time, two things happen. First, all the doors to neighbouring rooms get closed and locked. And second, enemies are spawned. Only after all the enemies are defeated, the doors unlock.
+In Enter the Gungeon, when a player visits a (combat-oriented) room for the first time, two things happen. First, all the doors to neighbouring rooms get closed and locked. And second, enemies are spawned. Only after all the enemies are defeated, the doors unlock.
 
 <Video src="img/v2/examples/gungeon/enter_room.mp4" />
 
@@ -264,11 +264,11 @@ In Enter the Gungeon, when a player visits a (combat oriented) room for the firs
 
 ### Current room detection
 
-The base of this setup is detecting when a player enters a room. We will use the same setup as we described in the [Current room detection](guides/current-room-detection.md) tutorial. That means that we have a floor collider that is set to trigger and it informs `RoomManager` when player enters a room.
+The base of this setup is detecting when a player enters a room. We will use the same setup as we described in the [Current room detection](guides/current-room-detection.md) tutorial. That means that we have a floor collider that is set to trigger and it informs `RoomManager` when the player enters a room.
 
 ### Enemies
 
-We will use a very simple approach to randomized spawn of enemies. We will use the floor collider that we set up in the previous step to get a random position inside the room.
+We will use a very simple approach to a randomized spawn of enemies. We will use the floor collider that we set up in the previous step to get a random position inside the room.
 
 The algorithm works as follows:
 
@@ -342,7 +342,7 @@ The algorithm works as follows:
 
 ### Doors
 
-Our goal is to close neighbouring corridors with doors when the player enters the room and then open the doors when all the enemies are dead. The only sligthly complex part is how to obtain the game objects that represent the doors. To make our lifes easier, we added the doors directly to each corridor room template. That means that after the level is generated we just have to retrieve the doors from corridor room templates.
+Our goal is to close neighbouring corridors with doors when the player enters the room and then open the doors when all the enemies are dead. The only slightly complex part is how to obtain the game objects that represent the doors. To make our lives easier, we added the doors directly to each corridor room template. That means that after the level is generated we just have to retrieve the doors from corridor room templates.
 
 <Gallery cols={2} fixedHeight>
     <GalleryImage src="img/v2/examples/gungeon/room_templates/ver5.png" caption="Vertical corridor" />

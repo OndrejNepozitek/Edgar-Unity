@@ -58,7 +58,7 @@ The next step is to open the **Forward Renderer** asset. Click the *Add Renderer
 
 After a level is generated, we have to setup the Fog of War component. The best place to do that is in a [custom post-processing task](generators/post-process.md#custom-post-processing). Sample code with comments can be seen below:
 
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Fog of War/Post process", fileName = "FogOfWarPostProcess")]
+    [CreateAssetMenu(menuName = "Edgar/Examples/Fog of War/Post process", fileName = "FogOfWarPostProcess")]
     public class FogOfWarPostProcess : DungeonGeneratorPostProcessBase
     {
         public override void Run(GeneratedLevel level, LevelDescription levelDescription)

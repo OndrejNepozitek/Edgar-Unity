@@ -35,7 +35,7 @@ Level graphs must be **connected**. We say that a graph is connected if there is
 
 ## Creating level graphs
 
-*LevelGraph* is a ScriptableObject that can be created by navigating to *Create -> Dungeon generator -> Level graph*. Below you can see how are level graphs displayed in the Inspector window.
+*LevelGraph* is a ScriptableObject that can be created by navigating to *Create -> Edgar -> Level graph*. Below you can see how are level graphs displayed in the Inspector window.
 
 <Image src="img/v2/level_graphs/level_graph_inspector.png" caption="Level graph in the Inspector window" />
 
@@ -46,29 +46,29 @@ The Graph editor window can be opened by clicking the *Open graph editor* button
 <Image src="img/v2/level_graphs/level_graph_window.png" caption="Graph editor window" />
 
 Window controls:
-- *Selected graph*: name of the currently selected level graph
+- *Selected graph*: the name of the currently selected level graph
 - *Select in inspector*: selects the current graph in the inspector window
 - *Select level graph*: selects a different level graph
 
 Working with level graphs:
 - *Create room*: double click on an empty space in the grid
 - *Configure room*: double click on an existing room
-- *Delete room*: right click on a room and select *Delete room*
+- *Delete room*: right-click on a room and select *Delete room*
 - *Move room*: left click and then drag around
 - *Add connection*: hold *ctrl* while left-clicking a room and then move the cursor to a different room
-- *Delete connection*: right click on a connection handle and select *Delete connection*
+- *Delete connection*: right-click on a connection handle and select *Delete connection*
 
 <Image src="img/v2/level_graphs/level_graph_controls.gif" caption="Level graph controls" />
 
 ## Room templates
 
-When we have our rooms and connections, it is time to setup room templates. In the *Level graph* inspector window above, we can see 2 sections - *Default room templates* and *Corridor room templates*. These section are used to specify which room templates are available for which room. Below you can see the setup from [Example 1](../examples/example-1.md).
+When we have our rooms and connections, it is time to setup room templates. In the *Level graph* inspector window above, we can see 2 sections - *Default room templates* and *Corridor room templates*. These sections are used to specify which room templates are available for which room. Below you can see the setup from [Example 1](../examples/example-1.md).
 
 <Image src="img/v2/level_graphs/level_graph_inspector2.png" caption="Example of assigned room templates" />
 
 ### Room templates sets
 
-It may sometimes be useful to group our room templates into groups like *Shop rooms*, *Boss rooms*, etc. We can create a so-called **Room templates set** by navigating to *Create -> Dungeon generator -> Room templates set*. It is a simple ScriptableObject that holds an array of room templates and we can use it instead of assigning individual room templates one by one. The main advantage is that if we later decide to add a new shop room template, we do not have to change all the shop rooms to include this new template - we simply add it to the room templates set.
+It may sometimes be useful to group our room templates into groups like *Shop rooms*, *Boss rooms*, etc. We can create a so-called **Room templates set** by navigating to *Create -> Edgar -> Room templates set*. It is a simple ScriptableObject that holds an array of room templates and we can use it instead of assigning individual room templates one by one. The main advantage is that if we later decide to add a new shop room template, we do not have to change all the shop rooms to include this new template - we simply add it to the room templates set.
 
 <Image src="img/v2/level_graphs/room_templates_set.png" caption="Example of a room templates set that holds all our basic rooms. If we add another room template later, the change gets propagated to all the rooms in the level graph that are using this room templates set." />
 
@@ -128,7 +128,7 @@ When we have our custom room or connection type ready, we have to configure the 
 
 If we add some additional information to a room or connection, we probably expect to somehow use this information later. The first step is to get access to the [RoomInstance][RoomInstance#properties] class which is described [here](../basics/generated-level-info.md). When we have an instance of this class, we can use the `RoomInstance.Room` property. This property is of the `RoomBase` type so we have to cast it to our custom room type.
 
-### Custom colours in level graph editor
+### Custom colours in the level graph editor
 
 It is also possible to change how custom rooms and connections look in the level graph editor. We just have to override the `GetEditorStyle()` method and return an instance of [RoomEditorStyle][RoomEditorStyle#properties] or [ConnectionEditorStyle][ConnectionEditorStyle#properties].
 

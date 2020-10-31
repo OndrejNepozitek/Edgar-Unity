@@ -32,7 +32,7 @@ Below you can see a few of the room templates that were created for this example
 
 ## Doors and corridors
 
-Even though there are no real corridors used in generated levels, we use the corridor feature to make sure that neighboring rooms do not share walls.
+Even though there are no real corridors used in generated levels, we use the corridor feature to make sure that neighbouring rooms do not share walls.
 
 <Gallery cols={2} fixedHeight>
     <GalleryImage src="img/v2/examples/platformer1/corridor_horizontal.png" caption="Horizontal corridor" />
@@ -43,9 +43,9 @@ Moreover, there is a small problem with doors because there are no background ti
 
 <Image src="img/v2/examples/platformer1/no_holes_between_rooms.png" caption="There are no holes between individual rooms because we have no background tile in room templates." />
 
-The solution is quite simple. We have to create a simple post process task that goes through all door positions and deletes all the door tiles.
+The solution is quite simple. We have to create a simple post-processing task that goes through all door positions and deletes all the door tiles.
 
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Platformer 1/Post process", fileName = "Platformer1PostProcess")]
+    [CreateAssetMenu(menuName = "Edgar/Examples/Platformer 1/Post process", fileName = "Platformer1PostProcess")]
     public class Platformer1PostProcess : DungeonGeneratorPostProcessBase
     {
         public override void Run(GeneratedLevel level, LevelDescription levelDescription)
@@ -74,7 +74,7 @@ The solution is quite simple. We have to create a simple post process task that 
         }
     }
 
-> **Note:** The term *doors* is used throughout the text but in this context it simply means a conection between two rooms.
+> **Note:** The term *doors* is used throughout the text but in this context it simply means a connection between two rooms.
 
 ## Level graph
 

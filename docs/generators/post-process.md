@@ -5,11 +5,11 @@ title: Post-processing
 import { Image, Gallery, GalleryImage } from "@theme/Gallery";
 import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
 
-After a level is generated, we may often want to run some additional logic like spawning enemies, etc. This can be achieved by providing your own post processing logic that will be called after the level is generated and provided with information about the level. 
+After a level is generated, we may often want to run some additional logic like spawning enemies, etc. This can be achieved by providing your own post-processing logic that will be called after the level is generated and provided with information about the level. 
 
-To better understand how the generator works, we will first describe which post processing is done by the generator itself and then provide ways to extend this behaviour and provide your own logic.
+To better understand how the generator works, we will first describe which post-processing is done by the generator itself and then provide ways to extend this behaviour and provide your own logic.
 
-## Built-in post processing-steps
+## Built-in post-processing steps
 
 ### 0. Instantiate room template with correct positions
 
@@ -21,7 +21,7 @@ In this step, the generator initializes the structure of shared tilemaps to whic
 
 ### 2. Copy rooms to shared tilemaps
 
-In this step, the generator copies individual rooms to shared tilemaps. If we use corridors, it is important to first copy other rooms and only then corridors. By doing so, corridors will make holes into walls of other rooms so we can go from one room to another.
+In this step, the generator copies individual rooms to shared tilemaps. If we use corridors, it is important to first copy other rooms and only then corridors. By doing so, corridors will make holes into the walls of other rooms so we can go from one room to another.
 
 ### 3. Center grid
 
@@ -37,12 +37,12 @@ You may think why do not we just disable the whole room template. The reason for
 
 The last step is very similar to the previous step. At this point, there are colliders from individual room templates that would prevent us from going from one room to another. We keep only the colliders that are set to trigger because these may be useful for example for [Current room detection](../guides/current-room-detection.md).
 
-## Custom post processing
+## Custom post-processing
 
-If we want to add our own post processing logic, we have to create a class that inherits from `DungeonGeneratorPostProcessBase`. And because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute so we are able to create an instance of that ScriptableObject. After a level is generated, the `Run` method is called and that is the place where we put our post process logic.
+If we want to add our own post-processing logic, we have to create a class that inherits from `DungeonGeneratorPostProcessBase`. And because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute so we are able to create an instance of that ScriptableObject. After a level is generated, the `Run` method is called and that is the place where we put our post-processing logic.
 
 
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Docs/My custom post process", fileName = "MyCustomPostProcess")]
+    [CreateAssetMenu(menuName = "Edgar/Examples/Docs/My custom post process", fileName = "MyCustomPostProcess")]
     public class MyCustomPostProcess : DungeonGeneratorPostProcessBase
     {
         public override void Run(GeneratedLevel level, LevelDescription levelDescription)
@@ -51,7 +51,7 @@ If we want to add our own post processing logic, we have to create a class that 
         }
     }
 
-With the implementation ready, we now have to create an instance of that ScriptableObject by right clicking in the project view and *Create -> Dungeon generator -> Examples -> Docs -> My custom post process*. And the last step is to drag and drop this ScriptableObject in the *Custom post process tasks* section of the dungeon generator.
+With the implementation ready, we now have to create an instance of that ScriptableObject by right-clicking in the project view and *Create -> Edgar -> Examples -> Docs -> My custom post process*. And the last step is to drag and drop this ScriptableObject in the *Custom post process tasks* section of the dungeon generator.
 
 <Image src="img/v2/examples/example1/custom_post_process.png" caption="Add the ScriptableObject to the Custom post process tasks array" />
 

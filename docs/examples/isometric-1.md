@@ -37,7 +37,7 @@ The *Grid* is set to *Isometric* and we use the following structure of tilemaps:
 
 For each elevation level we have 2 tilemap layers - one for floor tile and one for wall (and decoration) tiles. Between the levels 0 and 1 there is a half-level because stairs in the tileset are halfway between 0 and 1. And there is also one additional layer for colliders which is not used in this example but can be utilized to place collider tiles.
 
-Room template prefabs can be created via *Create -> Dungeon generator -> Examples -> Isometric 1 -> Room template*.
+Room template prefabs can be created via *Create -> Edgarr -> Examples -> Isometric 1 -> Room template*.
 
 ## Room templates
 

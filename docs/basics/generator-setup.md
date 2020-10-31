@@ -15,4 +15,4 @@ The setup is very easy:
 
 <Image src="img/v2/generators/dungeon_generator_inspector.png" caption="Dungeon generator runner" width="500px" />
 
-> **Note:** The goal of this guide is not to describe individual options of the generator but rather to describe how to get an instance of the generator with reasonable default configuration. If you are interested in individual options, head to the [Dungeon generator](../generators/dungeon-generator.md) page.
+> **Note:** The goal of this guide is not to describe individual options of the generator but rather to describe how to get an instance of the generator with a reasonable default configuration. If you are interested in individual options, head to the [Dungeon generator](../generators/dungeon-generator.md) page.

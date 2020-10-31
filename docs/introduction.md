@@ -63,4 +63,4 @@ Similar approaches are used in games like [**Enter the Gungeon**](https://www.bo
 
 ## Terms of use
 
-The plugin can be used in bot commercial and non-commerical projects but **cannot be redistributed or reselled**. If you want to include this plugin in your own asset, please contact me and we will figure that out.
+The plugin can be used in bot commercial and non-commercial projects but **cannot be redistributed or reselled**. If you want to include this plugin in your own asset, please contact me and we will figure that out.

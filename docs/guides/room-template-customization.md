@@ -5,11 +5,11 @@ title: Room template customization
 In this guide, we will cover:
 
 1. How to **override the default structure of tilemap layers**
-2. How to **customize room templates** e.g. by automatically adding additional gameobject/components
+2. How to **customize room templates** e.g. by automatically adding additional game objects/components
 
 ## Tilemap layers
 
-Each room template comes with a set of tilemap layers that are all children of the *Tilemaps* gameobject in the room template. For dungeon room templates, we usually want a tilemap layer for wall tiles, floor tiles, etc. We tried to provide a reasonable default setup but it is expected that users may want to use a different structure.
+Each room template comes with a set of tilemap layers that are all children of the *Tilemaps* game object in the room template. For dungeon room templates, we usually want a tilemap layer for wall tiles, floor tiles, etc. We tried to provide a reasonable default setup but it is expected that users may want to use a different structure.
 
 To override the default structure of tilemaps, we first have to create a class that inherits from the `TilemapLayersHandlerBase` class. Below is a commented example of how to do that.
 
@@ -20,7 +20,7 @@ To override the default structure of tilemaps, we first have to create a class t
     // TilemapLayersHandlerBase inherit from ScriptableObject so we need to create an asset
     // menu item that we will use to create the scriptable object instance.
     // The menu name can be changed to anything you want.
-    [CreateAssetMenu(menuName = "Dungeon generator/Custom tilemap layers handler", fileName = "CustomTilemapLayersHandler")]
+    [CreateAssetMenu(menuName = "Edgar/Custom tilemap layers handler", fileName = "CustomTilemapLayersHandler")]
     public class CustomTilemapLayersHandlerExample : TilemapLayersHandlerBase
     {
         public override void InitializeTilemaps(GameObject gameObject)
@@ -82,13 +82,13 @@ When we have our custom tilemap layers handler prepared, there are 2 additional 
 
 We have to configure the generator to use our custom tilemap layers handler.
 
-First, we have to create an instance of a ScriptableObject that will hold our custom handler. This is the reason why we added the *CreateAssetMenu* attribute to our handler. In the project view, we right click in a folder and choose *Create -> Dungeon Generator -> Custom tilemap layers handler* (the path may be changed in the *CreateAssetMenu* attribute). That should create a file in the current folder.
+First, we have to create an instance of a ScriptableObject that will hold our custom handler. This is the reason why we added the *CreateAssetMenu* attribute to our handler. In the project view, we right-click in a folder and choose *Create -> Edgar -> Custom tilemap layers handler* (the path may be changed in the *CreateAssetMenu* attribute). That should create a file in the current folder.
 
 And second, we have to drag and drop this file to the *Tilemap Layers Handler* field of our generator component. If we want to switch the tilemap layers handler in the future, we can either replace it with a different handler or remove it to use the default handler.
 
 ### Create a custom room template initializer
 
-Now we will add a *Create menu* shortcut to create a room template with a custom tilemap layers handler. This is better explained in the next section, below is the minimal working example. It will add a *Create -> Dungeon Generator -> Custom room template* menu item that will create a room template prefab with our custom tilemap layers.
+Now we will add a *Create menu* shortcut to create a room template with a custom tilemap layers handler. This is better explained in the next section, below is the minimal working example. It will add a *Create -> Edgar -> Custom room template* menu item that will create a room template prefab with our custom tilemap layers.
 
     using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers;
     using UnityEngine;
@@ -108,7 +108,7 @@ Now we will add a *Create menu* shortcut to create a room template with a custom
         }
 
         #if UNITY_EDITOR
-        [MenuItem("Assets/Create/Dungeon generator/Custom room template")]
+        [MenuItem("Assets/Create/Edgar/Custom room template")]
         public static void CreateRoomTemplatePrefab()
         {
             // Make sure to use the correct generic parameter - it should be the type of this class
@@ -120,12 +120,12 @@ Now we will add a *Create menu* shortcut to create a room template with a custom
 
 ## Room template initializers
 
-The process of creating room templates would be very time-consuming and error-prone if done manually. Therefore, we use so-called *room template initilizers* to help us create room templates. In the previous section, we provided an example of a custom room template initializer that is able to create room templates with a custom structure of tilemaps.
+The process of creating room templates would be very time-consuming and error-prone if done manually. Therefore, we use so-called *room template initializer* to help us create room templates. In the previous section, we provided an example of a custom room template initializer that is able to create room templates with a custom structure of tilemaps.
 
 There are two main ways of utilizing custom room template initializers:
 
 1. To override the default structure of tilemap layers
-2. To do some post processing, e.g. add additional game objects or components to a room template
+2. To do some post-processing, e.g. add additional game objects or components to a room template
 
 The steps to create a custom room template initializer are the following:
 
@@ -168,7 +168,7 @@ An example can be seen below:
         }
 
         #if UNITY_EDITOR
-        [MenuItem("Assets/Create/Dungeon generator/Custom room template")]
+        [MenuItem("Assets/Create/Edgar/Custom room template")]
         public static void CreateRoomTemplatePrefab()
         {
             // Make sure to use the correct generic parameter - it should be the type of this class

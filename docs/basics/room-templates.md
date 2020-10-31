@@ -16,7 +16,7 @@ There are currently two ways of creating room templates: either via the *Create 
 
 To create a new room template, we have to:
 - navigate to the folder where should the room template prefab be saved
-- right click in the Project window and choose *Create -> Dungeon generator -> Dungeon room template*
+- right click in the Project window and choose *Create -> Edgar -> Dungeon room template*
 - (optional) rename the prefab file to anything you want
 
 ### Create manually
@@ -76,9 +76,9 @@ I will not go into formal definitions. The image below should be self-explanator
 
 > **Note:** You can see that the algorithm computed some outline (yellow) in in the wrong room template. The current implementation stops after any outline is found and does not check whether all tiles are contained in that outline. This will be improved in the future.
 
-#### Each tile atleast two neighbours
+#### Each tile at least two neighbours
 
-Each tile must be connected to at least two neigbouring tiles. In the image below, both tiles in the upper row are connected to only a single neighbour so the room shape is not valid. If we need these two tiles, we can use **Outline override** that is described in the next section.
+Each tile must be connected to at least two neighbouring tiles. In the image below, both tiles in the upper row are connected to only a single neighbour so the room shape is not valid. If we need these two tiles, we can use **Outline override** that is described in the next section.
 
 <Gallery cols={2} fixedHeight>
     <GalleryImage src="img/v2/room_templates/at_least_two_neighbors_nok.png" caption="Wrong" />
@@ -104,12 +104,12 @@ If we really need to have a room template whose outline is not valid, we can use
 
 <Gallery cols={2} fixedHeight>
     <GalleryImage src="img/v2/room_templates/outline_override_active.png" caption="We can use any tiles to draw the outline" />
-    <GalleryImage src="img/v2/room_templates/outline_override_inactive.png" caption="If we disable the Outline override game object, we should still see that the outline is overriden" />
+    <GalleryImage src="img/v2/room_templates/outline_override_inactive.png" caption="If we disable the Outline override game object, we should still see that the outline is overridden" />
 </Gallery>
 
 ### Bounding box outline handler
 
-In some situations, it would be useful to have an outline which looks like the bounding box of all the tiles in the room template. For example, it can be used to handle outline of some platformer levels (see the images below). It is also possible to add padding to the top of the outline, which is convenient if we need to add doors that are higher than the outline.
+In some situations, it would be useful to have an outline which looks like the bounding box of all the tiles in the room template. For example, it can be used to handle an outline of some platformer levels (see the images below). It is also possible to add padding to the top of the outline, which is convenient if we need to add doors that are higher than the outline.
 
 To add the *Bounding box outline handler* click the **Add bounding box outline handler** button in the *Room template* inspector.
 
@@ -154,7 +154,7 @@ Each red rectangle shows available door positions. You can see that there are no
 
 #### Specific positions mode
 
-In the *Specific positions mode*, you have to manually specify all door positions of the room template. This mode gives you a complete control over available door positions.
+In the *Specific positions mode*, you have to manually specify all door positions of the room template. This mode gives you complete control over available door positions.
 
 To start adding doors, click the *Specific positions* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. Then you can simply draw door positions as seen in the video below.
 
@@ -164,33 +164,33 @@ You can see that I am creating doors of various lengths. And at the end of the v
 
 > **Note:** If you accidentally add a door position that you did not want to add, there are two ways of removing doors:
 >
-> 1. Click the *Delete all door positions* to delete all the door positions.
-> 2. dsa
+> 1. Click the *Delete all door positions* button to delete all the door positions.
+> 2. Click the *Delete door positions* button and then click on door positions that should be deleted.
 
 > **Note:** With multiple doors overlapping, the GUI gets quite messy. In order to make it more clear, I show diagonals of individual rectangles. And it gets even more messy when you have doors of various sizes overlapping. I thought about adding a switch that would show only doors with a specified length.
 
-> **Note:** The inspector script currently lets you add door positions that are not on the outline of the room shape. It will, hovewer, result in an error when trying to generate a dungeon. It should be improved in the future.
+> **Note:** The inspector script currently lets you add door positions that are not on the outline of the room shape. It will, however, result in an error when trying to generate a dungeon. It should be improved in the future.
 
 ## Repeat mode
 
 Each *Room template* script has a field called *Repeat Mode* that is initially set to *Allow Repeat*. Using this field, we can tell the algorithm whether the room template can be used more than once in generated levels. There are the following possibilities:
 
-- **Allow repeat** - The room tamplate may repeat in generated levels.
-- **No immeadiate** - Neighbors of the room template must be different.
+- **Allow repeat** - The room template may repeat in generated levels.
+- **No immediate** - Neighbors of the room template must be different.
 - **No repeat** - The room template can be used at most once.
 
 <Image src="img/v2/room_templates/repeat_mode.png" caption="Specific positions mode" />
 
 > **Note:** Instead of setting the *Repeat mode* on a per room template basis, you can use global override which is configured directly in the dungeon generator.
 
-> **Note:** If you provide too few room templates, they may repeat in generated levels even if you choose the **No immeadiate** or **No repeat** options. To make sure that the repeat mode is satisifed, please provide enough room templates to choose from.
+> **Note:** If you provide too few room templates, they may repeat in generated levels even if you choose the **No immediate** or **No repeat** options. To make sure that the repeat mode is satisfied, please provide enough room templates to choose from.
 
 ## Corridors
 
-The algorithm distinguishes two types of room templates - basic room templates and room templates for corridor rooms. In theory, we can use any any room template with at least two doors to act as a corridor room template. **However, to make the algorithm fast, we should follow these recommendations**:
+The algorithm distinguishes two types of room templates - basic room templates and room templates for corridor rooms. In theory, we can use any room template with at least two doors to act as a corridor room template. **However, to make the algorithm fast, we should follow these recommendations**:
 
 1. There should be exactly two door positions.
-2. The two door should be on the opposite sides of the room template.
+2. The two doors should be on the opposite sides of the room template.
 3. The corridor should not be too long or too wide.
 
 <Gallery cols={2} fixedHeight>

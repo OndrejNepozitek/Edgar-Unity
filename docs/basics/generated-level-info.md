@@ -9,11 +9,11 @@ import { Image, Gallery, GalleryImage } from "@theme/Gallery";
 In the image below, we can see the structure of a level. The game object that holds the level has two children - **Tilemaps** game object and **Rooms** game object:
 
 - **Tilemaps** game object holds all the tilemap layers.
-- **Rooms** game object holds instance of all room templates that are used in the level. Name of each of the children is formed as **"{roomName} - {roomTemplate}"** to make it easier to find a specific room when debugging.
+- **Rooms** game object holds instances of all room templates that are used in the level. Name of each of the children is formed as **"{roomName} - {roomTemplate}"** to make it easier to find a specific room when debugging.
 
 <Image src="img/v2/basics/level_structure.png" caption="Structure of the level" />
 
-> **Note:** If you want to retrieve any of the game object from a script, the best-practice is to use the [GeneratorConstants][GeneratorConstants#fields] static fields instead of using hardcoded names.
+> **Note:** If you want to retrieve any of the game objects from a script, the best-practice is to use the [GeneratorConstants][GeneratorConstants#fields] static fields instead of using hardcoded names.
 
 ## Rooms information
 

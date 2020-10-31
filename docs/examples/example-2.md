@@ -20,11 +20,11 @@ In this tutorial, we will use [this tileset](https://0x72.itch.io/dungeontileset
 
 ## Simple example
 
-The goal is to create two basic rectangular room remplates of different sizes and a room template for both horizontal and vertical corridors.
+The goal is to create two basic rectangular room templates of different sizes and a room template for both horizontal and vertical corridors.
 
-> **Note:** This tileset is trickier than the one used in [Example 1](example1.md) because there is an additional row of ligther tiles above all horizontal wall tiles. It will cause us problems when working with corridors.
+> **Note:** This tileset is trickier than the one used in [Example 1](example1.md) because there is an additional row of lighter tiles above all horizontal wall tiles. It will cause us problems when working with corridors.
 
-### Basic rooms romplates
+### Basic rooms templates
 
 For this example, I am using doors with two different lengths (1 and 2). That means that we have to use the *Specific positions mode* mode because the *Simple mode* can only handle doors with the same length. As you can see below, the door positions look quite messy because they overlap. However, this is only to showcase that it is possible and you can use doors with the same length.
 
@@ -35,7 +35,7 @@ For this example, I am using doors with two different lengths (1 and 2). That me
 
 ### Vertical corridors
 
-As I said before, there is a problem with corridors when working with this tileset. To be more precise, there is a problem with vertical corridors because of the additional roow of tiles above wall tiles. If we were to design our vertical corridors as in Example 1, we would end up with something like this:
+As I said before, there is a problem with corridors when working with this tileset. To be more precise, there is a problem with vertical corridors because of the additional row of tiles above wall tiles. If we were to design our vertical corridors as in Example 1, we would end up with something like this:
 
 <Gallery cols={2} fixedHeight>
     <GalleryImage src="img/original/example2_wrong_corridor.png" caption="Incorrent vertical corridor" />
@@ -89,7 +89,7 @@ To create something that is closer to a real-life example, we will add more room
 
 These rooms will contain:
 - our player prefab with basic movement
-- interactable chest that changes appearance after interaction (no loot is implemented)
+- interactable chest that changes appearance after an interaction (no loot is implemented)
 - ladder that causes the game manager to generated a new level after interaction
 - an ogre in the boss room (no AI implemented)
 

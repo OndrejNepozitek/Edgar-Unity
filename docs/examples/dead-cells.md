@@ -26,7 +26,7 @@ To run the example, you need to:
 
 ## Introduction
 
-Dead Cells is a rogue-lite, metroidvania inspired, action-platformer. They use procedural generation techniques to generate levels of the game. An article about their approach can be found [here](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania) and a video [here](https://www.youtube.com/watch?v=tyMrRW-Li_I).
+Dead Cells is a rogue-lite, Metroidvania inspired, action-platformer. They use procedural generation techniques to generate levels of the game. An article about their approach can be found [here](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania) and a video [here](https://www.youtube.com/watch?v=tyMrRW-Li_I).
 
 The main idea is that they have hand-made room templates and a graph that describes the structure of the level. Both the room templates and the graph are usually different for each stage of the game. Their procedural generator is then guided by the graph of rooms and picks a random room template for each room. This approach is very similar to what we do in our algorithm.
 
@@ -70,11 +70,11 @@ Our underground level is inspired by the Prisoners Quarters level in Dead Cells.
 
 <Image src="img/v2/examples/dead_cells/underground_level_graph.png" caption="Level graph for the underground level" />
 
-> **Note:** It seems like the structure of the level may sligthly differ between individual runs of the game. For example, the positions of the shop room and the treasure room may be swapped. However, to keep it simple, we will use a fixed level graph. You can see the [Enter the Gungeon](../examples/enter-the-gungeon) for an example of procedurally generated levels.
+> **Note:** It seems like the structure of the level may slightly differ between individual runs of the game. For example, the positions of the shop room and the treasure room may be swapped. However, to keep it simple, we will use a fixed level graph. You can see the [Enter the Gungeon](../examples/enter-the-gungeon) for an example of procedurally generated levels.
 
 ### Custom room and connection types
 
-In the level graph above, we used custom room and connection types. The implementation of the custom room type can be seen below. Each room has its type (entrance, treasure, etc) and also a flag that indicates where it is outside (which is used for rooftop levels). Additionaly, we override the `ToString()` implementation so that the type of the room is displayed in the level graph.
+In the level graph above, we used custom room and connection types. The implementation of the custom room type can be seen below. Each room has its type (entrance, treasure, etc) and also a flag that indicates where it is outside (which is used for rooftop levels). Additionally, we override the `ToString()` implementation so that the type of room is displayed in the level graph.
 
     public class DeadCellsRoom : RoomBase
     {
@@ -234,7 +234,7 @@ Dead Cells comes with a schematic level map that shows the overview of the whole
 
 <Image src="img/v2/examples/dead_cells/underground_result1.png" caption="Simple level map" />
 
-After a level is generated, we create an additional tilemap which will contain all the information about the level map. We go through individual tilemap layers of the level and copy them to the level map tilemap. First, we find all the tiles from the *Background* tilemap layer and copy them to the level map. But instead of using the normal graphics of individual tiles, we use a tile that is completely blue. Then we repeat this process with other layers and different colors of tiles.
+After a level is generated, we create an additional tilemap which will contain all the information about the level map. We go through individual tilemap layers of the level and copy them to the level map tilemap. First, we find all the tiles from the *Background* tilemap layer and copy them to the level map. But instead of using the normal graphics of individual tiles, we use a tile that is completely blue. Then we repeat this process with other layers and different colours of tiles.
 
     public TileBase LevelMapWallTile;
     public TileBase LevelMapWallBackgroundTile;
@@ -309,7 +309,7 @@ The first challenge of this level is how to generate the top layer of rooms in a
     <GalleryImage src="img/v2/examples/dead_cells/rooftop/outside3.png" caption="Normal" />
 </Gallery>
 
-> **Note:** It is **very important** that we do not use layers with colliders if it is not neccessary. For example, you can see that only the outline tiles of walls have a collider and other walls are in the background layer without a collider. The reason for that is that when the generator assembles the level and copies tiles to shared tilemaps, Unity has to recompute collider shapes which can significantly decrease the performance if there are too tiles with colliders.
+> **Note:** It is **very important** that we do not use layers with colliders if it is not necessary. For example, you can see that only the outline tiles of walls have a collider and other walls are in the background layer without a collider. The reason for that is that when the generator assembles the level and copies tiles to shared tilemaps, Unity has to recompute collider shapes which can significantly decrease the performance if there are too tiles with colliders.
 
 #### Level graph
 

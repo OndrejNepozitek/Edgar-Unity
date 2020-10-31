@@ -18,9 +18,9 @@ In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-
 
 ## Simple example
 
-The goal is to create two basic rectangular room remplates of different sizes and a room template for both horizontal and vertical corridors. We will use the smaller room template for our dead-end rooms and the bigger room template for other rooms.
+The goal is to create two basic rectangular room templates of different sizes and a room template for both horizontal and vertical corridors. We will use the smaller room template for our dead-end rooms and the bigger room template for other rooms.
 
-### Basic rooms romplates
+### Basic rooms templates
 
 There should be nothing hard about the design of the two rectangular room templates. We use the *simple doors mode configured* to door length 1 and corner distance 2. We need corner distance 2 in order to easily connect corridors.
 
@@ -38,7 +38,7 @@ Corridors are very simple with this tileset. We use the *specific positions* doo
     <GalleryImage src="img/original/example1_corridor_vertical.png" caption="Vertical corridor" />
 </Gallery>
 
-We just need to make sure that we do not allow door positions of non-corridor rooms that are closer than 2 tiles from corners. Below you can see what would happen otherwise. It is possible to allow that but we would have to implement some post process logic that would fix such cases.
+We just need to make sure that we do not allow door positions of non-corridor rooms that are closer than 2 tiles from corners. Below you can see what would happen otherwise. It is possible to allow that but we would have to implement some post-processing logic that would fix such cases.
 
 <Image src="img/original/example1_wrong_corridor.png" caption="Incorrect corridor connection" />
 
@@ -104,7 +104,7 @@ We can easily add doors to our corridors. We created a simple door prefab that h
 
 ### Enemies
 
-We can easily add enemies to our levels. In this tutorial, we will add enemies directly to room templates and then implement a post process task that spawns each enemy with a configurable chance. 
+We can easily add enemies to our levels. In this tutorial, we will add enemies directly to room templates and then implement a post-processing task that spawns each enemy with a configurable chance. 
 
 We will start by creating a GameObject called "Enemies" in all the room templates that will contain enemies a make all the enemies children of this GameObject.
 
@@ -116,9 +116,9 @@ If we now generate the dungeon, we will see that it contains all the enemies tha
 
 <Image src="img/v2/examples/example1/dungeon_with_monsters.png" caption="Dungeon with monsters" />
 
-If we are happy with the results, we can stop here. However, to showcase how we can add some post processing logic to the generator, we will try to spawn each monster with some predefined probability so that different monsters spawn every time. The result can be found below.
+If we are happy with the results, we can stop here. However, to showcase how we can add some post-processing logic to the generator, we will try to spawn each monster with some predefined probability so that different monsters spawn every time. The result can be found below.
 
-We have to create a class that inherits from `DungeonGeneratorPostProcessBase` and because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute so we are able to create an instance of that ScriptableObject. After a level is generated, the `Run` method is called and that is the place where we call our post process logic.
+We have to create a class that inherits from `DungeonGeneratorPostProcessBase` and because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute so we are able to create an instance of that ScriptableObject. After a level is generated, the `Run` method is called and that is the place where we call our post-process logic.
 
     [CreateAssetMenu(menuName = "Dungeon generator/Examples/Example 1/Post process", fileName = "Example1PostProcess")]
     public class Example1PostProcess : DungeonGeneratorPostProcessBase
@@ -165,7 +165,7 @@ We have to create a class that inherits from `DungeonGeneratorPostProcessBase` a
         }
     }
 
-With the implementation ready, we now have to create an instance of that ScriptableObject by right clicking in the project view and *Create -> Dungeon generator -> Examples -> Example 1-> Post process*. And the last step is to drag and drop this GameObject in the *Custom post process tasks* section of the dungeon generator.
+With the implementation ready, we now have to create an instance of that ScriptableObject by right-clicking in the project view and *Create -> Edgar -> Examples -> Example 1-> Post process*. And the last step is to drag and drop this GameObject in the *Custom post process tasks* section of the dungeon generator.
 
 <Image src="img/v2/examples/example1/custom_post_process.png" caption="Add the ScriptableObject to the Custom post process tasks array" />
 
@@ -175,7 +175,7 @@ So the goal is to have more rooms than in the simple example and also a spawn ro
 
 <Image src="img/v2/examples/example1_level_graph2.png" caption="Level graph" />
 
-You can also see that with corridors of different lengths a more room templates to choose from, we can now have cycles of various sizes. The boss and spawn rooms have assigned only a single room template.
+You can also see that with corridors of different lengths and more room templates to choose from, we can now have cycles of various sizes. The boss and spawn rooms have assigned only a single room template.
 
 ### Results
 
