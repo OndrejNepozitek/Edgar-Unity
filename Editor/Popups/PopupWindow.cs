@@ -68,7 +68,7 @@ namespace Edgar.Unity.Editor
             CloseLastPopup();
 
             var window = ScriptableObject.CreateInstance<PopupWindow>();
-            var size = new Vector2(600, 300);
+            var size = new Vector2(600, 330);
             window.minSize = size;
             window.maxSize = size;
             window.titleContent = new GUIContent($"Edgar - {popup.Title}");
