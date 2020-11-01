@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using Edgar.GraphBasedGenerator.Grid2D;
+using UnityEngine;
 
 namespace Edgar.Unity
 {
@@ -86,44 +91,101 @@ namespace Edgar.Unity
 
         public void ExportMapDescription()
         {
-            //var payload = InitializePayload();
-            //var inputSetup = GetInputTask();
+            var payload = InitializePayload();
+            var inputSetup = GetInputTask();
 
-            //var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>> {inputSetup};
+            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>> { inputSetup };
 
-            //PipelineRunner.Run(pipelineItems, payload);
+            PipelineRunner.Run(pipelineItems, payload);
 
-            //var levelDescription = payload.LevelDescription;
-            //var mapDescription = levelDescription.GetMapDescription();
-            //var intMapDescription = GetIntMapDescription(mapDescription);
-            //var json = JsonConvert.SerializeObject(intMapDescription, Formatting.Indented, new JsonSerializerSettings()
-            //{
-            //    PreserveReferencesHandling = PreserveReferencesHandling.All,
-            //    TypeNameHandling = TypeNameHandling.Auto,
-            //});
+            var levelDescription = payload.LevelDescription.GetLevelDescription();
+            levelDescription.Name = "Test";
+            var wrappedLevelDescription = GetWrappedLevelDescription(levelDescription);
 
-            //var filename = "exportedMapDescription.json";
-            //File.WriteAllText(filename, json);
-            //Debug.Log($"Map description exported to {filename}");
+            var filename = "exportedMapDescription.json";
+            wrappedLevelDescription.SaveToJson(filename);
+            Debug.Log($"Map description exported to {filename}");
         }
 
-        //private MapDescription<int> GetIntMapDescription(MapDescription<RoomBase> mapDescription)
-        //{
-        //    var newMapDescription = new MapDescription<int>();
-        //    var mapping = mapDescription.GetGraph().Vertices.CreateIntMapping();
+        private LevelDescriptionGrid2D<RoomWrapper> GetWrappedLevelDescription(LevelDescriptionGrid2D<RoomBase> originalLevelDescription)
+        {
+            var levelDescription = new LevelDescriptionGrid2D<RoomWrapper>();
 
-        //    foreach (var vertex in mapDescription.GetGraph().Vertices)
-        //    {
-        //        newMapDescription.AddRoom(mapping[vertex], mapDescription.GetRoomDescription(vertex));
-        //    }
+            var srcProperties = originalLevelDescription.GetType().GetProperties(
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
+            var dstProperties = levelDescription.GetType().GetProperties(
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
 
-        //    foreach (var edge in mapDescription.GetGraph().Edges)
-        //    {
-        //        newMapDescription.AddConnection(mapping[edge.From], mapping[edge.To]);
-        //    }
+            foreach (var srcProperty in srcProperties)
+            {
+                var dstProperty = dstProperties.First(x => x.Name == srcProperty.Name);
 
-        //    return newMapDescription;
-        //}
+                if (dstProperty.CanWrite)
+                {
+                    dstProperty.SetValue(levelDescription, srcProperty.GetValue(originalLevelDescription));
+                }
+            }
+
+            var id = 0;
+            var mapping = originalLevelDescription
+                .GetGraphWithoutCorridors()
+                .Vertices
+                .Select(x => (x, new RoomWrapper(id++, x.GetDisplayName())))
+                .ToDictionary(x => x.x, x => x.Item2);
+
+            foreach (var pair in mapping)
+            {
+                levelDescription.AddRoom(pair.Value, originalLevelDescription.GetRoomDescription(pair.Key));
+            }
+
+            foreach (var edge in originalLevelDescription.GetGraphWithoutCorridors().Edges)
+            {
+                var from = mapping[edge.From];
+                var to = mapping[edge.To];
+
+                levelDescription.AddConnection(from, to);
+            }
+
+            return levelDescription;
+        }
+
+        private struct RoomWrapper
+        {
+            public int Id { get; }
+
+            public string Name { get; }
+
+            public RoomWrapper(int id, string name)
+            {
+                Name = name;
+                Id = id;
+            }
+
+            public bool Equals(RoomWrapper other)
+            {
+                return Id == other.Id;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is RoomWrapper other && Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                return Id;
+            }
+
+            public static bool operator ==(RoomWrapper left, RoomWrapper right)
+            {
+                return left.Equals(right);
+            }
+
+            public static bool operator !=(RoomWrapper left, RoomWrapper right)
+            {
+                return !left.Equals(right);
+            }
+        }
 
         protected override int OnUpgradeSerializedData(int version)
         {

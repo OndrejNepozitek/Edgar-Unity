@@ -29,7 +29,7 @@ namespace Edgar.Unity
 
         public virtual object Generate()
         {
-            Debug.Log("--- Generator started ---");
+            Debug.Log($"--- Generator started (Edgar v{AssetInfo.Version}) ---");
              
             var stopwatch = new Stopwatch();
             stopwatch.Start();
