@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Edgar.Unity
 {
@@ -8,6 +9,8 @@ namespace Edgar.Unity
         public bool InitializeSharedTilemaps = true;
 
         public TilemapLayersHandlerBase TilemapLayersHandler;
+
+        public Material TilemapMaterial;
 
         public bool CopyTilesToSharedTilemaps = true;
 

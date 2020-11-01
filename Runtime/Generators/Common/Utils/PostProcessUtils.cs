@@ -72,7 +72,7 @@ namespace Edgar.Unity
             }
         }
 
-        public static void InitializeSharedTilemaps(GeneratedLevel level, ITilemapLayersHandler tilemapLayersHandler)
+        public static void InitializeSharedTilemaps(GeneratedLevel level, ITilemapLayersHandler tilemapLayersHandler, Material tilemapMaterial)
         {
             // Initialize GameObject that will hold tilemaps
             var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
@@ -80,6 +80,15 @@ namespace Edgar.Unity
 
             // Create individual tilemaps
             tilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+
+            // Set material
+            if (tilemapMaterial != null)
+            {
+                foreach (var tilemapRenderer in tilemapsRoot.GetComponentsInChildren<TilemapRenderer>())
+                {
+                    tilemapRenderer.material = tilemapMaterial;
+                }
+            }
         }
 
         public static void CopyTilesToSharedTilemaps(GeneratedLevel level)
