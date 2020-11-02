@@ -80,8 +80,8 @@ There are two versions of this asset - free version and PRO version. The free ve
 - Dead Cells - Tutorial on how to generate levels that are similar to Dead Cells ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/dead-cells))
 - Enter the Gungeon - Tutorial on how to generate levels that are similar to Enter the Gungeon ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/examples/enter-the-gungeon/))
 - Custom input - Modify a level graph before it is used in the generator (e.g. add a random secret room) ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/custom-input))
-- (Planned) Fog of War
-- (Planned) Additional generators
+- Fog of War - Hide rooms in a fog until they are explored by the player ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/guides/fog-of-war))
+- Minimap support ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/guides/minimap))
 
 ## Limitations
 
