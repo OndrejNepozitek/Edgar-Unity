@@ -37,6 +37,7 @@ Please refer see the [Post processing](../generators/post-process) page to find 
 
 - **Initialize Shared Tilemaps** - Whether to initialize tilemaps that will hold the generated level.
 - **Tilemap Layers Handler** - Which tilemap layers handler should be used to initialize shared tilemaps. Uses the `DungeonTilemapLayersHandler` if not set.
+- **Tilemap Material** - Material that will be used in Tilemap Renderers of shared tilemaps. This is useful for example for lights. If left null, the default material will be used.
 - **Copy Tiles To Shared Tilemaps** - Whether to copy tiles from individual room template to the shared tilemaps.
 - **Center Grid** - Whether to move the level so that its centre is approximately at (0,0). Useful for debugging in Scene view in the editor.
 - **Disable Room Template Renderers** - Whether to disable tilemap renderers of individual rooms, useful only when *Copy Tiles To Shared Tilemaps* is enabled.

@@ -443,6 +443,14 @@ When we have the game objects, we can simply activate them when the player enter
 
 The last thing that we have to handle are doors that should be locked even if there are no enemies. These doors are used to separate reward/shop rooms from other rooms and force the player to find a different path to the reward room. When the player discovers the reward room, all the neighbouring locked doors are unlocked.
 
+## Fog of War
+
+In this example, the [Fog of War](guides/fog-of-war.md) feature is enabled. For more information on how to setup the feature, please see the [documentation](guides/fog-of-war.md). In order to integrate the Fog of War into this example scene, I modified the current room detection script (`GungeonCurrentRoomHandler` class) to trigger the fog when a player enters a corridor room, and I also modified the `GungeonPostProcessTask` class to setup the fog after a level is generated.
+
+> **Note:** The integration of the Fog of War effect into this example could be improved. I think that it looks better when the next room is revealed only after the player walks though the middle of a corridor and not right when he enters the corridor. Also, the integration with doors is not ideal - you can reveal rooms behind locked rooms if you go close to the door. I want to improve this in the future.
+
+> **Note:** To disable the Fog of War effect, go to the main camera and disable the Fog of War component.
+
 ## Results
 
 <Gallery cols={2} fixedHeight>
