@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11725bdbb93631241b38951f78cae60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 3
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: d6e391afe4ffe24488a6f611e3b5e338, type: 2}
     UseCorridors: 1
@@ -148,13 +149,12 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 10000
     RepeatModeOverride: 0
-  OtherConfig:
-    UseRandomSeed: 1
-    RandomGeneratorSeed: 0
-    GenerateOnStart: 0
   PostProcessConfig:
     InitializeSharedTilemaps: 1
+    TilemapLayersStructure: 0
     TilemapLayersHandler: {fileID: 0}
+    TilemapLayersExample: {fileID: 0}
+    TilemapMaterial: {fileID: 0}
     CopyTilesToSharedTilemaps: 1
     CenterGrid: 0
     DisableRoomTemplatesRenderers: 1
@@ -162,8 +162,16 @@ MonoBehaviour:
   CustomPostProcessTasks:
   - {fileID: 11400000, guid: d8706d911bb3aab42ae5b63f4fa8dbaf, type: 2}
   - {fileID: 11400000, guid: 7f55404d70a5023419dac6625fd37d39, type: 2}
+  OtherConfig:
+    UseRandomSeed: 1
+    RandomGeneratorSeed: 0
+    GenerateOnStart: 0
   AdvancedConfig:
     ThrowExceptionsImmediately: 0
+  UseRandomSeed: 1
+  RandomGeneratorSeed: 0
+  GenerateOnStart: 0
+  ThrowExceptionsImmediately: 0
 --- !u!4 &402937030
 Transform:
   m_ObjectHideFlags: 0

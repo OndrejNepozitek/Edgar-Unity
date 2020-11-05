@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Edgar.Unity
 {
@@ -53,8 +54,9 @@ namespace Edgar.Unity
             {
                 callbacks.RegisterCallback(PostProcessPriorities.InitializeSharedTilemaps, (level, description) =>
                 {
-                    var tilemapLayersHandler = config.TilemapLayersHandler ? config.TilemapLayersHandler : defaultTilemapLayersHandlerFactory();
-                    PostProcessUtils.InitializeSharedTilemaps(level, tilemapLayersHandler, config.TilemapMaterial);
+                    // PostProcessUtils.InitializeSharedTilemaps(level, tilemapLayersHandler, config.TilemapMaterial);
+                    PostProcessUtils.InitializeSharedTilemaps(level, config.TilemapLayersStructure, defaultTilemapLayersHandlerFactory(), config.TilemapLayersHandler, config.TilemapLayersExample, config.TilemapMaterial);
+                    PostProcessUtils.SetTilemapsMaterial(level, config.TilemapMaterial);
                 });
             }
 

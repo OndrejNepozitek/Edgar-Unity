@@ -6,7 +6,7 @@ namespace Edgar.Unity
     {
         [SerializeField]
         [HideInInspector]
-        private int version;
+        private int version = 1;
 
         protected virtual int OnUpgradeSerializedData(int version) {
             return 1;

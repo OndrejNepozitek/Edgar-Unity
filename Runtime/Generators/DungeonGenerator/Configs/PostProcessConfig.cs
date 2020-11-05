@@ -8,7 +8,13 @@ namespace Edgar.Unity
     {
         public bool InitializeSharedTilemaps = true;
 
+        public TilemapLayersStructureMode TilemapLayersStructure = TilemapLayersStructureMode.Automatic;
+
+        [ConditionalHide(nameof(IsTilemapsCustom))]
         public TilemapLayersHandlerBase TilemapLayersHandler;
+
+        [ConditionalHide(nameof(IsTilemapsFromExample))]
+        public GameObject TilemapLayersExample;
 
         public Material TilemapMaterial;
 
@@ -19,5 +25,9 @@ namespace Edgar.Unity
         public bool DisableRoomTemplatesRenderers = true;
 
         public bool DisableRoomTemplatesColliders = true;
+
+        private bool IsTilemapsFromExample => TilemapLayersStructure == TilemapLayersStructureMode.FromExample;
+
+        private bool IsTilemapsCustom => TilemapLayersStructure == TilemapLayersStructureMode.Custom;
     }
 }

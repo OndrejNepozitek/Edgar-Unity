@@ -72,22 +72,64 @@ namespace Edgar.Unity
             }
         }
 
-        public static void InitializeSharedTilemaps(GeneratedLevel level, ITilemapLayersHandler tilemapLayersHandler, Material tilemapMaterial)
+        public static void InitializeSharedTilemaps(GeneratedLevel level, TilemapLayersStructureMode mode, ITilemapLayersHandler defaultTilemapLayersHandler, ITilemapLayersHandler customTilemapLayersHandler, GameObject example, Material tilemapMaterial)
         {
-            // Initialize GameObject that will hold tilemaps
-            var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
-            tilemapsRoot.transform.parent = level.RootGameObject.transform;
+            GameObject tilemapsRoot;
 
-            // Create individual tilemaps
-            tilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
-
-            // Set material
-            if (tilemapMaterial != null)
+            if (mode == TilemapLayersStructureMode.Automatic || mode == TilemapLayersStructureMode.FromExample)
             {
-                foreach (var tilemapRenderer in tilemapsRoot.GetComponentsInChildren<TilemapRenderer>())
+                if (mode == TilemapLayersStructureMode.FromExample && example == null)
                 {
-                    tilemapRenderer.material = tilemapMaterial;
+                    throw new GeneratorException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.FromExample)}, {nameof(PostProcessConfig.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
                 }
+
+                var tilemapsSource = mode == TilemapLayersStructureMode.Automatic
+                    ? level.GetRoomInstances().First().RoomTemplateInstance
+                    : example;
+                var tilemapsSourceRoot = RoomTemplateUtils.GetTilemapsRoot(tilemapsSource);
+
+                if (mode == TilemapLayersStructureMode.FromExample && tilemapsSourceRoot == tilemapsSource)
+                {
+                    throw new GeneratorException($"Given {nameof(PostProcessConfig.TilemapLayersExample)} is not valid as it does not contain a game object called {GeneratorConstants.TilemapsRootName} that holds individual tilemap layers.");
+                }
+
+                tilemapsRoot = Object.Instantiate(tilemapsSourceRoot, level.RootGameObject.transform);
+                tilemapsRoot.name = GeneratorConstants.TilemapsRootName;
+            }
+            else
+            {
+                // Initialize GameObject that will hold tilemaps
+                tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
+                tilemapsRoot.transform.parent = level.RootGameObject.transform;
+
+                if (mode == TilemapLayersStructureMode.Default)
+                {
+                    defaultTilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+                } 
+                else if (mode == TilemapLayersStructureMode.Custom)
+                {
+                    if (customTilemapLayersHandler == null)
+                    {
+                        throw new GeneratorException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.Custom)}, {nameof(PostProcessConfig.TilemapLayersHandler)} must not be null. Please set the field in the Dungeon Generator component.");
+                    }
+
+                    customTilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+                }
+            }
+        }
+
+        public static void SetTilemapsMaterial(GeneratedLevel level, Material tilemapMaterial)
+        {
+            if (tilemapMaterial == null)
+            {
+                return;
+            }
+
+            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(level.RootGameObject);
+
+            foreach (var tilemapRenderer in tilemapsRoot.GetComponentsInChildren<TilemapRenderer>())
+            {
+                tilemapRenderer.material = tilemapMaterial;
             }
         }
 

@@ -204,9 +204,28 @@ namespace Edgar.Unity
                     ThrowExceptionsImmediately = AdvancedConfig.ThrowExceptionsImmediately;
                 }
             }
+
+            if (version < 3)
+            {
+                if (version <= 1)
+                {
+                    PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Automatic;
+                }
+                else
+                {
+                    if (PostProcessConfig.TilemapLayersHandler != null)
+                    {
+                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Custom;
+                    }
+                    else
+                    {
+                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Default;
+                    }
+                }
+            }
 #pragma warning restore 618
 
-            return 2;
+            return 3;
         }
     }
 }
