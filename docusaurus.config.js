@@ -40,7 +40,7 @@ module.exports = {
         { to: "versions", label: `v${latestVersion}`, position: "left" },
         {
           label: 'Docs',
-          to: 'docs', // "fake" link
+          to: 'docs/introduction', // "fake" link
           position: 'right',
           activeBaseRegex: `docs/(?!next/(support|team|resources))`,
           items: [
@@ -49,7 +49,7 @@ module.exports = {
               to: 'docs/introduction',
               activeBaseRegex: `docs/(?!${versions.join('|')}|next)`,
             },
-            ...versions.slice(1).map((version) => ({
+            ...versions.slice(1, 3).map((version) => ({
               label: version,
               to: `docs/${version}/introduction`,
             })),
