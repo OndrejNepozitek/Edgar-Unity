@@ -169,11 +169,37 @@ The *FogColor* property specifies the colour of tiles that are hidden in the fog
 
 ### Transition mode
 
-The *Transition mode* property specifies what to do when there are two neighbouring tiles with different fog values (i.e. one tile is less revealed than the other tile). If we use the *Smooth* mode, the colours of pixels on the two tiles will smoothly interpolate from one fog value to the other. On the other hand, if we use the *Tile Based* mode, no interpolation will be used and there will be a strict division between the fog values of the two tiles.
+The *Transition mode* property specifies what to do when there are two neighbouring tiles with different fog values (i.e. one tile is less revealed than the other tile). If we use the *Smooth* mode, the colours of pixels on the two tiles will smoothly interpolate from one fog value to the other. On the other hand, if we use the *Tile Based* mode, no interpolation will be used and there will be a strict division between the fog values of the two tiles. There is also a third mode now - the *Custom* mode that is somewhere between the two previous modes and adds two additional parameters - *Tile granularity* and *Fog smoothness*.
 
 <Gallery cols={2}>
     <GalleryImage src="img/v2/guides/fog_of_war/transition_mode_smooth.gif" caption="TransitionMode set to Smooth (gif)" />
     <GalleryImage src="img/v2/guides/fog_of_war/transition_mode_tile_based.gif" caption="TransitionMode set to Tile Based (gif)" />
+</Gallery>
+
+#### Fog value
+
+Before we dive into the next two parameters, it is good to know what is the *fog (transparency) value* of a pixel. When we want to show that a pixel is affected by the fog of war effect, we interpolate between the colour of that pixel and the fog colour. The value that controls the interpolation is called the *fog value*. This *fog value* is always in the *[0,1]* range. To completely hide a pixel in the fog, we set its *fog value* to 0. To completely show a pixel, we set its *fog value* to 1. If we want to animate the transition between pixels being hidden and then revealed, we can gradually increate the *fog value*, starting with the initial *fog value* and going all the way up to 1.
+
+#### `TileGranularity`
+
+This parameter controls into how many pixel chunks is each tile divided. The actual relation between the value of this parameter and the number of chunks is that if the value is equal to *X*, each tile is divided into *X\*X* same-sized chunks. That means that if we set the value to 2, we will get *2x2=4* chunks in total - each tile is divided into quarters.
+
+The main property of individual chunks is that each pixel in a chunk has the same *fog value* as all the other pixels in the chunk. Both the *Tile-based* and *Smooth* transition modes are special cases of this division to chunks. The *Tile-based* mode equals to setting *TileGranularity* to 1 - each tile is a single chunk. The *Smooth* mode equals to setting *TileGranularity* to infinity - each pixel is independent from other pixels. 
+
+<Gallery cols={2}>
+    <GalleryImage src="img/v2/guides/fog_of_war/granularity_1.gif" caption="TileGranularity set to 1 (gif)" />
+    <GalleryImage src="img/v2/guides/fog_of_war/granularity_2.gif" caption="TileGranularity set to 2 (gif)" />
+</Gallery>
+
+#### `FogSmoothness`
+
+This parameter controls how many possible *fog values* there are for every pixel. In other words, the parameter control how many possible steps there are between the *fog values* 0 and 1. The exact formula is *stepSize = 1 / fogSmoothness*. For example, by setting the *FogSmoothness* to *2*, the step size is equal to *1/4 = 0.25* and there are 5 possible fog values - *0*, *0.25*, *0.5*, *0.75* and *1*.
+
+If you want to emphasize the transitions between individual *fog values* set the parameter to a lower value, for example *10*. If you want to have a very smooth transition between individual *fog values*, use a high value, for example *100*.
+
+<Gallery cols={2}>
+    <GalleryImage src="img/v2/guides/fog_of_war/smoothness_2.gif" caption="FogSmoothness set to 2 (gif)" />
+    <GalleryImage src="img/v2/guides/fog_of_war/smoothness_10.gif" caption="FogSmoothness set to 10 (gif)" />
 </Gallery>
 
 ### Wave mode
@@ -238,6 +264,15 @@ The **RevealCorridorsGradually** property specifies whether corridor tiles shoul
 <Gallery cols={2}>
     <GalleryImage src="img/v2/guides/fog_of_war/reveal_corridors_gradually_enabled.png" caption="RevealCorridorsGradually enabled" />
     <GalleryImage src="img/v2/guides/fog_of_war/reveal_corridors_gradually_disabled.png" caption="RevealCorridorsGradually disabled" />
+</Gallery>
+
+### Initial fog transparency
+
+The **InitialFogTransparency** property controls the initial transparency of the fog. The valid range for this parameter is *[0,1]*. By default, this value is set to *0*, which means that tiles that are covered in fog are completely hidden. 
+
+<Gallery cols={2}>
+    <GalleryImage src="img/v2/guides/fog_of_war/transparency_0.png" caption="InitialFogTransparency set to 0" />
+    <GalleryImage src="img/v2/guides/fog_of_war/transparency_0_15.png" caption="InitialFogTransparency set to 0.15" />
 </Gallery>
 
 ## Implementation and performance
