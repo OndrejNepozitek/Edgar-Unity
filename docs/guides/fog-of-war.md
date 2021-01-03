@@ -193,7 +193,7 @@ The main property of individual chunks is that each pixel in a chunk has the sam
 
 #### `FogSmoothness`
 
-This parameter controls how many possible *fog values* there are for every pixel. In other words, the parameter control how many possible steps there are between the *fog values* 0 and 1. The exact formula is *stepSize = 1 / fogSmoothness*. For example, by setting the *FogSmoothness* to *2*, the step size is equal to *1/4 = 0.25* and there are 5 possible fog values - *0*, *0.25*, *0.5*, *0.75* and *1*.
+This parameter controls how many possible *fog values* there are for every pixel. In other words, the parameter controls how many possible steps there are between the *fog values* 0 and 1. The exact formula is *stepSize = 1 / fogSmoothness*. For example, by setting the *FogSmoothness* to *2*, the step size is equal to *1/4 = 0.25* and there are 5 possible fog values - *0*, *0.25*, *0.5*, *0.75* and *1*.
 
 If you want to emphasize the transitions between individual *fog values* set the parameter to a lower value, for example *10*. If you want to have a very smooth transition between individual *fog values*, use a high value, for example *100*.
 
