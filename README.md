@@ -12,6 +12,7 @@
   <a href="https://github.com/OndrejNepozitek/Edgar-Unity/releases/tag/v2.0.0-alpha.5"><img src="https://img.shields.io/github/v/release/OndrejNepozitek/Edgar-Unity" /></a>
   <a href="https://ondrejnepozitek.itch.io/edgar-pro"><img src="https://img.shields.io/badge/itch.io-PRO%20version-important" /></a>
   <a href="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue"><img src="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue" /></a>
+  <a href="https://discord.gg/syktZ6VWq9"><img src="https://img.shields.io/discord/795301453131415554?label=discord" /></a>
 </p>
 
 <p align="center">
@@ -156,7 +157,7 @@ The safest way to update to the new version is to completely remove the old vers
 
 ## Get in touch
 
-If you have any questions, let me know at ondra-at-nepozitek.cz or create an issue here on github.
+If you have any questions or want to show off what you created with Edgar, come chat with us in our [discord server](https://discord.gg/syktZ6VWq9). Or if you want to contact me personally, use my email ondra-at-nepozitek.cz or send me a message on Twitter at @OndrejNepozitek.
 
 ## Terms of use
 
