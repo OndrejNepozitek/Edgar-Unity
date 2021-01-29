@@ -100,10 +100,19 @@ namespace Edgar.Unity
                 return prefabToRoomTemplateMapping[roomTemplatePrefab];
             }
 
-            var roomTemplate = RoomTemplatesLoader.GetRoomTemplate(roomTemplatePrefab);
-            prefabToRoomTemplateMapping.Add(roomTemplatePrefab, roomTemplate);
+            if (RoomTemplatesLoader.TryGetRoomTemplate(roomTemplatePrefab, out var roomTemplate, out var result))
+            {
+                prefabToRoomTemplateMapping.Add(roomTemplatePrefab, roomTemplate);
+                return roomTemplate;
+            }
 
-            return roomTemplate;
+            Debug.LogError($"There was a problem when loading the room template \"{roomTemplatePrefab.name}\":");
+            foreach (var error in result.Errors)
+            {
+                Debug.LogError($"- {error}");
+            }
+
+            throw new ConfigurationException("Please fix all the errors above and try again");
         }
 
         /// <summary>

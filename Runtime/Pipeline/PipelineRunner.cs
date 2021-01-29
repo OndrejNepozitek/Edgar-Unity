@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Edgar.Unity
 {
@@ -25,11 +27,24 @@ namespace Edgar.Unity
             {
                 pipelineItem.Payload = payload;
 
-                var enumerator = pipelineItem.Process();
-                while (enumerator.MoveNext())
+                var enumerator = InvokeWithDiagnostics(pipelineItem.Process);
+
+                while (InvokeWithDiagnostics(enumerator.MoveNext))
                 {
                     yield return null;
                 }
+            }
+        }
+
+        private TReturn InvokeWithDiagnostics<TReturn>(Func<TReturn> function)
+        {
+            try
+            {
+                return function();
+            }
+            catch (Exception e)
+            {
+                throw;
             }
         }
     }

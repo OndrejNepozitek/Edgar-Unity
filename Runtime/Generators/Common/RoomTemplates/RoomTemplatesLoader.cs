@@ -158,36 +158,64 @@ namespace Edgar.Unity
 
             return usedTiles;
         }
-
+        
         /// <summary>
         ///     Computes a room room template from a given room template game object.
         /// </summary>
         /// <param name="roomTemplatePrefab"></param>
-        /// <param name="allowedTransformations"></param>
+        /// <param name="roomTemplate"></param>
+        /// <param name="result"></param>
         /// <returns></returns>
-        public static RoomTemplateGrid2D GetRoomTemplate(GameObject roomTemplatePrefab, List<TransformationGrid2D> allowedTransformations = null)
+        public static bool TryGetRoomTemplate(GameObject roomTemplatePrefab, out RoomTemplateGrid2D roomTemplate, out ActionResult result)
         {
-            if (allowedTransformations == null)
+            roomTemplate = null;
+
+            // Check that the room template has all the required components
+            var requiredComponentsResult = RoomTemplateDiagnostics.CheckComponents(roomTemplatePrefab);
+            if (requiredComponentsResult.HasErrors)
             {
-                allowedTransformations = new List<TransformationGrid2D> {TransformationGrid2D.Identity};
+                result = requiredComponentsResult;
+                return false;
             }
 
-            var polygon = GetPolygonFromRoomTemplate(roomTemplatePrefab);
+            PolygonGrid2D polygon = null;
 
-            var doors = roomTemplatePrefab.GetComponent<Doors>();
-
-            if (doors == null)
+            // TODO: improve
+            try
             {
-                throw new GeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
+                polygon = GetPolygonFromRoomTemplate(roomTemplatePrefab);
+            }
+            catch (ArgumentException)
+            {
+                /* empty */
             }
 
+            // Check that the outline of the room template is valid
+            if (polygon == null)
+            {
+                result = new ActionResult();
+                result.AddError("The outline of the room template is not valid. Please consult the documentation.");
+                return false;
+            }
+
+            var allowedTransformations = new List<TransformationGrid2D> { TransformationGrid2D.Identity };
             var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplateSettings>();
             var repeatMode = roomTemplateComponent?.RepeatMode ?? RoomTemplateRepeatMode.AllowRepeat;
+            var doors = roomTemplatePrefab.GetComponent<Doors>();
             var doorMode = doors.GetDoorMode();
 
-            var roomDescription = new RoomTemplateGrid2D(polygon, doorMode, roomTemplatePrefab.name, repeatMode, allowedTransformations);
+            // Check that the doors are valid
+            var doorsCheck = RoomTemplateDiagnostics.CheckDoors(polygon, doorMode);
+            if (doorsCheck.HasErrors)
+            {
+                result = doorsCheck;
+                return false;
+            }
 
-            return roomDescription;
+            roomTemplate = new RoomTemplateGrid2D(polygon, doorMode, roomTemplatePrefab.name, repeatMode, allowedTransformations);
+
+            result = new ActionResult();
+            return true;
         }
 
         public static bool IsClockwiseOriented(IList<EdgarVector2Int> points)
