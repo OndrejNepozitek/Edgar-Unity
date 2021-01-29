@@ -49,7 +49,7 @@ namespace Edgar.Unity.Edgar.Tests.Runtime
             var dungeonGenerator = GetDungeonGenerator("Dungeon Generator FromExampleMissing");
             Assert.IsNotNull(dungeonGenerator);
 
-            Assert.Throws<GeneratorException>(() => dungeonGenerator.Generate());
+            Assert.Throws<ConfigurationException>(() => dungeonGenerator.Generate());
             yield return null;
         }
 
@@ -59,7 +59,7 @@ namespace Edgar.Unity.Edgar.Tests.Runtime
             var dungeonGenerator = GetDungeonGenerator("Dungeon Generator FromExampleInvalid");
             Assert.IsNotNull(dungeonGenerator);
 
-            Assert.Throws<GeneratorException>(() => dungeonGenerator.Generate());
+            Assert.Throws<ConfigurationException>(() => dungeonGenerator.Generate());
             yield return null;
         }
 
@@ -93,7 +93,7 @@ namespace Edgar.Unity.Edgar.Tests.Runtime
             var dungeonGenerator = GetDungeonGenerator("Dungeon Generator CustomMissing");
             Assert.IsNotNull(dungeonGenerator);
 
-            Assert.Throws<GeneratorException>(() => dungeonGenerator.Generate());
+            Assert.Throws<ConfigurationException>(() => dungeonGenerator.Generate());
             yield return null;
         }
 
