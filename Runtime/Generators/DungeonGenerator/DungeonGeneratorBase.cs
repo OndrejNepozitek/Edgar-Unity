@@ -86,6 +86,7 @@ namespace Edgar.Unity
             return new DungeonGeneratorPayload()
             {
                 Random = GetRandomNumbersGenerator(UseRandomSeed, RandomGeneratorSeed),
+                DungeonGenerator = this,
             };
         }
 

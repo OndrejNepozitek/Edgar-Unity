@@ -79,7 +79,14 @@ namespace Edgar.Unity
             // TODO: this should be our own exception and not a generic exception
             if (layout == null)
             {
-                throw new TimeoutException();
+                if (task.Exception != null)
+                {
+                    throw task.Exception;
+                }
+                else
+                {
+                    throw new TimeoutException();
+                }
             }
 
             // Transform the level to its Unity representation

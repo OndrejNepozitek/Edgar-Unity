@@ -3,7 +3,7 @@ using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
 
-namespace Edgar.Unity
+namespace Edgar.Unity.Diagnostics
 {
     public static class RoomTemplateDiagnostics
     {

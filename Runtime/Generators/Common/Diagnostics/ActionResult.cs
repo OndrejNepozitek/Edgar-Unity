@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Edgar.Unity
+namespace Edgar.Unity.Diagnostics
 {
     public class ActionResult
     {

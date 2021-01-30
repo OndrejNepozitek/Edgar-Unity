@@ -5,6 +5,7 @@ using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common;
 using Edgar.GraphBasedGenerator.Grid2D;
 using Edgar.Legacy.GeneralAlgorithms.Algorithms.Common;
+using Edgar.Unity.Diagnostics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 

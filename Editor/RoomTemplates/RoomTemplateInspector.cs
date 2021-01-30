@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using Edgar.Unity.Diagnostics;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;

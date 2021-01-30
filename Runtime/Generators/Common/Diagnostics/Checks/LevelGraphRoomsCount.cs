@@ -1,4 +1,4 @@
-﻿namespace Edgar.Unity
+﻿namespace Edgar.Unity.Diagnostics
 {
     public class LevelGraphRoomsCount
     {
@@ -10,11 +10,20 @@
             return null;
         }
 
-        public class Result : IDiagnosticsResult
+        public class Result : IDiagnosticResult
         {
             public int RoomsCount { get; set; }
 
+            public string Name { get; }
+
             public string Summary { get; set; }
+
+            public bool IsPotentialProblem { get; }
+
+            private Result()
+            {
+
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Edgar.Unity.Diagnostics;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
@@ -10,7 +11,7 @@ namespace Edgar.Unity.Tests.Runtime
         [UnitySetUp]
         public IEnumerator SetUp()
         {
-            LoadScene("Diagnostics");
+            LoadScene("RoomTemplateDiagnostics");
             yield return null;
         }
 
