@@ -27,9 +27,32 @@ namespace Edgar.Unity
             {
                 pipelineItem.Payload = payload;
 
-                var enumerator = pipelineItem.Process();
-                while (enumerator.MoveNext())
+                IEnumerator enumerator;
+
+                try
                 {
+                    enumerator = pipelineItem.Process();
+                }
+                catch (Exception e)
+                {
+                    throw;
+                }
+
+                while (true)
+                {
+                    try
+                    {
+                        var hasNext = enumerator.MoveNext();
+                        if (hasNext)
+                        {
+                            break;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw;
+                    }
+
                     yield return null;
                 }
             }
