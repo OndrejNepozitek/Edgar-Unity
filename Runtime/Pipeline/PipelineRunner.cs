@@ -43,7 +43,7 @@ namespace Edgar.Unity
                     try
                     {
                         var hasNext = enumerator.MoveNext();
-                        if (hasNext)
+                        if (!hasNext)
                         {
                             break;
                         }
