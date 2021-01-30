@@ -27,9 +27,8 @@ namespace Edgar.Unity
             {
                 pipelineItem.Payload = payload;
 
-                var enumerator = InvokeWithDiagnostics(pipelineItem.Process);
-
-                while (InvokeWithDiagnostics(enumerator.MoveNext))
+                var enumerator = pipelineItem.Process();
+                while (enumerator.MoveNext())
                 {
                     yield return null;
                 }
