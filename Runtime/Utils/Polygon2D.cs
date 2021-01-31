@@ -42,7 +42,7 @@ namespace Edgar.Unity
         /// <remarks>
         /// Modifying the collection does not modify the polygon itself.
         /// </remarks>
-        public List<Vector2Int> GetPoints()
+        public List<Vector2Int> GetCornerPoints()
         {
             return points.ToList();
         }

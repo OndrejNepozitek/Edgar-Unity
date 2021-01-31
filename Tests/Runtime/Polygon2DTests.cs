@@ -63,7 +63,7 @@ namespace Edgar.Unity.Tests.Runtime
                 new Vector2Int(6, 0),
             };
 
-            var points = polygon.GetPoints();
+            var points = polygon.GetCornerPoints();
 
             Assert.That(points, Is.EquivalentTo(expectedPoints));
         }
