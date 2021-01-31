@@ -51,6 +51,11 @@ namespace Edgar.Unity
 
         public bool ThrowExceptionsImmediately = false;
 
+        /// <summary>
+        /// Disable all custom post-processing tasks.
+        /// </summary>
+        public bool DisableCustomPostProcessing = false;
+
         public void Start()
         {
             if (GenerateOnStart)
@@ -88,7 +93,10 @@ namespace Edgar.Unity
 
         protected virtual IPipelineTask<DungeonGeneratorPayload> GetPostProcessingTask()
         {
-            return new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig, () => new DungeonTilemapLayersHandler(), CustomPostProcessTasks);
+            var customPostProcessTasks = !DisableCustomPostProcessing
+                ? CustomPostProcessTasks
+                : new List<DungeonGeneratorPostProcessBase>();
+            return new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig, () => new DungeonTilemapLayersHandler(), customPostProcessTasks);
         }
 
         protected virtual DungeonGeneratorPayload InitializePayload()
