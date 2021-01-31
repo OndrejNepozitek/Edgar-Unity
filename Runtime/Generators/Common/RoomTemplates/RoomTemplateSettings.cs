@@ -13,11 +13,6 @@ namespace Edgar.Unity
     {
         public RoomTemplateRepeatMode RepeatMode = RoomTemplateRepeatMode.AllowRepeat;
 
-        public bool IsOutlineValid()
-        {
-            return GetOutline() != null;
-        }
-
         public PolygonGrid2D GetOutline()
         {
             try

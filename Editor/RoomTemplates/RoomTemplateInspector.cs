@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text;
+using Edgar.Unity.Diagnostics;
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
 using UnityEngine;
@@ -8,28 +10,36 @@ namespace Edgar.Unity.Editor
     [CustomEditor(typeof(RoomTemplateSettings))]
     public class RoomTemplateInspector : UnityEditor.Editor
     {
-        public override void OnInspectorGUI() 
+        public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
             DrawDefaultInspector();
 
             var roomTemplate = (RoomTemplateSettings) target;
+            var validityCheck = RoomTemplateDiagnostics.CheckAll(roomTemplate.gameObject);
 
-            if (roomTemplate.IsOutlineValid())
+            if (!validityCheck.HasErrors)
             {
-                EditorGUILayout.HelpBox("The outline of the room template is valid.", MessageType.Info);
+                EditorGUILayout.HelpBox("The room template is valid.", MessageType.Info);
+
+                var wrongManualDoorsCheck =
+                    RoomTemplateDiagnostics.CheckWrongManualDoors(roomTemplate.gameObject, out var _);
+
+                if (wrongManualDoorsCheck.HasErrors)
+                {
+                    EditorGUILayout.HelpBox(string.Join("\n", wrongManualDoorsCheck.Errors).Trim(), MessageType.Warning);
+                }
             }
             else
             {
-                EditorGUILayout.HelpBox("The outline of the room template is not valid. Please make sure to follow the rules from the documentation.", MessageType.Error);
-            }
+                var sb = new StringBuilder();
+                sb.AppendLine("There are some problems with the room template:");
 
-            var doors = roomTemplate.GetComponent<Doors>();
+                var errors = string.Join("\n", validityCheck.Errors);
+                sb.Append(errors);
 
-            if (doors == null)
-            {
-                EditorGUILayout.HelpBox("The Doors component is missing. Please add it to this game object.", MessageType.Error);
+                EditorGUILayout.HelpBox(sb.ToString(), MessageType.Error);
             }
 
             var hasOutlineOverride = roomTemplate.HasOutlineOverride();
@@ -80,47 +90,70 @@ namespace Edgar.Unity.Editor
             }
         }
 
-        public void OnSceneGUI()
+        private void OnSceneGUI()
         {
-#if UNITY_2019_1_OR_NEWER
-            SceneView.duringSceneGui -= OnSceneGUITest;
-#else
-            SceneView.onSceneGUIDelegate -= OnSceneGUITest;
-#endif
-
-            if (PrefabStageUtility.GetCurrentPrefabStage() != null)
-            {
-                
-#if UNITY_2019_1_OR_NEWER
-                SceneView.duringSceneGui += OnSceneGUITest;
-#else
-                SceneView.onSceneGUIDelegate += OnSceneGUITest;
-#endif
-            }
+            RemoveOnSceneGUIDelegate();
+            AddOnSceneGUIDelegate();
+            ShowStatus();
         }
 
-        public void OnSceneGUITest(SceneView sceneView)
+        private void ShowStatus()
         {
-            if (target == null)
+            var roomTemplate = (RoomTemplateSettings)target;
+            var originalBackground = GUI.backgroundColor;
+
+            Handles.BeginGUI();
+            GUILayout.BeginArea(new Rect(10, 10, 180, 100));
+            GUILayout.BeginVertical(EditorStyles.helpBox);
+
+            GUILayout.Label("Room template status", EditorStyles.boldLabel);
+
+            var isOutlineValid = roomTemplate.GetOutline() != null;
+            var outlineText = isOutlineValid ? "valid" : "<color=#870526ff>invalid</color>";
+            var areDoorsValid = false;
+            var doorsText = "N/A";
+
+            if (isOutlineValid)
             {
-#if UNITY_2019_1_OR_NEWER
-                SceneView.duringSceneGui -= OnSceneGUITest;
-#else
-                SceneView.onSceneGUIDelegate -= OnSceneGUITest;
-#endif
+                var doorsCheck = RoomTemplateDiagnostics.CheckDoors(roomTemplate.gameObject);
+                areDoorsValid = !doorsCheck.HasErrors;
+                doorsText = !doorsCheck.HasErrors ? "valid" : "<color=#870526ff>invalid</color>";
+
+                if (areDoorsValid)
+                {
+                    var wrongManualDoorsCheck = RoomTemplateDiagnostics.CheckWrongManualDoors(roomTemplate.gameObject, out var _);
+
+                    if (wrongManualDoorsCheck.HasErrors)
+                    {
+                        areDoorsValid = false;
+                        doorsText += $" <size=9><color=orange>(with warning)</color></size>";
+                    }
+                }
+            }
+
+            GUILayout.Label($"Outline: <b>{outlineText}</b>", new GUIStyle(EditorStyles.label) { richText = true });
+            GUILayout.Label($"Doors: <b>{doorsText}</b>", new GUIStyle(EditorStyles.label) { richText = true });
+
+            if (!isOutlineValid || !areDoorsValid)
+            {
+                GUILayout.Label($"<size=9>See the Room template settings component for details</size>", new GUIStyle(EditorStyles.label) { richText = true, wordWrap = true });
+            }
+
+            GUILayout.EndVertical();
+            GUILayout.EndArea();
+            Handles.EndGUI();
+
+            GUI.backgroundColor = originalBackground;
+        }
+
+        private void DrawOutline(SceneView sceneView)
+        {
+            if (target == null || PrefabStageUtility.GetCurrentPrefabStage() == null)
+            {
+                RemoveOnSceneGUIDelegate();
                 return;
             }
 
-            if (PrefabStageUtility.GetCurrentPrefabStage() == null)
-            {
-#if UNITY_2019_1_OR_NEWER
-                SceneView.duringSceneGui -= OnSceneGUITest;
-#else
-                SceneView.onSceneGUIDelegate -= OnSceneGUITest;
-#endif
-                return;
-            }
-            
             try
             {
                 var roomTemplate = (RoomTemplateSettings) target;
@@ -143,6 +176,24 @@ namespace Edgar.Unity.Editor
             {
 
             }
+        }
+
+        private void AddOnSceneGUIDelegate()
+        {
+#if UNITY_2019_1_OR_NEWER
+            SceneView.duringSceneGui += DrawOutline;
+#else
+            SceneView.onSceneGUIDelegate += DrawOutline;
+#endif
+        }
+
+        private void RemoveOnSceneGUIDelegate()
+        {
+#if UNITY_2019_1_OR_NEWER
+            SceneView.duringSceneGui -= DrawOutline;
+#else
+            SceneView.onSceneGUIDelegate -= DrawOutline;
+#endif
         }
     }
 }

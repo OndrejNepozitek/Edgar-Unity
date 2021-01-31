@@ -10,7 +10,7 @@ namespace Edgar.Unity
         public GeneratorException()
         {
         }
-
+        
         public GeneratorException(string message) : base(message)
         {
         }

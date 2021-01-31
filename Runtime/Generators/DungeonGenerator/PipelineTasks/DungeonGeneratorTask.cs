@@ -79,7 +79,19 @@ namespace Edgar.Unity
             // TODO: this should be our own exception and not a generic exception
             if (layout == null)
             {
-                throw new InvalidOperationException("Timeout was reached when generating level");
+                if (task.Exception != null)
+                {
+                    if (task.Exception.InnerException != null)
+                    {
+                        throw task.Exception.InnerException;
+                    }
+
+                    throw task.Exception;
+                }
+                else
+                {
+                    throw new TimeoutException();
+                }
             }
 
             // Transform the level to its Unity representation

@@ -80,7 +80,7 @@ namespace Edgar.Unity
             {
                 if (mode == TilemapLayersStructureMode.FromExample && example == null)
                 {
-                    throw new GeneratorException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.FromExample)}, {nameof(PostProcessConfig.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
+                    throw new ConfigurationException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.FromExample)}, {nameof(PostProcessConfig.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
                 }
 
                 var tilemapsSource = mode == TilemapLayersStructureMode.Automatic
@@ -90,7 +90,7 @@ namespace Edgar.Unity
 
                 if (mode == TilemapLayersStructureMode.FromExample && tilemapsSourceRoot == tilemapsSource)
                 {
-                    throw new GeneratorException($"Given {nameof(PostProcessConfig.TilemapLayersExample)} is not valid as it does not contain a game object called {GeneratorConstants.TilemapsRootName} that holds individual tilemap layers.");
+                    throw new ConfigurationException($"Given {nameof(PostProcessConfig.TilemapLayersExample)} is not valid as it does not contain a game object called {GeneratorConstants.TilemapsRootName} that holds individual tilemap layers.");
                 }
 
                 tilemapsRoot = Object.Instantiate(tilemapsSourceRoot, level.RootGameObject.transform);
@@ -110,7 +110,7 @@ namespace Edgar.Unity
                 {
                     if (customTilemapLayersHandler == null)
                     {
-                        throw new GeneratorException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.Custom)}, {nameof(PostProcessConfig.TilemapLayersHandler)} must not be null. Please set the field in the Dungeon Generator component.");
+                        throw new ConfigurationException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.Custom)}, {nameof(PostProcessConfig.TilemapLayersHandler)} must not be null. Please set the field in the Dungeon Generator component.");
                     }
 
                     customTilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
