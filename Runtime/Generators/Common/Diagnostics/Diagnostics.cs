@@ -36,19 +36,30 @@ namespace Edgar.Unity.Diagnostics
             return results;
         }
 
-        public static void DisplayTimeoutResults(List<IDiagnosticResult> results)
+        public static void DisplayPerformanceResults(List<IDiagnosticResult> results, bool isPreemptive = false)
         {
             var originalLogType = Application.GetStackTraceLogType(LogType.Warning);
             Application.SetStackTraceLogType(LogType.Warning, StackTraceLogType.None);
 
-            Debug.LogWarning($"<size=17><b>--- Timeout diagnostic ---</b></size>");
-            Debug.LogWarning($"The generator was not able to produce a level within a given time limit. The reason for that is usually that there is some problem with the configuration of the generator.");
+            if (isPreemptive)
+            {
+                Debug.LogWarning($"<size=17><b>--- Performance diagnostics ---</b></size>");
+                Debug.LogWarning($"This is an automatic diagnostic procedure meant to analyze potential problems with the configuration of the generator.");
+                Debug.LogWarning($"You can see this text because you enabled the \"{nameof(DungeonGeneratorBase.EnableDiagnostics)}\" checkbox.");
+                Debug.LogWarning($"If the performance of the generator is good, you may ignore all the suggestions below.");
+                Debug.LogWarning($"---");
+            }
+            else
+            {
+                Debug.LogWarning($"<size=17><b>--- Timeout diagnostics ---</b></size>");
+                Debug.LogWarning($"The generator was not able to produce a level within a given time limit. The reason for that is usually that there is some problem with the configuration of the generator.");
+            }
 
             var problematicResults = results.Where(x => x.IsPotentialProblem).ToList();
 
             if (problematicResults.Count > 0)
             {
-                Debug.LogWarning($"Below you can find an automatic diagnostic of what might be wrong with the configuration.");
+                Debug.LogWarning($"Below you can find an automatic diagnostic of what might be wrong with the configuration of the generator.");
                 Debug.LogWarning($"If you are not sure what that to do, please create an issue on github together with a screenshot of the diagnostic below.");
 
                 foreach (var result in problematicResults)
@@ -62,7 +73,7 @@ namespace Edgar.Unity.Diagnostics
             else
             {
                 Debug.LogWarning($"It seems like we were not able to automatically detect any problems with the configuration.");
-                Debug.LogWarning($"Please create an issue on github to further investigate this problem.");
+                Debug.LogWarning($"Please create an issue on github to further investigate the performance of the generator.");
             }
 
             Debug.LogWarning($"-------- <b>End of diagnostic</b> --------");

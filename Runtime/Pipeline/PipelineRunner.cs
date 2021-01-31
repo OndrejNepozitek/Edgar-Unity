@@ -18,16 +18,16 @@ namespace Edgar.Unity
         /// </summary>
         /// <param name="pipelineTasks"></param>
         /// <param name="payload"></param>
-        public void Run(IEnumerable<IPipelineTask<TPayload>> pipelineTasks, TPayload payload)
+        public void Run(IEnumerable<IPipelineTask<TPayload>> pipelineTasks, TPayload payload, bool runDiagnostics = false)
         {
-            var enumerator = GetEnumerator(pipelineTasks, payload);
+            var enumerator = GetEnumerator(pipelineTasks, payload, runDiagnostics);
             while (enumerator.MoveNext())
             {
                 /* empty */
             }
         }
 
-        public IEnumerator GetEnumerator(IEnumerable<IPipelineTask<TPayload>> pipelineTasks, TPayload payload)
+        public IEnumerator GetEnumerator(IEnumerable<IPipelineTask<TPayload>> pipelineTasks, TPayload payload, bool runDiagnostics = false)
         {
             foreach (var pipelineItem in pipelineTasks)
             {
@@ -72,13 +72,19 @@ namespace Edgar.Unity
                     yield return null;
                 }
             }
+
+            if (runDiagnostics)
+            {
+                var results = Diagnostics.Diagnostics.Run(payload);
+                Diagnostics.Diagnostics.DisplayPerformanceResults(results, true);
+            }
         }
 
         private void HandleTimeoutException(TimeoutException exception, TPayload payload)
         {
             var results = Diagnostics.Diagnostics.Run(payload);
             exception.DiagnosticResults = results;
-            Diagnostics.Diagnostics.DisplayTimeoutResults(results);
+            Diagnostics.Diagnostics.DisplayPerformanceResults(results);
         }
 
         private Exception HandleNoSuitableShapeException(NoSuitableShapeForRoomException exception, TPayload payload)
