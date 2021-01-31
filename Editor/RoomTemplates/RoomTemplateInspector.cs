@@ -22,6 +22,14 @@ namespace Edgar.Unity.Editor
             if (!validityCheck.HasErrors)
             {
                 EditorGUILayout.HelpBox("The room template is valid.", MessageType.Info);
+
+                var wrongManualDoorsCheck =
+                    RoomTemplateDiagnostics.CheckWrongManualDoors(roomTemplate.gameObject, out var _);
+
+                if (wrongManualDoorsCheck.HasErrors)
+                {
+                    EditorGUILayout.HelpBox(string.Join("\n", wrongManualDoorsCheck.Errors).Trim(), MessageType.Warning);
+                }
             }
             else
             {
@@ -101,7 +109,7 @@ namespace Edgar.Unity.Editor
             GUILayout.Label("Room template status", EditorStyles.boldLabel);
 
             var isOutlineValid = roomTemplate.GetOutline() != null;
-            var outlineText = isOutlineValid ? "valid" : "<color=red>invalid</color>";
+            var outlineText = isOutlineValid ? "valid" : "<color=#870526ff>invalid</color>";
             var areDoorsValid = false;
             var doorsText = "N/A";
 
@@ -109,7 +117,18 @@ namespace Edgar.Unity.Editor
             {
                 var doorsCheck = RoomTemplateDiagnostics.CheckDoors(roomTemplate.gameObject);
                 areDoorsValid = !doorsCheck.HasErrors;
-                doorsText = !doorsCheck.HasErrors ? "valid" : "<color=red>invalid</color>";
+                doorsText = !doorsCheck.HasErrors ? "valid" : "<color=#870526ff>invalid</color>";
+
+                if (areDoorsValid)
+                {
+                    var wrongManualDoorsCheck = RoomTemplateDiagnostics.CheckWrongManualDoors(roomTemplate.gameObject, out var _);
+
+                    if (wrongManualDoorsCheck.HasErrors)
+                    {
+                        areDoorsValid = false;
+                        doorsText += $" <size=9><color=orange>(with warning)</color></size>";
+                    }
+                }
             }
 
             GUILayout.Label($"Outline: <b>{outlineText}</b>", new GUIStyle(EditorStyles.label) { richText = true });

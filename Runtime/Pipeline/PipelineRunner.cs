@@ -2,6 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Edgar.GraphBasedGenerator.Common;
+using Edgar.GraphBasedGenerator.Common.Exceptions;
+using Edgar.GraphBasedGenerator.Grid2D;
+using Edgar.GraphBasedGenerator.Grid2D.Internal;
 using Edgar.Unity.Diagnostics;
 using UnityEngine;
 
@@ -37,11 +41,12 @@ namespace Edgar.Unity
                 }
                 catch (TimeoutException e)
                 {
-                    var results = Diagnostics.Diagnostics.Run(payload);
-                    e.DiagnosticResults = results;
-                    DisplayResults(results);
-
+                    HandleTimeoutException(e, payload);
                     throw;
+                }
+                catch (NoSuitableShapeForRoomException e)
+                {
+                    throw HandleNoSuitableShapeException(e, payload);
                 }
 
                 while (true)
@@ -56,11 +61,12 @@ namespace Edgar.Unity
                     }
                     catch (TimeoutException e)
                     {
-                        var results = Diagnostics.Diagnostics.Run(payload);
-                        e.DiagnosticResults = results;
-                        DisplayResults(results);
-
+                        HandleTimeoutException(e, payload);
                         throw;
+                    }
+                    catch (NoSuitableShapeForRoomException e)
+                    {
+                        throw HandleNoSuitableShapeException(e, payload);
                     }
 
                     yield return null;
@@ -68,43 +74,25 @@ namespace Edgar.Unity
             }
         }
 
-        private void DisplayResults(List<IDiagnosticResult> results)
+        private void HandleTimeoutException(TimeoutException exception, TPayload payload)
         {
-            var originalLogType = Application.GetStackTraceLogType(LogType.Warning);
-            Application.SetStackTraceLogType(LogType.Warning, StackTraceLogType.None);
+            var results = Diagnostics.Diagnostics.Run(payload);
+            exception.DiagnosticResults = results;
+            Diagnostics.Diagnostics.DisplayTimeoutResults(results);
+        }
 
-            Debug.LogWarning($"<size=17><b>--- Timeout diagnostic ---</b></size>");
-            Debug.LogWarning($"The generator was not able to produce a level within a given time limit. The reason for that is usually that there is some problem with the configuration of the generator.");
+        private Exception HandleNoSuitableShapeException(NoSuitableShapeForRoomException exception, TPayload payload)
+        {
+            var room = exception.Room as RoomNode<RoomBase>;
+            var roomTemplates = exception
+                .NeighboringShapes.Cast<RoomTemplateInstanceGrid2D>()
+                .Select(x => x.RoomTemplate)
+                .ToList();
 
-            var problematicResults = results.Where(x => x.IsPotentialProblem).ToList();
+            var results = Diagnostics.Diagnostics.Run(payload);
+            Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(results, room.Room, roomTemplates);
 
-            if (problematicResults.Count > 0)
-            {
-                Debug.LogWarning($"Below you can find an automatic diagnostic of what might be wrong with the configuration.");
-                Debug.LogWarning($"If you are not sure what that to do, please create an issue on github together with a screenshot of the diagnostic below.");
-
-                foreach (var result in problematicResults)
-                {
-                    Debug.LogWarning($"-------- <b>{result.Name}</b> --------");
-
-                    if (result.IsPotentialProblem)
-                    {
-                        foreach (var line in result.Summary.Trim().Split('\n'))
-                        {
-                            Debug.LogWarning(line);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                Debug.LogWarning($"It seems like we were not able to automatically detect any problems with the configuration.");
-                Debug.LogWarning($"Please create an issue on github to further investigate this problem.");
-            }
-
-            Debug.LogWarning($"-------- <b>End of diagnostic</b> --------");
-
-            Application.SetStackTraceLogType(LogType.Warning, originalLogType);
+            return new GeneratorException($"The generator was not able to produce a level due to an error. Please see the console above for additional diagnostic information.");
         }
     }
 }

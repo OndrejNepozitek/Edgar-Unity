@@ -81,6 +81,11 @@ namespace Edgar.Unity
             {
                 if (task.Exception != null)
                 {
+                    if (task.Exception.InnerException != null)
+                    {
+                        throw task.Exception.InnerException;
+                    }
+
                     throw task.Exception;
                 }
                 else

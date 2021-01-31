@@ -81,6 +81,19 @@ namespace Edgar.Unity.Tests.Runtime
             Assert.That(result.IsPotentialProblem, Is.True);
         }
 
+        [Test]
+        public void WrongManualDoors()
+        {
+            var dungeonGeneratorGameObject = GameObject.Find("WrongManualDoors");
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+
+            var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
+            var result = GetResult<WrongManualDoors.Result>(exception, false);
+
+            Assert.That(result.ProblematicRoomTemplates.Count, Is.EqualTo(1));
+            Assert.That(result.IsPotentialProblem, Is.True);
+        }
+
         private TResult GetResult<TResult>(TimeoutException exception, bool allowOnlySingle = true) where TResult : class
         {
             if (allowOnlySingle && typeof(TResult) != typeof(TimeoutLength.Result))

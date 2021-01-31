@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
@@ -91,10 +93,9 @@ namespace Edgar.Unity.Diagnostics
         {
             var roomTemplateSettings = roomTemplate.GetComponent<RoomTemplateSettings>();
             var outline = roomTemplateSettings.GetOutline();
-
             var doors = roomTemplate.GetComponent<Doors>();
 
-            if (roomTemplate.GetComponent<Doors>() == null)
+            if (doors == null)
             {
                 var result = new ActionResult();
                 result.AddError($"The {nameof(Doors)} component is missing on the room template game object.");
@@ -104,6 +105,36 @@ namespace Edgar.Unity.Diagnostics
             var doorMode = doors.GetDoorMode();
 
             return CheckDoors(outline, doorMode);
+        }
+
+        public static ActionResult CheckWrongManualDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode, out int differentLengthsCount)
+        {
+            var result = new ActionResult();
+            differentLengthsCount = -1;
+
+            if (doorMode is ManualDoorModeGrid2D)
+            {
+                var doors = doorMode.GetDoors(outline);
+                var differentLengths = doors.Select(x => x.Length).Distinct().ToList();
+                differentLengthsCount = differentLengths.Count;
+
+                if (differentLengthsCount >= 3)
+                {
+                    result.AddError($"There are {differentLengthsCount} different lengths of manual doors. Please make sure that this is intentional. This is often caused by an incorrect use of the manual door (see the warning in the Doors component).");
+                }
+            }
+
+            return result;
+        }
+
+        public static ActionResult CheckWrongManualDoors(GameObject roomTemplate, out int differentLengthsCount)
+        {
+            var roomTemplateSettings = roomTemplate.GetComponent<RoomTemplateSettings>();
+            var outline = roomTemplateSettings.GetOutline();
+            var doors = roomTemplate.GetComponent<Doors>();
+            var doorMode = doors.GetDoorMode();
+
+            return CheckWrongManualDoors(outline, doorMode, out differentLengthsCount);
         }
     }
 }
