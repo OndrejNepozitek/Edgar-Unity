@@ -38,6 +38,15 @@ namespace Edgar.Unity
                 var position = layoutRoom.Position.ToUnityIntVector3();
                 roomTemplateInstance.transform.position = position;
 
+                // Correct the position based on the grid
+                // This is important when there is some cell spacing or when the level is isometric
+                var tilemapsHolder = roomTemplateInstance.transform.Find(GeneratorConstants.TilemapsRootName).gameObject;
+                if (tilemapsHolder != null)
+                {
+                    var grid = tilemapsHolder.GetComponent<Grid>();
+                    roomTemplateInstance.transform.position = grid.CellToLocal(position);
+                }
+
                 // Compute outline polygon
                 var polygon = new Polygon2D(layoutRoom.Outline + layoutRoom.Position);
 
