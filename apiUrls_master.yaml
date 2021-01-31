@@ -854,11 +854,11 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.DungeonGeneratorPostProcessBase.Run
   nameWithType: DungeonGeneratorPostProcessBase.Run
-- uid: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(Random)
+- uid: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(System.Random)
   name: SetRandomGenerator(Random)
-  href: master/api/Edgar.Unity.DungeonGeneratorPostProcessBase.html#Edgar_Unity_DungeonGeneratorPostProcessBase_SetRandomGenerator_Random_
-  commentId: M:Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(Random)
-  fullName: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(Random)
+  href: master/api/Edgar.Unity.DungeonGeneratorPostProcessBase.html#Edgar_Unity_DungeonGeneratorPostProcessBase_SetRandomGenerator_System_Random_
+  commentId: M:Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(System.Random)
+  fullName: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(System.Random)
   nameWithType: DungeonGeneratorPostProcessBase.SetRandomGenerator(Random)
 - uid: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator*
   name: SetRandomGenerator
@@ -10723,13 +10723,13 @@ references:
   fullName.vb: Edgar.Unity.PostProcessTask(Of TPayload)
   nameWithType: PostProcessTask<TPayload>
   nameWithType.vb: PostProcessTask(Of TPayload)
-- uid: Edgar.Unity.PostProcessTask`1.#ctor(Edgar.Unity.PostProcessConfig,Func{Edgar.Unity.ITilemapLayersHandler},System.Collections.Generic.List{Edgar.Unity.DungeonGeneratorPostProcessBase})
+- uid: Edgar.Unity.PostProcessTask`1.#ctor(Edgar.Unity.PostProcessConfig,System.Func{Edgar.Unity.ITilemapLayersHandler},System.Collections.Generic.List{Edgar.Unity.DungeonGeneratorPostProcessBase})
   name: PostProcessTask(PostProcessConfig, Func<ITilemapLayersHandler>, List<DungeonGeneratorPostProcessBase>)
-  href: master/api/Edgar.Unity.PostProcessTask-1.html#Edgar_Unity_PostProcessTask_1__ctor_Edgar_Unity_PostProcessConfig_Func_Edgar_Unity_ITilemapLayersHandler__System_Collections_Generic_List_Edgar_Unity_DungeonGeneratorPostProcessBase__
-  commentId: M:Edgar.Unity.PostProcessTask`1.#ctor(Edgar.Unity.PostProcessConfig,Func{Edgar.Unity.ITilemapLayersHandler},System.Collections.Generic.List{Edgar.Unity.DungeonGeneratorPostProcessBase})
+  href: master/api/Edgar.Unity.PostProcessTask-1.html#Edgar_Unity_PostProcessTask_1__ctor_Edgar_Unity_PostProcessConfig_System_Func_Edgar_Unity_ITilemapLayersHandler__System_Collections_Generic_List_Edgar_Unity_DungeonGeneratorPostProcessBase__
+  commentId: M:Edgar.Unity.PostProcessTask`1.#ctor(Edgar.Unity.PostProcessConfig,System.Func{Edgar.Unity.ITilemapLayersHandler},System.Collections.Generic.List{Edgar.Unity.DungeonGeneratorPostProcessBase})
   name.vb: PostProcessTask(PostProcessConfig, Func(Of ITilemapLayersHandler), List(Of DungeonGeneratorPostProcessBase))
-  fullName: Edgar.Unity.PostProcessTask<TPayload>.PostProcessTask(Edgar.Unity.PostProcessConfig, Func<Edgar.Unity.ITilemapLayersHandler>, System.Collections.Generic.List<Edgar.Unity.DungeonGeneratorPostProcessBase>)
-  fullName.vb: Edgar.Unity.PostProcessTask(Of TPayload).PostProcessTask(Edgar.Unity.PostProcessConfig, Func(Of Edgar.Unity.ITilemapLayersHandler), System.Collections.Generic.List(Of Edgar.Unity.DungeonGeneratorPostProcessBase))
+  fullName: Edgar.Unity.PostProcessTask<TPayload>.PostProcessTask(Edgar.Unity.PostProcessConfig, System.Func<Edgar.Unity.ITilemapLayersHandler>, System.Collections.Generic.List<Edgar.Unity.DungeonGeneratorPostProcessBase>)
+  fullName.vb: Edgar.Unity.PostProcessTask(Of TPayload).PostProcessTask(Edgar.Unity.PostProcessConfig, System.Func(Of Edgar.Unity.ITilemapLayersHandler), System.Collections.Generic.List(Of Edgar.Unity.DungeonGeneratorPostProcessBase))
   nameWithType: PostProcessTask<TPayload>.PostProcessTask(PostProcessConfig, Func<ITilemapLayersHandler>, List<DungeonGeneratorPostProcessBase>)
   nameWithType.vb: PostProcessTask(Of TPayload).PostProcessTask(PostProcessConfig, Func(Of ITilemapLayersHandler), List(Of DungeonGeneratorPostProcessBase))
 - uid: Edgar.Unity.PostProcessTask`1.#ctor*
@@ -10812,11 +10812,11 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.PostProcessUtils.CopyTilesToSharedTilemaps
   nameWithType: PostProcessUtils.CopyTilesToSharedTilemaps
-- uid: Edgar.Unity.PostProcessUtils.Destroy(Object)
+- uid: Edgar.Unity.PostProcessUtils.Destroy(System.Object)
   name: Destroy(Object)
-  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_Destroy_Object_
-  commentId: M:Edgar.Unity.PostProcessUtils.Destroy(Object)
-  fullName: Edgar.Unity.PostProcessUtils.Destroy(Object)
+  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_Destroy_System_Object_
+  commentId: M:Edgar.Unity.PostProcessUtils.Destroy(System.Object)
+  fullName: Edgar.Unity.PostProcessUtils.Destroy(System.Object)
   nameWithType: PostProcessUtils.Destroy(Object)
 - uid: Edgar.Unity.PostProcessUtils.Destroy*
   name: Destroy
@@ -11033,11 +11033,11 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps
   nameWithType: ProUtils.CopyTilesToSharedTilemaps
-- uid: Edgar.Unity.ProUtils.FindDerivedTypes(Type)
+- uid: Edgar.Unity.ProUtils.FindDerivedTypes(System.Type)
   name: FindDerivedTypes(Type)
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_FindDerivedTypes_Type_
-  commentId: M:Edgar.Unity.ProUtils.FindDerivedTypes(Type)
-  fullName: Edgar.Unity.ProUtils.FindDerivedTypes(Type)
+  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_FindDerivedTypes_System_Type_
+  commentId: M:Edgar.Unity.ProUtils.FindDerivedTypes(System.Type)
+  fullName: Edgar.Unity.ProUtils.FindDerivedTypes(System.Type)
   nameWithType: ProUtils.FindDerivedTypes(Type)
 - uid: Edgar.Unity.ProUtils.FindDerivedTypes*
   name: FindDerivedTypes
