@@ -37,6 +37,17 @@ namespace Edgar.Unity
         }
 
         /// <summary>
+        /// Returns all the corner points of the polygon.
+        /// </summary>
+        /// <remarks>
+        /// Modifying the collection does not modify the polygon itself.
+        /// </remarks>
+        public List<Vector2Int> GetCornerPoints()
+        {
+            return points.ToList();
+        }
+
+        /// <summary>
         /// Returns all the outline points of the polygon.
         /// </summary>
         /// <remarks>
@@ -45,13 +56,15 @@ namespace Edgar.Unity
         public List<Vector2Int> GetOutlinePoints()
         {
             return GetGridPolygon()
-                .GetPoints()
+                .GetLines()
+                .SelectMany(x => x.GetPoints())
+                .Distinct()
                 .Select(x => (Vector2Int) x.ToUnityIntVector3())
                 .ToList();
         }
 
         /// <summary>
-        /// Returns all the points of the polygon.
+        /// Returns all the points of the polygon (outline + inside points).
         /// </summary>
         /// <remarks>
         /// Modifying the collection does not modify the polygon itself.
@@ -88,9 +101,9 @@ namespace Edgar.Unity
         {
             var points = new List<Vector2Int>();
 
-            for (int i = 0; i < rectangle.Width; i++)
+            for (int i = 0; i <= rectangle.Width; i++)
             {
-                for (int j = 0; j < rectangle.Height; j++)
+                for (int j = 0; j <= rectangle.Height; j++)
                 {
                     points.Add((Vector2Int) (rectangle.A + new EdgarVector2Int(i, j)).ToUnityIntVector3());
                 }

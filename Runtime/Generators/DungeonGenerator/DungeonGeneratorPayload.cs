@@ -18,5 +18,7 @@ namespace Edgar.Unity
         public double TimeTotal { get; set; }
 
         public GeneratorStats GeneratorStats { get; set; }
+
+        public DungeonGeneratorBase DungeonGenerator { get; set; }
     }
 }

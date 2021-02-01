@@ -2,10 +2,6 @@
 
 namespace Edgar.Unity.Examples.Resources
 {
-#if UNITY_EDITOR
-
-#endif
-
     public class CustomRoomTemplateInitializerExample : RoomTemplateInitializerBase
     {
         protected override void InitializeTilemaps(GameObject tilemapsRoot)

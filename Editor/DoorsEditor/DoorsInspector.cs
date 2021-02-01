@@ -306,34 +306,8 @@ namespace Edgar.Unity.Editor
             {
 
             }
-        }
 
-        private void DrawDoorsList()
-        {
-            var doors = target as Doors;
-
-            GUILayout.BeginVertical();
-
-            foreach (var doorInfo in doors.DoorsList)
-            {
-                EditorGUILayout.BeginVertical("Box");
-
-                var fromRounded = doorInfo.From.RoundToUnityIntVector3();
-                var toRounded = doorInfo.To.RoundToUnityIntVector3();
-                
-                EditorGUILayout.LabelField($"[{fromRounded.x},{fromRounded.y}]->[{toRounded.x},{toRounded.y}]");
-                var newX = EditorGUILayout.IntField(fromRounded.x);
-
-                if (fromRounded.x != newX)
-                {
-                    doorInfo.From.x = newX;
-                    EditorUtility.SetDirty(target);
-                }
-                
-                EditorGUILayout.EndVertical();
-            }
-
-            GUILayout.EndVertical();
+            EditorGUILayout.HelpBox("The visualization of manual doors works differently than that of simple doors. If you want to add, for example, 5 doors of length 1, you have to manually add all 5 doors - not a single door with length 5.", MessageType.Warning);
         }
 
         private enum Mode

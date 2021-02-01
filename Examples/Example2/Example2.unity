@@ -72261,7 +72261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11725bdbb93631241b38951f78cae60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
+  version: 3
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: 50956a7efd5eb9047ab43fe76d6c02ab, type: 2}
     UseCorridors: 1
@@ -72271,7 +72271,10 @@ MonoBehaviour:
     RepeatModeOverride: 2
   PostProcessConfig:
     InitializeSharedTilemaps: 1
+    TilemapLayersStructure: 0
     TilemapLayersHandler: {fileID: 0}
+    TilemapLayersExample: {fileID: 0}
+    TilemapMaterial: {fileID: 0}
     CopyTilesToSharedTilemaps: 1
     CenterGrid: 1
     DisableRoomTemplatesRenderers: 1

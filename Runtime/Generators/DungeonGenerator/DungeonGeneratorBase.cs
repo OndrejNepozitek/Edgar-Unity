@@ -33,13 +33,28 @@ namespace Edgar.Unity
         [Obsolete("Please use directly the property ThrowExceptionsImmediately")]
         public AdvancedConfig AdvancedConfig;
 
+        /// <summary>
+        /// Whether to use a random seed.
+        /// </summary>
         public bool UseRandomSeed = true;
 
+        /// <summary>
+        /// Which seed should be used for the random numbers generator.
+        /// Is used only when UseRandomSeed is false.
+        /// </summary>
         public int RandomGeneratorSeed;
 
+        /// <summary>
+        /// Whether to generate a level on enter play mode.
+        /// </summary>
         public bool GenerateOnStart = true;
 
         public bool ThrowExceptionsImmediately = false;
+
+        /// <summary>
+        /// Disable all custom post-processing tasks.
+        /// </summary>
+        public bool DisableCustomPostProcessing = false;
 
         public void Start()
         {
@@ -78,7 +93,10 @@ namespace Edgar.Unity
 
         protected virtual IPipelineTask<DungeonGeneratorPayload> GetPostProcessingTask()
         {
-            return new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig, () => new DungeonTilemapLayersHandler(), CustomPostProcessTasks);
+            var customPostProcessTasks = !DisableCustomPostProcessing
+                ? CustomPostProcessTasks
+                : new List<DungeonGeneratorPostProcessBase>();
+            return new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig, () => new DungeonTilemapLayersHandler(), customPostProcessTasks);
         }
 
         protected virtual DungeonGeneratorPayload InitializePayload()
@@ -86,6 +104,7 @@ namespace Edgar.Unity
             return new DungeonGeneratorPayload()
             {
                 Random = GetRandomNumbersGenerator(UseRandomSeed, RandomGeneratorSeed),
+                DungeonGenerator = this,
             };
         }
 
@@ -204,9 +223,28 @@ namespace Edgar.Unity
                     ThrowExceptionsImmediately = AdvancedConfig.ThrowExceptionsImmediately;
                 }
             }
+
+            if (version < 3)
+            {
+                if (version <= 1)
+                {
+                    PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Default;
+                }
+                else
+                {
+                    if (PostProcessConfig.TilemapLayersHandler != null)
+                    {
+                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Custom;
+                    }
+                    else
+                    {
+                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Default;
+                    }
+                }
+            }
 #pragma warning restore 618
 
-            return 2;
+            return 3;
         }
     }
 }
