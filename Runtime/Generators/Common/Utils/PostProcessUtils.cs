@@ -76,16 +76,17 @@ namespace Edgar.Unity
         {
             GameObject tilemapsRoot;
 
-            if (mode == TilemapLayersStructureMode.Automatic || mode == TilemapLayersStructureMode.FromExample)
+            if (/*mode == TilemapLayersStructureMode.Automatic || */mode == TilemapLayersStructureMode.FromExample)
             {
                 if (mode == TilemapLayersStructureMode.FromExample && example == null)
                 {
                     throw new ConfigurationException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.FromExample)}, {nameof(PostProcessConfig.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
                 }
 
-                var tilemapsSource = mode == TilemapLayersStructureMode.Automatic
-                    ? level.GetRoomInstances().First().RoomTemplateInstance
-                    : example;
+                //var tilemapsSource = mode == TilemapLayersStructureMode.Automatic
+                //    ? level.GetRoomInstances().First().RoomTemplateInstance
+                //    : example;
+                var tilemapsSource = example;
                 var tilemapsSourceRoot = RoomTemplateUtils.GetTilemapsRoot(tilemapsSource);
 
                 if (mode == TilemapLayersStructureMode.FromExample && tilemapsSourceRoot == tilemapsSource)

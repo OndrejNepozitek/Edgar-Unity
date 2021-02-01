@@ -228,7 +228,7 @@ namespace Edgar.Unity
             {
                 if (version <= 1)
                 {
-                    PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Automatic;
+                    PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Default;
                 }
                 else
                 {

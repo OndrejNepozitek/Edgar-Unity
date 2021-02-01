@@ -8,7 +8,7 @@ namespace Edgar.Unity
     {
         public bool InitializeSharedTilemaps = true;
 
-        public TilemapLayersStructureMode TilemapLayersStructure = TilemapLayersStructureMode.Automatic;
+        public TilemapLayersStructureMode TilemapLayersStructure = TilemapLayersStructureMode.Default;
 
         [ConditionalHide(nameof(IsTilemapsCustom))]
         public TilemapLayersHandlerBase TilemapLayersHandler;
