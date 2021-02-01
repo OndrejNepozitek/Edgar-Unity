@@ -19,21 +19,10 @@ To create a new room template, we have to:
 - right click in the Project window and choose *Create -> Edgar -> Dungeon room template*
 - (optional) rename the prefab file to anything you want
 
-### Create manually
-
-To create a new room template manually, we have to:
-- create an empty game object
-- add *Dungeon Room Template Initializer* component
-- click the *Initialize room template* button
-- create a prefab from that game object
-
-The whole process can be seen on the video below:
-
-<Image src="img/v2/room_templates/creating_room_templates.gif" caption="Initializing room template using the Dungeon room template initializer script" />
 
 ### Room template structure
 
-Below you can see the room template structure after we use the room template initializer:
+Below you can see the room template structure after the room template is created:
 - **Tilemaps** game object that contains several tilemaps attached as children
 - **Room Template** script attached to the root game object
 - **Doors** script attached to the root game object
