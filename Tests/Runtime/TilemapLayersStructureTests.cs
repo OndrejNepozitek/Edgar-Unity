@@ -64,18 +64,6 @@ namespace Edgar.Unity.Edgar.Tests.Runtime
         }
 
         [UnityTest]
-        public IEnumerator TilemapLayersStructure_Automatic()
-        {
-            var dungeonGenerator = GetDungeonGenerator("Dungeon Generator Automatic");
-            Assert.IsNotNull(dungeonGenerator);
-
-            dungeonGenerator.Generate();
-            yield return null;
-
-            AssertTilemapLayerExists("Floor Automatic");
-        }
-
-        [UnityTest]
         public IEnumerator TilemapLayersStructure_Custom()
         {
             var dungeonGenerator = GetDungeonGenerator("Dungeon Generator Custom");
