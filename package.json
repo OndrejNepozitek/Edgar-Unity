@@ -1,6 +1,6 @@
 {
-    "name": "com.ondrejnepozitek.procedurallevelgenerator",
-    "version": "2.0.0-alpha.5",
+    "name": "com.ondrejnepozitek.edgar.unity",
+    "version": "2.0.0-alpha.7",
     "displayName": "Edgar - Procedural Level Generator",
     "description": "2D procedural level generator",
     "unity": "2018.4",
@@ -11,7 +11,7 @@
     "samples": [
         {
           "displayName": "Examples",
-          "description": "All example scenes. They currently cannot be added individualy because of package manager limitations.",
+          "description": "All example scenes. They currently cannot be added individually because of package manager limitations.",
           "path": "Examples~"
         }
     ]

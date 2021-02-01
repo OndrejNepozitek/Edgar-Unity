@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace ProceduralLevelGenerator.Unity.Examples.Common
+namespace Edgar.Unity.Examples
 {
     /// <summary>
     /// Game manager base class.
@@ -40,28 +39,17 @@ namespace ProceduralLevelGenerator.Unity.Examples.Common
             }
 
             SingletonAwake();
-            DontDestroyOnLoad(gameObject);
         }
 
         protected virtual void SingletonAwake()
         {
-
+            LoadNextLevel();
         }
 
         /// <summary>
         /// Load next level.
         /// </summary>
         public abstract void LoadNextLevel();
-
-        /// <summary>
-        /// Load next level on scene finished loading.
-        /// </summary>
-        /// <param name="scene"></param>
-        /// <param name="mode"></param>
-        protected virtual void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
-        {
-            LoadNextLevel();
-        }
 
         /// <summary>
         /// Display information about the level like time to generate the level, etc.
@@ -136,14 +124,12 @@ namespace ProceduralLevelGenerator.Unity.Examples.Common
             }
         }
 
-        public virtual void OnEnable()
+        private void OnDisable()
         {
-            SceneManager.sceneLoaded += OnSceneFinishedLoading;
-        }
-
-        public virtual void OnDisable()
-        {
-            SceneManager.sceneLoaded -= OnSceneFinishedLoading;
+            if (ReferenceEquals(this, Instance))
+            {
+                Instance = null;
+            }
         }
     }
 }

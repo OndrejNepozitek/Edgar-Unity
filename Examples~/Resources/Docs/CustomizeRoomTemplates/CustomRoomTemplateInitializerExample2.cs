@@ -1,10 +1,10 @@
-﻿namespace ProceduralLevelGenerator.Unity.Examples.Resources.Docs.CustomizeRoomTemplates
+﻿using UnityEngine;
+
+namespace Edgar.Unity.Examples.Resources
 {
-    using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers;
-    using UnityEngine;
-    #if UNITY_EDITOR
-    using UnityEditor;
-    #endif
+#if UNITY_EDITOR
+
+#endif
 
     public class CustomRoomTemplateInitializerExample2 : RoomTemplateInitializerBase
     {

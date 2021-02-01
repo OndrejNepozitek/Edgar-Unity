@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneralAlgorithms.Algorithms.Polygons;
-using GeneralAlgorithms.DataStructures.Common;
-using GeneralAlgorithms.DataStructures.Polygons;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
+using Edgar.Geometry;
+using Edgar.Legacy.GeneralAlgorithms.Algorithms.Polygons;
 using UnityEngine;
+using Vector2Int = UnityEngine.Vector2Int;
 
-namespace ProceduralLevelGenerator.Unity.Utils
+namespace Edgar.Unity
 {
     [Serializable]
     public class Polygon2D
@@ -15,7 +14,7 @@ namespace ProceduralLevelGenerator.Unity.Utils
         [SerializeField]
         private List<Vector2Int> points;
 
-        private GridPolygon gridPolygon;
+        private PolygonGrid2D gridPolygon;
 
         private static readonly IPolygonPartitioning PolygonPartitioning = new CachedPolygonPartitioning(new GridPolygonPartitioning());
 
@@ -31,10 +30,21 @@ namespace ProceduralLevelGenerator.Unity.Utils
             CheckValidity();
         }
 
-        public Polygon2D(GridPolygon polygon)
+        public Polygon2D(PolygonGrid2D polygon)
         {
             points = polygon.GetPoints().Select(x => (Vector2Int) x.ToUnityIntVector3()).ToList();
             gridPolygon = polygon;
+        }
+
+        /// <summary>
+        /// Returns all the corner points of the polygon.
+        /// </summary>
+        /// <remarks>
+        /// Modifying the collection does not modify the polygon itself.
+        /// </remarks>
+        public List<Vector2Int> GetCornerPoints()
+        {
+            return points.ToList();
         }
 
         /// <summary>
@@ -46,13 +56,15 @@ namespace ProceduralLevelGenerator.Unity.Utils
         public List<Vector2Int> GetOutlinePoints()
         {
             return GetGridPolygon()
-                .GetPoints()
+                .GetLines()
+                .SelectMany(x => x.GetPoints())
+                .Distinct()
                 .Select(x => (Vector2Int) x.ToUnityIntVector3())
                 .ToList();
         }
 
         /// <summary>
-        /// Returns all the points of the polygon.
+        /// Returns all the points of the polygon (outline + inside points).
         /// </summary>
         /// <remarks>
         /// Modifying the collection does not modify the polygon itself.
@@ -75,25 +87,25 @@ namespace ProceduralLevelGenerator.Unity.Utils
             GetGridPolygon();
         }
 
-        public GridPolygon GetGridPolygon()
+        public PolygonGrid2D GetGridPolygon()
         {
             if (gridPolygon == null)
             {
-                gridPolygon = new GridPolygon(points.Select(x => x.ToCustomIntVector2()));
+                gridPolygon = new PolygonGrid2D(points.Select(x => x.ToCustomIntVector2()));
             }
 
             return gridPolygon;
         }
 
-        private List<Vector2Int> GetAllPoints(GridRectangle rectangle)
+        private List<Vector2Int> GetAllPoints(RectangleGrid2D rectangle)
         {
             var points = new List<Vector2Int>();
 
-            for (int i = 0; i < rectangle.Width; i++)
+            for (int i = 0; i <= rectangle.Width; i++)
             {
-                for (int j = 0; j < rectangle.Height; j++)
+                for (int j = 0; j <= rectangle.Height; j++)
                 {
-                    points.Add((Vector2Int) (rectangle.A + new IntVector2(i, j)).ToUnityIntVector3());
+                    points.Add((Vector2Int) (rectangle.A + new EdgarVector2Int(i, j)).ToUnityIntVector3());
                 }
             }
 

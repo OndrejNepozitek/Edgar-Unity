@@ -1,18 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using MapGeneration.Core.MapDescriptions;
-using MapGeneration.Utils;
-using Newtonsoft.Json;
-using ProceduralLevelGenerator.Unity.Attributes;
-using ProceduralLevelGenerator.Unity.Generators.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
-using ProceduralLevelGenerator.Unity.Pipeline;
+using System.Linq;
+using System.Reflection;
+using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
+namespace Edgar.Unity
 {
     /// <summary>
     /// Base class for various dungeon generators.
@@ -39,13 +33,28 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
         [Obsolete("Please use directly the property ThrowExceptionsImmediately")]
         public AdvancedConfig AdvancedConfig;
 
+        /// <summary>
+        /// Whether to use a random seed.
+        /// </summary>
         public bool UseRandomSeed = true;
 
+        /// <summary>
+        /// Which seed should be used for the random numbers generator.
+        /// Is used only when UseRandomSeed is false.
+        /// </summary>
         public int RandomGeneratorSeed;
 
+        /// <summary>
+        /// Whether to generate a level on enter play mode.
+        /// </summary>
         public bool GenerateOnStart = true;
 
         public bool ThrowExceptionsImmediately = false;
+
+        /// <summary>
+        /// Disable all custom post-processing tasks.
+        /// </summary>
+        public bool DisableCustomPostProcessing = false;
 
         public void Start()
         {
@@ -84,7 +93,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 
         protected virtual IPipelineTask<DungeonGeneratorPayload> GetPostProcessingTask()
         {
-            return new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig, () => new DungeonTilemapLayersHandler(), CustomPostProcessTasks);
+            var customPostProcessTasks = !DisableCustomPostProcessing
+                ? CustomPostProcessTasks
+                : new List<DungeonGeneratorPostProcessBase>();
+            return new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig, () => new DungeonTilemapLayersHandler(), customPostProcessTasks);
         }
 
         protected virtual DungeonGeneratorPayload InitializePayload()
@@ -92,6 +104,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
             return new DungeonGeneratorPayload()
             {
                 Random = GetRandomNumbersGenerator(UseRandomSeed, RandomGeneratorSeed),
+                DungeonGenerator = this,
             };
         }
 
@@ -100,40 +113,97 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
             var payload = InitializePayload();
             var inputSetup = GetInputTask();
 
-            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>> {inputSetup};
+            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>> { inputSetup };
 
             PipelineRunner.Run(pipelineItems, payload);
 
-            var levelDescription = payload.LevelDescription;
-            var mapDescription = levelDescription.GetMapDescription();
-            var intMapDescription = GetIntMapDescription(mapDescription);
-            var json = JsonConvert.SerializeObject(intMapDescription, Formatting.Indented, new JsonSerializerSettings()
-            {
-                PreserveReferencesHandling = PreserveReferencesHandling.All,
-                TypeNameHandling = TypeNameHandling.Auto,
-            });
+            var levelDescription = payload.LevelDescription.GetLevelDescription();
+            levelDescription.Name = "Test";
+            var wrappedLevelDescription = GetWrappedLevelDescription(levelDescription);
 
             var filename = "exportedMapDescription.json";
-            File.WriteAllText(filename, json);
+            wrappedLevelDescription.SaveToJson(filename);
             Debug.Log($"Map description exported to {filename}");
         }
 
-        private MapDescription<int> GetIntMapDescription(MapDescription<RoomBase> mapDescription)
+        private LevelDescriptionGrid2D<RoomWrapper> GetWrappedLevelDescription(LevelDescriptionGrid2D<RoomBase> originalLevelDescription)
         {
-            var newMapDescription = new MapDescription<int>();
-            var mapping = mapDescription.GetGraph().Vertices.CreateIntMapping();
+            var levelDescription = new LevelDescriptionGrid2D<RoomWrapper>();
 
-            foreach (var vertex in mapDescription.GetGraph().Vertices)
+            var srcProperties = originalLevelDescription.GetType().GetProperties(
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
+            var dstProperties = levelDescription.GetType().GetProperties(
+                BindingFlags.Instance | BindingFlags.Public | BindingFlags.GetProperty);
+
+            foreach (var srcProperty in srcProperties)
             {
-                newMapDescription.AddRoom(mapping[vertex], mapDescription.GetRoomDescription(vertex));
+                var dstProperty = dstProperties.First(x => x.Name == srcProperty.Name);
+
+                if (dstProperty.CanWrite)
+                {
+                    dstProperty.SetValue(levelDescription, srcProperty.GetValue(originalLevelDescription));
+                }
             }
 
-            foreach (var edge in mapDescription.GetGraph().Edges)
+            var id = 0;
+            var mapping = originalLevelDescription
+                .GetGraphWithoutCorridors()
+                .Vertices
+                .Select(x => (x, new RoomWrapper(id++, x.GetDisplayName())))
+                .ToDictionary(x => x.x, x => x.Item2);
+
+            foreach (var pair in mapping)
             {
-                newMapDescription.AddConnection(mapping[edge.From], mapping[edge.To]);
+                levelDescription.AddRoom(pair.Value, originalLevelDescription.GetRoomDescription(pair.Key));
             }
 
-            return newMapDescription;
+            foreach (var edge in originalLevelDescription.GetGraphWithoutCorridors().Edges)
+            {
+                var from = mapping[edge.From];
+                var to = mapping[edge.To];
+
+                levelDescription.AddConnection(from, to);
+            }
+
+            return levelDescription;
+        }
+
+        private struct RoomWrapper
+        {
+            public int Id { get; }
+
+            public string Name { get; }
+
+            public RoomWrapper(int id, string name)
+            {
+                Name = name;
+                Id = id;
+            }
+
+            public bool Equals(RoomWrapper other)
+            {
+                return Id == other.Id;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is RoomWrapper other && Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                return Id;
+            }
+
+            public static bool operator ==(RoomWrapper left, RoomWrapper right)
+            {
+                return left.Equals(right);
+            }
+
+            public static bool operator !=(RoomWrapper left, RoomWrapper right)
+            {
+                return !left.Equals(right);
+            }
         }
 
         protected override int OnUpgradeSerializedData(int version)
@@ -153,9 +223,28 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
                     ThrowExceptionsImmediately = AdvancedConfig.ThrowExceptionsImmediately;
                 }
             }
+
+            if (version < 3)
+            {
+                if (version <= 1)
+                {
+                    PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Default;
+                }
+                else
+                {
+                    if (PostProcessConfig.TilemapLayersHandler != null)
+                    {
+                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Custom;
+                    }
+                    else
+                    {
+                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Default;
+                    }
+                }
+            }
 #pragma warning restore 618
 
-            return 2;
+            return 3;
         }
     }
 }

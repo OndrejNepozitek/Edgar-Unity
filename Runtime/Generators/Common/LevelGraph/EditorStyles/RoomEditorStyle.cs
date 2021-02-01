@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.EditorStyles
+namespace Edgar.Unity
 {
     /// <summary>
     /// Editor style for room nodes in the level graph editor.

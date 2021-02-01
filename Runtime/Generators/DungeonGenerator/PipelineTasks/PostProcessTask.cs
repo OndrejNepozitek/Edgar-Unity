@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
-using ProceduralLevelGenerator.Unity.Pipeline;
+using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
+namespace Edgar.Unity
 {
     /// <summary>
     /// Handles individual post-processing steps.
@@ -58,8 +54,9 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
             {
                 callbacks.RegisterCallback(PostProcessPriorities.InitializeSharedTilemaps, (level, description) =>
                 {
-                    var tilemapLayersHandler = config.TilemapLayersHandler ? config.TilemapLayersHandler : defaultTilemapLayersHandlerFactory();
-                    PostProcessUtils.InitializeSharedTilemaps(level, tilemapLayersHandler);
+                    // PostProcessUtils.InitializeSharedTilemaps(level, tilemapLayersHandler, config.TilemapMaterial);
+                    PostProcessUtils.InitializeSharedTilemaps(level, config.TilemapLayersStructure, defaultTilemapLayersHandlerFactory(), config.TilemapLayersHandler, config.TilemapLayersExample, config.TilemapMaterial);
+                    PostProcessUtils.SetTilemapsMaterial(level, config.TilemapMaterial);
                 });
             }
 

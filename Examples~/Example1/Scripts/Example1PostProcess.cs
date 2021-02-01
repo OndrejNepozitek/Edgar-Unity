@@ -1,10 +1,8 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Examples.Example1.Scripts
+namespace Edgar.Unity.Examples.Example1
 {
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Example 1/Post process", fileName = "Example1PostProcess")]
+    [CreateAssetMenu(menuName = "Edgar/Examples/Example 1/Post-process", fileName = "Example1PostProcess")]
     public class Example1PostProcess : DungeonGeneratorPostProcessBase
     {
         [Range(0, 1)]

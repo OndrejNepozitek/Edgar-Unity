@@ -1,7 +1,6 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.EditorStyles;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
+namespace Edgar.Unity
 {
     /// <summary>
     /// Base class for connections in a level graph.

@@ -260,10 +260,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!114 &18062007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,10 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &18934472
 GameObject:
   m_ObjectHideFlags: 0
@@ -7309,10 +7309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &181018387
 GameObject:
   m_ObjectHideFlags: 0
@@ -9671,10 +9671,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &336828951
 GameObject:
   m_ObjectHideFlags: 0
@@ -16758,10 +16758,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &720722277
 GameObject:
   m_ObjectHideFlags: 0
@@ -19579,10 +19579,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &874110762
 GameObject:
   m_ObjectHideFlags: 0
@@ -20808,10 +20808,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &950440164
 GameObject:
   m_ObjectHideFlags: 0
@@ -27223,10 +27223,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &1155484193
 GameObject:
   m_ObjectHideFlags: 0
@@ -27973,10 +27973,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &1167014305
 GameObject:
   m_ObjectHideFlags: 0
@@ -41051,10 +41051,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &1330208423
 GameObject:
   m_ObjectHideFlags: 0
@@ -43384,10 +43384,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &1451313683
 GameObject:
   m_ObjectHideFlags: 0
@@ -44164,10 +44164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &1530561862
 GameObject:
   m_ObjectHideFlags: 0
@@ -45036,10 +45036,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &1547178190
 GameObject:
   m_ObjectHideFlags: 0
@@ -55482,7 +55482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11725bdbb93631241b38951f78cae60c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 2
+  version: 3
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: e83360f8587f2824c859dbb12125395f, type: 2}
     UseCorridors: 1
@@ -55492,7 +55492,10 @@ MonoBehaviour:
     RepeatModeOverride: 0
   PostProcessConfig:
     InitializeSharedTilemaps: 1
+    TilemapLayersStructure: 0
     TilemapLayersHandler: {fileID: 0}
+    TilemapLayersExample: {fileID: 0}
+    TilemapMaterial: {fileID: 0}
     CopyTilesToSharedTilemaps: 1
     CenterGrid: 1
     DisableRoomTemplatesRenderers: 1
@@ -55792,10 +55795,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &1671391620
 GameObject:
   m_ObjectHideFlags: 0
@@ -64420,10 +64423,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &2015055864
 GameObject:
   m_ObjectHideFlags: 0
@@ -66862,10 +66865,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Position: {x: 0, y: 0}
   Name: Corridor
   IndividualRoomTemplates: []
   RoomTemplateSets: []
-  Position: {x: 0, y: 0}
 --- !u!1 &2140425710
 GameObject:
   m_ObjectHideFlags: 0

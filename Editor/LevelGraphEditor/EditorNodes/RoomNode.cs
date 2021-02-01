@@ -1,8 +1,7 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes
+namespace Edgar.Unity.Editor
 {
     public class RoomNode
     {

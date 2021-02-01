@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using GeneralAlgorithms.DataStructures.Common;
-using MapGeneration.Core.Doors.DoorModes;
-using MapGeneration.Core.Doors.Interfaces;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
-using OrthogonalLine = GeneralAlgorithms.DataStructures.Common.OrthogonalLine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Doors MonoBehaviour that is used to define doors for room templates.
@@ -27,26 +23,26 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors
         [HideInInspector]
         public DoorMode SelectedMode;
 
-        public IDoorMode GetDoorMode()
+        public IDoorModeGrid2D GetDoorMode()
         {
             if (SelectedMode == DoorMode.Manual)
             {
-                var doorLines = new List<OrthogonalLine>();
+                var doors = new List<DoorGrid2D>();
 
                 foreach (var door in DoorsList)
                 {
-                    var doorLine = new OrthogonalLine(door.From.RoundToUnityIntVector3().ToCustomIntVector2(),
+                    var doorLine = new DoorGrid2D(door.From.RoundToUnityIntVector3().ToCustomIntVector2(),
                         door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
 
-                    doorLines.Add(doorLine);
+                    doors.Add(doorLine);
                 }
 
-                return new ManualDoorMode(doorLines);
+                return new ManualDoorModeGrid2D(doors);
             }
 
             if (SelectedMode == DoorMode.Simple)
             {
-                return new SimpleDoorMode(DoorLength - 1, DistanceFromCorners);
+                return new SimpleDoorModeGrid2D(DoorLength - 1, DistanceFromCorners);
             }
 
             throw new ArgumentException("Invalid door mode selected");

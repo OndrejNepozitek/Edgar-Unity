@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneralAlgorithms.Algorithms.Common;
-using GeneralAlgorithms.DataStructures.Common;
-using GeneralAlgorithms.DataStructures.Polygons;
-using MapGeneration.Core.MapDescriptions;
-using MapGeneration.Core.MapDescriptions.Interfaces;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
-using ProceduralLevelGenerator.Unity.Utils;
+using Edgar.Geometry;
+using Edgar.GraphBasedGenerator.Common;
+using Edgar.GraphBasedGenerator.Grid2D;
+using Edgar.Legacy.GeneralAlgorithms.Algorithms.Common;
+using Edgar.Unity.Diagnostics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
+namespace Edgar.Unity
 {
     /// <summary>
     /// Class used to convert room templates to the representation used in the dungeon generator library.
@@ -24,19 +21,19 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
         /// </summary>
         /// <param name="allPoints"></param>
         /// <returns></returns>
-        public static GridPolygon GetPolygonFromTiles(HashSet<Vector3Int> allPoints)
+        public static PolygonGrid2D GetPolygonFromTiles(HashSet<Vector3Int> allPoints)
         {
             if (allPoints.Count == 0)
             {
                 throw new ArgumentException("There must be at least one point");
             }
 
-            var orderedDirections = new Dictionary<IntVector2, List<IntVector2>>
+            var orderedDirections = new Dictionary<EdgarVector2Int, List<EdgarVector2Int>>
             {
-                {IntVector2Helper.Top, new List<IntVector2> {IntVector2Helper.Left, IntVector2Helper.Top, IntVector2Helper.Right}},
-                {IntVector2Helper.Right, new List<IntVector2> {IntVector2Helper.Top, IntVector2Helper.Right, IntVector2Helper.Bottom}},
-                {IntVector2Helper.Bottom, new List<IntVector2> {IntVector2Helper.Right, IntVector2Helper.Bottom, IntVector2Helper.Left}},
-                {IntVector2Helper.Left, new List<IntVector2> {IntVector2Helper.Bottom, IntVector2Helper.Left, IntVector2Helper.Top}}
+                {IntVector2Helper.Top, new List<EdgarVector2Int> {IntVector2Helper.Left, IntVector2Helper.Top, IntVector2Helper.Right}},
+                {IntVector2Helper.Right, new List<EdgarVector2Int> {IntVector2Helper.Top, IntVector2Helper.Right, IntVector2Helper.Bottom}},
+                {IntVector2Helper.Bottom, new List<EdgarVector2Int> {IntVector2Helper.Right, IntVector2Helper.Bottom, IntVector2Helper.Left}},
+                {IntVector2Helper.Left, new List<EdgarVector2Int> {IntVector2Helper.Bottom, IntVector2Helper.Left, IntVector2Helper.Top}}
             };
 
             var allPointsInternal = allPoints.Select(x => x.ToCustomIntVector2()).ToHashSet();
@@ -47,7 +44,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
             var startingPoint = smallestXYPoint;
             var startingDirection = IntVector2Helper.Top;
 
-            var polygonPoints = new List<IntVector2>();
+            var polygonPoints = new List<EdgarVector2Int>();
             var currentPoint = startingPoint + startingDirection;
             var firstPoint = currentPoint;
             var previousDirection = startingDirection;
@@ -61,7 +58,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
             while (true)
             {
                 var foundNeighbor = false;
-                var currentDirection = new IntVector2();
+                var currentDirection = new EdgarVector2Int();
 
                 foreach (var directionVector in orderedDirections[previousDirection])
                 {
@@ -101,7 +98,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
                 polygonPoints.Reverse();
             }
 
-            return new GridPolygon(polygonPoints);
+            return new PolygonGrid2D(polygonPoints);
         }
 
         /// <summary>
@@ -109,7 +106,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
         /// </summary>
         /// <param name="tilemaps"></param>
         /// <returns></returns>
-        public static GridPolygon GetPolygonFromTilemaps(ICollection<Tilemap> tilemaps)
+        public static PolygonGrid2D GetPolygonFromTilemaps(ICollection<Tilemap> tilemaps)
         {
             var usedTiles = GetUsedTiles(RoomTemplateUtils.GetTilemapsForOutline(tilemaps));
 
@@ -121,7 +118,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
         /// </summary>
         /// <param name="roomTemplate"></param>
         /// <returns></returns>
-        public static GridPolygon GetPolygonFromRoomTemplate(GameObject roomTemplate)
+        public static PolygonGrid2D GetPolygonFromRoomTemplate(GameObject roomTemplate)
         {
             var outlineHandler = roomTemplate.GetComponent<IRoomTemplateOutlineHandler>();
             if (outlineHandler != null)
@@ -162,39 +159,67 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
 
             return usedTiles;
         }
-
+        
         /// <summary>
         ///     Computes a room room template from a given room template game object.
         /// </summary>
         /// <param name="roomTemplatePrefab"></param>
-        /// <param name="allowedTransformations"></param>
+        /// <param name="roomTemplate"></param>
+        /// <param name="result"></param>
         /// <returns></returns>
-        public static RoomTemplate GetRoomTemplate(GameObject roomTemplatePrefab, List<Transformation> allowedTransformations = null)
+        public static bool TryGetRoomTemplate(GameObject roomTemplatePrefab, out RoomTemplateGrid2D roomTemplate, out ActionResult result)
         {
-            if (allowedTransformations == null)
+            roomTemplate = null;
+
+            // Check that the room template has all the required components
+            var requiredComponentsResult = RoomTemplateDiagnostics.CheckComponents(roomTemplatePrefab);
+            if (requiredComponentsResult.HasErrors)
             {
-                allowedTransformations = new List<Transformation> {Transformation.Identity};
+                result = requiredComponentsResult;
+                return false;
             }
 
-            var polygon = GetPolygonFromRoomTemplate(roomTemplatePrefab);
+            PolygonGrid2D polygon = null;
 
-            var doors = roomTemplatePrefab.GetComponent<Doors.Doors>();
-
-            if (doors == null)
+            // TODO: improve
+            try
             {
-                throw new GeneratorException($"Room template \"{roomTemplatePrefab.name}\" does not have any doors assigned.");
+                polygon = GetPolygonFromRoomTemplate(roomTemplatePrefab);
+            }
+            catch (ArgumentException)
+            {
+                /* empty */
             }
 
+            // Check that the outline of the room template is valid
+            if (polygon == null)
+            {
+                result = new ActionResult();
+                result.AddError("The outline of the room template is not valid. Please consult the documentation.");
+                return false;
+            }
+
+            var allowedTransformations = new List<TransformationGrid2D> { TransformationGrid2D.Identity };
             var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplateSettings>();
-            var repeatMode = roomTemplateComponent?.RepeatMode ?? RepeatMode.AllowRepeat;
+            var repeatMode = roomTemplateComponent?.RepeatMode ?? RoomTemplateRepeatMode.AllowRepeat;
+            var doors = roomTemplatePrefab.GetComponent<Doors>();
             var doorMode = doors.GetDoorMode();
 
-            var roomDescription = new MapGeneration.Core.MapDescriptions.RoomTemplate(polygon, doorMode, allowedTransformations, repeatMode);
+            // Check that the doors are valid
+            var doorsCheck = RoomTemplateDiagnostics.CheckDoors(polygon, doorMode);
+            if (doorsCheck.HasErrors)
+            {
+                result = doorsCheck;
+                return false;
+            }
 
-            return roomDescription;
+            roomTemplate = new RoomTemplateGrid2D(polygon, doorMode, roomTemplatePrefab.name, repeatMode, allowedTransformations);
+
+            result = new ActionResult();
+            return true;
         }
 
-        public static bool IsClockwiseOriented(IList<IntVector2> points)
+        public static bool IsClockwiseOriented(IList<EdgarVector2Int> points)
         {
             var previous = points[points.Count - 1];
             var sum = 0L;

@@ -1,4 +1,4 @@
-﻿namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
+﻿namespace Edgar.Unity
 {
     /// <summary>
     /// Constants that are used in the generator.

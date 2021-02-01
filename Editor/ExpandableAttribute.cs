@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor
+namespace Edgar.Unity.Editor
 {
 #if UNITY_EDITOR
 #endif

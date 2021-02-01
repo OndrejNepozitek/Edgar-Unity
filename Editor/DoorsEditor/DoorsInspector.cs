@@ -1,12 +1,8 @@
 ﻿using System;
-using MapGeneration.Core.Doors;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
-using ProceduralLevelGenerator.Unity.Utils;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
+namespace Edgar.Unity.Editor
 {
     [CustomEditor(typeof(Doors))]
 	public class DoorsInspector : UnityEditor.Editor
@@ -297,7 +293,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
             try
             {
                 var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
-                var doorPositions = DoorHandler.DefaultHandler.GetDoorPositions(polygon, doors.GetDoorMode());
+                var doorPositions = doors.GetDoorMode().GetDoors(polygon);
 
                 if (doorPositions.Count != doors.DoorsList.Count)
                 {
@@ -310,34 +306,8 @@ namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
             {
 
             }
-        }
 
-        private void DrawDoorsList()
-        {
-            var doors = target as Doors;
-
-            GUILayout.BeginVertical();
-
-            foreach (var doorInfo in doors.DoorsList)
-            {
-                EditorGUILayout.BeginVertical("Box");
-
-                var fromRounded = doorInfo.From.RoundToUnityIntVector3();
-                var toRounded = doorInfo.To.RoundToUnityIntVector3();
-                
-                EditorGUILayout.LabelField($"[{fromRounded.x},{fromRounded.y}]->[{toRounded.x},{toRounded.y}]");
-                var newX = EditorGUILayout.IntField(fromRounded.x);
-
-                if (fromRounded.x != newX)
-                {
-                    doorInfo.From.x = newX;
-                    EditorUtility.SetDirty(target);
-                }
-                
-                EditorGUILayout.EndVertical();
-            }
-
-            GUILayout.EndVertical();
+            EditorGUILayout.HelpBox("The visualization of manual doors works differently than that of simple doors. If you want to add, for example, 5 doors of length 1, you have to manually add all 5 doors - not a single door with length 5.", MessageType.Warning);
         }
 
         private enum Mode

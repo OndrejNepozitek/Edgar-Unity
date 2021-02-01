@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1223b1c19527fcd4ebfa7eeb23f3e98a, type: 3}
-  m_Name: GraphBasedGenerator
+  m_Script: {fileID: 11500000, guid: bb4cac1b310f79f4fae5b901c9624145, type: 3}
+  m_Name: New Custom Tilemap Layers Handler
   m_EditorClassIdentifier: 
-  ShowDebugInfo: 1
-  CenterGrid: 1
-  ApplyTemplate: 1
-  Timeout: 10000

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor.EditorNodes;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
 using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.LevelGraphEditor
+namespace Edgar.Unity.Editor
 {
     public partial class LevelGraphEditor
     {

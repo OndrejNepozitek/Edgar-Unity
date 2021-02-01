@@ -1,10 +1,11 @@
 ﻿using System.IO;
-#if UNITY_EDITOR
 using UnityEditor;
-#endif
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers
+#if UNITY_EDITOR
+#endif
+
+namespace Edgar.Unity
 {
     public static class RoomTemplateInitializerUtils
     {

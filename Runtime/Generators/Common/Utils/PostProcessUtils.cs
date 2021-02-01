@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
+namespace Edgar.Unity
 {
     /// <summary>
     /// Utility post-processing functions
@@ -76,14 +72,71 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Utils
             }
         }
 
-        public static void InitializeSharedTilemaps(GeneratedLevel level, ITilemapLayersHandler tilemapLayersHandler)
+        public static void InitializeSharedTilemaps(GeneratedLevel level, TilemapLayersStructureMode mode, ITilemapLayersHandler defaultTilemapLayersHandler, ITilemapLayersHandler customTilemapLayersHandler, GameObject example, Material tilemapMaterial)
         {
-            // Initialize GameObject that will hold tilemaps
-            var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
-            tilemapsRoot.transform.parent = level.RootGameObject.transform;
+            GameObject tilemapsRoot;
 
-            // Create individual tilemaps
-            tilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+            if (/*mode == TilemapLayersStructureMode.Automatic || */mode == TilemapLayersStructureMode.FromExample)
+            {
+                if (mode == TilemapLayersStructureMode.FromExample && example == null)
+                {
+                    throw new ConfigurationException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.FromExample)}, {nameof(PostProcessConfig.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
+                }
+
+                //var tilemapsSource = mode == TilemapLayersStructureMode.Automatic
+                //    ? level.GetRoomInstances().First().RoomTemplateInstance
+                //    : example;
+                var tilemapsSource = example;
+                var tilemapsSourceRoot = RoomTemplateUtils.GetTilemapsRoot(tilemapsSource);
+
+                if (mode == TilemapLayersStructureMode.FromExample && tilemapsSourceRoot == tilemapsSource)
+                {
+                    throw new ConfigurationException($"Given {nameof(PostProcessConfig.TilemapLayersExample)} is not valid as it does not contain a game object called {GeneratorConstants.TilemapsRootName} that holds individual tilemap layers.");
+                }
+
+                tilemapsRoot = Object.Instantiate(tilemapsSourceRoot, level.RootGameObject.transform);
+                tilemapsRoot.name = GeneratorConstants.TilemapsRootName;
+
+                foreach (var tilemap in tilemapsRoot.GetComponentsInChildren<Tilemap>())
+                {
+                    tilemap.ClearAllTiles();
+                }
+            }
+            else
+            {
+                // Initialize GameObject that will hold tilemaps
+                tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
+                tilemapsRoot.transform.parent = level.RootGameObject.transform;
+
+                if (mode == TilemapLayersStructureMode.Default)
+                {
+                    defaultTilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+                } 
+                else if (mode == TilemapLayersStructureMode.Custom)
+                {
+                    if (customTilemapLayersHandler == null)
+                    {
+                        throw new ConfigurationException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.Custom)}, {nameof(PostProcessConfig.TilemapLayersHandler)} must not be null. Please set the field in the Dungeon Generator component.");
+                    }
+
+                    customTilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+                }
+            }
+        }
+
+        public static void SetTilemapsMaterial(GeneratedLevel level, Material tilemapMaterial)
+        {
+            if (tilemapMaterial == null)
+            {
+                return;
+            }
+
+            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(level.RootGameObject);
+
+            foreach (var tilemapRenderer in tilemapsRoot.GetComponentsInChildren<TilemapRenderer>())
+            {
+                tilemapRenderer.material = tilemapMaterial;
+            }
         }
 
         public static void CopyTilesToSharedTilemaps(GeneratedLevel level)

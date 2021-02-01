@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEditor;
 
-namespace ProceduralLevelGenerator.Unity.Editor
+namespace Edgar.Unity.Editor
 {
     public class CustomInspectorWindow : EditorWindow
 	{

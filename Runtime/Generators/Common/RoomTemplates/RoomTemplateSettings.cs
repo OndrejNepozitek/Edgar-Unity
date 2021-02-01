@@ -1,26 +1,19 @@
 ﻿using System;
-using GeneralAlgorithms.DataStructures.Polygons;
-using MapGeneration.Core.MapDescriptions.Interfaces;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.TilemapLayers;
-using ProceduralLevelGenerator.Unity.Generators.Common.Utils;
+using Edgar.Geometry;
+using Edgar.GraphBasedGenerator.Common;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates
+namespace Edgar.Unity
 {
     /// <summary>
     /// Component that is attached to each room template game objects and contains basic settings.
     /// </summary>
     public class RoomTemplateSettings : MonoBehaviour
     {
-        public RepeatMode RepeatMode = RepeatMode.AllowRepeat;
+        public RoomTemplateRepeatMode RepeatMode = RoomTemplateRepeatMode.AllowRepeat;
 
-        public bool IsOutlineValid()
-        {
-            return GetOutline() != null;
-        }
-
-        public GridPolygon GetOutline()
+        public PolygonGrid2D GetOutline()
         {
             try
             {

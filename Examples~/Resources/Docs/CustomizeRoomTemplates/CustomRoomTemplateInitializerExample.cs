@@ -1,11 +1,7 @@
-﻿namespace ProceduralLevelGenerator.Unity.Examples.Resources.Docs.CustomizeRoomTemplates
-{
-    using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateInitializers;
-    using UnityEngine;
-    #if UNITY_EDITOR
-    using UnityEditor;
-    #endif
+﻿using UnityEngine;
 
+namespace Edgar.Unity.Examples.Resources
+{
     public class CustomRoomTemplateInitializerExample : RoomTemplateInitializerBase
     {
         protected override void InitializeTilemaps(GameObject tilemapsRoot)

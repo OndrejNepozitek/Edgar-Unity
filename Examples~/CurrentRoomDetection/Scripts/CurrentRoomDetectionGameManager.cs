@@ -1,12 +1,9 @@
 ﻿using System.Collections;
 using System.Diagnostics;
-using ProceduralLevelGenerator.Unity.Examples.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace ProceduralLevelGenerator.Unity.Examples.CurrentRoomDetection.Scripts
+namespace Edgar.Unity.Examples.CurrentRoomDetection
 {
     public class CurrentRoomDetectionGameManager : GameManagerBase<CurrentRoomDetectionGameManager>
     {

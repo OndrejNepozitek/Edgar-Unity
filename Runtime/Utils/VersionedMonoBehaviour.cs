@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Utils
+namespace Edgar.Unity
 {
     public class VersionedMonoBehaviour : MonoBehaviour, ISerializationCallbackReceiver
     {
         [SerializeField]
         [HideInInspector]
-        private int version;
+        private int version = 1;
 
         protected virtual int OnUpgradeSerializedData(int version) {
             return 1;

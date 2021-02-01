@@ -1,7 +1,6 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Examples.CurrentRoomDetection.Scripts
+namespace Edgar.Unity.Examples.CurrentRoomDetection
 {
     public class CurrentRoomDetectionRoomManager : MonoBehaviour
     {

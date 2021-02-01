@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Represents a level graph.
     /// </summary>
-    [CreateAssetMenu(fileName = "LevelGraph", menuName = "Dungeon generator/Level graph")]
+    [CreateAssetMenu(fileName = "LevelGraph", menuName = "Edgar/Level graph")]
     public class LevelGraph : ScriptableObject
     {
         /// <summary>

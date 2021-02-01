@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.RoomTemplateOutline
+namespace Edgar.Unity
 {
     /// <summary>
     /// Bounding box outline handler.

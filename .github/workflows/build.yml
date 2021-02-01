@@ -22,7 +22,7 @@ jobs:
       - name: Checkout this repository
         uses: actions/checkout@v2
         with:
-          path: Assets/ProceduralLevelGenerator
+          path: Assets/Edgar
     
       # Test
       - name: Run tests
@@ -47,8 +47,8 @@ jobs:
       # Prepare unitypackage file list
       - name: Prepare unitypackage file list
         run: |
-          echo "Assets/ProceduralLevelGenerator.meta" > unitypackageFiles
-          find ./Assets/ProceduralLevelGenerator/ -name \*.meta >> unitypackageFiles
+          echo "Assets/Edgar.meta" > unitypackageFiles
+          find ./Assets/Edgar/ -name \*.meta ! -path "./Assets/Edgar/Tests*" >> unitypackageFiles
 
       # Package files
       - name: Package files

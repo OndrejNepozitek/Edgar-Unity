@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
-using ProceduralLevelGenerator.Unity.Utils;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.Common.Rooms
+namespace Edgar.Unity
 {
     /// <summary>
     ///     Class that holds information about a laid out room.
@@ -70,6 +67,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.Common.Rooms
         /// <summary>
         ///     List of doors together with the information to which room they are connected.
         /// </summary>
+        /// <remarks>
+        ///     These doors are in the local space of the room template. If you want to see where
+        ///     exactly is the door situated in the level, you have to add the position of the room.
+        /// </remarks>
         public List<DoorInstance> Doors => doors;
         [SerializeField] private List<DoorInstance> doors;
 

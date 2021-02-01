@@ -2,14 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ProceduralLevelGenerator.Unity.Generators.Common;
-using ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph;
-using ProceduralLevelGenerator.Unity.Generators.Common.Payloads.Interfaces;
-using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.Configs;
-using ProceduralLevelGenerator.Unity.Pipeline;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks
+namespace Edgar.Unity
 {
     /// <summary>
     /// Creates an input for the generator from a given level graph.

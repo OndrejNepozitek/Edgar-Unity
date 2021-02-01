@@ -1,23 +1,23 @@
-﻿using GeneralAlgorithms.DataStructures.Common;
+﻿using Edgar.Geometry;
 
-namespace ProceduralLevelGenerator.Unity.Utils
+namespace Edgar.Unity
 {
     public static class IntVector2Helper
     {
-        public static IntVector2 Top => new IntVector2(0, 1);
+        public static EdgarVector2Int Top => new EdgarVector2Int(0, 1);
 
-        public static IntVector2 Right => new IntVector2(1, 0);
+        public static EdgarVector2Int Right => new EdgarVector2Int(1, 0);
 
-        public static IntVector2 Bottom => new IntVector2(0, -1);
+        public static EdgarVector2Int Bottom => new EdgarVector2Int(0, -1);
 
-        public static IntVector2 Left => new IntVector2(-1, 0);
+        public static EdgarVector2Int Left => new EdgarVector2Int(-1, 0);
 
-        public static IntVector2 TopLeft => new IntVector2(-1, 1);
+        public static EdgarVector2Int TopLeft => new EdgarVector2Int(-1, 1);
 
-        public static IntVector2 TopRight => new IntVector2(1, 1);
+        public static EdgarVector2Int TopRight => new EdgarVector2Int(1, 1);
 
-        public static IntVector2 BottomLeft => new IntVector2(-1, -1);
+        public static EdgarVector2Int BottomLeft => new EdgarVector2Int(-1, -1);
 
-        public static IntVector2 BottomRight => new IntVector2(1, -1);
+        public static EdgarVector2Int BottomRight => new EdgarVector2Int(1, -1);
     }
 }

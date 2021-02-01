@@ -1,8 +1,7 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common.RoomTemplates.Doors;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
-namespace ProceduralLevelGenerator.Unity.Editor.DoorsEditor
+namespace Edgar.Unity.Editor
 {
     public class DoorInfoPropertyDrawer : PropertyDrawer
 	{
