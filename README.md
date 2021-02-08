@@ -99,10 +99,19 @@ Install the asset (instructions are below) and head to the [documentation](https
 
 There are several ways of installing the plugin:
 
+### via .unitypackage
+
+Go to Releases and download the unitypackage that's included in every release. Then import the package to Unity project (*Assets -> Import package -> Custom package*).
+
+#### How to update
+In order to be able to download a new version of the plugin, **we recommend to not change anything inside the Assets/ProceduralLevelGenerator folder**. At this stage of the project, files are often moved, renamed or deleted, and Unity does not handle that very well.
+
+The safest way to update to the new version is to completely remove the old version (*Assets/ProceduralLevelGenerator* directory) and then import the new version. (Make sure to backup your project before deleting anything.)      
+
 ### via Package Manager
 Add the following line to the `packages/manifest.json` file under the `dependencies` section (you must have git installed):
 ```
- "com.ondrejnepozitek.procedurallevelgenerator": "https://github.com/OndrejNepozitek/ProceduralLevelGenerator-Unity.git#upm"
+ "com.ondrejnepozitek.edgar.unity": "https://github.com/OndrejNepozitek/Edgar-Unity.git#upm"
 ```
 To try the examples, go to the Package Manager, find this plugin in the list of installed assets and import examples.
 
@@ -113,7 +122,7 @@ After installing the package, Unity adds something like this to your `manifest.j
 
 ```
   "lock": {
-    "com.ondrejnepozitek.procedurallevelgenerator": {
+    "com.ondrejnepozitek.edgar.unity": {
       "hash": "fc2e2ea5a50ec4d1d23806e30b87d13cf74af04e",
       "revision": "upm"
     }
@@ -121,15 +130,6 @@ After installing the package, Unity adds something like this to your `manifest.j
 ```
 
 Remove it to let Unity download a new version of the plugin.
-
-### via .unitypackage
-
-Go to Releases and download the unitypackage that's included in every release. Then import the package to Unity project (*Assets -> Import package -> Custom package*).
-
-#### How to update
-In order to be able to download a new version of the plugin, **we recommend to not change anything inside the Assets/ProceduralLevelGenerator folder**. At this stage of the project, files are often moved, renamed or deleted, and Unity does not handle that very well.
-
-The safest way to update to the new version is to completely remove the old version (*Assets/ProceduralLevelGenerator* directory) and then import the new version. (Make sure to backup your project before deleting anything.)                                                         
                                                              
 ## Workflow 
 
