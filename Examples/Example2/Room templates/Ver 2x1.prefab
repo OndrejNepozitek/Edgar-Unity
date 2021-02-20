@@ -62,6 +62,24 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
+  - first: {x: -3, y: 1, z: 0}
+    second:
+      m_TileIndex: 4
+      m_TileSpriteIndex: 4
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: -1, y: 1, z: 0}
+    second:
+      m_TileIndex: 5
+      m_TileSpriteIndex: 5
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
   - first: {x: -3, y: 2, z: 0}
     second:
       m_TileIndex: 2
@@ -90,6 +108,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: cb99d3993b0d2804e98b1beacaf110c4, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 4018357428ee91c4d9ec5cdb6442281b, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 6bf2174a1927a504991858da2cfaef5b, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 1ed115fcdf28a384e9dc7cc42408d993, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: 21300370, guid: 512a3a5212bdfc048b89d9ef214b8cee, type: 3}
@@ -99,8 +121,12 @@ Tilemap:
     m_Data: {fileID: 21300462, guid: 512a3a5212bdfc048b89d9ef214b8cee, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300464, guid: 512a3a5212bdfc048b89d9ef214b8cee, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300362, guid: 512a3a5212bdfc048b89d9ef214b8cee, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300364, guid: 512a3a5212bdfc048b89d9ef214b8cee, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 4
+  - m_RefCount: 6
     m_Data:
       e00: 1
       e01: 0
@@ -137,7 +163,7 @@ Tilemap:
       e32: 4.5905e-41
       e33: 0
   m_TileColorArray:
-  - m_RefCount: 4
+  - m_RefCount: 6
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -187,7 +213,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -222,8 +247,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &8037746186371529821
 Rigidbody2D:
   serializedVersion: 4
@@ -265,64 +288,57 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 7337636083275623175}
     m_ColliderPaths:
-    - - X: -20000017
-        Y: 19999900
-      - X: -20000017
-        Y: 23750100
-      - X: -30000100
-        Y: 23749983
-      - X: -29999983
-        Y: 19999900
-    - - X: 12
-        Y: 19999900
-      - X: 12
-        Y: 23750100
-      - X: -10000100
-        Y: 23750012
-      - X: -10000012
-        Y: 19999900
-    - - X: -20000087
-        Y: 0
-      - X: -20000087
-        Y: 10000000
-      - X: -24375024
-        Y: 9999973
+    - - X: -20000000
+        Y: 23750000
       - X: -30000000
-        Y: 3749970
-      - X: -29999913
-        Y: 0
-    - - X: -87
-        Y: 0
-      - X: -21
-        Y: 3750024
-      - X: -5625033
+        Y: 23750000
+      - X: -30000000
+        Y: 20000000
+      - X: -24375000
+        Y: 20000000
+      - X: -24375000
         Y: 10000000
+      - X: -30000000
+        Y: 3750000
+      - X: -30000000
+        Y: 0
+      - X: -20000000
+        Y: 0
+    - - X: 0
+        Y: 3750000
+      - X: -5625000
+        Y: 10000000
+      - X: -5625000
+        Y: 20000000
+      - X: 0
+        Y: 20000000
+      - X: 0
+        Y: 23750000
       - X: -10000000
-        Y: 9999913
-      - X: -9999913
+        Y: 23750000
+      - X: -10000000
+        Y: 0
+      - X: 0
         Y: 0
   m_CompositePaths:
     m_Paths:
-    - - {x: -2.0000045, y: 1.99999}
-      - {x: -2.0000045, y: 2.37501}
-      - {x: -3.00001, y: 2.3749955}
-      - {x: -2.9999955, y: 1.99999}
-    - - {x: -0.0000017, y: 1.99999}
-      - {x: -0.0000017, y: 2.37501}
-      - {x: -1.00001, y: 2.3749983}
-      - {x: -0.99999833, y: 1.99999}
-    - - {x: -2.0000117, y: 0}
-      - {x: -2.0000117, y: 1}
-      - {x: -2.4375033, y: 0.9999964}
-      - {x: -3, y: 0.374996}
-      - {x: -2.9999883, y: 0}
-    - - {x: -0.0000116, y: 0}
-      - {x: -0.0000028, y: 0.37500322}
-      - {x: -0.5625044, y: 1}
-      - {x: -1, y: 0.99998844}
-      - {x: -0.99998844, y: 0}
+    - - {x: -2, y: 2.375}
+      - {x: -3, y: 2.375}
+      - {x: -3, y: 2}
+      - {x: -2.4375, y: 2}
+      - {x: -2.4375, y: 1}
+      - {x: -3, y: 0.375}
+      - {x: -3, y: 0}
+      - {x: -2, y: 0}
+    - - {x: 0, y: 0.375}
+      - {x: -0.5625, y: 1}
+      - {x: -0.5625, y: 2}
+      - {x: 0, y: 2}
+      - {x: 0, y: 2.375}
+      - {x: -1, y: 2.375}
+      - {x: -1, y: 0}
+      - {x: 0, y: 0}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!1 &952026807322283637
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,7 +433,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -532,7 +547,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -860,7 +874,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -987,7 +1000,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1206,7 +1218,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1426,7 +1437,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1461,8 +1471,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &8996076901823203966
 Rigidbody2D:
   serializedVersion: 4
@@ -1504,55 +1512,54 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 530703449189901749}
     m_ColliderPaths:
-    - - X: -20000116
-        Y: 10000000
-      - X: -20000116
+    - - X: -20000000
         Y: 20000000
       - X: -30000000
-        Y: 19999884
-      - X: -29999884
+        Y: 20000000
+      - X: -30000000
         Y: 10000000
-    - - X: -116
+      - X: -20000000
         Y: 10000000
-      - X: -116
+    - - X: 0
         Y: 20000000
       - X: -10000000
-        Y: 19999884
-      - X: -9999884
+        Y: 20000000
+      - X: -10000000
         Y: 10000000
-    - - X: -19999988
-        Y: -10000100
-      - X: -19999988
-        Y: 100
-      - X: -30000100
-        Y: 12
-      - X: -30000012
-        Y: -10000100
-    - - X: -17
-        Y: -10000100
-      - X: -17
-        Y: 100
-      - X: -10000100
-        Y: -17
-      - X: -9999983
-        Y: -10000100
+      - X: 0
+        Y: 10000000
+    - - X: -20000000
+        Y: 0
+      - X: -30000000
+        Y: 0
+      - X: -30000000
+        Y: -10000000
+      - X: -20000000
+        Y: -10000000
+    - - X: 0
+        Y: 0
+      - X: -10000000
+        Y: 0
+      - X: -10000000
+        Y: -10000000
+      - X: 0
+        Y: -10000000
   m_CompositePaths:
     m_Paths:
-    - - {x: -2.0000143, y: 1}
-      - {x: -2.0000143, y: 2}
-      - {x: -3, y: 1.9999856}
-      - {x: -2.9999857, y: 1}
-    - - {x: -0.0000145, y: 1}
-      - {x: -0.0000145, y: 2}
-      - {x: -1, y: 1.9999856}
-      - {x: -0.9999855, y: 1}
-    - - {x: -2.0000017, y: -1.00001}
-      - {x: -2.0000017, y: 0.00001}
-      - {x: -3.00001, y: -0.0000017}
-      - {x: -2.9999983, y: -1.00001}
-    - - {x: -0.0000046, y: -1.00001}
-      - {x: -0.0000046, y: 0.00001}
-      - {x: -1.00001, y: -0.0000046}
-      - {x: -0.9999954, y: -1.00001}
+    - - {x: -2, y: 2}
+      - {x: -3, y: 2}
+      - {x: -3, y: 1}
+      - {x: -2, y: 1}
+    - - {x: 0, y: 2}
+      - {x: -1, y: 2}
+      - {x: -1, y: 1}
+      - {x: 0, y: 1}
+    - - {x: -2, y: 0}
+      - {x: -3, y: 0}
+      - {x: -3, y: -1}
+      - {x: -2, y: -1}
+    - - {x: 0, y: 0}
+      - {x: -1, y: 0}
+      - {x: -1, y: -1}
+      - {x: 0, y: -1}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
