@@ -14,7 +14,7 @@ In this tutorial, we will use [this tileset](https://0x72.itch.io/dungeontileset
 
 > **Note:** I recommend reading [Example 1](example1.md) first as this is a little bit harder to setup and I will not repeat the basics here.
 
-> **Note:** All files from this example can be found at *ProceduralLevelGenerator/Examples/Example2*.
+> **Note:** All files from this example can be found at *Edgar/Examples/Example2*.
 
 <ExampleFeatures id="example-2" />
 

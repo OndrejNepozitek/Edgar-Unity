@@ -12,7 +12,7 @@ In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-
     <GalleryImage src="img/v2/examples/example1_result_reallife1.png" caption="Real-life example" />
 </Gallery>
 
-> **Note:** All files from this example can be found at *ProceduralLevelGenerator/Examples/Example1*.
+> **Note:** All files from this example can be found at *Edgar/Examples/Example1*.
 
 <ExampleFeatures id="example-1" />
 

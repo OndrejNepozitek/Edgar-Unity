@@ -20,7 +20,7 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 
 <Video src="img/v2/examples/gungeon/example_video.mp4" style={{ marginBottom: 15, marginTop: -15 }} />
 
-> **Note:** All files from this example can be found at *ProceduralLevelGenerator/Examples/EnterTheGungeon*.
+> **Note:** All files from this example can be found at *Edgar/Examples/EnterTheGungeon*.
 
 ## Room templates
 
