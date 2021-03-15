@@ -31,7 +31,7 @@ namespace Edgar.Unity
                 foreach (var door in DoorsList)
                 {
                     var doorLine = new DoorGrid2D(door.From.RoundToUnityIntVector3().ToCustomIntVector2(),
-                        door.To.RoundToUnityIntVector3().ToCustomIntVector2(), door.Socket); // TODO: ugly
+                        door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
 
                     doors.Add(doorLine);
                 }
