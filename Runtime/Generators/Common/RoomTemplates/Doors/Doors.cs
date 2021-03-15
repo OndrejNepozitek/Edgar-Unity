@@ -17,8 +17,7 @@ namespace Edgar.Unity
         [HideInInspector]
         public int DoorLength = 1;
 
-        [HideInInspector]
-        public List<DoorInfoEditor> DoorsList = new List<DoorInfoEditor>();
+        public List<Door> DoorsList = new List<Door>();
 
         [HideInInspector]
         public DoorMode SelectedMode;
@@ -32,7 +31,7 @@ namespace Edgar.Unity
                 foreach (var door in DoorsList)
                 {
                     var doorLine = new DoorGrid2D(door.From.RoundToUnityIntVector3().ToCustomIntVector2(),
-                        door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
+                        door.To.RoundToUnityIntVector3().ToCustomIntVector2(), door.Socket); // TODO: ugly
 
                     doors.Add(doorLine);
                 }

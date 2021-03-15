@@ -7,15 +7,17 @@ namespace Edgar.Unity
     ///     Door information for editor usage.
     /// </summary>
     [Serializable]
-    public class DoorInfoEditor
+    public class Door
     {
+        [HideInInspector]
         public Vector3 From;
 
+        [HideInInspector]
         public Vector3 To;
 
         #region Equals
 
-        protected bool Equals(DoorInfoEditor other)
+        protected bool Equals(Door other)
         {
             return From.Equals(other.From) && To.Equals(other.To);
         }
@@ -25,7 +27,7 @@ namespace Edgar.Unity
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DoorInfoEditor) obj);
+            return Equals((Door) obj);
         }
 
         public override int GetHashCode()
@@ -36,12 +38,12 @@ namespace Edgar.Unity
             }
         }
 
-        public static bool operator ==(DoorInfoEditor left, DoorInfoEditor right)
+        public static bool operator ==(Door left, Door right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(DoorInfoEditor left, DoorInfoEditor right)
+        public static bool operator !=(Door left, Door right)
         {
             return !Equals(left, right);
         }
