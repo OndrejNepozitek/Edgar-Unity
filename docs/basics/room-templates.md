@@ -141,13 +141,13 @@ Each red rectangle shows available door positions. You can see that there are no
 
 > **Note:** There is currently an inconsistency in how are door positions displayed. In the *simple mode*, each red rectangle represents a set of door positions, while in the *specific positions mode*, each rectangle represents exactly one door position. The reason for this is that it is exactly how the procedural dungeon generator library handles that, but it might be counter-intuitive for users of the plugin and may change in the future.
 
-#### Specific positions mode
+#### Manual mode
 
-In the *Specific positions mode*, you have to manually specify all door positions of the room template. This mode gives you complete control over available door positions.
+In the *Manual mode*, you have to manually specify all door positions of the room template. This mode gives you complete control over available door positions.
 
-To start adding doors, click the *Specific positions* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. Then you can simply draw door positions as seen in the video below.
+To start adding doors, click the *Manual mode* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. Then you can simply draw door positions as seen in the video below.
 
-<Image src="img/original/doors_specific1.gif" caption="Specific positions mode" />
+<Image src="img/original/doors_specific1.gif" caption="Manual mode" />
 
 You can see that I am creating doors of various lengths. And at the end of the video, you can also see that individual door positions may overlap.
 
@@ -159,6 +159,10 @@ You can see that I am creating doors of various lengths. And at the end of the v
 > **Note:** With multiple doors overlapping, the GUI gets quite messy. In order to make it more clear, I show diagonals of individual rectangles. And it gets even more messy when you have doors of various sizes overlapping. I thought about adding a switch that would show only doors with a specified length.
 
 > **Note:** The inspector script currently lets you add door positions that are not on the outline of the room shape. It will, however, result in an error when trying to generate a dungeon. It should be improved in the future.
+
+### (PRO) Door sockets
+
+By default, when the generator computes how can two room templates be connected, it looks for doors with the same length. If you want to have more control over this process, you can use [Door sockets](../guides/door-sockets.md).
 
 ## Repeat mode
 

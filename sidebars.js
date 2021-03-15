@@ -43,7 +43,7 @@ module.exports = {
     {
       type: "category",
       label: "Guides",
-      items: ["guides/room-template-customization", "guides/current-room-detection", "guides/fog-of-war", "guides/minimap"]
+      items: ["guides/room-template-customization", "guides/current-room-detection", "guides/fog-of-war", "guides/minimap", "guides/door-sockets"]
     },
     {
       type: "category",
