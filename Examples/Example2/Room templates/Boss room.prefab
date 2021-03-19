@@ -286,126 +286,50 @@ MonoBehaviour:
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
-  - From: {x: -7, y: 5, z: 0}
-    To: {x: -6, y: 5, z: 0}
-  - From: {x: -6, y: 5, z: 0}
-    To: {x: -5, y: 5, z: 0}
-  - From: {x: -5, y: 5, z: 0}
-    To: {x: -4, y: 5, z: 0}
-  - From: {x: -4, y: 5, z: 0}
-    To: {x: -3, y: 5, z: 0}
-  - From: {x: -3, y: 5, z: 0}
-    To: {x: -2, y: 5, z: 0}
-  - From: {x: -2, y: 5, z: 0}
-    To: {x: -1, y: 5, z: 0}
-  - From: {x: -1, y: 5, z: 0}
-    To: {x: 0, y: 5, z: 0}
-  - From: {x: 0, y: 5, z: 0}
-    To: {x: 1, y: 5, z: 0}
-  - From: {x: -10, y: 2, z: 0}
-    To: {x: -10, y: 1, z: 0}
-  - From: {x: -10, y: 1, z: 0}
-    To: {x: -10, y: 0, z: 0}
-  - From: {x: -10, y: 0, z: 0}
-    To: {x: -10, y: -1, z: 0}
   - From: {x: -10, y: -1, z: 0}
-    To: {x: -10, y: -2, z: 0}
-  - From: {x: -10, y: -2, z: 0}
-    To: {x: -10, y: -3, z: 0}
-  - From: {x: -8, y: -6, z: 0}
-    To: {x: -7, y: -6, z: 0}
-  - From: {x: -7, y: -6, z: 0}
-    To: {x: -6, y: -6, z: 0}
-  - From: {x: -6, y: -6, z: 0}
-    To: {x: -5, y: -6, z: 0}
-  - From: {x: -5, y: -6, z: 0}
-    To: {x: -4, y: -6, z: 0}
-  - From: {x: -4, y: -6, z: 0}
-    To: {x: -3, y: -6, z: 0}
-  - From: {x: -3, y: -6, z: 0}
-    To: {x: -2, y: -6, z: 0}
-  - From: {x: -2, y: -6, z: 0}
-    To: {x: -1, y: -6, z: 0}
-  - From: {x: -1, y: -6, z: 0}
-    To: {x: 0, y: -6, z: 0}
-  - From: {x: 0, y: -6, z: 0}
-    To: {x: 1, y: -6, z: 0}
-  - From: {x: 1, y: -6, z: 0}
-    To: {x: 2, y: -6, z: 0}
-  - From: {x: 4, y: -3, z: 0}
-    To: {x: 4, y: -2, z: 0}
-  - From: {x: 4, y: -2, z: 0}
-    To: {x: 4, y: -1, z: 0}
-  - From: {x: 4, y: -1, z: 0}
-    To: {x: 4, y: 0, z: 0}
-  - From: {x: 4, y: 0, z: 0}
-    To: {x: 4, y: 1, z: 0}
-  - From: {x: 4, y: 1, z: 0}
-    To: {x: 4, y: 2, z: 0}
+    To: {x: -10, y: -1, z: 0}
+  - From: {x: -10, y: 0, z: 0}
+    To: {x: -10, y: 1, z: 0}
   - From: {x: -10, y: 2, z: 0}
     To: {x: -10, y: 2, z: 0}
-  - From: {x: -10, y: 1, z: 0}
-    To: {x: -10, y: 1, z: 0}
-  - From: {x: -10, y: 0, z: 0}
-    To: {x: -10, y: 0, z: 0}
-  - From: {x: -10, y: -1, z: 0}
-    To: {x: -10, y: -1, z: 0}
   - From: {x: -10, y: -2, z: 0}
-    To: {x: -10, y: -2, z: 0}
-  - From: {x: -10, y: -3, z: 0}
     To: {x: -10, y: -3, z: 0}
-  - From: {x: -8, y: -6, z: 0}
-    To: {x: -8, y: -6, z: 0}
+  - From: {x: -10, y: -4, z: 0}
+    To: {x: -10, y: -4, z: 0}
+  - From: {x: -7, y: 5, z: 0}
+    To: {x: -7, y: 5, z: 0}
+  - From: {x: -6, y: 5, z: 0}
+    To: {x: -5, y: 5, z: 0}
+  - From: {x: -4, y: 5, z: 0}
+    To: {x: -4, y: 5, z: 0}
+  - From: {x: -3, y: 5, z: 0}
+    To: {x: -2, y: 5, z: 0}
+  - From: {x: -1, y: 5, z: 0}
+    To: {x: -1, y: 5, z: 0}
+  - From: {x: 0, y: 5, z: 0}
+    To: {x: 1, y: 5, z: 0}
+  - From: {x: 4, y: 2, z: 0}
+    To: {x: 4, y: 2, z: 0}
+  - From: {x: 4, y: 1, z: 0}
+    To: {x: 4, y: 0, z: 0}
+  - From: {x: 4, y: -1, z: 0}
+    To: {x: 4, y: -1, z: 0}
+  - From: {x: 4, y: -2, z: 0}
+    To: {x: 4, y: -3, z: 0}
+  - From: {x: 4, y: -4, z: 0}
+    To: {x: 4, y: -4, z: 0}
   - From: {x: -7, y: -6, z: 0}
     To: {x: -7, y: -6, z: 0}
   - From: {x: -6, y: -6, z: 0}
-    To: {x: -6, y: -6, z: 0}
-  - From: {x: -5, y: -6, z: 0}
     To: {x: -5, y: -6, z: 0}
   - From: {x: -4, y: -6, z: 0}
     To: {x: -4, y: -6, z: 0}
   - From: {x: -3, y: -6, z: 0}
-    To: {x: -3, y: -6, z: 0}
-  - From: {x: -2, y: -6, z: 0}
     To: {x: -2, y: -6, z: 0}
   - From: {x: -1, y: -6, z: 0}
     To: {x: -1, y: -6, z: 0}
   - From: {x: 0, y: -6, z: 0}
-    To: {x: 0, y: -6, z: 0}
-  - From: {x: 1, y: -6, z: 0}
     To: {x: 1, y: -6, z: 0}
-  - From: {x: 2, y: -6, z: 0}
-    To: {x: 2, y: -6, z: 0}
-  - From: {x: 4, y: -3, z: 0}
-    To: {x: 4, y: -3, z: 0}
-  - From: {x: 4, y: -2, z: 0}
-    To: {x: 4, y: -2, z: 0}
-  - From: {x: 4, y: -1, z: 0}
-    To: {x: 4, y: -1, z: 0}
-  - From: {x: 4, y: 0, z: 0}
-    To: {x: 4, y: 0, z: 0}
-  - From: {x: 4, y: 1, z: 0}
-    To: {x: 4, y: 1, z: 0}
-  - From: {x: 4, y: 2, z: 0}
-    To: {x: 4, y: 2, z: 0}
-  - From: {x: 1, y: 5, z: 0}
-    To: {x: 1, y: 5, z: 0}
-  - From: {x: 0, y: 5, z: 0}
-    To: {x: 0, y: 5, z: 0}
-  - From: {x: -1, y: 5, z: 0}
-    To: {x: -1, y: 5, z: 0}
-  - From: {x: -2, y: 5, z: 0}
-    To: {x: -2, y: 5, z: 0}
-  - From: {x: -3, y: 5, z: 0}
-    To: {x: -3, y: 5, z: 0}
-  - From: {x: -4, y: 5, z: 0}
-    To: {x: -4, y: 5, z: 0}
-  - From: {x: -5, y: 5, z: 0}
-    To: {x: -5, y: 5, z: 0}
-  - From: {x: -6, y: 5, z: 0}
-    To: {x: -6, y: 5, z: 0}
-  - From: {x: -7, y: 5, z: 0}
-    To: {x: -7, y: 5, z: 0}
   SelectedMode: 1
 --- !u!1 &3827188188517570714
 GameObject:

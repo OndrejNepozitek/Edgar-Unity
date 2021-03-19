@@ -94,7 +94,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -414,7 +413,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -449,8 +447,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &51494899237323689
 Rigidbody2D:
   serializedVersion: 4
@@ -519,7 +515,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!1 &51494899536795354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1011,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1131,7 +1125,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1561,7 +1554,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1596,8 +1588,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &51494900431440708
 Rigidbody2D:
   serializedVersion: 4
@@ -1672,7 +1662,6 @@ CompositeCollider2D:
       - {x: 4.5625, y: 4.9999943}
       - {x: 4.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!1 &51494900918682340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf48601b4d25ef499cc1b6841279c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RepeatMode: 0
 --- !u!114 &51494900918682341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,54 +1723,26 @@ MonoBehaviour:
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
-  - From: {x: -1, y: 5, z: 0}
-    To: {x: -1, y: 5, z: 0}
-  - From: {x: 0, y: 5, z: 0}
-    To: {x: 0, y: 5, z: 0}
-  - From: {x: 1, y: 5, z: 0}
-    To: {x: 1, y: 5, z: 0}
-  - From: {x: 2, y: 5, z: 0}
-    To: {x: 2, y: 5, z: 0}
+  - From: {x: -3, y: 0, z: 0}
+    To: {x: -3, y: 0, z: 0}
+  - From: {x: -3, y: 2, z: 0}
+    To: {x: -3, y: 1, z: 0}
+  - From: {x: 4, y: 2, z: 0}
+    To: {x: 4, y: 2, z: 0}
+  - From: {x: 4, y: 1, z: 0}
+    To: {x: 4, y: 0, z: 0}
   - From: {x: -1, y: -2, z: 0}
     To: {x: -1, y: -2, z: 0}
   - From: {x: 0, y: -2, z: 0}
-    To: {x: 0, y: -2, z: 0}
-  - From: {x: 1, y: -2, z: 0}
     To: {x: 1, y: -2, z: 0}
   - From: {x: 2, y: -2, z: 0}
     To: {x: 2, y: -2, z: 0}
-  - From: {x: -3, y: 2, z: 0}
-    To: {x: -3, y: 2, z: 0}
-  - From: {x: -3, y: 1, z: 0}
-    To: {x: -3, y: 1, z: 0}
-  - From: {x: -3, y: 0, z: 0}
-    To: {x: -3, y: 0, z: 0}
-  - From: {x: 4, y: 0, z: 0}
-    To: {x: 4, y: 0, z: 0}
-  - From: {x: 4, y: 1, z: 0}
-    To: {x: 4, y: 1, z: 0}
-  - From: {x: 4, y: 2, z: 0}
-    To: {x: 4, y: 2, z: 0}
   - From: {x: -1, y: 5, z: 0}
-    To: {x: 0, y: 5, z: 0}
+    To: {x: -1, y: 5, z: 0}
   - From: {x: 0, y: 5, z: 0}
     To: {x: 1, y: 5, z: 0}
-  - From: {x: 1, y: 5, z: 0}
+  - From: {x: 2, y: 5, z: 0}
     To: {x: 2, y: 5, z: 0}
-  - From: {x: -1, y: -2, z: 0}
-    To: {x: 0, y: -2, z: 0}
-  - From: {x: 0, y: -2, z: 0}
-    To: {x: 1, y: -2, z: 0}
-  - From: {x: 1, y: -2, z: 0}
-    To: {x: 2, y: -2, z: 0}
-  - From: {x: -3, y: 0, z: 0}
-    To: {x: -3, y: 1, z: 0}
-  - From: {x: -3, y: 1, z: 0}
-    To: {x: -3, y: 2, z: 0}
-  - From: {x: 4, y: 0, z: 0}
-    To: {x: 4, y: 1, z: 0}
-  - From: {x: 4, y: 1, z: 0}
-    To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
 --- !u!1 &51494901211110682
 GameObject:
@@ -1876,7 +1838,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

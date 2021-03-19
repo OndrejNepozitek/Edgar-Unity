@@ -1185,59 +1185,31 @@ MonoBehaviour:
   - From: {x: -11, y: 1, z: 0}
     To: {x: -11, y: 1, z: 0}
   - From: {x: -11, y: 0, z: 0}
-    To: {x: -11, y: 0, z: 0}
-  - From: {x: -11, y: -1, z: 0}
     To: {x: -11, y: -1, z: 0}
+  - From: {x: -11, y: -2, z: 0}
+    To: {x: -11, y: -2, z: 0}
   - From: {x: 0, y: 1, z: 0}
     To: {x: 0, y: 1, z: 0}
   - From: {x: 0, y: 0, z: 0}
-    To: {x: 0, y: 0, z: 0}
-  - From: {x: 0, y: -1, z: 0}
     To: {x: 0, y: -1, z: 0}
-  - From: {x: -7, y: -6, z: 0}
+  - From: {x: 0, y: -2, z: 0}
+    To: {x: 0, y: -2, z: 0}
+  - From: {x: -8, y: -6, z: 0}
     To: {x: -7, y: -6, z: 0}
   - From: {x: -6, y: -6, z: 0}
     To: {x: -6, y: -6, z: 0}
   - From: {x: -5, y: -6, z: 0}
-    To: {x: -5, y: -6, z: 0}
-  - From: {x: -4, y: -6, z: 0}
     To: {x: -4, y: -6, z: 0}
+  - From: {x: -3, y: -6, z: 0}
+    To: {x: -3, y: -6, z: 0}
+  - From: {x: -8, y: 6, z: 0}
+    To: {x: -8, y: 6, z: 0}
   - From: {x: -7, y: 6, z: 0}
-    To: {x: -7, y: 6, z: 0}
-  - From: {x: -6, y: 6, z: 0}
     To: {x: -6, y: 6, z: 0}
   - From: {x: -5, y: 6, z: 0}
     To: {x: -5, y: 6, z: 0}
   - From: {x: -4, y: 6, z: 0}
-    To: {x: -4, y: 6, z: 0}
-  - From: {x: -7, y: 6, z: 0}
-    To: {x: -6, y: 6, z: 0}
-  - From: {x: -6, y: 6, z: 0}
-    To: {x: -5, y: 6, z: 0}
-  - From: {x: -5, y: 6, z: 0}
-    To: {x: -4, y: 6, z: 0}
-  - From: {x: -11, y: 1, z: 0}
-    To: {x: -11, y: 0, z: 0}
-  - From: {x: -11, y: 0, z: 0}
-    To: {x: -11, y: -1, z: 0}
-  - From: {x: 0, y: 1, z: 0}
-    To: {x: 0, y: 0, z: 0}
-  - From: {x: 0, y: 0, z: 0}
-    To: {x: 0, y: -1, z: 0}
-  - From: {x: -7, y: -6, z: 0}
-    To: {x: -6, y: -6, z: 0}
-  - From: {x: -6, y: -6, z: 0}
-    To: {x: -5, y: -6, z: 0}
-  - From: {x: -5, y: -6, z: 0}
-    To: {x: -4, y: -6, z: 0}
-  - From: {x: 0, y: -2, z: 0}
-    To: {x: 0, y: -1, z: 0}
-  - From: {x: -11, y: -2, z: 0}
-    To: {x: -11, y: -1, z: 0}
-  - From: {x: -11, y: -2, z: 0}
-    To: {x: -11, y: -2, z: 0}
-  - From: {x: 0, y: -2, z: 0}
-    To: {x: 0, y: -2, z: 0}
+    To: {x: -3, y: 6, z: 0}
   SelectedMode: 1
 --- !u!1 &7407620799862743351
 GameObject:
