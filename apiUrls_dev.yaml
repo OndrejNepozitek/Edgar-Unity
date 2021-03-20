@@ -610,83 +610,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Diagnostics.IDiagnosticResult.Summary
   nameWithType: IDiagnosticResult.Summary
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount
-  name: LevelGraphRoomsCount
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.html
-  commentId: T:Edgar.Unity.Diagnostics.LevelGraphRoomsCount
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount
-  nameWithType: LevelGraphRoomsCount
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result
-  name: LevelGraphRoomsCount.Result
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html
-  commentId: T:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result
-  nameWithType: LevelGraphRoomsCount.Result
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  name: IsPotentialProblem
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_IsPotentialProblem
-  commentId: P:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  nameWithType: LevelGraphRoomsCount.Result.IsPotentialProblem
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem*
-  name: IsPotentialProblem
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_IsPotentialProblem_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  nameWithType: LevelGraphRoomsCount.Result.IsPotentialProblem
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  name: Name
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_Name
-  commentId: P:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  nameWithType: LevelGraphRoomsCount.Result.Name
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name*
-  name: Name
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_Name_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  nameWithType: LevelGraphRoomsCount.Result.Name
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  name: RoomsCount
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_RoomsCount
-  commentId: P:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  nameWithType: LevelGraphRoomsCount.Result.RoomsCount
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount*
-  name: RoomsCount
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_RoomsCount_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  nameWithType: LevelGraphRoomsCount.Result.RoomsCount
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  name: Summary
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_Summary
-  commentId: P:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  nameWithType: LevelGraphRoomsCount.Result.Summary
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary*
-  name: Summary
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_Summary_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  nameWithType: LevelGraphRoomsCount.Result.Summary
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run(Edgar.Unity.LevelDescription)
-  name: Run(LevelDescription)
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Run_Edgar_Unity_LevelDescription_
-  commentId: M:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run(Edgar.Unity.LevelDescription)
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run(Edgar.Unity.LevelDescription)
-  nameWithType: LevelGraphRoomsCount.Run(LevelDescription)
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run*
-  name: Run
-  href: dev/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Run_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run
-  nameWithType: LevelGraphRoomsCount.Run
 - uid: Edgar.Unity.Diagnostics.NumberOfCycles
   name: NumberOfCycles
   href: dev/api/Edgar.Unity.Diagnostics.NumberOfCycles.html
@@ -1071,82 +994,88 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Diagnostics.WrongManualDoors.Run
   nameWithType: WrongManualDoors.Run
-- uid: Edgar.Unity.DoorInfoEditor
-  name: DoorInfoEditor
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html
-  commentId: T:Edgar.Unity.DoorInfoEditor
-  fullName: Edgar.Unity.DoorInfoEditor
-  nameWithType: DoorInfoEditor
-- uid: Edgar.Unity.DoorInfoEditor.Equals(Edgar.Unity.DoorInfoEditor)
-  name: Equals(DoorInfoEditor)
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_Equals_Edgar_Unity_DoorInfoEditor_
-  commentId: M:Edgar.Unity.DoorInfoEditor.Equals(Edgar.Unity.DoorInfoEditor)
-  fullName: Edgar.Unity.DoorInfoEditor.Equals(Edgar.Unity.DoorInfoEditor)
-  nameWithType: DoorInfoEditor.Equals(DoorInfoEditor)
-- uid: Edgar.Unity.DoorInfoEditor.Equals(System.Object)
+- uid: Edgar.Unity.Door
+  name: Door
+  href: dev/api/Edgar.Unity.Door.html
+  commentId: T:Edgar.Unity.Door
+  fullName: Edgar.Unity.Door
+  nameWithType: Door
+- uid: Edgar.Unity.Door.Equals(Edgar.Unity.Door)
+  name: Equals(Door)
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Equals_Edgar_Unity_Door_
+  commentId: M:Edgar.Unity.Door.Equals(Edgar.Unity.Door)
+  fullName: Edgar.Unity.Door.Equals(Edgar.Unity.Door)
+  nameWithType: Door.Equals(Door)
+- uid: Edgar.Unity.Door.Equals(System.Object)
   name: Equals(Object)
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_Equals_System_Object_
-  commentId: M:Edgar.Unity.DoorInfoEditor.Equals(System.Object)
-  fullName: Edgar.Unity.DoorInfoEditor.Equals(System.Object)
-  nameWithType: DoorInfoEditor.Equals(Object)
-- uid: Edgar.Unity.DoorInfoEditor.Equals*
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Equals_System_Object_
+  commentId: M:Edgar.Unity.Door.Equals(System.Object)
+  fullName: Edgar.Unity.Door.Equals(System.Object)
+  nameWithType: Door.Equals(Object)
+- uid: Edgar.Unity.Door.Equals*
   name: Equals
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_Equals_
-  commentId: Overload:Edgar.Unity.DoorInfoEditor.Equals
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Equals_
+  commentId: Overload:Edgar.Unity.Door.Equals
   isSpec: "True"
-  fullName: Edgar.Unity.DoorInfoEditor.Equals
-  nameWithType: DoorInfoEditor.Equals
-- uid: Edgar.Unity.DoorInfoEditor.From
+  fullName: Edgar.Unity.Door.Equals
+  nameWithType: Door.Equals
+- uid: Edgar.Unity.Door.From
   name: From
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_From
-  commentId: F:Edgar.Unity.DoorInfoEditor.From
-  fullName: Edgar.Unity.DoorInfoEditor.From
-  nameWithType: DoorInfoEditor.From
-- uid: Edgar.Unity.DoorInfoEditor.GetHashCode
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_From
+  commentId: F:Edgar.Unity.Door.From
+  fullName: Edgar.Unity.Door.From
+  nameWithType: Door.From
+- uid: Edgar.Unity.Door.GetHashCode
   name: GetHashCode()
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_GetHashCode
-  commentId: M:Edgar.Unity.DoorInfoEditor.GetHashCode
-  fullName: Edgar.Unity.DoorInfoEditor.GetHashCode()
-  nameWithType: DoorInfoEditor.GetHashCode()
-- uid: Edgar.Unity.DoorInfoEditor.GetHashCode*
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_GetHashCode
+  commentId: M:Edgar.Unity.Door.GetHashCode
+  fullName: Edgar.Unity.Door.GetHashCode()
+  nameWithType: Door.GetHashCode()
+- uid: Edgar.Unity.Door.GetHashCode*
   name: GetHashCode
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_GetHashCode_
-  commentId: Overload:Edgar.Unity.DoorInfoEditor.GetHashCode
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_GetHashCode_
+  commentId: Overload:Edgar.Unity.Door.GetHashCode
   isSpec: "True"
-  fullName: Edgar.Unity.DoorInfoEditor.GetHashCode
-  nameWithType: DoorInfoEditor.GetHashCode
-- uid: Edgar.Unity.DoorInfoEditor.op_Equality(Edgar.Unity.DoorInfoEditor,Edgar.Unity.DoorInfoEditor)
-  name: Equality(DoorInfoEditor, DoorInfoEditor)
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_op_Equality_Edgar_Unity_DoorInfoEditor_Edgar_Unity_DoorInfoEditor_
-  commentId: M:Edgar.Unity.DoorInfoEditor.op_Equality(Edgar.Unity.DoorInfoEditor,Edgar.Unity.DoorInfoEditor)
-  fullName: Edgar.Unity.DoorInfoEditor.Equality(Edgar.Unity.DoorInfoEditor, Edgar.Unity.DoorInfoEditor)
-  nameWithType: DoorInfoEditor.Equality(DoorInfoEditor, DoorInfoEditor)
-- uid: Edgar.Unity.DoorInfoEditor.op_Equality*
+  fullName: Edgar.Unity.Door.GetHashCode
+  nameWithType: Door.GetHashCode
+- uid: Edgar.Unity.Door.op_Equality(Edgar.Unity.Door,Edgar.Unity.Door)
+  name: Equality(Door, Door)
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_op_Equality_Edgar_Unity_Door_Edgar_Unity_Door_
+  commentId: M:Edgar.Unity.Door.op_Equality(Edgar.Unity.Door,Edgar.Unity.Door)
+  fullName: Edgar.Unity.Door.Equality(Edgar.Unity.Door, Edgar.Unity.Door)
+  nameWithType: Door.Equality(Door, Door)
+- uid: Edgar.Unity.Door.op_Equality*
   name: Equality
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_op_Equality_
-  commentId: Overload:Edgar.Unity.DoorInfoEditor.op_Equality
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_op_Equality_
+  commentId: Overload:Edgar.Unity.Door.op_Equality
   isSpec: "True"
-  fullName: Edgar.Unity.DoorInfoEditor.Equality
-  nameWithType: DoorInfoEditor.Equality
-- uid: Edgar.Unity.DoorInfoEditor.op_Inequality(Edgar.Unity.DoorInfoEditor,Edgar.Unity.DoorInfoEditor)
-  name: Inequality(DoorInfoEditor, DoorInfoEditor)
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_op_Inequality_Edgar_Unity_DoorInfoEditor_Edgar_Unity_DoorInfoEditor_
-  commentId: M:Edgar.Unity.DoorInfoEditor.op_Inequality(Edgar.Unity.DoorInfoEditor,Edgar.Unity.DoorInfoEditor)
-  fullName: Edgar.Unity.DoorInfoEditor.Inequality(Edgar.Unity.DoorInfoEditor, Edgar.Unity.DoorInfoEditor)
-  nameWithType: DoorInfoEditor.Inequality(DoorInfoEditor, DoorInfoEditor)
-- uid: Edgar.Unity.DoorInfoEditor.op_Inequality*
+  fullName: Edgar.Unity.Door.Equality
+  nameWithType: Door.Equality
+- uid: Edgar.Unity.Door.op_Inequality(Edgar.Unity.Door,Edgar.Unity.Door)
+  name: Inequality(Door, Door)
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_op_Inequality_Edgar_Unity_Door_Edgar_Unity_Door_
+  commentId: M:Edgar.Unity.Door.op_Inequality(Edgar.Unity.Door,Edgar.Unity.Door)
+  fullName: Edgar.Unity.Door.Inequality(Edgar.Unity.Door, Edgar.Unity.Door)
+  nameWithType: Door.Inequality(Door, Door)
+- uid: Edgar.Unity.Door.op_Inequality*
   name: Inequality
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_op_Inequality_
-  commentId: Overload:Edgar.Unity.DoorInfoEditor.op_Inequality
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_op_Inequality_
+  commentId: Overload:Edgar.Unity.Door.op_Inequality
   isSpec: "True"
-  fullName: Edgar.Unity.DoorInfoEditor.Inequality
-  nameWithType: DoorInfoEditor.Inequality
-- uid: Edgar.Unity.DoorInfoEditor.To
+  fullName: Edgar.Unity.Door.Inequality
+  nameWithType: Door.Inequality
+- uid: Edgar.Unity.Door.Socket
+  name: Socket
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Socket
+  commentId: F:Edgar.Unity.Door.Socket
+  fullName: Edgar.Unity.Door.Socket
+  nameWithType: Door.Socket
+- uid: Edgar.Unity.Door.To
   name: To
-  href: dev/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_To
-  commentId: F:Edgar.Unity.DoorInfoEditor.To
-  fullName: Edgar.Unity.DoorInfoEditor.To
-  nameWithType: DoorInfoEditor.To
+  href: dev/api/Edgar.Unity.Door.html#Edgar_Unity_Door_To
+  commentId: F:Edgar.Unity.Door.To
+  fullName: Edgar.Unity.Door.To
+  nameWithType: Door.To
 - uid: Edgar.Unity.DoorInstance
   name: DoorInstance
   href: dev/api/Edgar.Unity.DoorInstance.html
@@ -1237,6 +1166,12 @@ references:
   commentId: T:Edgar.Unity.Doors
   fullName: Edgar.Unity.Doors
   nameWithType: Doors
+- uid: Edgar.Unity.Doors.DefaultSocket
+  name: DefaultSocket
+  href: dev/api/Edgar.Unity.Doors.html#Edgar_Unity_Doors_DefaultSocket
+  commentId: F:Edgar.Unity.Doors.DefaultSocket
+  fullName: Edgar.Unity.Doors.DefaultSocket
+  nameWithType: Doors.DefaultSocket
 - uid: Edgar.Unity.Doors.DistanceFromCorners
   name: DistanceFromCorners
   href: dev/api/Edgar.Unity.Doors.html#Edgar_Unity_Doors_DistanceFromCorners
@@ -1292,6 +1227,119 @@ references:
   commentId: F:Edgar.Unity.Doors.SelectedMode
   fullName: Edgar.Unity.Doors.SelectedMode
   nameWithType: Doors.SelectedMode
+- uid: Edgar.Unity.Doors.Socket
+  name: Socket
+  href: dev/api/Edgar.Unity.Doors.html#Edgar_Unity_Doors_Socket
+  commentId: F:Edgar.Unity.Doors.Socket
+  fullName: Edgar.Unity.Doors.Socket
+  nameWithType: Doors.Socket
+- uid: Edgar.Unity.DoorSocket
+  name: DoorSocket
+  href: dev/api/Edgar.Unity.DoorSocket.html
+  commentId: T:Edgar.Unity.DoorSocket
+  fullName: Edgar.Unity.DoorSocket
+  nameWithType: DoorSocket
+- uid: Edgar.Unity.DoorSocket.Color
+  name: Color
+  href: dev/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_Color
+  commentId: F:Edgar.Unity.DoorSocket.Color
+  fullName: Edgar.Unity.DoorSocket.Color
+  nameWithType: DoorSocket.Color
+- uid: Edgar.Unity.DoorSocket.GetColor
+  name: GetColor()
+  href: dev/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_GetColor
+  commentId: M:Edgar.Unity.DoorSocket.GetColor
+  fullName: Edgar.Unity.DoorSocket.GetColor()
+  nameWithType: DoorSocket.GetColor()
+- uid: Edgar.Unity.DoorSocket.GetColor*
+  name: GetColor
+  href: dev/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_GetColor_
+  commentId: Overload:Edgar.Unity.DoorSocket.GetColor
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocket.GetColor
+  nameWithType: DoorSocket.GetColor
+- uid: Edgar.Unity.DoorSocket.IsCompatibleWith(IDoorSocket)
+  name: IsCompatibleWith(IDoorSocket)
+  href: dev/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_IsCompatibleWith_IDoorSocket_
+  commentId: M:Edgar.Unity.DoorSocket.IsCompatibleWith(IDoorSocket)
+  fullName: Edgar.Unity.DoorSocket.IsCompatibleWith(IDoorSocket)
+  nameWithType: DoorSocket.IsCompatibleWith(IDoorSocket)
+- uid: Edgar.Unity.DoorSocket.IsCompatibleWith*
+  name: IsCompatibleWith
+  href: dev/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_IsCompatibleWith_
+  commentId: Overload:Edgar.Unity.DoorSocket.IsCompatibleWith
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocket.IsCompatibleWith
+  nameWithType: DoorSocket.IsCompatibleWith
+- uid: Edgar.Unity.DoorSocketBase
+  name: DoorSocketBase
+  href: dev/api/Edgar.Unity.DoorSocketBase.html
+  commentId: T:Edgar.Unity.DoorSocketBase
+  fullName: Edgar.Unity.DoorSocketBase
+  nameWithType: DoorSocketBase
+- uid: Edgar.Unity.DoorSocketBase.Equals(IDoorSocket)
+  name: Equals(IDoorSocket)
+  href: dev/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_Equals_IDoorSocket_
+  commentId: M:Edgar.Unity.DoorSocketBase.Equals(IDoorSocket)
+  fullName: Edgar.Unity.DoorSocketBase.Equals(IDoorSocket)
+  nameWithType: DoorSocketBase.Equals(IDoorSocket)
+- uid: Edgar.Unity.DoorSocketBase.Equals*
+  name: Equals
+  href: dev/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_Equals_
+  commentId: Overload:Edgar.Unity.DoorSocketBase.Equals
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocketBase.Equals
+  nameWithType: DoorSocketBase.Equals
+- uid: Edgar.Unity.DoorSocketBase.GetColor
+  name: GetColor()
+  href: dev/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_GetColor
+  commentId: M:Edgar.Unity.DoorSocketBase.GetColor
+  fullName: Edgar.Unity.DoorSocketBase.GetColor()
+  nameWithType: DoorSocketBase.GetColor()
+- uid: Edgar.Unity.DoorSocketBase.GetColor*
+  name: GetColor
+  href: dev/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_GetColor_
+  commentId: Overload:Edgar.Unity.DoorSocketBase.GetColor
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocketBase.GetColor
+  nameWithType: DoorSocketBase.GetColor
+- uid: Edgar.Unity.DoorSocketBase.IsCompatibleWith(IDoorSocket)
+  name: IsCompatibleWith(IDoorSocket)
+  href: dev/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_IsCompatibleWith_IDoorSocket_
+  commentId: M:Edgar.Unity.DoorSocketBase.IsCompatibleWith(IDoorSocket)
+  fullName: Edgar.Unity.DoorSocketBase.IsCompatibleWith(IDoorSocket)
+  nameWithType: DoorSocketBase.IsCompatibleWith(IDoorSocket)
+- uid: Edgar.Unity.DoorSocketBase.IsCompatibleWith*
+  name: IsCompatibleWith
+  href: dev/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_IsCompatibleWith_
+  commentId: Overload:Edgar.Unity.DoorSocketBase.IsCompatibleWith
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocketBase.IsCompatibleWith
+  nameWithType: DoorSocketBase.IsCompatibleWith
+- uid: Edgar.Unity.DoorType
+  name: DoorType
+  href: dev/api/Edgar.Unity.DoorType.html
+  commentId: T:Edgar.Unity.DoorType
+  fullName: Edgar.Unity.DoorType
+  nameWithType: DoorType
+- uid: Edgar.Unity.DoorType.Any
+  name: Any
+  href: dev/api/Edgar.Unity.DoorType.html#Edgar_Unity_DoorType_Any
+  commentId: F:Edgar.Unity.DoorType.Any
+  fullName: Edgar.Unity.DoorType.Any
+  nameWithType: DoorType.Any
+- uid: Edgar.Unity.DoorType.Entrance
+  name: Entrance
+  href: dev/api/Edgar.Unity.DoorType.html#Edgar_Unity_DoorType_Entrance
+  commentId: F:Edgar.Unity.DoorType.Entrance
+  fullName: Edgar.Unity.DoorType.Entrance
+  nameWithType: DoorType.Entrance
+- uid: Edgar.Unity.DoorType.Exit
+  name: Exit
+  href: dev/api/Edgar.Unity.DoorType.html#Edgar_Unity_DoorType_Exit
+  commentId: F:Edgar.Unity.DoorType.Exit
+  fullName: Edgar.Unity.DoorType.Exit
+  nameWithType: DoorType.Exit
 - uid: Edgar.Unity.DungeonGenerator
   name: DungeonGenerator
   href: dev/api/Edgar.Unity.DungeonGenerator.html
@@ -2212,25 +2260,38 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.CustomInspectorWindow.OpenWindow
   nameWithType: CustomInspectorWindow.OpenWindow
-- uid: Edgar.Unity.Editor.DoorInfoPropertyDrawer
-  name: DoorInfoPropertyDrawer
-  href: dev/api/Edgar.Unity.Editor.DoorInfoPropertyDrawer.html
-  commentId: T:Edgar.Unity.Editor.DoorInfoPropertyDrawer
-  fullName: Edgar.Unity.Editor.DoorInfoPropertyDrawer
-  nameWithType: DoorInfoPropertyDrawer
-- uid: Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI(Rect,SerializedProperty,GUIContent)
-  name: OnGUI(Rect, SerializedProperty, GUIContent)
-  href: dev/api/Edgar.Unity.Editor.DoorInfoPropertyDrawer.html#Edgar_Unity_Editor_DoorInfoPropertyDrawer_OnGUI_Rect_SerializedProperty_GUIContent_
-  commentId: M:Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI(Rect,SerializedProperty,GUIContent)
-  fullName: Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent)
-  nameWithType: DoorInfoPropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent)
-- uid: Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI*
-  name: OnGUI
-  href: dev/api/Edgar.Unity.Editor.DoorInfoPropertyDrawer.html#Edgar_Unity_Editor_DoorInfoPropertyDrawer_OnGUI_
-  commentId: Overload:Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer
+  name: DoorPropertyDrawer
+  href: dev/api/Edgar.Unity.Editor.DoorPropertyDrawer.html
+  commentId: T:Edgar.Unity.Editor.DoorPropertyDrawer
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer
+  nameWithType: DoorPropertyDrawer
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight(SerializedProperty,GUIContent)
+  name: GetPropertyHeight(SerializedProperty, GUIContent)
+  href: dev/api/Edgar.Unity.Editor.DoorPropertyDrawer.html#Edgar_Unity_Editor_DoorPropertyDrawer_GetPropertyHeight_SerializedProperty_GUIContent_
+  commentId: M:Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight(SerializedProperty,GUIContent)
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight(SerializedProperty, GUIContent)
+  nameWithType: DoorPropertyDrawer.GetPropertyHeight(SerializedProperty, GUIContent)
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight*
+  name: GetPropertyHeight
+  href: dev/api/Edgar.Unity.Editor.DoorPropertyDrawer.html#Edgar_Unity_Editor_DoorPropertyDrawer_GetPropertyHeight_
+  commentId: Overload:Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight
   isSpec: "True"
-  fullName: Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI
-  nameWithType: DoorInfoPropertyDrawer.OnGUI
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight
+  nameWithType: DoorPropertyDrawer.GetPropertyHeight
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI(Rect,SerializedProperty,GUIContent)
+  name: OnGUI(Rect, SerializedProperty, GUIContent)
+  href: dev/api/Edgar.Unity.Editor.DoorPropertyDrawer.html#Edgar_Unity_Editor_DoorPropertyDrawer_OnGUI_Rect_SerializedProperty_GUIContent_
+  commentId: M:Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI(Rect,SerializedProperty,GUIContent)
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent)
+  nameWithType: DoorPropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent)
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI*
+  name: OnGUI
+  href: dev/api/Edgar.Unity.Editor.DoorPropertyDrawer.html#Edgar_Unity_Editor_DoorPropertyDrawer_OnGUI_
+  commentId: Overload:Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI
+  isSpec: "True"
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI
+  nameWithType: DoorPropertyDrawer.OnGUI
 - uid: Edgar.Unity.Editor.DoorsInspector
   name: DoorsInspector
   href: dev/api/Edgar.Unity.Editor.DoorsInspector.html
@@ -2370,12 +2431,12 @@ references:
   commentId: T:Edgar.Unity.Editor.GridUtils
   fullName: Edgar.Unity.Editor.GridUtils
   nameWithType: GridUtils
-- uid: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid,Vector3Int,Vector3Int,Color,Vector2,System.Boolean)
-  name: DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, Boolean)
-  href: dev/api/Edgar.Unity.Editor.GridUtils.html#Edgar_Unity_Editor_GridUtils_DrawRectangleOutline_Grid_Vector3Int_Vector3Int_Color_Vector2_System_Boolean_
-  commentId: M:Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid,Vector3Int,Vector3Int,Color,Vector2,System.Boolean)
-  fullName: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, System.Boolean)
-  nameWithType: GridUtils.DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, Boolean)
+- uid: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid,Vector3Int,Vector3Int,Color,Vector2,System.Boolean,System.String)
+  name: DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, Boolean, String)
+  href: dev/api/Edgar.Unity.Editor.GridUtils.html#Edgar_Unity_Editor_GridUtils_DrawRectangleOutline_Grid_Vector3Int_Vector3Int_Color_Vector2_System_Boolean_System_String_
+  commentId: M:Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid,Vector3Int,Vector3Int,Color,Vector2,System.Boolean,System.String)
+  fullName: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, System.Boolean, System.String)
+  nameWithType: GridUtils.DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, Boolean, String)
 - uid: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline*
   name: DrawRectangleOutline
   href: dev/api/Edgar.Unity.Editor.GridUtils.html#Edgar_Unity_Editor_GridUtils_DrawRectangleOutline_
@@ -2785,6 +2846,19 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.PopupDatabasePro.GetDeadCellsUndergroundPopup
   nameWithType: PopupDatabasePro.GetDeadCellsUndergroundPopup
+- uid: Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup
+  name: GetDoorSocketsPopup()
+  href: dev/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetDoorSocketsPopup
+  commentId: M:Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup
+  fullName: Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup()
+  nameWithType: PopupDatabasePro.GetDoorSocketsPopup()
+- uid: Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup*
+  name: GetDoorSocketsPopup
+  href: dev/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetDoorSocketsPopup_
+  commentId: Overload:Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup
+  isSpec: "True"
+  fullName: Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup
+  nameWithType: PopupDatabasePro.GetDoorSocketsPopup
 - uid: Edgar.Unity.Editor.PopupDatabasePro.GetFogOfWarPopup
   name: GetFogOfWarPopup()
   href: dev/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetFogOfWarPopup
@@ -13280,6 +13354,38 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Tests.Runtime.Examples.DeadCellsTests.UndergroundBasicTest
   nameWithType: DeadCellsTests.UndergroundBasicTest
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests
+  name: DoorSocketsTests
+  href: dev/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html
+  commentId: T:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests
+  nameWithType: DoorSocketsTests
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest
+  name: BasicTest()
+  href: dev/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html#Edgar_Unity_Tests_Runtime_Examples_DoorSocketsTests_BasicTest
+  commentId: M:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest()
+  nameWithType: DoorSocketsTests.BasicTest()
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest*
+  name: BasicTest
+  href: dev/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html#Edgar_Unity_Tests_Runtime_Examples_DoorSocketsTests_BasicTest_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest
+  nameWithType: DoorSocketsTests.BasicTest
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp
+  name: SetUp()
+  href: dev/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html#Edgar_Unity_Tests_Runtime_Examples_DoorSocketsTests_SetUp
+  commentId: M:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp()
+  nameWithType: DoorSocketsTests.SetUp()
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp*
+  name: SetUp
+  href: dev/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html#Edgar_Unity_Tests_Runtime_Examples_DoorSocketsTests_SetUp_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp
+  nameWithType: DoorSocketsTests.SetUp
 - uid: Edgar.Unity.Tests.Runtime.Examples.Example1Tests
   name: Example1Tests
   href: dev/api/Edgar.Unity.Tests.Runtime.Examples.Example1Tests.html

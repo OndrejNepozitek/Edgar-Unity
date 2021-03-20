@@ -164,6 +164,10 @@ You can see that I am creating doors of various lengths. And at the end of the v
 
 By default, when the generator computes how can two room templates be connected, it looks for doors with the same length. If you want to have more control over this process, you can use [Door sockets](../guides/door-sockets.md).
 
+### (PRO) Door directions
+
+By default, all doors are undirected, meaning that they can be used both as an entrance or as an exit. With manual door mode, it is possible to configure doors as entrance-only or exit-only. When combined with directed level graphs, it gives you more control over generated levels. See the [Directed level graphs](../guides/directed-level-graphs) guide for more information and examples.
+
 ## Repeat mode
 
 Each *Room template* script has a field called *Repeat Mode* that is initially set to *Allow Repeat*. Using this field, we can tell the algorithm whether the room template can be used more than once in generated levels. There are the following possibilities:

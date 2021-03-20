@@ -167,3 +167,7 @@ It is also possible to change how custom rooms and connections look in the level
     }
 
 <Image src="img/v2/examples/gungeon/level_graph_1.png" caption="Different colours for special types of rooms" /> 
+
+## (PRO) Directed level graphs
+
+By default, all level graphs are undirected, meaning that it does not matter whether you create a connection from *Room 1* to *Room 2* or the other way around. If you want to have more control over generated levels, you can make level graphs directed and combine that with entrance-only and exit-only doors. See the [Directed level graphs](../guides/directed-level-graphs) guide for more information and examples.

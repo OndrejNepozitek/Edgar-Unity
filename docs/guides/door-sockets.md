@@ -18,6 +18,8 @@ In this guide, we will learn about door sockets and how to use them.
 
 In this example setup, we will build on the [Example 1](../examples/example-1.md) and introduce a special type of room - the skull room. We will use door sockets to connect normal rooms and skull rooms properly.
 
+> **Note:** All files from this example can be found at *Edgar/Examples/DoorSockets*.
+
 ### Create a door socket
 
 The first step is to create a door socket. We want to have two different door types - normal doors and skull doors. There are two ways of how to approach this. First, we can create a door socket for each door type. Or second, we can utilize the fact that null sockets are not compatible with any other socket and create a door socket just for skull doors. I decided to use the second option because it requires less initial work because we do not have to go through all the already created doors and assign the default socket.
