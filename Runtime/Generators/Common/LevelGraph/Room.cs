@@ -27,7 +27,10 @@ namespace Edgar.Unity
         public override List<GameObject> GetRoomTemplates()
         {
             return IndividualRoomTemplates
-                .Union(RoomTemplateSets.SelectMany(x => x.RoomTemplates))
+                .Union(RoomTemplateSets
+                    .Where(x => x != null)
+                    .SelectMany(x => x.RoomTemplates)
+                )
                 .Distinct()
                 .ToList();
         }

@@ -17,8 +17,7 @@ namespace Edgar.Unity
         [HideInInspector]
         public int DoorLength = 1;
 
-        [HideInInspector]
-        public List<DoorInfoEditor> DoorsList = new List<DoorInfoEditor>();
+        public List<Door> DoorsList = new List<Door>();
 
         [HideInInspector]
         public DoorMode SelectedMode;

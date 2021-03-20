@@ -195,7 +195,7 @@ namespace Edgar.Unity.Editor
 					hasFirstTile = false;
 					hasSecondTile = false;
 
-					var newDoorInfo = new DoorInfoEditor()
+					var newDoorInfo = new Door()
 					{
 						From = from,
 						To = to,

@@ -13,7 +13,7 @@ namespace Edgar.Unity
     public static class PostProcessUtils
     {
         /// <summary>
-        /// Gets the center point of given tilemaps
+        /// Gets the center point of given tilemaps-
         /// </summary>
         /// <param name="tilemaps"></param>
         /// <param name="compressBounds">Whether to compress bounds of individual tilemaps before computing the center.</param>
@@ -58,7 +58,7 @@ namespace Edgar.Unity
         }
 
         /// <summary>
-        /// Center the grid so that the level is centered at (0,0).
+        /// Position the grid so that the level is centered at (0,0).
         /// </summary>
         /// <param name="level"></param>
         /// <param name="compressBounds">Whether to compress bounds of individual tilemaps before computing the center.</param>
@@ -72,24 +72,29 @@ namespace Edgar.Unity
             }
         }
 
-        public static void InitializeSharedTilemaps(GeneratedLevel level, TilemapLayersStructureMode mode, ITilemapLayersHandler defaultTilemapLayersHandler, ITilemapLayersHandler customTilemapLayersHandler, GameObject example, Material tilemapMaterial)
+        /// <summary>
+        /// Initializes shared tilemaps of a given level.
+        /// </summary>
+        /// <param name="level">Generated level.</param>
+        /// <param name="mode">Tilemap layers mode.</param>
+        /// <param name="defaultTilemapLayersHandler">Default tilemap layers handler. Used for the Default mode.</param>
+        /// <param name="customTilemapLayersHandler">Custom tilemap layers handler. Used for the Custom mode.</param>
+        /// <param name="example">Example game object for tilemaps structure. Used for the FromExample mode.</param>
+        public static void InitializeSharedTilemaps(GeneratedLevel level, TilemapLayersStructureMode mode, ITilemapLayersHandler defaultTilemapLayersHandler, ITilemapLayersHandler customTilemapLayersHandler, GameObject example)
         {
             GameObject tilemapsRoot;
 
-            if (/*mode == TilemapLayersStructureMode.Automatic || */mode == TilemapLayersStructureMode.FromExample)
+            if (mode == TilemapLayersStructureMode.FromExample)
             {
-                if (mode == TilemapLayersStructureMode.FromExample && example == null)
+                if (example == null)
                 {
                     throw new ConfigurationException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.FromExample)}, {nameof(PostProcessConfig.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
                 }
 
-                //var tilemapsSource = mode == TilemapLayersStructureMode.Automatic
-                //    ? level.GetRoomInstances().First().RoomTemplateInstance
-                //    : example;
                 var tilemapsSource = example;
                 var tilemapsSourceRoot = RoomTemplateUtils.GetTilemapsRoot(tilemapsSource);
 
-                if (mode == TilemapLayersStructureMode.FromExample && tilemapsSourceRoot == tilemapsSource)
+                if (tilemapsSourceRoot == tilemapsSource)
                 {
                     throw new ConfigurationException($"Given {nameof(PostProcessConfig.TilemapLayersExample)} is not valid as it does not contain a game object called {GeneratorConstants.TilemapsRootName} that holds individual tilemap layers.");
                 }
@@ -124,6 +129,11 @@ namespace Edgar.Unity
             }
         }
 
+        /// <summary>
+        /// Sets a given material to all shared tilemap layers.
+        /// </summary>
+        /// <param name="level"></param>
+        /// <param name="tilemapMaterial"></param>
         public static void SetTilemapsMaterial(GeneratedLevel level, Material tilemapMaterial)
         {
             if (tilemapMaterial == null)
@@ -139,27 +149,62 @@ namespace Edgar.Unity
             }
         }
 
+        /// <summary>
+        /// Copies to from individual room templates to shared tilemaps.
+        /// </summary>
+        /// <remarks>
+        /// The order is important. First, copy all basic rooms and only then copy corridor rooms.
+        /// </remarks>
+        /// <param name="level"></param>
         public static void CopyTilesToSharedTilemaps(GeneratedLevel level)
         {
+            var destinationTilemaps = level.GetSharedTilemaps();
+
             foreach (var roomInstance in level.GetRoomInstances().OrderBy(x => x.IsCorridor))
             {
-                CopyTilesToSharedTilemaps(level, roomInstance);
+                CopyTiles(roomInstance, destinationTilemaps, true, false);
             }
         }
 
-        public static void CopyTilesToSharedTilemaps(GeneratedLevel level, RoomInstance roomInstance)
+        /// <summary>
+        /// Copies tiles from a given room template to given destination tilemaps.
+        /// </summary>
+        /// <remarks>
+        /// One important aspect of this method is how to handle already existing tiles in destination tilemaps.
+        ///
+        /// When deleteNonNullTiles is true, it computes all non-null positions across all layers in the room template.
+        /// After that, it deletes all tiles on these positions in destination tilemaps.
+        ///
+        /// When deleteTilesInsideOutline is true, it computes all tiles inside the outline of the room template and
+        /// deletes them from the destination tilemaps.
+        /// So even if there is a hole inside the room template, the position is still removed.
+        ///
+        /// deleteNonNullTiles and deleteTilesInsideOutline can be combined together.
+        /// </remarks>
+        /// <param name="roomInstance">Room instance to be copied to the destination tilemaps.</param>
+        /// <param name="destinationTilemaps">List of destination tilemaps.</param>
+        /// <param name="deleteNonNullTiles">Whether to delete non-null tiles from destination tilemaps.</param>
+        /// <param name="deleteTilesInsideOutline">Whether to delete all tiles insides the outline from destination tilemaps.</param>
+        public static void CopyTiles(RoomInstance roomInstance, List<Tilemap> destinationTilemaps, bool deleteNonNullTiles, bool deleteTilesInsideOutline)
         {
-            var destinationTilemaps = level.GetSharedTilemaps();
             var sourceTilemaps = RoomTemplateUtils.GetTilemaps(roomInstance.RoomTemplateInstance);
-
-            CopyTiles(sourceTilemaps, destinationTilemaps, roomInstance.Position);
-        }
-
-        public static void CopyTiles(List<Tilemap> sourceTilemaps, List<Tilemap> destinationTilemaps, Vector3Int offset)
-        {
             sourceTilemaps = RoomTemplateUtils.GetTilemapsForCopying(sourceTilemaps);
 
-            DeleteNonNullTiles(sourceTilemaps, destinationTilemaps, offset);
+            var tilesToRemove = new List<Vector3Int>();
+
+            if (deleteNonNullTiles)
+            {
+                var tiles = GetNonNullTiles(sourceTilemaps);
+                tilesToRemove.AddRange(tiles.Select(x => x + roomInstance.Position));
+            }
+
+            if (deleteTilesInsideOutline)
+            {
+                var tiles = GetTilesInsideOutline(roomInstance, false);
+                tilesToRemove.AddRange(tiles);
+            }
+
+            RemoveTiles(destinationTilemaps, tilesToRemove);
 
             foreach (var sourceTilemap in sourceTilemaps)
             {
@@ -176,27 +221,29 @@ namespace Edgar.Unity
 
                     if (tile != null)
                     {
-                        destinationTilemap.SetTile(tilemapPosition + offset, tile);
-                        destinationTilemap.SetTransformMatrix(tilemapPosition + offset, sourceTilemap.GetTransformMatrix(tilemapPosition));
+                        destinationTilemap.SetTile(tilemapPosition + roomInstance.Position, tile);
+                        destinationTilemap.SetTransformMatrix(tilemapPosition + roomInstance.Position, sourceTilemap.GetTransformMatrix(tilemapPosition));
                     }
                 }
             }
         }
 
-        /// <summary>
-        ///     Finds all non null tiles in a given room and then takes these positions and deletes
-        ///     all such tiles on all tilemaps of the dungeon. The reason for this is that we want to
-        ///     replace all existing tiles with new tiles from the room.
-        /// </summary>
-        /// <param name="sourceTilemaps"></param>
-        /// <param name="offset"></param>
-        /// <param name="destinationTilemaps"></param>
-        private static void DeleteNonNullTiles(List<Tilemap> sourceTilemaps, List<Tilemap> destinationTilemaps, Vector3Int offset)
+        private static List<Vector3Int> GetTilesInsideOutline(RoomInstance roomInstance, bool useLocalPositions)
         {
-            var tilesToRemove = new HashSet<Vector3Int>();
+            return roomInstance
+                .OutlinePolygon
+                .GetAllPoints()
+                .Select(x => new Vector3Int(x.x, x.y, 0))
+                .Select(x => useLocalPositions ? x - roomInstance.Position : x)
+                .ToList();
+        }
+
+        private static List<Vector3Int> GetNonNullTiles(List<Tilemap> tilemap)
+        {
+            var tiles = new HashSet<Vector3Int>();
 
             // Find non-null tiles across all source tilemaps
-            foreach (var sourceTilemap in sourceTilemaps)
+            foreach (var sourceTilemap in tilemap)
             {
                 foreach (var tilemapPosition in sourceTilemap.cellBounds.allPositionsWithin)
                 {
@@ -204,29 +251,38 @@ namespace Edgar.Unity
 
                     if (tile != null)
                     {
-                        tilesToRemove.Add(tilemapPosition);
+                        tiles.Add(tilemapPosition);
                     }
                 }
             }
 
-            // Delete all found tiles across all destination tilemaps
-            for (var i = 0; i < sourceTilemaps.Count; i++)
-            {
-                var destinationTilemap = destinationTilemaps[i];
+            return tiles.ToList();
+        }
 
-                foreach (var tilemapPosition in tilesToRemove)
+        private static void RemoveTiles(List<Tilemap> tilemaps, List<Vector3Int> tiles)
+        {
+            foreach (var tile in tiles)
+            {
+                foreach (var tilemap in tilemaps)
                 {
-                    destinationTilemap.SetTile(tilemapPosition + offset, null);
+                    tilemap.SetTile(tile, null);
                 }
             }
         }
 
+        /// <summary>
+        /// Disables tilemap renderers in room template instances.
+        /// </summary>
+        /// <remarks>
+        /// This method is useful when using shared tilemaps.
+        /// </remarks>
+        /// <param name="level"></param>
         public static void DisableRoomTemplatesRenderers(GeneratedLevel level)
         {
             foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
+                var tilemaps = GetTilemaps(roomTemplateInstance, x => x.IgnoreWhenDisablingRenderers);
 
                 foreach (var tilemap in tilemaps)
                 {
@@ -247,7 +303,7 @@ namespace Edgar.Unity
             foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
+                var tilemaps = GetTilemaps(roomTemplateInstance, x => x.IgnoreWhenDisablingColliders);
 
                 foreach (var tilemap in tilemaps)
                 {
@@ -270,6 +326,18 @@ namespace Edgar.Unity
                     }
                 }
             }
+        }
+
+        private static List<Tilemap> GetTilemaps(GameObject gameObject, Predicate<IgnoreTilemap> excludePredicate)
+        {
+            return RoomTemplateUtils
+                .GetTilemaps(gameObject)
+                .Where(tilemap =>
+                {
+                    var ignoreTilemap = tilemap.GetComponent<IgnoreTilemap>();
+                    return ignoreTilemap == null || !excludePredicate(ignoreTilemap);
+                })
+                .ToList();
         }
 
         // TODO: where to put this?

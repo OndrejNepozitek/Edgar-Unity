@@ -54,7 +54,7 @@ namespace Edgar.Unity
             this.Inverse = false;
         }
 
-        public ConditionalHideAttribute(string[] conditionalSourceFields,bool[] conditionalSourceFieldInverseBools, bool hideInInspector, bool inverse)
+        public ConditionalHideAttribute(string[] conditionalSourceFields, bool[] conditionalSourceFieldInverseBools, bool hideInInspector, bool inverse)
         {
             this.ConditionalSourceFields = conditionalSourceFields;
             this.ConditionalSourceFieldInverseBools = conditionalSourceFieldInverseBools;
@@ -64,20 +64,20 @@ namespace Edgar.Unity
 
         public ConditionalHideAttribute(string[] conditionalSourceFields, bool hideInInspector, bool inverse)
         {
-            this.ConditionalSourceFields = conditionalSourceFields;        
+            this.ConditionalSourceFields = conditionalSourceFields;
             this.HideInInspector = hideInInspector;
             this.Inverse = inverse;
         }
 
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(ConditionalHideAttribute))]
     public class ConditionalHidePropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            
+
             ConditionalHideAttribute condHAtt = (ConditionalHideAttribute)attribute;
             bool enabled = GetConditionalHideAttributeResult(condHAtt, property);
 
@@ -86,7 +86,7 @@ namespace Edgar.Unity
             if (!condHAtt.HideInInspector && enabled)
             {
                 EditorGUI.PropertyField(position, property, label, true);
-            }        
+            }
 
             GUI.enabled = wasEnabled;
         }
@@ -125,7 +125,7 @@ namespace Edgar.Unity
 
         private bool GetConditionalHideAttributeResult(ConditionalHideAttribute condHAtt, SerializedProperty property)
         {
-            bool enabled = (condHAtt.UseOrLogic) ?false :true;
+            bool enabled = (condHAtt.UseOrLogic) ? false : true;
 
             //Handle primary property
             SerializedProperty sourcePropertyValue = null;
@@ -137,7 +137,7 @@ namespace Edgar.Unity
                 sourcePropertyValue = property.serializedObject.FindProperty(conditionPath);
 
                 //if the find failed->fall back to the old system
-                if(sourcePropertyValue==null)
+                if (sourcePropertyValue == null)
                 {
                     //original implementation (doens't work with nested serializedObjects)
                     sourcePropertyValue = property.serializedObject.FindProperty(condHAtt.ConditionalSourceField);
@@ -147,13 +147,13 @@ namespace Edgar.Unity
             {
                 //original implementation (doens't work with nested serializedObjects)
                 sourcePropertyValue = property.serializedObject.FindProperty(condHAtt.ConditionalSourceField);
-            }     
+            }
 
 
             if (sourcePropertyValue != null)
             {
                 enabled = CheckPropertyType(sourcePropertyValue);
-                if (condHAtt.InverseCondition1) enabled = !enabled;             
+                if (condHAtt.InverseCondition1) enabled = !enabled;
             }
             else
             {
@@ -188,7 +188,7 @@ namespace Edgar.Unity
                 // original implementation(doens't work with nested serializedObjects) 
                 sourcePropertyValue2 = property.serializedObject.FindProperty(condHAtt.ConditionalSourceField2);
             }
-                
+
             //Combine the results
             if (sourcePropertyValue2 != null)
             {
@@ -233,8 +233,8 @@ namespace Edgar.Unity
                 //Combine the results
                 if (sourcePropertyValueFromArray != null)
                 {
-                    bool propertyEnabled = CheckPropertyType(sourcePropertyValueFromArray);                
-                    if (conditionalSourceFieldInverseArray.Length>= (index+1) && conditionalSourceFieldInverseArray[index]) propertyEnabled = !propertyEnabled;
+                    bool propertyEnabled = CheckPropertyType(sourcePropertyValueFromArray);
+                    if (conditionalSourceFieldInverseArray.Length >= (index + 1) && conditionalSourceFieldInverseArray[index]) propertyEnabled = !propertyEnabled;
 
                     if (condHAtt.UseOrLogic)
                         enabled = enabled || propertyEnabled;
@@ -258,11 +258,11 @@ namespace Edgar.Unity
         {
             //Note: add others for custom handling if desired
             switch (sourcePropertyValue.propertyType)
-            {                
+            {
                 case SerializedPropertyType.Boolean:
-                    return sourcePropertyValue.boolValue;                
+                    return sourcePropertyValue.boolValue;
                 case SerializedPropertyType.ObjectReference:
-                    return sourcePropertyValue.objectReferenceValue != null;                
+                    return sourcePropertyValue.objectReferenceValue != null;
                 default:
                     Debug.LogError("Data type of the property used for conditional hiding [" + sourcePropertyValue.propertyType + "] is currently not supported");
                     return true;
@@ -273,7 +273,7 @@ namespace Edgar.Unity
         {
             if (val is bool)
             {
-                return (bool) val;
+                return (bool)val;
             }
             return true;
         }
@@ -281,9 +281,35 @@ namespace Edgar.Unity
         private object GetNestedPropertyValue(object obj, string propertyName)
         {
             var properties = propertyName.Split('.');
+            var isArray = false;
 
             foreach (var property in properties)
             {
+                if (property == "Array")
+                {
+                    isArray = true;
+                    continue;
+                }
+
+                if (isArray && property.StartsWith("data"))
+                {
+                    isArray = false;
+
+                    var index = property
+                        .Replace("data[", "")
+                        .Replace("]", "");
+                    var indexNumber = int.Parse(index);
+
+                    var array = (object[])obj;
+                    obj = array[indexNumber];
+
+                    continue;
+                }
+                else
+                {
+                    isArray = false;
+                }
+
                 var propertyInfo = obj.GetType().GetProperty(property, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
                 if (propertyInfo == null)
@@ -293,7 +319,7 @@ namespace Edgar.Unity
                     if (fieldInfo == null)
                     {
                         return null;
-                    } 
+                    }
                     else
                     {
                         obj = fieldInfo.GetValue(obj);
@@ -308,5 +334,5 @@ namespace Edgar.Unity
             return obj;
         }
     }
-    #endif
+#endif
 }

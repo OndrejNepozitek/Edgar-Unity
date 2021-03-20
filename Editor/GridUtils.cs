@@ -18,7 +18,8 @@ namespace Edgar.Unity.Editor
         /// <param name="color">Color of the outline</param>
         /// <param name="sizeModifier">How much smaller should the outline be than the actual grid tiles</param>
         /// <param name="addDiagonal">Whether a diagonal should be drawn</param>
-        public static void DrawRectangleOutline(Grid grid, Vector3Int fromTile, Vector3Int toTile, Color color, Vector2 sizeModifier = default, bool addDiagonal = false)
+        /// <param name="label">Optional label</param>
+        public static void DrawRectangleOutline(Grid grid, Vector3Int fromTile, Vector3Int toTile, Color color, Vector2 sizeModifier = default, bool addDiagonal = false, string label = null)
         {
             if (grid.cellLayout == GridLayout.CellLayout.Isometric || grid.cellLayout == GridLayout.CellLayout.IsometricZAsY)
             {
@@ -76,6 +77,17 @@ namespace Edgar.Unity.Editor
             
             var originalColor = Handles.color;
             Handles.color = color;
+
+            if (!string.IsNullOrEmpty(label))
+            {
+                var size = HandleUtility.GetHandleSize(points[1] + new Vector3(0.02f, 0));
+
+                var style = new GUIStyle();
+                style.normal.textColor = color;
+                style.fontSize = (int) (15 / size);
+
+                Handles.Label(points[1] + new Vector3(0.08f, 0), label, style);
+            }
 
             Handles.DrawLine(points[0], points[1]);
             Handles.DrawLine(points[1], points[2]);

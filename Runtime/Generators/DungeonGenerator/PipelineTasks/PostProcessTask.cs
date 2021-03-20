@@ -54,8 +54,7 @@ namespace Edgar.Unity
             {
                 callbacks.RegisterCallback(PostProcessPriorities.InitializeSharedTilemaps, (level, description) =>
                 {
-                    // PostProcessUtils.InitializeSharedTilemaps(level, tilemapLayersHandler, config.TilemapMaterial);
-                    PostProcessUtils.InitializeSharedTilemaps(level, config.TilemapLayersStructure, defaultTilemapLayersHandlerFactory(), config.TilemapLayersHandler, config.TilemapLayersExample, config.TilemapMaterial);
+                    PostProcessUtils.InitializeSharedTilemaps(level, config.TilemapLayersStructure, defaultTilemapLayersHandlerFactory(), config.TilemapLayersHandler, config.TilemapLayersExample);
                     PostProcessUtils.SetTilemapsMaterial(level, config.TilemapMaterial);
                 });
             }

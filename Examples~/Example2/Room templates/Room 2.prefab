@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf48601b4d25ef499cc1b6841279c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RepeatMode: 0
 --- !u!114 &5252602570915242812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,25 +61,9 @@ MonoBehaviour:
   DistanceFromCorners: 1
   DoorLength: 3
   DoorsList:
-  - From: {x: -1, y: -2, z: 0}
-    To: {x: -1, y: -2, z: 0}
-  - From: {x: 0, y: -2, z: 0}
-    To: {x: 0, y: -2, z: 0}
-  - From: {x: 1, y: -2, z: 0}
-    To: {x: 1, y: -2, z: 0}
-  - From: {x: 2, y: -2, z: 0}
-    To: {x: 2, y: -2, z: 0}
-  - From: {x: 3, y: -2, z: 0}
-    To: {x: 3, y: -2, z: 0}
-  - From: {x: 4, y: -2, z: 0}
-    To: {x: 4, y: -2, z: 0}
-  - From: {x: 5, y: -2, z: 0}
-    To: {x: 5, y: -2, z: 0}
   - From: {x: -3, y: 0, z: 0}
     To: {x: -3, y: 0, z: 0}
   - From: {x: -3, y: 1, z: 0}
-    To: {x: -3, y: 1, z: 0}
-  - From: {x: -3, y: 2, z: 0}
     To: {x: -3, y: 2, z: 0}
   - From: {x: -3, y: 3, z: 0}
     To: {x: -3, y: 3, z: 0}
@@ -87,50 +72,30 @@ MonoBehaviour:
   - From: {x: -1, y: 7, z: 0}
     To: {x: -1, y: 7, z: 0}
   - From: {x: 0, y: 7, z: 0}
-    To: {x: 0, y: 7, z: 0}
-  - From: {x: 1, y: 7, z: 0}
     To: {x: 1, y: 7, z: 0}
   - From: {x: 2, y: 7, z: 0}
     To: {x: 2, y: 7, z: 0}
   - From: {x: 3, y: 7, z: 0}
-    To: {x: 3, y: 7, z: 0}
-  - From: {x: 4, y: 7, z: 0}
     To: {x: 4, y: 7, z: 0}
   - From: {x: 5, y: 7, z: 0}
     To: {x: 5, y: 7, z: 0}
-  - From: {x: 7, y: 0, z: 0}
-    To: {x: 7, y: 0, z: 0}
-  - From: {x: 7, y: 1, z: 0}
-    To: {x: 7, y: 1, z: 0}
-  - From: {x: 7, y: 2, z: 0}
-    To: {x: 7, y: 2, z: 0}
-  - From: {x: 7, y: 3, z: 0}
-    To: {x: 7, y: 3, z: 0}
   - From: {x: 7, y: 4, z: 0}
     To: {x: 7, y: 4, z: 0}
-  - From: {x: -1, y: 7, z: 0}
-    To: {x: 0, y: 7, z: 0}
-  - From: {x: 0, y: 7, z: 0}
-    To: {x: 1, y: 7, z: 0}
-  - From: {x: 1, y: 7, z: 0}
-    To: {x: 2, y: 7, z: 0}
-  - From: {x: 2, y: 7, z: 0}
-    To: {x: 3, y: 7, z: 0}
-  - From: {x: 3, y: 7, z: 0}
-    To: {x: 4, y: 7, z: 0}
-  - From: {x: 4, y: 7, z: 0}
-    To: {x: 5, y: 7, z: 0}
+  - From: {x: 7, y: 3, z: 0}
+    To: {x: 7, y: 3, z: 0}
+  - From: {x: 7, y: 2, z: 0}
+    To: {x: 7, y: 1, z: 0}
+  - From: {x: 7, y: 0, z: 0}
+    To: {x: 7, y: 0, z: 0}
   - From: {x: -1, y: -2, z: 0}
-    To: {x: 0, y: -2, z: 0}
+    To: {x: -1, y: -2, z: 0}
   - From: {x: 0, y: -2, z: 0}
     To: {x: 1, y: -2, z: 0}
-  - From: {x: 1, y: -2, z: 0}
-    To: {x: 2, y: -2, z: 0}
   - From: {x: 2, y: -2, z: 0}
-    To: {x: 3, y: -2, z: 0}
+    To: {x: 2, y: -2, z: 0}
   - From: {x: 3, y: -2, z: 0}
     To: {x: 4, y: -2, z: 0}
-  - From: {x: 4, y: -2, z: 0}
+  - From: {x: 5, y: -2, z: 0}
     To: {x: 5, y: -2, z: 0}
   SelectedMode: 1
 --- !u!1 &1770296793046530149
@@ -962,7 +927,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1385,7 +1349,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1420,8 +1383,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &1718294485305789638
 Rigidbody2D:
   serializedVersion: 4
@@ -1490,7 +1451,6 @@ CompositeCollider2D:
       - {x: -3, y: -1.0000058}
       - {x: -2.9999943, y: -2}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!1 &6871053437466669514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1585,7 +1545,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -1700,7 +1659,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2220,7 +2178,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -2255,8 +2212,6 @@ TilemapCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0.00001
 --- !u!50 &7772246770404320399
 Rigidbody2D:
   serializedVersion: 4
@@ -2331,7 +2286,6 @@ CompositeCollider2D:
       - {x: 7.5625, y: 6.9999943}
       - {x: 7.5624986, y: -0.0000018000001}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.000005
 --- !u!1 &9181348608407521529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2426,7 +2380,6 @@ TilemapRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0

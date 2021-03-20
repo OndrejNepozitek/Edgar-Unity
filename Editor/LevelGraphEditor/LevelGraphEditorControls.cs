@@ -46,7 +46,7 @@ namespace Edgar.Unity.Editor
                             /* empty */
                         }
                         // Hold grid on right click on empty space
-                        else if (e.button == 1)
+                        else if (e.button == 1 || e.button == 2)
                         {
                             CurrentState = State.HoldGrid;
                         } 

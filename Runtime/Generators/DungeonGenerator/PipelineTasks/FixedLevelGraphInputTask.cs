@@ -70,7 +70,13 @@ namespace Edgar.Unity
 
         private List<GameObject> GetRoomTemplates(List<RoomTemplatesSet> roomTemplatesSets, List<GameObject> individualRoomTemplates)
         {
-            return individualRoomTemplates.Union(roomTemplatesSets.SelectMany(x => x.RoomTemplates)).ToList();
+            return individualRoomTemplates
+                .Where(x => x != null)
+                .Union(roomTemplatesSets
+                    .Where(x => x != null)
+                    .SelectMany(x => x.RoomTemplates))
+                .Distinct()
+                .ToList();
         }
 
         /// <summary>
