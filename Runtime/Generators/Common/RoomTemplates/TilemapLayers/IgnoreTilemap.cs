@@ -3,12 +3,16 @@
 namespace Edgar.Unity
 {
     /// <summary>
-    /// Component that can be used as a flag to ignore a tilemap layer to which it is attached.
+    /// Component that can be used as a flag to ignore a tilemap layer to which it is attached in various situations.
     /// </summary>
     public class IgnoreTilemap : MonoBehaviour
     {
-        public bool IgnoreWhenCopyingTiles = true;
+        public bool IgnoreWhenCopyingTiles = false;
 
-        public bool IgnoreWhenComputingOutline = true;
+        public bool IgnoreWhenComputingOutline = false;
+
+        public bool IgnoreWhenDisablingColliders = false;
+
+        public bool IgnoreWhenDisablingRenderers = false;
     }
 }

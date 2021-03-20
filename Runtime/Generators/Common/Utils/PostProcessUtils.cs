@@ -282,7 +282,7 @@ namespace Edgar.Unity
             foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
+                var tilemaps = GetTilemaps(roomTemplateInstance, x => x.IgnoreWhenDisablingRenderers);
 
                 foreach (var tilemap in tilemaps)
                 {
@@ -303,7 +303,7 @@ namespace Edgar.Unity
             foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
+                var tilemaps = GetTilemaps(roomTemplateInstance, x => x.IgnoreWhenDisablingColliders);
 
                 foreach (var tilemap in tilemaps)
                 {
@@ -326,6 +326,18 @@ namespace Edgar.Unity
                     }
                 }
             }
+        }
+
+        private static List<Tilemap> GetTilemaps(GameObject gameObject, Predicate<IgnoreTilemap> excludePredicate)
+        {
+            return RoomTemplateUtils
+                .GetTilemaps(gameObject)
+                .Where(tilemap =>
+                {
+                    var ignoreTilemap = tilemap.GetComponent<IgnoreTilemap>();
+                    return ignoreTilemap == null || !excludePredicate(ignoreTilemap);
+                })
+                .ToList();
         }
 
         // TODO: where to put this?
