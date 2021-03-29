@@ -83,12 +83,12 @@ namespace Edgar.Unity
 
         protected virtual IPipelineTask<DungeonGeneratorPayload> GetInputTask()
         {
-            return new FixedLevelGraphInputTask<DungeonGeneratorPayload>(FixedLevelGraphConfig);
+            return new FixedLevelGraphInputTask(FixedLevelGraphConfig);
         }
 
         protected virtual IPipelineTask<DungeonGeneratorPayload> GetGeneratorTask()
         {
-            return new DungeonGeneratorTask<DungeonGeneratorPayload>(GeneratorConfig);
+            return new DungeonGeneratorTask(GeneratorConfig);
         }
 
         protected virtual IPipelineTask<DungeonGeneratorPayload> GetPostProcessingTask()
@@ -96,7 +96,7 @@ namespace Edgar.Unity
             var customPostProcessTasks = !DisableCustomPostProcessing
                 ? CustomPostProcessTasks
                 : new List<DungeonGeneratorPostProcessBase>();
-            return new PostProcessTask<DungeonGeneratorPayload>(PostProcessConfig, () => new DungeonTilemapLayersHandler(), customPostProcessTasks);
+            return new PostProcessTask(PostProcessConfig, () => new DungeonTilemapLayersHandler(), customPostProcessTasks);
         }
 
         protected virtual DungeonGeneratorPayload InitializePayload()
