@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common;
 using UnityEngine;
@@ -9,15 +9,16 @@ namespace Edgar.Unity
     /// <summary>
     /// Component that is attached to each room template game objects and contains basic settings.
     /// </summary>
+    [Obsolete("Please use RoomTemplateSettingsGrid2D instead.")]
     public class RoomTemplateSettings : MonoBehaviour
     {
         public RoomTemplateRepeatMode RepeatMode = RoomTemplateRepeatMode.AllowRepeat;
 
-        public PolygonGrid2D GetOutline()
+        public PolygonGrid2D GetOutline() 
         {
             try
             {
-                var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(gameObject);
+                var polygon = RoomTemplateLoaderGrid2D.GetPolygonFromRoomTemplate(gameObject);
 
                 return polygon;
             }
@@ -34,7 +35,7 @@ namespace Edgar.Unity
                 return;
             }
 
-            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
+            var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(gameObject);
             var outlineOverride = new GameObject(GeneratorConstants.OutlineOverrideLayerName);
             outlineOverride.transform.parent = tilemapsRoot.transform;
             outlineOverride.AddComponent<Tilemap>();
@@ -50,14 +51,14 @@ namespace Edgar.Unity
                 return;
             }
 
-            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
+            var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(gameObject);
             var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideLayerName).gameObject;
-            PostProcessUtils.Destroy(outlineOverride);
+            PostProcessUtilsGrid2D.Destroy(outlineOverride);
         }
 
         public bool HasOutlineOverride()
         {
-            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(gameObject);
+            var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(gameObject);
             var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideLayerName);
 
             return outlineOverride != null;

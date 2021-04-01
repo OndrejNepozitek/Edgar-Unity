@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+using System;
+using UnityEngine;
 using Random = System.Random;
 
 namespace Edgar.Unity
 {
-    public delegate void DungeonGeneratorPostProcessCallback(GeneratedLevel level, LevelDescription levelDescription);
+    public delegate void DungeonGeneratorPostProcessCallback(GeneratedLevelGrid2D level, LevelDescriptionGrid2D levelDescription);
 
     /// <summary>
     /// Base class for custom post-processing logic.
     /// </summary>
+    [Obsolete("Please use DungeonGeneratorPostProcessBaseGrid2D instead.")]
     public abstract class DungeonGeneratorPostProcessBase : ScriptableObject
     {
         /// <summary>
@@ -18,6 +20,7 @@ namespace Edgar.Unity
         /// <summary>
         /// Runs the post-processing logic with a given generated level and corresponding level description.
         /// </summary>
+        [Obsolete("Please use Run(GeneratedLevelGrid2D level, LevelDescription levelDescription) instead.")]
         public virtual void Run(GeneratedLevel level, LevelDescription levelDescription)
         {
 

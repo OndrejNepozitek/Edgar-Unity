@@ -6,7 +6,7 @@ namespace Edgar.Unity.Diagnostics
 {
     public class WrongManualDoors
     {
-        public Result Run(LevelDescription levelDescription)
+        public Result Run(LevelDescriptionGrid2D levelDescription)
         {
             var result = new Result();
             var mapping = levelDescription.GetPrefabToRoomTemplateMapping();

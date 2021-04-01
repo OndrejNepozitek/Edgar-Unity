@@ -3,7 +3,7 @@ using UnityEngine.Tilemaps;
 
 namespace Edgar.Unity
 {
-    public class DungeonTilemapLayersHandler : ITilemapLayersHandler
+    public class DungeonTilemapLayersHandlerGrid2D : ITilemapLayersHandlerGrid2D
     {
         /// <summary>
         ///  Initializes individual tilemap layers.

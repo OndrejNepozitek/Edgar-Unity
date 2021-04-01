@@ -14,7 +14,7 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
 
                 // Find floor tilemap layer
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
+                var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(roomTemplateInstance);
                 var floor = tilemaps.Single(x => x.name == "Floor").gameObject;
 
                 // Add floor collider

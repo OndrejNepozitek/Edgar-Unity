@@ -9,12 +9,11 @@ namespace Edgar.Unity
     /// <summary>
     /// Creates an input for the generator from a given level graph.
     /// </summary>
-    /// <typeparam name="TPayload"></typeparam>
-    public class FixedLevelGraphInputTask : PipelineTask<DungeonGeneratorPayload>
+    internal class FixedLevelGraphInputTaskGrid2D : PipelineTask<DungeonGeneratorPayloadGrid2D>
     {
-        private readonly FixedLevelGraphConfig config;
+        private readonly FixedLevelGraphConfigGrid2D config;
 
-        public FixedLevelGraphInputTask(FixedLevelGraphConfig config)
+        public FixedLevelGraphInputTaskGrid2D(FixedLevelGraphConfigGrid2D config)
         {
             this.config = config;
         }
@@ -31,7 +30,7 @@ namespace Edgar.Unity
                 throw new ArgumentException("LevelGraph must contain at least one room.");
             }
 
-            var levelDescription = new LevelDescription();
+            var levelDescription = new LevelDescriptionGrid2D();
 
             // Setup individual rooms
             foreach (var room in config.LevelGraph.Rooms)

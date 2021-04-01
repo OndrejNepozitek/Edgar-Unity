@@ -4,7 +4,7 @@ namespace Edgar.Unity
 {
     [Serializable]
     [Obsolete]
-    public class AdvancedConfig
+    public class AdvancedConfigGrid2D
     {
         public bool ThrowExceptionsImmediately = false;
     }

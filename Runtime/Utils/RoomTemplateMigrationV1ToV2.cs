@@ -19,9 +19,9 @@ namespace Edgar.Unity
                 DestroyImmediate(grid, true);
             }
 
-            if (gameObject.GetComponent<RoomTemplateSettings>() == null)
+            if (gameObject.GetComponent<RoomTemplateSettingsGrid2D>() == null)
             {
-                gameObject.AddComponent<RoomTemplateSettings>();
+                gameObject.AddComponent<RoomTemplateSettingsGrid2D>();
             }
 
             if (transform.Find(GeneratorConstants.TilemapsRootName) != null)

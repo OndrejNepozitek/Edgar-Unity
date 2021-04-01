@@ -8,7 +8,7 @@ namespace Edgar.Unity.Diagnostics
 {
     public class DifferentLengthsOfDoors
     {
-        public Result Run(LevelDescription levelDescription)
+        public Result Run(LevelDescriptionGrid2D levelDescription)
         {
             var roomTemplates = levelDescription.GetPrefabToRoomTemplateMapping();
             var doorLengths = new Dictionary<int, List<GameObject>>();

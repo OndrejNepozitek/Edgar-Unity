@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Edgar.Unity
 {
     [Serializable]
-    public class DungeonGeneratorConfig
+    public class DungeonGeneratorConfigGrid2D
     {
         public GameObject RootGameObject;
 

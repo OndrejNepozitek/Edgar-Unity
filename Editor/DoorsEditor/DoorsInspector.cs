@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Edgar.Unity.Editor
 {
-    [CustomEditor(typeof(Doors))]
+    [CustomEditor(typeof(DoorsGrid2D))]
 	public class DoorsInspector : UnityEditor.Editor
     {
         private Mode currentMode;
@@ -26,15 +26,15 @@ namespace Edgar.Unity.Editor
 
 		public void OnSceneGUI()
 		{
-			var doors = target as Doors;
+			var doors = target as DoorsGrid2D;
 			
 			switch (doors.SelectedMode)
 			{
-				case Doors.DoorMode.Manual:
+				case DoorsGrid2D.DoorMode.Manual:
 					HandleManualMode();
 					break;
 
-				case Doors.DoorMode.Simple:
+				case DoorsGrid2D.DoorMode.Simple:
 					HandleSimpleMode();
 					break;
 			}
@@ -42,13 +42,13 @@ namespace Edgar.Unity.Editor
 
 		private void HandleSimpleMode()
 		{
-			var doors = target as Doors;
+			var doors = target as DoorsGrid2D;
 			var gameObject = doors.transform.gameObject;
             var grid = gameObject.GetComponentInChildren<Grid>();
 
 			try
 			{
-				var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
+				var polygon = RoomTemplateLoaderGrid2D.GetPolygonFromRoomTemplate(doors.gameObject);
 
                 if (polygon == null)
                 {
@@ -75,7 +75,7 @@ namespace Edgar.Unity.Editor
 
 		private void HandleManualMode()
 		{
-			var doors = target as Doors;
+			var doors = target as DoorsGrid2D;
             var grid = doors.gameObject.GetComponentInChildren<Grid>();
 
             // Draw all doors
@@ -98,7 +98,7 @@ namespace Edgar.Unity.Editor
 
         private void HandleDeleteDoors()
         {
-            var doors = target as Doors;
+            var doors = target as DoorsGrid2D;
             var gameObject = doors.transform.gameObject;
             var e = Event.current;
 
@@ -136,7 +136,7 @@ namespace Edgar.Unity.Editor
 
         private void HandleAddDoors()
         {
-            var doors = target as Doors;
+            var doors = target as DoorsGrid2D;
             var gameObject = doors.transform.gameObject;
 			var e = Event.current;
             var grid = gameObject.GetComponentInChildren<Grid>();
@@ -195,7 +195,7 @@ namespace Edgar.Unity.Editor
 					hasFirstTile = false;
 					hasSecondTile = false;
 
-					var newDoorInfo = new Door()
+					var newDoorInfo = new DoorGrid2D()
 					{
 						From = from,
 						To = to,
@@ -217,7 +217,7 @@ namespace Edgar.Unity.Editor
 
         private Vector3Int GetCurrentTilePosition()
         {
-            var doors = target as Doors;
+            var doors = target as DoorsGrid2D;
             var gameObject = doors.transform.gameObject;
             var grid = gameObject.GetComponentInChildren<Grid>();
 
@@ -233,19 +233,19 @@ namespace Edgar.Unity.Editor
 		{
 			serializedObject.Update();
 
-			var doors = target as Doors;
+			var doors = target as DoorsGrid2D;
 			
-			var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
+			var selectedModeProp = serializedObject.FindProperty(nameof(DoorsGrid2D.SelectedMode));
 			selectedModeProp.intValue = GUILayout.SelectionGrid((int) doors.SelectedMode, new[] { "Simple mode", "Manual mode"}, 2);
 
             EditorGUILayout.Space();
 
-			if (doors.SelectedMode == Doors.DoorMode.Simple)
+			if (doors.SelectedMode == DoorsGrid2D.DoorMode.Simple)
 			{
                 HandleSimpleModeInspector();
 			}
 
-			if (doors.SelectedMode == Doors.DoorMode.Manual)
+			if (doors.SelectedMode == DoorsGrid2D.DoorMode.Manual)
 			{
                 HandleManualModeInspector();
             }
@@ -255,13 +255,13 @@ namespace Edgar.Unity.Editor
 
         private void HandleSimpleModeInspector()
         {
-            EditorGUILayout.IntSlider(serializedObject.FindProperty(nameof(Doors.DoorLength)), 1, 10, "Door length");
-            EditorGUILayout.IntSlider(serializedObject.FindProperty(nameof(Doors.DistanceFromCorners)), 0, 10, "Corner distance");
+            EditorGUILayout.IntSlider(serializedObject.FindProperty(nameof(DoorsGrid2D.DoorLength)), 1, 10, "Door length");
+            EditorGUILayout.IntSlider(serializedObject.FindProperty(nameof(DoorsGrid2D.DistanceFromCorners)), 0, 10, "Corner distance");
         }
 
         private void HandleManualModeInspector()
         {
-            var doors = target as Doors;
+            var doors = target as DoorsGrid2D;
 
             var addDoorsNew = GUILayout.Toggle(currentMode == Mode.AddDoors, "Add door positions", GUI.skin.button);
             var deleteDoorsNew = GUILayout.Toggle(currentMode == Mode.DeleteDoors, "Delete door positions", GUI.skin.button);
@@ -292,7 +292,7 @@ namespace Edgar.Unity.Editor
 
             try
             {
-                var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
+                var polygon = RoomTemplateLoaderGrid2D.GetPolygonFromRoomTemplate(doors.gameObject);
                 var doorPositions = doors.GetDoorMode().GetDoors(polygon);
 
                 if (doorPositions.Count != doors.DoorsList.Count)

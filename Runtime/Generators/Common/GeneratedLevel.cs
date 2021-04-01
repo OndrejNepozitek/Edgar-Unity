@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace Edgar.Unity
     /// Holds information about the generated level.
     /// Currently cannot be serialized.
     /// </summary>
+    [Obsolete("Please use GeneratedLevelGrid2D instead.")]
     public class GeneratedLevel
     {
         /// <summary>
@@ -18,9 +20,9 @@ namespace Edgar.Unity
         public GameObject RootGameObject { get; }
 
         private readonly LayoutGrid2D<RoomBase> mapLayout;
-        private readonly Dictionary<RoomBase, RoomInstance> roomInstances;
+        private readonly Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances;
 
-        public GeneratedLevel(Dictionary<RoomBase, RoomInstance> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject)
+        public GeneratedLevel(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject)
         {
             this.roomInstances = roomInstances;
             this.mapLayout = mapLayout;
@@ -31,7 +33,7 @@ namespace Edgar.Unity
         /// Gets information about all the rooms that are present in the generated level.
         /// </summary>
         /// <returns></returns>
-        public List<RoomInstance> GetRoomInstances()
+        public List<RoomInstanceGrid2D> GetRoomInstances()
         {
             return roomInstances.Values.ToList();
         }
@@ -41,7 +43,7 @@ namespace Edgar.Unity
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        public RoomInstance GetRoomInstance(RoomBase room)
+        public RoomInstanceGrid2D GetRoomInstance(RoomBase room)
         {
             return roomInstances[room];
         }
@@ -61,7 +63,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         public List<Tilemap> GetSharedTilemaps()
         {
-            return RoomTemplateUtils.GetTilemaps(RootGameObject);
+            return RoomTemplateUtilsGrid2D.GetTilemaps(RootGameObject);
         }
     }
 }

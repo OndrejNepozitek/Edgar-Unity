@@ -14,7 +14,7 @@ namespace Edgar.Unity
     /// <summary>
     /// Class used to convert room templates to the representation used in the dungeon generator library.
     /// </summary>
-    public static class RoomTemplatesLoader
+    public static class RoomTemplateLoaderGrid2D
     {
         /// <summary>
         /// Computes a polygon from its tiles.
@@ -108,7 +108,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         public static PolygonGrid2D GetPolygonFromTilemaps(ICollection<Tilemap> tilemaps)
         {
-            var usedTiles = GetUsedTiles(RoomTemplateUtils.GetTilemapsForOutline(tilemaps));
+            var usedTiles = GetUsedTiles(RoomTemplateUtilsGrid2D.GetTilemapsForOutline(tilemaps));
 
             return GetPolygonFromTiles(usedTiles);
         }
@@ -120,15 +120,15 @@ namespace Edgar.Unity
         /// <returns></returns>
         public static PolygonGrid2D GetPolygonFromRoomTemplate(GameObject roomTemplate)
         {
-            var outlineHandler = roomTemplate.GetComponent<IRoomTemplateOutlineHandler>();
+            var outlineHandler = roomTemplate.GetComponent<IRoomTemplateOutlineHandlerGrid2D>();
             if (outlineHandler != null)
             {
                 var polygon2d = outlineHandler.GetRoomTemplateOutline();
                 return polygon2d?.GetGridPolygon();
             }
 
-            var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplate);
-            var outline = RoomTemplateUtils.GetTilemapsForOutline(tilemaps);
+            var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(roomTemplate);
+            var outline = RoomTemplateUtilsGrid2D.GetTilemapsForOutline(tilemaps);
 
             return GetPolygonFromTilemaps(outline);
         }
@@ -200,9 +200,9 @@ namespace Edgar.Unity
             }
 
             var allowedTransformations = new List<TransformationGrid2D> { TransformationGrid2D.Identity };
-            var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplateSettings>();
+            var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplateSettingsGrid2D>();
             var repeatMode = roomTemplateComponent?.RepeatMode ?? RoomTemplateRepeatMode.AllowRepeat;
-            var doors = roomTemplatePrefab.GetComponent<Doors>();
+            var doors = roomTemplatePrefab.GetComponent<DoorsGrid2D>();
             var doorMode = doors.GetDoorMode();
 
             // Check that the doors are valid

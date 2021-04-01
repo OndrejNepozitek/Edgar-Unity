@@ -11,11 +11,11 @@ namespace Edgar.Unity
     /// <summary>
     /// The actual generator logic that calls the .NET generator.
     /// </summary>
-    public class DungeonGeneratorTask : PipelineTask<DungeonGeneratorPayload>
+    internal class DungeonGeneratorTaskGrid2D : PipelineTask<DungeonGeneratorPayloadGrid2D>
     {
-        private readonly DungeonGeneratorConfig config;
+        private readonly DungeonGeneratorConfigGrid2D config;
 
-        public DungeonGeneratorTask(DungeonGeneratorConfig config)
+        public DungeonGeneratorTaskGrid2D(DungeonGeneratorConfigGrid2D config)
         {
             this.config = config;
         }
@@ -47,7 +47,7 @@ namespace Edgar.Unity
             // We delete all the children from the root game object - we do not want to combine levels from different runs of the algorithm
             foreach (var child in rootGameObject.transform.Cast<Transform>().ToList()) {
                 child.transform.parent = null;
-                PostProcessUtils.Destroy(child.gameObject);
+                PostProcessUtilsGrid2D.Destroy(child.gameObject);
             }
 
             // The LevelDescription class must be converted to MapDescription

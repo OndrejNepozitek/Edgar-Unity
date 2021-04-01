@@ -67,7 +67,7 @@ namespace Edgar.Unity.Editor
 
             EditorGUILayout.Space();
 
-            if (levelGenerator is DungeonGenerator)
+            if (levelGenerator is DungeonGeneratorGrid2D)
             {
                 if (GUILayout.Button("Generate level"))
                 {

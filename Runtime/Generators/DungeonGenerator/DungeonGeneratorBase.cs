@@ -11,27 +11,30 @@ namespace Edgar.Unity
     /// <summary>
     /// Base class for various dungeon generators.
     /// </summary>
-    public abstract class DungeonGeneratorBase : LevelGeneratorBase<DungeonGeneratorPayload>
+    public abstract class DungeonGeneratorBase : LevelGeneratorBase<DungeonGeneratorPayloadGrid2D>
     {
         [Expandable]
-        public FixedLevelGraphConfig FixedLevelGraphConfig;
+        public FixedLevelGraphConfigGrid2D FixedLevelGraphConfig;
 
         [Expandable]
-        public DungeonGeneratorConfig GeneratorConfig;
+        public DungeonGeneratorConfigGrid2D GeneratorConfig;
 
         [Expandable]
-        public PostProcessConfig PostProcessConfig;
+        public PostProcessConfigGrid2D PostProcessConfig;
 
+        // TODO(rename):
         [ExpandableScriptableObject(CanFold = false)]
+#pragma warning disable 618
         public List<DungeonGeneratorPostProcessBase> CustomPostProcessTasks;
+#pragma warning restore 618
 
         [Expandable]
         [Obsolete("Please use directly the properties UseRandomSeed, RandomGeneratorSeed and GenerateOnStart")]
-        public OtherConfig OtherConfig;
+        public OtherConfigGrid2D OtherConfig;
 
         [Expandable]
         [Obsolete("Please use directly the property ThrowExceptionsImmediately")]
-        public AdvancedConfig AdvancedConfig;
+        public AdvancedConfigGrid2D AdvancedConfig;
 
         /// <summary>
         /// Whether to use a random seed.
@@ -64,10 +67,10 @@ namespace Edgar.Unity
             }
         }
 
-        protected override (List<IPipelineTask<DungeonGeneratorPayload>> pipelineItems, DungeonGeneratorPayload payload) GetPipelineItemsAndPayload()
+        protected override (List<IPipelineTask<DungeonGeneratorPayloadGrid2D>> pipelineItems, DungeonGeneratorPayloadGrid2D payload) GetPipelineItemsAndPayload()
         {
             var payload = InitializePayload();
-            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>>();
+            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayloadGrid2D>>();
 
             // Add input setup
             pipelineItems.Add(GetInputTask());
@@ -81,27 +84,29 @@ namespace Edgar.Unity
             return (pipelineItems, payload);
         }
 
-        protected virtual IPipelineTask<DungeonGeneratorPayload> GetInputTask()
+        protected virtual IPipelineTask<DungeonGeneratorPayloadGrid2D> GetInputTask()
         {
-            return new FixedLevelGraphInputTask(FixedLevelGraphConfig);
+            return new FixedLevelGraphInputTaskGrid2D(FixedLevelGraphConfig);
         }
 
-        protected virtual IPipelineTask<DungeonGeneratorPayload> GetGeneratorTask()
+        protected virtual IPipelineTask<DungeonGeneratorPayloadGrid2D> GetGeneratorTask()
         {
-            return new DungeonGeneratorTask(GeneratorConfig);
+            return new DungeonGeneratorTaskGrid2D(GeneratorConfig);
         }
 
-        protected virtual IPipelineTask<DungeonGeneratorPayload> GetPostProcessingTask()
+        protected virtual IPipelineTask<DungeonGeneratorPayloadGrid2D> GetPostProcessingTask()
         {
             var customPostProcessTasks = !DisableCustomPostProcessing
                 ? CustomPostProcessTasks
+#pragma warning disable 618
                 : new List<DungeonGeneratorPostProcessBase>();
-            return new PostProcessTask(PostProcessConfig, () => new DungeonTilemapLayersHandler(), customPostProcessTasks);
+#pragma warning restore 618
+            return new PostProcessTaskGrid2D(PostProcessConfig, () => new DungeonTilemapLayersHandlerGrid2D(), customPostProcessTasks);
         }
 
-        protected virtual DungeonGeneratorPayload InitializePayload()
+        protected virtual DungeonGeneratorPayloadGrid2D InitializePayload()
         {
-            return new DungeonGeneratorPayload()
+            return new DungeonGeneratorPayloadGrid2D()
             {
                 Random = GetRandomNumbersGenerator(UseRandomSeed, RandomGeneratorSeed),
                 DungeonGenerator = this,
@@ -113,7 +118,7 @@ namespace Edgar.Unity
             var payload = InitializePayload();
             var inputSetup = GetInputTask();
 
-            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayload>> { inputSetup };
+            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayloadGrid2D>> { inputSetup };
 
             PipelineRunner.Run(pipelineItems, payload);
 

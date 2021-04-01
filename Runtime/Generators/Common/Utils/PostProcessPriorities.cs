@@ -1,8 +1,10 @@
-﻿namespace Edgar.Unity
+using System;
+namespace Edgar.Unity
 {
     /// <summary>
     /// Priorities of post-processing steps.
     /// </summary>
+    [Obsolete("Please use PostProcessPrioritiesGrid2D instead.")]
     public static class PostProcessPriorities
     {
         public static int InitializeSharedTilemaps = 100;

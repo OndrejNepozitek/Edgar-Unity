@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +8,7 @@ namespace Edgar.Unity
     ///     Class that holds information about a laid out room.
     /// </summary>
     [Serializable]
+    [Obsolete("Please use RoomInstanceGrid2D instead.")]
     public class RoomInstance
     {
         /// <summary>
@@ -71,8 +72,8 @@ namespace Edgar.Unity
         ///     These doors are in the local space of the room template. If you want to see where
         ///     exactly is the door situated in the level, you have to add the position of the room.
         /// </remarks>
-        public List<DoorInstance> Doors => doors;
-        [SerializeField] private List<DoorInstance> doors;
+        public List<DoorInstanceGrid2D> Doors => doors;
+        [SerializeField] private List<DoorInstanceGrid2D> doors;
 
         /// <summary>
         ///     The polygon that was used as the outline of the room.
@@ -101,7 +102,7 @@ namespace Edgar.Unity
         /// Should not be called directly.
         /// </summary>
         /// <param name="doors"></param>
-        public void SetDoors(List<DoorInstance> doors)
+        internal void SetDoors(List<DoorInstanceGrid2D> doors)
         {
             this.doors = doors;
         }

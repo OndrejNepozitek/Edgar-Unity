@@ -106,7 +106,7 @@ namespace Edgar.Unity.Edgar.Tests.Runtime
         private void AssertTilemapLayerExists(string layerName)
         {
             var levelRoot = GetGeneratedLevelRoot();
-            var tilemaps = RoomTemplateUtils.GetTilemaps(levelRoot);
+            var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(levelRoot);
 
             var tilemapLayer = tilemaps.SingleOrDefault(x => x.name == layerName);
             Assert.IsNotNull(tilemapLayer);

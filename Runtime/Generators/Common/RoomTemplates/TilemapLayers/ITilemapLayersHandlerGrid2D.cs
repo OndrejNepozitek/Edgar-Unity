@@ -5,7 +5,7 @@ namespace Edgar.Unity
     /// <summary>
     ///     Interface for handling tilemap layers.
     /// </summary>
-    public interface ITilemapLayersHandler
+    public interface ITilemapLayersHandlerGrid2D
     {
         /// <summary>
         ///     Initializes the structure of tilemaps of a given gameObject.

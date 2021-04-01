@@ -5,11 +5,11 @@ namespace Edgar.Unity
     /// <summary>
     /// Payload that is used to transfer data between individual stages of the generator.
     /// </summary>
-    public class DungeonGeneratorPayload
+    public class DungeonGeneratorPayloadGrid2D
     {
-        public LevelDescription LevelDescription { get; set; }
+        public LevelDescriptionGrid2D LevelDescription { get; set; }
 
-        public GeneratedLevel GeneratedLevel { get; set; }
+        public GeneratedLevelGrid2D GeneratedLevel { get; set; }
 
         public Random Random { get; set; }
 

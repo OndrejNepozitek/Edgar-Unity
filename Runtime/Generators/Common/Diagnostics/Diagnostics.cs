@@ -11,7 +11,7 @@ namespace Edgar.Unity.Diagnostics
         {
             var results = new List<IDiagnosticResult>();
 
-            if (payload is DungeonGeneratorPayload dungeonGeneratorPayload)
+            if (payload is DungeonGeneratorPayloadGrid2D dungeonGeneratorPayload)
             {
                 results.AddRange(Run(dungeonGeneratorPayload.LevelDescription));
                 results.Add(new TimeoutLength().Run(dungeonGeneratorPayload.DungeonGenerator));
@@ -20,7 +20,7 @@ namespace Edgar.Unity.Diagnostics
             return results;
         }
 
-        public static List<IDiagnosticResult> Run(LevelDescription levelDescription)
+        public static List<IDiagnosticResult> Run(LevelDescriptionGrid2D levelDescription)
         {
             var results = new List<IDiagnosticResult>();
 

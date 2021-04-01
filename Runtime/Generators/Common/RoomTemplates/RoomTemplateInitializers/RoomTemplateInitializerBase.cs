@@ -1,4 +1,5 @@
-﻿using System.Linq;
+using System;
+using System.Linq;
 using UnityEngine;
 
 namespace Edgar.Unity
@@ -6,6 +7,7 @@ namespace Edgar.Unity
     /// <summary>
     ///     Base class for initializing room templates.
     /// </summary>
+    [Obsolete("Please use RoomTemplateInitializerGrid2DBase instead.")]
     public abstract class RoomTemplateInitializerBase : MonoBehaviour
     {
         public virtual void Initialize()
@@ -13,13 +15,13 @@ namespace Edgar.Unity
             // Remove all children game objects
             foreach (var child in transform.Cast<Transform>().ToList())
             {
-                PostProcessUtils.Destroy(child.gameObject);
+                PostProcessUtilsGrid2D.Destroy(child.gameObject);
             }
 
             // Add room template component
-            if (gameObject.GetComponent<RoomTemplateSettings>() == null)
+            if (gameObject.GetComponent<RoomTemplateSettingsGrid2D>() == null)
             {
-                gameObject.AddComponent<RoomTemplateSettings>();
+                gameObject.AddComponent<RoomTemplateSettingsGrid2D>();
             }
 
             // Create tilemaps root
@@ -45,9 +47,9 @@ namespace Edgar.Unity
         protected virtual void InitializeDoors()
         {
             // Add Doors component
-            if (gameObject.GetComponent<Doors>() == null)
+            if (gameObject.GetComponent<DoorsGrid2D>() == null)
             {
-                gameObject.AddComponent<Doors>();
+                gameObject.AddComponent<DoorsGrid2D>();
             }
         }
     }

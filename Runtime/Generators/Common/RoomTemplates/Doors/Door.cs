@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 namespace Edgar.Unity
@@ -7,6 +7,7 @@ namespace Edgar.Unity
     ///     Door information for editor usage.
     /// </summary>
     [Serializable]
+    [Obsolete("Please use DoorGrid2D instead.")]
     public class Door
     {
         [HideInInspector]

@@ -4,14 +4,16 @@ using UnityEngine;
 namespace Edgar.Unity
 {
     [Serializable]
-    public class PostProcessConfig
+    public class PostProcessConfigGrid2D
     {
         public bool InitializeSharedTilemaps = true;
 
         public TilemapLayersStructureMode TilemapLayersStructure = TilemapLayersStructureMode.Default;
 
         [ConditionalHide(nameof(IsTilemapsCustom))]
+#pragma warning disable 618
         public TilemapLayersHandlerBase TilemapLayersHandler;
+#pragma warning restore 618
 
         [ConditionalHide(nameof(IsTilemapsFromExample))]
         public GameObject TilemapLayersExample;

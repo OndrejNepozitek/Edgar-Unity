@@ -4,7 +4,7 @@ namespace Edgar.Unity
 {
     [Obsolete]
     [Serializable]
-    public class OtherConfig
+    public class OtherConfigGrid2D
     {
         /// <summary>
         /// Whether to use a random seed.

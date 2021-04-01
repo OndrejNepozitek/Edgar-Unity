@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 
 namespace Edgar.Unity
@@ -7,6 +7,7 @@ namespace Edgar.Unity
     ///     Class containing information about a door of a room.
     /// </summary>
     [Serializable]
+    [Obsolete("Please use DoorInstanceGrid2D instead.")]
     public class DoorInstance
     {
         /// <summary>
@@ -57,7 +58,7 @@ namespace Edgar.Unity
         public RoomInstance ConnectedRoomInstance => connectedRoomInstance;
         [NonSerialized] private RoomInstance connectedRoomInstance;
 
-        public DoorInstance(OrthogonalLine doorLine, Vector2Int facingDirection, RoomBase connectedRoom, RoomInstance connectedRoomInstance)
+        public DoorInstance(OrthogonalLine doorLine, Vector2Int facingDirection, RoomBase connectedRoom, RoomInstanceGrid2D connectedRoomInstance)
         {
             this.doorLine = doorLine;
             this.facingDirection = facingDirection;

@@ -6,7 +6,7 @@ namespace Edgar.Unity
     /// Config for the default input for the generator - a fixed level graph.
     /// </summary>
     [Serializable]
-    public class FixedLevelGraphConfig
+    public class FixedLevelGraphConfigGrid2D
     {
         /// <summary>
         /// Level graph that will be used in the generator.

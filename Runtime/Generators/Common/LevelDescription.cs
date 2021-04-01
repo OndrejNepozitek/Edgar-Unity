@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Edgar.GraphBasedGenerator.Grid2D;
@@ -11,6 +11,7 @@ namespace Edgar.Unity
     /// <summary>
     /// Class that describes the structure of a level. It contains all the rooms, connections and available room templates.
     /// </summary>
+    [Obsolete("Please use LevelDescriptionGrid2D instead.")]
     public class LevelDescription
     {
         private readonly List<ConnectionBase> connections = new List<ConnectionBase>();
@@ -100,7 +101,7 @@ namespace Edgar.Unity
                 return prefabToRoomTemplateMapping[roomTemplatePrefab];
             }
 
-            if (RoomTemplatesLoader.TryGetRoomTemplate(roomTemplatePrefab, out var roomTemplate, out var result))
+            if (RoomTemplateLoaderGrid2D.TryGetRoomTemplate(roomTemplatePrefab, out var roomTemplate, out var result))
             {
                 prefabToRoomTemplateMapping.Add(roomTemplatePrefab, roomTemplate);
                 return roomTemplate;

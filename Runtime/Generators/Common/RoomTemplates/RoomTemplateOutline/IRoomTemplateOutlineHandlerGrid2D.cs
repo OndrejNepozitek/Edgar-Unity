@@ -3,7 +3,7 @@
     /// <summary>
     /// Interface for custom room template outline handlers.
     /// </summary>
-    public interface IRoomTemplateOutlineHandler
+    public interface IRoomTemplateOutlineHandlerGrid2D
     {
         /// <summary>
         /// Gets the outline of the room template.

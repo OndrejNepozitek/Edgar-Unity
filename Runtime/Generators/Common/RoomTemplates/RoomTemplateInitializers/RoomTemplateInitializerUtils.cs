@@ -1,12 +1,15 @@
-﻿using System.IO;
+using System;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 #if UNITY_EDITOR
 #endif
 
 namespace Edgar.Unity
 {
+    [Obsolete("Please use RoomTemplateInitializerUtilsGrid2D instead.")]
     public static class RoomTemplateInitializerUtils
     {
         /// <summary>

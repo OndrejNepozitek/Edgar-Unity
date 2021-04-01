@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,16 +8,17 @@ namespace Edgar.Unity
     /// <summary>
     /// Bounding box outline handler.
     /// </summary>
-    public class BoundingBoxOutlineHandler : MonoBehaviour, IRoomTemplateOutlineHandler
+    [Obsolete("Please use BoundingBoxOutlineHandlerGrid2D instead.")]
+    public class BoundingBoxOutlineHandler : MonoBehaviour, IRoomTemplateOutlineHandlerGrid2D
     {
         [Min(0)]
         public int PaddingTop = 0;
 
         public Polygon2D GetRoomTemplateOutline()
         {
-            var tilemaps = RoomTemplateUtils.GetTilemaps(gameObject);
-            var outlineTilemaps = RoomTemplateUtils.GetTilemapsForOutline(tilemaps);
-            var usedTiles = RoomTemplateUtils.GetUsedTiles(outlineTilemaps);
+            var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(gameObject);
+            var outlineTilemaps = RoomTemplateUtilsGrid2D.GetTilemapsForOutline(tilemaps);
+            var usedTiles = RoomTemplateUtilsGrid2D.GetUsedTiles(outlineTilemaps);
 
             if (usedTiles.Count == 0)
             {

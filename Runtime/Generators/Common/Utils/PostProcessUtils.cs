@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,6 +10,7 @@ namespace Edgar.Unity
     /// <summary>
     /// Utility post-processing functions
     /// </summary>
+    [Obsolete("Please use PostProcessUtilsGrid2D instead.")]
     public static class PostProcessUtils
     {
         /// <summary>
@@ -80,7 +81,7 @@ namespace Edgar.Unity
         /// <param name="defaultTilemapLayersHandler">Default tilemap layers handler. Used for the Default mode.</param>
         /// <param name="customTilemapLayersHandler">Custom tilemap layers handler. Used for the Custom mode.</param>
         /// <param name="example">Example game object for tilemaps structure. Used for the FromExample mode.</param>
-        public static void InitializeSharedTilemaps(GeneratedLevel level, TilemapLayersStructureMode mode, ITilemapLayersHandler defaultTilemapLayersHandler, ITilemapLayersHandler customTilemapLayersHandler, GameObject example)
+        public static void InitializeSharedTilemaps(GeneratedLevel level, TilemapLayersStructureMode mode, ITilemapLayersHandlerGrid2D defaultTilemapLayersHandler, ITilemapLayersHandlerGrid2D customTilemapLayersHandler, GameObject example)
         {
             GameObject tilemapsRoot;
 
@@ -88,15 +89,15 @@ namespace Edgar.Unity
             {
                 if (example == null)
                 {
-                    throw new ConfigurationException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.FromExample)}, {nameof(PostProcessConfig.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
+                    throw new ConfigurationException($"When {nameof(PostProcessConfigGrid2D.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.FromExample)}, {nameof(PostProcessConfigGrid2D.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
                 }
 
                 var tilemapsSource = example;
-                var tilemapsSourceRoot = RoomTemplateUtils.GetTilemapsRoot(tilemapsSource);
+                var tilemapsSourceRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(tilemapsSource);
 
                 if (tilemapsSourceRoot == tilemapsSource)
                 {
-                    throw new ConfigurationException($"Given {nameof(PostProcessConfig.TilemapLayersExample)} is not valid as it does not contain a game object called {GeneratorConstants.TilemapsRootName} that holds individual tilemap layers.");
+                    throw new ConfigurationException($"Given {nameof(PostProcessConfigGrid2D.TilemapLayersExample)} is not valid as it does not contain a game object called {GeneratorConstants.TilemapsRootName} that holds individual tilemap layers.");
                 }
 
                 tilemapsRoot = Object.Instantiate(tilemapsSourceRoot, level.RootGameObject.transform);
@@ -121,7 +122,7 @@ namespace Edgar.Unity
                 {
                     if (customTilemapLayersHandler == null)
                     {
-                        throw new ConfigurationException($"When {nameof(PostProcessConfig.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.Custom)}, {nameof(PostProcessConfig.TilemapLayersHandler)} must not be null. Please set the field in the Dungeon Generator component.");
+                        throw new ConfigurationException($"When {nameof(PostProcessConfigGrid2D.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureMode.Custom)}, {nameof(PostProcessConfigGrid2D.TilemapLayersHandler)} must not be null. Please set the field in the Dungeon Generator component.");
                     }
 
                     customTilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
@@ -141,7 +142,7 @@ namespace Edgar.Unity
                 return;
             }
 
-            var tilemapsRoot = RoomTemplateUtils.GetTilemapsRoot(level.RootGameObject);
+            var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(level.RootGameObject);
 
             foreach (var tilemapRenderer in tilemapsRoot.GetComponentsInChildren<TilemapRenderer>())
             {
@@ -187,8 +188,8 @@ namespace Edgar.Unity
         /// <param name="deleteTilesInsideOutline">Whether to delete all tiles insides the outline from destination tilemaps.</param>
         public static void CopyTiles(RoomInstance roomInstance, List<Tilemap> destinationTilemaps, bool deleteNonNullTiles, bool deleteTilesInsideOutline)
         {
-            var sourceTilemaps = RoomTemplateUtils.GetTilemaps(roomInstance.RoomTemplateInstance);
-            sourceTilemaps = RoomTemplateUtils.GetTilemapsForCopying(sourceTilemaps);
+            var sourceTilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(roomInstance.RoomTemplateInstance);
+            sourceTilemaps = RoomTemplateUtilsGrid2D.GetTilemapsForCopying(sourceTilemaps);
 
             var tilesToRemove = new List<Vector3Int>();
 
@@ -330,7 +331,7 @@ namespace Edgar.Unity
 
         private static List<Tilemap> GetTilemaps(GameObject gameObject, Predicate<IgnoreTilemap> excludePredicate)
         {
-            return RoomTemplateUtils
+            return RoomTemplateUtilsGrid2D
                 .GetTilemaps(gameObject)
                 .Where(tilemap =>
                 {

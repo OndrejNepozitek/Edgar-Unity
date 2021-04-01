@@ -16,7 +16,7 @@ namespace Edgar.Unity.Diagnostics
         /// <returns></returns>
         public static ActionResult CheckAll(GameObject roomTemplate)
         {
-            RoomTemplatesLoader.TryGetRoomTemplate(roomTemplate, out var _, out var result);
+            RoomTemplateLoaderGrid2D.TryGetRoomTemplate(roomTemplate, out var _, out var result);
             return result;
         }
 
@@ -29,14 +29,14 @@ namespace Edgar.Unity.Diagnostics
         {
             var result = new ActionResult();
 
-            if (roomTemplate.GetComponent<RoomTemplateSettings>() == null)
+            if (roomTemplate.GetComponent<RoomTemplateSettingsGrid2D>() == null)
             {
-                result.AddError($"The {nameof(RoomTemplateSettings)} component is missing on the room template game object.");
+                result.AddError($"The {nameof(RoomTemplateSettingsGrid2D)} component is missing on the room template game object.");
             }
 
-            if (roomTemplate.GetComponent<Doors>() == null)
+            if (roomTemplate.GetComponent<DoorsGrid2D>() == null)
             {
-                result.AddError($"The {nameof(Doors)} component is missing on the room template game object.");
+                result.AddError($"The {nameof(DoorsGrid2D)} component is missing on the room template game object.");
             }
 
             return result;
@@ -91,14 +91,14 @@ namespace Edgar.Unity.Diagnostics
         /// <returns></returns>
         public static ActionResult CheckDoors(GameObject roomTemplate)
         {
-            var roomTemplateSettings = roomTemplate.GetComponent<RoomTemplateSettings>();
+            var roomTemplateSettings = roomTemplate.GetComponent<RoomTemplateSettingsGrid2D>();
             var outline = roomTemplateSettings.GetOutline();
-            var doors = roomTemplate.GetComponent<Doors>();
+            var doors = roomTemplate.GetComponent<DoorsGrid2D>();
 
             if (doors == null)
             {
                 var result = new ActionResult();
-                result.AddError($"The {nameof(Doors)} component is missing on the room template game object.");
+                result.AddError($"The {nameof(DoorsGrid2D)} component is missing on the room template game object.");
                 return result;
             }
 
@@ -129,9 +129,9 @@ namespace Edgar.Unity.Diagnostics
 
         public static ActionResult CheckWrongManualDoors(GameObject roomTemplate, out int differentLengthsCount)
         {
-            var roomTemplateSettings = roomTemplate.GetComponent<RoomTemplateSettings>();
+            var roomTemplateSettings = roomTemplate.GetComponent<RoomTemplateSettingsGrid2D>();
             var outline = roomTemplateSettings.GetOutline();
-            var doors = roomTemplate.GetComponent<Doors>();
+            var doors = roomTemplate.GetComponent<DoorsGrid2D>();
             var doorMode = doors.GetDoorMode();
 
             return CheckWrongManualDoors(outline, doorMode, out differentLengthsCount);

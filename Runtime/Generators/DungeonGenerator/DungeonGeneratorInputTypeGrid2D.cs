@@ -1,6 +1,6 @@
 ﻿namespace Edgar.Unity
 {
-    public enum DungeonGeneratorInputType
+    public enum DungeonGeneratorInputTypeGrid2D
     {
         FixedLevelGraph,
         CustomInput,

@@ -1,20 +1,22 @@
-﻿using System;
+﻿#pragma warning disable 612, 618
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Edgar.Unity
 {
     /// <summary>
     /// Handles individual post-processing steps.
     /// </summary>
-    public class PostProcessTask : PipelineTask<DungeonGeneratorPayload>
+    internal class PostProcessTaskGrid2D : PipelineTask<DungeonGeneratorPayloadGrid2D>
     {
-        private readonly PostProcessConfig config;
-        private readonly Func<ITilemapLayersHandler> defaultTilemapLayersHandlerFactory;
+        private readonly PostProcessConfigGrid2D config;
+        private readonly Func<ITilemapLayersHandlerGrid2D> defaultTilemapLayersHandlerFactory;
+
+        // TODO(rename):
         private readonly List<DungeonGeneratorPostProcessBase> customPostProcessTasks;
 
-        public PostProcessTask(PostProcessConfig config, Func<ITilemapLayersHandler> defaultTilemapLayersHandlerFactory, List<DungeonGeneratorPostProcessBase> customPostProcessTasks)
+        public PostProcessTaskGrid2D(PostProcessConfigGrid2D config, Func<ITilemapLayersHandlerGrid2D> defaultTilemapLayersHandlerFactory, List<DungeonGeneratorPostProcessBase> customPostProcessTasks)
         {
             this.config = config;
             this.defaultTilemapLayersHandlerFactory = defaultTilemapLayersHandlerFactory;
@@ -35,6 +37,11 @@ namespace Edgar.Unity
                 {
                     postProcessTask.SetRandomGenerator(Payload.Random);
                     callbacks.RegisterAfterAll(postProcessTask.Run);
+
+                    if (postProcessTask is DungeonGeneratorPostProcessBaseGrid2D grid2Dtask)
+                    {
+                        callbacks.RegisterAfterAll(grid2Dtask.Run);
+                    }
                 }
             }
 
@@ -50,44 +57,45 @@ namespace Edgar.Unity
         {
             if (config.InitializeSharedTilemaps)
             {
-                callbacks.RegisterCallback(PostProcessPriorities.InitializeSharedTilemaps, (level, description) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.InitializeSharedTilemaps, (level, description) =>
                 {
-                    PostProcessUtils.InitializeSharedTilemaps(level, config.TilemapLayersStructure, defaultTilemapLayersHandlerFactory(), config.TilemapLayersHandler, config.TilemapLayersExample);
-                    PostProcessUtils.SetTilemapsMaterial(level, config.TilemapMaterial);
+                    PostProcessUtilsGrid2D.InitializeSharedTilemaps(level, config.TilemapLayersStructure, defaultTilemapLayersHandlerFactory(), config.TilemapLayersHandler, config.TilemapLayersExample);
+                    PostProcessUtilsGrid2D.SetTilemapsMaterial(level, config.TilemapMaterial);
                 });
             }
 
             if (config.CopyTilesToSharedTilemaps)
             {
-                callbacks.RegisterCallback(PostProcessPriorities.CopyTilesToSharedTilemaps, (level, description) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.CopyTilesToSharedTilemaps, (level, description) =>
                 {
-                    PostProcessUtils.CopyTilesToSharedTilemaps(level);
+                    PostProcessUtilsGrid2D.CopyTilesToSharedTilemaps(level);
                 });
             }
 
             if (config.CenterGrid)
             {
-                callbacks.RegisterCallback(PostProcessPriorities.CenterGrid, (level, description) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.CenterGrid, (level, description) =>
                 {
-                    PostProcessUtils.CenterGrid(level);
+                    PostProcessUtilsGrid2D.CenterGrid(level);
                 });
             }
 
             if (config.DisableRoomTemplatesRenderers)
             {
-                callbacks.RegisterCallback(PostProcessPriorities.DisableRoomTemplateRenderers, (level, description) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateRenderers, (level, description) =>
                 {
-                    PostProcessUtils.DisableRoomTemplatesRenderers(level);
+                    PostProcessUtilsGrid2D.DisableRoomTemplatesRenderers(level);
                 });
             }
 
             if (config.DisableRoomTemplatesColliders)
             {
-                callbacks.RegisterCallback(PostProcessPriorities.DisableRoomTemplateColliders, (level, description) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateColliders, (level, description) =>
                 {
-                    PostProcessUtils.DisableRoomTemplatesColliders(level);
+                    PostProcessUtilsGrid2D.DisableRoomTemplatesColliders(level);
                 });
             }
         }
     }
 }
+#pragma warning restore 612, 618

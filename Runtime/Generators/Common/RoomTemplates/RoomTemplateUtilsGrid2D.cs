@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 namespace Edgar.Unity
 {
-    public static class RoomTemplateUtils
+    public static class RoomTemplateUtilsGrid2D
     {
         /// <summary>
         /// Gets the GameObject that is the parent to all the tilemaps.
@@ -60,9 +60,9 @@ namespace Edgar.Unity
         {
             return tilemaps
                 .Where(x =>
-                    x.GetComponent<OutlineOverride>() == null &&
-                    (x.GetComponent<IgnoreTilemap>() == null ||
-                     !x.GetComponent<IgnoreTilemap>().IgnoreWhenCopyingTiles)
+                    x.GetComponent<OutlineOverrideGrid2D>() == null &&
+                    (x.GetComponent<IgnoreTilemapGrid2D>() == null ||
+                     !x.GetComponent<IgnoreTilemapGrid2D>().IgnoreWhenCopyingTiles)
                 ).ToList();
         }
 
@@ -73,7 +73,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         public static List<Tilemap> GetTilemapsForOutline(ICollection<Tilemap> tilemaps)
         {
-            var overrideOutline = tilemaps.FirstOrDefault(x => x.GetComponent<OutlineOverride>());
+            var overrideOutline = tilemaps.FirstOrDefault(x => x.GetComponent<OutlineOverrideGrid2D>());
 
             if (overrideOutline != null)
             {
@@ -82,8 +82,8 @@ namespace Edgar.Unity
 
             return tilemaps
                 .Where(x =>
-                    x.GetComponent<IgnoreTilemap>() == null ||
-                    !x.GetComponent<IgnoreTilemap>().IgnoreWhenComputingOutline
+                    x.GetComponent<IgnoreTilemapGrid2D>() == null ||
+                    !x.GetComponent<IgnoreTilemapGrid2D>().IgnoreWhenComputingOutline
                 ).ToList();
         }
 

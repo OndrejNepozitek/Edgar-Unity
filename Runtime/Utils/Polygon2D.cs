@@ -22,7 +22,7 @@ namespace Edgar.Unity
         {
             this.points = points;
 
-            if (!RoomTemplatesLoader.IsClockwiseOriented(points.Select(x => x.ToCustomIntVector2()).ToList()))
+            if (!RoomTemplateLoaderGrid2D.IsClockwiseOriented(points.Select(x => x.ToCustomIntVector2()).ToList()))
             {
                 this.points.Reverse();
             }
