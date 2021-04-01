@@ -55,8 +55,8 @@ namespace Edgar.Unity
         ///     This property is not serialized. Unfortunately, object in Unity are serialized
         ///     by value and that would make Unity try to serialize the whole graph.
         /// </remarks>
-        public RoomInstance ConnectedRoomInstance => connectedRoomInstance;
-        [NonSerialized] private RoomInstance connectedRoomInstance;
+        public RoomInstanceGrid2D ConnectedRoomInstance => connectedRoomInstance;
+        [NonSerialized] private RoomInstanceGrid2D connectedRoomInstance;
 
         public DoorInstance(OrthogonalLine doorLine, Vector2Int facingDirection, RoomBase connectedRoom, RoomInstanceGrid2D connectedRoomInstance)
         {
