@@ -7,7 +7,7 @@ namespace Edgar.Unity.Examples.Resources
     // menu item that we will use to create the scriptable object instance.
     // The menu name can be changed to anything you want.
     // [CreateAssetMenu(menuName = "Dungeon generator/Custom tilemap layers handler", fileName = "CustomTilemapLayersHandler")]
-    public class CustomTilemapLayersHandlerExample : TilemapLayersHandlerBase
+    public class CustomTilemapLayersHandlerExample : TilemapLayersHandlerBaseGrid2D
     {
         public override void InitializeTilemaps(GameObject gameObject)
         {

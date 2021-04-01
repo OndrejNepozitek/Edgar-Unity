@@ -7,7 +7,7 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
         /// <summary>
         /// Room instance of the corresponding room.
         /// </summary>
-        public RoomInstance RoomInstance;
+        public RoomInstanceGrid2D RoomInstance;
 
         /// <summary>
         /// Gets called when a player enters the room.

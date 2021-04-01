@@ -8,10 +8,10 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
     public class CurrentRoomDetectionGameManager : GameManagerBase<CurrentRoomDetectionGameManager>
     {
         // Current active room
-        private RoomInstance currentRoom;
+        private RoomInstanceGrid2D currentRoom;
 
         // The room that will be active after the player leaves the current room
-        private RoomInstance nextCurrentRoom;
+        private RoomInstanceGrid2D nextCurrentRoom;
 
         public void Update()
         {
@@ -30,7 +30,7 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
             ShowLoadingScreen("Example 1", "loading..");
 
             // Find the generator runner
-            var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGenerator>();
+            var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGeneratorGrid2D>();
 
             // Start the generator coroutine
             StartCoroutine(GeneratorCoroutine(generator));
@@ -43,7 +43,7 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
         /// It is also sometimes useful to yield return before we hide the loading screen to make sure that
         /// all the scripts that were possibly created during the process are properly initialized.
         /// </summary>
-        private IEnumerator GeneratorCoroutine(DungeonGenerator generator)
+        private IEnumerator GeneratorCoroutine(DungeonGeneratorGrid2D generator) 
         {
             var stopwatch = new Stopwatch();
 
@@ -61,7 +61,7 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
             HideLoadingScreen();
         }
 
-        public void OnRoomEnter(RoomInstance roomInstance)
+        public void OnRoomEnter(RoomInstanceGrid2D roomInstance)
         {
             nextCurrentRoom = roomInstance;
 
@@ -73,7 +73,7 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
             }
         }
 
-        public void OnRoomLeave(RoomInstance roomInstance)
+        public void OnRoomLeave(RoomInstanceGrid2D roomInstance)
         {
             currentRoom = nextCurrentRoom;
             nextCurrentRoom = null;

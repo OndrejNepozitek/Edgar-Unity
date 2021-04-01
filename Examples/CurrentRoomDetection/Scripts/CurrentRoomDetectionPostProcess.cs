@@ -5,9 +5,9 @@ using UnityEngine.Tilemaps;
 namespace Edgar.Unity.Examples.CurrentRoomDetection
 {
     [CreateAssetMenu(menuName = "Edgar/Examples/Current room detection/Post-process", fileName = "CurrentRoomDetectionPostProcess")]
-    public class CurrentRoomDetectionPostProcess : DungeonGeneratorPostProcessBase
+    public class CurrentRoomDetectionPostProcess : DungeonGeneratorPostProcessBaseGrid2D
     {
-        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
+        public override void Run(GeneratedLevelGrid2D level, LevelDescriptionGrid2D levelDescription)
         {
             foreach (var roomInstance in level.GetRoomInstances())
             {

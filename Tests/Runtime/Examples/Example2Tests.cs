@@ -22,20 +22,20 @@ namespace Edgar.Unity.Tests.Runtime.Examples
         public IEnumerator BasicTest()
         {
             var dungeonGeneratorGameObject = GameObject.Find("Dungeon Generator");
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
             Assert.IsNotNull(dungeonGenerator);
 
             var levelGraph = dungeonGenerator.FixedLevelGraphConfig.LevelGraph;
 
             var generatedLevelGameObject = GameObject.Find("Generated Level");
-            var levelInfo = generatedLevelGameObject.GetComponent<LevelInfo>();
+            var levelInfo = generatedLevelGameObject.GetComponent<LevelInfoGrid2D>();
             Assert.IsNotNull(levelInfo);
             Assert.IsTrue(levelInfo.RoomInstances.Count(x => !x.IsCorridor) == levelGraph.Rooms.Count);
 
             dungeonGenerator.Generate();
             yield return null;
 
-            var levelInfoNew = generatedLevelGameObject.GetComponent<LevelInfo>();
+            var levelInfoNew = generatedLevelGameObject.GetComponent<LevelInfoGrid2D>();
             Assert.IsTrue(levelInfo != levelInfoNew);
             Assert.IsNotNull(levelInfoNew);
             Assert.IsTrue(levelInfoNew.RoomInstances.Count(x => !x.IsCorridor) == levelGraph.Rooms.Count);
@@ -53,7 +53,7 @@ namespace Edgar.Unity.Tests.Runtime.Examples
             };
 
             var dungeonGeneratorGameObject = GameObject.Find("Dungeon Generator");
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
             Assert.IsNotNull(dungeonGenerator);
 
             foreach (var levelGraphName in levelGraphNames)

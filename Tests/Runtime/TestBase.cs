@@ -22,10 +22,10 @@ namespace Edgar.Unity.Tests
             RemoveTestScenesFromBuildSettings();
         }
 
-        protected DungeonGenerator GetDungeonGenerator(string name = "Dungeon Generator")
+        protected DungeonGeneratorGrid2D GetDungeonGenerator(string name = "Dungeon Generator")
         {
             var dungeonGeneratorGameObject = GameObject.Find(name);
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             return dungeonGenerator;
         }

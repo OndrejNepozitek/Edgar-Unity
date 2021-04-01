@@ -4,7 +4,7 @@ using UnityEngine.Tilemaps;
 namespace Edgar.Unity.Edgar.Tests.Runtime.Scenes.TilemapLayersStructure
 {
     //[CreateAssetMenu(menuName = "Edgar/Tests/Tilemap Layers Structure/CustomTilemapLayersHandler")]
-    public class CustomTilemapLayersHandler : TilemapLayersHandlerBase
+    public class CustomTilemapLayersHandler : TilemapLayersHandlerBaseGrid2D
     {
         /// <summary>
         ///  Initializes individual tilemap layers.

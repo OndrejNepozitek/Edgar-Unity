@@ -20,7 +20,7 @@ namespace Edgar.Unity
 
             var collideableTilemapObject = CreateTilemapGameObject("Collideable", gameObject, 2);
             AddCompositeCollider(collideableTilemapObject);
-
+            
             var other1TilemapObject = CreateTilemapGameObject("Other 1", gameObject, 3);
 
             var other2TilemapObject = CreateTilemapGameObject("Other 2", gameObject, 4);

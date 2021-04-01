@@ -3,17 +3,17 @@
 namespace Edgar.Unity.Examples.Example1
 {
     [CreateAssetMenu(menuName = "Edgar/Examples/Example 1/Post-process", fileName = "Example1PostProcess")]
-    public class Example1PostProcess : DungeonGeneratorPostProcessBase
+    public class Example1PostProcess : DungeonGeneratorPostProcessBaseGrid2D
     {
         [Range(0, 1)]
         public float EnemySpawnChance = 0.5f;
 
-        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
+        public override void Run(GeneratedLevelGrid2D level, LevelDescriptionGrid2D levelDescription)
         { 
             HandleEnemies(level);
         }
 
-        private void HandleEnemies(GeneratedLevel level)
+        private void HandleEnemies(GeneratedLevelGrid2D level)
         {
             // Iterate through all the rooms
             foreach (var roomInstance in level.GetRoomInstances())

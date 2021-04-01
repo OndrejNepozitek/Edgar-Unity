@@ -20,7 +20,7 @@ namespace Edgar.Unity.Tests.Runtime
         public void DifferentDoorLengths()
         {
             var dungeonGeneratorGameObject = GameObject.Find("DifferentDoorLengths");
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
             var result = GetResult<DifferentLengthsOfDoors.Result>(exception);
@@ -33,7 +33,7 @@ namespace Edgar.Unity.Tests.Runtime
         public void DifferentDoorLengths2()
         {
             var dungeonGeneratorGameObject = GameObject.Find("DifferentDoorLengths 2");
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
             var result = GetResult<DifferentLengthsOfDoors.Result>(exception);
@@ -46,7 +46,7 @@ namespace Edgar.Unity.Tests.Runtime
         public void TooShortTimeout()
         {
             var dungeonGeneratorGameObject = GameObject.Find("TooShortTimeout");
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
             var result = GetResult<TimeoutLength.Result>(exception);
@@ -59,7 +59,7 @@ namespace Edgar.Unity.Tests.Runtime
         public void NumberOfCycles()
         {
             var dungeonGeneratorGameObject = GameObject.Find("NumberOfCycles");
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
             var result = GetResult<NumberOfCycles.Result>(exception);
@@ -72,7 +72,7 @@ namespace Edgar.Unity.Tests.Runtime
         public void NumberOfRooms()
         {
             var dungeonGeneratorGameObject = GameObject.Find("NumberOfRooms");
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
             var result = GetResult<NumberOfRooms.Result>(exception);
@@ -85,7 +85,7 @@ namespace Edgar.Unity.Tests.Runtime
         public void WrongManualDoors()
         {
             var dungeonGeneratorGameObject = GameObject.Find("WrongManualDoors");
-            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGenerator>();
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
             var result = GetResult<WrongManualDoors.Result>(exception, false);

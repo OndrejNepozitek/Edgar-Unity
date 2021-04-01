@@ -6,7 +6,7 @@ namespace Edgar.Unity.Examples.Resources
 
 #endif
 
-    public class CustomRoomTemplateInitializerExample2 : RoomTemplateInitializerBase
+    public class CustomRoomTemplateInitializerExample2 : RoomTemplateInitializerBaseGrid2D
     {
         public override void Initialize()
         {
@@ -36,7 +36,7 @@ namespace Edgar.Unity.Examples.Resources
         public static void CreateRoomTemplatePrefab()
         {
             // Make sure to use the correct generic parameter - it should be the type of this class
-            RoomTemplateInitializerUtils.CreateRoomTemplatePrefab<CustomRoomTemplateInitializerExample2>();
+            RoomTemplateInitializerUtilsGrid2D.CreateRoomTemplatePrefab<CustomRoomTemplateInitializerExample2>();
         }
         #endif
     }
