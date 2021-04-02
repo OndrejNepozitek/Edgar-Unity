@@ -10,6 +10,6 @@ namespace Edgar.Unity
     public class RoomInfo : MonoBehaviour
     {
         [ReadOnly]
-        public RoomInstance RoomInstance;
+        public RoomInstanceGrid2D RoomInstance;
     }
 }
