@@ -47,7 +47,7 @@ namespace Edgar.Unity
         /// <param name="defaultTilemapLayersHandler">Default tilemap layers handler. Used for the Default mode.</param>
         /// <param name="customTilemapLayersHandler">Custom tilemap layers handler. Used for the Custom mode.</param>
         /// <param name="example">Example game object for tilemaps structure. Used for the FromExample mode.</param>
-        public static void InitializeSharedTilemaps(GeneratedLevelGrid2D level, TilemapLayersStructureMode mode, ITilemapLayersHandlerGrid2D defaultTilemapLayersHandler, ITilemapLayersHandlerGrid2D customTilemapLayersHandler, GameObject example)
+        public static void InitializeSharedTilemaps(GeneratedLevelGrid2D level, TilemapLayersStructureModeGrid2D mode, ITilemapLayersHandlerGrid2D defaultTilemapLayersHandler, ITilemapLayersHandlerGrid2D customTilemapLayersHandler, GameObject example)
         {
             PostProcessUtils.InitializeSharedTilemaps(level, mode, defaultTilemapLayersHandler, customTilemapLayersHandler, example);
         }

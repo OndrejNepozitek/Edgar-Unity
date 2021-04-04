@@ -4,7 +4,7 @@ namespace Edgar.Unity.Diagnostics
 {
     public class TimeoutLength
     {
-        public Result Run(DungeonGeneratorBase dungeonGenerator)
+        public Result Run(DungeonGeneratorBaseGrid2D dungeonGenerator)
         {
             var result = new Result();
             var limit = 3000;

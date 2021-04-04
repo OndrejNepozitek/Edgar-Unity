@@ -18,7 +18,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         public static GameObject GetTilemapsRoot(GameObject roomTemplate)
         {
-            return roomTemplate.transform.Find(GeneratorConstants.TilemapsRootName)?.gameObject ?? roomTemplate;
+            return roomTemplate.transform.Find(GeneratorConstantsGrid2D.TilemapsRootName)?.gameObject ?? roomTemplate;
         }
 
         /// <summary>

@@ -10,7 +10,7 @@ using Vector2Int = UnityEngine.Vector2Int;
 
 namespace Edgar.Unity
 {
-    internal static class GeneratorUtils
+    internal static class GeneratorUtilsGrid2D
     {
         public static GeneratedLevelGrid2D TransformLayout(LayoutGrid2D<RoomBase> layout, LevelDescriptionGrid2D levelDescription, GameObject rootGameObject)
         {
@@ -19,7 +19,7 @@ namespace Edgar.Unity
             var corridorToConnectionMapping = levelDescription.GetCorridorToConnectionMapping();
             
             // Prepare an object to hold instantiated room templates
-            var roomTemplateInstancesRoot = new GameObject(GeneratorConstants.RoomsRootName);
+            var roomTemplateInstancesRoot = new GameObject(GeneratorConstantsGrid2D.RoomsRootName);
             roomTemplateInstancesRoot.transform.parent = rootGameObject.transform;
 
             // Initialize rooms
@@ -40,7 +40,7 @@ namespace Edgar.Unity
 
                 // Correct the position based on the grid
                 // This is important when there is some cell spacing or when the level is isometric
-                var tilemapsHolder = roomTemplateInstance.transform.Find(GeneratorConstants.TilemapsRootName).gameObject;
+                var tilemapsHolder = roomTemplateInstance.transform.Find(GeneratorConstantsGrid2D.TilemapsRootName).gameObject;
                 if (tilemapsHolder != null)
                 {
                     var grid = tilemapsHolder.GetComponent<Grid>();

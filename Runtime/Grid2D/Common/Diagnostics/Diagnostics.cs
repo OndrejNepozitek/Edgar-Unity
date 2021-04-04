@@ -41,7 +41,7 @@ namespace Edgar.Unity.Diagnostics
             {
                 Debug.LogWarning($"<size=17><b>--- Performance diagnostics ---</b></size>");
                 Debug.LogWarning($"This is an automatic diagnostic procedure meant to analyze potential problems with the configuration of the generator.");
-                Debug.LogWarning($"You can see this text because you enabled the \"{nameof(DungeonGeneratorBase.EnableDiagnostics)}\" checkbox.");
+                Debug.LogWarning($"You can see this text because you enabled the \"{nameof(DungeonGeneratorBaseGrid2D.EnableDiagnostics)}\" checkbox.");
                 Debug.LogWarning($"If the performance of the generator is good, you may ignore all the suggestions below.");
                 Debug.LogWarning($"---");
             }

@@ -3,7 +3,7 @@
     /// <summary>
     /// Constants that are used in the generator.
     /// </summary>
-    public static class GeneratorConstants
+    public static class GeneratorConstantsGrid2D
     {
         /// <summary>
         /// Name of the game object that holds tilemaps layers. This name is used both in room templates and in generated levels.

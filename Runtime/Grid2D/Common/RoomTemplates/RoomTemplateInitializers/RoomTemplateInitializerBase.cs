@@ -25,7 +25,7 @@ namespace Edgar.Unity
             }
 
             // Create tilemaps root
-            var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
+            var tilemapsRoot = new GameObject(GeneratorConstantsGrid2D.TilemapsRootName);
             tilemapsRoot.transform.parent = gameObject.transform;
 
             // Init tilemaps

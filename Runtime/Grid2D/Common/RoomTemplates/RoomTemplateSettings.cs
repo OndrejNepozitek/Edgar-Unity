@@ -36,7 +36,7 @@ namespace Edgar.Unity
             }
 
             var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(gameObject);
-            var outlineOverride = new GameObject(GeneratorConstants.OutlineOverrideLayerName);
+            var outlineOverride = new GameObject(GeneratorConstantsGrid2D.OutlineOverrideLayerName);
             outlineOverride.transform.parent = tilemapsRoot.transform;
             outlineOverride.AddComponent<Tilemap>();
             outlineOverride.AddComponent<TilemapRenderer>();
@@ -52,14 +52,14 @@ namespace Edgar.Unity
             }
 
             var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(gameObject);
-            var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideLayerName).gameObject;
+            var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstantsGrid2D.OutlineOverrideLayerName).gameObject;
             PostProcessUtilsGrid2D.Destroy(outlineOverride);
         }
 
         public bool HasOutlineOverride()
         {
             var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(gameObject);
-            var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstants.OutlineOverrideLayerName);
+            var outlineOverride = tilemapsRoot.transform.Find(GeneratorConstantsGrid2D.OutlineOverrideLayerName);
 
             return outlineOverride != null;
         }

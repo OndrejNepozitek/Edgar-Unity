@@ -1,6 +1,6 @@
 ﻿namespace Edgar.Unity
 {
-    public enum TilemapLayersStructureMode
+    public enum TilemapLayersStructureModeGrid2D
     {
         Default = 0,
         FromExample = 1,

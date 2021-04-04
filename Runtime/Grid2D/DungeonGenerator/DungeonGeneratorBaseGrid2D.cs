@@ -11,7 +11,7 @@ namespace Edgar.Unity
     /// <summary>
     /// Base class for various dungeon generators.
     /// </summary>
-    public abstract class DungeonGeneratorBase : LevelGeneratorBase<DungeonGeneratorPayloadGrid2D>
+    public abstract class DungeonGeneratorBaseGrid2D : LevelGeneratorBase<DungeonGeneratorPayloadGrid2D>
     {
         [Expandable]
         public FixedLevelGraphConfigGrid2D FixedLevelGraphConfig;
@@ -233,17 +233,17 @@ namespace Edgar.Unity
             {
                 if (version <= 1)
                 {
-                    PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Default;
+                    PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureModeGrid2D.Default;
                 }
                 else
                 {
                     if (PostProcessConfig.TilemapLayersHandler != null)
                     {
-                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Custom;
+                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureModeGrid2D.Custom;
                     }
                     else
                     {
-                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureMode.Default;
+                        PostProcessConfig.TilemapLayersStructure = TilemapLayersStructureModeGrid2D.Default;
                     }
                 }
             }

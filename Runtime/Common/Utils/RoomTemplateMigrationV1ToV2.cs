@@ -24,9 +24,9 @@ namespace Edgar.Unity
                 gameObject.AddComponent<RoomTemplateSettingsGrid2D>();
             }
 
-            if (transform.Find(GeneratorConstants.TilemapsRootName) != null)
+            if (transform.Find(GeneratorConstantsGrid2D.TilemapsRootName) != null)
             {
-                var oldRoot = transform.Find(GeneratorConstants.TilemapsRootName).gameObject;
+                var oldRoot = transform.Find(GeneratorConstantsGrid2D.TilemapsRootName).gameObject;
 
                 foreach (var childTransform in oldRoot.transform.Cast<Transform>().ToList())
                 {
@@ -42,7 +42,7 @@ namespace Edgar.Unity
             }
 
             // Create tilemaps root
-            var tilemapsRoot = new GameObject(GeneratorConstants.TilemapsRootName);
+            var tilemapsRoot = new GameObject(GeneratorConstantsGrid2D.TilemapsRootName);
             tilemapsRoot.AddComponent<Grid>();
             tilemapsRoot.transform.parent = gameObject.transform;
             var tilemaps = new List<Tilemap>();

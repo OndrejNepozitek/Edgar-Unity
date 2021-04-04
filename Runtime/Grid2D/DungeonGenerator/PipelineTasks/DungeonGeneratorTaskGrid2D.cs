@@ -53,7 +53,7 @@ namespace Edgar.Unity
             // The LevelDescription class must be converted to MapDescription
             var levelDescriptionGrid2D = levelDescription.GetLevelDescription();
             levelDescriptionGrid2D.MinimumRoomDistance = 1;
-            levelDescriptionGrid2D.RoomTemplateRepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride);
+            levelDescriptionGrid2D.RoomTemplateRepeatModeOverride = GeneratorUtilsGrid2D.GetRepeatMode(config.RepeatModeOverride);
 
             var configuration = new GraphBasedGeneratorConfiguration<RoomBase>()
             {
@@ -93,7 +93,7 @@ namespace Edgar.Unity
             }
 
             // Transform the level to its Unity representation
-            var generatedLevel = GeneratorUtils.TransformLayout(layout, levelDescription, rootGameObject); 
+            var generatedLevel = GeneratorUtilsGrid2D.TransformLayout(layout, levelDescription, rootGameObject); 
 
             var stats = new GeneratorStats()
             {

@@ -8,7 +8,7 @@ namespace Edgar.Unity
     {
         public bool InitializeSharedTilemaps = true;
 
-        public TilemapLayersStructureMode TilemapLayersStructure = TilemapLayersStructureMode.Default;
+        public TilemapLayersStructureModeGrid2D TilemapLayersStructure = TilemapLayersStructureModeGrid2D.Default;
 
         [ConditionalHide(nameof(IsTilemapsCustom))]
 #pragma warning disable 618
@@ -28,8 +28,8 @@ namespace Edgar.Unity
 
         public bool DisableRoomTemplatesColliders = true;
 
-        private bool IsTilemapsFromExample => TilemapLayersStructure == TilemapLayersStructureMode.FromExample;
+        private bool IsTilemapsFromExample => TilemapLayersStructure == TilemapLayersStructureModeGrid2D.FromExample;
 
-        private bool IsTilemapsCustom => TilemapLayersStructure == TilemapLayersStructureMode.Custom;
+        private bool IsTilemapsCustom => TilemapLayersStructure == TilemapLayersStructureModeGrid2D.Custom;
     }
 }

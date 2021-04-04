@@ -15,6 +15,6 @@ namespace Edgar.Unity
 
         public GeneratorStats GeneratorStats { get; set; }
 
-        public DungeonGeneratorBase DungeonGenerator { get; set; }
+        public DungeonGeneratorBaseGrid2D DungeonGenerator { get; set; }
     }
 }
