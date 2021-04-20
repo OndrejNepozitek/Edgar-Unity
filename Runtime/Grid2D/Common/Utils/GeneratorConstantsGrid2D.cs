@@ -1,8 +1,8 @@
-﻿namespace Edgar.Unity
+namespace Edgar.Unity
 {
-    /// <summary>
+    /// <remarks>
     /// Constants that are used in the generator.
-    /// </summary>
+    /// </remarks>
     public static class GeneratorConstantsGrid2D
     {
         /// <summary>
