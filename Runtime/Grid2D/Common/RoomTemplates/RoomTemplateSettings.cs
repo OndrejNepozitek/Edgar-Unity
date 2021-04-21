@@ -40,7 +40,7 @@ namespace Edgar.Unity
             outlineOverride.transform.parent = tilemapsRoot.transform;
             outlineOverride.AddComponent<Tilemap>();
             outlineOverride.AddComponent<TilemapRenderer>();
-            outlineOverride.AddComponent<OutlineOverride>();
+            outlineOverride.AddComponent<OutlineOverrideGrid2D>();
             outlineOverride.GetComponent<TilemapRenderer>().sortingOrder = 1000;
         }
 
