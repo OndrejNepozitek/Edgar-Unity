@@ -1,12 +1,6 @@
-﻿using System;
-
-namespace Edgar.Unity
+﻿namespace Edgar.Unity
 {
-    /// <summary>
-    ///     Represents a payload with an instance of a random numbers generator.
-    /// </summary>
-    public interface IRandomGeneratorPayload
-    {
-        Random Random { get; set; }
-    }
+    /*
+     * Empty file that is here to make updating to future versions of the asset easier.
+     */
 }

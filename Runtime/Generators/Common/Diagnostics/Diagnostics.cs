@@ -11,13 +11,9 @@ namespace Edgar.Unity.Diagnostics
         {
             var results = new List<IDiagnosticResult>();
 
-            if (payload is IGraphBasedGeneratorPayload graphBasedPayload)
-            {
-                results.AddRange(Run(graphBasedPayload.LevelDescription));
-            }
-
             if (payload is DungeonGeneratorPayload dungeonGeneratorPayload)
             {
+                results.AddRange(Run(dungeonGeneratorPayload.LevelDescription));
                 results.Add(new TimeoutLength().Run(dungeonGeneratorPayload.DungeonGenerator));
             }
 
