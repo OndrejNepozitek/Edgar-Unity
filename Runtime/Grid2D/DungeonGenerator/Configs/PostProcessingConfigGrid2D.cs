@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Edgar.Unity
 {
     [Serializable]
-    public class PostProcessConfigGrid2D
+    public class PostProcessingConfigGrid2D
     {
         public bool InitializeSharedTilemaps = true;
 

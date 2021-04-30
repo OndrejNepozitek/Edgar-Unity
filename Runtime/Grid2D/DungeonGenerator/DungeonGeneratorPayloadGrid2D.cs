@@ -9,7 +9,7 @@ namespace Edgar.Unity
     {
         public LevelDescriptionGrid2D LevelDescription { get; set; }
 
-        public GeneratedLevelGrid2D GeneratedLevel { get; set; }
+        public DungeonGeneratorLevelGrid2D GeneratedLevel { get; set; }
 
         public Random Random { get; set; }
 

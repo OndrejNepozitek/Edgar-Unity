@@ -20,7 +20,7 @@ namespace Edgar.Unity
         public DungeonGeneratorConfigGrid2D GeneratorConfig;
 
         [Expandable]
-        public PostProcessConfigGrid2D PostProcessConfig;
+        public PostProcessingConfigGrid2D PostProcessConfig;
 
         // TODO(rename):
         [ExpandableScriptableObject(CanFold = false)]
@@ -96,12 +96,19 @@ namespace Edgar.Unity
 
         protected virtual IPipelineTask<DungeonGeneratorPayloadGrid2D> GetPostProcessingTask()
         {
-            var customPostProcessTasks = !DisableCustomPostProcessing
-                ? CustomPostProcessTasks
 #pragma warning disable 618
+            var postProcessingTasks = !DisableCustomPostProcessing
+                ? CustomPostProcessTasks
                 : new List<DungeonGeneratorPostProcessBase>();
 #pragma warning restore 618
-            return new PostProcessTaskGrid2D(PostProcessConfig, () => new DungeonTilemapLayersHandlerGrid2D(), customPostProcessTasks);
+
+            var postProcessingComponents = GetComponents<DungeonGeneratorPostProcessingComponentGrid2D>().ToList();
+
+            return new PostProcessingTaskGrid2D(
+                PostProcessConfig,
+                () => new DungeonTilemapLayersHandlerGrid2D(),
+                postProcessingTasks,
+                postProcessingComponents);
         }
 
         protected virtual DungeonGeneratorPayloadGrid2D InitializePayload()

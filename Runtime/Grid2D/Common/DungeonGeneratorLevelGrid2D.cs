@@ -17,9 +17,9 @@ namespace Edgar.Unity
     /// The GeneratedLevel class is now obsolete and will be removed in a future release.
     /// When that happens, the implementation of GeneratedLevel will move to this file.
     /// </remarks>
-    public class GeneratedLevelGrid2D : GeneratedLevel
+    public class DungeonGeneratorLevelGrid2D : GeneratedLevel
     {
-        public GeneratedLevelGrid2D(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject) : base(roomInstances, mapLayout, rootGameObject)
+        public DungeonGeneratorLevelGrid2D(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject, LevelDescriptionGrid2D levelDescription) : base(roomInstances, mapLayout, rootGameObject, levelDescription)
         {
         }
     }

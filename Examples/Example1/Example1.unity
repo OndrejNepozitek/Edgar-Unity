@@ -55463,6 +55463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629689261}
   - component: {fileID: 1629689260}
+  - component: {fileID: 1629689262}
   m_Layer: 0
   m_Name: Dungeon Generator
   m_TagString: Untagged
@@ -55483,6 +55484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: e83360f8587f2824c859dbb12125395f, type: 2}
     UseCorridors: 1
@@ -55500,8 +55502,7 @@ MonoBehaviour:
     CenterGrid: 1
     DisableRoomTemplatesRenderers: 1
     DisableRoomTemplatesColliders: 1
-  CustomPostProcessTasks:
-  - {fileID: 11400000, guid: 7f55404d70a5023419dac6625fd37d39, type: 2}
+  CustomPostProcessTasks: []
   OtherConfig:
     UseRandomSeed: 1
     RandomGeneratorSeed: 0
@@ -55512,6 +55513,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!4 &1629689261
 Transform:
   m_ObjectHideFlags: 0
@@ -55526,6 +55528,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1629689262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629689259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a33d38890ad184e98d89ec71e498d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemySpawnChance: 0.5
 --- !u!1 &1634187943
 GameObject:
   m_ObjectHideFlags: 0

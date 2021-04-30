@@ -2,14 +2,16 @@
 
 namespace Edgar.Unity.Examples.Example1
 {
-    [CreateAssetMenu(menuName = "Edgar/Examples/Example 1/Post-process", fileName = "Example1PostProcess")]
-    public class Example1PostProcess : DungeonGeneratorPostProcessingGrid2D
+    /// <summary>
+    /// The logic in this class is the same as in <see cref="Example1PostProcess"/> but implemented as a component rather than a scriptable object.
+    /// </summary>
+    public class Example1PostProcessingComponent : DungeonGeneratorPostProcessingComponentGrid2D
     {
         [Range(0, 1)]
         public float EnemySpawnChance = 0.5f;
 
         public override void Run(DungeonGeneratorLevelGrid2D level)
-        { 
+        {
             HandleEnemies(level);
         }
 

@@ -15,18 +15,24 @@ namespace Edgar.Unity
     public class GeneratedLevel
     {
         /// <summary>
-        /// GameObject that hold the generated level.
+        /// GameObject that holds the generated level.
         /// </summary>
         public GameObject RootGameObject { get; }
+
+        /// <summary>
+        /// TODO: should this be here?
+        /// </summary>
+        public LevelDescriptionGrid2D LevelDescription { get; }
 
         private readonly LayoutGrid2D<RoomBase> mapLayout;
         private readonly Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances;
 
-        public GeneratedLevel(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject)
+        public GeneratedLevel(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject, LevelDescriptionGrid2D levelDescription)
         {
             this.roomInstances = roomInstances;
             this.mapLayout = mapLayout;
             RootGameObject = rootGameObject;
+            LevelDescription = levelDescription;
         }
 
         /// <summary>

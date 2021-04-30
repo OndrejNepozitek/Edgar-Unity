@@ -12,7 +12,7 @@ namespace Edgar.Unity
 {
     internal static class GeneratorUtilsGrid2D
     {
-        public static GeneratedLevelGrid2D TransformLayout(LayoutGrid2D<RoomBase> layout, LevelDescriptionGrid2D levelDescription, GameObject rootGameObject)
+        public static DungeonGeneratorLevelGrid2D TransformLayout(LayoutGrid2D<RoomBase> layout, LevelDescriptionGrid2D levelDescription, GameObject rootGameObject)
         {
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
@@ -83,7 +83,7 @@ namespace Edgar.Unity
             levelInfo = rootGameObject.AddComponent<LevelInfoGrid2D>();
             levelInfo.RoomInstances = layoutData.Values.ToList();
 
-            return new GeneratedLevelGrid2D(layoutData, layout, rootGameObject);
+            return new DungeonGeneratorLevelGrid2D(layoutData, layout, rootGameObject, levelDescription);
         }
 
         private static List<DoorInstanceGrid2D> TransformDoorInfo(IEnumerable<LayoutDoorGrid2D<RoomBase>> doorInfos, Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances)
