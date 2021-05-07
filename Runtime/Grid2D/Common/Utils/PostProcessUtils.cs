@@ -280,16 +280,11 @@ namespace Edgar.Unity
         /// <param name="level"></param>
         public static void DisableRoomTemplatesRenderers(GeneratedLevel level)
         {
+            // Iterate through all the rooms
             foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-                var tilemaps = GetTilemaps(roomTemplateInstance, x => x.IgnoreWhenDisablingRenderers);
-
-                foreach (var tilemap in tilemaps)
-                {
-                    var tilemapRenderer = tilemap.GetComponent<TilemapRenderer>();
-                    Destroy(tilemapRenderer);
-                }
+                PostProcessUtilsGrid2D.DisableRoomTemplateRenderers(roomTemplateInstance);
             }
         }
 
@@ -304,32 +299,11 @@ namespace Edgar.Unity
             foreach (var roomInstance in level.GetRoomInstances())
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-                var tilemaps = GetTilemaps(roomTemplateInstance, x => x.IgnoreWhenDisablingColliders);
-
-                foreach (var tilemap in tilemaps)
-                {
-                    // Iterate through all the colliders
-                    foreach (var collider in tilemap.GetComponents<Collider2D>())
-                    {
-                        // If the collider is not used by composite collider and it is not a trigger, destroy it
-                        if (!collider.usedByComposite && !collider.isTrigger)
-                        {
-                            Destroy(collider);
-                        } 
-                        else if (collider.usedByComposite)
-                        {
-                            // If the collider is used by composite but that composite does not exist or is not a trigger, destroy it
-                            if (collider.composite == null || !collider.composite.isTrigger)
-                            {
-                                Destroy(collider);
-                            }
-                        }
-                    }
-                }
+                PostProcessUtilsGrid2D.DisableRoomTemplateColliders(roomTemplateInstance);
             }
         }
 
-        private static List<Tilemap> GetTilemaps(GameObject gameObject, Predicate<IgnoreTilemap> excludePredicate)
+        internal static List<Tilemap> GetTilemaps(GameObject gameObject, Predicate<IgnoreTilemap> excludePredicate)
         {
             return RoomTemplateUtilsGrid2D
                 .GetTilemaps(gameObject)

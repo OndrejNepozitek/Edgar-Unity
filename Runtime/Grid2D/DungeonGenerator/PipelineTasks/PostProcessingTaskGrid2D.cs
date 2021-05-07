@@ -110,7 +110,7 @@ namespace Edgar.Unity
             {
                 callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateRenderers, (level, _) =>
                 {
-                    PostProcessUtilsGrid2D.DisableRoomTemplatesRenderers(level);
+                    PostProcessUtilsGrid2D.DisableRoomTemplateRenderers(level);
                 });
             }
 
@@ -118,7 +118,7 @@ namespace Edgar.Unity
             {
                 callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateColliders, (level, _) =>
                 {
-                    PostProcessUtilsGrid2D.DisableRoomTemplatesColliders(level);
+                    PostProcessUtilsGrid2D.DisableRoomTemplateColliders(level);
                 });
             }
         }

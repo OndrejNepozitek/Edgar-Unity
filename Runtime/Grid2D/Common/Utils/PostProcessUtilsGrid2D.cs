@@ -108,9 +108,23 @@ namespace Edgar.Unity
         /// This method is useful when using shared tilemaps.
         /// </remarks>
         /// <param name="level"></param>
-        public static void DisableRoomTemplatesRenderers(GeneratedLevel level)
+        public static void DisableRoomTemplateRenderers(GeneratedLevel level)
         {
             PostProcessUtils.DisableRoomTemplatesRenderers(level);
+        }
+
+        /// <summary>
+        /// Disables tilemap renderers in a given room template.
+        /// </summary>
+        public static void DisableRoomTemplateRenderers(GameObject roomTemplate)
+        {
+            var tilemaps = PostProcessUtils.GetTilemaps(roomTemplate, x => x.IgnoreWhenDisablingRenderers);
+
+            foreach (var tilemap in tilemaps)
+            {
+                var tilemapRenderer = tilemap.GetComponent<TilemapRenderer>();
+                Destroy(tilemapRenderer);
+            }
         }
 
         /// <summary>
@@ -118,9 +132,40 @@ namespace Edgar.Unity
         /// The goal is to try to keep triggers functioning.
         /// </summary>
         /// <param name="level"></param>
-        public static void DisableRoomTemplatesColliders(GeneratedLevel level)
+        public static void DisableRoomTemplateColliders(GeneratedLevel level)
         {
             PostProcessUtils.DisableRoomTemplatesColliders(level);
+        }
+
+
+        /// <summary>
+        /// Disables colliders of individual tilemaps in a given room template.
+        /// The goal is to try to keep triggers functioning.
+        /// </summary>
+        public static void DisableRoomTemplateColliders(GameObject roomTemplate)
+        {
+            var tilemaps = PostProcessUtils.GetTilemaps(roomTemplate, x => x.IgnoreWhenDisablingColliders);
+
+            foreach (var tilemap in tilemaps)
+            {
+                // Iterate through all the colliders
+                foreach (var collider in tilemap.GetComponents<Collider2D>())
+                {
+                    // If the collider is not used by composite collider and it is not a trigger, destroy it
+                    if (!collider.usedByComposite && !collider.isTrigger)
+                    {
+                        Destroy(collider);
+                    }
+                    else if (collider.usedByComposite)
+                    {
+                        // If the collider is used by composite but that composite does not exist or is not a trigger, destroy it
+                        if (collider.composite == null || !collider.composite.isTrigger)
+                        {
+                            Destroy(collider);
+                        }
+                    }
+                }
+            }
         }
 
         // TODO: where to put this?
