@@ -71,7 +71,7 @@ namespace Edgar.Unity.Diagnostics
             // TODO: this is not optimal - the argument exception might be something different than invalid manual doors
             catch (ArgumentException e)
             {
-                if (doorMode is ManualDoorModeGrid2D)
+                if (doorMode is ManualDoorModeGrid2D manualDoorMode && manualDoorMode.Doors != null)
                 {
                     result.AddError($"It seems like some of the manual doors are not located on the outline of the room template.");
                 }
