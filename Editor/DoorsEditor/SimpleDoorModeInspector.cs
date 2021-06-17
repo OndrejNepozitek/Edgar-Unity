@@ -43,9 +43,11 @@ namespace Edgar.Unity.Editor
             var grid = gameObject.GetComponentInChildren<Grid>();
             var doorLines = doors.SimpleDoorModeData.GetDoorLines(doors);
 
+            var color = Color.red;
+
             foreach (var doorLine in doorLines) 
             {
-                DoorsInspectorUtils.DrawDoorLine(doorLine, grid);
+                DoorsInspectorUtils.DrawDoorLine(doorLine, grid, color);
             } 
         }
     }

@@ -15,9 +15,11 @@ namespace Edgar.Unity.Editor
             var gameObject = doors.transform.gameObject;
             var grid = gameObject.GetComponentInChildren<Grid>();
 
+            var color = Color.red;
+
             foreach (var doorLine in doors.HybridDoorModeData.DoorLines)
             {
-                DoorsInspectorUtils.DrawDoorLine(doorLine, grid);
+                DoorsInspectorUtils.DrawDoorLine(doorLine, grid, color);
             }
         }
 
@@ -49,7 +51,9 @@ namespace Edgar.Unity.Editor
                 Length = length,
             };
 
-            DoorsInspectorUtils.DrawDoorLine(doorLine, grid);
+            var color = Color.red;
+
+            DoorsInspectorUtils.DrawDoorLine(doorLine, grid, color);
         }
 
         protected override void AddDoor(Vector3Int from, Vector3Int to)

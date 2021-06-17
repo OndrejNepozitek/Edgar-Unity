@@ -62,7 +62,9 @@ namespace Edgar.Unity.Editor
                 Length = length,
             };
 
-            DoorsInspectorUtils.DrawDoorLine(doorLine, grid);
+            var color = Color.red;
+
+            DoorsInspectorUtils.DrawDoorLine(doorLine, grid, color);
         }
 
         protected override void AddDoor(Vector3Int from, Vector3Int to)

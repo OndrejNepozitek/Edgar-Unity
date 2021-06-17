@@ -5,7 +5,7 @@ namespace Edgar.Unity.Editor
 {
     public static class DoorsInspectorUtils
     {
-        public static void DrawDoorLine(DoorLine doorLine, Grid grid)
+        public static void DrawDoorLine(DoorLine doorLine, Grid grid, Color color, string label = null)
         {
             var line = new OrthogonalLineGrid2D(doorLine.From.ToCustomIntVector2(), doorLine.To.ToCustomIntVector2());
             var fromSolid = line.From;
@@ -22,15 +22,22 @@ namespace Edgar.Unity.Editor
 
             if (doorsCount > 0)
             {
+                var finalLabel = $"{doorsCount} door{(doorsCount != 1 ? "s" : "")}\nSize {doorLine.Length}";
+
+                if (label != null)
+                {
+                    finalLabel += $"\n{label}";
+                }
+
                 GridUtils.DrawRectangleOutline(grid, fromSolid.ToUnityIntVector3(), toSolid.ToUnityIntVector3(),
-                    Color.red, new Vector2(0.1f, 0.1f), label: $"{doorsCount} door{(doorsCount != 1 ? "s" : "")}\nSize {doorLine.Length}");
+                    color, new Vector2(0.1f, 0.1f), label: finalLabel);
                 GridUtils.DrawRectangleOutline(grid, fromSolid.ToUnityIntVector3(), toDotted.ToUnityIntVector3(),
-                    Color.red, new Vector2(0.1f, 0.1f), isDotted: true);
+                    color, new Vector2(0.1f, 0.1f), isDotted: true);
             }
             else
             {
                 GridUtils.DrawRectangleOutline(grid, fromSolid.ToUnityIntVector3(), toDotted.ToUnityIntVector3(),
-                    Color.red, new Vector2(0.1f, 0.1f), isDotted: true, label: "Too\nsmall");
+                    color, new Vector2(0.1f, 0.1f), isDotted: true, label: "Too\nsmall");
             }
         }
     }
