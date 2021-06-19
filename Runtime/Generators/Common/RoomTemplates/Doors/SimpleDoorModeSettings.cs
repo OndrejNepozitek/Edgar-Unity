@@ -14,5 +14,7 @@ namespace Edgar.Unity
 
         [Min(0)]
         public int Padding2 = 1;
+
+        public bool Enabled = true;
     }
 }

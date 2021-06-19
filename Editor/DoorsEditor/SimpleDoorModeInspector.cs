@@ -27,8 +27,8 @@ namespace Edgar.Unity.Editor
             } 
             else if (doors.SimpleDoorModeData.Mode == SimpleDoorModeData.SettingsMode.DifferentHorizontalAndVertical)
             {
-                EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeData.VerticalDoors)));
-                EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeData.HorizontalDoors)));
+                EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeData.VerticalDoors)), true);
+                EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeData.HorizontalDoors)), true);
             }
         }
 

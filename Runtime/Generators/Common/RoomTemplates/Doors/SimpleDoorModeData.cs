@@ -60,7 +60,14 @@ namespace Edgar.Unity
                     var settings = GetSettings(line);
 
                     if (line.Length - settings.Padding1 - settings.Padding2 < settings.Length - 1)
+                    {
                         continue;
+                    }
+                    
+                    if (!settings.Enabled)
+                    {
+                        continue;
+                    }
 
                     if (line.GetDirection() == OrthogonalLineGrid2D.Direction.Bottom ||
                         line.GetDirection() == OrthogonalLineGrid2D.Direction.Left)
@@ -99,17 +106,8 @@ namespace Edgar.Unity
                     Padding2 = data.DistanceFromCorners,
                 };
             }
-            else
-            {
-                if (line.GetDirectionVector().X != 0)
-                {
-                    return HorizontalDoors;
-                }
-                else
-                {
-                    return VerticalDoors;
-                }
-            }
+
+            return line.GetDirectionVector().X != 0 ? HorizontalDoors : VerticalDoors;
         }
     }
 }
