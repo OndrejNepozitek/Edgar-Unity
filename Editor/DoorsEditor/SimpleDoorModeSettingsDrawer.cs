@@ -28,8 +28,8 @@ namespace Edgar.Unity.Editor
             var labels = new[]
             {
                 new GUIContent("Length:"),
-                new GUIContent("Padding left:"),
-                new GUIContent("Padding right:")
+                new GUIContent("Margin left:"),
+                new GUIContent("Margin right:")
             };
 
             if (keywords.Any(x => property.propertyPath.Contains(x)))
@@ -37,16 +37,16 @@ namespace Edgar.Unity.Editor
                 labels = new[]
                 {
                     new GUIContent("Length:"),
-                    new GUIContent("Padding bottom:"),
-                    new GUIContent("Padding top:")
+                    new GUIContent("Margin bottom:"),
+                    new GUIContent("Margin top:")
                 };
             }
 
             var properties = new[]
             {
                 property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Length)),
-                property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Padding1)),
-                property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Padding2)),
+                property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Margin1)),
+                property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Margin2)),
             };
 
             var checkboxRect = new Rect(position.x - CheckboxOffset, position.y, position.width, PropertyHeight);

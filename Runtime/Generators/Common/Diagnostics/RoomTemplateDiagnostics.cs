@@ -48,7 +48,7 @@ namespace Edgar.Unity.Diagnostics
         /// <param name="outline"></param>
         /// <param name="doorMode"></param>
         /// <returns></returns>
-        public static ActionResult CheckDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode)
+        public static ActionResult CheckDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode, Doors.DoorMode selectedDoorMode)
         {
             var result = new ActionResult();
 
@@ -58,13 +58,13 @@ namespace Edgar.Unity.Diagnostics
 
                 if (doors.Count == 0)
                 {
-                    if (doorMode is SimpleDoorModeGrid2D)
+                    if (selectedDoorMode == Doors.DoorMode.Simple)
                     {
                         result.AddError($"The simple door mode is used but there are no valid door positions. Try to decrease door length and/or corner distance.");
                     }
                     else
                     {
-                        result.AddError($"The manual door mode is used but no doors were added.");
+                        result.AddError($"The manual/hybrid door mode is used but no doors were added.");
                     }
                 }
             }
@@ -104,7 +104,7 @@ namespace Edgar.Unity.Diagnostics
 
             var doorMode = doors.GetDoorMode();
 
-            return CheckDoors(outline, doorMode);
+            return CheckDoors(outline, doorMode, doors.SelectedMode);
         }
 
         public static ActionResult CheckWrongManualDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode, out int differentLengthsCount)

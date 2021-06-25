@@ -59,7 +59,7 @@ namespace Edgar.Unity
                     var line = originalLine;
                     var settings = GetSettings(line);
 
-                    if (line.Length - settings.Padding1 - settings.Padding2 < settings.Length - 1)
+                    if (line.Length - settings.Margin1 - settings.Margin2 < settings.Length - 1)
                     {
                         continue;
                     }
@@ -75,7 +75,7 @@ namespace Edgar.Unity
                         line = line.SwitchOrientation();
                     }
 
-                    var doorLineTemp = line.Shrink(settings.Padding1, settings.Padding2);
+                    var doorLineTemp = line.Shrink(settings.Margin1, settings.Margin2);
                     var doorLine = new DoorLine()
                     {
                         From = doorLineTemp.From.ToUnityIntVector3(),
@@ -102,8 +102,8 @@ namespace Edgar.Unity
                 return new SimpleDoorModeSettings()
                 {
                     Length = data.DoorLength,
-                    Padding1 = data.DistanceFromCorners,
-                    Padding2 = data.DistanceFromCorners,
+                    Margin1 = data.DistanceFromCorners,
+                    Margin2 = data.DistanceFromCorners,
                 };
             }
 

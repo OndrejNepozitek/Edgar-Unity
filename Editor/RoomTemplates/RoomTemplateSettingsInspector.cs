@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Edgar.Unity.Editor
 {
     [CustomEditor(typeof(RoomTemplateSettings))]
-    public class RoomTemplateInspector : UnityEditor.Editor
+    public class RoomTemplateSettingsInspector : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
         {

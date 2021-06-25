@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Edgar.Unity
 {
@@ -10,10 +11,12 @@ namespace Edgar.Unity
         public int Length = 1;
 
         [Min(0)]
-        public int Padding1 = 1;
+        [FormerlySerializedAs("Padding1")]
+        public int Margin1 = 1;
 
         [Min(0)]
-        public int Padding2 = 1;
+        [FormerlySerializedAs("Padding2")]
+        public int Margin2 = 1;
 
         public bool Enabled = true;
     }

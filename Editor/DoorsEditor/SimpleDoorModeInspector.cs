@@ -23,7 +23,7 @@ namespace Edgar.Unity.Editor
             if (doors.SimpleDoorModeData.Mode == SimpleDoorModeData.SettingsMode.Basic)
             {
                 EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeData.DoorLength)), 1, 10, "Door length");
-                EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeData.DistanceFromCorners)), 0, 10, "Corner distance");
+                EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeData.DistanceFromCorners)), 0, 10, "Margin");
             } 
             else if (doors.SimpleDoorModeData.Mode == SimpleDoorModeData.SettingsMode.DifferentHorizontalAndVertical)
             {
