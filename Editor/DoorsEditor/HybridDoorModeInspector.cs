@@ -1,4 +1,5 @@
-﻿using Edgar.Geometry;
+﻿using System.Linq;
+using Edgar.Geometry;
 using UnityEditor;
 using UnityEngine;
 
@@ -66,6 +67,11 @@ namespace Edgar.Unity.Editor
                 Length = length,
             };
             var line = new OrthogonalLineGrid2D(from.ToCustomIntVector2(), to.ToCustomIntVector2());
+
+            if (doors.HybridDoorModeData.DoorLines.Any(x => x == doorLine))
+            {
+                return;
+            }
 
             if (line.Length >= length - 1)
             {

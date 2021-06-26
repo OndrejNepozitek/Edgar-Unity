@@ -30,5 +30,43 @@ namespace Edgar.Unity
                 null,
                 DoorType.Undirected);
         }
+
+        #region Equals
+
+        protected bool Equals(DoorLine other)
+        {
+            return From.Equals(other.From) && To.Equals(other.To) && Length == other.Length;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((DoorLine)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = From.GetHashCode();
+                hashCode = (hashCode * 397) ^ To.GetHashCode();
+                hashCode = (hashCode * 397) ^ Length;
+                return hashCode;
+            }
+        }
+
+        public static bool operator ==(DoorLine left, DoorLine right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(DoorLine left, DoorLine right)
+        {
+            return !Equals(left, right);
+        }
+
+        #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Edgar.GraphBasedGenerator.Grid2D.Exceptions;
 using UnityEditor;
 using UnityEngine;
 
@@ -51,17 +52,20 @@ namespace Edgar.Unity.Editor
 
             try
             {
-                var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
-                var doorPositions = doors.GetDoorMode().GetDoors(polygon);
-
-                if (doorPositions.Count != doors.ManualDoorModeData.DoorsList.Count)
+                if (doors.SelectedMode == Doors.DoorMode.Manual)
                 {
-                    EditorGUILayout.HelpBox(
-                        "There seems to be a door of length 1 that is at the corner of the outline, which is currently not supported. Either use outline override to change the outline or remove the door position.",
-                        MessageType.Error);
+                    var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
+                    var doorPositions = doors.GetDoorMode().GetDoors(polygon);
+
+                    if (doorPositions.Count != doors.ManualDoorModeData.DoorsList.Count)
+                    {
+                        EditorGUILayout.HelpBox(
+                            "There seems to be a door of length 1 that is at the corner of the outline, which is currently not supported. Either use outline override to change the outline or remove the door position.",
+                            MessageType.Error);
+                    }
                 }
             }
-            catch (ArgumentException)
+            catch (DoorModeException)
             {
 
             }
