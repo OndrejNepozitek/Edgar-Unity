@@ -373,13 +373,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Diagnostics.ActionResult.AddError
   nameWithType: ActionResult.AddError
-- uid: Edgar.Unity.Diagnostics.ActionResult.AddErrors(System.Collections.Generic.IEnumerable{System.String})
+- uid: Edgar.Unity.Diagnostics.ActionResult.AddErrors(IEnumerable{System.String})
   name: AddErrors(IEnumerable<String>)
-  href: master/api/Edgar.Unity.Diagnostics.ActionResult.html#Edgar_Unity_Diagnostics_ActionResult_AddErrors_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:Edgar.Unity.Diagnostics.ActionResult.AddErrors(System.Collections.Generic.IEnumerable{System.String})
+  href: master/api/Edgar.Unity.Diagnostics.ActionResult.html#Edgar_Unity_Diagnostics_ActionResult_AddErrors_IEnumerable_System_String__
+  commentId: M:Edgar.Unity.Diagnostics.ActionResult.AddErrors(IEnumerable{System.String})
   name.vb: AddErrors(IEnumerable(Of String))
-  fullName: Edgar.Unity.Diagnostics.ActionResult.AddErrors(System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: Edgar.Unity.Diagnostics.ActionResult.AddErrors(System.Collections.Generic.IEnumerable(Of System.String))
+  fullName: Edgar.Unity.Diagnostics.ActionResult.AddErrors(IEnumerable<System.String>)
+  fullName.vb: Edgar.Unity.Diagnostics.ActionResult.AddErrors(IEnumerable(Of System.String))
   nameWithType: ActionResult.AddErrors(IEnumerable<String>)
   nameWithType.vb: ActionResult.AddErrors(IEnumerable(Of String))
 - uid: Edgar.Unity.Diagnostics.ActionResult.AddErrors*
@@ -434,13 +434,13 @@ references:
   commentId: T:Edgar.Unity.Diagnostics.Diagnostics
   fullName: Edgar.Unity.Diagnostics.Diagnostics
   nameWithType: Diagnostics
-- uid: Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(System.Collections.Generic.List{Edgar.Unity.Diagnostics.IDiagnosticResult},Edgar.Unity.RoomBase,System.Collections.Generic.List{RoomTemplateGrid2D})
+- uid: Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(List{Edgar.Unity.Diagnostics.IDiagnosticResult},Edgar.Unity.RoomBase,List{RoomTemplateGrid2D})
   name: DisplayNoSuitableShapeResults(List<IDiagnosticResult>, RoomBase, List<RoomTemplateGrid2D>)
-  href: master/api/Edgar.Unity.Diagnostics.Diagnostics.html#Edgar_Unity_Diagnostics_Diagnostics_DisplayNoSuitableShapeResults_System_Collections_Generic_List_Edgar_Unity_Diagnostics_IDiagnosticResult__Edgar_Unity_RoomBase_System_Collections_Generic_List_RoomTemplateGrid2D__
-  commentId: M:Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(System.Collections.Generic.List{Edgar.Unity.Diagnostics.IDiagnosticResult},Edgar.Unity.RoomBase,System.Collections.Generic.List{RoomTemplateGrid2D})
+  href: master/api/Edgar.Unity.Diagnostics.Diagnostics.html#Edgar_Unity_Diagnostics_Diagnostics_DisplayNoSuitableShapeResults_List_Edgar_Unity_Diagnostics_IDiagnosticResult__Edgar_Unity_RoomBase_List_RoomTemplateGrid2D__
+  commentId: M:Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(List{Edgar.Unity.Diagnostics.IDiagnosticResult},Edgar.Unity.RoomBase,List{RoomTemplateGrid2D})
   name.vb: DisplayNoSuitableShapeResults(List(Of IDiagnosticResult), RoomBase, List(Of RoomTemplateGrid2D))
-  fullName: Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(System.Collections.Generic.List<Edgar.Unity.Diagnostics.IDiagnosticResult>, Edgar.Unity.RoomBase, System.Collections.Generic.List<RoomTemplateGrid2D>)
-  fullName.vb: Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(System.Collections.Generic.List(Of Edgar.Unity.Diagnostics.IDiagnosticResult), Edgar.Unity.RoomBase, System.Collections.Generic.List(Of RoomTemplateGrid2D))
+  fullName: Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(List<Edgar.Unity.Diagnostics.IDiagnosticResult>, Edgar.Unity.RoomBase, List<RoomTemplateGrid2D>)
+  fullName.vb: Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults(List(Of Edgar.Unity.Diagnostics.IDiagnosticResult), Edgar.Unity.RoomBase, List(Of RoomTemplateGrid2D))
   nameWithType: Diagnostics.DisplayNoSuitableShapeResults(List<IDiagnosticResult>, RoomBase, List<RoomTemplateGrid2D>)
   nameWithType.vb: Diagnostics.DisplayNoSuitableShapeResults(List(Of IDiagnosticResult), RoomBase, List(Of RoomTemplateGrid2D))
 - uid: Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults*
@@ -450,13 +450,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Diagnostics.Diagnostics.DisplayNoSuitableShapeResults
   nameWithType: Diagnostics.DisplayNoSuitableShapeResults
-- uid: Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults(System.Collections.Generic.List{Edgar.Unity.Diagnostics.IDiagnosticResult},System.Boolean)
+- uid: Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults(List{Edgar.Unity.Diagnostics.IDiagnosticResult},System.Boolean)
   name: DisplayPerformanceResults(List<IDiagnosticResult>, Boolean)
-  href: master/api/Edgar.Unity.Diagnostics.Diagnostics.html#Edgar_Unity_Diagnostics_Diagnostics_DisplayPerformanceResults_System_Collections_Generic_List_Edgar_Unity_Diagnostics_IDiagnosticResult__System_Boolean_
-  commentId: M:Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults(System.Collections.Generic.List{Edgar.Unity.Diagnostics.IDiagnosticResult},System.Boolean)
+  href: master/api/Edgar.Unity.Diagnostics.Diagnostics.html#Edgar_Unity_Diagnostics_Diagnostics_DisplayPerformanceResults_List_Edgar_Unity_Diagnostics_IDiagnosticResult__System_Boolean_
+  commentId: M:Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults(List{Edgar.Unity.Diagnostics.IDiagnosticResult},System.Boolean)
   name.vb: DisplayPerformanceResults(List(Of IDiagnosticResult), Boolean)
-  fullName: Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults(System.Collections.Generic.List<Edgar.Unity.Diagnostics.IDiagnosticResult>, System.Boolean)
-  fullName.vb: Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults(System.Collections.Generic.List(Of Edgar.Unity.Diagnostics.IDiagnosticResult), System.Boolean)
+  fullName: Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults(List<Edgar.Unity.Diagnostics.IDiagnosticResult>, System.Boolean)
+  fullName.vb: Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults(List(Of Edgar.Unity.Diagnostics.IDiagnosticResult), System.Boolean)
   nameWithType: Diagnostics.DisplayPerformanceResults(List<IDiagnosticResult>, Boolean)
   nameWithType.vb: Diagnostics.DisplayPerformanceResults(List(Of IDiagnosticResult), Boolean)
 - uid: Edgar.Unity.Diagnostics.Diagnostics.DisplayPerformanceResults*
@@ -610,83 +610,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Diagnostics.IDiagnosticResult.Summary
   nameWithType: IDiagnosticResult.Summary
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount
-  name: LevelGraphRoomsCount
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.html
-  commentId: T:Edgar.Unity.Diagnostics.LevelGraphRoomsCount
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount
-  nameWithType: LevelGraphRoomsCount
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result
-  name: LevelGraphRoomsCount.Result
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html
-  commentId: T:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result
-  nameWithType: LevelGraphRoomsCount.Result
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  name: IsPotentialProblem
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_IsPotentialProblem
-  commentId: P:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  nameWithType: LevelGraphRoomsCount.Result.IsPotentialProblem
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem*
-  name: IsPotentialProblem
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_IsPotentialProblem_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.IsPotentialProblem
-  nameWithType: LevelGraphRoomsCount.Result.IsPotentialProblem
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  name: Name
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_Name
-  commentId: P:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  nameWithType: LevelGraphRoomsCount.Result.Name
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name*
-  name: Name
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_Name_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Name
-  nameWithType: LevelGraphRoomsCount.Result.Name
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  name: RoomsCount
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_RoomsCount
-  commentId: P:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  nameWithType: LevelGraphRoomsCount.Result.RoomsCount
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount*
-  name: RoomsCount
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_RoomsCount_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.RoomsCount
-  nameWithType: LevelGraphRoomsCount.Result.RoomsCount
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  name: Summary
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_Summary
-  commentId: P:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  nameWithType: LevelGraphRoomsCount.Result.Summary
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary*
-  name: Summary
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Result_Summary_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Result.Summary
-  nameWithType: LevelGraphRoomsCount.Result.Summary
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run(Edgar.Unity.LevelDescription)
-  name: Run(LevelDescription)
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Run_Edgar_Unity_LevelDescription_
-  commentId: M:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run(Edgar.Unity.LevelDescription)
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run(Edgar.Unity.LevelDescription)
-  nameWithType: LevelGraphRoomsCount.Run(LevelDescription)
-- uid: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run*
-  name: Run
-  href: master/api/Edgar.Unity.Diagnostics.LevelGraphRoomsCount.html#Edgar_Unity_Diagnostics_LevelGraphRoomsCount_Run_
-  commentId: Overload:Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run
-  isSpec: "True"
-  fullName: Edgar.Unity.Diagnostics.LevelGraphRoomsCount.Run
-  nameWithType: LevelGraphRoomsCount.Run
 - uid: Edgar.Unity.Diagnostics.NumberOfCycles
   name: NumberOfCycles
   href: master/api/Edgar.Unity.Diagnostics.NumberOfCycles.html
@@ -1071,82 +994,118 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Diagnostics.WrongManualDoors.Run
   nameWithType: WrongManualDoors.Run
-- uid: Edgar.Unity.DoorInfoEditor
-  name: DoorInfoEditor
-  href: master/api/Edgar.Unity.DoorInfoEditor.html
-  commentId: T:Edgar.Unity.DoorInfoEditor
-  fullName: Edgar.Unity.DoorInfoEditor
-  nameWithType: DoorInfoEditor
-- uid: Edgar.Unity.DoorInfoEditor.Equals(Edgar.Unity.DoorInfoEditor)
-  name: Equals(DoorInfoEditor)
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_Equals_Edgar_Unity_DoorInfoEditor_
-  commentId: M:Edgar.Unity.DoorInfoEditor.Equals(Edgar.Unity.DoorInfoEditor)
-  fullName: Edgar.Unity.DoorInfoEditor.Equals(Edgar.Unity.DoorInfoEditor)
-  nameWithType: DoorInfoEditor.Equals(DoorInfoEditor)
-- uid: Edgar.Unity.DoorInfoEditor.Equals(System.Object)
+- uid: Edgar.Unity.Door
+  name: Door
+  href: master/api/Edgar.Unity.Door.html
+  commentId: T:Edgar.Unity.Door
+  fullName: Edgar.Unity.Door
+  nameWithType: Door
+- uid: Edgar.Unity.Door.Direction
+  name: Direction
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Direction
+  commentId: F:Edgar.Unity.Door.Direction
+  fullName: Edgar.Unity.Door.Direction
+  nameWithType: Door.Direction
+- uid: Edgar.Unity.Door.Equals(Edgar.Unity.Door)
+  name: Equals(Door)
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Equals_Edgar_Unity_Door_
+  commentId: M:Edgar.Unity.Door.Equals(Edgar.Unity.Door)
+  fullName: Edgar.Unity.Door.Equals(Edgar.Unity.Door)
+  nameWithType: Door.Equals(Door)
+- uid: Edgar.Unity.Door.Equals(System.Object)
   name: Equals(Object)
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_Equals_System_Object_
-  commentId: M:Edgar.Unity.DoorInfoEditor.Equals(System.Object)
-  fullName: Edgar.Unity.DoorInfoEditor.Equals(System.Object)
-  nameWithType: DoorInfoEditor.Equals(Object)
-- uid: Edgar.Unity.DoorInfoEditor.Equals*
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Equals_System_Object_
+  commentId: M:Edgar.Unity.Door.Equals(System.Object)
+  fullName: Edgar.Unity.Door.Equals(System.Object)
+  nameWithType: Door.Equals(Object)
+- uid: Edgar.Unity.Door.Equals*
   name: Equals
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_Equals_
-  commentId: Overload:Edgar.Unity.DoorInfoEditor.Equals
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Equals_
+  commentId: Overload:Edgar.Unity.Door.Equals
   isSpec: "True"
-  fullName: Edgar.Unity.DoorInfoEditor.Equals
-  nameWithType: DoorInfoEditor.Equals
-- uid: Edgar.Unity.DoorInfoEditor.From
+  fullName: Edgar.Unity.Door.Equals
+  nameWithType: Door.Equals
+- uid: Edgar.Unity.Door.From
   name: From
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_From
-  commentId: F:Edgar.Unity.DoorInfoEditor.From
-  fullName: Edgar.Unity.DoorInfoEditor.From
-  nameWithType: DoorInfoEditor.From
-- uid: Edgar.Unity.DoorInfoEditor.GetHashCode
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_From
+  commentId: F:Edgar.Unity.Door.From
+  fullName: Edgar.Unity.Door.From
+  nameWithType: Door.From
+- uid: Edgar.Unity.Door.GetHashCode
   name: GetHashCode()
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_GetHashCode
-  commentId: M:Edgar.Unity.DoorInfoEditor.GetHashCode
-  fullName: Edgar.Unity.DoorInfoEditor.GetHashCode()
-  nameWithType: DoorInfoEditor.GetHashCode()
-- uid: Edgar.Unity.DoorInfoEditor.GetHashCode*
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_GetHashCode
+  commentId: M:Edgar.Unity.Door.GetHashCode
+  fullName: Edgar.Unity.Door.GetHashCode()
+  nameWithType: Door.GetHashCode()
+- uid: Edgar.Unity.Door.GetHashCode*
   name: GetHashCode
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_GetHashCode_
-  commentId: Overload:Edgar.Unity.DoorInfoEditor.GetHashCode
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_GetHashCode_
+  commentId: Overload:Edgar.Unity.Door.GetHashCode
   isSpec: "True"
-  fullName: Edgar.Unity.DoorInfoEditor.GetHashCode
-  nameWithType: DoorInfoEditor.GetHashCode
-- uid: Edgar.Unity.DoorInfoEditor.op_Equality(Edgar.Unity.DoorInfoEditor,Edgar.Unity.DoorInfoEditor)
-  name: Equality(DoorInfoEditor, DoorInfoEditor)
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_op_Equality_Edgar_Unity_DoorInfoEditor_Edgar_Unity_DoorInfoEditor_
-  commentId: M:Edgar.Unity.DoorInfoEditor.op_Equality(Edgar.Unity.DoorInfoEditor,Edgar.Unity.DoorInfoEditor)
-  fullName: Edgar.Unity.DoorInfoEditor.Equality(Edgar.Unity.DoorInfoEditor, Edgar.Unity.DoorInfoEditor)
-  nameWithType: DoorInfoEditor.Equality(DoorInfoEditor, DoorInfoEditor)
-- uid: Edgar.Unity.DoorInfoEditor.op_Equality*
+  fullName: Edgar.Unity.Door.GetHashCode
+  nameWithType: Door.GetHashCode
+- uid: Edgar.Unity.Door.op_Equality(Edgar.Unity.Door,Edgar.Unity.Door)
+  name: Equality(Door, Door)
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_op_Equality_Edgar_Unity_Door_Edgar_Unity_Door_
+  commentId: M:Edgar.Unity.Door.op_Equality(Edgar.Unity.Door,Edgar.Unity.Door)
+  fullName: Edgar.Unity.Door.Equality(Edgar.Unity.Door, Edgar.Unity.Door)
+  nameWithType: Door.Equality(Door, Door)
+- uid: Edgar.Unity.Door.op_Equality*
   name: Equality
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_op_Equality_
-  commentId: Overload:Edgar.Unity.DoorInfoEditor.op_Equality
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_op_Equality_
+  commentId: Overload:Edgar.Unity.Door.op_Equality
   isSpec: "True"
-  fullName: Edgar.Unity.DoorInfoEditor.Equality
-  nameWithType: DoorInfoEditor.Equality
-- uid: Edgar.Unity.DoorInfoEditor.op_Inequality(Edgar.Unity.DoorInfoEditor,Edgar.Unity.DoorInfoEditor)
-  name: Inequality(DoorInfoEditor, DoorInfoEditor)
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_op_Inequality_Edgar_Unity_DoorInfoEditor_Edgar_Unity_DoorInfoEditor_
-  commentId: M:Edgar.Unity.DoorInfoEditor.op_Inequality(Edgar.Unity.DoorInfoEditor,Edgar.Unity.DoorInfoEditor)
-  fullName: Edgar.Unity.DoorInfoEditor.Inequality(Edgar.Unity.DoorInfoEditor, Edgar.Unity.DoorInfoEditor)
-  nameWithType: DoorInfoEditor.Inequality(DoorInfoEditor, DoorInfoEditor)
-- uid: Edgar.Unity.DoorInfoEditor.op_Inequality*
+  fullName: Edgar.Unity.Door.Equality
+  nameWithType: Door.Equality
+- uid: Edgar.Unity.Door.op_Inequality(Edgar.Unity.Door,Edgar.Unity.Door)
+  name: Inequality(Door, Door)
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_op_Inequality_Edgar_Unity_Door_Edgar_Unity_Door_
+  commentId: M:Edgar.Unity.Door.op_Inequality(Edgar.Unity.Door,Edgar.Unity.Door)
+  fullName: Edgar.Unity.Door.Inequality(Edgar.Unity.Door, Edgar.Unity.Door)
+  nameWithType: Door.Inequality(Door, Door)
+- uid: Edgar.Unity.Door.op_Inequality*
   name: Inequality
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_op_Inequality_
-  commentId: Overload:Edgar.Unity.DoorInfoEditor.op_Inequality
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_op_Inequality_
+  commentId: Overload:Edgar.Unity.Door.op_Inequality
   isSpec: "True"
-  fullName: Edgar.Unity.DoorInfoEditor.Inequality
-  nameWithType: DoorInfoEditor.Inequality
-- uid: Edgar.Unity.DoorInfoEditor.To
+  fullName: Edgar.Unity.Door.Inequality
+  nameWithType: Door.Inequality
+- uid: Edgar.Unity.Door.Socket
+  name: Socket
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_Socket
+  commentId: F:Edgar.Unity.Door.Socket
+  fullName: Edgar.Unity.Door.Socket
+  nameWithType: Door.Socket
+- uid: Edgar.Unity.Door.To
   name: To
-  href: master/api/Edgar.Unity.DoorInfoEditor.html#Edgar_Unity_DoorInfoEditor_To
-  commentId: F:Edgar.Unity.DoorInfoEditor.To
-  fullName: Edgar.Unity.DoorInfoEditor.To
-  nameWithType: DoorInfoEditor.To
+  href: master/api/Edgar.Unity.Door.html#Edgar_Unity_Door_To
+  commentId: F:Edgar.Unity.Door.To
+  fullName: Edgar.Unity.Door.To
+  nameWithType: Door.To
+- uid: Edgar.Unity.DoorDirection
+  name: DoorDirection
+  href: master/api/Edgar.Unity.DoorDirection.html
+  commentId: T:Edgar.Unity.DoorDirection
+  fullName: Edgar.Unity.DoorDirection
+  nameWithType: DoorDirection
+- uid: Edgar.Unity.DoorDirection.Entrance
+  name: Entrance
+  href: master/api/Edgar.Unity.DoorDirection.html#Edgar_Unity_DoorDirection_Entrance
+  commentId: F:Edgar.Unity.DoorDirection.Entrance
+  fullName: Edgar.Unity.DoorDirection.Entrance
+  nameWithType: DoorDirection.Entrance
+- uid: Edgar.Unity.DoorDirection.Exit
+  name: Exit
+  href: master/api/Edgar.Unity.DoorDirection.html#Edgar_Unity_DoorDirection_Exit
+  commentId: F:Edgar.Unity.DoorDirection.Exit
+  fullName: Edgar.Unity.DoorDirection.Exit
+  nameWithType: DoorDirection.Exit
+- uid: Edgar.Unity.DoorDirection.Undirected
+  name: Undirected
+  href: master/api/Edgar.Unity.DoorDirection.html#Edgar_Unity_DoorDirection_Undirected
+  commentId: F:Edgar.Unity.DoorDirection.Undirected
+  fullName: Edgar.Unity.DoorDirection.Undirected
+  nameWithType: DoorDirection.Undirected
 - uid: Edgar.Unity.DoorInstance
   name: DoorInstance
   href: master/api/Edgar.Unity.DoorInstance.html
@@ -1237,6 +1196,18 @@ references:
   commentId: T:Edgar.Unity.Doors
   fullName: Edgar.Unity.Doors
   nameWithType: Doors
+- uid: Edgar.Unity.Doors.DefaultDirection
+  name: DefaultDirection
+  href: master/api/Edgar.Unity.Doors.html#Edgar_Unity_Doors_DefaultDirection
+  commentId: F:Edgar.Unity.Doors.DefaultDirection
+  fullName: Edgar.Unity.Doors.DefaultDirection
+  nameWithType: Doors.DefaultDirection
+- uid: Edgar.Unity.Doors.DefaultSocket
+  name: DefaultSocket
+  href: master/api/Edgar.Unity.Doors.html#Edgar_Unity_Doors_DefaultSocket
+  commentId: F:Edgar.Unity.Doors.DefaultSocket
+  fullName: Edgar.Unity.Doors.DefaultSocket
+  nameWithType: Doors.DefaultSocket
 - uid: Edgar.Unity.Doors.DistanceFromCorners
   name: DistanceFromCorners
   href: master/api/Edgar.Unity.Doors.html#Edgar_Unity_Doors_DistanceFromCorners
@@ -1292,6 +1263,95 @@ references:
   commentId: F:Edgar.Unity.Doors.SelectedMode
   fullName: Edgar.Unity.Doors.SelectedMode
   nameWithType: Doors.SelectedMode
+- uid: Edgar.Unity.Doors.Socket
+  name: Socket
+  href: master/api/Edgar.Unity.Doors.html#Edgar_Unity_Doors_Socket
+  commentId: F:Edgar.Unity.Doors.Socket
+  fullName: Edgar.Unity.Doors.Socket
+  nameWithType: Doors.Socket
+- uid: Edgar.Unity.DoorSocket
+  name: DoorSocket
+  href: master/api/Edgar.Unity.DoorSocket.html
+  commentId: T:Edgar.Unity.DoorSocket
+  fullName: Edgar.Unity.DoorSocket
+  nameWithType: DoorSocket
+- uid: Edgar.Unity.DoorSocket.Color
+  name: Color
+  href: master/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_Color
+  commentId: F:Edgar.Unity.DoorSocket.Color
+  fullName: Edgar.Unity.DoorSocket.Color
+  nameWithType: DoorSocket.Color
+- uid: Edgar.Unity.DoorSocket.GetColor
+  name: GetColor()
+  href: master/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_GetColor
+  commentId: M:Edgar.Unity.DoorSocket.GetColor
+  fullName: Edgar.Unity.DoorSocket.GetColor()
+  nameWithType: DoorSocket.GetColor()
+- uid: Edgar.Unity.DoorSocket.GetColor*
+  name: GetColor
+  href: master/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_GetColor_
+  commentId: Overload:Edgar.Unity.DoorSocket.GetColor
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocket.GetColor
+  nameWithType: DoorSocket.GetColor
+- uid: Edgar.Unity.DoorSocket.IsCompatibleWith(IDoorSocket)
+  name: IsCompatibleWith(IDoorSocket)
+  href: master/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_IsCompatibleWith_IDoorSocket_
+  commentId: M:Edgar.Unity.DoorSocket.IsCompatibleWith(IDoorSocket)
+  fullName: Edgar.Unity.DoorSocket.IsCompatibleWith(IDoorSocket)
+  nameWithType: DoorSocket.IsCompatibleWith(IDoorSocket)
+- uid: Edgar.Unity.DoorSocket.IsCompatibleWith*
+  name: IsCompatibleWith
+  href: master/api/Edgar.Unity.DoorSocket.html#Edgar_Unity_DoorSocket_IsCompatibleWith_
+  commentId: Overload:Edgar.Unity.DoorSocket.IsCompatibleWith
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocket.IsCompatibleWith
+  nameWithType: DoorSocket.IsCompatibleWith
+- uid: Edgar.Unity.DoorSocketBase
+  name: DoorSocketBase
+  href: master/api/Edgar.Unity.DoorSocketBase.html
+  commentId: T:Edgar.Unity.DoorSocketBase
+  fullName: Edgar.Unity.DoorSocketBase
+  nameWithType: DoorSocketBase
+- uid: Edgar.Unity.DoorSocketBase.Equals(IDoorSocket)
+  name: Equals(IDoorSocket)
+  href: master/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_Equals_IDoorSocket_
+  commentId: M:Edgar.Unity.DoorSocketBase.Equals(IDoorSocket)
+  fullName: Edgar.Unity.DoorSocketBase.Equals(IDoorSocket)
+  nameWithType: DoorSocketBase.Equals(IDoorSocket)
+- uid: Edgar.Unity.DoorSocketBase.Equals*
+  name: Equals
+  href: master/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_Equals_
+  commentId: Overload:Edgar.Unity.DoorSocketBase.Equals
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocketBase.Equals
+  nameWithType: DoorSocketBase.Equals
+- uid: Edgar.Unity.DoorSocketBase.GetColor
+  name: GetColor()
+  href: master/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_GetColor
+  commentId: M:Edgar.Unity.DoorSocketBase.GetColor
+  fullName: Edgar.Unity.DoorSocketBase.GetColor()
+  nameWithType: DoorSocketBase.GetColor()
+- uid: Edgar.Unity.DoorSocketBase.GetColor*
+  name: GetColor
+  href: master/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_GetColor_
+  commentId: Overload:Edgar.Unity.DoorSocketBase.GetColor
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocketBase.GetColor
+  nameWithType: DoorSocketBase.GetColor
+- uid: Edgar.Unity.DoorSocketBase.IsCompatibleWith(IDoorSocket)
+  name: IsCompatibleWith(IDoorSocket)
+  href: master/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_IsCompatibleWith_IDoorSocket_
+  commentId: M:Edgar.Unity.DoorSocketBase.IsCompatibleWith(IDoorSocket)
+  fullName: Edgar.Unity.DoorSocketBase.IsCompatibleWith(IDoorSocket)
+  nameWithType: DoorSocketBase.IsCompatibleWith(IDoorSocket)
+- uid: Edgar.Unity.DoorSocketBase.IsCompatibleWith*
+  name: IsCompatibleWith
+  href: master/api/Edgar.Unity.DoorSocketBase.html#Edgar_Unity_DoorSocketBase_IsCompatibleWith_
+  commentId: Overload:Edgar.Unity.DoorSocketBase.IsCompatibleWith
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorSocketBase.IsCompatibleWith
+  nameWithType: DoorSocketBase.IsCompatibleWith
 - uid: Edgar.Unity.DungeonGenerator
   name: DungeonGenerator
   href: master/api/Edgar.Unity.DungeonGenerator.html
@@ -1631,19 +1691,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.DungeonGeneratorPayload.GeneratorStats
   nameWithType: DungeonGeneratorPayload.GeneratorStats
-- uid: Edgar.Unity.DungeonGeneratorPayload.Iterations
-  name: Iterations
-  href: master/api/Edgar.Unity.DungeonGeneratorPayload.html#Edgar_Unity_DungeonGeneratorPayload_Iterations
-  commentId: P:Edgar.Unity.DungeonGeneratorPayload.Iterations
-  fullName: Edgar.Unity.DungeonGeneratorPayload.Iterations
-  nameWithType: DungeonGeneratorPayload.Iterations
-- uid: Edgar.Unity.DungeonGeneratorPayload.Iterations*
-  name: Iterations
-  href: master/api/Edgar.Unity.DungeonGeneratorPayload.html#Edgar_Unity_DungeonGeneratorPayload_Iterations_
-  commentId: Overload:Edgar.Unity.DungeonGeneratorPayload.Iterations
-  isSpec: "True"
-  fullName: Edgar.Unity.DungeonGeneratorPayload.Iterations
-  nameWithType: DungeonGeneratorPayload.Iterations
 - uid: Edgar.Unity.DungeonGeneratorPayload.LevelDescription
   name: LevelDescription
   href: master/api/Edgar.Unity.DungeonGeneratorPayload.html#Edgar_Unity_DungeonGeneratorPayload_LevelDescription
@@ -1670,19 +1717,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.DungeonGeneratorPayload.Random
   nameWithType: DungeonGeneratorPayload.Random
-- uid: Edgar.Unity.DungeonGeneratorPayload.TimeTotal
-  name: TimeTotal
-  href: master/api/Edgar.Unity.DungeonGeneratorPayload.html#Edgar_Unity_DungeonGeneratorPayload_TimeTotal
-  commentId: P:Edgar.Unity.DungeonGeneratorPayload.TimeTotal
-  fullName: Edgar.Unity.DungeonGeneratorPayload.TimeTotal
-  nameWithType: DungeonGeneratorPayload.TimeTotal
-- uid: Edgar.Unity.DungeonGeneratorPayload.TimeTotal*
-  name: TimeTotal
-  href: master/api/Edgar.Unity.DungeonGeneratorPayload.html#Edgar_Unity_DungeonGeneratorPayload_TimeTotal_
-  commentId: Overload:Edgar.Unity.DungeonGeneratorPayload.TimeTotal
-  isSpec: "True"
-  fullName: Edgar.Unity.DungeonGeneratorPayload.TimeTotal
-  nameWithType: DungeonGeneratorPayload.TimeTotal
 - uid: Edgar.Unity.DungeonGeneratorPostProcessBase
   name: DungeonGeneratorPostProcessBase
   href: master/api/Edgar.Unity.DungeonGeneratorPostProcessBase.html
@@ -1724,11 +1758,11 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.DungeonGeneratorPostProcessBase.Run
   nameWithType: DungeonGeneratorPostProcessBase.Run
-- uid: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(System.Random)
+- uid: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(Random)
   name: SetRandomGenerator(Random)
-  href: master/api/Edgar.Unity.DungeonGeneratorPostProcessBase.html#Edgar_Unity_DungeonGeneratorPostProcessBase_SetRandomGenerator_System_Random_
-  commentId: M:Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(System.Random)
-  fullName: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(System.Random)
+  href: master/api/Edgar.Unity.DungeonGeneratorPostProcessBase.html#Edgar_Unity_DungeonGeneratorPostProcessBase_SetRandomGenerator_Random_
+  commentId: M:Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(Random)
+  fullName: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator(Random)
   nameWithType: DungeonGeneratorPostProcessBase.SetRandomGenerator(Random)
 - uid: Edgar.Unity.DungeonGeneratorPostProcessBase.SetRandomGenerator*
   name: SetRandomGenerator
@@ -1743,62 +1777,51 @@ references:
   commentId: T:Edgar.Unity.DungeonGeneratorPostProcessCallback
   fullName: Edgar.Unity.DungeonGeneratorPostProcessCallback
   nameWithType: DungeonGeneratorPostProcessCallback
-- uid: Edgar.Unity.DungeonGeneratorTask`1
-  name: DungeonGeneratorTask<TPayload>
-  href: master/api/Edgar.Unity.DungeonGeneratorTask-1.html
-  commentId: T:Edgar.Unity.DungeonGeneratorTask`1
-  name.vb: DungeonGeneratorTask(Of TPayload)
-  fullName: Edgar.Unity.DungeonGeneratorTask<TPayload>
-  fullName.vb: Edgar.Unity.DungeonGeneratorTask(Of TPayload)
-  nameWithType: DungeonGeneratorTask<TPayload>
-  nameWithType.vb: DungeonGeneratorTask(Of TPayload)
-- uid: Edgar.Unity.DungeonGeneratorTask`1.#ctor(Edgar.Unity.DungeonGeneratorConfig)
-  name: DungeonGeneratorTask(DungeonGeneratorConfig)
-  href: master/api/Edgar.Unity.DungeonGeneratorTask-1.html#Edgar_Unity_DungeonGeneratorTask_1__ctor_Edgar_Unity_DungeonGeneratorConfig_
-  commentId: M:Edgar.Unity.DungeonGeneratorTask`1.#ctor(Edgar.Unity.DungeonGeneratorConfig)
-  fullName: Edgar.Unity.DungeonGeneratorTask<TPayload>.DungeonGeneratorTask(Edgar.Unity.DungeonGeneratorConfig)
-  fullName.vb: Edgar.Unity.DungeonGeneratorTask(Of TPayload).DungeonGeneratorTask(Edgar.Unity.DungeonGeneratorConfig)
-  nameWithType: DungeonGeneratorTask<TPayload>.DungeonGeneratorTask(DungeonGeneratorConfig)
-  nameWithType.vb: DungeonGeneratorTask(Of TPayload).DungeonGeneratorTask(DungeonGeneratorConfig)
-- uid: Edgar.Unity.DungeonGeneratorTask`1.#ctor*
+- uid: Edgar.Unity.DungeonGeneratorTask
   name: DungeonGeneratorTask
-  href: master/api/Edgar.Unity.DungeonGeneratorTask-1.html#Edgar_Unity_DungeonGeneratorTask_1__ctor_
-  commentId: Overload:Edgar.Unity.DungeonGeneratorTask`1.#ctor
+  href: master/api/Edgar.Unity.DungeonGeneratorTask.html
+  commentId: T:Edgar.Unity.DungeonGeneratorTask
+  fullName: Edgar.Unity.DungeonGeneratorTask
+  nameWithType: DungeonGeneratorTask
+- uid: Edgar.Unity.DungeonGeneratorTask.#ctor(Edgar.Unity.DungeonGeneratorConfig)
+  name: DungeonGeneratorTask(DungeonGeneratorConfig)
+  href: master/api/Edgar.Unity.DungeonGeneratorTask.html#Edgar_Unity_DungeonGeneratorTask__ctor_Edgar_Unity_DungeonGeneratorConfig_
+  commentId: M:Edgar.Unity.DungeonGeneratorTask.#ctor(Edgar.Unity.DungeonGeneratorConfig)
+  fullName: Edgar.Unity.DungeonGeneratorTask.DungeonGeneratorTask(Edgar.Unity.DungeonGeneratorConfig)
+  nameWithType: DungeonGeneratorTask.DungeonGeneratorTask(DungeonGeneratorConfig)
+- uid: Edgar.Unity.DungeonGeneratorTask.#ctor*
+  name: DungeonGeneratorTask
+  href: master/api/Edgar.Unity.DungeonGeneratorTask.html#Edgar_Unity_DungeonGeneratorTask__ctor_
+  commentId: Overload:Edgar.Unity.DungeonGeneratorTask.#ctor
   isSpec: "True"
-  fullName: Edgar.Unity.DungeonGeneratorTask<TPayload>.DungeonGeneratorTask
-  fullName.vb: Edgar.Unity.DungeonGeneratorTask(Of TPayload).DungeonGeneratorTask
-  nameWithType: DungeonGeneratorTask<TPayload>.DungeonGeneratorTask
-  nameWithType.vb: DungeonGeneratorTask(Of TPayload).DungeonGeneratorTask
-- uid: Edgar.Unity.DungeonGeneratorTask`1.Process
+  fullName: Edgar.Unity.DungeonGeneratorTask.DungeonGeneratorTask
+  nameWithType: DungeonGeneratorTask.DungeonGeneratorTask
+- uid: Edgar.Unity.DungeonGeneratorTask.Process
   name: Process()
-  href: master/api/Edgar.Unity.DungeonGeneratorTask-1.html#Edgar_Unity_DungeonGeneratorTask_1_Process
-  commentId: M:Edgar.Unity.DungeonGeneratorTask`1.Process
-  fullName: Edgar.Unity.DungeonGeneratorTask<TPayload>.Process()
-  fullName.vb: Edgar.Unity.DungeonGeneratorTask(Of TPayload).Process()
-  nameWithType: DungeonGeneratorTask<TPayload>.Process()
-  nameWithType.vb: DungeonGeneratorTask(Of TPayload).Process()
-- uid: Edgar.Unity.DungeonGeneratorTask`1.Process*
+  href: master/api/Edgar.Unity.DungeonGeneratorTask.html#Edgar_Unity_DungeonGeneratorTask_Process
+  commentId: M:Edgar.Unity.DungeonGeneratorTask.Process
+  fullName: Edgar.Unity.DungeonGeneratorTask.Process()
+  nameWithType: DungeonGeneratorTask.Process()
+- uid: Edgar.Unity.DungeonGeneratorTask.Process*
   name: Process
-  href: master/api/Edgar.Unity.DungeonGeneratorTask-1.html#Edgar_Unity_DungeonGeneratorTask_1_Process_
-  commentId: Overload:Edgar.Unity.DungeonGeneratorTask`1.Process
+  href: master/api/Edgar.Unity.DungeonGeneratorTask.html#Edgar_Unity_DungeonGeneratorTask_Process_
+  commentId: Overload:Edgar.Unity.DungeonGeneratorTask.Process
   isSpec: "True"
-  fullName: Edgar.Unity.DungeonGeneratorTask<TPayload>.Process
-  fullName.vb: Edgar.Unity.DungeonGeneratorTask(Of TPayload).Process
-  nameWithType: DungeonGeneratorTask<TPayload>.Process
-  nameWithType.vb: DungeonGeneratorTask(Of TPayload).Process
+  fullName: Edgar.Unity.DungeonGeneratorTask.Process
+  nameWithType: DungeonGeneratorTask.Process
 - uid: Edgar.Unity.DungeonGeneratorUtils
   name: DungeonGeneratorUtils
   href: master/api/Edgar.Unity.DungeonGeneratorUtils.html
   commentId: T:Edgar.Unity.DungeonGeneratorUtils
   fullName: Edgar.Unity.DungeonGeneratorUtils
   nameWithType: DungeonGeneratorUtils
-- uid: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate(System.Collections.Generic.List{Tilemap},Vector3Int,System.Collections.Generic.List{Tilemap})
+- uid: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate(List{Tilemap},Vector3Int,List{Tilemap})
   name: ApplyTemplate(List<Tilemap>, Vector3Int, List<Tilemap>)
-  href: master/api/Edgar.Unity.DungeonGeneratorUtils.html#Edgar_Unity_DungeonGeneratorUtils_ApplyTemplate_System_Collections_Generic_List_Tilemap__Vector3Int_System_Collections_Generic_List_Tilemap__
-  commentId: M:Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate(System.Collections.Generic.List{Tilemap},Vector3Int,System.Collections.Generic.List{Tilemap})
+  href: master/api/Edgar.Unity.DungeonGeneratorUtils.html#Edgar_Unity_DungeonGeneratorUtils_ApplyTemplate_List_Tilemap__Vector3Int_List_Tilemap__
+  commentId: M:Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate(List{Tilemap},Vector3Int,List{Tilemap})
   name.vb: ApplyTemplate(List(Of Tilemap), Vector3Int, List(Of Tilemap))
-  fullName: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate(System.Collections.Generic.List<Tilemap>, Vector3Int, System.Collections.Generic.List<Tilemap>)
-  fullName.vb: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate(System.Collections.Generic.List(Of Tilemap), Vector3Int, System.Collections.Generic.List(Of Tilemap))
+  fullName: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate(List<Tilemap>, Vector3Int, List<Tilemap>)
+  fullName.vb: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate(List(Of Tilemap), Vector3Int, List(Of Tilemap))
   nameWithType: DungeonGeneratorUtils.ApplyTemplate(List<Tilemap>, Vector3Int, List<Tilemap>)
   nameWithType.vb: DungeonGeneratorUtils.ApplyTemplate(List(Of Tilemap), Vector3Int, List(Of Tilemap))
 - uid: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate*
@@ -1808,13 +1831,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplate
   nameWithType: DungeonGeneratorUtils.ApplyTemplate
-- uid: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates(System.Collections.Generic.IEnumerable{Edgar.Unity.RoomInstance},System.Collections.Generic.List{Tilemap})
+- uid: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates(IEnumerable{Edgar.Unity.RoomInstance},List{Tilemap})
   name: ApplyTemplates(IEnumerable<RoomInstance>, List<Tilemap>)
-  href: master/api/Edgar.Unity.DungeonGeneratorUtils.html#Edgar_Unity_DungeonGeneratorUtils_ApplyTemplates_System_Collections_Generic_IEnumerable_Edgar_Unity_RoomInstance__System_Collections_Generic_List_Tilemap__
-  commentId: M:Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates(System.Collections.Generic.IEnumerable{Edgar.Unity.RoomInstance},System.Collections.Generic.List{Tilemap})
+  href: master/api/Edgar.Unity.DungeonGeneratorUtils.html#Edgar_Unity_DungeonGeneratorUtils_ApplyTemplates_IEnumerable_Edgar_Unity_RoomInstance__List_Tilemap__
+  commentId: M:Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates(IEnumerable{Edgar.Unity.RoomInstance},List{Tilemap})
   name.vb: ApplyTemplates(IEnumerable(Of RoomInstance), List(Of Tilemap))
-  fullName: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates(System.Collections.Generic.IEnumerable<Edgar.Unity.RoomInstance>, System.Collections.Generic.List<Tilemap>)
-  fullName.vb: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates(System.Collections.Generic.IEnumerable(Of Edgar.Unity.RoomInstance), System.Collections.Generic.List(Of Tilemap))
+  fullName: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates(IEnumerable<Edgar.Unity.RoomInstance>, List<Tilemap>)
+  fullName.vb: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates(IEnumerable(Of Edgar.Unity.RoomInstance), List(Of Tilemap))
   nameWithType: DungeonGeneratorUtils.ApplyTemplates(IEnumerable<RoomInstance>, List<Tilemap>)
   nameWithType.vb: DungeonGeneratorUtils.ApplyTemplates(IEnumerable(Of RoomInstance), List(Of Tilemap))
 - uid: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates*
@@ -1824,13 +1847,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.DungeonGeneratorUtils.ApplyTemplates
   nameWithType: DungeonGeneratorUtils.ApplyTemplates
-- uid: Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles(System.Collections.Generic.List{Tilemap},Vector3Int,System.Collections.Generic.List{Tilemap})
+- uid: Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles(List{Tilemap},Vector3Int,List{Tilemap})
   name: DeleteNonNullTiles(List<Tilemap>, Vector3Int, List<Tilemap>)
-  href: master/api/Edgar.Unity.DungeonGeneratorUtils.html#Edgar_Unity_DungeonGeneratorUtils_DeleteNonNullTiles_System_Collections_Generic_List_Tilemap__Vector3Int_System_Collections_Generic_List_Tilemap__
-  commentId: M:Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles(System.Collections.Generic.List{Tilemap},Vector3Int,System.Collections.Generic.List{Tilemap})
+  href: master/api/Edgar.Unity.DungeonGeneratorUtils.html#Edgar_Unity_DungeonGeneratorUtils_DeleteNonNullTiles_List_Tilemap__Vector3Int_List_Tilemap__
+  commentId: M:Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles(List{Tilemap},Vector3Int,List{Tilemap})
   name.vb: DeleteNonNullTiles(List(Of Tilemap), Vector3Int, List(Of Tilemap))
-  fullName: Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles(System.Collections.Generic.List<Tilemap>, Vector3Int, System.Collections.Generic.List<Tilemap>)
-  fullName.vb: Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles(System.Collections.Generic.List(Of Tilemap), Vector3Int, System.Collections.Generic.List(Of Tilemap))
+  fullName: Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles(List<Tilemap>, Vector3Int, List<Tilemap>)
+  fullName.vb: Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles(List(Of Tilemap), Vector3Int, List(Of Tilemap))
   nameWithType: DungeonGeneratorUtils.DeleteNonNullTiles(List<Tilemap>, Vector3Int, List<Tilemap>)
   nameWithType.vb: DungeonGeneratorUtils.DeleteNonNullTiles(List(Of Tilemap), Vector3Int, List(Of Tilemap))
 - uid: Edgar.Unity.DungeonGeneratorUtils.DeleteNonNullTiles*
@@ -2128,12 +2151,12 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.ConnectionNode.Connection
   nameWithType: ConnectionNode.Connection
-- uid: Edgar.Unity.Editor.ConnectionNode.Draw(System.Single,Vector2)
-  name: Draw(Single, Vector2)
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_Draw_System_Single_Vector2_
-  commentId: M:Edgar.Unity.Editor.ConnectionNode.Draw(System.Single,Vector2)
-  fullName: Edgar.Unity.Editor.ConnectionNode.Draw(System.Single, Vector2)
-  nameWithType: ConnectionNode.Draw(Single, Vector2)
+- uid: Edgar.Unity.Editor.ConnectionNode.Draw(System.Single,Vector2,System.Boolean)
+  name: Draw(Single, Vector2, Boolean)
+  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_Draw_System_Single_Vector2_System_Boolean_
+  commentId: M:Edgar.Unity.Editor.ConnectionNode.Draw(System.Single,Vector2,System.Boolean)
+  fullName: Edgar.Unity.Editor.ConnectionNode.Draw(System.Single, Vector2, System.Boolean)
+  nameWithType: ConnectionNode.Draw(Single, Vector2, Boolean)
 - uid: Edgar.Unity.Editor.ConnectionNode.Draw*
   name: Draw
   href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_Draw_
@@ -2212,25 +2235,38 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.CustomInspectorWindow.OpenWindow
   nameWithType: CustomInspectorWindow.OpenWindow
-- uid: Edgar.Unity.Editor.DoorInfoPropertyDrawer
-  name: DoorInfoPropertyDrawer
-  href: master/api/Edgar.Unity.Editor.DoorInfoPropertyDrawer.html
-  commentId: T:Edgar.Unity.Editor.DoorInfoPropertyDrawer
-  fullName: Edgar.Unity.Editor.DoorInfoPropertyDrawer
-  nameWithType: DoorInfoPropertyDrawer
-- uid: Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI(Rect,SerializedProperty,GUIContent)
-  name: OnGUI(Rect, SerializedProperty, GUIContent)
-  href: master/api/Edgar.Unity.Editor.DoorInfoPropertyDrawer.html#Edgar_Unity_Editor_DoorInfoPropertyDrawer_OnGUI_Rect_SerializedProperty_GUIContent_
-  commentId: M:Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI(Rect,SerializedProperty,GUIContent)
-  fullName: Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent)
-  nameWithType: DoorInfoPropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent)
-- uid: Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI*
-  name: OnGUI
-  href: master/api/Edgar.Unity.Editor.DoorInfoPropertyDrawer.html#Edgar_Unity_Editor_DoorInfoPropertyDrawer_OnGUI_
-  commentId: Overload:Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer
+  name: DoorPropertyDrawer
+  href: master/api/Edgar.Unity.Editor.DoorPropertyDrawer.html
+  commentId: T:Edgar.Unity.Editor.DoorPropertyDrawer
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer
+  nameWithType: DoorPropertyDrawer
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight(SerializedProperty,GUIContent)
+  name: GetPropertyHeight(SerializedProperty, GUIContent)
+  href: master/api/Edgar.Unity.Editor.DoorPropertyDrawer.html#Edgar_Unity_Editor_DoorPropertyDrawer_GetPropertyHeight_SerializedProperty_GUIContent_
+  commentId: M:Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight(SerializedProperty,GUIContent)
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight(SerializedProperty, GUIContent)
+  nameWithType: DoorPropertyDrawer.GetPropertyHeight(SerializedProperty, GUIContent)
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight*
+  name: GetPropertyHeight
+  href: master/api/Edgar.Unity.Editor.DoorPropertyDrawer.html#Edgar_Unity_Editor_DoorPropertyDrawer_GetPropertyHeight_
+  commentId: Overload:Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight
   isSpec: "True"
-  fullName: Edgar.Unity.Editor.DoorInfoPropertyDrawer.OnGUI
-  nameWithType: DoorInfoPropertyDrawer.OnGUI
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer.GetPropertyHeight
+  nameWithType: DoorPropertyDrawer.GetPropertyHeight
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI(Rect,SerializedProperty,GUIContent)
+  name: OnGUI(Rect, SerializedProperty, GUIContent)
+  href: master/api/Edgar.Unity.Editor.DoorPropertyDrawer.html#Edgar_Unity_Editor_DoorPropertyDrawer_OnGUI_Rect_SerializedProperty_GUIContent_
+  commentId: M:Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI(Rect,SerializedProperty,GUIContent)
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent)
+  nameWithType: DoorPropertyDrawer.OnGUI(Rect, SerializedProperty, GUIContent)
+- uid: Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI*
+  name: OnGUI
+  href: master/api/Edgar.Unity.Editor.DoorPropertyDrawer.html#Edgar_Unity_Editor_DoorPropertyDrawer_OnGUI_
+  commentId: Overload:Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI
+  isSpec: "True"
+  fullName: Edgar.Unity.Editor.DoorPropertyDrawer.OnGUI
+  nameWithType: DoorPropertyDrawer.OnGUI
 - uid: Edgar.Unity.Editor.DoorsInspector
   name: DoorsInspector
   href: master/api/Edgar.Unity.Editor.DoorsInspector.html
@@ -2370,12 +2406,12 @@ references:
   commentId: T:Edgar.Unity.Editor.GridUtils
   fullName: Edgar.Unity.Editor.GridUtils
   nameWithType: GridUtils
-- uid: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid,Vector3Int,Vector3Int,Color,Vector2,System.Boolean)
-  name: DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, Boolean)
-  href: master/api/Edgar.Unity.Editor.GridUtils.html#Edgar_Unity_Editor_GridUtils_DrawRectangleOutline_Grid_Vector3Int_Vector3Int_Color_Vector2_System_Boolean_
-  commentId: M:Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid,Vector3Int,Vector3Int,Color,Vector2,System.Boolean)
-  fullName: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, System.Boolean)
-  nameWithType: GridUtils.DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, Boolean)
+- uid: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid,Vector3Int,Vector3Int,Color,Vector2,System.Boolean,System.String)
+  name: DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, Boolean, String)
+  href: master/api/Edgar.Unity.Editor.GridUtils.html#Edgar_Unity_Editor_GridUtils_DrawRectangleOutline_Grid_Vector3Int_Vector3Int_Color_Vector2_System_Boolean_System_String_
+  commentId: M:Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid,Vector3Int,Vector3Int,Color,Vector2,System.Boolean,System.String)
+  fullName: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, System.Boolean, System.String)
+  nameWithType: GridUtils.DrawRectangleOutline(Grid, Vector3Int, Vector3Int, Color, Vector2, Boolean, String)
 - uid: Edgar.Unity.Editor.GridUtils.DrawRectangleOutline*
   name: DrawRectangleOutline
   href: master/api/Edgar.Unity.Editor.GridUtils.html#Edgar_Unity_Editor_GridUtils_DrawRectangleOutline_
@@ -2650,25 +2686,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.LevelGraphInspector.OnOpenAsset
   nameWithType: LevelGraphInspector.OnOpenAsset
-- uid: Edgar.Unity.Editor.PlatformerMotor2DEditor
-  name: PlatformerMotor2DEditor
-  href: master/api/Edgar.Unity.Editor.PlatformerMotor2DEditor.html
-  commentId: T:Edgar.Unity.Editor.PlatformerMotor2DEditor
-  fullName: Edgar.Unity.Editor.PlatformerMotor2DEditor
-  nameWithType: PlatformerMotor2DEditor
-- uid: Edgar.Unity.Editor.PlatformerMotor2DEditor.OnInspectorGUI
-  name: OnInspectorGUI()
-  href: master/api/Edgar.Unity.Editor.PlatformerMotor2DEditor.html#Edgar_Unity_Editor_PlatformerMotor2DEditor_OnInspectorGUI
-  commentId: M:Edgar.Unity.Editor.PlatformerMotor2DEditor.OnInspectorGUI
-  fullName: Edgar.Unity.Editor.PlatformerMotor2DEditor.OnInspectorGUI()
-  nameWithType: PlatformerMotor2DEditor.OnInspectorGUI()
-- uid: Edgar.Unity.Editor.PlatformerMotor2DEditor.OnInspectorGUI*
-  name: OnInspectorGUI
-  href: master/api/Edgar.Unity.Editor.PlatformerMotor2DEditor.html#Edgar_Unity_Editor_PlatformerMotor2DEditor_OnInspectorGUI_
-  commentId: Overload:Edgar.Unity.Editor.PlatformerMotor2DEditor.OnInspectorGUI
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.PlatformerMotor2DEditor.OnInspectorGUI
-  nameWithType: PlatformerMotor2DEditor.OnInspectorGUI
 - uid: Edgar.Unity.Editor.Popup
   name: Popup
   href: master/api/Edgar.Unity.Editor.Popup.html
@@ -2804,6 +2821,32 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.PopupDatabasePro.GetDeadCellsUndergroundPopup
   nameWithType: PopupDatabasePro.GetDeadCellsUndergroundPopup
+- uid: Edgar.Unity.Editor.PopupDatabasePro.GetDirectedLevelGraphsPopup
+  name: GetDirectedLevelGraphsPopup()
+  href: master/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetDirectedLevelGraphsPopup
+  commentId: M:Edgar.Unity.Editor.PopupDatabasePro.GetDirectedLevelGraphsPopup
+  fullName: Edgar.Unity.Editor.PopupDatabasePro.GetDirectedLevelGraphsPopup()
+  nameWithType: PopupDatabasePro.GetDirectedLevelGraphsPopup()
+- uid: Edgar.Unity.Editor.PopupDatabasePro.GetDirectedLevelGraphsPopup*
+  name: GetDirectedLevelGraphsPopup
+  href: master/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetDirectedLevelGraphsPopup_
+  commentId: Overload:Edgar.Unity.Editor.PopupDatabasePro.GetDirectedLevelGraphsPopup
+  isSpec: "True"
+  fullName: Edgar.Unity.Editor.PopupDatabasePro.GetDirectedLevelGraphsPopup
+  nameWithType: PopupDatabasePro.GetDirectedLevelGraphsPopup
+- uid: Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup
+  name: GetDoorSocketsPopup()
+  href: master/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetDoorSocketsPopup
+  commentId: M:Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup
+  fullName: Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup()
+  nameWithType: PopupDatabasePro.GetDoorSocketsPopup()
+- uid: Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup*
+  name: GetDoorSocketsPopup
+  href: master/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetDoorSocketsPopup_
+  commentId: Overload:Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup
+  isSpec: "True"
+  fullName: Edgar.Unity.Editor.PopupDatabasePro.GetDoorSocketsPopup
+  nameWithType: PopupDatabasePro.GetDoorSocketsPopup
 - uid: Edgar.Unity.Editor.PopupDatabasePro.GetFogOfWarPopup
   name: GetFogOfWarPopup()
   href: master/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetFogOfWarPopup
@@ -2843,6 +2886,19 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.PopupDatabasePro.GetIsometric1Popup
   nameWithType: PopupDatabasePro.GetIsometric1Popup
+- uid: Edgar.Unity.Editor.PopupDatabasePro.GetMinimap2Popup
+  name: GetMinimap2Popup()
+  href: master/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetMinimap2Popup
+  commentId: M:Edgar.Unity.Editor.PopupDatabasePro.GetMinimap2Popup
+  fullName: Edgar.Unity.Editor.PopupDatabasePro.GetMinimap2Popup()
+  nameWithType: PopupDatabasePro.GetMinimap2Popup()
+- uid: Edgar.Unity.Editor.PopupDatabasePro.GetMinimap2Popup*
+  name: GetMinimap2Popup
+  href: master/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetMinimap2Popup_
+  commentId: Overload:Edgar.Unity.Editor.PopupDatabasePro.GetMinimap2Popup
+  isSpec: "True"
+  fullName: Edgar.Unity.Editor.PopupDatabasePro.GetMinimap2Popup
+  nameWithType: PopupDatabasePro.GetMinimap2Popup
 - uid: Edgar.Unity.Editor.PopupDatabasePro.GetMinimapPopup
   name: GetMinimapPopup()
   href: master/api/Edgar.Unity.Editor.PopupDatabasePro.html#Edgar_Unity_Editor_PopupDatabasePro_GetMinimapPopup
@@ -3138,13 +3194,13 @@ references:
   commentId: T:Edgar.Unity.Editor.ScenePopup
   fullName: Edgar.Unity.Editor.ScenePopup
   nameWithType: ScenePopup
-- uid: Edgar.Unity.Editor.ScenePopup.#ctor(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.List{Edgar.Unity.Editor.PopupLink})
+- uid: Edgar.Unity.Editor.ScenePopup.#ctor(System.String,System.String,System.String,System.String,System.String,List{Edgar.Unity.Editor.PopupLink})
   name: ScenePopup(String, String, String, String, String, List<PopupLink>)
-  href: master/api/Edgar.Unity.Editor.ScenePopup.html#Edgar_Unity_Editor_ScenePopup__ctor_System_String_System_String_System_String_System_String_System_String_System_Collections_Generic_List_Edgar_Unity_Editor_PopupLink__
-  commentId: M:Edgar.Unity.Editor.ScenePopup.#ctor(System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.List{Edgar.Unity.Editor.PopupLink})
+  href: master/api/Edgar.Unity.Editor.ScenePopup.html#Edgar_Unity_Editor_ScenePopup__ctor_System_String_System_String_System_String_System_String_System_String_List_Edgar_Unity_Editor_PopupLink__
+  commentId: M:Edgar.Unity.Editor.ScenePopup.#ctor(System.String,System.String,System.String,System.String,System.String,List{Edgar.Unity.Editor.PopupLink})
   name.vb: ScenePopup(String, String, String, String, String, List(Of PopupLink))
-  fullName: Edgar.Unity.Editor.ScenePopup.ScenePopup(System.String, System.String, System.String, System.String, System.String, System.Collections.Generic.List<Edgar.Unity.Editor.PopupLink>)
-  fullName.vb: Edgar.Unity.Editor.ScenePopup.ScenePopup(System.String, System.String, System.String, System.String, System.String, System.Collections.Generic.List(Of Edgar.Unity.Editor.PopupLink))
+  fullName: Edgar.Unity.Editor.ScenePopup.ScenePopup(System.String, System.String, System.String, System.String, System.String, List<Edgar.Unity.Editor.PopupLink>)
+  fullName.vb: Edgar.Unity.Editor.ScenePopup.ScenePopup(System.String, System.String, System.String, System.String, System.String, List(Of Edgar.Unity.Editor.PopupLink))
   nameWithType: ScenePopup.ScenePopup(String, String, String, String, String, List<PopupLink>)
   nameWithType.vb: ScenePopup.ScenePopup(String, String, String, String, String, List(Of PopupLink))
 - uid: Edgar.Unity.Editor.ScenePopup.#ctor*
@@ -5757,6 +5813,31 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetup.Run
   nameWithType: MinimapExampleSetup.Run
+- uid: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy
+  name: MinimapExampleSetupLegacy
+  href: master/api/Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.html
+  commentId: T:Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy
+  fullName: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy
+  nameWithType: MinimapExampleSetupLegacy
+- uid: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.MinimapPostProcess
+  name: MinimapPostProcess
+  href: master/api/Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.html#Edgar_Unity_Examples_MinimapExample_MinimapExampleSetupLegacy_MinimapPostProcess
+  commentId: F:Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.MinimapPostProcess
+  fullName: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.MinimapPostProcess
+  nameWithType: MinimapExampleSetupLegacy.MinimapPostProcess
+- uid: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.Run(Edgar.Unity.GeneratedLevel,Edgar.Unity.LevelDescription)
+  name: Run(GeneratedLevel, LevelDescription)
+  href: master/api/Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.html#Edgar_Unity_Examples_MinimapExample_MinimapExampleSetupLegacy_Run_Edgar_Unity_GeneratedLevel_Edgar_Unity_LevelDescription_
+  commentId: M:Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.Run(Edgar.Unity.GeneratedLevel,Edgar.Unity.LevelDescription)
+  fullName: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.Run(Edgar.Unity.GeneratedLevel, Edgar.Unity.LevelDescription)
+  nameWithType: MinimapExampleSetupLegacy.Run(GeneratedLevel, LevelDescription)
+- uid: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.Run*
+  name: Run
+  href: master/api/Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.html#Edgar_Unity_Examples_MinimapExample_MinimapExampleSetupLegacy_Run_
+  commentId: Overload:Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.Run
+  isSpec: "True"
+  fullName: Edgar.Unity.Examples.MinimapExample.MinimapExampleSetupLegacy.Run
+  nameWithType: MinimapExampleSetupLegacy.Run
 - uid: Edgar.Unity.Examples.PC2D.Example
   name: Edgar.Unity.Examples.PC2D.Example
   href: master/api/Edgar.Unity.Examples.PC2D.Example.html
@@ -9473,13 +9554,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Extensions.ToHashSet
   nameWithType: Extensions.ToHashSet
-- uid: Edgar.Unity.Extensions.ToHashSet``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})
+- uid: Edgar.Unity.Extensions.ToHashSet``1(IEnumerable{``0},IEqualityComparer{``0})
   name: ToHashSet<T>(IEnumerable<T>, IEqualityComparer<T>)
-  href: master/api/Edgar.Unity.Extensions.html#Edgar_Unity_Extensions_ToHashSet__1_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEqualityComparer___0__
-  commentId: M:Edgar.Unity.Extensions.ToHashSet``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0})
+  href: master/api/Edgar.Unity.Extensions.html#Edgar_Unity_Extensions_ToHashSet__1_IEnumerable___0__IEqualityComparer___0__
+  commentId: M:Edgar.Unity.Extensions.ToHashSet``1(IEnumerable{``0},IEqualityComparer{``0})
   name.vb: ToHashSet(Of T)(IEnumerable(Of T), IEqualityComparer(Of T))
-  fullName: Edgar.Unity.Extensions.ToHashSet<T>(System.Collections.Generic.IEnumerable<T>, System.Collections.Generic.IEqualityComparer<T>)
-  fullName.vb: Edgar.Unity.Extensions.ToHashSet(Of T)(System.Collections.Generic.IEnumerable(Of T), System.Collections.Generic.IEqualityComparer(Of T))
+  fullName: Edgar.Unity.Extensions.ToHashSet<T>(IEnumerable<T>, IEqualityComparer<T>)
+  fullName.vb: Edgar.Unity.Extensions.ToHashSet(Of T)(IEnumerable(Of T), IEqualityComparer(Of T))
   nameWithType: Extensions.ToHashSet<T>(IEnumerable<T>, IEqualityComparer<T>)
   nameWithType.vb: Extensions.ToHashSet(Of T)(IEnumerable(Of T), IEqualityComparer(Of T))
 - uid: Edgar.Unity.Extensions.ToUnityIntVector3(EdgarVector2Int)
@@ -9539,66 +9620,51 @@ references:
   commentId: F:Edgar.Unity.FixedLevelGraphConfig.UseCorridors
   fullName: Edgar.Unity.FixedLevelGraphConfig.UseCorridors
   nameWithType: FixedLevelGraphConfig.UseCorridors
-- uid: Edgar.Unity.FixedLevelGraphInputTask`1
-  name: FixedLevelGraphInputTask<TPayload>
-  href: master/api/Edgar.Unity.FixedLevelGraphInputTask-1.html
-  commentId: T:Edgar.Unity.FixedLevelGraphInputTask`1
-  name.vb: FixedLevelGraphInputTask(Of TPayload)
-  fullName: Edgar.Unity.FixedLevelGraphInputTask<TPayload>
-  fullName.vb: Edgar.Unity.FixedLevelGraphInputTask(Of TPayload)
-  nameWithType: FixedLevelGraphInputTask<TPayload>
-  nameWithType.vb: FixedLevelGraphInputTask(Of TPayload)
-- uid: Edgar.Unity.FixedLevelGraphInputTask`1.#ctor(Edgar.Unity.FixedLevelGraphConfig)
-  name: FixedLevelGraphInputTask(FixedLevelGraphConfig)
-  href: master/api/Edgar.Unity.FixedLevelGraphInputTask-1.html#Edgar_Unity_FixedLevelGraphInputTask_1__ctor_Edgar_Unity_FixedLevelGraphConfig_
-  commentId: M:Edgar.Unity.FixedLevelGraphInputTask`1.#ctor(Edgar.Unity.FixedLevelGraphConfig)
-  fullName: Edgar.Unity.FixedLevelGraphInputTask<TPayload>.FixedLevelGraphInputTask(Edgar.Unity.FixedLevelGraphConfig)
-  fullName.vb: Edgar.Unity.FixedLevelGraphInputTask(Of TPayload).FixedLevelGraphInputTask(Edgar.Unity.FixedLevelGraphConfig)
-  nameWithType: FixedLevelGraphInputTask<TPayload>.FixedLevelGraphInputTask(FixedLevelGraphConfig)
-  nameWithType.vb: FixedLevelGraphInputTask(Of TPayload).FixedLevelGraphInputTask(FixedLevelGraphConfig)
-- uid: Edgar.Unity.FixedLevelGraphInputTask`1.#ctor*
+- uid: Edgar.Unity.FixedLevelGraphInputTask
   name: FixedLevelGraphInputTask
-  href: master/api/Edgar.Unity.FixedLevelGraphInputTask-1.html#Edgar_Unity_FixedLevelGraphInputTask_1__ctor_
-  commentId: Overload:Edgar.Unity.FixedLevelGraphInputTask`1.#ctor
+  href: master/api/Edgar.Unity.FixedLevelGraphInputTask.html
+  commentId: T:Edgar.Unity.FixedLevelGraphInputTask
+  fullName: Edgar.Unity.FixedLevelGraphInputTask
+  nameWithType: FixedLevelGraphInputTask
+- uid: Edgar.Unity.FixedLevelGraphInputTask.#ctor(Edgar.Unity.FixedLevelGraphConfig)
+  name: FixedLevelGraphInputTask(FixedLevelGraphConfig)
+  href: master/api/Edgar.Unity.FixedLevelGraphInputTask.html#Edgar_Unity_FixedLevelGraphInputTask__ctor_Edgar_Unity_FixedLevelGraphConfig_
+  commentId: M:Edgar.Unity.FixedLevelGraphInputTask.#ctor(Edgar.Unity.FixedLevelGraphConfig)
+  fullName: Edgar.Unity.FixedLevelGraphInputTask.FixedLevelGraphInputTask(Edgar.Unity.FixedLevelGraphConfig)
+  nameWithType: FixedLevelGraphInputTask.FixedLevelGraphInputTask(FixedLevelGraphConfig)
+- uid: Edgar.Unity.FixedLevelGraphInputTask.#ctor*
+  name: FixedLevelGraphInputTask
+  href: master/api/Edgar.Unity.FixedLevelGraphInputTask.html#Edgar_Unity_FixedLevelGraphInputTask__ctor_
+  commentId: Overload:Edgar.Unity.FixedLevelGraphInputTask.#ctor
   isSpec: "True"
-  fullName: Edgar.Unity.FixedLevelGraphInputTask<TPayload>.FixedLevelGraphInputTask
-  fullName.vb: Edgar.Unity.FixedLevelGraphInputTask(Of TPayload).FixedLevelGraphInputTask
-  nameWithType: FixedLevelGraphInputTask<TPayload>.FixedLevelGraphInputTask
-  nameWithType.vb: FixedLevelGraphInputTask(Of TPayload).FixedLevelGraphInputTask
-- uid: Edgar.Unity.FixedLevelGraphInputTask`1.GetRoomTemplates(Edgar.Unity.RoomBase)
+  fullName: Edgar.Unity.FixedLevelGraphInputTask.FixedLevelGraphInputTask
+  nameWithType: FixedLevelGraphInputTask.FixedLevelGraphInputTask
+- uid: Edgar.Unity.FixedLevelGraphInputTask.GetRoomTemplates(Edgar.Unity.RoomBase)
   name: GetRoomTemplates(RoomBase)
-  href: master/api/Edgar.Unity.FixedLevelGraphInputTask-1.html#Edgar_Unity_FixedLevelGraphInputTask_1_GetRoomTemplates_Edgar_Unity_RoomBase_
-  commentId: M:Edgar.Unity.FixedLevelGraphInputTask`1.GetRoomTemplates(Edgar.Unity.RoomBase)
-  fullName: Edgar.Unity.FixedLevelGraphInputTask<TPayload>.GetRoomTemplates(Edgar.Unity.RoomBase)
-  fullName.vb: Edgar.Unity.FixedLevelGraphInputTask(Of TPayload).GetRoomTemplates(Edgar.Unity.RoomBase)
-  nameWithType: FixedLevelGraphInputTask<TPayload>.GetRoomTemplates(RoomBase)
-  nameWithType.vb: FixedLevelGraphInputTask(Of TPayload).GetRoomTemplates(RoomBase)
-- uid: Edgar.Unity.FixedLevelGraphInputTask`1.GetRoomTemplates*
+  href: master/api/Edgar.Unity.FixedLevelGraphInputTask.html#Edgar_Unity_FixedLevelGraphInputTask_GetRoomTemplates_Edgar_Unity_RoomBase_
+  commentId: M:Edgar.Unity.FixedLevelGraphInputTask.GetRoomTemplates(Edgar.Unity.RoomBase)
+  fullName: Edgar.Unity.FixedLevelGraphInputTask.GetRoomTemplates(Edgar.Unity.RoomBase)
+  nameWithType: FixedLevelGraphInputTask.GetRoomTemplates(RoomBase)
+- uid: Edgar.Unity.FixedLevelGraphInputTask.GetRoomTemplates*
   name: GetRoomTemplates
-  href: master/api/Edgar.Unity.FixedLevelGraphInputTask-1.html#Edgar_Unity_FixedLevelGraphInputTask_1_GetRoomTemplates_
-  commentId: Overload:Edgar.Unity.FixedLevelGraphInputTask`1.GetRoomTemplates
+  href: master/api/Edgar.Unity.FixedLevelGraphInputTask.html#Edgar_Unity_FixedLevelGraphInputTask_GetRoomTemplates_
+  commentId: Overload:Edgar.Unity.FixedLevelGraphInputTask.GetRoomTemplates
   isSpec: "True"
-  fullName: Edgar.Unity.FixedLevelGraphInputTask<TPayload>.GetRoomTemplates
-  fullName.vb: Edgar.Unity.FixedLevelGraphInputTask(Of TPayload).GetRoomTemplates
-  nameWithType: FixedLevelGraphInputTask<TPayload>.GetRoomTemplates
-  nameWithType.vb: FixedLevelGraphInputTask(Of TPayload).GetRoomTemplates
-- uid: Edgar.Unity.FixedLevelGraphInputTask`1.Process
+  fullName: Edgar.Unity.FixedLevelGraphInputTask.GetRoomTemplates
+  nameWithType: FixedLevelGraphInputTask.GetRoomTemplates
+- uid: Edgar.Unity.FixedLevelGraphInputTask.Process
   name: Process()
-  href: master/api/Edgar.Unity.FixedLevelGraphInputTask-1.html#Edgar_Unity_FixedLevelGraphInputTask_1_Process
-  commentId: M:Edgar.Unity.FixedLevelGraphInputTask`1.Process
-  fullName: Edgar.Unity.FixedLevelGraphInputTask<TPayload>.Process()
-  fullName.vb: Edgar.Unity.FixedLevelGraphInputTask(Of TPayload).Process()
-  nameWithType: FixedLevelGraphInputTask<TPayload>.Process()
-  nameWithType.vb: FixedLevelGraphInputTask(Of TPayload).Process()
-- uid: Edgar.Unity.FixedLevelGraphInputTask`1.Process*
+  href: master/api/Edgar.Unity.FixedLevelGraphInputTask.html#Edgar_Unity_FixedLevelGraphInputTask_Process
+  commentId: M:Edgar.Unity.FixedLevelGraphInputTask.Process
+  fullName: Edgar.Unity.FixedLevelGraphInputTask.Process()
+  nameWithType: FixedLevelGraphInputTask.Process()
+- uid: Edgar.Unity.FixedLevelGraphInputTask.Process*
   name: Process
-  href: master/api/Edgar.Unity.FixedLevelGraphInputTask-1.html#Edgar_Unity_FixedLevelGraphInputTask_1_Process_
-  commentId: Overload:Edgar.Unity.FixedLevelGraphInputTask`1.Process
+  href: master/api/Edgar.Unity.FixedLevelGraphInputTask.html#Edgar_Unity_FixedLevelGraphInputTask_Process_
+  commentId: Overload:Edgar.Unity.FixedLevelGraphInputTask.Process
   isSpec: "True"
-  fullName: Edgar.Unity.FixedLevelGraphInputTask<TPayload>.Process
-  fullName.vb: Edgar.Unity.FixedLevelGraphInputTask(Of TPayload).Process
-  nameWithType: FixedLevelGraphInputTask<TPayload>.Process
-  nameWithType.vb: FixedLevelGraphInputTask(Of TPayload).Process
+  fullName: Edgar.Unity.FixedLevelGraphInputTask.Process
+  nameWithType: FixedLevelGraphInputTask.Process
 - uid: Edgar.Unity.FogOfWar
   name: FogOfWar
   href: master/api/Edgar.Unity.FogOfWar.html
@@ -9743,13 +9809,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.FogOfWar.RevealRoomAndNeighbors
   nameWithType: FogOfWar.RevealRoomAndNeighbors
-- uid: Edgar.Unity.FogOfWar.RevealRooms(System.Collections.Generic.List{Edgar.Unity.RoomInstance},System.Nullable{Vector3},System.Boolean)
+- uid: Edgar.Unity.FogOfWar.RevealRooms(List{Edgar.Unity.RoomInstance},System.Nullable{Vector3},System.Boolean)
   name: RevealRooms(List<RoomInstance>, Nullable<Vector3>, Boolean)
-  href: master/api/Edgar.Unity.FogOfWar.html#Edgar_Unity_FogOfWar_RevealRooms_System_Collections_Generic_List_Edgar_Unity_RoomInstance__System_Nullable_Vector3__System_Boolean_
-  commentId: M:Edgar.Unity.FogOfWar.RevealRooms(System.Collections.Generic.List{Edgar.Unity.RoomInstance},System.Nullable{Vector3},System.Boolean)
+  href: master/api/Edgar.Unity.FogOfWar.html#Edgar_Unity_FogOfWar_RevealRooms_List_Edgar_Unity_RoomInstance__System_Nullable_Vector3__System_Boolean_
+  commentId: M:Edgar.Unity.FogOfWar.RevealRooms(List{Edgar.Unity.RoomInstance},System.Nullable{Vector3},System.Boolean)
   name.vb: RevealRooms(List(Of RoomInstance), Nullable(Of Vector3), Boolean)
-  fullName: Edgar.Unity.FogOfWar.RevealRooms(System.Collections.Generic.List<Edgar.Unity.RoomInstance>, System.Nullable<Vector3>, System.Boolean)
-  fullName.vb: Edgar.Unity.FogOfWar.RevealRooms(System.Collections.Generic.List(Of Edgar.Unity.RoomInstance), System.Nullable(Of Vector3), System.Boolean)
+  fullName: Edgar.Unity.FogOfWar.RevealRooms(List<Edgar.Unity.RoomInstance>, System.Nullable<Vector3>, System.Boolean)
+  fullName.vb: Edgar.Unity.FogOfWar.RevealRooms(List(Of Edgar.Unity.RoomInstance), System.Nullable(Of Vector3), System.Boolean)
   nameWithType: FogOfWar.RevealRooms(List<RoomInstance>, Nullable<Vector3>, Boolean)
   nameWithType.vb: FogOfWar.RevealRooms(List(Of RoomInstance), Nullable(Of Vector3), Boolean)
 - uid: Edgar.Unity.FogOfWar.RevealRooms*
@@ -9784,6 +9850,12 @@ references:
   commentId: F:Edgar.Unity.FogOfWar.TransitionMode
   fullName: Edgar.Unity.FogOfWar.TransitionMode
   nameWithType: FogOfWar.TransitionMode
+- uid: Edgar.Unity.FogOfWar.WaveOrigin
+  name: WaveOrigin
+  href: master/api/Edgar.Unity.FogOfWar.html#Edgar_Unity_FogOfWar_WaveOrigin
+  commentId: F:Edgar.Unity.FogOfWar.WaveOrigin
+  fullName: Edgar.Unity.FogOfWar.WaveOrigin
+  nameWithType: FogOfWar.WaveOrigin
 - uid: Edgar.Unity.FogOfWar.WaveRevealThreshold
   name: WaveRevealThreshold
   href: master/api/Edgar.Unity.FogOfWar.html#Edgar_Unity_FogOfWar_WaveRevealThreshold
@@ -9962,13 +10034,13 @@ references:
   commentId: T:Edgar.Unity.GeneratedLevel
   fullName: Edgar.Unity.GeneratedLevel
   nameWithType: GeneratedLevel
-- uid: Edgar.Unity.GeneratedLevel.#ctor(System.Collections.Generic.Dictionary{Edgar.Unity.RoomBase,Edgar.Unity.RoomInstance},LayoutGrid2D{Edgar.Unity.RoomBase},GameObject)
+- uid: Edgar.Unity.GeneratedLevel.#ctor(Dictionary{Edgar.Unity.RoomBase,Edgar.Unity.RoomInstance},LayoutGrid2D{Edgar.Unity.RoomBase},GameObject)
   name: GeneratedLevel(Dictionary<RoomBase, RoomInstance>, LayoutGrid2D<RoomBase>, GameObject)
-  href: master/api/Edgar.Unity.GeneratedLevel.html#Edgar_Unity_GeneratedLevel__ctor_System_Collections_Generic_Dictionary_Edgar_Unity_RoomBase_Edgar_Unity_RoomInstance__LayoutGrid2D_Edgar_Unity_RoomBase__GameObject_
-  commentId: M:Edgar.Unity.GeneratedLevel.#ctor(System.Collections.Generic.Dictionary{Edgar.Unity.RoomBase,Edgar.Unity.RoomInstance},LayoutGrid2D{Edgar.Unity.RoomBase},GameObject)
+  href: master/api/Edgar.Unity.GeneratedLevel.html#Edgar_Unity_GeneratedLevel__ctor_Dictionary_Edgar_Unity_RoomBase_Edgar_Unity_RoomInstance__LayoutGrid2D_Edgar_Unity_RoomBase__GameObject_
+  commentId: M:Edgar.Unity.GeneratedLevel.#ctor(Dictionary{Edgar.Unity.RoomBase,Edgar.Unity.RoomInstance},LayoutGrid2D{Edgar.Unity.RoomBase},GameObject)
   name.vb: GeneratedLevel(Dictionary(Of RoomBase, RoomInstance), LayoutGrid2D(Of RoomBase), GameObject)
-  fullName: Edgar.Unity.GeneratedLevel.GeneratedLevel(System.Collections.Generic.Dictionary<Edgar.Unity.RoomBase, Edgar.Unity.RoomInstance>, LayoutGrid2D<Edgar.Unity.RoomBase>, GameObject)
-  fullName.vb: Edgar.Unity.GeneratedLevel.GeneratedLevel(System.Collections.Generic.Dictionary(Of Edgar.Unity.RoomBase, Edgar.Unity.RoomInstance), LayoutGrid2D(Of Edgar.Unity.RoomBase), GameObject)
+  fullName: Edgar.Unity.GeneratedLevel.GeneratedLevel(Dictionary<Edgar.Unity.RoomBase, Edgar.Unity.RoomInstance>, LayoutGrid2D<Edgar.Unity.RoomBase>, GameObject)
+  fullName.vb: Edgar.Unity.GeneratedLevel.GeneratedLevel(Dictionary(Of Edgar.Unity.RoomBase, Edgar.Unity.RoomInstance), LayoutGrid2D(Of Edgar.Unity.RoomBase), GameObject)
   nameWithType: GeneratedLevel.GeneratedLevel(Dictionary<RoomBase, RoomInstance>, LayoutGrid2D<RoomBase>, GameObject)
   nameWithType.vb: GeneratedLevel.GeneratedLevel(Dictionary(Of RoomBase, RoomInstance), LayoutGrid2D(Of RoomBase), GameObject)
 - uid: Edgar.Unity.GeneratedLevel.#ctor*
@@ -10159,96 +10231,37 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.GeneratorUtils.TransformLayout
   nameWithType: GeneratorUtils.TransformLayout
-- uid: Edgar.Unity.IBenchmarkInfoPayload
-  name: IBenchmarkInfoPayload
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html
-  commentId: T:Edgar.Unity.IBenchmarkInfoPayload
-  fullName: Edgar.Unity.IBenchmarkInfoPayload
-  nameWithType: IBenchmarkInfoPayload
-- uid: Edgar.Unity.IBenchmarkInfoPayload.GeneratedLevel
-  name: GeneratedLevel
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html#Edgar_Unity_IBenchmarkInfoPayload_GeneratedLevel
-  commentId: P:Edgar.Unity.IBenchmarkInfoPayload.GeneratedLevel
-  fullName: Edgar.Unity.IBenchmarkInfoPayload.GeneratedLevel
-  nameWithType: IBenchmarkInfoPayload.GeneratedLevel
-- uid: Edgar.Unity.IBenchmarkInfoPayload.GeneratedLevel*
-  name: GeneratedLevel
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html#Edgar_Unity_IBenchmarkInfoPayload_GeneratedLevel_
-  commentId: Overload:Edgar.Unity.IBenchmarkInfoPayload.GeneratedLevel
+- uid: Edgar.Unity.HelpBoxAttribute
+  name: HelpBoxAttribute
+  href: master/api/Edgar.Unity.HelpBoxAttribute.html
+  commentId: T:Edgar.Unity.HelpBoxAttribute
+  fullName: Edgar.Unity.HelpBoxAttribute
+  nameWithType: HelpBoxAttribute
+- uid: Edgar.Unity.HelpBoxAttribute.#ctor(System.String,Edgar.Unity.MessageType)
+  name: HelpBoxAttribute(String, MessageType)
+  href: master/api/Edgar.Unity.HelpBoxAttribute.html#Edgar_Unity_HelpBoxAttribute__ctor_System_String_Edgar_Unity_MessageType_
+  commentId: M:Edgar.Unity.HelpBoxAttribute.#ctor(System.String,Edgar.Unity.MessageType)
+  fullName: Edgar.Unity.HelpBoxAttribute.HelpBoxAttribute(System.String, Edgar.Unity.MessageType)
+  nameWithType: HelpBoxAttribute.HelpBoxAttribute(String, MessageType)
+- uid: Edgar.Unity.HelpBoxAttribute.#ctor*
+  name: HelpBoxAttribute
+  href: master/api/Edgar.Unity.HelpBoxAttribute.html#Edgar_Unity_HelpBoxAttribute__ctor_
+  commentId: Overload:Edgar.Unity.HelpBoxAttribute.#ctor
   isSpec: "True"
-  fullName: Edgar.Unity.IBenchmarkInfoPayload.GeneratedLevel
-  nameWithType: IBenchmarkInfoPayload.GeneratedLevel
-- uid: Edgar.Unity.IBenchmarkInfoPayload.GeneratorStats
-  name: GeneratorStats
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html#Edgar_Unity_IBenchmarkInfoPayload_GeneratorStats
-  commentId: P:Edgar.Unity.IBenchmarkInfoPayload.GeneratorStats
-  fullName: Edgar.Unity.IBenchmarkInfoPayload.GeneratorStats
-  nameWithType: IBenchmarkInfoPayload.GeneratorStats
-- uid: Edgar.Unity.IBenchmarkInfoPayload.GeneratorStats*
-  name: GeneratorStats
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html#Edgar_Unity_IBenchmarkInfoPayload_GeneratorStats_
-  commentId: Overload:Edgar.Unity.IBenchmarkInfoPayload.GeneratorStats
-  isSpec: "True"
-  fullName: Edgar.Unity.IBenchmarkInfoPayload.GeneratorStats
-  nameWithType: IBenchmarkInfoPayload.GeneratorStats
-- uid: Edgar.Unity.IBenchmarkInfoPayload.Iterations
-  name: Iterations
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html#Edgar_Unity_IBenchmarkInfoPayload_Iterations
-  commentId: P:Edgar.Unity.IBenchmarkInfoPayload.Iterations
-  fullName: Edgar.Unity.IBenchmarkInfoPayload.Iterations
-  nameWithType: IBenchmarkInfoPayload.Iterations
-- uid: Edgar.Unity.IBenchmarkInfoPayload.Iterations*
-  name: Iterations
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html#Edgar_Unity_IBenchmarkInfoPayload_Iterations_
-  commentId: Overload:Edgar.Unity.IBenchmarkInfoPayload.Iterations
-  isSpec: "True"
-  fullName: Edgar.Unity.IBenchmarkInfoPayload.Iterations
-  nameWithType: IBenchmarkInfoPayload.Iterations
-- uid: Edgar.Unity.IBenchmarkInfoPayload.TimeTotal
-  name: TimeTotal
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html#Edgar_Unity_IBenchmarkInfoPayload_TimeTotal
-  commentId: P:Edgar.Unity.IBenchmarkInfoPayload.TimeTotal
-  fullName: Edgar.Unity.IBenchmarkInfoPayload.TimeTotal
-  nameWithType: IBenchmarkInfoPayload.TimeTotal
-- uid: Edgar.Unity.IBenchmarkInfoPayload.TimeTotal*
-  name: TimeTotal
-  href: master/api/Edgar.Unity.IBenchmarkInfoPayload.html#Edgar_Unity_IBenchmarkInfoPayload_TimeTotal_
-  commentId: Overload:Edgar.Unity.IBenchmarkInfoPayload.TimeTotal
-  isSpec: "True"
-  fullName: Edgar.Unity.IBenchmarkInfoPayload.TimeTotal
-  nameWithType: IBenchmarkInfoPayload.TimeTotal
-- uid: Edgar.Unity.IGeneratorPayload
-  name: IGeneratorPayload
-  href: master/api/Edgar.Unity.IGeneratorPayload.html
-  commentId: T:Edgar.Unity.IGeneratorPayload
-  fullName: Edgar.Unity.IGeneratorPayload
-  nameWithType: IGeneratorPayload
-- uid: Edgar.Unity.IGeneratorPayload.RootGameObject
-  name: RootGameObject
-  href: master/api/Edgar.Unity.IGeneratorPayload.html#Edgar_Unity_IGeneratorPayload_RootGameObject
-  commentId: P:Edgar.Unity.IGeneratorPayload.RootGameObject
-  fullName: Edgar.Unity.IGeneratorPayload.RootGameObject
-  nameWithType: IGeneratorPayload.RootGameObject
-- uid: Edgar.Unity.IGeneratorPayload.RootGameObject*
-  name: RootGameObject
-  href: master/api/Edgar.Unity.IGeneratorPayload.html#Edgar_Unity_IGeneratorPayload_RootGameObject_
-  commentId: Overload:Edgar.Unity.IGeneratorPayload.RootGameObject
-  isSpec: "True"
-  fullName: Edgar.Unity.IGeneratorPayload.RootGameObject
-  nameWithType: IGeneratorPayload.RootGameObject
-- uid: Edgar.Unity.IGeneratorPayload.Tilemaps
-  name: Tilemaps
-  href: master/api/Edgar.Unity.IGeneratorPayload.html#Edgar_Unity_IGeneratorPayload_Tilemaps
-  commentId: P:Edgar.Unity.IGeneratorPayload.Tilemaps
-  fullName: Edgar.Unity.IGeneratorPayload.Tilemaps
-  nameWithType: IGeneratorPayload.Tilemaps
-- uid: Edgar.Unity.IGeneratorPayload.Tilemaps*
-  name: Tilemaps
-  href: master/api/Edgar.Unity.IGeneratorPayload.html#Edgar_Unity_IGeneratorPayload_Tilemaps_
-  commentId: Overload:Edgar.Unity.IGeneratorPayload.Tilemaps
-  isSpec: "True"
-  fullName: Edgar.Unity.IGeneratorPayload.Tilemaps
-  nameWithType: IGeneratorPayload.Tilemaps
+  fullName: Edgar.Unity.HelpBoxAttribute.HelpBoxAttribute
+  nameWithType: HelpBoxAttribute.HelpBoxAttribute
+- uid: Edgar.Unity.HelpBoxAttribute.Text
+  name: Text
+  href: master/api/Edgar.Unity.HelpBoxAttribute.html#Edgar_Unity_HelpBoxAttribute_Text
+  commentId: F:Edgar.Unity.HelpBoxAttribute.Text
+  fullName: Edgar.Unity.HelpBoxAttribute.Text
+  nameWithType: HelpBoxAttribute.Text
+- uid: Edgar.Unity.HelpBoxAttribute.Type
+  name: Type
+  href: master/api/Edgar.Unity.HelpBoxAttribute.html#Edgar_Unity_HelpBoxAttribute_Type
+  commentId: F:Edgar.Unity.HelpBoxAttribute.Type
+  fullName: Edgar.Unity.HelpBoxAttribute.Type
+  nameWithType: HelpBoxAttribute.Type
 - uid: Edgar.Unity.IgnoreTilemap
   name: IgnoreTilemap
   href: master/api/Edgar.Unity.IgnoreTilemap.html
@@ -10267,38 +10280,18 @@ references:
   commentId: F:Edgar.Unity.IgnoreTilemap.IgnoreWhenCopyingTiles
   fullName: Edgar.Unity.IgnoreTilemap.IgnoreWhenCopyingTiles
   nameWithType: IgnoreTilemap.IgnoreWhenCopyingTiles
-- uid: Edgar.Unity.IGraphBasedGeneratorPayload
-  name: IGraphBasedGeneratorPayload
-  href: master/api/Edgar.Unity.IGraphBasedGeneratorPayload.html
-  commentId: T:Edgar.Unity.IGraphBasedGeneratorPayload
-  fullName: Edgar.Unity.IGraphBasedGeneratorPayload
-  nameWithType: IGraphBasedGeneratorPayload
-- uid: Edgar.Unity.IGraphBasedGeneratorPayload.GeneratedLevel
-  name: GeneratedLevel
-  href: master/api/Edgar.Unity.IGraphBasedGeneratorPayload.html#Edgar_Unity_IGraphBasedGeneratorPayload_GeneratedLevel
-  commentId: P:Edgar.Unity.IGraphBasedGeneratorPayload.GeneratedLevel
-  fullName: Edgar.Unity.IGraphBasedGeneratorPayload.GeneratedLevel
-  nameWithType: IGraphBasedGeneratorPayload.GeneratedLevel
-- uid: Edgar.Unity.IGraphBasedGeneratorPayload.GeneratedLevel*
-  name: GeneratedLevel
-  href: master/api/Edgar.Unity.IGraphBasedGeneratorPayload.html#Edgar_Unity_IGraphBasedGeneratorPayload_GeneratedLevel_
-  commentId: Overload:Edgar.Unity.IGraphBasedGeneratorPayload.GeneratedLevel
-  isSpec: "True"
-  fullName: Edgar.Unity.IGraphBasedGeneratorPayload.GeneratedLevel
-  nameWithType: IGraphBasedGeneratorPayload.GeneratedLevel
-- uid: Edgar.Unity.IGraphBasedGeneratorPayload.LevelDescription
-  name: LevelDescription
-  href: master/api/Edgar.Unity.IGraphBasedGeneratorPayload.html#Edgar_Unity_IGraphBasedGeneratorPayload_LevelDescription
-  commentId: P:Edgar.Unity.IGraphBasedGeneratorPayload.LevelDescription
-  fullName: Edgar.Unity.IGraphBasedGeneratorPayload.LevelDescription
-  nameWithType: IGraphBasedGeneratorPayload.LevelDescription
-- uid: Edgar.Unity.IGraphBasedGeneratorPayload.LevelDescription*
-  name: LevelDescription
-  href: master/api/Edgar.Unity.IGraphBasedGeneratorPayload.html#Edgar_Unity_IGraphBasedGeneratorPayload_LevelDescription_
-  commentId: Overload:Edgar.Unity.IGraphBasedGeneratorPayload.LevelDescription
-  isSpec: "True"
-  fullName: Edgar.Unity.IGraphBasedGeneratorPayload.LevelDescription
-  nameWithType: IGraphBasedGeneratorPayload.LevelDescription
+- uid: Edgar.Unity.IgnoreTilemap.IgnoreWhenDisablingColliders
+  name: IgnoreWhenDisablingColliders
+  href: master/api/Edgar.Unity.IgnoreTilemap.html#Edgar_Unity_IgnoreTilemap_IgnoreWhenDisablingColliders
+  commentId: F:Edgar.Unity.IgnoreTilemap.IgnoreWhenDisablingColliders
+  fullName: Edgar.Unity.IgnoreTilemap.IgnoreWhenDisablingColliders
+  nameWithType: IgnoreTilemap.IgnoreWhenDisablingColliders
+- uid: Edgar.Unity.IgnoreTilemap.IgnoreWhenDisablingRenderers
+  name: IgnoreWhenDisablingRenderers
+  href: master/api/Edgar.Unity.IgnoreTilemap.html#Edgar_Unity_IgnoreTilemap_IgnoreWhenDisablingRenderers
+  commentId: F:Edgar.Unity.IgnoreTilemap.IgnoreWhenDisablingRenderers
+  fullName: Edgar.Unity.IgnoreTilemap.IgnoreWhenDisablingRenderers
+  nameWithType: IgnoreTilemap.IgnoreWhenDisablingRenderers
 - uid: Edgar.Unity.ILevelGenerator
   name: ILevelGenerator
   href: master/api/Edgar.Unity.ILevelGenerator.html
@@ -10484,25 +10477,6 @@ references:
   fullName.vb: Edgar.Unity.IPipelineTask(Of TPayload).Process
   nameWithType: IPipelineTask<TPayload>.Process
   nameWithType.vb: IPipelineTask(Of TPayload).Process
-- uid: Edgar.Unity.IRandomGeneratorPayload
-  name: IRandomGeneratorPayload
-  href: master/api/Edgar.Unity.IRandomGeneratorPayload.html
-  commentId: T:Edgar.Unity.IRandomGeneratorPayload
-  fullName: Edgar.Unity.IRandomGeneratorPayload
-  nameWithType: IRandomGeneratorPayload
-- uid: Edgar.Unity.IRandomGeneratorPayload.Random
-  name: Random
-  href: master/api/Edgar.Unity.IRandomGeneratorPayload.html#Edgar_Unity_IRandomGeneratorPayload_Random
-  commentId: P:Edgar.Unity.IRandomGeneratorPayload.Random
-  fullName: Edgar.Unity.IRandomGeneratorPayload.Random
-  nameWithType: IRandomGeneratorPayload.Random
-- uid: Edgar.Unity.IRandomGeneratorPayload.Random*
-  name: Random
-  href: master/api/Edgar.Unity.IRandomGeneratorPayload.html#Edgar_Unity_IRandomGeneratorPayload_Random_
-  commentId: Overload:Edgar.Unity.IRandomGeneratorPayload.Random
-  isSpec: "True"
-  fullName: Edgar.Unity.IRandomGeneratorPayload.Random
-  nameWithType: IRandomGeneratorPayload.Random
 - uid: Edgar.Unity.IRoomTemplateOutlineHandler
   name: IRoomTemplateOutlineHandler
   href: master/api/Edgar.Unity.IRoomTemplateOutlineHandler.html
@@ -10566,13 +10540,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.LevelDescription.AddConnection
   nameWithType: LevelDescription.AddConnection
-- uid: Edgar.Unity.LevelDescription.AddCorridorConnection(Edgar.Unity.ConnectionBase,Edgar.Unity.RoomBase,System.Collections.Generic.List{GameObject})
+- uid: Edgar.Unity.LevelDescription.AddCorridorConnection(Edgar.Unity.ConnectionBase,Edgar.Unity.RoomBase,List{GameObject})
   name: AddCorridorConnection(ConnectionBase, RoomBase, List<GameObject>)
-  href: master/api/Edgar.Unity.LevelDescription.html#Edgar_Unity_LevelDescription_AddCorridorConnection_Edgar_Unity_ConnectionBase_Edgar_Unity_RoomBase_System_Collections_Generic_List_GameObject__
-  commentId: M:Edgar.Unity.LevelDescription.AddCorridorConnection(Edgar.Unity.ConnectionBase,Edgar.Unity.RoomBase,System.Collections.Generic.List{GameObject})
+  href: master/api/Edgar.Unity.LevelDescription.html#Edgar_Unity_LevelDescription_AddCorridorConnection_Edgar_Unity_ConnectionBase_Edgar_Unity_RoomBase_List_GameObject__
+  commentId: M:Edgar.Unity.LevelDescription.AddCorridorConnection(Edgar.Unity.ConnectionBase,Edgar.Unity.RoomBase,List{GameObject})
   name.vb: AddCorridorConnection(ConnectionBase, RoomBase, List(Of GameObject))
-  fullName: Edgar.Unity.LevelDescription.AddCorridorConnection(Edgar.Unity.ConnectionBase, Edgar.Unity.RoomBase, System.Collections.Generic.List<GameObject>)
-  fullName.vb: Edgar.Unity.LevelDescription.AddCorridorConnection(Edgar.Unity.ConnectionBase, Edgar.Unity.RoomBase, System.Collections.Generic.List(Of GameObject))
+  fullName: Edgar.Unity.LevelDescription.AddCorridorConnection(Edgar.Unity.ConnectionBase, Edgar.Unity.RoomBase, List<GameObject>)
+  fullName.vb: Edgar.Unity.LevelDescription.AddCorridorConnection(Edgar.Unity.ConnectionBase, Edgar.Unity.RoomBase, List(Of GameObject))
   nameWithType: LevelDescription.AddCorridorConnection(ConnectionBase, RoomBase, List<GameObject>)
   nameWithType.vb: LevelDescription.AddCorridorConnection(ConnectionBase, RoomBase, List(Of GameObject))
 - uid: Edgar.Unity.LevelDescription.AddCorridorConnection*
@@ -10582,13 +10556,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.LevelDescription.AddCorridorConnection
   nameWithType: LevelDescription.AddCorridorConnection
-- uid: Edgar.Unity.LevelDescription.AddRoom(Edgar.Unity.RoomBase,System.Collections.Generic.List{GameObject})
+- uid: Edgar.Unity.LevelDescription.AddRoom(Edgar.Unity.RoomBase,List{GameObject})
   name: AddRoom(RoomBase, List<GameObject>)
-  href: master/api/Edgar.Unity.LevelDescription.html#Edgar_Unity_LevelDescription_AddRoom_Edgar_Unity_RoomBase_System_Collections_Generic_List_GameObject__
-  commentId: M:Edgar.Unity.LevelDescription.AddRoom(Edgar.Unity.RoomBase,System.Collections.Generic.List{GameObject})
+  href: master/api/Edgar.Unity.LevelDescription.html#Edgar_Unity_LevelDescription_AddRoom_Edgar_Unity_RoomBase_List_GameObject__
+  commentId: M:Edgar.Unity.LevelDescription.AddRoom(Edgar.Unity.RoomBase,List{GameObject})
   name.vb: AddRoom(RoomBase, List(Of GameObject))
-  fullName: Edgar.Unity.LevelDescription.AddRoom(Edgar.Unity.RoomBase, System.Collections.Generic.List<GameObject>)
-  fullName.vb: Edgar.Unity.LevelDescription.AddRoom(Edgar.Unity.RoomBase, System.Collections.Generic.List(Of GameObject))
+  fullName: Edgar.Unity.LevelDescription.AddRoom(Edgar.Unity.RoomBase, List<GameObject>)
+  fullName.vb: Edgar.Unity.LevelDescription.AddRoom(Edgar.Unity.RoomBase, List(Of GameObject))
   nameWithType: LevelDescription.AddRoom(RoomBase, List<GameObject>)
   nameWithType.vb: LevelDescription.AddRoom(RoomBase, List(Of GameObject))
 - uid: Edgar.Unity.LevelDescription.AddRoom*
@@ -10782,6 +10756,12 @@ references:
   commentId: F:Edgar.Unity.LevelGraph.EditorData
   fullName: Edgar.Unity.LevelGraph.EditorData
   nameWithType: LevelGraph.EditorData
+- uid: Edgar.Unity.LevelGraph.IsDirected
+  name: IsDirected
+  href: master/api/Edgar.Unity.LevelGraph.html#Edgar_Unity_LevelGraph_IsDirected
+  commentId: F:Edgar.Unity.LevelGraph.IsDirected
+  fullName: Edgar.Unity.LevelGraph.IsDirected
+  nameWithType: LevelGraph.IsDirected
 - uid: Edgar.Unity.LevelGraph.Rooms
   name: Rooms
   href: master/api/Edgar.Unity.LevelGraph.html#Edgar_Unity_LevelGraph_Rooms
@@ -10824,30 +10804,144 @@ references:
   commentId: F:Edgar.Unity.LevelInfo.RoomInstances
   fullName: Edgar.Unity.LevelInfo.RoomInstances
   nameWithType: LevelInfo.RoomInstances
+- uid: Edgar.Unity.MessageType
+  name: MessageType
+  href: master/api/Edgar.Unity.MessageType.html
+  commentId: T:Edgar.Unity.MessageType
+  fullName: Edgar.Unity.MessageType
+  nameWithType: MessageType
+- uid: Edgar.Unity.MessageType.Error
+  name: Error
+  href: master/api/Edgar.Unity.MessageType.html#Edgar_Unity_MessageType_Error
+  commentId: F:Edgar.Unity.MessageType.Error
+  fullName: Edgar.Unity.MessageType.Error
+  nameWithType: MessageType.Error
+- uid: Edgar.Unity.MessageType.Info
+  name: Info
+  href: master/api/Edgar.Unity.MessageType.html#Edgar_Unity_MessageType_Info
+  commentId: F:Edgar.Unity.MessageType.Info
+  fullName: Edgar.Unity.MessageType.Info
+  nameWithType: MessageType.Info
+- uid: Edgar.Unity.MessageType.None
+  name: None
+  href: master/api/Edgar.Unity.MessageType.html#Edgar_Unity_MessageType_None
+  commentId: F:Edgar.Unity.MessageType.None
+  fullName: Edgar.Unity.MessageType.None
+  nameWithType: MessageType.None
+- uid: Edgar.Unity.MessageType.Warning
+  name: Warning
+  href: master/api/Edgar.Unity.MessageType.html#Edgar_Unity_MessageType_Warning
+  commentId: F:Edgar.Unity.MessageType.Warning
+  fullName: Edgar.Unity.MessageType.Warning
+  nameWithType: MessageType.Warning
+- uid: Edgar.Unity.MinimapDisplayMode
+  name: MinimapDisplayMode
+  href: master/api/Edgar.Unity.MinimapDisplayMode.html
+  commentId: T:Edgar.Unity.MinimapDisplayMode
+  fullName: Edgar.Unity.MinimapDisplayMode
+  nameWithType: MinimapDisplayMode
+- uid: Edgar.Unity.MinimapDisplayMode.Color
+  name: Color
+  href: master/api/Edgar.Unity.MinimapDisplayMode.html#Edgar_Unity_MinimapDisplayMode_Color
+  commentId: F:Edgar.Unity.MinimapDisplayMode.Color
+  fullName: Edgar.Unity.MinimapDisplayMode.Color
+  nameWithType: MinimapDisplayMode.Color
+- uid: Edgar.Unity.MinimapDisplayMode.CustomTile
+  name: CustomTile
+  href: master/api/Edgar.Unity.MinimapDisplayMode.html#Edgar_Unity_MinimapDisplayMode_CustomTile
+  commentId: F:Edgar.Unity.MinimapDisplayMode.CustomTile
+  fullName: Edgar.Unity.MinimapDisplayMode.CustomTile
+  nameWithType: MinimapDisplayMode.CustomTile
+- uid: Edgar.Unity.MinimapDisplayMode.OriginalTiles
+  name: OriginalTiles
+  href: master/api/Edgar.Unity.MinimapDisplayMode.html#Edgar_Unity_MinimapDisplayMode_OriginalTiles
+  commentId: F:Edgar.Unity.MinimapDisplayMode.OriginalTiles
+  fullName: Edgar.Unity.MinimapDisplayMode.OriginalTiles
+  nameWithType: MinimapDisplayMode.OriginalTiles
+- uid: Edgar.Unity.MinimapLayer
+  name: MinimapLayer
+  href: master/api/Edgar.Unity.MinimapLayer.html
+  commentId: T:Edgar.Unity.MinimapLayer
+  fullName: Edgar.Unity.MinimapLayer
+  nameWithType: MinimapLayer
+- uid: Edgar.Unity.MinimapLayer.Color
+  name: Color
+  href: master/api/Edgar.Unity.MinimapLayer.html#Edgar_Unity_MinimapLayer_Color
+  commentId: F:Edgar.Unity.MinimapLayer.Color
+  fullName: Edgar.Unity.MinimapLayer.Color
+  nameWithType: MinimapLayer.Color
+- uid: Edgar.Unity.MinimapLayer.DisplayMode
+  name: DisplayMode
+  href: master/api/Edgar.Unity.MinimapLayer.html#Edgar_Unity_MinimapLayer_DisplayMode
+  commentId: F:Edgar.Unity.MinimapLayer.DisplayMode
+  fullName: Edgar.Unity.MinimapLayer.DisplayMode
+  nameWithType: MinimapLayer.DisplayMode
+- uid: Edgar.Unity.MinimapLayer.Material
+  name: Material
+  href: master/api/Edgar.Unity.MinimapLayer.html#Edgar_Unity_MinimapLayer_Material
+  commentId: F:Edgar.Unity.MinimapLayer.Material
+  fullName: Edgar.Unity.MinimapLayer.Material
+  nameWithType: MinimapLayer.Material
+- uid: Edgar.Unity.MinimapLayer.Size
+  name: Size
+  href: master/api/Edgar.Unity.MinimapLayer.html#Edgar_Unity_MinimapLayer_Size
+  commentId: F:Edgar.Unity.MinimapLayer.Size
+  fullName: Edgar.Unity.MinimapLayer.Size
+  nameWithType: MinimapLayer.Size
+- uid: Edgar.Unity.MinimapLayer.Tile
+  name: Tile
+  href: master/api/Edgar.Unity.MinimapLayer.html#Edgar_Unity_MinimapLayer_Tile
+  commentId: F:Edgar.Unity.MinimapLayer.Tile
+  fullName: Edgar.Unity.MinimapLayer.Tile
+  nameWithType: MinimapLayer.Tile
+- uid: Edgar.Unity.MinimapLayer.Tilemaps
+  name: Tilemaps
+  href: master/api/Edgar.Unity.MinimapLayer.html#Edgar_Unity_MinimapLayer_Tilemaps
+  commentId: F:Edgar.Unity.MinimapLayer.Tilemaps
+  fullName: Edgar.Unity.MinimapLayer.Tilemaps
+  nameWithType: MinimapLayer.Tilemaps
+- uid: Edgar.Unity.MinimapOverwriteMode
+  name: MinimapOverwriteMode
+  href: master/api/Edgar.Unity.MinimapOverwriteMode.html
+  commentId: T:Edgar.Unity.MinimapOverwriteMode
+  fullName: Edgar.Unity.MinimapOverwriteMode
+  nameWithType: MinimapOverwriteMode
+- uid: Edgar.Unity.MinimapOverwriteMode.AllowMultiple
+  name: AllowMultiple
+  href: master/api/Edgar.Unity.MinimapOverwriteMode.html#Edgar_Unity_MinimapOverwriteMode_AllowMultiple
+  commentId: F:Edgar.Unity.MinimapOverwriteMode.AllowMultiple
+  fullName: Edgar.Unity.MinimapOverwriteMode.AllowMultiple
+  nameWithType: MinimapOverwriteMode.AllowMultiple
+- uid: Edgar.Unity.MinimapOverwriteMode.PreferHigherLayers
+  name: PreferHigherLayers
+  href: master/api/Edgar.Unity.MinimapOverwriteMode.html#Edgar_Unity_MinimapOverwriteMode_PreferHigherLayers
+  commentId: F:Edgar.Unity.MinimapOverwriteMode.PreferHigherLayers
+  fullName: Edgar.Unity.MinimapOverwriteMode.PreferHigherLayers
+  nameWithType: MinimapOverwriteMode.PreferHigherLayers
+- uid: Edgar.Unity.MinimapOverwriteMode.PreferLowerLayers
+  name: PreferLowerLayers
+  href: master/api/Edgar.Unity.MinimapOverwriteMode.html#Edgar_Unity_MinimapOverwriteMode_PreferLowerLayers
+  commentId: F:Edgar.Unity.MinimapOverwriteMode.PreferLowerLayers
+  fullName: Edgar.Unity.MinimapOverwriteMode.PreferLowerLayers
+  nameWithType: MinimapOverwriteMode.PreferLowerLayers
 - uid: Edgar.Unity.MinimapPostProcess
   name: MinimapPostProcess
   href: master/api/Edgar.Unity.MinimapPostProcess.html
   commentId: T:Edgar.Unity.MinimapPostProcess
   fullName: Edgar.Unity.MinimapPostProcess
   nameWithType: MinimapPostProcess
-- uid: Edgar.Unity.MinimapPostProcess.FloorColor
-  name: FloorColor
-  href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_FloorColor
-  commentId: F:Edgar.Unity.MinimapPostProcess.FloorColor
-  fullName: Edgar.Unity.MinimapPostProcess.FloorColor
-  nameWithType: MinimapPostProcess.FloorColor
-- uid: Edgar.Unity.MinimapPostProcess.FloorTilemaps
-  name: FloorTilemaps
-  href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_FloorTilemaps
-  commentId: F:Edgar.Unity.MinimapPostProcess.FloorTilemaps
-  fullName: Edgar.Unity.MinimapPostProcess.FloorTilemaps
-  nameWithType: MinimapPostProcess.FloorTilemaps
 - uid: Edgar.Unity.MinimapPostProcess.Layer
   name: Layer
   href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_Layer
   commentId: F:Edgar.Unity.MinimapPostProcess.Layer
   fullName: Edgar.Unity.MinimapPostProcess.Layer
   nameWithType: MinimapPostProcess.Layer
+- uid: Edgar.Unity.MinimapPostProcess.Layers
+  name: Layers
+  href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_Layers
+  commentId: F:Edgar.Unity.MinimapPostProcess.Layers
+  fullName: Edgar.Unity.MinimapPostProcess.Layers
+  nameWithType: MinimapPostProcess.Layers
 - uid: Edgar.Unity.MinimapPostProcess.Run(Edgar.Unity.GeneratedLevel,Edgar.Unity.LevelDescription)
   name: Run(GeneratedLevel, LevelDescription)
   href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_Run_Edgar_Unity_GeneratedLevel_Edgar_Unity_LevelDescription_
@@ -10861,35 +10955,78 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.MinimapPostProcess.Run
   nameWithType: MinimapPostProcess.Run
-- uid: Edgar.Unity.MinimapPostProcess.WallsColor
+- uid: Edgar.Unity.MinimapPostProcess.UseMultipleTilemaps
+  name: UseMultipleTilemaps
+  href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_UseMultipleTilemaps
+  commentId: F:Edgar.Unity.MinimapPostProcess.UseMultipleTilemaps
+  fullName: Edgar.Unity.MinimapPostProcess.UseMultipleTilemaps
+  nameWithType: MinimapPostProcess.UseMultipleTilemaps
+- uid: Edgar.Unity.MinimapPostProcessLegacy
+  name: MinimapPostProcessLegacy
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html
+  commentId: T:Edgar.Unity.MinimapPostProcessLegacy
+  fullName: Edgar.Unity.MinimapPostProcessLegacy
+  nameWithType: MinimapPostProcessLegacy
+- uid: Edgar.Unity.MinimapPostProcessLegacy.FloorColor
+  name: FloorColor
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html#Edgar_Unity_MinimapPostProcessLegacy_FloorColor
+  commentId: F:Edgar.Unity.MinimapPostProcessLegacy.FloorColor
+  fullName: Edgar.Unity.MinimapPostProcessLegacy.FloorColor
+  nameWithType: MinimapPostProcessLegacy.FloorColor
+- uid: Edgar.Unity.MinimapPostProcessLegacy.FloorTilemaps
+  name: FloorTilemaps
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html#Edgar_Unity_MinimapPostProcessLegacy_FloorTilemaps
+  commentId: F:Edgar.Unity.MinimapPostProcessLegacy.FloorTilemaps
+  fullName: Edgar.Unity.MinimapPostProcessLegacy.FloorTilemaps
+  nameWithType: MinimapPostProcessLegacy.FloorTilemaps
+- uid: Edgar.Unity.MinimapPostProcessLegacy.Layer
+  name: Layer
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html#Edgar_Unity_MinimapPostProcessLegacy_Layer
+  commentId: F:Edgar.Unity.MinimapPostProcessLegacy.Layer
+  fullName: Edgar.Unity.MinimapPostProcessLegacy.Layer
+  nameWithType: MinimapPostProcessLegacy.Layer
+- uid: Edgar.Unity.MinimapPostProcessLegacy.Run(Edgar.Unity.GeneratedLevel,Edgar.Unity.LevelDescription)
+  name: Run(GeneratedLevel, LevelDescription)
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html#Edgar_Unity_MinimapPostProcessLegacy_Run_Edgar_Unity_GeneratedLevel_Edgar_Unity_LevelDescription_
+  commentId: M:Edgar.Unity.MinimapPostProcessLegacy.Run(Edgar.Unity.GeneratedLevel,Edgar.Unity.LevelDescription)
+  fullName: Edgar.Unity.MinimapPostProcessLegacy.Run(Edgar.Unity.GeneratedLevel, Edgar.Unity.LevelDescription)
+  nameWithType: MinimapPostProcessLegacy.Run(GeneratedLevel, LevelDescription)
+- uid: Edgar.Unity.MinimapPostProcessLegacy.Run*
+  name: Run
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html#Edgar_Unity_MinimapPostProcessLegacy_Run_
+  commentId: Overload:Edgar.Unity.MinimapPostProcessLegacy.Run
+  isSpec: "True"
+  fullName: Edgar.Unity.MinimapPostProcessLegacy.Run
+  nameWithType: MinimapPostProcessLegacy.Run
+- uid: Edgar.Unity.MinimapPostProcessLegacy.WallsColor
   name: WallsColor
-  href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_WallsColor
-  commentId: F:Edgar.Unity.MinimapPostProcess.WallsColor
-  fullName: Edgar.Unity.MinimapPostProcess.WallsColor
-  nameWithType: MinimapPostProcess.WallsColor
-- uid: Edgar.Unity.MinimapPostProcess.WallSize
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html#Edgar_Unity_MinimapPostProcessLegacy_WallsColor
+  commentId: F:Edgar.Unity.MinimapPostProcessLegacy.WallsColor
+  fullName: Edgar.Unity.MinimapPostProcessLegacy.WallsColor
+  nameWithType: MinimapPostProcessLegacy.WallsColor
+- uid: Edgar.Unity.MinimapPostProcessLegacy.WallSize
   name: WallSize
-  href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_WallSize
-  commentId: F:Edgar.Unity.MinimapPostProcess.WallSize
-  fullName: Edgar.Unity.MinimapPostProcess.WallSize
-  nameWithType: MinimapPostProcess.WallSize
-- uid: Edgar.Unity.MinimapPostProcess.WallsTilemaps
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html#Edgar_Unity_MinimapPostProcessLegacy_WallSize
+  commentId: F:Edgar.Unity.MinimapPostProcessLegacy.WallSize
+  fullName: Edgar.Unity.MinimapPostProcessLegacy.WallSize
+  nameWithType: MinimapPostProcessLegacy.WallSize
+- uid: Edgar.Unity.MinimapPostProcessLegacy.WallsTilemaps
   name: WallsTilemaps
-  href: master/api/Edgar.Unity.MinimapPostProcess.html#Edgar_Unity_MinimapPostProcess_WallsTilemaps
-  commentId: F:Edgar.Unity.MinimapPostProcess.WallsTilemaps
-  fullName: Edgar.Unity.MinimapPostProcess.WallsTilemaps
-  nameWithType: MinimapPostProcess.WallsTilemaps
+  href: master/api/Edgar.Unity.MinimapPostProcessLegacy.html#Edgar_Unity_MinimapPostProcessLegacy_WallsTilemaps
+  commentId: F:Edgar.Unity.MinimapPostProcessLegacy.WallsTilemaps
+  fullName: Edgar.Unity.MinimapPostProcessLegacy.WallsTilemaps
+  nameWithType: MinimapPostProcessLegacy.WallsTilemaps
 - uid: Edgar.Unity.MonoBehaviourExtensions
   name: MonoBehaviourExtensions
   href: master/api/Edgar.Unity.MonoBehaviourExtensions.html
   commentId: T:Edgar.Unity.MonoBehaviourExtensions
   fullName: Edgar.Unity.MonoBehaviourExtensions
   nameWithType: MonoBehaviourExtensions
-- uid: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine(MonoBehaviour,System.Collections.Generic.IEnumerator,System.Boolean)
+- uid: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine(MonoBehaviour,IEnumerator,System.Boolean)
   name: StartSmartCoroutine(MonoBehaviour, IEnumerator, Boolean)
-  href: master/api/Edgar.Unity.MonoBehaviourExtensions.html#Edgar_Unity_MonoBehaviourExtensions_StartSmartCoroutine_MonoBehaviour_System_Collections_Generic_IEnumerator_System_Boolean_
-  commentId: M:Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine(MonoBehaviour,System.Collections.Generic.IEnumerator,System.Boolean)
-  fullName: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine(MonoBehaviour, System.Collections.Generic.IEnumerator, System.Boolean)
+  href: master/api/Edgar.Unity.MonoBehaviourExtensions.html#Edgar_Unity_MonoBehaviourExtensions_StartSmartCoroutine_MonoBehaviour_IEnumerator_System_Boolean_
+  commentId: M:Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine(MonoBehaviour,IEnumerator,System.Boolean)
+  fullName: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine(MonoBehaviour, IEnumerator, System.Boolean)
   nameWithType: MonoBehaviourExtensions.StartSmartCoroutine(MonoBehaviour, IEnumerator, Boolean)
 - uid: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine*
   name: StartSmartCoroutine
@@ -10898,13 +11035,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine
   nameWithType: MonoBehaviourExtensions.StartSmartCoroutine
-- uid: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine``1(MonoBehaviour,System.Collections.Generic.IEnumerator,System.Boolean)
+- uid: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine``1(MonoBehaviour,IEnumerator,System.Boolean)
   name: StartSmartCoroutine<TValue>(MonoBehaviour, IEnumerator, Boolean)
-  href: master/api/Edgar.Unity.MonoBehaviourExtensions.html#Edgar_Unity_MonoBehaviourExtensions_StartSmartCoroutine__1_MonoBehaviour_System_Collections_Generic_IEnumerator_System_Boolean_
-  commentId: M:Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine``1(MonoBehaviour,System.Collections.Generic.IEnumerator,System.Boolean)
+  href: master/api/Edgar.Unity.MonoBehaviourExtensions.html#Edgar_Unity_MonoBehaviourExtensions_StartSmartCoroutine__1_MonoBehaviour_IEnumerator_System_Boolean_
+  commentId: M:Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine``1(MonoBehaviour,IEnumerator,System.Boolean)
   name.vb: StartSmartCoroutine(Of TValue)(MonoBehaviour, IEnumerator, Boolean)
-  fullName: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine<TValue>(MonoBehaviour, System.Collections.Generic.IEnumerator, System.Boolean)
-  fullName.vb: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine(Of TValue)(MonoBehaviour, System.Collections.Generic.IEnumerator, System.Boolean)
+  fullName: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine<TValue>(MonoBehaviour, IEnumerator, System.Boolean)
+  fullName.vb: Edgar.Unity.MonoBehaviourExtensions.StartSmartCoroutine(Of TValue)(MonoBehaviour, IEnumerator, System.Boolean)
   nameWithType: MonoBehaviourExtensions.StartSmartCoroutine<TValue>(MonoBehaviour, IEnumerator, Boolean)
   nameWithType.vb: MonoBehaviourExtensions.StartSmartCoroutine(Of TValue)(MonoBehaviour, IEnumerator, Boolean)
 - uid: Edgar.Unity.OrthogonalLine
@@ -11147,168 +11284,6 @@ references:
   commentId: T:Edgar.Unity.OutlineOverride
   fullName: Edgar.Unity.OutlineOverride
   nameWithType: OutlineOverride
-- uid: Edgar.Unity.PipelinePayload`1
-  name: PipelinePayload<TRoom>
-  href: master/api/Edgar.Unity.PipelinePayload-1.html
-  commentId: T:Edgar.Unity.PipelinePayload`1
-  name.vb: PipelinePayload(Of TRoom)
-  fullName: Edgar.Unity.PipelinePayload<TRoom>
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom)
-  nameWithType: PipelinePayload<TRoom>
-  nameWithType.vb: PipelinePayload(Of TRoom)
-- uid: Edgar.Unity.PipelinePayload`1.GeneratedLayout
-  name: GeneratedLayout
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_GeneratedLayout
-  commentId: P:Edgar.Unity.PipelinePayload`1.GeneratedLayout
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.GeneratedLayout
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).GeneratedLayout
-  nameWithType: PipelinePayload<TRoom>.GeneratedLayout
-  nameWithType.vb: PipelinePayload(Of TRoom).GeneratedLayout
-- uid: Edgar.Unity.PipelinePayload`1.GeneratedLayout*
-  name: GeneratedLayout
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_GeneratedLayout_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.GeneratedLayout
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.GeneratedLayout
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).GeneratedLayout
-  nameWithType: PipelinePayload<TRoom>.GeneratedLayout
-  nameWithType.vb: PipelinePayload(Of TRoom).GeneratedLayout
-- uid: Edgar.Unity.PipelinePayload`1.GeneratedLevel
-  name: GeneratedLevel
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_GeneratedLevel
-  commentId: P:Edgar.Unity.PipelinePayload`1.GeneratedLevel
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.GeneratedLevel
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).GeneratedLevel
-  nameWithType: PipelinePayload<TRoom>.GeneratedLevel
-  nameWithType.vb: PipelinePayload(Of TRoom).GeneratedLevel
-- uid: Edgar.Unity.PipelinePayload`1.GeneratedLevel*
-  name: GeneratedLevel
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_GeneratedLevel_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.GeneratedLevel
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.GeneratedLevel
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).GeneratedLevel
-  nameWithType: PipelinePayload<TRoom>.GeneratedLevel
-  nameWithType.vb: PipelinePayload(Of TRoom).GeneratedLevel
-- uid: Edgar.Unity.PipelinePayload`1.GeneratorStats
-  name: GeneratorStats
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_GeneratorStats
-  commentId: P:Edgar.Unity.PipelinePayload`1.GeneratorStats
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.GeneratorStats
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).GeneratorStats
-  nameWithType: PipelinePayload<TRoom>.GeneratorStats
-  nameWithType.vb: PipelinePayload(Of TRoom).GeneratorStats
-- uid: Edgar.Unity.PipelinePayload`1.GeneratorStats*
-  name: GeneratorStats
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_GeneratorStats_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.GeneratorStats
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.GeneratorStats
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).GeneratorStats
-  nameWithType: PipelinePayload<TRoom>.GeneratorStats
-  nameWithType.vb: PipelinePayload(Of TRoom).GeneratorStats
-- uid: Edgar.Unity.PipelinePayload`1.Iterations
-  name: Iterations
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_Iterations
-  commentId: P:Edgar.Unity.PipelinePayload`1.Iterations
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.Iterations
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).Iterations
-  nameWithType: PipelinePayload<TRoom>.Iterations
-  nameWithType.vb: PipelinePayload(Of TRoom).Iterations
-- uid: Edgar.Unity.PipelinePayload`1.Iterations*
-  name: Iterations
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_Iterations_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.Iterations
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.Iterations
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).Iterations
-  nameWithType: PipelinePayload<TRoom>.Iterations
-  nameWithType.vb: PipelinePayload(Of TRoom).Iterations
-- uid: Edgar.Unity.PipelinePayload`1.LevelDescription
-  name: LevelDescription
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_LevelDescription
-  commentId: P:Edgar.Unity.PipelinePayload`1.LevelDescription
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.LevelDescription
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).LevelDescription
-  nameWithType: PipelinePayload<TRoom>.LevelDescription
-  nameWithType.vb: PipelinePayload(Of TRoom).LevelDescription
-- uid: Edgar.Unity.PipelinePayload`1.LevelDescription*
-  name: LevelDescription
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_LevelDescription_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.LevelDescription
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.LevelDescription
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).LevelDescription
-  nameWithType: PipelinePayload<TRoom>.LevelDescription
-  nameWithType.vb: PipelinePayload(Of TRoom).LevelDescription
-- uid: Edgar.Unity.PipelinePayload`1.Random
-  name: Random
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_Random
-  commentId: P:Edgar.Unity.PipelinePayload`1.Random
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.Random
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).Random
-  nameWithType: PipelinePayload<TRoom>.Random
-  nameWithType.vb: PipelinePayload(Of TRoom).Random
-- uid: Edgar.Unity.PipelinePayload`1.Random*
-  name: Random
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_Random_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.Random
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.Random
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).Random
-  nameWithType: PipelinePayload<TRoom>.Random
-  nameWithType.vb: PipelinePayload(Of TRoom).Random
-- uid: Edgar.Unity.PipelinePayload`1.RootGameObject
-  name: RootGameObject
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_RootGameObject
-  commentId: P:Edgar.Unity.PipelinePayload`1.RootGameObject
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.RootGameObject
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).RootGameObject
-  nameWithType: PipelinePayload<TRoom>.RootGameObject
-  nameWithType.vb: PipelinePayload(Of TRoom).RootGameObject
-- uid: Edgar.Unity.PipelinePayload`1.RootGameObject*
-  name: RootGameObject
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_RootGameObject_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.RootGameObject
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.RootGameObject
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).RootGameObject
-  nameWithType: PipelinePayload<TRoom>.RootGameObject
-  nameWithType.vb: PipelinePayload(Of TRoom).RootGameObject
-- uid: Edgar.Unity.PipelinePayload`1.Tilemaps
-  name: Tilemaps
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_Tilemaps
-  commentId: P:Edgar.Unity.PipelinePayload`1.Tilemaps
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.Tilemaps
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).Tilemaps
-  nameWithType: PipelinePayload<TRoom>.Tilemaps
-  nameWithType.vb: PipelinePayload(Of TRoom).Tilemaps
-- uid: Edgar.Unity.PipelinePayload`1.Tilemaps*
-  name: Tilemaps
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_Tilemaps_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.Tilemaps
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.Tilemaps
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).Tilemaps
-  nameWithType: PipelinePayload<TRoom>.Tilemaps
-  nameWithType.vb: PipelinePayload(Of TRoom).Tilemaps
-- uid: Edgar.Unity.PipelinePayload`1.TimeTotal
-  name: TimeTotal
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_TimeTotal
-  commentId: P:Edgar.Unity.PipelinePayload`1.TimeTotal
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.TimeTotal
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).TimeTotal
-  nameWithType: PipelinePayload<TRoom>.TimeTotal
-  nameWithType.vb: PipelinePayload(Of TRoom).TimeTotal
-- uid: Edgar.Unity.PipelinePayload`1.TimeTotal*
-  name: TimeTotal
-  href: master/api/Edgar.Unity.PipelinePayload-1.html#Edgar_Unity_PipelinePayload_1_TimeTotal_
-  commentId: Overload:Edgar.Unity.PipelinePayload`1.TimeTotal
-  isSpec: "True"
-  fullName: Edgar.Unity.PipelinePayload<TRoom>.TimeTotal
-  fullName.vb: Edgar.Unity.PipelinePayload(Of TRoom).TimeTotal
-  nameWithType: PipelinePayload<TRoom>.TimeTotal
-  nameWithType.vb: PipelinePayload(Of TRoom).TimeTotal
 - uid: Edgar.Unity.PipelineRunner`1
   name: PipelineRunner<TPayload>
   href: master/api/Edgar.Unity.PipelineRunner-1.html
@@ -11318,13 +11293,13 @@ references:
   fullName.vb: Edgar.Unity.PipelineRunner(Of TPayload)
   nameWithType: PipelineRunner<TPayload>
   nameWithType.vb: PipelineRunner(Of TPayload)
-- uid: Edgar.Unity.PipelineRunner`1.GetEnumerator(System.Collections.Generic.IEnumerable{Edgar.Unity.IPipelineTask{`0}},`0,System.Boolean)
+- uid: Edgar.Unity.PipelineRunner`1.GetEnumerator(IEnumerable{Edgar.Unity.IPipelineTask{`0}},`0,System.Boolean)
   name: GetEnumerator(IEnumerable<IPipelineTask<TPayload>>, TPayload, Boolean)
-  href: master/api/Edgar.Unity.PipelineRunner-1.html#Edgar_Unity_PipelineRunner_1_GetEnumerator_System_Collections_Generic_IEnumerable_Edgar_Unity_IPipelineTask__0____0_System_Boolean_
-  commentId: M:Edgar.Unity.PipelineRunner`1.GetEnumerator(System.Collections.Generic.IEnumerable{Edgar.Unity.IPipelineTask{`0}},`0,System.Boolean)
+  href: master/api/Edgar.Unity.PipelineRunner-1.html#Edgar_Unity_PipelineRunner_1_GetEnumerator_IEnumerable_Edgar_Unity_IPipelineTask__0____0_System_Boolean_
+  commentId: M:Edgar.Unity.PipelineRunner`1.GetEnumerator(IEnumerable{Edgar.Unity.IPipelineTask{`0}},`0,System.Boolean)
   name.vb: GetEnumerator(IEnumerable(Of IPipelineTask(Of TPayload)), TPayload, Boolean)
-  fullName: Edgar.Unity.PipelineRunner<TPayload>.GetEnumerator(System.Collections.Generic.IEnumerable<Edgar.Unity.IPipelineTask<TPayload>>, TPayload, System.Boolean)
-  fullName.vb: Edgar.Unity.PipelineRunner(Of TPayload).GetEnumerator(System.Collections.Generic.IEnumerable(Of Edgar.Unity.IPipelineTask(Of TPayload)), TPayload, System.Boolean)
+  fullName: Edgar.Unity.PipelineRunner<TPayload>.GetEnumerator(IEnumerable<Edgar.Unity.IPipelineTask<TPayload>>, TPayload, System.Boolean)
+  fullName.vb: Edgar.Unity.PipelineRunner(Of TPayload).GetEnumerator(IEnumerable(Of Edgar.Unity.IPipelineTask(Of TPayload)), TPayload, System.Boolean)
   nameWithType: PipelineRunner<TPayload>.GetEnumerator(IEnumerable<IPipelineTask<TPayload>>, TPayload, Boolean)
   nameWithType.vb: PipelineRunner(Of TPayload).GetEnumerator(IEnumerable(Of IPipelineTask(Of TPayload)), TPayload, Boolean)
 - uid: Edgar.Unity.PipelineRunner`1.GetEnumerator*
@@ -11336,13 +11311,13 @@ references:
   fullName.vb: Edgar.Unity.PipelineRunner(Of TPayload).GetEnumerator
   nameWithType: PipelineRunner<TPayload>.GetEnumerator
   nameWithType.vb: PipelineRunner(Of TPayload).GetEnumerator
-- uid: Edgar.Unity.PipelineRunner`1.Run(System.Collections.Generic.IEnumerable{Edgar.Unity.IPipelineTask{`0}},`0,System.Boolean)
+- uid: Edgar.Unity.PipelineRunner`1.Run(IEnumerable{Edgar.Unity.IPipelineTask{`0}},`0,System.Boolean)
   name: Run(IEnumerable<IPipelineTask<TPayload>>, TPayload, Boolean)
-  href: master/api/Edgar.Unity.PipelineRunner-1.html#Edgar_Unity_PipelineRunner_1_Run_System_Collections_Generic_IEnumerable_Edgar_Unity_IPipelineTask__0____0_System_Boolean_
-  commentId: M:Edgar.Unity.PipelineRunner`1.Run(System.Collections.Generic.IEnumerable{Edgar.Unity.IPipelineTask{`0}},`0,System.Boolean)
+  href: master/api/Edgar.Unity.PipelineRunner-1.html#Edgar_Unity_PipelineRunner_1_Run_IEnumerable_Edgar_Unity_IPipelineTask__0____0_System_Boolean_
+  commentId: M:Edgar.Unity.PipelineRunner`1.Run(IEnumerable{Edgar.Unity.IPipelineTask{`0}},`0,System.Boolean)
   name.vb: Run(IEnumerable(Of IPipelineTask(Of TPayload)), TPayload, Boolean)
-  fullName: Edgar.Unity.PipelineRunner<TPayload>.Run(System.Collections.Generic.IEnumerable<Edgar.Unity.IPipelineTask<TPayload>>, TPayload, System.Boolean)
-  fullName.vb: Edgar.Unity.PipelineRunner(Of TPayload).Run(System.Collections.Generic.IEnumerable(Of Edgar.Unity.IPipelineTask(Of TPayload)), TPayload, System.Boolean)
+  fullName: Edgar.Unity.PipelineRunner<TPayload>.Run(IEnumerable<Edgar.Unity.IPipelineTask<TPayload>>, TPayload, System.Boolean)
+  fullName.vb: Edgar.Unity.PipelineRunner(Of TPayload).Run(IEnumerable(Of Edgar.Unity.IPipelineTask(Of TPayload)), TPayload, System.Boolean)
   nameWithType: PipelineRunner<TPayload>.Run(IEnumerable<IPipelineTask<TPayload>>, TPayload, Boolean)
   nameWithType.vb: PipelineRunner(Of TPayload).Run(IEnumerable(Of IPipelineTask(Of TPayload)), TPayload, Boolean)
 - uid: Edgar.Unity.PipelineRunner`1.Run*
@@ -11486,49 +11461,38 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.PlatformerGenerator.GetPostProcessingTask
   nameWithType: PlatformerGenerator.GetPostProcessingTask
-- uid: Edgar.Unity.PlatformerGeneratorTask`1
-  name: PlatformerGeneratorTask<TPayload>
-  href: master/api/Edgar.Unity.PlatformerGeneratorTask-1.html
-  commentId: T:Edgar.Unity.PlatformerGeneratorTask`1
-  name.vb: PlatformerGeneratorTask(Of TPayload)
-  fullName: Edgar.Unity.PlatformerGeneratorTask<TPayload>
-  fullName.vb: Edgar.Unity.PlatformerGeneratorTask(Of TPayload)
-  nameWithType: PlatformerGeneratorTask<TPayload>
-  nameWithType.vb: PlatformerGeneratorTask(Of TPayload)
-- uid: Edgar.Unity.PlatformerGeneratorTask`1.#ctor(Edgar.Unity.DungeonGeneratorConfig)
-  name: PlatformerGeneratorTask(DungeonGeneratorConfig)
-  href: master/api/Edgar.Unity.PlatformerGeneratorTask-1.html#Edgar_Unity_PlatformerGeneratorTask_1__ctor_Edgar_Unity_DungeonGeneratorConfig_
-  commentId: M:Edgar.Unity.PlatformerGeneratorTask`1.#ctor(Edgar.Unity.DungeonGeneratorConfig)
-  fullName: Edgar.Unity.PlatformerGeneratorTask<TPayload>.PlatformerGeneratorTask(Edgar.Unity.DungeonGeneratorConfig)
-  fullName.vb: Edgar.Unity.PlatformerGeneratorTask(Of TPayload).PlatformerGeneratorTask(Edgar.Unity.DungeonGeneratorConfig)
-  nameWithType: PlatformerGeneratorTask<TPayload>.PlatformerGeneratorTask(DungeonGeneratorConfig)
-  nameWithType.vb: PlatformerGeneratorTask(Of TPayload).PlatformerGeneratorTask(DungeonGeneratorConfig)
-- uid: Edgar.Unity.PlatformerGeneratorTask`1.#ctor*
+- uid: Edgar.Unity.PlatformerGeneratorTask
   name: PlatformerGeneratorTask
-  href: master/api/Edgar.Unity.PlatformerGeneratorTask-1.html#Edgar_Unity_PlatformerGeneratorTask_1__ctor_
-  commentId: Overload:Edgar.Unity.PlatformerGeneratorTask`1.#ctor
+  href: master/api/Edgar.Unity.PlatformerGeneratorTask.html
+  commentId: T:Edgar.Unity.PlatformerGeneratorTask
+  fullName: Edgar.Unity.PlatformerGeneratorTask
+  nameWithType: PlatformerGeneratorTask
+- uid: Edgar.Unity.PlatformerGeneratorTask.#ctor(Edgar.Unity.DungeonGeneratorConfig)
+  name: PlatformerGeneratorTask(DungeonGeneratorConfig)
+  href: master/api/Edgar.Unity.PlatformerGeneratorTask.html#Edgar_Unity_PlatformerGeneratorTask__ctor_Edgar_Unity_DungeonGeneratorConfig_
+  commentId: M:Edgar.Unity.PlatformerGeneratorTask.#ctor(Edgar.Unity.DungeonGeneratorConfig)
+  fullName: Edgar.Unity.PlatformerGeneratorTask.PlatformerGeneratorTask(Edgar.Unity.DungeonGeneratorConfig)
+  nameWithType: PlatformerGeneratorTask.PlatformerGeneratorTask(DungeonGeneratorConfig)
+- uid: Edgar.Unity.PlatformerGeneratorTask.#ctor*
+  name: PlatformerGeneratorTask
+  href: master/api/Edgar.Unity.PlatformerGeneratorTask.html#Edgar_Unity_PlatformerGeneratorTask__ctor_
+  commentId: Overload:Edgar.Unity.PlatformerGeneratorTask.#ctor
   isSpec: "True"
-  fullName: Edgar.Unity.PlatformerGeneratorTask<TPayload>.PlatformerGeneratorTask
-  fullName.vb: Edgar.Unity.PlatformerGeneratorTask(Of TPayload).PlatformerGeneratorTask
-  nameWithType: PlatformerGeneratorTask<TPayload>.PlatformerGeneratorTask
-  nameWithType.vb: PlatformerGeneratorTask(Of TPayload).PlatformerGeneratorTask
-- uid: Edgar.Unity.PlatformerGeneratorTask`1.Process
+  fullName: Edgar.Unity.PlatformerGeneratorTask.PlatformerGeneratorTask
+  nameWithType: PlatformerGeneratorTask.PlatformerGeneratorTask
+- uid: Edgar.Unity.PlatformerGeneratorTask.Process
   name: Process()
-  href: master/api/Edgar.Unity.PlatformerGeneratorTask-1.html#Edgar_Unity_PlatformerGeneratorTask_1_Process
-  commentId: M:Edgar.Unity.PlatformerGeneratorTask`1.Process
-  fullName: Edgar.Unity.PlatformerGeneratorTask<TPayload>.Process()
-  fullName.vb: Edgar.Unity.PlatformerGeneratorTask(Of TPayload).Process()
-  nameWithType: PlatformerGeneratorTask<TPayload>.Process()
-  nameWithType.vb: PlatformerGeneratorTask(Of TPayload).Process()
-- uid: Edgar.Unity.PlatformerGeneratorTask`1.Process*
+  href: master/api/Edgar.Unity.PlatformerGeneratorTask.html#Edgar_Unity_PlatformerGeneratorTask_Process
+  commentId: M:Edgar.Unity.PlatformerGeneratorTask.Process
+  fullName: Edgar.Unity.PlatformerGeneratorTask.Process()
+  nameWithType: PlatformerGeneratorTask.Process()
+- uid: Edgar.Unity.PlatformerGeneratorTask.Process*
   name: Process
-  href: master/api/Edgar.Unity.PlatformerGeneratorTask-1.html#Edgar_Unity_PlatformerGeneratorTask_1_Process_
-  commentId: Overload:Edgar.Unity.PlatformerGeneratorTask`1.Process
+  href: master/api/Edgar.Unity.PlatformerGeneratorTask.html#Edgar_Unity_PlatformerGeneratorTask_Process_
+  commentId: Overload:Edgar.Unity.PlatformerGeneratorTask.Process
   isSpec: "True"
-  fullName: Edgar.Unity.PlatformerGeneratorTask<TPayload>.Process
-  fullName.vb: Edgar.Unity.PlatformerGeneratorTask(Of TPayload).Process
-  nameWithType: PlatformerGeneratorTask<TPayload>.Process
-  nameWithType.vb: PlatformerGeneratorTask(Of TPayload).Process
+  fullName: Edgar.Unity.PlatformerGeneratorTask.Process
+  nameWithType: PlatformerGeneratorTask.Process
 - uid: Edgar.Unity.PlatformerRoomTemplateInitializer
   name: PlatformerRoomTemplateInitializer
   href: master/api/Edgar.Unity.PlatformerRoomTemplateInitializer.html
@@ -11612,21 +11576,21 @@ references:
   commentId: T:Edgar.Unity.Polygon2D
   fullName: Edgar.Unity.Polygon2D
   nameWithType: Polygon2D
+- uid: Edgar.Unity.Polygon2D.#ctor(List{Vector2Int})
+  name: Polygon2D(List<Vector2Int>)
+  href: master/api/Edgar.Unity.Polygon2D.html#Edgar_Unity_Polygon2D__ctor_List_Vector2Int__
+  commentId: M:Edgar.Unity.Polygon2D.#ctor(List{Vector2Int})
+  name.vb: Polygon2D(List(Of Vector2Int))
+  fullName: Edgar.Unity.Polygon2D.Polygon2D(List<Vector2Int>)
+  fullName.vb: Edgar.Unity.Polygon2D.Polygon2D(List(Of Vector2Int))
+  nameWithType: Polygon2D.Polygon2D(List<Vector2Int>)
+  nameWithType.vb: Polygon2D.Polygon2D(List(Of Vector2Int))
 - uid: Edgar.Unity.Polygon2D.#ctor(PolygonGrid2D)
   name: Polygon2D(PolygonGrid2D)
   href: master/api/Edgar.Unity.Polygon2D.html#Edgar_Unity_Polygon2D__ctor_PolygonGrid2D_
   commentId: M:Edgar.Unity.Polygon2D.#ctor(PolygonGrid2D)
   fullName: Edgar.Unity.Polygon2D.Polygon2D(PolygonGrid2D)
   nameWithType: Polygon2D.Polygon2D(PolygonGrid2D)
-- uid: Edgar.Unity.Polygon2D.#ctor(System.Collections.Generic.List{Vector2Int})
-  name: Polygon2D(List<Vector2Int>)
-  href: master/api/Edgar.Unity.Polygon2D.html#Edgar_Unity_Polygon2D__ctor_System_Collections_Generic_List_Vector2Int__
-  commentId: M:Edgar.Unity.Polygon2D.#ctor(System.Collections.Generic.List{Vector2Int})
-  name.vb: Polygon2D(List(Of Vector2Int))
-  fullName: Edgar.Unity.Polygon2D.Polygon2D(System.Collections.Generic.List<Vector2Int>)
-  fullName.vb: Edgar.Unity.Polygon2D.Polygon2D(System.Collections.Generic.List(Of Vector2Int))
-  nameWithType: Polygon2D.Polygon2D(List<Vector2Int>)
-  nameWithType.vb: Polygon2D.Polygon2D(List(Of Vector2Int))
 - uid: Edgar.Unity.Polygon2D.#ctor*
   name: Polygon2D
   href: master/api/Edgar.Unity.Polygon2D.html#Edgar_Unity_Polygon2D__ctor_
@@ -11782,50 +11746,41 @@ references:
   commentId: F:Edgar.Unity.PostProcessPriorities.InitializeSharedTilemaps
   fullName: Edgar.Unity.PostProcessPriorities.InitializeSharedTilemaps
   nameWithType: PostProcessPriorities.InitializeSharedTilemaps
-- uid: Edgar.Unity.PostProcessTask`1
-  name: PostProcessTask<TPayload>
-  href: master/api/Edgar.Unity.PostProcessTask-1.html
-  commentId: T:Edgar.Unity.PostProcessTask`1
-  name.vb: PostProcessTask(Of TPayload)
-  fullName: Edgar.Unity.PostProcessTask<TPayload>
-  fullName.vb: Edgar.Unity.PostProcessTask(Of TPayload)
-  nameWithType: PostProcessTask<TPayload>
-  nameWithType.vb: PostProcessTask(Of TPayload)
-- uid: Edgar.Unity.PostProcessTask`1.#ctor(Edgar.Unity.PostProcessConfig,System.Func{Edgar.Unity.ITilemapLayersHandler},System.Collections.Generic.List{Edgar.Unity.DungeonGeneratorPostProcessBase})
-  name: PostProcessTask(PostProcessConfig, Func<ITilemapLayersHandler>, List<DungeonGeneratorPostProcessBase>)
-  href: master/api/Edgar.Unity.PostProcessTask-1.html#Edgar_Unity_PostProcessTask_1__ctor_Edgar_Unity_PostProcessConfig_System_Func_Edgar_Unity_ITilemapLayersHandler__System_Collections_Generic_List_Edgar_Unity_DungeonGeneratorPostProcessBase__
-  commentId: M:Edgar.Unity.PostProcessTask`1.#ctor(Edgar.Unity.PostProcessConfig,System.Func{Edgar.Unity.ITilemapLayersHandler},System.Collections.Generic.List{Edgar.Unity.DungeonGeneratorPostProcessBase})
-  name.vb: PostProcessTask(PostProcessConfig, Func(Of ITilemapLayersHandler), List(Of DungeonGeneratorPostProcessBase))
-  fullName: Edgar.Unity.PostProcessTask<TPayload>.PostProcessTask(Edgar.Unity.PostProcessConfig, System.Func<Edgar.Unity.ITilemapLayersHandler>, System.Collections.Generic.List<Edgar.Unity.DungeonGeneratorPostProcessBase>)
-  fullName.vb: Edgar.Unity.PostProcessTask(Of TPayload).PostProcessTask(Edgar.Unity.PostProcessConfig, System.Func(Of Edgar.Unity.ITilemapLayersHandler), System.Collections.Generic.List(Of Edgar.Unity.DungeonGeneratorPostProcessBase))
-  nameWithType: PostProcessTask<TPayload>.PostProcessTask(PostProcessConfig, Func<ITilemapLayersHandler>, List<DungeonGeneratorPostProcessBase>)
-  nameWithType.vb: PostProcessTask(Of TPayload).PostProcessTask(PostProcessConfig, Func(Of ITilemapLayersHandler), List(Of DungeonGeneratorPostProcessBase))
-- uid: Edgar.Unity.PostProcessTask`1.#ctor*
+- uid: Edgar.Unity.PostProcessTask
   name: PostProcessTask
-  href: master/api/Edgar.Unity.PostProcessTask-1.html#Edgar_Unity_PostProcessTask_1__ctor_
-  commentId: Overload:Edgar.Unity.PostProcessTask`1.#ctor
+  href: master/api/Edgar.Unity.PostProcessTask.html
+  commentId: T:Edgar.Unity.PostProcessTask
+  fullName: Edgar.Unity.PostProcessTask
+  nameWithType: PostProcessTask
+- uid: Edgar.Unity.PostProcessTask.#ctor(Edgar.Unity.PostProcessConfig,Func{Edgar.Unity.ITilemapLayersHandler},List{Edgar.Unity.DungeonGeneratorPostProcessBase})
+  name: PostProcessTask(PostProcessConfig, Func<ITilemapLayersHandler>, List<DungeonGeneratorPostProcessBase>)
+  href: master/api/Edgar.Unity.PostProcessTask.html#Edgar_Unity_PostProcessTask__ctor_Edgar_Unity_PostProcessConfig_Func_Edgar_Unity_ITilemapLayersHandler__List_Edgar_Unity_DungeonGeneratorPostProcessBase__
+  commentId: M:Edgar.Unity.PostProcessTask.#ctor(Edgar.Unity.PostProcessConfig,Func{Edgar.Unity.ITilemapLayersHandler},List{Edgar.Unity.DungeonGeneratorPostProcessBase})
+  name.vb: PostProcessTask(PostProcessConfig, Func(Of ITilemapLayersHandler), List(Of DungeonGeneratorPostProcessBase))
+  fullName: Edgar.Unity.PostProcessTask.PostProcessTask(Edgar.Unity.PostProcessConfig, Func<Edgar.Unity.ITilemapLayersHandler>, List<Edgar.Unity.DungeonGeneratorPostProcessBase>)
+  fullName.vb: Edgar.Unity.PostProcessTask.PostProcessTask(Edgar.Unity.PostProcessConfig, Func(Of Edgar.Unity.ITilemapLayersHandler), List(Of Edgar.Unity.DungeonGeneratorPostProcessBase))
+  nameWithType: PostProcessTask.PostProcessTask(PostProcessConfig, Func<ITilemapLayersHandler>, List<DungeonGeneratorPostProcessBase>)
+  nameWithType.vb: PostProcessTask.PostProcessTask(PostProcessConfig, Func(Of ITilemapLayersHandler), List(Of DungeonGeneratorPostProcessBase))
+- uid: Edgar.Unity.PostProcessTask.#ctor*
+  name: PostProcessTask
+  href: master/api/Edgar.Unity.PostProcessTask.html#Edgar_Unity_PostProcessTask__ctor_
+  commentId: Overload:Edgar.Unity.PostProcessTask.#ctor
   isSpec: "True"
-  fullName: Edgar.Unity.PostProcessTask<TPayload>.PostProcessTask
-  fullName.vb: Edgar.Unity.PostProcessTask(Of TPayload).PostProcessTask
-  nameWithType: PostProcessTask<TPayload>.PostProcessTask
-  nameWithType.vb: PostProcessTask(Of TPayload).PostProcessTask
-- uid: Edgar.Unity.PostProcessTask`1.Process
+  fullName: Edgar.Unity.PostProcessTask.PostProcessTask
+  nameWithType: PostProcessTask.PostProcessTask
+- uid: Edgar.Unity.PostProcessTask.Process
   name: Process()
-  href: master/api/Edgar.Unity.PostProcessTask-1.html#Edgar_Unity_PostProcessTask_1_Process
-  commentId: M:Edgar.Unity.PostProcessTask`1.Process
-  fullName: Edgar.Unity.PostProcessTask<TPayload>.Process()
-  fullName.vb: Edgar.Unity.PostProcessTask(Of TPayload).Process()
-  nameWithType: PostProcessTask<TPayload>.Process()
-  nameWithType.vb: PostProcessTask(Of TPayload).Process()
-- uid: Edgar.Unity.PostProcessTask`1.Process*
+  href: master/api/Edgar.Unity.PostProcessTask.html#Edgar_Unity_PostProcessTask_Process
+  commentId: M:Edgar.Unity.PostProcessTask.Process
+  fullName: Edgar.Unity.PostProcessTask.Process()
+  nameWithType: PostProcessTask.Process()
+- uid: Edgar.Unity.PostProcessTask.Process*
   name: Process
-  href: master/api/Edgar.Unity.PostProcessTask-1.html#Edgar_Unity_PostProcessTask_1_Process_
-  commentId: Overload:Edgar.Unity.PostProcessTask`1.Process
+  href: master/api/Edgar.Unity.PostProcessTask.html#Edgar_Unity_PostProcessTask_Process_
+  commentId: Overload:Edgar.Unity.PostProcessTask.Process
   isSpec: "True"
-  fullName: Edgar.Unity.PostProcessTask<TPayload>.Process
-  fullName.vb: Edgar.Unity.PostProcessTask(Of TPayload).Process
-  nameWithType: PostProcessTask<TPayload>.Process
-  nameWithType.vb: PostProcessTask(Of TPayload).Process
+  fullName: Edgar.Unity.PostProcessTask.Process
+  nameWithType: PostProcessTask.Process
 - uid: Edgar.Unity.PostProcessUtils
   name: PostProcessUtils
   href: master/api/Edgar.Unity.PostProcessUtils.html
@@ -11845,15 +11800,15 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.PostProcessUtils.CenterGrid
   nameWithType: PostProcessUtils.CenterGrid
-- uid: Edgar.Unity.PostProcessUtils.CopyTiles(System.Collections.Generic.List{Tilemap},System.Collections.Generic.List{Tilemap},Vector3Int)
-  name: CopyTiles(List<Tilemap>, List<Tilemap>, Vector3Int)
-  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_CopyTiles_System_Collections_Generic_List_Tilemap__System_Collections_Generic_List_Tilemap__Vector3Int_
-  commentId: M:Edgar.Unity.PostProcessUtils.CopyTiles(System.Collections.Generic.List{Tilemap},System.Collections.Generic.List{Tilemap},Vector3Int)
-  name.vb: CopyTiles(List(Of Tilemap), List(Of Tilemap), Vector3Int)
-  fullName: Edgar.Unity.PostProcessUtils.CopyTiles(System.Collections.Generic.List<Tilemap>, System.Collections.Generic.List<Tilemap>, Vector3Int)
-  fullName.vb: Edgar.Unity.PostProcessUtils.CopyTiles(System.Collections.Generic.List(Of Tilemap), System.Collections.Generic.List(Of Tilemap), Vector3Int)
-  nameWithType: PostProcessUtils.CopyTiles(List<Tilemap>, List<Tilemap>, Vector3Int)
-  nameWithType.vb: PostProcessUtils.CopyTiles(List(Of Tilemap), List(Of Tilemap), Vector3Int)
+- uid: Edgar.Unity.PostProcessUtils.CopyTiles(Edgar.Unity.RoomInstance,List{Tilemap},System.Boolean,System.Boolean)
+  name: CopyTiles(RoomInstance, List<Tilemap>, Boolean, Boolean)
+  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_CopyTiles_Edgar_Unity_RoomInstance_List_Tilemap__System_Boolean_System_Boolean_
+  commentId: M:Edgar.Unity.PostProcessUtils.CopyTiles(Edgar.Unity.RoomInstance,List{Tilemap},System.Boolean,System.Boolean)
+  name.vb: CopyTiles(RoomInstance, List(Of Tilemap), Boolean, Boolean)
+  fullName: Edgar.Unity.PostProcessUtils.CopyTiles(Edgar.Unity.RoomInstance, List<Tilemap>, System.Boolean, System.Boolean)
+  fullName.vb: Edgar.Unity.PostProcessUtils.CopyTiles(Edgar.Unity.RoomInstance, List(Of Tilemap), System.Boolean, System.Boolean)
+  nameWithType: PostProcessUtils.CopyTiles(RoomInstance, List<Tilemap>, Boolean, Boolean)
+  nameWithType.vb: PostProcessUtils.CopyTiles(RoomInstance, List(Of Tilemap), Boolean, Boolean)
 - uid: Edgar.Unity.PostProcessUtils.CopyTiles*
   name: CopyTiles
   href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_CopyTiles_
@@ -11867,12 +11822,6 @@ references:
   commentId: M:Edgar.Unity.PostProcessUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel)
   fullName: Edgar.Unity.PostProcessUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel)
   nameWithType: PostProcessUtils.CopyTilesToSharedTilemaps(GeneratedLevel)
-- uid: Edgar.Unity.PostProcessUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.RoomInstance)
-  name: CopyTilesToSharedTilemaps(GeneratedLevel, RoomInstance)
-  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_CopyTilesToSharedTilemaps_Edgar_Unity_GeneratedLevel_Edgar_Unity_RoomInstance_
-  commentId: M:Edgar.Unity.PostProcessUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.RoomInstance)
-  fullName: Edgar.Unity.PostProcessUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel, Edgar.Unity.RoomInstance)
-  nameWithType: PostProcessUtils.CopyTilesToSharedTilemaps(GeneratedLevel, RoomInstance)
 - uid: Edgar.Unity.PostProcessUtils.CopyTilesToSharedTilemaps*
   name: CopyTilesToSharedTilemaps
   href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_CopyTilesToSharedTilemaps_
@@ -11880,11 +11829,11 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.PostProcessUtils.CopyTilesToSharedTilemaps
   nameWithType: PostProcessUtils.CopyTilesToSharedTilemaps
-- uid: Edgar.Unity.PostProcessUtils.Destroy(System.Object)
+- uid: Edgar.Unity.PostProcessUtils.Destroy(Object)
   name: Destroy(Object)
-  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_Destroy_System_Object_
-  commentId: M:Edgar.Unity.PostProcessUtils.Destroy(System.Object)
-  fullName: Edgar.Unity.PostProcessUtils.Destroy(System.Object)
+  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_Destroy_Object_
+  commentId: M:Edgar.Unity.PostProcessUtils.Destroy(Object)
+  fullName: Edgar.Unity.PostProcessUtils.Destroy(Object)
   nameWithType: PostProcessUtils.Destroy(Object)
 - uid: Edgar.Unity.PostProcessUtils.Destroy*
   name: Destroy
@@ -11919,13 +11868,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.PostProcessUtils.DisableRoomTemplatesRenderers
   nameWithType: PostProcessUtils.DisableRoomTemplatesRenderers
-- uid: Edgar.Unity.PostProcessUtils.GetTilemapsCenter(System.Collections.Generic.List{Tilemap},System.Boolean)
+- uid: Edgar.Unity.PostProcessUtils.GetTilemapsCenter(List{Tilemap},System.Boolean)
   name: GetTilemapsCenter(List<Tilemap>, Boolean)
-  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_GetTilemapsCenter_System_Collections_Generic_List_Tilemap__System_Boolean_
-  commentId: M:Edgar.Unity.PostProcessUtils.GetTilemapsCenter(System.Collections.Generic.List{Tilemap},System.Boolean)
+  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_GetTilemapsCenter_List_Tilemap__System_Boolean_
+  commentId: M:Edgar.Unity.PostProcessUtils.GetTilemapsCenter(List{Tilemap},System.Boolean)
   name.vb: GetTilemapsCenter(List(Of Tilemap), Boolean)
-  fullName: Edgar.Unity.PostProcessUtils.GetTilemapsCenter(System.Collections.Generic.List<Tilemap>, System.Boolean)
-  fullName.vb: Edgar.Unity.PostProcessUtils.GetTilemapsCenter(System.Collections.Generic.List(Of Tilemap), System.Boolean)
+  fullName: Edgar.Unity.PostProcessUtils.GetTilemapsCenter(List<Tilemap>, System.Boolean)
+  fullName.vb: Edgar.Unity.PostProcessUtils.GetTilemapsCenter(List(Of Tilemap), System.Boolean)
   nameWithType: PostProcessUtils.GetTilemapsCenter(List<Tilemap>, Boolean)
   nameWithType.vb: PostProcessUtils.GetTilemapsCenter(List(Of Tilemap), Boolean)
 - uid: Edgar.Unity.PostProcessUtils.GetTilemapsCenter*
@@ -11935,12 +11884,12 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.PostProcessUtils.GetTilemapsCenter
   nameWithType: PostProcessUtils.GetTilemapsCenter
-- uid: Edgar.Unity.PostProcessUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.TilemapLayersStructureMode,Edgar.Unity.ITilemapLayersHandler,Edgar.Unity.ITilemapLayersHandler,GameObject,Material)
-  name: InitializeSharedTilemaps(GeneratedLevel, TilemapLayersStructureMode, ITilemapLayersHandler, ITilemapLayersHandler, GameObject, Material)
-  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_InitializeSharedTilemaps_Edgar_Unity_GeneratedLevel_Edgar_Unity_TilemapLayersStructureMode_Edgar_Unity_ITilemapLayersHandler_Edgar_Unity_ITilemapLayersHandler_GameObject_Material_
-  commentId: M:Edgar.Unity.PostProcessUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.TilemapLayersStructureMode,Edgar.Unity.ITilemapLayersHandler,Edgar.Unity.ITilemapLayersHandler,GameObject,Material)
-  fullName: Edgar.Unity.PostProcessUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel, Edgar.Unity.TilemapLayersStructureMode, Edgar.Unity.ITilemapLayersHandler, Edgar.Unity.ITilemapLayersHandler, GameObject, Material)
-  nameWithType: PostProcessUtils.InitializeSharedTilemaps(GeneratedLevel, TilemapLayersStructureMode, ITilemapLayersHandler, ITilemapLayersHandler, GameObject, Material)
+- uid: Edgar.Unity.PostProcessUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.TilemapLayersStructureMode,Edgar.Unity.ITilemapLayersHandler,Edgar.Unity.ITilemapLayersHandler,GameObject)
+  name: InitializeSharedTilemaps(GeneratedLevel, TilemapLayersStructureMode, ITilemapLayersHandler, ITilemapLayersHandler, GameObject)
+  href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_InitializeSharedTilemaps_Edgar_Unity_GeneratedLevel_Edgar_Unity_TilemapLayersStructureMode_Edgar_Unity_ITilemapLayersHandler_Edgar_Unity_ITilemapLayersHandler_GameObject_
+  commentId: M:Edgar.Unity.PostProcessUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.TilemapLayersStructureMode,Edgar.Unity.ITilemapLayersHandler,Edgar.Unity.ITilemapLayersHandler,GameObject)
+  fullName: Edgar.Unity.PostProcessUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel, Edgar.Unity.TilemapLayersStructureMode, Edgar.Unity.ITilemapLayersHandler, Edgar.Unity.ITilemapLayersHandler, GameObject)
+  nameWithType: PostProcessUtils.InitializeSharedTilemaps(GeneratedLevel, TilemapLayersStructureMode, ITilemapLayersHandler, ITilemapLayersHandler, GameObject)
 - uid: Edgar.Unity.PostProcessUtils.InitializeSharedTilemaps*
   name: InitializeSharedTilemaps
   href: master/api/Edgar.Unity.PostProcessUtils.html#Edgar_Unity_PostProcessUtils_InitializeSharedTilemaps_
@@ -12095,30 +12044,11 @@ references:
   commentId: T:Edgar.Unity.ProUtils
   fullName: Edgar.Unity.ProUtils
   nameWithType: ProUtils
-- uid: Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel)
-  name: CopyTilesToSharedTilemaps(GeneratedLevel)
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_CopyTilesToSharedTilemaps_Edgar_Unity_GeneratedLevel_
-  commentId: M:Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel)
-  fullName: Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel)
-  nameWithType: ProUtils.CopyTilesToSharedTilemaps(GeneratedLevel)
-- uid: Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.RoomInstance)
-  name: CopyTilesToSharedTilemaps(GeneratedLevel, RoomInstance)
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_CopyTilesToSharedTilemaps_Edgar_Unity_GeneratedLevel_Edgar_Unity_RoomInstance_
-  commentId: M:Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.RoomInstance)
-  fullName: Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps(Edgar.Unity.GeneratedLevel, Edgar.Unity.RoomInstance)
-  nameWithType: ProUtils.CopyTilesToSharedTilemaps(GeneratedLevel, RoomInstance)
-- uid: Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps*
-  name: CopyTilesToSharedTilemaps
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_CopyTilesToSharedTilemaps_
-  commentId: Overload:Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps
-  isSpec: "True"
-  fullName: Edgar.Unity.ProUtils.CopyTilesToSharedTilemaps
-  nameWithType: ProUtils.CopyTilesToSharedTilemaps
-- uid: Edgar.Unity.ProUtils.FindDerivedTypes(System.Type)
+- uid: Edgar.Unity.ProUtils.FindDerivedTypes(Type)
   name: FindDerivedTypes(Type)
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_FindDerivedTypes_System_Type_
-  commentId: M:Edgar.Unity.ProUtils.FindDerivedTypes(System.Type)
-  fullName: Edgar.Unity.ProUtils.FindDerivedTypes(System.Type)
+  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_FindDerivedTypes_Type_
+  commentId: M:Edgar.Unity.ProUtils.FindDerivedTypes(Type)
+  fullName: Edgar.Unity.ProUtils.FindDerivedTypes(Type)
   nameWithType: ProUtils.FindDerivedTypes(Type)
 - uid: Edgar.Unity.ProUtils.FindDerivedTypes*
   name: FindDerivedTypes
@@ -12127,32 +12057,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.ProUtils.FindDerivedTypes
   nameWithType: ProUtils.FindDerivedTypes
-- uid: Edgar.Unity.ProUtils.GetRoomTemplateTilemaps(GameObject)
-  name: GetRoomTemplateTilemaps(GameObject)
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_GetRoomTemplateTilemaps_GameObject_
-  commentId: M:Edgar.Unity.ProUtils.GetRoomTemplateTilemaps(GameObject)
-  fullName: Edgar.Unity.ProUtils.GetRoomTemplateTilemaps(GameObject)
-  nameWithType: ProUtils.GetRoomTemplateTilemaps(GameObject)
-- uid: Edgar.Unity.ProUtils.GetRoomTemplateTilemaps*
-  name: GetRoomTemplateTilemaps
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_GetRoomTemplateTilemaps_
-  commentId: Overload:Edgar.Unity.ProUtils.GetRoomTemplateTilemaps
-  isSpec: "True"
-  fullName: Edgar.Unity.ProUtils.GetRoomTemplateTilemaps
-  nameWithType: ProUtils.GetRoomTemplateTilemaps
-- uid: Edgar.Unity.ProUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.ITilemapLayersHandler)
-  name: InitializeSharedTilemaps(GeneratedLevel, ITilemapLayersHandler)
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_InitializeSharedTilemaps_Edgar_Unity_GeneratedLevel_Edgar_Unity_ITilemapLayersHandler_
-  commentId: M:Edgar.Unity.ProUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel,Edgar.Unity.ITilemapLayersHandler)
-  fullName: Edgar.Unity.ProUtils.InitializeSharedTilemaps(Edgar.Unity.GeneratedLevel, Edgar.Unity.ITilemapLayersHandler)
-  nameWithType: ProUtils.InitializeSharedTilemaps(GeneratedLevel, ITilemapLayersHandler)
-- uid: Edgar.Unity.ProUtils.InitializeSharedTilemaps*
-  name: InitializeSharedTilemaps
-  href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_InitializeSharedTilemaps_
-  commentId: Overload:Edgar.Unity.ProUtils.InitializeSharedTilemaps
-  isSpec: "True"
-  fullName: Edgar.Unity.ProUtils.InitializeSharedTilemaps
-  nameWithType: ProUtils.InitializeSharedTilemaps
 - uid: Edgar.Unity.ProUtils.TakeScreenshot(Camera,System.Single,System.Int32,System.Int32)
   name: TakeScreenshot(Camera, Single, Int32, Int32)
   href: master/api/Edgar.Unity.ProUtils.html#Edgar_Unity_ProUtils_TakeScreenshot_Camera_System_Single_System_Int32_System_Int32_
@@ -12483,13 +12387,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomInstance.RoomTemplatePrefab
   nameWithType: RoomInstance.RoomTemplatePrefab
-- uid: Edgar.Unity.RoomInstance.SetDoors(System.Collections.Generic.List{Edgar.Unity.DoorInstance})
+- uid: Edgar.Unity.RoomInstance.SetDoors(List{Edgar.Unity.DoorInstance})
   name: SetDoors(List<DoorInstance>)
-  href: master/api/Edgar.Unity.RoomInstance.html#Edgar_Unity_RoomInstance_SetDoors_System_Collections_Generic_List_Edgar_Unity_DoorInstance__
-  commentId: M:Edgar.Unity.RoomInstance.SetDoors(System.Collections.Generic.List{Edgar.Unity.DoorInstance})
+  href: master/api/Edgar.Unity.RoomInstance.html#Edgar_Unity_RoomInstance_SetDoors_List_Edgar_Unity_DoorInstance__
+  commentId: M:Edgar.Unity.RoomInstance.SetDoors(List{Edgar.Unity.DoorInstance})
   name.vb: SetDoors(List(Of DoorInstance))
-  fullName: Edgar.Unity.RoomInstance.SetDoors(System.Collections.Generic.List<Edgar.Unity.DoorInstance>)
-  fullName.vb: Edgar.Unity.RoomInstance.SetDoors(System.Collections.Generic.List(Of Edgar.Unity.DoorInstance))
+  fullName: Edgar.Unity.RoomInstance.SetDoors(List<Edgar.Unity.DoorInstance>)
+  fullName.vb: Edgar.Unity.RoomInstance.SetDoors(List(Of Edgar.Unity.DoorInstance))
   nameWithType: RoomInstance.SetDoors(List<DoorInstance>)
   nameWithType.vb: RoomInstance.SetDoors(List(Of DoorInstance))
 - uid: Edgar.Unity.RoomInstance.SetDoors*
@@ -12668,13 +12572,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromRoomTemplate
   nameWithType: RoomTemplatesLoader.GetPolygonFromRoomTemplate
-- uid: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps(System.Collections.Generic.ICollection{Tilemap})
+- uid: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps(ICollection{Tilemap})
   name: GetPolygonFromTilemaps(ICollection<Tilemap>)
-  href: master/api/Edgar.Unity.RoomTemplatesLoader.html#Edgar_Unity_RoomTemplatesLoader_GetPolygonFromTilemaps_System_Collections_Generic_ICollection_Tilemap__
-  commentId: M:Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps(System.Collections.Generic.ICollection{Tilemap})
+  href: master/api/Edgar.Unity.RoomTemplatesLoader.html#Edgar_Unity_RoomTemplatesLoader_GetPolygonFromTilemaps_ICollection_Tilemap__
+  commentId: M:Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps(ICollection{Tilemap})
   name.vb: GetPolygonFromTilemaps(ICollection(Of Tilemap))
-  fullName: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps(System.Collections.Generic.ICollection<Tilemap>)
-  fullName.vb: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps(System.Collections.Generic.ICollection(Of Tilemap))
+  fullName: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps(ICollection<Tilemap>)
+  fullName.vb: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps(ICollection(Of Tilemap))
   nameWithType: RoomTemplatesLoader.GetPolygonFromTilemaps(ICollection<Tilemap>)
   nameWithType.vb: RoomTemplatesLoader.GetPolygonFromTilemaps(ICollection(Of Tilemap))
 - uid: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTilemaps*
@@ -12700,13 +12604,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomTemplatesLoader.GetPolygonFromTiles
   nameWithType: RoomTemplatesLoader.GetPolygonFromTiles
-- uid: Edgar.Unity.RoomTemplatesLoader.GetUsedTiles(System.Collections.Generic.IEnumerable{Tilemap})
+- uid: Edgar.Unity.RoomTemplatesLoader.GetUsedTiles(IEnumerable{Tilemap})
   name: GetUsedTiles(IEnumerable<Tilemap>)
-  href: master/api/Edgar.Unity.RoomTemplatesLoader.html#Edgar_Unity_RoomTemplatesLoader_GetUsedTiles_System_Collections_Generic_IEnumerable_Tilemap__
-  commentId: M:Edgar.Unity.RoomTemplatesLoader.GetUsedTiles(System.Collections.Generic.IEnumerable{Tilemap})
+  href: master/api/Edgar.Unity.RoomTemplatesLoader.html#Edgar_Unity_RoomTemplatesLoader_GetUsedTiles_IEnumerable_Tilemap__
+  commentId: M:Edgar.Unity.RoomTemplatesLoader.GetUsedTiles(IEnumerable{Tilemap})
   name.vb: GetUsedTiles(IEnumerable(Of Tilemap))
-  fullName: Edgar.Unity.RoomTemplatesLoader.GetUsedTiles(System.Collections.Generic.IEnumerable<Tilemap>)
-  fullName.vb: Edgar.Unity.RoomTemplatesLoader.GetUsedTiles(System.Collections.Generic.IEnumerable(Of Tilemap))
+  fullName: Edgar.Unity.RoomTemplatesLoader.GetUsedTiles(IEnumerable<Tilemap>)
+  fullName.vb: Edgar.Unity.RoomTemplatesLoader.GetUsedTiles(IEnumerable(Of Tilemap))
   nameWithType: RoomTemplatesLoader.GetUsedTiles(IEnumerable<Tilemap>)
   nameWithType.vb: RoomTemplatesLoader.GetUsedTiles(IEnumerable(Of Tilemap))
 - uid: Edgar.Unity.RoomTemplatesLoader.GetUsedTiles*
@@ -12716,13 +12620,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomTemplatesLoader.GetUsedTiles
   nameWithType: RoomTemplatesLoader.GetUsedTiles
-- uid: Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented(System.Collections.Generic.IList{EdgarVector2Int})
+- uid: Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented(IList{EdgarVector2Int})
   name: IsClockwiseOriented(IList<EdgarVector2Int>)
-  href: master/api/Edgar.Unity.RoomTemplatesLoader.html#Edgar_Unity_RoomTemplatesLoader_IsClockwiseOriented_System_Collections_Generic_IList_EdgarVector2Int__
-  commentId: M:Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented(System.Collections.Generic.IList{EdgarVector2Int})
+  href: master/api/Edgar.Unity.RoomTemplatesLoader.html#Edgar_Unity_RoomTemplatesLoader_IsClockwiseOriented_IList_EdgarVector2Int__
+  commentId: M:Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented(IList{EdgarVector2Int})
   name.vb: IsClockwiseOriented(IList(Of EdgarVector2Int))
-  fullName: Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented(System.Collections.Generic.IList<EdgarVector2Int>)
-  fullName.vb: Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented(System.Collections.Generic.IList(Of EdgarVector2Int))
+  fullName: Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented(IList<EdgarVector2Int>)
+  fullName.vb: Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented(IList(Of EdgarVector2Int))
   nameWithType: RoomTemplatesLoader.IsClockwiseOriented(IList<EdgarVector2Int>)
   nameWithType.vb: RoomTemplatesLoader.IsClockwiseOriented(IList(Of EdgarVector2Int))
 - uid: Edgar.Unity.RoomTemplatesLoader.IsClockwiseOriented*
@@ -12779,13 +12683,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomTemplateUtils.GetTilemaps
   nameWithType: RoomTemplateUtils.GetTilemaps
-- uid: Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying(System.Collections.Generic.ICollection{Tilemap})
+- uid: Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying(ICollection{Tilemap})
   name: GetTilemapsForCopying(ICollection<Tilemap>)
-  href: master/api/Edgar.Unity.RoomTemplateUtils.html#Edgar_Unity_RoomTemplateUtils_GetTilemapsForCopying_System_Collections_Generic_ICollection_Tilemap__
-  commentId: M:Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying(System.Collections.Generic.ICollection{Tilemap})
+  href: master/api/Edgar.Unity.RoomTemplateUtils.html#Edgar_Unity_RoomTemplateUtils_GetTilemapsForCopying_ICollection_Tilemap__
+  commentId: M:Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying(ICollection{Tilemap})
   name.vb: GetTilemapsForCopying(ICollection(Of Tilemap))
-  fullName: Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying(System.Collections.Generic.ICollection<Tilemap>)
-  fullName.vb: Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying(System.Collections.Generic.ICollection(Of Tilemap))
+  fullName: Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying(ICollection<Tilemap>)
+  fullName.vb: Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying(ICollection(Of Tilemap))
   nameWithType: RoomTemplateUtils.GetTilemapsForCopying(ICollection<Tilemap>)
   nameWithType.vb: RoomTemplateUtils.GetTilemapsForCopying(ICollection(Of Tilemap))
 - uid: Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying*
@@ -12795,13 +12699,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomTemplateUtils.GetTilemapsForCopying
   nameWithType: RoomTemplateUtils.GetTilemapsForCopying
-- uid: Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline(System.Collections.Generic.ICollection{Tilemap})
+- uid: Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline(ICollection{Tilemap})
   name: GetTilemapsForOutline(ICollection<Tilemap>)
-  href: master/api/Edgar.Unity.RoomTemplateUtils.html#Edgar_Unity_RoomTemplateUtils_GetTilemapsForOutline_System_Collections_Generic_ICollection_Tilemap__
-  commentId: M:Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline(System.Collections.Generic.ICollection{Tilemap})
+  href: master/api/Edgar.Unity.RoomTemplateUtils.html#Edgar_Unity_RoomTemplateUtils_GetTilemapsForOutline_ICollection_Tilemap__
+  commentId: M:Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline(ICollection{Tilemap})
   name.vb: GetTilemapsForOutline(ICollection(Of Tilemap))
-  fullName: Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline(System.Collections.Generic.ICollection<Tilemap>)
-  fullName.vb: Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline(System.Collections.Generic.ICollection(Of Tilemap))
+  fullName: Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline(ICollection<Tilemap>)
+  fullName.vb: Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline(ICollection(Of Tilemap))
   nameWithType: RoomTemplateUtils.GetTilemapsForOutline(ICollection<Tilemap>)
   nameWithType.vb: RoomTemplateUtils.GetTilemapsForOutline(ICollection(Of Tilemap))
 - uid: Edgar.Unity.RoomTemplateUtils.GetTilemapsForOutline*
@@ -12824,13 +12728,13 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomTemplateUtils.GetTilemapsRoot
   nameWithType: RoomTemplateUtils.GetTilemapsRoot
-- uid: Edgar.Unity.RoomTemplateUtils.GetUsedTiles(System.Collections.Generic.IEnumerable{Tilemap})
+- uid: Edgar.Unity.RoomTemplateUtils.GetUsedTiles(IEnumerable{Tilemap})
   name: GetUsedTiles(IEnumerable<Tilemap>)
-  href: master/api/Edgar.Unity.RoomTemplateUtils.html#Edgar_Unity_RoomTemplateUtils_GetUsedTiles_System_Collections_Generic_IEnumerable_Tilemap__
-  commentId: M:Edgar.Unity.RoomTemplateUtils.GetUsedTiles(System.Collections.Generic.IEnumerable{Tilemap})
+  href: master/api/Edgar.Unity.RoomTemplateUtils.html#Edgar_Unity_RoomTemplateUtils_GetUsedTiles_IEnumerable_Tilemap__
+  commentId: M:Edgar.Unity.RoomTemplateUtils.GetUsedTiles(IEnumerable{Tilemap})
   name.vb: GetUsedTiles(IEnumerable(Of Tilemap))
-  fullName: Edgar.Unity.RoomTemplateUtils.GetUsedTiles(System.Collections.Generic.IEnumerable<Tilemap>)
-  fullName.vb: Edgar.Unity.RoomTemplateUtils.GetUsedTiles(System.Collections.Generic.IEnumerable(Of Tilemap))
+  fullName: Edgar.Unity.RoomTemplateUtils.GetUsedTiles(IEnumerable<Tilemap>)
+  fullName.vb: Edgar.Unity.RoomTemplateUtils.GetUsedTiles(IEnumerable(Of Tilemap))
   nameWithType: RoomTemplateUtils.GetUsedTiles(IEnumerable<Tilemap>)
   nameWithType.vb: RoomTemplateUtils.GetUsedTiles(IEnumerable(Of Tilemap))
 - uid: Edgar.Unity.RoomTemplateUtils.GetUsedTiles*
@@ -12849,12 +12753,12 @@ references:
   fullName.vb: Edgar.Unity.SmartCoroutine(Of TValue)
   nameWithType: SmartCoroutine<TValue>
   nameWithType.vb: SmartCoroutine(Of TValue)
-- uid: Edgar.Unity.SmartCoroutine`1.#ctor(System.Collections.Generic.IEnumerator,System.Boolean)
+- uid: Edgar.Unity.SmartCoroutine`1.#ctor(IEnumerator,System.Boolean)
   name: SmartCoroutine(IEnumerator, Boolean)
-  href: master/api/Edgar.Unity.SmartCoroutine-1.html#Edgar_Unity_SmartCoroutine_1__ctor_System_Collections_Generic_IEnumerator_System_Boolean_
-  commentId: M:Edgar.Unity.SmartCoroutine`1.#ctor(System.Collections.Generic.IEnumerator,System.Boolean)
-  fullName: Edgar.Unity.SmartCoroutine<TValue>.SmartCoroutine(System.Collections.Generic.IEnumerator, System.Boolean)
-  fullName.vb: Edgar.Unity.SmartCoroutine(Of TValue).SmartCoroutine(System.Collections.Generic.IEnumerator, System.Boolean)
+  href: master/api/Edgar.Unity.SmartCoroutine-1.html#Edgar_Unity_SmartCoroutine_1__ctor_IEnumerator_System_Boolean_
+  commentId: M:Edgar.Unity.SmartCoroutine`1.#ctor(IEnumerator,System.Boolean)
+  fullName: Edgar.Unity.SmartCoroutine<TValue>.SmartCoroutine(IEnumerator, System.Boolean)
+  fullName.vb: Edgar.Unity.SmartCoroutine(Of TValue).SmartCoroutine(IEnumerator, System.Boolean)
   nameWithType: SmartCoroutine<TValue>.SmartCoroutine(IEnumerator, Boolean)
   nameWithType.vb: SmartCoroutine(Of TValue).SmartCoroutine(IEnumerator, Boolean)
 - uid: Edgar.Unity.SmartCoroutine`1.#ctor*
@@ -13067,6 +12971,70 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Tests.Runtime.Examples.DeadCellsTests.UndergroundBasicTest
   nameWithType: DeadCellsTests.UndergroundBasicTest
+- uid: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs
+  name: DirectedLevelGraphs
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.html
+  commentId: T:Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs
+  nameWithType: DirectedLevelGraphs
+- uid: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.BasicTest
+  name: BasicTest()
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.html#Edgar_Unity_Tests_Runtime_Examples_DirectedLevelGraphs_BasicTest
+  commentId: M:Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.BasicTest
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.BasicTest()
+  nameWithType: DirectedLevelGraphs.BasicTest()
+- uid: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.BasicTest*
+  name: BasicTest
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.html#Edgar_Unity_Tests_Runtime_Examples_DirectedLevelGraphs_BasicTest_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.BasicTest
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.BasicTest
+  nameWithType: DirectedLevelGraphs.BasicTest
+- uid: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.SetUp
+  name: SetUp()
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.html#Edgar_Unity_Tests_Runtime_Examples_DirectedLevelGraphs_SetUp
+  commentId: M:Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.SetUp
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.SetUp()
+  nameWithType: DirectedLevelGraphs.SetUp()
+- uid: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.SetUp*
+  name: SetUp
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.html#Edgar_Unity_Tests_Runtime_Examples_DirectedLevelGraphs_SetUp_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.SetUp
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DirectedLevelGraphs.SetUp
+  nameWithType: DirectedLevelGraphs.SetUp
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests
+  name: DoorSocketsTests
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html
+  commentId: T:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests
+  nameWithType: DoorSocketsTests
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest
+  name: BasicTest()
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html#Edgar_Unity_Tests_Runtime_Examples_DoorSocketsTests_BasicTest
+  commentId: M:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest()
+  nameWithType: DoorSocketsTests.BasicTest()
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest*
+  name: BasicTest
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html#Edgar_Unity_Tests_Runtime_Examples_DoorSocketsTests_BasicTest_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.BasicTest
+  nameWithType: DoorSocketsTests.BasicTest
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp
+  name: SetUp()
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html#Edgar_Unity_Tests_Runtime_Examples_DoorSocketsTests_SetUp
+  commentId: M:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp()
+  nameWithType: DoorSocketsTests.SetUp()
+- uid: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp*
+  name: SetUp
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.html#Edgar_Unity_Tests_Runtime_Examples_DoorSocketsTests_SetUp_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.Examples.DoorSocketsTests.SetUp
+  nameWithType: DoorSocketsTests.SetUp
 - uid: Edgar.Unity.Tests.Runtime.Examples.Example1Tests
   name: Example1Tests
   href: master/api/Edgar.Unity.Tests.Runtime.Examples.Example1Tests.html
@@ -13266,6 +13234,38 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Tests.Runtime.Examples.Isometric1Tests.SetUp
   nameWithType: Isometric1Tests.SetUp
+- uid: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests
+  name: MinimapExample2Tests
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.html
+  commentId: T:Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests
+  fullName: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests
+  nameWithType: MinimapExample2Tests
+- uid: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.BasicTest
+  name: BasicTest()
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.html#Edgar_Unity_Tests_Runtime_Examples_MinimapExample2Tests_BasicTest
+  commentId: M:Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.BasicTest
+  fullName: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.BasicTest()
+  nameWithType: MinimapExample2Tests.BasicTest()
+- uid: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.BasicTest*
+  name: BasicTest
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.html#Edgar_Unity_Tests_Runtime_Examples_MinimapExample2Tests_BasicTest_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.BasicTest
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.BasicTest
+  nameWithType: MinimapExample2Tests.BasicTest
+- uid: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.SetUp
+  name: SetUp()
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.html#Edgar_Unity_Tests_Runtime_Examples_MinimapExample2Tests_SetUp
+  commentId: M:Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.SetUp
+  fullName: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.SetUp()
+  nameWithType: MinimapExample2Tests.SetUp()
+- uid: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.SetUp*
+  name: SetUp
+  href: master/api/Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.html#Edgar_Unity_Tests_Runtime_Examples_MinimapExample2Tests_SetUp_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.SetUp
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.Examples.MinimapExample2Tests.SetUp
+  nameWithType: MinimapExample2Tests.SetUp
 - uid: Edgar.Unity.Tests.Runtime.Examples.MinimapExampleTests
   name: MinimapExampleTests
   href: master/api/Edgar.Unity.Tests.Runtime.Examples.MinimapExampleTests.html
