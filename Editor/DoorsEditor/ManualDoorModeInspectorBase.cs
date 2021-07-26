@@ -27,7 +27,7 @@ namespace Edgar.Unity.Editor
             this.serializedProperty = serializedProperty;
         }
 
-        public void OnInspectorGUI()
+        public virtual void OnInspectorGUI()
         {
             var addDoorsNew = GUILayout.Toggle(currentMode == Mode.AddDoors, "Add door positions", GUI.skin.button);
             var deleteDoorsNew = GUILayout.Toggle(currentMode == Mode.DeleteDoors, "Delete door positions", GUI.skin.button);

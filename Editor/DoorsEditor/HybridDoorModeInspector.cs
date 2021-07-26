@@ -11,6 +11,27 @@ namespace Edgar.Unity.Editor
         {
         }
 
+//        public override void OnInspectorGUI()
+//        {
+//            base.OnInspectorGUI();
+
+//            var text = @"
+//<size=12>How does the <b>Hybrid mode</b> work?</size>
+//1. Select the length of doors in the 'New door length' field.
+//2. Click the 'Add door positions' button.
+//3. Click on the tile where the doors can start.
+//4. Drag the mouse to last possible tile of the door line.
+
+//<b>What if the door disappears?</b> The door line you drew is probably too short.
+//<b>What is the solid outline?</b> It shows the length of a single door.
+//<b>What is the dashed outline?</b> It shows the all the possible positions where the doors can be.
+//";
+
+//            var style = new GUIStyle(EditorStyles.helpBox) {richText = true};
+//            EditorGUILayout.TextArea(text.Trim(), style);
+//            //EditorGUILayout.HelpBox("How does the <b>Hybrid mode</b> work?", MessageType.Info);
+//        }
+
         protected override void DrawAllDoors()
         {
             var gameObject = doors.transform.gameObject;
@@ -94,7 +115,7 @@ namespace Edgar.Unity.Editor
 
         protected override void ShowAdditionalFields()
         {
-            EditorGUILayout.PropertyField(serializedProperty.FindPropertyRelative(nameof(HybridDoorModeData.DefaultLength)), new GUIContent("Door length"));
+            EditorGUILayout.PropertyField(serializedProperty.FindPropertyRelative(nameof(HybridDoorModeData.DefaultLength)), new GUIContent("New door length"));
         }
     }
 }
