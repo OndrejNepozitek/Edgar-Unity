@@ -317,109 +317,64 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8910660530524305060}
   m_Enabled: 1
-  m_Tiles:
-  - first: {x: -5, y: -1, z: 0}
-    second:
-      m_TileIndex: 5
-      m_TileSpriteIndex: 5
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -2, y: -1, z: 0}
-    second:
-      m_TileIndex: 4
-      m_TileSpriteIndex: 4
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -5, y: 1, z: 0}
-    second:
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: -5, y: 3, z: 0}
-    second:
-      m_TileIndex: 3
-      m_TileSpriteIndex: 3
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
-  - first: {x: 1, y: 3, z: 0}
-    second:
-      m_TileIndex: 2
-      m_TileSpriteIndex: 2
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
+  m_Tiles: {}
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: fedd81f64c4c11b4bb1b9505d774388a, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 6f4e9eb0b6fcd3d43a54adf0b539e050, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 0ea70426bbe194147b517d18428c59fe, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: dda19633d1b60d846b1dd1875f50c0e0, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 90f907616be7d0b488b4b3771c79e883, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300130, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300136, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300176, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300128, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300182, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 5
+  - m_RefCount: 0
     m_Data:
-      e00: 1
-      e01: 0
+      e00: 0
+      e01: NaN
       e02: 0
       e03: 0
-      e10: 0
-      e11: 1
+      e10: 4.5911e-41
+      e11: NaN
       e12: 0
       e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
+      e20: -3.9
+      e21: 0.1
+      e22: 0
       e23: 0
-      e30: 0
+      e30: -1.9
       e31: 0
-      e32: 0
-      e33: 1
+      e32: 0.1
+      e33: 0.1
   m_TileColorArray:
-  - m_RefCount: 5
-    m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 1e-45, g: 1e-45, b: 1e-45, a: 1e-45}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -5, y: -1, z: 0}
-  m_Size: {x: 7, y: 6, z: 1}
+  m_Origin: {x: -11, y: -2, z: 0}
+  m_Size: {x: 14, y: 8, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1507,20 +1462,11 @@ Tilemap:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8910660531276550352}
   m_Enabled: 1
-  m_Tiles:
-  - first: {x: 0, y: 2, z: 0}
-    second:
-      m_TileIndex: 0
-      m_TileSpriteIndex: 8
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_ObjectToInstantiate: {fileID: 0}
-      m_TileFlags: 1
-      m_ColliderType: 1
+  m_Tiles: {}
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: f209c4882b850b64e837ea77c9a14505, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
@@ -1554,34 +1500,34 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: 21300078, guid: 782602a5433e7b643ac15ba97e602c64, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 1
+  - m_RefCount: 0
     m_Data:
-      e00: 1
-      e01: 0
+      e00: 4.8e-44
+      e01: NaN
       e02: 0
-      e03: 0
+      e03: 4.3e-44
       e10: 0
-      e11: 1
-      e12: 0
+      e11: NaN
+      e12: NaN
       e13: 0
       e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
+      e21: 6.7e-44
+      e22: -4.954988e-29
+      e23: 3.4818115
       e30: 0
       e31: 0
-      e32: 0
-      e33: 1
+      e32: 2.5201e-41
+      e33: 1e-45
   m_TileColorArray:
-  - m_RefCount: 1
-    m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 0, g: 0, b: 0, a: 0}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -5, y: -1, z: 0}
-  m_Size: {x: 7, y: 6, z: 1}
+  m_Origin: {x: -6, y: -1, z: 0}
+  m_Size: {x: 9, y: 6, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -1700,24 +1646,9 @@ CompositeCollider2D:
   m_EdgeRadius: 0
   m_ColliderPaths:
   - m_Collider: {fileID: 8910660531276550356}
-    m_ColliderPaths:
-    - - X: 9999971
-        Y: 20000000
-      - X: 9999971
-        Y: 30000000
-      - X: 624994
-        Y: 29999992
-      - X: 0
-        Y: 29374988
-      - X: 29
-        Y: 20000000
+    m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 0.9999942, y: 2}
-      - {x: 0.9999942, y: 3}
-      - {x: 0.0624988, y: 2.9999983}
-      - {x: 0, y: 2.9374976}
-      - {x: 0.0000058, y: 2}
+    m_Paths: []
   m_VertexDistance: 0.0005
 --- !u!1 &8910660531550239900
 GameObject:
@@ -1730,9 +1661,8 @@ GameObject:
   - component: {fileID: 8910660531550239902}
   - component: {fileID: 6072588915915093323}
   - component: {fileID: 8008870231458643337}
-  - component: {fileID: 5857317595339425153}
   m_Layer: 0
-  m_Name: Room template
+  m_Name: DoorModes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1782,39 +1712,47 @@ MonoBehaviour:
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList: []
-  SelectedMode: 0
+  SelectedMode: 1
   HybridDoorModeData:
     DefaultLength: 1
-    DoorLines: []
+    DoorLines:
+    - From: {x: -6, y: -1, z: 0}
+      To: {x: -6, y: 3, z: 0}
+      Length: 3
+    - From: {x: 2, y: 1, z: 0}
+      To: {x: 2, y: 3, z: 0}
+      Length: 3
+    - From: {x: -4, y: -2, z: 0}
+      To: {x: -3, y: -2, z: 0}
+      Length: 1
+    - From: {x: -4, y: 4, z: 0}
+      To: {x: 0, y: 4, z: 0}
+      Length: 1
   ManualDoorModeData:
-    DoorsList: []
+    DoorsList:
+    - From: {x: -6, y: -1, z: 0}
+      To: {x: -6, y: 1, z: 0}
+    - From: {x: -4, y: 4, z: 0}
+      To: {x: -4, y: 4, z: 0}
+    - From: {x: 0, y: 4, z: 0}
+      To: {x: 0, y: 4, z: 0}
+    - From: {x: 2, y: 3, z: 0}
+      To: {x: 2, y: 1, z: 0}
+    - From: {x: -4, y: -2, z: 0}
+      To: {x: -4, y: -2, z: 0}
+    - From: {x: -3, y: -2, z: 0}
+      To: {x: -3, y: -2, z: 0}
   SimpleDoorModeData:
     DistanceFromCorners: 2
-    DoorLength: 2
+    DoorLength: 1
     Mode: 0
     VerticalDoors:
-      Length: 1
+      Length: 3
       Margin1: 1
       Margin2: 1
       Enabled: 1
     HorizontalDoors:
       Length: 1
-      Margin1: 1
-      Margin2: 1
+      Margin1: 2
+      Margin2: 2
       Enabled: 1
---- !u!114 &5857317595339425153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8910660531550239900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1bc8872c800dd340adc2c2c2c0926f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DoorLine:
-    From: {x: -2, y: 4, z: 0}
-    To: {x: 0, y: 4, z: 0}
-    Length: 2
