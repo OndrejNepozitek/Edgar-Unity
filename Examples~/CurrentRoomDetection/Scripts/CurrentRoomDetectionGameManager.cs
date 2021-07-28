@@ -15,7 +15,7 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
 
         public void Update()
         {
-            if (Input.GetKey(KeyCode.G))
+            if (Input.GetKeyDown(KeyCode.G))
             {
                 LoadNextLevel();
             }

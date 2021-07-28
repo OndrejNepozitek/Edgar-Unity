@@ -9,48 +9,65 @@ namespace Edgar.Unity
     ///     Doors MonoBehaviour that is used to define doors for room templates.
     /// </summary>
     [ExecuteInEditMode]
-    public class Doors : MonoBehaviour
+    public class Doors : VersionedMonoBehaviour
     {
-        [HideInInspector]
+        [Obsolete]
         public int DistanceFromCorners = 1;
 
-        [HideInInspector]
+        [Obsolete]
         public int DoorLength = 1;
 
+        [Obsolete]
         public List<Door> DoorsList = new List<Door>();
 
         [HideInInspector]
         public DoorMode SelectedMode;
 
+        public HybridDoorModeData HybridDoorModeData;
+
+        public ManualDoorModeData ManualDoorModeData;
+
+        public SimpleDoorModeData SimpleDoorModeData;
+
         public IDoorModeGrid2D GetDoorMode()
         {
             if (SelectedMode == DoorMode.Manual)
             {
-                var doors = new List<DoorGrid2D>();
-
-                foreach (var door in DoorsList)
-                {
-                    var doorLine = new DoorGrid2D(door.From.RoundToUnityIntVector3().ToCustomIntVector2(),
-                        door.To.RoundToUnityIntVector3().ToCustomIntVector2()); // TODO: ugly
-
-                    doors.Add(doorLine);
-                }
-
-                return new ManualDoorModeGrid2D(doors);
+                return ManualDoorModeData.GetDoorMode(this);
             }
 
             if (SelectedMode == DoorMode.Simple)
             {
-                return new SimpleDoorModeGrid2D(DoorLength - 1, DistanceFromCorners);
+                return SimpleDoorModeData.GetDoorMode(this);
+            }
+
+            if (SelectedMode == DoorMode.Hybrid)
+            {
+                return HybridDoorModeData.GetDoorMode(this);
             }
 
             throw new ArgumentException("Invalid door mode selected");
+        }
+
+        protected override int OnUpgradeSerializedData(int version)
+        {
+            if (version == 1)
+            {
+#pragma warning disable 612
+                SimpleDoorModeData.DistanceFromCorners = DistanceFromCorners;
+                SimpleDoorModeData.DoorLength = DoorLength;
+                ManualDoorModeData.DoorsList = DoorsList;
+#pragma warning restore 612
+            }
+
+            return 2;
         }
 
         public enum DoorMode
         {
             Simple = 0,
             Manual = 1,
+            Hybrid = 2,
         }
     }
 }
