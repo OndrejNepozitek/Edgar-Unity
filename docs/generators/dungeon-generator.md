@@ -31,13 +31,20 @@ import { Image, Gallery, GalleryImage } from "@theme/Gallery";
 
 > **Note:** If you provide too few room templates, they may repeat in generated levels even if you choose the **No immediate** or **No repeat** options. To make sure that the repeat mode is satisfied, please provide enough room templates to choose from.
 
+- **Minimum Room Distance** - The minimum distance between non-neighbouring rooms.
+    - If equal to **0** - walls from one room can occupy the same tiles as walls from a different room.
+    - If equal to **1** (default) - walls from different rooms can be next to each other but not on top of each other.
+    - If equal to **2** - there must be at least one empty tile between walls of different rooms. (This is good for when using rule tiles and weird things are happening.)
+
+> **Note:** Higher values of *Minimum Room Distance* may negatively affect the performance of the generator. Moreover, with very short corridor, it might even be impossible to generate a level with a high value of this parameter.
+
 #### Post processing config
 
-Please refer see the [Post processing](../generators/post-process) page to find detailed information this configuration.
+Please see the [Post-processing](../generators/post-process) page to find detailed information about this configuration.
 
 - **Initialize Shared Tilemaps** - Whether to initialize tilemaps that will hold the generated level.
 - **Tilemap Layers Handler** - Which tilemap layers handler should be used to initialize shared tilemaps. Uses the `DungeonTilemapLayersHandler` if not set.
-- **Tilemap Material** - Material that will be used in Tilemap Renderers of shared tilemaps. This is useful for example for lights. If left null, the default material will be used.
+- **Tilemap Material** - Material that will be used in Tilemap Renderers of shared tilemaps. This is useful, for example, for lights. If left null, the default material will be used.
 - **Copy Tiles To Shared Tilemaps** - Whether to copy tiles from individual room template to the shared tilemaps.
 - **Center Grid** - Whether to move the level so that its centre is approximately at (0,0). Useful for debugging in Scene view in the editor.
 - **Disable Room Template Renderers** - Whether to disable tilemap renderers of individual rooms, useful only when *Copy Tiles To Shared Tilemaps* is enabled.
@@ -63,7 +70,7 @@ Example:
     var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGenerator>();
     generator.Generate();
 
-> **Note:** The `Generate()` method blocks the main Unity thread so the game may freeze while the dungeon is generated. The PRO version comes with an implementation that uses coroutines to make sure that the games does not freeze.
+> **Note:** The `Generate()` method blocks the main Unity thread, so the game may freeze while the dungeon is generated. The PRO version comes with an implementation that uses coroutines to make sure that the games does not freeze.
 
 ### (PRO) With coroutines
 

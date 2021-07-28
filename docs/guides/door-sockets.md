@@ -47,7 +47,7 @@ You can also have non-corridor rooms with some doors being skull doors and some 
 
 <Image src="img/v2/guides/door_sockets/skull_room_2.png" caption="Skull room" />
 
-> **Note:** For this room template, you can no longer use the simple door mode as it allows only a single socket. Instead, you have to use the manual door mode. Also, it is good to use the **Default socket for new doors** field instead of creating doors without a socket and that assigning the correct socket manually. First, let the field null and create all the default doors. Then, switch the socket to the Skull socket and add all the remaining doors.
+> **Note:** For this room template, you can no longer use the simple door mode as it allows only a single socket. Instead, you have to use the manual or hybrid door modes. Also, it is good to use the **Default socket for new doors** field instead of creating doors without a socket and that assigning the correct socket manually. First, let the field null and create all the default doors. Then, switch the socket to the Skull socket and add all the remaining doors.
 
 ### Results
 

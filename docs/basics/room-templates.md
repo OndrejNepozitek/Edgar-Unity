@@ -6,7 +6,7 @@ import { Image, Gallery, GalleryImage } from "@theme/Gallery";
 
 Room templates are one of the main concepts of the algorithm. They describe how individual rooms in the dungeon look and how they can be connected to one another. 
 
-<Image src="img/v2/room_templates/room_template_complete.png" caption="Example of a complete room template. Outline of the room template is hightlighted with yellow and possible door positions are red." />
+<Image src="img/v2/room_templates/room_template_complete.png" caption="Example of a complete room template. Outline of the room template is highlighted with yellow and possible door positions are red." />
 
 ## Creating room templates
 
@@ -114,51 +114,72 @@ To add the *Bounding box outline handler* click the **Add bounding box outline h
 
 ## Adding doors
 
-When we are happy with how the room template looks, we can add doors. By specifying door positions, we tell the algorithm how can individual room templates be connected together.
+When we are happy with how the room template looks, we can add doors. By specifying door positions, we tell the algorithm how can individual room templates be connected.
 
 The algorithm may connect two room templates if:
 - there exist door positions with the same length
 - the two room templates do not overlap after we connect them
-    - they may share tiles on outlines of corresponding room shapes
+    - but they may share tiles on the outlines
 
-> **Note:** In some procedural level generators, all the doors must be used by the algorithm to connect the room to other rooms. That is not the case here, we define all the possible door positions and the generator may pick only some of them.
+> **Note:** In some level generators, if you define *N* doors, it means that the room must be connected to *N* neighbours. That is not the case here! By adding door positions, **you specify where a door can be**. But if there is a room template with 20 possible door positions, the generator might still use this room template for a room that has only a single neighbour. Moreover, a high number of available door position usually means better performance.
+
+### How to interpret door gizmos
+
+Before we start adding doors to our room templates, I think it is important to understand how to read the editor gizmos that represent doors. In the image below (left), we can see an example room template with red rectangles showing the available door positions. The **dashed red rectangles** represent individual **door lines** where a door line is set of all the possible doors inside rectangle. The **solid red rectangles** show the **length of the doors**. In the room template below, all doors are 2 tiles wide. The solid rectangle also contains information about how many door positions there are in the door line.
+
+The GIF on the right shows an animation of all the possible doors positions from the room template on the left. An important thing to understand is that the door positions can overlap and it is even good for the performance of the generator. The reason for that is that there are more possible door positions to choose from so the generator finds a valid layout faster. 
+
+<Gallery cols={2}>
+    <GalleryImage src="img/v2/room_templates/doors/doors_visuals.png" caption="Example room template" />
+    <GalleryImage src="img/v2/room_templates/doors/doors_animation.gif" caption="Animation of all the possible door positions" />
+</Gallery>
 
 ### Door modes
 
-There are currently two ways of defining door positions. Both ways are currently controlled by the *Doors* component that is automatically added to the room game object after using the room template initializer.
+To manipulate with the doors, there must be a `Doors` component attached to the root of the room templete prefab. 
 
-In both modes, all door positions must be on the outline of the corresponding room template.
+There are currently three different ways of defining door positions. A universal rule of all the different modes is that all door positions must be on the outline of the corresponding room template.
 
 #### Simple mode
 
-In the simple mode, you specify how long should all doors be and at least how far from corners of the room template they should be positioned. Below you can see how this mode looks.
+In the *simple mode*, you specify how wide should all the doors be and the margin, i.e. how far from corners of the room template must the doors be. This door mode is great for when you do not really care where exactly the doors can be. This door mode also usually has the best performance because there are many door positions to choose from.
 
-<Image src="img/v2/room_templates/doors_simple1.png" caption="Simple door mode - length 1, distance from corners 2" />
+Below you can see how this door mode looks in the editor.
 
-Each red rectangle shows available door positions. You can see that there are no door positions in the bottom-right part of the room template - that is because no tile is placed at least 2 tiles from all corners. If we change the door length to 2, we will loose the door positon on the right side of the room template because there is space only for a single tile.
+<Image src="img/v2/room_templates/doors/simple1.png" caption="Simple door mode - length 1, margin 2" />
 
-<Image src="img/v2/room_templates/doors_simple2.png" caption="Simple door mode - length 2, distance from corners 2" />
+In sidescroller games, there are often different requirements for horizontal and vertical doors. For example, the player might be 3 tiles high but only 1 tile wide so we would need wider vertical doors. To achieve this, we can change the *Mode* dropdown to `Different Horizontal And Vertical`. With this setting enabled, we can now choose different properties for vertical and horizontal doors. Or we might also disable one type of doors.
 
-> **Note:** There is currently an inconsistency in how are door positions displayed. In the *simple mode*, each red rectangle represents a set of door positions, while in the *specific positions mode*, each rectangle represents exactly one door position. The reason for this is that it is exactly how the procedural dungeon generator library handles that, but it might be counter-intuitive for users of the plugin and may change in the future.
+<Image src="img/v2/room_templates/doors/simple2.png" caption="Simple door mode - different vertical and horizontal doors" />
 
 #### Manual mode
 
-In the *Manual mode*, you have to manually specify all door positions of the room template. This mode gives you complete control over available door positions.
+In the *manual mode*, you have to manually specify all the door positions of the room template. This door mode is great for when you have only a couple of doors at very specific positions.
 
-To start adding doors, click the *Manual mode* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. Then you can simply draw door positions as seen in the video below.
+To start adding doors, click the *Manual mode* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. Then you can simply draw door positions by clicking on the first tile of the door and dragging the mouse to the last tile of the door.
 
-<Image src="img/original/doors_specific1.gif" caption="Manual mode" />
+<Image src="img/v2/room_templates/doors/manual.gif" caption="Manual mode setup" />
 
-You can see that I am creating doors of various lengths. And at the end of the video, you can also see that individual door positions may overlap.
+In the example above, we can see that we can have doors with different lengths - vertical doors are 3 tiles high and horizontal doors are 1 tile wide.
 
 > **Note:** If you accidentally add a door position that you did not want to add, there are two ways of removing doors:
 >
 > 1. Click the *Delete all door positions* button to delete all the door positions.
 > 2. Click the *Delete door positions* button and then click on door positions that should be deleted.
 
-> **Note:** With multiple doors overlapping, the GUI gets quite messy. In order to make it more clear, I show diagonals of individual rectangles. And it gets even more messy when you have doors of various sizes overlapping. I thought about adding a switch that would show only doors with a specified length.
+> **Note:** With multiple doors overlapping, the GUI gets quite messy. You should usually use the *hybrid mode* when you have overlapping doors.
 
 > **Note:** The inspector script currently lets you add door positions that are not on the outline of the room shape. It will, however, result in an error when trying to generate a dungeon. It should be improved in the future.
+
+#### Hybrid mode
+
+The *hybrid mode* is somewhere between the *simple* and *manual* modes. Instead of drawing individual door positions (like in the manual mode), we can draw whole door lines (multiple doors at once). 
+
+To start adding doors, click the *Manual mode* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. **Then you have to configure the length of the doors in the field below.** This is the main difference when compared to the *manual mode*. In the manual mode, the length of doors is determined by the movement of the mouse. But in the hybrid mode, the length of doors is configured in the editor, and the movement of the mouse specifies how many doors there are next to each other.
+
+<Image src="img/v2/room_templates/doors/hybrid.gif" caption="Hybrid mode setup" />
+
+> **Note:** The *hybrid mode* is great for when you cannot use the simple mode and the manual mode would require too much time to setup. Also, the hybrid mode also nicely handles **overlapping doors** because the definition of door lines implicitly contains them. Moreover, the hybrid mode also leads to **better performance** (when compared to the manual mode) because it promotes having many doors and the doors are in a format that the generator can easily work with.
 
 ### (PRO) Door sockets
 
