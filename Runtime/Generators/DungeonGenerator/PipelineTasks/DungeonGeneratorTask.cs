@@ -52,7 +52,7 @@ namespace Edgar.Unity
 
             // The LevelDescription class must be converted to MapDescription
             var levelDescriptionGrid2D = levelDescription.GetLevelDescription();
-            levelDescriptionGrid2D.MinimumRoomDistance = 1;
+            levelDescriptionGrid2D.MinimumRoomDistance = config.MinimumRoomDistance;
             levelDescriptionGrid2D.RoomTemplateRepeatModeOverride = GeneratorUtils.GetRepeatMode(config.RepeatModeOverride);
 
             var configuration = new GraphBasedGeneratorConfiguration<RoomBase>()
