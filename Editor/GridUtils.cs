@@ -19,7 +19,8 @@ namespace Edgar.Unity.Editor
         /// <param name="sizeModifier">How much smaller should the outline be than the actual grid tiles</param>
         /// <param name="addDiagonal">Whether a diagonal should be drawn</param>
         /// <param name="label">Optional label</param>
-        public static void DrawRectangleOutline(Grid grid, Vector3Int fromTile, Vector3Int toTile, Color color, Vector2 sizeModifier = default, bool addDiagonal = false, string label = null)
+        /// <param name="isDotted"></param>
+        public static void DrawRectangleOutline(Grid grid, Vector3Int fromTile, Vector3Int toTile, Color color, Vector2 sizeModifier = default, bool addDiagonal = false, string label = null, bool isDotted = false)
         {
             if (grid.cellLayout == GridLayout.CellLayout.Isometric || grid.cellLayout == GridLayout.CellLayout.IsometricZAsY)
             {
@@ -31,6 +32,10 @@ namespace Edgar.Unity.Editor
 
                 return;
             }
+
+            var drawLine = isDotted
+                ? (Action<Vector3, Vector3>) ((p1, p2) => Handles.DrawDottedLine(p1, p2, 2f))
+                : (p1, p2) => Handles.DrawLine(p1, p2);
 
             // Make sure that the from tile is on the bottom-left
             if (fromTile.x > toTile.x || fromTile.y > toTile.y)
@@ -89,14 +94,14 @@ namespace Edgar.Unity.Editor
                 Handles.Label(points[1] + new Vector3(0.08f, 0), label, style);
             }
 
-            Handles.DrawLine(points[0], points[1]);
-            Handles.DrawLine(points[1], points[2]);
-            Handles.DrawLine(points[2], points[3]);
-            Handles.DrawLine(points[3], points[0]);
+            drawLine(points[0], points[1]);
+            drawLine(points[1], points[2]);
+            drawLine(points[2], points[3]);
+            drawLine(points[3], points[0]);
 
             if (addDiagonal)
             {
-                Handles.DrawLine(points[0], points[2]);
+                drawLine(points[0], points[2]);
             }
 
             Handles.color = originalColor;

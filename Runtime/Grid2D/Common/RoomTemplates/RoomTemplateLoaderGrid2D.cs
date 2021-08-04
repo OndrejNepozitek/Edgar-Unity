@@ -206,7 +206,7 @@ namespace Edgar.Unity
             var doorMode = doors.GetDoorMode();
 
             // Check that the doors are valid
-            var doorsCheck = RoomTemplateDiagnostics.CheckDoors(polygon, doorMode);
+            var doorsCheck = RoomTemplateDiagnostics.CheckDoors(polygon, doorMode, doors.SelectedMode);
             if (doorsCheck.HasErrors)
             {
                 result = doorsCheck;

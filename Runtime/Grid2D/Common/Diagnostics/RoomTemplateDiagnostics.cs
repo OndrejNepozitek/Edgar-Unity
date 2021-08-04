@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Grid2D;
+using Edgar.GraphBasedGenerator.Grid2D.Exceptions;
 using UnityEngine;
 
 namespace Edgar.Unity.Diagnostics
@@ -47,8 +48,9 @@ namespace Edgar.Unity.Diagnostics
         /// </summary>
         /// <param name="outline"></param>
         /// <param name="doorMode"></param>
+        /// <param name="selectedDoorMode"></param>
         /// <returns></returns>
-        public static ActionResult CheckDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode)
+        public static ActionResult CheckDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode, Doors.DoorMode selectedDoorMode)
         {
             var result = new ActionResult();
 
@@ -58,22 +60,39 @@ namespace Edgar.Unity.Diagnostics
 
                 if (doors.Count == 0)
                 {
-                    if (doorMode is SimpleDoorModeGrid2D)
+                    if (selectedDoorMode == Doors.DoorMode.Simple)
                     {
-                        result.AddError($"The simple door mode is used but there are no valid door positions. Try to decrease door length and/or corner distance.");
+                        result.AddError(
+                            $"The simple door mode is used but there are no valid door positions. Try to decrease door length and/or margin.");
                     }
                     else
                     {
-                        result.AddError($"The manual door mode is used but no doors were added.");
+                        result.AddError($"The {selectedDoorMode} door mode is used but no doors were added.");
                     }
                 }
             }
-            // TODO: this is not optimal - the argument exception might be something different than invalid manual doors
-            catch (ArgumentException e)
+            catch (DoorLineOutsideOfOutlineException e)
             {
-                if (doorMode is ManualDoorModeGrid2D)
+                if (selectedDoorMode == Doors.DoorMode.Manual)
                 {
-                    result.AddError($"It seems like some of the manual doors are not located on the outline of the room template.");
+                    result.AddError(
+                        $"It seems like some of the manual doors are not located on the outline of the room template.");
+                }
+                else if (selectedDoorMode == Doors.DoorMode.Hybrid)
+                {
+                    result.AddError(
+                        $"It seems like some of the hybrid door lines are not located on the outline of the room template.");
+                }
+                else
+                {
+                    result.AddError(e.Message);
+                }
+            }
+            catch (DuplicateDoorPositionException e)
+            {
+                if (selectedDoorMode == Doors.DoorMode.Hybrid)
+                {
+                    result.AddError("There are duplicate/overlapping door lines with the same door length and socket.");
                 }
                 else
                 {
@@ -104,7 +123,7 @@ namespace Edgar.Unity.Diagnostics
 
             var doorMode = doors.GetDoorMode();
 
-            return CheckDoors(outline, doorMode);
+            return CheckDoors(outline, doorMode, doors.SelectedMode);
         }
 
         public static ActionResult CheckWrongManualDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode, out int differentLengthsCount)

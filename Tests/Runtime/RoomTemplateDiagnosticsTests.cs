@@ -90,6 +90,38 @@ namespace Edgar.Unity.Tests.Runtime
         }
 
         [Test]
+        public void HybridDoorsNotOnOutline()
+        {
+            var roomTemplate = GameObject.Find("HybridDoorsNotOnOutline");
+            Assert.That(roomTemplate, Is.Not.Null);
+
+            var resultAll = RoomTemplateDiagnostics.CheckAll(roomTemplate);
+            Assert.That(resultAll.HasErrors, Is.True);
+
+            var resultComponents = RoomTemplateDiagnostics.CheckComponents(roomTemplate);
+            Assert.That(resultComponents.HasErrors, Is.False);
+
+            var resultDoors = RoomTemplateDiagnostics.CheckDoors(roomTemplate);
+            Assert.That(resultDoors.HasErrors, Is.True);
+        }
+
+        [Test]
+        public void HybridDoorsDuplicate()
+        {
+            var roomTemplate = GameObject.Find("HybridDoorsDuplicate");
+            Assert.That(roomTemplate, Is.Not.Null);
+
+            var resultAll = RoomTemplateDiagnostics.CheckAll(roomTemplate);
+            Assert.That(resultAll.HasErrors, Is.True);
+
+            var resultComponents = RoomTemplateDiagnostics.CheckComponents(roomTemplate);
+            Assert.That(resultComponents.HasErrors, Is.False);
+
+            var resultDoors = RoomTemplateDiagnostics.CheckDoors(roomTemplate);
+            Assert.That(resultDoors.HasErrors, Is.True);
+        }
+
+        [Test]
         public void InvalidOutline()
         {
             var roomTemplate = GameObject.Find("InvalidOutline");
