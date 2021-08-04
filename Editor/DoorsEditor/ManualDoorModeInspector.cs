@@ -55,7 +55,7 @@ namespace Edgar.Unity.Editor
         private void DrawDoor(Grid grid, Vector3Int from, Vector3Int to)
         {
             var length = new OrthogonalLine(from, to).Length;
-            var doorLine = new DoorLine()
+            var doorLine = new DoorLineGrid2D()
             {
                 From = from,
                 To = to,

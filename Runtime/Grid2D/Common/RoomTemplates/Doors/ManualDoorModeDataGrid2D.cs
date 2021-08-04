@@ -5,11 +5,11 @@ using Edgar.GraphBasedGenerator.Grid2D;
 namespace Edgar.Unity
 {
     [Serializable]
-    public class ManualDoorModeData : IDoorModeData
+    public class ManualDoorModeDataGrid2D : IDoorModeDataGrid2D
     {
         public List<DoorGrid2D> DoorsList = new List<DoorGrid2D>();
 
-        public IDoorModeGrid2D GetDoorMode(Doors doorsComponent)
+        public IDoorModeGrid2D GetDoorMode(DoorsGrid2D doorsComponent)
         {
             var doors = new List<GraphBasedGenerator.Grid2D.DoorGrid2D>();
 

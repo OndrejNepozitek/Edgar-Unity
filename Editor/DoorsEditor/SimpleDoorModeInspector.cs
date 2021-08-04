@@ -18,17 +18,17 @@ namespace Edgar.Unity.Editor
 
         public void OnInspectorGUI()
         {
-            EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeData.Mode)));
+            EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeDataGrid2D.Mode)));
 
-            if (doors.SimpleDoorModeData.Mode == SimpleDoorModeData.SettingsMode.Basic)
+            if (doors.SimpleDoorModeData.Mode == SimpleDoorModeDataGrid2D.SettingsMode.Basic)
             {
-                EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeData.DoorLength)), 1, 10, "Door length");
-                EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeData.DistanceFromCorners)), 0, 10, "Margin");
+                EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeDataGrid2D.DoorLength)), 1, 10, "Door length");
+                EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeDataGrid2D.DistanceFromCorners)), 0, 10, "Margin");
             } 
-            else if (doors.SimpleDoorModeData.Mode == SimpleDoorModeData.SettingsMode.DifferentHorizontalAndVertical)
+            else if (doors.SimpleDoorModeData.Mode == SimpleDoorModeDataGrid2D.SettingsMode.DifferentHorizontalAndVertical)
             {
-                EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeData.VerticalDoors)), true);
-                EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeData.HorizontalDoors)), true);
+                EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeDataGrid2D.VerticalDoors)), true);
+                EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeDataGrid2D.HorizontalDoors)), true);
             }
         }
 

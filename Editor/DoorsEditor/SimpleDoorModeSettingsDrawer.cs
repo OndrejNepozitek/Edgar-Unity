@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Edgar.Unity.Editor
 {
-    [CustomPropertyDrawer(typeof(SimpleDoorModeSettings))]
+    [CustomPropertyDrawer(typeof(SimpleDoorModeSettingsGrid2D))]
     public class SimpleDoorModeSettingsDrawer : PropertyDrawer
     {
         private const float BottomSpacing = 2;
@@ -44,13 +44,13 @@ namespace Edgar.Unity.Editor
 
             var properties = new[]
             {
-                property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Length)),
-                property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Margin1)),
-                property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Margin2)),
+                property.FindPropertyRelative(nameof(SimpleDoorModeSettingsGrid2D.Length)),
+                property.FindPropertyRelative(nameof(SimpleDoorModeSettingsGrid2D.Margin1)),
+                property.FindPropertyRelative(nameof(SimpleDoorModeSettingsGrid2D.Margin2)),
             };
 
             var checkboxRect = new Rect(position.x - CheckboxOffset, position.y, position.width, PropertyHeight);
-            var enabledField = property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Enabled));
+            var enabledField = property.FindPropertyRelative(nameof(SimpleDoorModeSettingsGrid2D.Enabled));
             EditorGUI.PropertyField(checkboxRect, enabledField, new GUIContent());
 
             if (enabledField.boolValue)
@@ -77,7 +77,7 @@ namespace Edgar.Unity.Editor
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            var enabledField = property.FindPropertyRelative(nameof(SimpleDoorModeSettings.Enabled));
+            var enabledField = property.FindPropertyRelative(nameof(SimpleDoorModeSettingsGrid2D.Enabled));
 
             if (enabledField.boolValue)
             {

@@ -50,7 +50,7 @@ namespace Edgar.Unity.Diagnostics
         /// <param name="doorMode"></param>
         /// <param name="selectedDoorMode"></param>
         /// <returns></returns>
-        public static ActionResult CheckDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode, Doors.DoorMode selectedDoorMode)
+        public static ActionResult CheckDoors(PolygonGrid2D outline, IDoorModeGrid2D doorMode, DoorsGrid2D.DoorMode selectedDoorMode)
         {
             var result = new ActionResult();
 
@@ -60,7 +60,7 @@ namespace Edgar.Unity.Diagnostics
 
                 if (doors.Count == 0)
                 {
-                    if (selectedDoorMode == Doors.DoorMode.Simple)
+                    if (selectedDoorMode == DoorsGrid2D.DoorMode.Simple)
                     {
                         result.AddError(
                             $"The simple door mode is used but there are no valid door positions. Try to decrease door length and/or margin.");
@@ -73,12 +73,12 @@ namespace Edgar.Unity.Diagnostics
             }
             catch (DoorLineOutsideOfOutlineException e)
             {
-                if (selectedDoorMode == Doors.DoorMode.Manual)
+                if (selectedDoorMode == DoorsGrid2D.DoorMode.Manual)
                 {
                     result.AddError(
                         $"It seems like some of the manual doors are not located on the outline of the room template.");
                 }
-                else if (selectedDoorMode == Doors.DoorMode.Hybrid)
+                else if (selectedDoorMode == DoorsGrid2D.DoorMode.Hybrid)
                 {
                     result.AddError(
                         $"It seems like some of the hybrid door lines are not located on the outline of the room template.");
@@ -90,7 +90,7 @@ namespace Edgar.Unity.Diagnostics
             }
             catch (DuplicateDoorPositionException e)
             {
-                if (selectedDoorMode == Doors.DoorMode.Hybrid)
+                if (selectedDoorMode == DoorsGrid2D.DoorMode.Hybrid)
                 {
                     result.AddError("There are duplicate/overlapping door lines with the same door length and socket.");
                 }

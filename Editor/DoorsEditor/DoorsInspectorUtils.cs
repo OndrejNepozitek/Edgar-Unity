@@ -5,7 +5,7 @@ namespace Edgar.Unity.Editor
 {
     public static class DoorsInspectorUtils
     {
-        public static void DrawDoorLine(DoorLine doorLine, Grid grid, Color color, string label = null)
+        public static void DrawDoorLine(DoorLineGrid2D doorLine, Grid grid, Color color, string label = null)
         {
             var line = new OrthogonalLineGrid2D(doorLine.From.ToCustomIntVector2(), doorLine.To.ToCustomIntVector2());
             var fromSolid = line.From;

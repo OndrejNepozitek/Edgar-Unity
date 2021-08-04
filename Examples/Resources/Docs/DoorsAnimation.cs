@@ -12,7 +12,7 @@ namespace Edgar.Unity.Examples
     public class DoorsAnimation : MonoBehaviour
     {
 #if OndrejNepozitekEdgar
-        public DoorLine DoorLine;
+        public DoorLineGrid2D DoorLine;
         public bool Show = false;
 
         public void Run()
@@ -24,8 +24,8 @@ namespace Edgar.Unity.Examples
         private IEnumerator RunCoroutine()
         {
             Show = true;
-            var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(gameObject);
-            var doorsComponent = gameObject.GetComponent<Doors>();
+            var polygon = RoomTemplateLoaderGrid2D.GetPolygonFromRoomTemplate(gameObject);
+            var doorsComponent = gameObject.GetComponent<DoorsGrid2D>();
             var doorMode = doorsComponent.GetDoorMode();
             var doors = doorMode.GetDoors(polygon);
 
@@ -35,7 +35,7 @@ namespace Edgar.Unity.Examples
                 {
                     var end = start + doorLineGrid2D.Length * doorLineGrid2D.Line.GetDirectionVector();
 
-                    DoorLine = new DoorLine()
+                    DoorLine = new DoorLineGrid2D()
                     {
                         From = start.ToUnityIntVector3(),
                         To = end.ToUnityIntVector3(),
@@ -90,7 +90,7 @@ namespace Edgar.Unity.Examples
                 }
             }
 
-            private static void DrawDoorLine(DoorLine doorLine, Grid grid, Color color, string label = null)
+            private static void DrawDoorLine(DoorLineGrid2D doorLine, Grid grid, Color color, string label = null)
             {
                 var line = new OrthogonalLineGrid2D(doorLine.From.ToCustomIntVector2(), doorLine.To.ToCustomIntVector2());
                 var fromSolid = line.From;

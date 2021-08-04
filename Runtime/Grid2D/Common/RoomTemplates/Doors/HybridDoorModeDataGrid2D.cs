@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Edgar.Geometry;
-using Edgar.GraphBasedGenerator.Common.Doors;
 using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
 
 namespace Edgar.Unity
 {
     [Serializable]
-    public class HybridDoorModeData : IDoorModeData
+    public class HybridDoorModeDataGrid2D : IDoorModeDataGrid2D
     {
         [Min(1)]
         public int DefaultLength = 1;
 
-        public List<DoorLine> DoorLines = new List<DoorLine>();
+        public List<DoorLineGrid2D> DoorLines = new List<DoorLineGrid2D>();
 
-        public IDoorModeGrid2D GetDoorMode(Doors doors)
+        public IDoorModeGrid2D GetDoorMode(DoorsGrid2D doors)
         {
             var transformedDoorLines = DoorLines
                 .Select(x => x.ToInternal())

@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Edgar.Unity
 {
     [Serializable]
-    public class DoorLine
+    public class DoorLineGrid2D
     {
         public Vector3Int From;
 
@@ -15,7 +15,7 @@ namespace Edgar.Unity
 
         public int Length;
 
-        public DoorLineGrid2D ToInternal()
+        public GraphBasedGenerator.Grid2D.DoorLineGrid2D ToInternal()
         {
             var line = new OrthogonalLineGrid2D(From.ToCustomIntVector2(), To.ToCustomIntVector2());
 
@@ -24,7 +24,7 @@ namespace Edgar.Unity
                 line = line.Shrink(0, Length - 1);
             }
             
-            return new DoorLineGrid2D(
+            return new GraphBasedGenerator.Grid2D.DoorLineGrid2D(
                 line,
                 Length - 1,
                 null,
@@ -33,7 +33,7 @@ namespace Edgar.Unity
 
         #region Equals
 
-        protected bool Equals(DoorLine other)
+        protected bool Equals(DoorLineGrid2D other)
         {
             return From.Equals(other.From) && To.Equals(other.To) && Length == other.Length;
         }
@@ -43,7 +43,7 @@ namespace Edgar.Unity
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DoorLine)obj);
+            return Equals((DoorLineGrid2D)obj);
         }
 
         public override int GetHashCode()
@@ -57,12 +57,12 @@ namespace Edgar.Unity
             }
         }
 
-        public static bool operator ==(DoorLine left, DoorLine right)
+        public static bool operator ==(DoorLineGrid2D left, DoorLineGrid2D right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(DoorLine left, DoorLine right)
+        public static bool operator !=(DoorLineGrid2D left, DoorLineGrid2D right)
         {
             return !Equals(left, right);
         }

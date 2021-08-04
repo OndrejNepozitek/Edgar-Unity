@@ -8,7 +8,7 @@ using Edgar.GraphBasedGenerator.Grid2D;
 namespace Edgar.Unity
 {
     [Serializable]
-    public class SimpleDoorModeData : IDoorModeData
+    public class SimpleDoorModeDataGrid2D : IDoorModeDataGrid2D
     {
         public int DistanceFromCorners = 1;
 
@@ -16,16 +16,16 @@ namespace Edgar.Unity
 
         public SettingsMode Mode;
 
-        public SimpleDoorModeSettings VerticalDoors;
+        public SimpleDoorModeSettingsGrid2D VerticalDoors;
 
-        public SimpleDoorModeSettings HorizontalDoors;
+        public SimpleDoorModeSettingsGrid2D HorizontalDoors;
 
         public enum SettingsMode
         {
             Basic, DifferentHorizontalAndVertical
         }
 
-        public IDoorModeGrid2D GetDoorMode(Doors doors)
+        public IDoorModeGrid2D GetDoorMode(DoorsGrid2D doors)
         {
             var doorLines = GetDoorLines(doors);
 
@@ -41,13 +41,13 @@ namespace Edgar.Unity
             return new ManualDoorModeGrid2D(transformedDoorLines);
         }
 
-        public List<DoorLine> GetDoorLines(Doors doors)
+        public List<DoorLineGrid2D> GetDoorLines(DoorsGrid2D doors)
         {
-            var doorLines = new List<DoorLine>();
+            var doorLines = new List<DoorLineGrid2D>();
 
             try
             {
-                var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
+                var polygon = RoomTemplateLoaderGrid2D.GetPolygonFromRoomTemplate(doors.gameObject);
 
                 if (polygon == null)
                 {
@@ -76,7 +76,7 @@ namespace Edgar.Unity
                     }
 
                     var doorLineTemp = line.Shrink(settings.Margin1, settings.Margin2);
-                    var doorLine = new DoorLine()
+                    var doorLine = new DoorLineGrid2D()
                     {
                         From = doorLineTemp.From.ToUnityIntVector3(),
                         To = doorLineTemp.To.ToUnityIntVector3(),
@@ -93,13 +93,13 @@ namespace Edgar.Unity
             return doorLines;
         }
 
-        private SimpleDoorModeSettings GetSettings(OrthogonalLineGrid2D line)
+        private SimpleDoorModeSettingsGrid2D GetSettings(OrthogonalLineGrid2D line)
         {
             if (Mode == SettingsMode.Basic)
             {
                 var data = this;
 
-                return new SimpleDoorModeSettings()
+                return new SimpleDoorModeSettingsGrid2D()
                 {
                     Length = data.DoorLength,
                     Margin1 = data.DistanceFromCorners,

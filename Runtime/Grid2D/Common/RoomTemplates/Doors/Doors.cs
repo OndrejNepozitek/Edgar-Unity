@@ -23,27 +23,27 @@ namespace Edgar.Unity
         [HideInInspector]
         public DoorMode SelectedMode;
 
-        public HybridDoorModeData HybridDoorModeData;
+        public HybridDoorModeDataGrid2D HybridDoorModeData;
 
-        public ManualDoorModeData ManualDoorModeData;
+        public ManualDoorModeDataGrid2D ManualDoorModeData;
 
-        public SimpleDoorModeData SimpleDoorModeData;
+        public SimpleDoorModeDataGrid2D SimpleDoorModeData;
 
         public IDoorModeGrid2D GetDoorMode()
         {
             if (SelectedMode == DoorMode.Manual)
             {
-                return ManualDoorModeData.GetDoorMode(this);
+                return ManualDoorModeData.GetDoorMode(this as DoorsGrid2D);
             }
 
             if (SelectedMode == DoorMode.Simple)
             {
-                return SimpleDoorModeData.GetDoorMode(this);
+                return SimpleDoorModeData.GetDoorMode(this as DoorsGrid2D);
             }
 
             if (SelectedMode == DoorMode.Hybrid)
             {
-                return HybridDoorModeData.GetDoorMode(this);
+                return HybridDoorModeData.GetDoorMode(this as DoorsGrid2D);
             }
 
             throw new ArgumentException("Invalid door mode selected");

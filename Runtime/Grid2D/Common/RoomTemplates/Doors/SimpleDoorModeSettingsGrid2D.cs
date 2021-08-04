@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 namespace Edgar.Unity
 {
     [Serializable]
-    public class SimpleDoorModeSettings
+    public class SimpleDoorModeSettingsGrid2D
     {
         [Min(1)]
         public int Length = 1;
