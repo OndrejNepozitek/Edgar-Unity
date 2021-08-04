@@ -1,3 +1,5 @@
+using UnityEngine;
+
 #pragma warning disable 612, 618
 namespace Edgar.Unity
 {
@@ -9,6 +11,7 @@ namespace Edgar.Unity
     /// The LevelInfo class is now obsolete and will be removed in a future release.
     /// When that happens, the implementation of LevelInfo will move to this file.
     /// </remarks>
+    [AddComponentMenu("Edgar/Grid2D/_Internal/Level Info (Grid2D)")]
     public class LevelInfoGrid2D : LevelInfo
     {
     }

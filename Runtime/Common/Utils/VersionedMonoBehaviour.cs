@@ -2,7 +2,7 @@
 
 namespace Edgar.Unity
 {
-    public class VersionedMonoBehaviour : MonoBehaviour, ISerializationCallbackReceiver
+    public abstract class VersionedMonoBehaviour : MonoBehaviour, ISerializationCallbackReceiver
     {
         [SerializeField]
         [HideInInspector]

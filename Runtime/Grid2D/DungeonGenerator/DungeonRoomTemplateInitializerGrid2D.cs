@@ -10,6 +10,7 @@ namespace Edgar.Unity
     /// Basic dungeon room template initializer.
     /// Uses DungeonTilemapLayersHandler to create tilemaps structure.
     /// </summary>
+    [AddComponentMenu("Edgar/Grid2D/Dungeon Room Template Initializer (Grid2D)")]
     public class DungeonRoomTemplateInitializerGrid2D : RoomTemplateInitializerBaseGrid2D
     {
         protected override void InitializeTilemaps(GameObject tilemapsRoot)

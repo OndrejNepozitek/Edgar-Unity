@@ -10,7 +10,7 @@ namespace Edgar.Unity
     /// </summary>
     [ExecuteInEditMode]
     [Obsolete("Please use DoorsGrid2D instead.")]
-    public class Doors : MonoBehaviour
+    public abstract class Doors : MonoBehaviour
     {
         [HideInInspector]
         public int DistanceFromCorners = 1;

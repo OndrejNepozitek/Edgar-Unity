@@ -7,7 +7,7 @@ namespace Edgar.Unity
     /// Component that holds information about corresponding room instance.
     /// </summary>
     [Obsolete("Please use RoomInfoGrid2D instead.")]
-    public class RoomInfo : MonoBehaviour
+    public abstract class RoomInfo : MonoBehaviour
     {
         [ReadOnly]
         public RoomInstanceGrid2D RoomInstance;

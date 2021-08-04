@@ -10,7 +10,7 @@ namespace Edgar.Unity
     /// Component that is attached to each room template game objects and contains basic settings.
     /// </summary>
     [Obsolete("Please use RoomTemplateSettingsGrid2D instead.")]
-    public class RoomTemplateSettings : MonoBehaviour
+    public abstract class RoomTemplateSettings : MonoBehaviour
     {
         public RoomTemplateRepeatMode RepeatMode = RoomTemplateRepeatMode.AllowRepeat;
 

@@ -6,7 +6,7 @@ namespace Edgar.Unity
     /// Dungeon generator. All logic is currently inherited from DungeonGeneratorBase.
     /// </summary>
     [Obsolete("Please use DungeonGeneratorGrid2D instead.")]
-    public class DungeonGenerator : DungeonGeneratorBaseGrid2D
+    public abstract class DungeonGenerator : DungeonGeneratorBaseGrid2D
     {
 
     }

@@ -7,7 +7,7 @@ namespace Edgar.Unity
     /// Component that can be used as a flag to ignore a tilemap layer to which it is attached in various situations.
     /// </summary>
     [Obsolete("Please use IgnoreTilemapGrid2D instead.")]
-    public class IgnoreTilemap : MonoBehaviour
+    public abstract class IgnoreTilemap : MonoBehaviour
     {
         public bool IgnoreWhenCopyingTiles = false;
 

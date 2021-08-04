@@ -1,3 +1,5 @@
+using UnityEngine;
+
 #pragma warning disable 612, 618
 namespace Edgar.Unity
 {
@@ -12,6 +14,7 @@ namespace Edgar.Unity
     /// The OutlineOverride class is now obsolete and will be removed in a future release.
     /// When that happens, the implementation of OutlineOverride will move to this file.
     /// </remarks>
+    [AddComponentMenu("Edgar/Grid2D/Outline Override (Grid2D)")]
     public class OutlineOverrideGrid2D : OutlineOverride
     {
     }

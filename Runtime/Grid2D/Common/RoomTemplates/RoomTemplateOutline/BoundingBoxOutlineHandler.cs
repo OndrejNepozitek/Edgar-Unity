@@ -9,7 +9,7 @@ namespace Edgar.Unity
     /// Bounding box outline handler.
     /// </summary>
     [Obsolete("Please use BoundingBoxOutlineHandlerGrid2D instead.")]
-    public class BoundingBoxOutlineHandler : MonoBehaviour, IRoomTemplateOutlineHandlerGrid2D
+    public abstract class BoundingBoxOutlineHandler : MonoBehaviour, IRoomTemplateOutlineHandlerGrid2D
     {
         [Min(0)]
         public int PaddingTop = 0;

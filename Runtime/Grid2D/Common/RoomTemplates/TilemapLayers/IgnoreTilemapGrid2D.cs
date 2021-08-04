@@ -1,3 +1,5 @@
+using UnityEngine;
+
 #pragma warning disable 612, 618
 namespace Edgar.Unity
 {
@@ -12,6 +14,7 @@ namespace Edgar.Unity
     /// The IgnoreTilemap class is now obsolete and will be removed in a future release.
     /// When that happens, the implementation of IgnoreTilemap will move to this file.
     /// </remarks>
+    [AddComponentMenu("Edgar/Grid2D/Ignore Tilemap (Grid2D)")]
     public class IgnoreTilemapGrid2D : IgnoreTilemap
     {
     }

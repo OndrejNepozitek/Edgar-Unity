@@ -12,7 +12,7 @@ namespace Edgar.Unity
     /// The RoomTemplateInitializerBase class is now obsolete and will be removed in a future release.
     /// When that happens, the implementation of RoomTemplateInitializerBase will move to this file.
     /// </remarks>
-    public class RoomTemplateInitializerBaseGrid2D : RoomTemplateInitializerBase
+    public abstract class RoomTemplateInitializerBaseGrid2D : RoomTemplateInitializerBase
     {
     }
 }
