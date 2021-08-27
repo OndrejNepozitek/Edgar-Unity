@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -11,52 +10,33 @@ namespace Edgar.Unity
     /// Holds information about the generated level.
     /// Currently cannot be serialized.
     /// </summary>
-    [Obsolete("Please use GeneratedLevelGrid2D instead.")]
-    public class GeneratedLevel
+    [Obsolete("Please use DungeonGeneratorLevelGrid2D instead.")]
+    public class GeneratedLevel : GeneratedLevelBase<RoomInstanceGrid2D, LevelDescriptionGrid2D>
     {
-        /// <summary>
-        /// GameObject that holds the generated level.
-        /// </summary>
-        public GameObject RootGameObject { get; }
-
-        /// <summary>
-        /// TODO: should this be here?
-        /// </summary>
-        public LevelDescriptionGrid2D LevelDescription { get; }
-
         private readonly LayoutGrid2D<RoomBase> mapLayout;
-        private readonly Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances;
 
-        public GeneratedLevel(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject, LevelDescriptionGrid2D levelDescription)
+        public GeneratedLevel(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject, LevelDescriptionGrid2D levelDescription) : base(roomInstances, rootGameObject, levelDescription)
         {
-            this.roomInstances = roomInstances;
             this.mapLayout = mapLayout;
-            RootGameObject = rootGameObject;
-            LevelDescription = levelDescription;
         }
 
         /// <summary>
         /// Gets information about all the rooms that are present in the generated level.
         /// </summary>
         /// <returns></returns>
+        [Obsolete("Please use the RoomInstances property instead.")]
         public List<RoomInstanceGrid2D> GetRoomInstances()
         {
-            return roomInstances.Values.ToList();
+            return RoomInstances;
         }
 
-        /// <summary>
-        /// Gets information about a room instance that corresponds to a given room.
-        /// </summary>
-        /// <param name="room"></param>
-        /// <returns></returns>
-        public RoomInstanceGrid2D GetRoomInstance(RoomBase room)
-        {
-            return roomInstances[room];
-        }
 
         /// <summary>
         /// Gets the internal representation of the generated layout.
         /// </summary>
+        /// <remarks>
+        /// This method is usually only used by for very advanced/debugging use cases.
+        /// </remarks>
         /// <returns></returns>
         public LayoutGrid2D<RoomBase> GetInternalLayoutRepresentation()
         {

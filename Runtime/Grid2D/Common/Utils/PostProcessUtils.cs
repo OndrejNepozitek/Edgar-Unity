@@ -161,7 +161,7 @@ namespace Edgar.Unity
         {
             var destinationTilemaps = level.GetSharedTilemaps();
 
-            foreach (var roomInstance in level.GetRoomInstances().OrderBy(x => x.IsCorridor))
+            foreach (var roomInstance in level.RoomInstances.OrderBy(x => x.IsCorridor))
             {
                 CopyTiles(roomInstance, destinationTilemaps, true, false);
             }
@@ -281,7 +281,7 @@ namespace Edgar.Unity
         public static void DisableRoomTemplatesRenderers(GeneratedLevel level)
         {
             // Iterate through all the rooms
-            foreach (var roomInstance in level.GetRoomInstances())
+            foreach (var roomInstance in level.RoomInstances)
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
                 PostProcessUtilsGrid2D.DisableRoomTemplateRenderers(roomTemplateInstance);
@@ -296,7 +296,7 @@ namespace Edgar.Unity
         public static void DisableRoomTemplatesColliders(GeneratedLevel level)
         {
             // Iterate through all the rooms
-            foreach (var roomInstance in level.GetRoomInstances())
+            foreach (var roomInstance in level.RoomInstances)
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
                 PostProcessUtilsGrid2D.DisableRoomTemplateColliders(roomTemplateInstance);

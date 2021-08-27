@@ -9,7 +9,7 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
     {
         public override void Run(DungeonGeneratorLevelGrid2D level)
         {
-            foreach (var roomInstance in level.GetRoomInstances())
+            foreach (var roomInstance in level.RoomInstances)
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
 

@@ -16,7 +16,7 @@ namespace Edgar.Unity.Examples.Example1
         private void HandleEnemies(DungeonGeneratorLevelGrid2D level)
         {
             // Iterate through all the rooms
-            foreach (var roomInstance in level.GetRoomInstances())
+            foreach (var roomInstance in level.RoomInstances)
             {
                 // Get the transform that holds all the enemies
                 var enemiesHolder = roomInstance.RoomTemplateInstance.transform.Find("Enemies");
