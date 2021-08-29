@@ -91,7 +91,10 @@ namespace Edgar.Unity.Editor
                 style.normal.textColor = color;
                 style.fontSize = (int) (15 / size);
 
-                Handles.Label(points[1] + new Vector3(0.08f, 0), label, style);
+                if (style.fontSize >= 5)
+                {
+                    Handles.Label(points[1] + new Vector3(0.08f, 0), label, style);
+                }
             }
 
             drawLine(points[0], points[1]);
