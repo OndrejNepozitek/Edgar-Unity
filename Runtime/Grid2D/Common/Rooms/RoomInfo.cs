@@ -1,15 +1,11 @@
 using System;
-using UnityEngine;
 
 namespace Edgar.Unity
 {
-    /// <summary>
-    /// Component that holds information about corresponding room instance.
-    /// </summary>
+    /// <inheritdoc />
     [Obsolete("Please use RoomInfoGrid2D instead.")]
-    public abstract class RoomInfo : MonoBehaviour
+    public abstract class RoomInfo : RoomInfoBase<RoomInstanceGrid2D>
     {
-        [ReadOnly]
-        public RoomInstanceGrid2D RoomInstance;
+
     }
 }

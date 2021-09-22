@@ -1,13 +1,10 @@
 using System;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Edgar.Unity
 {
+    /// <inheritdoc />
     [Obsolete("Please use LevelInfoGrid2D instead.")]
-    public abstract class LevelInfo : MonoBehaviour
+    public abstract class LevelInfo : LevelInfoBase<RoomInstanceGrid2D>
     {
-        [ReadOnly]
-        public List<RoomInstanceGrid2D> RoomInstances;
     }
 }
