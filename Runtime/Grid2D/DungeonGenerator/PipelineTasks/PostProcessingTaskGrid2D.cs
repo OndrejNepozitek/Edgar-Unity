@@ -49,6 +49,7 @@ namespace Edgar.Unity
                     postProcessingTask.SetRandomGenerator(Payload.Random);
                     callbacks.RegisterAfterAll(postProcessingTask.Run);
 
+                    // Check if the task inherits from the refactored base class
                     if (postProcessingTask is DungeonGeneratorPostProcessingGrid2D grid2DTask)
                     {
                         callbacks.RegisterAfterAll(WrapCallback(grid2DTask.Run));

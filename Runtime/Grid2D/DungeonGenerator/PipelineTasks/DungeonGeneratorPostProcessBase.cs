@@ -14,9 +14,6 @@ namespace Edgar.Unity
     [Obsolete("Please use DungeonGeneratorPostProcessingGrid2D instead.")]
     public abstract class DungeonGeneratorPostProcessBase : ScriptableObject
     {
-        /// <summary>
-        /// Instance of the random numbers generator that is shared throughout the whole generator.
-        /// </summary>
         public Random Random { get; private set; }
 
         /// <summary>

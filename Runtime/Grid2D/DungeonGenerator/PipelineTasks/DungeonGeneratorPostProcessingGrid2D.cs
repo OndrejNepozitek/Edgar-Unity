@@ -1,3 +1,5 @@
+using System;
+
 namespace Edgar.Unity
 {
     /// <summary>
@@ -12,12 +14,10 @@ namespace Edgar.Unity
     /// When that happens, the implementation of DungeonGeneratorPostProcessBase will move to this file.
     /// </remarks>
     #pragma warning disable 612, 618
-    public class DungeonGeneratorPostProcessingGrid2D : DungeonGeneratorPostProcessBase, IDungeonGeneratorPostProcessing
+    public class DungeonGeneratorPostProcessingGrid2D : DungeonGeneratorPostProcessBase, IDungeonGeneratorPostProcessing<DungeonGeneratorLevelGrid2D>
     #pragma warning restore 612, 618
     {
-        /// <summary>
-        /// Runs the post-processing logic with a given generated level and corresponding level description.
-        /// </summary>
+        /// <inheritdoc />
         public virtual void Run(DungeonGeneratorLevelGrid2D level)
         {
 
