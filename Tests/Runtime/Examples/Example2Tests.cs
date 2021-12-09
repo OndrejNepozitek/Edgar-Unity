@@ -48,8 +48,8 @@ namespace Edgar.Unity.Tests.Runtime.Examples
         {
             var levelGraphNames = new List<string>()
             {
-                "Assets/Edgar/Examples/Example2/SimpleLevelGraph.asset",
-                "Assets/Edgar/Examples/Example2/RealLifeLevelGraph.asset",
+                "Assets/Edgar/Examples/Grid2D/Example2/SimpleLevelGraph.asset",
+                "Assets/Edgar/Examples/Grid2D/Example2/RealLifeLevelGraph.asset",
             };
 
             var dungeonGeneratorGameObject = GameObject.Find("Dungeon Generator");
