@@ -102,7 +102,9 @@ namespace Edgar.Unity
                 : new List<DungeonGeneratorPostProcessBase>();
 #pragma warning restore 618
 
-            var postProcessingComponents = GetComponents<DungeonGeneratorPostProcessingComponentGrid2D>().ToList();
+            var postProcessingComponents = !DisableCustomPostProcessing
+                ? GetComponents<DungeonGeneratorPostProcessingComponentGrid2D>().ToList()
+                : new List<DungeonGeneratorPostProcessingComponentGrid2D>();
 
             return new PostProcessingTaskGrid2D(
                 PostProcessConfig,
