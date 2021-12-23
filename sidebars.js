@@ -50,5 +50,22 @@ module.exports = {
       label: "Other",
       items: ["other/migration-v1-v2"]
     }
+  ],
+  "3d": [
+    {
+      type: "category",
+      label: "Introduction (3D version preview only!)",
+      items: ["3d/introduction"]
+    },
+    {
+      type: "category",
+      label: "Basics",
+      items: ["3d/basics/room-templates", "3d/basics/level-graphs", "3d/basics/generator-setup"]
+    },
+    {
+      type: "category",
+      label: "Examples",
+      items: ["3d/examples/simple-blocks", "3d/examples/simple-meshes"]
+    },
   ]
 };

@@ -61,6 +61,11 @@ module.exports = {
           ],
         },
         {
+          label: "Docs for 3D version (preview)", 
+          to: 'docs/next/3d/introduction',
+          position: "right"
+        },
+        {
           href: "https://github.com/OndrejNepozitek/Edgar-Unity/",
           label: "GitHub", 
           position: "right"
