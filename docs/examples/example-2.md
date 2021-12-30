@@ -5,14 +5,14 @@ title: Example 2
 import { Image, Gallery, GalleryImage } from "@theme/Gallery";
 import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
 
-In this tutorial, we will use [this tileset](https://0x72.itch.io/dungeontileset-ii) by [0x72](https://0x72.itch.io/). Be sure to check their work out if you like the tileset. We will not care about room decorations - we will use just basic walls, floor and  door tiles.
+In this tutorial, we will use [this tileset](https://0x72.itch.io/dungeontileset-ii) by [0x72](https://0x72.itch.io/). Be sure to check their work out if you like the tileset. We will not care about room decorations - we will use just basic walls, floor and door tiles.
 
 <Gallery cols={2} fixedHeight>
     <GalleryImage src="img/original/example2_result1.png" caption="Simple example" />
     <GalleryImage src="img/v2/examples/example2/result_reallife1.png" caption="Real-life example" />
 </Gallery>
 
-> **Note:** I recommend reading [Example 1](example1.md) first as this is a little bit harder to setup and I will not repeat the basics here.
+> **Note:** I recommend reading [Example 1](example-1.md) first as this is a little bit harder to setup and I will not repeat the basics here.
 
 > **Note:** All files from this example can be found at *Edgar/Examples/Example2*.
 
@@ -22,7 +22,7 @@ In this tutorial, we will use [this tileset](https://0x72.itch.io/dungeontileset
 
 The goal is to create two basic rectangular room templates of different sizes and a room template for both horizontal and vertical corridors.
 
-> **Note:** This tileset is trickier than the one used in [Example 1](example1.md) because there is an additional row of lighter tiles above all horizontal wall tiles. It will cause us problems when working with corridors.
+> **Note:** This tileset is trickier than the one used in [Example 1](example-1.md) because there is an additional row of lighter tiles above all horizontal wall tiles. It will cause us problems when working with corridors.
 
 ### Basic rooms templates
 

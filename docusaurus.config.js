@@ -40,7 +40,7 @@ module.exports = {
         { to: "versions", label: `v${latestVersion}`, position: "left" },
         {
           label: 'Docs',
-          to: 'docs/introduction', // "fake" link
+          to: 'docs/introduction',
           position: 'right',
           activeBaseRegex: `docs/(?!next/(support|team|resources))`,
           items: [
