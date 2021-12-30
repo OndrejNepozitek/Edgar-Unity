@@ -1,3 +1,0 @@
----
-title: (PRO) Platformer generator
----
