@@ -66,10 +66,19 @@ blockquote {
   padding: 15px 30px 15px 15px;
 }
 
+/*
+ * Custom menu (sidebar) styles.
+ */
+
 .menu>ul.menu__list>li.menu__list-item>a {
   text-transform: uppercase;
   font-size: 12px;
   margin-bottom: 8px;
+}
+
+/* Make top-level items always grey */
+.menu__list-item-collapsible > a {
+  color: var(--ifm-menu-color) !important;
 }
 
 .menu>ul.menu__list>li.menu__list-item>a:hover {
@@ -137,7 +146,7 @@ blockquote {
   margin-bottom: 5px;
 }
 
-.anchor {
+/*.anchor {
   display: block !important;
   position: relative !important;
   top: calc(var(--ifm-navbar-height) * -1) !important;
@@ -150,7 +159,7 @@ blockquote {
   height: 0px !important;
   margin: 0px !important;
   display: none !important;
-}
+}*/
 
 .quickOverview {
   padding: 50px 0px;
