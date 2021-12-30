@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Edgar.Unity.Editor
@@ -22,7 +23,7 @@ namespace Edgar.Unity.Editor
 
         public void Draw(float zoom, Vector2 gridOffset)
         {
-            var style = Room.GetEditorStyle(Selection.activeObject == Room);
+            var style = Room.GetEditorStyle(Selection.objects.Contains(Room));
 
             var rect = GetRect(zoom, gridOffset);
 
