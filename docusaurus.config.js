@@ -33,7 +33,6 @@ module.exports = {
       backgroundColor: '#fafbfc', // Defaults to `#fff`.
       textColor: '#091E42', // Defaults to `#000`.
     },
-    sidebarCollapsible: false,
     navbar: {
       hideOnScroll: false,
       title: "Edgar - Unity",
@@ -120,6 +119,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          sidebarCollapsible: false,
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/OndrejNepozitek/Edgar-Unity/tree/docusaurus",
           beforeDefaultRemarkPlugins: [
