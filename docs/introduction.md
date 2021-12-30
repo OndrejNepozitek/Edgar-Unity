@@ -3,8 +3,6 @@ id: introduction
 title: Introduction
 ---
 
-import { Image, Gallery, GalleryImage } from "@theme/Gallery";
-
 This project is a Unity plugin for procedural generation of 2D dungeons and aims to give game designers a **complete control** over generated levels. It combines procedural generation and **handmade room templates** to generate levels with a **feeling of consistency**. Under the hood, the plugin uses my .NET [procedural level generator](https://github.com/OndrejNepozitek/ProceduralLevelGenerator).
 
 Similar approaches are used in games like [**Enter the Gungeon**](https://www.boristhebrave.com/2019/07/28/dungeon-generation-in-enter-the-gungeon/) or [**Dead Cells**](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania).
@@ -29,14 +27,14 @@ Similar approaches are used in games like [**Enter the Gungeon**](https://www.bo
 ### 1. Draw rooms and corridors
 
 <Gallery cols={4} fixedHeight>
-    <GalleryImage src="img/v2/examples/example1_room1.png" />
-    <GalleryImage src="img/v2/examples/example1_room2.png" />
-    <GalleryImage src="img/original/example1_spawn.png" />
-    <GalleryImage src="img/original/example1_boss.png" />
-    <GalleryImage src="img/original/example1_corridor_horizontal.png" />
-    <GalleryImage src="img/original/example1_corridor_vertical.png" />
-    <GalleryImage src="img/v2/examples/example1_corridor_horizontal2.png" />
-    <GalleryImage src="img/v2/examples/example1_corridor_vertical2.png" />
+    <Image src="img/v2/examples/example1_room1.png" />
+    <Image src="img/v2/examples/example1_room2.png" />
+    <Image src="img/original/example1_spawn.png" />
+    <Image src="img/original/example1_boss.png" />
+    <Image src="img/original/example1_corridor_horizontal.png" />
+    <Image src="img/original/example1_corridor_vertical.png" />
+    <Image src="img/v2/examples/example1_corridor_horizontal2.png" />
+    <Image src="img/v2/examples/example1_corridor_vertical2.png" />
 </Gallery>
 
 ### 2. Prepare the structure of the level
@@ -45,22 +43,22 @@ Similar approaches are used in games like [**Enter the Gungeon**](https://www.bo
 
 ### 3. Generate levels
 
-<Gallery cols={4} fixedHeight>
-    <GalleryImage src="img/v2/examples/example1_result_reallife2.png" />
-    <GalleryImage src="img/v2/examples/example1_result_reallife3.png" />
-    <GalleryImage src="img/v2/examples/example1_result_reallife4.png" />
-    <GalleryImage src="img/v2/examples/example1_result_reallife5.png" />
+<Gallery cols={4}>
+    <Image src="img/v2/examples/example1_result_reallife2.png" />
+    <Image src="img/v2/examples/example1_result_reallife3.png" />
+    <Image src="img/v2/examples/example1_result_reallife4.png" />
+    <Image src="img/v2/examples/example1_result_reallife5.png" />
 </Gallery>
 
 ## Examples
 
-<Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/original/example1_result1.png" caption="Example 1" />
-    <GalleryImage src="img/original/example1_result_reallife1.png" caption="Example 1" />
-    <GalleryImage src="img/original/example2_result1.png" caption="Example 2" />
-    <GalleryImage src="img/original/example2_result_reallife1.png" caption="Example 2" />
+<Gallery>
+    <Image src="img/original/example1_result1.png" caption="Example 1" />
+    <Image src="img/original/example1_result_reallife1.png" caption="Example 1" />
+    <Image src="img/original/example2_result1.png" caption="Example 2" />
+    <Image src="img/original/example2_result_reallife1.png" caption="Example 2" />
 </Gallery>
 
 ## Terms of use
 
-The plugin can be used in bot commercial and non-commercial projects but **cannot be redistributed or reselled**. If you want to include this plugin in your own asset, please contact me and we will figure that out.
+The plugin can be used in both commercial and non-commercial projects but **cannot be redistributed or reselled**. If you want to include this plugin in your own asset, please contact me and we will figure that out.

@@ -21,13 +21,18 @@ export const Gallery = props => (
   <div style={{ fontSize: "0px", margin: "20px 0" }}>
     {React.Children.map(props.children, child =>
       React.cloneElement(child, {
-        cols: props.cols || 4,
+        cols: props.cols,
         fixedHeight: props.fixedHeight,
         isInsideGallery: true,
       })
     )}
   </div>
 );
+
+Gallery.defaultProps = {
+    cols: 2,
+    fixedHeight: true,
+}
 
 export const GalleryImage = props => (
   <StyledImage cols={props.cols}>
