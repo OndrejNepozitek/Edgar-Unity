@@ -2,6 +2,7 @@ const versions = require('./versions.json');
 const getBookmarks = require("./src/bookmarks")
 const [latestVersion] = require('./versions.json');
 const remarkBookmarks = require('remark-bookmarks')
+const remarkHelpers = require('@ondrej-nepozitek/remark-helpers/images');
 const path = require('path');
 
 module.exports = {
@@ -121,6 +122,14 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/OndrejNepozitek/Edgar-Unity/tree/docusaurus",
+          beforeDefaultRemarkPlugins: [
+            [
+              remarkHelpers,
+              {
+
+              }
+            ]
+          ],
           remarkPlugins: [
             [
               remarkBookmarks, { 
