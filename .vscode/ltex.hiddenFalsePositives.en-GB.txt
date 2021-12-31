@@ -1,0 +1,2 @@
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\Q<Gallery cols={4} fixedHeight>\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\Q<Image src=\"img/v2/examples/example1_level_graph2.png\" height={500} />\\E$"}

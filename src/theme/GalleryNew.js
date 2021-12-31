@@ -1,5 +1,6 @@
 import React from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import logger from '@docusaurus/logger';
 
 const gutter = 2;
 const StyledImage = props => (
@@ -34,11 +35,20 @@ Gallery.defaultProps = {
     fixedHeight: true,
 }
 
+function getUrl(src, isGlobal) {
+  try {
+    return isGlobal ? useBaseUrl(src) : require('@site/docs/assets/' + src).default;
+  } catch (e) {
+    logger.error('Image error: ' + e.message);
+    return 'http://placehold.jp/150x150.png';
+  }
+}
+
 export const GalleryImage = props => (
   <StyledImage cols={props.cols}>
-    <a href={useBaseUrl(props.src)} target="_blank">
+    <a href={getUrl(props.src, props.isGlobal)} target="_blank">
       <img
-        src={useBaseUrl(props.src)}
+        src={getUrl(props.src, props.isGlobal)}
         alt="result"
         style={{
           height: props.fixedHeight === true ? (800 / props.cols) + "px" : "auto",
@@ -49,6 +59,10 @@ export const GalleryImage = props => (
     {props.caption !== undefined && <Caption>{props.caption}</Caption>}
   </StyledImage>
 );
+
+GalleryImage.defaultProps = {
+  isGlobal: false,
+}
 
 const Caption = props => (
   <div
@@ -72,8 +86,12 @@ export const Image = props => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <img src={useBaseUrl(props.src)} {...otherProps} />
+      <img src={getUrl(src, props.isGlobal)} {...otherProps} />
       {props.caption !== undefined && <Caption>{props.caption}</Caption>}
     </div>
   );
 };
+
+Image.defaultProps = {
+  isGlobal: false,
+}

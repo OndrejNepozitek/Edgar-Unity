@@ -15,6 +15,7 @@ module.exports = {
   organizationName: "OndrejNepozitek", // Usually your GitHub org/user name.
   projectName: "Edgar-Unity", // Usually your repo name.
   onBrokenLinks: "warn",
+  onBrokenMarkdownLinks: "error",
   themeConfig: {
     googleAnalytics: {
       trackingID: 'UA-31904365-17',

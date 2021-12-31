@@ -9,7 +9,7 @@ Similar approaches are used in games like [**Enter the Gungeon**](https://www.bo
 
 ## Features
 
-- **Complete control over the structure of generated level.** Instead of generating completely random dungeons, you specify how many rooms you want and how they should be connected and the algorithm generates levels that follow exactly that structure.
+- **Complete control over the structure of generated level.** Instead of generating completely random dungeons, you specify how many rooms you want and how they should be connected, and the algorithm generates levels that follow exactly that structure.
 - **Complete control over the look of individual rooms.** You can draw room templates using Unity built-in Tilemap feature. You can use all available tools (brushes, rule tiles, etc.) to design room templates.
 - **Rooms either directly connected by doors or connected by corridors.** You can choose to either connect rooms by corridors or directly via doors.
 - **Easy to customize.** The plugin is ready to be customized and extended.
@@ -26,39 +26,39 @@ Similar approaches are used in games like [**Enter the Gungeon**](https://www.bo
 
 ### 1. Draw rooms and corridors
 
-<Gallery cols={4} fixedHeight>
-    <Image src="img/v2/examples/example1_room1.png" />
-    <Image src="img/v2/examples/example1_room2.png" />
-    <Image src="img/original/example1_spawn.png" />
-    <Image src="img/original/example1_boss.png" />
-    <Image src="img/original/example1_corridor_horizontal.png" />
-    <Image src="img/original/example1_corridor_vertical.png" />
-    <Image src="img/v2/examples/example1_corridor_horizontal2.png" />
-    <Image src="img/v2/examples/example1_corridor_vertical2.png" />
+<Gallery cols={4}>
+    <Image src="2d/examples/example1/room1.png" />
+    <Image src="2d/examples/example1/room2.png" />
+    <Image src="2d/examples/example1/intro_spawn.png" />
+    <Image src="2d/examples/example1/intro_boss.png" />
+    <Image src="2d/examples/example1/intro_corridor_horizontal.png" />
+    <Image src="2d/examples/example1/intro_corridor_vertical.png" />
+    <Image src="2d/examples/example1/corridor_horizontal2.png" />
+    <Image src="2d/examples/example1/corridor_vertical2.png" />
 </Gallery>
 
 ### 2. Prepare the structure of the level
 
-<Image src="img/v2/examples/example1_level_graph2.png" height={500} />
+<Image src="2d/examples/example1/level_graph2.png" height={500} />
 
 ### 3. Generate levels
 
 <Gallery cols={4}>
-    <Image src="img/v2/examples/example1_result_reallife2.png" />
-    <Image src="img/v2/examples/example1_result_reallife3.png" />
-    <Image src="img/v2/examples/example1_result_reallife4.png" />
-    <Image src="img/v2/examples/example1_result_reallife5.png" />
+    <Image src="2d/examples/example1/result_reallife2.png" />
+    <Image src="2d/examples/example1/result_reallife3.png" />
+    <Image src="2d/examples/example1/result_reallife4.png" />
+    <Image src="2d/examples/example1/result_reallife5.png" />
 </Gallery>
 
 ## Examples
 
 <Gallery>
-    <Image src="img/original/example1_result1.png" caption="Example 1" />
-    <Image src="img/original/example1_result_reallife1.png" caption="Example 1" />
-    <Image src="img/original/example2_result1.png" caption="Example 2" />
-    <Image src="img/original/example2_result_reallife1.png" caption="Example 2" />
+    <Image src="2d/examples/example1/result_reallife2.png" caption="Example 1" />
+    <Image src="2d/examples/example1/result_reallife1.png" caption="Example 1" />
+    <Image src="2d/examples/example2/result1.png" caption="Example 2" />
+    <Image src="2d/examples/example2/result_reallife1.png" caption="Example 2" />
 </Gallery>
 
 ## Terms of use
 
-The plugin can be used in both commercial and non-commercial projects but **cannot be redistributed or reselled**. If you want to include this plugin in your own asset, please contact me and we will figure that out.
+The plugin can be used in both commercial and non-commercial projects but **cannot be redistributed or resold**. If you want to include this plugin in your own asset, please contact me, and we will figure that out.
