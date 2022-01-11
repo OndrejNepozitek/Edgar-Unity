@@ -2,13 +2,11 @@
 title: Current room detection
 ---
 
-import { Image, Gallery, GalleryImage } from "@theme/Gallery";
+In this guide, we will learn how to detect when a player enters or leaves a room. We can use this information to keep track of the currently active room, or we can for example spawn enemies when the player enters a room.
 
-In this guide, we will learn how to detect when a player enters or leaves a room. We can use this information to keep track of the currently active room or we can for example spawn enemies when the player enters a room.
+<Image src="2d/guides/current_room_detection/result.png" caption="Information about the current room are displayed in the top-left corner." />
 
-<Image src="img/v2/guides/current_room_detection/result.png" caption="Information about the current room are displayed in the top-left corner." />
-
-> **Note:** All files from this example can be found at *ProceduralLevelGenerator/Examples/CurrentRoomDetection*.
+> **Note:** All files from this example can be found at *Edgar/Examples/CurrentRoomDetection*.
 
 ## Setup
 
@@ -20,7 +18,7 @@ Our plan is the following:
 
 We will use the room templates from [Example 1](../examples/example-1) and the following level graph:
 
-<Image src="img/v2/guides/current_room_detection/level_graph.png" caption="The level graph that is used in this guide. Each room has a unique name so that we can easily recognize if our implementation works or not." />
+<Image src="2d/guides/current_room_detection/level_graph.png" caption="The level graph that is used in this guide. Each room has a unique name so that we can easily recognize if our implementation works or not." />
 
 ## Floor collider
 
@@ -29,7 +27,7 @@ We will use a trigger collider attached to the floor layer of individual room te
 1. We can [override the default structure of tilemaps](../guides/room-template-customization) in order to add the floor collider to each room template right after it is created.
 2. We can use a custom post-processing script to add the floor collider to each room after a level is generated.
 
-An advantage of the first approach is that Unity does not have to recompute the colliders every time a level is generated. An advantage of the second approach is that it is more flexible and easier to experiment with because we can just write a simple post-processing script a do not have to modify any room templates. We decided to use the second approach because we use a room template from [Example 1](../examples/example-1) and they do not have any floor colliders.
+An advantage of the first approach is that Unity does not have to recompute the colliders every time a level is generated. An advantage of the second approach is that it is more flexible and easier to experiment with because we can just write a simple post-processing script a do not have to modify any room templates. We decided to use the second approach because we use a room template from [Example 1](../examples/example-1), and they do not have any floor colliders.
 
 Below you can see the post-processing code that is needed to add this floor collider to each of the rooms in a generated level.
 
@@ -177,6 +175,6 @@ Again, we will use our post-processing logic to add this room manager to each ro
 
 ## Game manager
 
-The last thing that we can do is to add a game manager that will keep track of in which room the player is currently located. A straightforward solution would be to simply keep track of which room was entered most recently. However, there is a catch. The player collider might be quite large so it is possible that it collides with two neighbouring rooms at once. That means that if the player goes just slightly to the next room and then back to the previous room, `OnTriggerEnter2D` will not be called because the player did not leave the room.
+The last thing that we can do is to add a game manager that will keep track of in which room the player is currently located. A straightforward solution would be to simply keep track of which room was entered most recently. However, there is a catch. The player collider might be quite large, so it is possible that it collides with two neighbouring rooms at once. That means that if the player goes just slightly to the next room and then back to the previous room, `OnTriggerEnter2D` will not be called because the player did not leave the room.
 
 The solution is quite simple. We will set the new room to be active only when the player completely leaves the current room. An example implementation can be seen in the game manager class that is included in the folder with the example.

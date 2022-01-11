@@ -1,2 +1,43 @@
 {"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\Q<Gallery cols={4} fixedHeight>\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\Q<Image src=\"img/v2/examples/example1_level_graph2.png\" height={500} />\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QDownload the Unity package from the latest release and import it to a Unity project .\\E$"}
+{"rule":"COMMA_COMPOUND_SENTENCE","sentence":"^\\QThe algorithm may connect two room templates if:\nthere exist door positions with the same length\nthe two room templates do not overlap after we connect them\nbut they may share tiles on the outlines\\E$"}
+{"rule":"COMMA_PARENTHESIS_WHITESPACE","sentence":"^\\QLevelGraph is a ScriptableObject that can be created by navigating to .\\E$"}
+{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QIf equal to 2 - there must be at least one empty tile between walls of different rooms.\\E$"}
+{"rule":"A_INFINITIVE","sentence":"^\\QFor an example of how can this be implemented, see the Enter the Gungeon example where we connect a secret room to a random room in the graph.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QIn this tutorial, we will use this tileset by @pixel_poem.\\E$"}
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QIf this is your first time reading about procedural platformers, please see the Limitations section of the Platformer generator page.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QWe will use this tileset by @pixel_poem - be sure to check out their work if you like the tileset.\\E$"}
+{"rule":"A_INFINITIVE","sentence":"^\\QDisclaimer: We are in no way affiliated with the authors of the Enter the Gungeon game and this plugin is not used in the game.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\Q<Tabs defaultValue=\"room\" values={ {label: 'GungeonRoom.cs', value: 'room'}, {label: 'GungeonConnection.cs', value: 'connection'}, }>\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\Q<Video src=\"2d/examples/gungeon/example_video.mp4\" style={{ marginBottom: 15, marginTop: -15 }} />\\E$"}
+{"rule":"UPPERCASE_SENTENCE_START","sentence":"^\\Qimport Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem'; import { Video } from \"@theme/Video\"; import useBaseUrl from \"@docusaurus/useBaseUrl\";\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QWe will use this tileset by Szadi art.\\E$"}
+{"rule":"A_INFINITIVE","sentence":"^\\QYou can see the Enter the Gungeon for an example of procedurally generated levels.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QIn order to spawn enemies in generated levels, we added an empty GameObject called EnemySpawnPositions to each room template where we want to spawn enemies.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QNote: For the level map to work, you need to add a layer called LevelMap.\\E$"}
+{"rule":"WHITESPACE_RULE","sentence":"^\\QIn the project view, we right-click in a folder and choose  (the path may be changed in the CreateAssetMenu attribute).\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QIn the project view, we right-click in a folder and choose  (the path may be changed in the CreateAssetMenu attribute).\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QThis is the reason why we added the CreateAssetMenu attribute to our handler.\\E$"}
+{"rule":"WHITESPACE_RULE","sentence":"^\\QIt will add a  menu item that will create a room template prefab with our custom tilemap layers.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QNote: All files from this example can be found at Edgar/Examples/CurrentRoomDetection.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QOur plan is the following:\nAdd a trigger collider to the floor tilemap layer of individual room templates\nAdd a RoomManager component that will react to the player entering or leaving the room\nAdd a handler that will react to the OnTriggerEnter2D and OnTriggerExit2D events and delegate that to the room manager\n(Optional) Add a GameManager component that will display the currently active room\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QTherefore, we will create a simple room manager component with two methods - OnRoomEnter and OnRoomLeave which will be called by the handler from the previous step.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QThe FogColor property specifies the colour of tiles that are hidden in the fog.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QAn example scene can be found at Edgar/Examples/FogOfWarExample.\\E$"}
+{"rule":"GITHUB","sentence":"^\\QIf you want to use this feature and have a different cell size or cell gap, please let me know on Github and I will try to improve the implementation.\\E$"}
+{"rule":"WHITESPACE_RULE","sentence":"^\\QNavigate to  and add the Edgar/FogOfWar shader to the Always Included Shaders list.\\E$"}
+{"rule":"GITHUB","sentence":"^\\QNote: If you have problems with the performance of the Fog of War script, please create a Github issue.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QAn example scene can be found at Edgar/Examples/MinimapExample and Edgar/Examples/MinimapExample2.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QCreate a Minimap camera\\E$"}
+{"rule":"WHITESPACE_RULE","sentence":"^\\QGo to  to create the render texture and set its size to e.g. 512x512.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QNext, we have to create an instance of the MinimapPostProcess scriptable object.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QIn your main camera, exclude the minimap layer from the Culling Mask field.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QIn your minimap camera, render only the minimap layer.\\E$"}
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QThe Layers field is the main configuration section of the minimap post-processing task.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\Q\\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q (Color mode only)\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QWhen using the Color display mode, we will often encounter a problem with minimap tile sizes being different to actual tile sizes used in the game.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QNote: All files from this example can be found at Edgar/Examples/MinimapExample.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QOpen these materials, set their shader to \"Edgar/Minimap Single Color Tile\" and configure the Tile Color field to match the desired colour of the minimap layer.\\E$"}
+{"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QInstead of using the Color mode, we will use the Original Tiles mode together with a custom shader that keeps all transparent pixels intact and transforms all the other pixels to a uniform colour.\\E$"}
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QAlso, it is good to use the Default socket for new doors field instead of creating doors without a socket and that assigning the correct socket manually.\\E$"}

@@ -184,3 +184,24 @@ blockquote {
 .prism-code {
   font-size: 12px !important;
 }
+
+.path {
+  background-color: #aaaaaa21;
+  padding: 1px 4px;
+}
+
+.obsolete-image {
+  font-size: 10px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #0000006e;
+  color: white;
+  padding: 1px 4px;
+}
+
+.image-inner {
+  display: inline-block;
+  position: relative;
+  font-size: 0px;
+}

@@ -59,7 +59,7 @@ const Caption = props => (
 );
 
 export const Image = props => {
-  const { src, caption, isInsideGallery, ...otherProps } = props;
+  const { src, caption, isInsideGallery, obsolete, ...otherProps } = props;
 
   if (isInsideGallery) {
     return <GalleryImage {...props} />

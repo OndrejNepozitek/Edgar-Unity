@@ -15,7 +15,7 @@ There is a *Tilemap Layers Structure* field in the *Post-processing config* sect
 
 ### `Default`
 
-The default tilemaps structure is what you get when you create a room template via the *Create* menu dialogue. This structure of tilemaps is *fixed*, meaning that if you customize the structure of some of your room templates, the resulting structure will always be the same. **Therefore, it is not recommended to make any changes to the structure of tilemaps when using this mode,** as it can lead to unexpected results.
+The default tilemaps structure is what you get when you create a room template via the *Create* menu dialogue. This structure of tilemaps is *fixed*, meaning that if you customize the structure of some of your room templates, the resulting structure will always be the same. **Therefore, it is not recommended making any changes to the structure of tilemaps when using this mode,** as it can lead to unexpected results.
 
 ### `FromExample`
 
@@ -97,17 +97,17 @@ When we have our custom tilemap layers handler prepared, there are 2 additional 
 1. **Register the handler in the generator** so that each generated level has this new structure
 2. (*Optional but highly recommended*) **Create a custom room template initializer** that will help you with creating room templates with the new structure
 
-#### Register the  handler in the generator
+#### Register the handler in the generator
 
 We have to configure the generator to use our custom tilemap layers handler.
 
-First, we have to create an instance of a ScriptableObject that will hold our custom handler. This is the reason why we added the *CreateAssetMenu* attribute to our handler. In the project view, we right-click in a folder and choose *Create -> Edgar -> Custom tilemap layers handler* (the path may be changed in the *CreateAssetMenu* attribute). That should create a file in the current folder.
+First, we have to create an instance of a ScriptableObject that will hold our custom handler. This is the reason why we added the *CreateAssetMenu* attribute to our handler. In the project view, we right-click in a folder and choose <Path path="2d:Custom tilemap layers handler" /> (the path may be changed in the *CreateAssetMenu* attribute). That should create a file in the current folder.
 
 And second, we have to drag and drop this file to the *Tilemap Layers Handler* field of our generator component. Make sure to choose the *Custom* tilemap layers structure mode to see the field. If we want to switch the tilemap layers handler in the future, we can either replace it with a different handler or remove it to use the default handler.
 
 #### Create a custom room template initializer
 
-Now we will add a *Create menu* shortcut to create a room template with a custom tilemap layers handler. This is better explained in the next section, below is the minimal working example. It will add a *Create -> Edgar -> Custom room template* menu item that will create a room template prefab with our custom tilemap layers.
+Now we will add a *Create menu* shortcut to create a room template with a custom tilemap layers handler. This is better explained in the next section, below is the minimal working example. It will add a <Path path="2d:Custom room template" /> menu item that will create a room template prefab with our custom tilemap layers.
 
     using UnityEngine;
     #if UNITY_EDITOR
@@ -143,7 +143,7 @@ The process of creating room templates would be very time-consuming and error-pr
 1. Choose one of the already created room templates and create a copy of the prefab
 2. Write a piece of code that will handle the initialization of new room templates
 
-The first option is a pretty solid choice most of the time and requires no extra preparation steps. In this guide, we will see how to handle the second option. We will implement a so-called *room template initializer*. This technique is mostly only useful if you use the *Custom* tilemaps structure mode, because you will may want to use a custom tilemap layers handler.
+The first option is a pretty solid choice most of the time and requires no extra preparation steps. In this guide, we will see how to handle the second option. We will implement a so-called *room template initializer*. This technique is mostly only useful if you use the *Custom* tilemaps structure mode, because you may want to use a custom tilemap layers handler.
 
 There are two main ways of utilizing custom room template initializers:
 

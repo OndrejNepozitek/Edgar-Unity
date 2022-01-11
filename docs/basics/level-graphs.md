@@ -2,12 +2,9 @@
 title: Level graphs
 ---
 
-import { Image, Gallery, GalleryImage } from "@theme/Gallery";
-import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
-
 Level graph is an abstraction that lets us control the structure of generated levels. 
 
-> **Note:** In the context of this plugin, the term *graph* is used to refer to a mathematical structure consisting of nodes and edges, not a way to visualise functions.
+> **Note:** In the context of this plugin, the term *graph* is used to refer to a mathematical structure consisting of nodes and edges, not a way to visualize functions.
 
 ## Basics
 
@@ -15,7 +12,7 @@ Level graph consists of rooms and room connections. Each room corresponds to a r
 
 Below you can see a simple level graph with 5 rooms and 4 connections. If we use this level graph as an input for the algorithm, each generated dungeon will have exactly 5 rooms and *room 1* will be connected to every other room in the dungeon.
 
-<Image src="img/v2/level_graphs/basic_level_graph.png" caption="Simple level graph with 5 rooms and 4 room connections" />
+<Image src="2d/level_graphs/basic_level_graph.png" caption="Simple level graph with 5 rooms and 4 room connections" />
 
 > **Note:** It is not important how we draw the graph. It is only important how many rooms there are and which rooms are connected to each other.
 
@@ -31,19 +28,19 @@ Level graphs must be **planar**. We say that a graph is planar if it can be draw
 
 Level graphs must be **connected**. We say that a graph is connected if there is a path between every pair of vertices. Below you can see a level graph that is not connected because there is no path between vertices on the left side and vertices on the right side.
 
-<Image src="img/v2/level_graphs/not_connected_level_graph.png" caption="Example of a level graph that is not connected" />
+<Image src="2d/level_graphs/not_connected_level_graph.png" caption="Example of a level graph that is not connected" />
 
 ## Creating level graphs
 
-*LevelGraph* is a ScriptableObject that can be created by navigating to *Create -> Edgar -> Level graph*. Below you can see how are level graphs displayed in the Inspector window.
+*LevelGraph* is a *ScriptableObject* that can be created by navigating to <Path path="2d:Level graph" />. Below you can see how are level graphs displayed in the Inspector window.
 
-<Image src="img/v2/level_graphs/level_graph_inspector.png" caption="Level graph in the Inspector window" />
+<Image src="2d/level_graphs/level_graph_inspector.png" caption="Level graph in the Inspector window" />
 
 ### Graph editor
 
 The Graph editor window can be opened by clicking the *Open graph editor* button.
 
-<Image src="img/v2/level_graphs/level_graph_window.png" caption="Graph editor window" />
+<Image src="2d/level_graphs/level_graph_window.png" caption="Graph editor window" />
 
 Window controls:
 - *Selected graph*: the name of the currently selected level graph
@@ -51,26 +48,26 @@ Window controls:
 - *Select level graph*: selects a different level graph
 
 Working with level graphs:
-- *Create room*: double click on an empty space in the grid
-- *Configure room*: double click on an existing room
+- *Create room*: double-click on an empty space in the grid
+- *Configure room*: double-click on an existing room
 - *Delete room*: right-click on a room and select *Delete room*
 - *Move room*: left click and then drag around
-- *Add connection*: hold *ctrl* while left-clicking a room and then move the cursor to a different room
+- *Add connection*: hold *Ctrl* while left-clicking a room and then move the cursor to a different room
 - *Delete connection*: right-click on a connection handle and select *Delete connection*
 
-<Image src="img/v2/level_graphs/level_graph_controls.gif" caption="Level graph controls" />
+<Image src="2d/level_graphs/level_graph_controls.gif" caption="Level graph controls" />
 
 ## Room templates
 
-When we have our rooms and connections, it is time to setup room templates. In the *Level graph* inspector window above, we can see 2 sections - *Default room templates* and *Corridor room templates*. These sections are used to specify which room templates are available for which room. Below you can see the setup from [Example 1](../examples/example-1.md).
+When we have our rooms and connections, it is time to set up room templates. In the *Level graph* inspector window above, we can see 2 sections - *Default room templates* and *Corridor room templates*. These sections are used to specify which room templates are available for which room. Below you can see the setup from [Example 1](../examples/example-1.md).
 
-<Image src="img/v2/level_graphs/level_graph_inspector2.png" caption="Example of assigned room templates" />
+<Image src="2d/level_graphs/level_graph_inspector2.png" caption="Example of assigned room templates" />
 
 ### Room templates sets
 
-It may sometimes be useful to group our room templates into groups like *Shop rooms*, *Boss rooms*, etc. We can create a so-called **Room templates set** by navigating to *Create -> Edgar -> Room templates set*. It is a simple ScriptableObject that holds an array of room templates and we can use it instead of assigning individual room templates one by one. The main advantage is that if we later decide to add a new shop room template, we do not have to change all the shop rooms to include this new template - we simply add it to the room templates set.
+It may sometimes be useful to group our room templates into groups like *Shop rooms*, *Boss rooms*, etc. We can create a so-called **Room templates set** by navigating to <Path path="2d:Room templates set" />. It is a simple ScriptableObject that holds an array of room templates, and we can use it instead of assigning individual room templates one by one. The main advantage is that if we later decide to add a new shop room template, we do not have to change all the shop rooms to include this new template - we simply add it to the room templates set.
 
-<Image src="img/v2/level_graphs/room_templates_set.png" caption="Example of a room templates set that holds all our basic rooms. If we add another room template later, the change gets propagated to all the rooms in the level graph that are using this room templates set." />
+<Image src="2d/level_graphs/room_templates_set.png" caption="Example of a room templates set that holds all our basic rooms. If we add another room template later, the change gets propagated to all the rooms in the level graph that are using this room templates set." />
 
 ### Default room templates
 
@@ -86,7 +83,7 @@ Array of room templates sets that will be used for rooms that have no room shape
 
 #### Room templates
 
-Array of room templates that will be used for corridor rooms. These room templates will be used if we setup the algorithm to use corridors instead of connecting rooms directly by doors. Can be left empty if we do not want to use corridors.
+Array of room templates that will be used for corridor rooms. These room templates will be used if we set up the algorithm to use corridors instead of connecting rooms directly by doors. Can be left empty if we do not want to use corridors.
 
 #### Room templates sets
 
@@ -94,9 +91,9 @@ Array of room templates sets that will be used for corridor rooms. Room template
 
 ### Configuring individual rooms
 
-If we double click on a room in the Graph editor, it gets selected and we can configure it in the inspector. We can set the name of the room which will be displayed in the Graph editor. We can also assign room templates and room templates sets that will be used only for this room. By assigning any room template or room template set, we override the default room templates that are set in the level graph itself.
+If we double-click on a room in the Graph editor, it gets selected, and we can configure it in the inspector. We can set the name of the room which will be displayed in the Graph editor. We can also assign room templates and room templates sets that will be used only for this room. By assigning any room template or room template set, we override the default room templates that are set in the level graph itself.
 
-<Image src="img/v2/level_graphs/room_inspector1.png" caption="Configuration of a spawn room" />
+<Image src="2d/level_graphs/room_inspector1.png" caption="Configuration of a spawn room" />
 
 ## (PRO) Custom rooms and connections
 
@@ -120,7 +117,7 @@ The second approach is that we inherit directly from the [RoomBase][] class. If 
 
 When we have our custom room or connection type ready, we have to configure the level graph to use them. If we open the level graph in the inspector, we should be able to choose the custom types from the dropdown.
 
-<Image src="img/v2/level_graphs/custom_rooms.png" caption="Custom room and connection types (PRO version)" />
+<Image src="2d/level_graphs/custom_rooms.png" caption="Custom room and connection types (PRO version)" />
 
 > **Note:** It is not possible to easily convert a level graph from using one room/connection type to another. Therefore, it is important to decide if you want to use a custom room/connection before you create your level graphs. Otherwise, you will have to recreate them later with the correct types.
 
@@ -166,7 +163,7 @@ It is also possible to change how custom rooms and connections look in the level
         }
     }
 
-<Image src="img/v2/examples/gungeon/level_graph_1.png" caption="Different colours for special types of rooms" /> 
+<Image src="2d/examples/gungeon/level_graph_1.png" caption="Different colours for special types of rooms" /> 
 
 ## (PRO) Directed level graphs
 

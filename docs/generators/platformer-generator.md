@@ -14,7 +14,7 @@ The configuration is currently the same as for the Dungeon Generator. See [this]
 
 ## Default tilemaps structure
 
-Platformer room templates can be create via the Create asset menu and their default tilemaps structure is the following:
+Platformer room templates can be created via <Path path="2d:Platformer room template" /> and their default tilemaps structure is the following:
 
 - **Background**
 - **Walls** - collider

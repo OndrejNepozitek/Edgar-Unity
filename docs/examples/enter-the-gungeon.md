@@ -2,8 +2,6 @@
 title: (PRO) Enter the Gungeon
 ---
 
-import { Image, Gallery, GalleryImage } from "@theme/Gallery";
-import { FeatureUsage, ExampleFeatures } from "@theme/FeatureInfo";
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { Video } from "@theme/Video";
@@ -11,14 +9,14 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 In this tutorial, we will look into how to generate levels similar to what we can see in [Enter the Gungeon](https://store.steampowered.com/app/311690/Enter_the_Gungeon/). We will use [this tileset](https://pixel-poem.itch.io/dungeon-assetpuck) by [@pixel_poem](https://twitter.com/pixel_poem) - be sure to check out their work if you like the tileset.
 
-> **Disclaimer:** We are in no way affiliated with the authors of the Enter the Gungeon game and this plugin is not used in the game. This is only a case study about how to use this plugin to create something similar to what is done in that game.
+> **Disclaimer:** We are in no way affiliated with the authors of the **Enter the Gungeon** game and this plugin is not used in the game. This is only a case study about how to use this plugin to create something similar to what is done in that game.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/examples/gungeon/result1.png" caption="Example result" />
-    <GalleryImage src="img/v2/examples/gungeon/result2.png" caption="Example result" />
+    <GalleryImage src="2d/examples/gungeon/result1.png" caption="Example result" />
+    <GalleryImage src="2d/examples/gungeon/result2.png" caption="Example result" />
 </Gallery>
 
-<Video src="img/v2/examples/gungeon/example_video.mp4" style={{ marginBottom: 15, marginTop: -15 }} />
+<Video src="videos/gungeon_example_video.mp4" style={{ marginBottom: 15, marginTop: -15 }} />
 
 > **Note:** All files from this example can be found at *Edgar/Examples/EnterTheGungeon*.
 
@@ -27,12 +25,12 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 > **Note:** If you want to add some more room templates, be sure to use the *Create* menu (*Examples/Enter the Gungeon/Room template*) or duplicate one of the existing room templates.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/examples/gungeon/room_templates/entrance.png" caption="Entrance" />
-    <GalleryImage src="img/v2/examples/gungeon/room_templates/hub1.png" caption="Hub" />
-    <GalleryImage src="img/v2/examples/gungeon/room_templates/normal5.png" caption="Normal" />
-    <GalleryImage src="img/v2/examples/gungeon/room_templates/reward.png" caption="Reward" />
-    <GalleryImage src="img/v2/examples/gungeon/room_templates/shop.png" caption="Shop" />
-    <GalleryImage src="img/v2/examples/gungeon/room_templates/secret.png" caption="Secret" />
+    <GalleryImage src="2d/examples/gungeon/room_templates/entrance.png" caption="Entrance" />
+    <GalleryImage src="2d/examples/gungeon/room_templates/hub1.png" caption="Hub" />
+    <GalleryImage src="2d/examples/gungeon/room_templates/normal5.png" caption="Normal" />
+    <GalleryImage src="2d/examples/gungeon/room_templates/reward.png" caption="Reward" />
+    <GalleryImage src="2d/examples/gungeon/room_templates/shop.png" caption="Shop" />
+    <GalleryImage src="2d/examples/gungeon/room_templates/secret.png" caption="Secret" />
 </Gallery>
 
 ## Level graphs
@@ -40,8 +38,8 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 In Enter the Gungeon, they use multiple level graphs for each stage of the game.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/examples/gungeon/level_graph_2.png" caption="Stage 1 level graph" /> 
-    <GalleryImage src="img/v2/examples/gungeon/level_graph_1.png" caption="Stage 2 level graph" /> 
+    <GalleryImage src="2d/examples/gungeon/level_graph_2.png" caption="Stage 1 level graph" /> 
+    <GalleryImage src="2d/examples/gungeon/level_graph_1.png" caption="Stage 2 level graph" /> 
 </Gallery>
 
 ### Custom rooms and connections
@@ -54,7 +52,7 @@ Each room in Enter the Gungeon has its type - there are rooms with enemies, trea
 
 #### Connections
 
-Some corridors in Enter the Gungeon are locked and can be unlocked only from the other side of the door. This is usually used to force the player to go trough a loop that ends with a treasure or shop room and the door then serves as a shortcut to get back to the main path. We use a custom connection implementation to add the `bool IsLocked` field. If the door is locked, we use red colour to draw the line between the two rooms.
+Some corridors in Enter the Gungeon are locked and can be unlocked only from the other side of the door. This is usually used to force the player to go through a loop that ends with a treasure or shop room and the door then serves as a shortcut to get back to the main path. We use a custom connection implementation to add the `bool IsLocked` field. If the door is locked, we use red colour to draw the line between the two rooms.
 
 <Tabs
 defaultValue="room"
@@ -180,7 +178,7 @@ Then we just assign level graphs to the two arrays. The last step is to control 
 
 ### Random secret rooms
 
-Even though all the levels are primarily guided by hand-made level graphs, there is a little bit of randomness included. When we setup the input for the algorithm, we roll a dice to determine if we want to add a secret room to the level. We can add a `float SecretRoomChance` field to the input setup and configure this value directly in the generator inspector. In Enter the Gungeon, they also choose whether to connect the room to a dead-end room or to any rooms - this is controlled with `SecretRoomDeadEndChance`.
+Even though all the levels are primarily guided by hand-made level graphs, there is a bit of randomness included. When we set up the input for the algorithm, we roll a die to determine if we want to add a secret room to the level. We can add a `float SecretRoomChance` field to the input setup and configure this value directly in the generator inspector. In Enter the Gungeon, they also choose whether to connect the room to a dead-end room or to any rooms - this is controlled with `SecretRoomDeadEndChance`.
 
 To add the secret room to the level, we first get all the rooms from the level description and randomly choose one of them to attach the secret room to. Then we have to do 3 things. First, we create an instance of the secret room - this corresponds to a room node in the level graph. Second, we create an instance of the connection between the two rooms - this corresponds to an edge in the level graph. And third, because we use corridors, we also need to create an instance of the corridor room that is between the two rooms.
 
@@ -256,7 +254,7 @@ To add the secret room to the level, we first get all the rooms from the level d
 
 In Enter the Gungeon, when a player visits a (combat-oriented) room for the first time, two things happen. First, all the doors to neighbouring rooms get closed and locked. And second, enemies are spawned. Only after all the enemies are defeated, the doors unlock.
 
-<Video src="img/v2/examples/gungeon/enter_room.mp4" />
+<Video src="videos/gungeon_enter_room.mp4" />
 
 <br />
 
@@ -264,7 +262,7 @@ In Enter the Gungeon, when a player visits a (combat-oriented) room for the firs
 
 ### Current room detection
 
-The base of this setup is detecting when a player enters a room. We will use the same setup as we described in the [Current room detection](guides/current-room-detection.md) tutorial. That means that we have a floor collider that is set to trigger and it informs `RoomManager` when the player enters a room.
+The base of this setup is detecting when a player enters a room. We will use the same setup as we described in the [Current room detection](guides/current-room-detection.md) tutorial. That means that we have a floor collider that is set to trigger, and it informs `RoomManager` when the player enters a room.
 
 ### Enemies
 
@@ -338,21 +336,21 @@ The algorithm works as follows:
 
 <br />
 
-> **Note:** As the process of choosing enemy spawn points is random, we hope that the success rate is quite high and we do not have to spend too much time on it. However, if we wanted to spawn too many enemies or there were too many holes in the collider, we could have problems with performance. In that case, it would be better to use a different approach.
+> **Note:** As the process of choosing enemy spawn points is random, we hope that the success rate is quite high, and we do not have to spend too much time on it. However, if we wanted to spawn too many enemies or there were too many holes in the collider, we could have problems with performance. In that case, it would be better to use a different approach.
 
 ### Doors
 
 Our goal is to close neighbouring corridors with doors when the player enters the room and then open the doors when all the enemies are dead. The only slightly complex part is how to obtain the game objects that represent the doors. To make our lives easier, we added the doors directly to each corridor room template. That means that after the level is generated we just have to retrieve the doors from corridor room templates.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/examples/gungeon/room_templates/ver5.png" caption="Vertical corridor" />
-    <GalleryImage src="img/v2/examples/gungeon/room_templates/hor5.png" caption="Horizontal corridor" />
+    <GalleryImage src="2d/examples/gungeon/room_templates/ver5.png" caption="Vertical corridor" />
+    <GalleryImage src="2d/examples/gungeon/room_templates/hor5.png" caption="Horizontal corridor" />
 </Gallery>
 
 We can do it like this:
 
 1. Prepare a custom post-processing task
-2. Go trough all non-corridor rooms
+2. Go through all non-corridor rooms
 4. Find all the corridors that are connected to the room
 5. Get the door game object from each neighbouring corridor
 6. Store all the doors in the room manager
@@ -445,15 +443,15 @@ The last thing that we have to handle are doors that should be locked even if th
 
 ## Fog of War
 
-In this example, the [Fog of War](guides/fog-of-war.md) feature is enabled. For more information on how to setup the feature, please see the [documentation](guides/fog-of-war.md). In order to integrate the Fog of War into this example scene, I modified the current room detection script (`GungeonCurrentRoomHandler` class) to trigger the fog when a player enters a corridor room, and I also modified the `GungeonPostProcessTask` class to setup the fog after a level is generated.
+In this example, the [Fog of War](guides/fog-of-war.md) feature is enabled. For more information on how to set up the feature, please see the [documentation](guides/fog-of-war.md). In order to integrate the Fog of War into this example scene, I modified the current room detection script (`GungeonCurrentRoomHandler` class) to trigger the fog when a player enters a corridor room, and I also modified the `GungeonPostProcessTask` class to set up the fog after a level is generated.
 
-> **Note:** The integration of the Fog of War effect into this example could be improved. I think that it looks better when the next room is revealed only after the player walks though the middle of a corridor and not right when he enters the corridor. Also, the integration with doors is not ideal - you can reveal rooms behind locked rooms if you go close to the door. I want to improve this in the future.
+> **Note:** The integration of the Fog of War effect into this example could be improved. I think that it looks better when the next room is revealed only after the player walks through the middle of a corridor and not right when he enters the corridor. Also, the integration with doors is not ideal - you can reveal rooms behind locked rooms if you go close to the door. I want to improve this in the future.
 
 > **Note:** To disable the Fog of War effect, go to the main camera and disable the Fog of War component.
 
 ## Results
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/examples/gungeon/result3.png" caption="Example result" />
-    <GalleryImage src="img/v2/examples/gungeon/result4.png" caption="Example result" />
+    <GalleryImage src="2d/examples/gungeon/result3.png" caption="Example result" />
+    <GalleryImage src="2d/examples/gungeon/result4.png" caption="Example result" />
 </Gallery>

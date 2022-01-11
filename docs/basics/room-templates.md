@@ -2,36 +2,32 @@
 title: Room templates
 ---
 
-import { Image, Gallery, GalleryImage } from "@theme/Gallery";
+Room templates are one of the main concepts of the generator. They describe how individual rooms in the dungeon look and how they can be connected to one another. 
 
-Room templates are one of the main concepts of the algorithm. They describe how individual rooms in the dungeon look and how they can be connected to one another. 
-
-<Image src="img/v2/room_templates/room_template_complete.png" caption="Example of a complete room template. Outline of the room template is highlighted with yellow and possible door positions are red." />
+<Image src="2d/room_templates/room_template_complete.png" caption="Example of a complete room template. Outline of the room template is highlighted with yellow and possible door positions are red." />
 
 ## Creating room templates
 
-There are currently two ways of creating room templates: either via the *Create asset* menu dialog or manually.
+To create a new room template, you have to:
 
-### Create via *Create* menu dialog
-
-To create a new room template, we have to:
-- navigate to the folder where should the room template prefab be saved
-- right click in the Project window and choose *Create -> Edgar -> Dungeon room template*
+- navigate to the folder where the room template prefab should be saved
+- right click in the *Project window* and choose <Path path="2d:Dungeon room template" />
 - (optional) rename the prefab file to anything you want
 
 
 ### Room template structure
 
 Below you can see the room template structure after the room template is created:
+
 - **Tilemaps** game object that contains several tilemaps attached as children
 - **Room Template** script attached to the root game object
 - **Doors** script attached to the root game object
 
-<Image src="img/v2/room_templates/room_template_inspector.png" caption="Room template structure" />
+<Image src="2d/room_templates/room_template_inspector.png" caption="Room template structure" obsolete />
 
 ## Designing room templates
 
-We will use Unity [Tilemaps](https://docs.unity3d.com/Manual/class-Tilemap.html) to design our room templates so you should be familiar with that. By default, room templates come with several tilemap layers that are children of the *Tilemap* game object:
+We will use Unity [Tilemaps](https://docs.unity3d.com/Manual/class-Tilemap.html) to design our room templates, so you should be familiar with that. By default, room templates come with several tilemap layers that are children of the *Tilemap* game object:
 
 - **Floor** - order 0 
 - **Walls** - order 1, with collider
@@ -42,15 +38,15 @@ We will use Unity [Tilemaps](https://docs.unity3d.com/Manual/class-Tilemap.html)
 
 It is **VERY IMPORTANT** that all the room templates have exactly the same structure of tilemaps because the generator will copy all the tiles from individual room templates to shared tilemaps. If you need a different structure of tilemaps, you can override the default behaviour. See [Room template customization](../guides/room-template-customization).
 
-<Image src="img/v2/room_templates/room_template_drawing.gif" caption="You can use all the available tools (brushes, rule tiles, etc.) to draw room templates" />
+<Image src="2d/room_templates/room_template_drawing.gif" caption="You can use all the available tools (brushes, rule tiles, etc.) to draw room templates" obsolete />
 
 ### Limitations
 
 The underlying algorithm works with polygons, not tilemaps, tiles and sprites. We are interested in the outlines of individual room templates. However, there are some limitations as to how a room template may look like in order for the algorithm to be able to compute its outline. The goal of this section is to describe which rules we should follow when designing room templates.
 
-<Image src="img/v2/room_templates/outline.png" caption="The yellow color shows the outline of the room template as it is seen by the generator" />
+<Image src="2d/room_templates/outline.png" caption="The yellow color shows the outline of the room template as it is seen by the generator" />
 
-<Image src="img/v2/room_templates/invalid_outline.png" caption="If the outline is invalid, we can see a warning in the *Room Template* script" />
+<Image src="2d/room_templates/invalid_outline.png" caption="If the outline is invalid, we can see a warning in the *Room Template* script" obsolete />
 
 > **Note:** The underlying algorithm does not care about individual tilemaps layers. Instead, it merges all the layers together and then finds all the non-null tiles. Therefore, the outline of the room template will be the same no matter which tilemap layers we use.
 
@@ -59,19 +55,19 @@ The underlying algorithm works with polygons, not tilemaps, tiles and sprites. W
 I will not go into formal definitions. The image below should be self-explanatory.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/room_templates/one_connected_component_nok.png" caption="Wrong" />
-    <GalleryImage src="img/v2/room_templates/one_connected_component_ok.png" caption="Correct" />
+    <Image src="2d/room_templates/one_connected_component_nok.png" caption="Wrong" />
+    <Image src="2d/room_templates/one_connected_component_ok.png" caption="Correct" />
 </Gallery>
 
-> **Note:** You can see that the algorithm computed some outline (yellow) in in the wrong room template. The current implementation stops after any outline is found and does not check whether all tiles are contained in that outline. This will be improved in the future.
+> **Note:** You can see that the algorithm computed some outline (yellow) in the wrong room template. The current implementation stops after any outline is found and does not check whether all tiles are contained in that outline. This will be improved in the future.
 
 #### Each tile at least two neighbours
 
-Each tile must be connected to at least two neighbouring tiles. In the image below, both tiles in the upper row are connected to only a single neighbour so the room shape is not valid. If we need these two tiles, we can use **Outline override** that is described in the next section.
+Each tile must be connected to at least two neighbouring tiles. In the image below, both tiles in the upper row are connected to only a single neighbour, so the room shape is not valid. If we need these two tiles, we can use **Outline override** that is described in the next section.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/room_templates/at_least_two_neighbors_nok.png" caption="Wrong" />
-    <GalleryImage src="img/v2/room_templates/at_least_two_neighbors_ok.png" caption="Correct" />
+    <Image src="2d/room_templates/at_least_two_neighbors_nok.png" caption="Wrong" />
+    <Image src="2d/room_templates/at_least_two_neighbors_ok.png" caption="Correct" />
 </Gallery>
 
 #### May contain holes
@@ -79,8 +75,8 @@ Each tile must be connected to at least two neighbouring tiles. In the image bel
 There may be holes inside the room template.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/room_templates/no_holes_ok_1.png" caption="Correct" />
-    <GalleryImage src="img/v2/room_templates/no_holes_ok_2.png" caption="Correct" />
+    <Image src="2d/room_templates/no_holes_ok_1.png" caption="Correct" />
+    <Image src="2d/room_templates/no_holes_ok_2.png" caption="Correct" />
 </Gallery>
 
 > **NOTE:** This was not possible in the 1.x.x version.
@@ -92,8 +88,8 @@ If we really need to have a room template whose outline is not valid, we can use
 > **Note:** When we are done with drawing the outline, we can make the layer (game object) inactive so that we can see how the room template actually looks like. However, **we must not destroy the game object**.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/room_templates/outline_override_active.png" caption="We can use any tiles to draw the outline" />
-    <GalleryImage src="img/v2/room_templates/outline_override_inactive.png" caption="If we disable the Outline override game object, we should still see that the outline is overridden" />
+    <Image src="2d/room_templates/outline_override_active.png" caption="We can use any tiles to draw the outline" />
+    <Image src="2d/room_templates/outline_override_inactive.png" caption="If we disable the Outline override game object, we should still see that the outline is overridden" />
 </Gallery>
 
 ### Bounding box outline handler
@@ -103,13 +99,13 @@ In some situations, it would be useful to have an outline which looks like the b
 To add the *Bounding box outline handler* click the **Add bounding box outline handler** button in the *Room template* inspector.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/v2/room_templates/bounding_box_invalid.png" caption="Invalid outline" />
-    <GalleryImage src="img/v2/room_templates/bounding_box_override.png" caption="Corrected manually with Outline override" />
-    <GalleryImage src="img/v2/room_templates/bounding_box.png" caption="Corrected automatically with Bounding box outline handler" />
-    <GalleryImage src="img/v2/room_templates/bounding_box_padding_top.png" caption="Example of Padding top 3" />
+    <Image src="2d/room_templates/bounding_box_invalid.png" caption="Invalid outline" />
+    <Image src="2d/room_templates/bounding_box_override.png" caption="Corrected manually with Outline override" />
+    <Image src="2d/room_templates/bounding_box.png" caption="Corrected automatically with Bounding box outline handler" />
+    <Image src="2d/room_templates/bounding_box_padding_top.png" caption="Example of Padding top 3" />
 </Gallery>
 
-<Image src="img/v2/room_templates/bounding_box.gif" caption="Example bounding box outline usage" />
+<Image src="2d/room_templates/bounding_box.gif" caption="Example bounding box outline usage" />
 
 
 ## Adding doors
@@ -127,16 +123,16 @@ The algorithm may connect two room templates if:
 
 Before we start adding doors to our room templates, I think it is important to understand how to read the editor gizmos that represent doors. In the image below (left), we can see an example room template with red rectangles showing the available door positions. The **dashed red rectangles** represent individual **door lines** where a door line is set of all the possible doors inside rectangle. The **solid red rectangles** show the **length of the doors**. In the room template below, all doors are 2 tiles wide. The solid rectangle also contains information about how many door positions there are in the door line.
 
-The GIF on the right shows an animation of all the possible doors positions from the room template on the left. An important thing to understand is that the door positions can overlap and it is even good for the performance of the generator. The reason for that is that there are more possible door positions to choose from so the generator finds a valid layout faster. 
+The GIF on the right shows an animation of all the possible doors positions from the room template on the left. An important thing to understand is that the door positions can overlap, and it is even good for the performance of the generator. The reason for that is that there are more possible door positions to choose from, so the generator finds a valid layout faster. 
 
 <Gallery cols={2}>
-    <GalleryImage src="img/v2/room_templates/doors/doors_visuals.png" caption="Example room template" />
-    <GalleryImage src="img/v2/room_templates/doors/doors_animation.gif" caption="Animation of all the possible door positions" />
+    <Image src="2d/room_templates/doors/doors_visuals.png" caption="Example room template" />
+    <Image src="2d/room_templates/doors/doors_animation.gif" caption="Animation of all the possible door positions" />
 </Gallery>
 
 ### Door modes
 
-To manipulate with the doors, there must be a `Doors` component attached to the root of the room templete prefab. 
+To manipulate with the doors, there must be a `Doors` component attached to the root of the room template prefab. 
 
 There are currently three different ways of defining door positions. A universal rule of all the different modes is that all door positions must be on the outline of the corresponding room template.
 
@@ -146,11 +142,11 @@ In the *simple mode*, you specify how wide should all the doors be and the margi
 
 Below you can see how this door mode looks in the editor.
 
-<Image src="img/v2/room_templates/doors/simple1.png" caption="Simple door mode - length 1, margin 2" />
+<Image src="2d/room_templates/doors/simple1.png" caption="Simple door mode - length 1, margin 2" />
 
-In sidescroller games, there are often different requirements for horizontal and vertical doors. For example, the player might be 3 tiles high but only 1 tile wide so we would need wider vertical doors. To achieve this, we can change the *Mode* dropdown to `Different Horizontal And Vertical`. With this setting enabled, we can now choose different properties for vertical and horizontal doors. Or we might also disable one type of doors.
+In side-scroller games, there are often different requirements for horizontal and vertical doors. For example, the player might be 3 tiles high but only 1 tile wide, so we would need wider vertical doors. To achieve this, we can change the *Mode* dropdown to `Different Horizontal And Vertical`. With this setting enabled, we can now choose different properties for vertical and horizontal doors. Or we might also disable one type of doors.
 
-<Image src="img/v2/room_templates/doors/simple2.png" caption="Simple door mode - different vertical and horizontal doors" />
+<Image src="2d/room_templates/doors/simple2.png" caption="Simple door mode - different vertical and horizontal doors" />
 
 #### Manual mode
 
@@ -158,7 +154,7 @@ In the *manual mode*, you have to manually specify all the door positions of the
 
 To start adding doors, click the *Manual mode* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. Then you can simply draw door positions by clicking on the first tile of the door and dragging the mouse to the last tile of the door.
 
-<Image src="img/v2/room_templates/doors/manual.gif" caption="Manual mode setup" />
+<Image src="2d/room_templates/doors/manual.gif" caption="Manual mode setup" />
 
 In the example above, we can see that we can have doors with different lengths - vertical doors are 3 tiles high and horizontal doors are 1 tile wide.
 
@@ -177,9 +173,9 @@ The *hybrid mode* is somewhere between the *simple* and *manual* modes. Instead 
 
 To start adding doors, click the *Manual mode* button in the *Doors* script and then click the *Add door positions* button to toggle edit mode. **Then you have to configure the length of the doors in the field below.** This is the main difference when compared to the *manual mode*. In the manual mode, the length of doors is determined by the movement of the mouse. But in the hybrid mode, the length of doors is configured in the editor, and the movement of the mouse specifies how many doors there are next to each other.
 
-<Image src="img/v2/room_templates/doors/hybrid.gif" caption="Hybrid mode setup" />
+<Image src="2d/room_templates/doors/hybrid.gif" caption="Hybrid mode setup" />
 
-> **Note:** The *hybrid mode* is great for when you cannot use the simple mode and the manual mode would require too much time to setup. Also, the hybrid mode also nicely handles **overlapping doors** because the definition of door lines implicitly contains them. Moreover, the hybrid mode also leads to **better performance** (when compared to the manual mode) because it promotes having many doors and the doors are in a format that the generator can easily work with.
+> **Note:** The *hybrid mode* is great for when you cannot use the simple mode and the manual mode would require too much time to set up. Also, the hybrid mode also nicely handles **overlapping doors** because the definition of door lines implicitly contains them. Moreover, the hybrid mode also leads to **better performance** (when compared to the manual mode) because it promotes having many doors and the doors are in a format that the generator can easily work with.
 
 ### (PRO) Door sockets
 
@@ -197,7 +193,7 @@ Each *Room template* script has a field called *Repeat Mode* that is initially s
 - **No immediate** - Neighbors of the room template must be different.
 - **No repeat** - The room template can be used at most once.
 
-<Image src="img/v2/room_templates/repeat_mode.png" caption="Specific positions mode" />
+<Image src="2d/room_templates/repeat_mode.png" caption="Specific positions mode" />
 
 > **Note:** Instead of setting the *Repeat mode* on a per room template basis, you can use global override which is configured directly in the dungeon generator.
 
@@ -212,12 +208,12 @@ The algorithm distinguishes two types of room templates - basic room templates a
 3. The corridor should not be too long or too wide.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="img/original/corridor_ok1.png" caption="Recommended - narrow straight corridor" />
-    <GalleryImage src="img/original/corridor_ok2.png" caption="OK - little too wide but should be ok" />
-    <GalleryImage src="img/original/corridor_nok1.png" caption="Not recommended - doors not on opposite sides" />
-    <GalleryImage src="img/original/corridor_nok2.png" caption="Not recommended - more than 2 door positions" />
+    <Image src="2d/room_templates/corridor_ok1.png" caption="Recommended - narrow straight corridor" />
+    <Image src="2d/room_templates/corridor_ok2.png" caption="OK - little too wide but should be ok" />
+    <Image src="2d/room_templates/corridor_nok1.png" caption="Not recommended - doors not on opposite sides" />
+    <Image src="2d/room_templates/corridor_nok2.png" caption="Not recommended - more than 2 door positions" />
 </Gallery>
 
 ## Final steps
 
-After creating a room template GameObject, you can simply save it as a prefab and it is ready to be used in a level graph.
+After creating a room template game object, you can simply save it as a prefab, and it is ready to be used in a level graph.

@@ -45,11 +45,6 @@ module.exports = {
       label: "Guides",
       items: ["guides/room-template-customization", "guides/current-room-detection", "guides/fog-of-war", "guides/minimap", "guides/door-sockets", "guides/directed-level-graphs"]
     },
-    {
-      type: "category",
-      label: "Other",
-      items: ["other/migration-v1-v2"]
-    }
   ],
   "3d": [
     {

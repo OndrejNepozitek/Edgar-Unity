@@ -11,7 +11,8 @@ const StyledImage = props => (
       overflow: "hidden",
       position: "relative",
       width: `calc(${100 / props.cols}% - ${gutter * 2}px)`,
-      verticalAlign: "top"
+      verticalAlign: "top",
+      textAlign: "center",
     }}
   >
     {props.children}
@@ -52,7 +53,7 @@ export const GalleryImage = props => (
         alt="result"
         style={{
           height: props.fixedHeight === true ? (800 / props.cols) + "px" : "auto",
-          objectFit: props.fixedHeight === true ? "cover" : "initial"
+          objectFit: props.fixedHeight === true ? "cover" : "initial",
         }}
       />
     </a>
@@ -78,7 +79,7 @@ const Caption = props => (
 );
 
 export const Image = props => {
-  const { src, caption, isInsideGallery, ...otherProps } = props;
+  const { src, caption, isInsideGallery, obsolete, ...otherProps } = props;
 
   if (isInsideGallery) {
     return <GalleryImage {...props} />
@@ -86,7 +87,10 @@ export const Image = props => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <img src={getUrl(src, props.isGlobal)} {...otherProps} />
+      <div className="image-inner">
+        <img src={getUrl(src, props.isGlobal)} {...otherProps} />
+        {obsolete && <div className="obsolete-image">Note: This image was taken in an older version of the generator. Details may differ.</div>}
+      </div>
       {props.caption !== undefined && <Caption>{props.caption}</Caption>}
     </div>
   );

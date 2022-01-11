@@ -2,11 +2,9 @@
 title: (PRO) Directed level graphs
 ---
 
-import { Image, Gallery, GalleryImage } from "@theme/Gallery";
-
 In this guide, we will see what we can do if we make the level graph directed and mark some doors as entrance-only or exit-only.
 
-<Image src="img/v2/guides/directed_level_graphs/result_1.png" caption="Level generated from a level graph where all connections were directed away from the spawn. Arrow tiles show that all room templates are correctly oriented." />
+<Image src="2d/guides/directed_level_graphs/result_1.png" caption="Level generated from a level graph where all connections were directed away from the spawn. Arrow tiles show that all room templates are correctly oriented." />
 
 ## Introduction
 
@@ -23,15 +21,15 @@ For example, imagine that you want to have a puzzle room where the player should
 The first step in the setup is to make the level graph directed. To do that, you have to enable the *Is Directed* checkbox in the level graph inspector. After the level graph window is repainted (you might zoom in and out in the graph editor), you should see an arrow on each connection.
 
 <Gallery cols={2}>
-    <GalleryImage src="img/v2/guides/directed_level_graphs/is_directed_false.png" caption="Is Directed false" />
-    <GalleryImage src="img/v2/guides/directed_level_graphs/is_directed_true.png" caption="Is Directed true" />
+    <Image src="2d/guides/directed_level_graphs/is_directed_false.png" caption="Is Directed false" />
+    <Image src="2d/guides/directed_level_graphs/is_directed_true.png" caption="Is Directed true" />
 </Gallery>
 
 ### Add some entrances and exits
 
 Making the level graph directed alone does not change anything in the way levels are generated. The next necessary step is to mark some doors as entrances or exits. This can be done only with the manual door mode. If a door is marked as an exit, it can be used only for connections that are directed away from the room. Likewise, if a door is marked as an entrance, it can be used only for connections that are directed towards the room.
 
-<Image src="img/v2/guides/directed_level_graphs/entrance_exit_example.png" caption="Example of entrance and exit doors. Entrance and exit doors are marked with an 'In' or 'Out' label." />
+<Image src="2d/guides/directed_level_graphs/entrance_exit_example.png" caption="Example of entrance and exit doors. Entrance and exit doors are marked with an 'In' or 'Out' label." />
 
 ## Example
 
@@ -41,27 +39,27 @@ Making the level graph directed alone does not change anything in the way levels
 
 First, I created a simple directed level graph that can be seen below. The graph is pretty simple. All connections are directed away from the spawn room and there is also a single cycle.
 
-<GalleryImage src="img/v2/guides/directed_level_graphs/example_level_graph.png" caption="Example level graph" />
+<Image src="2d/guides/directed_level_graphs/example_level_graph.png" caption="Example level graph" />
 
 ### Room templates
 
 Next, I created a room template that should illustrate how we could approach puzzle rooms as described above. All the doors on the left side are marked as entrances and all the doors on the right side are marked as exits. That means that the player will always enter the room from the left side and exit on the right side. I also created a mirrored version of the room template.
 
-<GalleryImage src="img/v2/guides/directed_level_graphs/directed_room_2.png" caption="Example room template" />
+<Image src="2d/guides/directed_level_graphs/directed_room_2.png" caption="Example room template" />
 
 ### Corridor room templates
 
 I also created directed versions of both vertical and horizontal corridors. This step is completely optional - if you do not care about the direction of corridors, you can use the default undirected doors.
 
 <Gallery cols={2}>
-    <GalleryImage src="img/v2/guides/directed_level_graphs/hor_6x1_1.png" />
-    <GalleryImage src="img/v2/guides/directed_level_graphs/hor_6x1_2.png" />
-    <GalleryImage src="img/v2/guides/directed_level_graphs/ver_1x6_1.png" />
-    <GalleryImage src="img/v2/guides/directed_level_graphs/ver_1x6_2.png" />
+    <Image src="2d/guides/directed_level_graphs/hor_6x1_1.png" />
+    <Image src="2d/guides/directed_level_graphs/hor_6x1_2.png" />
+    <Image src="2d/guides/directed_level_graphs/ver_1x6_1.png" />
+    <Image src="2d/guides/directed_level_graphs/ver_1x6_2.png" />
 </Gallery>
 
 > **Note:** The arrow tiles are placed on the room templates manually to better illustrate the direction of the corridors.
 
 ### Results
 
-<Image src="img/v2/guides/directed_level_graphs/result_2.png" />
+<Image src="2d/guides/directed_level_graphs/result_2.png" />
