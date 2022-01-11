@@ -151,7 +151,7 @@ And then we create a simple input setup task that prepares the level description
             {
                 var corridorRoom = ScriptableObject.CreateInstance<DeadCellsRoom>();
                 corridorRoom.Type = DeadCellsRoomType.Corridor;
-                levelDescription.AddCorridorConnection(connection, RoomTemplates.CorridorRoomTemplates.ToList(), corridorRoom);
+                levelDescription.AddCorridorConnection(connection, corridorRoom, RoomTemplates.CorridorRoomTemplates.ToList());
             }
 
             return levelDescription;
