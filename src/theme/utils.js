@@ -13,6 +13,10 @@ export const Path = props => {
         path = 'Create/Edgar/' + path;
     }
 
+    if (type === '3d') {
+        path = 'Create/Edgar (Grid3D)/' + path;
+    }
+
     const parts = path.split('/');
     let result = parts.join(' \u2192 ');
 

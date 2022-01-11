@@ -41,3 +41,6 @@
 {"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QOpen these materials, set their shader to \"Edgar/Minimap Single Color Tile\" and configure the Tile Color field to match the desired colour of the minimap layer.\\E$"}
 {"rule":"MORFOLOGIK_RULE_EN_GB","sentence":"^\\QInstead of using the Color mode, we will use the Original Tiles mode together with a custom shader that keeps all transparent pixels intact and transforms all the other pixels to a uniform colour.\\E$"}
 {"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QAlso, it is good to use the Default socket for new doors field instead of creating doors without a socket and that assigning the correct socket manually.\\E$"}
+{"rule":"A_INFINITIVE","sentence":"^\\QFor each door, use the Rotate -90/Rotate +90 buttons to rotate the door in a way the darker-red side points away from the room.\\E$"}
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QThe last step is to assign the blocker game object to the Blockers field in the Door Handler Grid 3D script.\\E$"}
+{"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QThen assign this game object to the Connectors field of the Door Handler script.\\E$"}
