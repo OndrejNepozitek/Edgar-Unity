@@ -1,4 +1,5 @@
 import React from "react";
+import {useActiveVersion} from '@theme/hooks/useDocs';
 
 export const Path = props => {
     let { path, type, par } = props;
@@ -29,4 +30,46 @@ export const Path = props => {
 
 Path.defaultProps = {
     par: false,
+}
+
+function importAll(r) {
+    r.keys().forEach(r);
+}
+
+const nextImages = require.context(
+    '@site/docs/',
+    true,
+    /(\.png|\.gif)$/
+);
+
+/*const versionedImages = require.context(
+    '@site/versioned_docs/',
+    true,
+    /(\.png|\.gif)$/
+);*/
+
+export function requireVersionedAsset(src) {
+    const activeVersion = useActiveVersion('default');
+    const label = activeVersion.label;
+
+    if (label === 'Next') {
+        return nextImages('./assets/' + src).default;
+    } else {
+        const path = `./version-${label}/assets/` + src;
+        return versionedImages(path).default;
+    }
+}
+
+export function requireVersionedCode(name) {
+    const activeVersion = useActiveVersion('default');
+    const label = activeVersion.label;
+
+    if (label === 'Next') {
+        const path = 'code/' + name;
+        return require('!!raw-loader!@site/docs/' + path + '.txt').default;
+    } else {
+        const path = `version-${label}/code/` + name
+        // return require('!!raw-loader!@site/versioned_docs/' + path + '.txt').default;
+        throw 'Uncomment above'
+    }
 }

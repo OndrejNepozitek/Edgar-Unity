@@ -145,5 +145,5 @@ module.exports = {
       }
     ]
   ],
-  plugins: [require.resolve("./src/customPLugin.js")],
+  plugins: [require.resolve("./src/customPlugin.js")],
 };

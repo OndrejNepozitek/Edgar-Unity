@@ -1,6 +1,7 @@
 import React from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import logger from '@docusaurus/logger';
+import { requireVersionedAsset } from '@theme/utils';
 
 const gutter = 2;
 const StyledImage = props => (
@@ -38,7 +39,7 @@ Gallery.defaultProps = {
 
 function getUrl(src, isGlobal) {
   try {
-    return isGlobal ? useBaseUrl(src) : require('@site/docs/assets/' + src).default;
+    return isGlobal ? useBaseUrl(src) : requireVersionedAsset(src);
   } catch (e) {
     logger.error('Image error: ' + e.message);
     return 'http://placehold.jp/150x150.png';

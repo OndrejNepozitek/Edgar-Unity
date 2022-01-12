@@ -4,6 +4,8 @@ title: Example 1
 
 In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-assetpuck) by [@pixel_poem](https://twitter.com/pixel_poem). Be sure to check out their work if you like the tileset. We will not care about room decorations - we will use just basic walls, floor and door tiles. 
 
+<ExternalCode name="example1PostProcessing_inner" />
+
 <Gallery>
     <Image src="2d/examples/example1/result1.png" caption="Simple example" />
     <Image src="2d/examples/example1/result_reallife1.png" caption="Real-life example" />
