@@ -117,21 +117,21 @@ If we are happy with the results, we can stop here. However, to showcase how we 
 
 We have to create a class that inherits from `DungeonGeneratorPostProcessBase` and because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute, so we are able to create an instance of that ScriptableObject. After a level is generated, the `Run` method is called and that is the place where we call our post-process logic.
 
-    [CreateAssetMenu(menuName = "Dungeon generator/Examples/Example 1/Post process", fileName = "Example1PostProcess")]
-    public class Example1PostProcess : DungeonGeneratorPostProcessBase
+    [CreateAssetMenu(menuName = "Edgar/Examples/Example 1/Post-processing", fileName = "Example1PostProcessing")]
+    public class Example1PostProcess : DungeonGeneratorPostProcessingGrid2D
     {
         [Range(0, 1)]
         public float EnemySpawnChance = 0.5f;
 
-        protected override void Run(GeneratedLevel level, LevelDescription levelDescription)
+        public override void Run(DungeonGeneratorLevelGrid2D level)
         { 
             HandleEnemies(level);
         }
 
-        private void HandleEnemies(GeneratedLevel level)
+        private void HandleEnemies(DungeonGeneratorLevelGrid2D level)
         {
             // Iterate through all the rooms
-            foreach (var roomInstance in level.GetRoomInstances())
+            foreach (var roomInstance in level.RoomInstances)
             {
                 // Get the transform that holds all the enemies
                 var enemiesHolder = roomInstance.RoomTemplateInstance.transform.Find("Enemies");
@@ -162,7 +162,7 @@ We have to create a class that inherits from `DungeonGeneratorPostProcessBase` a
         }
     }
 
-With the implementation ready, we now have to create an instance of that ScriptableObject by right-clicking in the project view and <Path path="2d:Examples/Example 1/Post-process" />. And the last step is to drag and drop this GameObject in the *Custom post process tasks* section of the dungeon generator.
+With the implementation ready, we now have to create an instance of that ScriptableObject by right-clicking in the project view and <Path path="2d:Examples/Example 1/Post-processing" />. And the last step is to drag and drop this GameObject in the *Custom post process tasks* section of the dungeon generator.
 
 <Image src="2d/examples/example1/custom_post_process.png" caption="Add the ScriptableObject to the Custom post-processing tasks array" />
 
