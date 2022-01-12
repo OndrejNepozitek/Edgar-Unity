@@ -2,8 +2,8 @@
 
 namespace Edgar.Unity.Examples.Example1
 {
-    [CreateAssetMenu(menuName = "Edgar/Examples/Example 1/Post-process", fileName = "Example1PostProcess")]
-    public class Example1PostProcess : DungeonGeneratorPostProcessingGrid2D
+    [CreateAssetMenu(menuName = "Edgar/Examples/Example 1/Post-processing", fileName = "Example1PostProcessing")]
+    public class Example1PostProcessing : DungeonGeneratorPostProcessingGrid2D
     {
         [Range(0, 1)]
         public float EnemySpawnChance = 0.5f;

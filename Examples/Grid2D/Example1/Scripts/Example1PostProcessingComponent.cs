@@ -3,7 +3,7 @@
 namespace Edgar.Unity.Examples.Example1
 {
     /// <summary>
-    /// The logic in this class is the same as in <see cref="Example1PostProcess"/> but implemented as a component rather than a scriptable object.
+    /// The logic in this class is the same as in <see cref="Example1PostProcessing"/> but implemented as a component rather than a scriptable object.
     /// </summary>
     public class Example1PostProcessingComponent : DungeonGeneratorPostProcessingComponentGrid2D
     {
