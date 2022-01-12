@@ -1,0 +1,7 @@
+public override void RegisterCallbacks(DungeonGeneratorCallbacksGrid2D callbacks)
+{
+    if (AddWalls)
+    {
+        callbacks.RegisterCallbackAfter(PostProcessPrioritiesGrid2D.InitializeSharedTilemaps, AddWallsUnderRooms);
+    }
+}

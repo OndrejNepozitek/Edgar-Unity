@@ -14,89 +14,13 @@ However, level graphs are not directly given to the generator as an input. First
 
 Both ```LevelGraph``` and ```LevelDescription``` revolve around rooms and connections. The following code should demonstrate the basic API of both classes and how to convert one to the other one:
 
-    public class CustomInputExample : DungeonGeneratorInputBase
-    {
-        public LevelGraph LevelGraph;
-        public bool UseCorridors;
-
-        protected override LevelDescription GetLevelDescription()
-        {
-            var levelDescription = new LevelDescription();
-
-            // Go through rooms in the level graph and add them to the level description
-            foreach (var room in LevelGraph.Rooms)
-            {
-                levelDescription.AddRoom(room, GetRoomTemplates(room));
-            }
-
-            // Go through connections in the level graph
-            foreach (var connection in LevelGraph.Connections)
-            {
-                // If corridors are enabled, add corridor connection
-                if (UseCorridors)
-                {
-                    // Create a room for the corridor
-                    var corridorRoom = ScriptableObject.CreateInstance<Room>();
-                    corridorRoom.Name = "Corridor";
-
-
-                    levelDescription.AddCorridorConnection(connection, corridorRoom, GetCorridorRoomTemplates());
-                }
-                // Else connect the rooms directly
-                else
-                {
-                    levelDescription.AddConnection(connection);
-                }
-            }
-
-            return levelDescription;
-        }
-
-        /// <summary>
-        /// Gets room templates for a given room.
-        /// </summary>
-        private List<GameObject> GetRoomTemplates(RoomBase room)
-        {
-            // Get room templates from a given room
-            var roomTemplates = room.GetRoomTemplates();
-
-            // If the list is empty, we use the defaults room templates from the level graph
-            if (roomTemplates == null || roomTemplates.Count == 0)
-            {
-                var defaultRoomTemplates = LevelGraph.DefaultIndividualRoomTemplates;
-                var defaultRoomTemplatesFromSets = LevelGraph.DefaultRoomTemplateSets.SelectMany(x => x.RoomTemplates);
-
-                // Combine individual room templates with room templates from room template sets
-                return defaultRoomTemplates.Union(defaultRoomTemplatesFromSets).ToList();
-            }
-
-            return roomTemplates;
-        }
-
-        /// <summary>
-        /// Gets corridor room templates.
-        /// </summary>
-        private List<GameObject> GetCorridorRoomTemplates()
-        {
-            var defaultRoomTemplates = LevelGraph.CorridorIndividualRoomTemplates;
-            var defaultRoomTemplatesFromSets = LevelGraph.CorridorRoomTemplateSets.SelectMany(x => x.RoomTemplates);
-
-            return defaultRoomTemplates.Union(defaultRoomTemplatesFromSets).ToList();
-        }
-    }
+<ExternalCode name="2d_customInput_full" />
 
 ## Custom input implementation
 
 Custom inputs are quite similar to [Custom post-processing](../generators/post-process.md) logic. We have to create a class that inherits from `DungeonGeneratorInputBase`. And because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute, so we are able to create an instance of that ScriptableObject. The `DungeonGeneratorInputBase` class has one abstract method that we need to implement - `LevelDescription GetLevelDescription()`:
 
-    [CreateAssetMenu(menuName = "Edgar/Examples/Docs/My custom input", fileName = "MyCustomInputSetup")]
-    public class CustomInputExample : DungeonGeneratorInputBase
-    {
-        protected override LevelDescription GetLevelDescription()
-        {
-            // Create level description
-        }
-    }
+<ExternalCode name="2d_customInput_simple" />
 
 After we implement the logic, we have to create an instance of that ScriptableObject by right-clicking in the project view and <Path path="2d:Examples/Docs/My custom input" />. And the last step is to switch the *Input Type* in the generator inspector to *Custom Input* and drag and drop the ScriptableObject instance to the *Custom Input Task* field.
 

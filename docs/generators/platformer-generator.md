@@ -29,7 +29,7 @@ There are some limitation regarding the platformer generator.
 
 ### Acyclic level graphs
 
-We should use only **acyclic** graphs, i.e. graphs without cycles. The room templates for platformers are often too restrictive to allow cycles. The generator currently allows graphs with cycles but it often happens that it is not able to generate any level.
+We should use only **acyclic** graphs, i.e. graphs without cycles. The room templates for platformers are often too restrictive to allow cycles. The generator currently allows graphs with cycles, but it often happens that it is not able to generate any level.
 
 ### Solvability of generated levels
 

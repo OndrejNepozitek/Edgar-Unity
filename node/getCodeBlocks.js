@@ -4,6 +4,7 @@ const stripIndent = require("strip-indent");
 const edgarPath = "C:/Users/ondra/Projects/Unity/Edgar-Unity/Assets/Edgar";
 const startOfRegionSequence = "#region";
 const startOfBlockSequence = "#region codeBlock:";
+const startOfHidden = "#region hide"
 const endOfRegionSequence = "#endregion";
 const myArgs = process.argv.slice(2);
 const version = myArgs[0] || 'Next';
@@ -47,13 +48,30 @@ function parseFile(filename, content) {
   const lines = content.split("\r\n");
 
   for (const line of lines) {
-    const trimmedLine = line.trim();
+    const trimmedLine = line.trimStart();    
+
     if (trimmedLine.startsWith(startOfBlockSequence)) {
       const blockName = trimmedLine.substring(startOfBlockSequence.length);
       codeBlocks.push({
         name: blockName,
         lines: [],
       });
+
+      continue;
+    } else if (trimmedLine.startsWith(startOfHidden)) {
+      codeBlocks.push({
+        isPlaceholder: true,
+        isHidden: true,
+      });
+
+      const prefix = line.substring(0, line.length - trimmedLine.length);
+      const substitute = "/* ... */"
+
+      for (const codeBlock of codeBlocks) {
+        if (!codeBlock.isPlaceholder) {
+          codeBlock.lines.push(prefix + substitute);
+        }
+      }
 
       continue;
     } else if (trimmedLine.startsWith(startOfRegionSequence)) {
@@ -70,6 +88,16 @@ function parseFile(filename, content) {
         fs.writeFileSync(codeBlockPath, codeBlockContent);
       }
 
+      continue;
+    }
+
+    let isHidden = false;
+    for (const codeBlock of codeBlocks) {
+      if (codeBlock.isHidden) {
+        isHidden = true;
+      }
+    }
+    if (isHidden) {
       continue;
     }
 

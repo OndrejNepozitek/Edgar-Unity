@@ -43,34 +43,7 @@ Moreover, there is a small problem with doors because there are no background ti
 
 The solution is quite simple. We have to create a simple post-processing task that goes through all door positions and deletes all the door tiles.
 
-    [CreateAssetMenu(menuName = "Edgar/Examples/Platformer 1/Post process", fileName = "Platformer1PostProcess")]
-    public class Platformer1PostProcess : DungeonGeneratorPostProcessBase
-    {
-        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
-        {
-            RemoveWallsFromDoors(level);
-        }
-
-        private void RemoveWallsFromDoors(GeneratedLevel level)
-        {
-            // Get the tilemap that we want to delete tiles from
-            var walls = level.GetSharedTilemaps().Single(x => x.name == "Walls");
-
-            // Go through individual rooms
-            foreach (var roomInstance in level.GetRoomInstances())
-            {
-                // Go through individual doors
-                foreach (var doorInstance in roomInstance.Doors)
-                {
-                    // Remove all the wall tiles from door positions
-                    foreach (var point in doorInstance.DoorLine.GetPoints())
-                    {
-                        walls.SetTile(point + roomInstance.Position, null);
-                    }
-                }
-            }
-        }
-    }
+<ExternalCode name="2d_platformer1_postProcessing" />
 
 > **Note:** The term *doors* is used throughout the text but in this context it simply means a connection between two rooms.
 

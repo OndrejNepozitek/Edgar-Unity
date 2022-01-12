@@ -12,8 +12,8 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 > **Disclaimer:** We are in no way affiliated with the authors of the **Enter the Gungeon** game and this plugin is not used in the game. This is only a case study about how to use this plugin to create something similar to what is done in that game.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="2d/examples/gungeon/result1.png" caption="Example result" />
-    <GalleryImage src="2d/examples/gungeon/result2.png" caption="Example result" />
+    <Image src="2d/examples/gungeon/result1.png" caption="Example result" />
+    <Image src="2d/examples/gungeon/result2.png" caption="Example result" />
 </Gallery>
 
 <Video src="videos/gungeon_example_video.mp4" style={{ marginBottom: 15, marginTop: -15 }} />
@@ -25,12 +25,12 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 > **Note:** If you want to add some more room templates, be sure to use the *Create* menu (*Examples/Enter the Gungeon/Room template*) or duplicate one of the existing room templates.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="2d/examples/gungeon/room_templates/entrance.png" caption="Entrance" />
-    <GalleryImage src="2d/examples/gungeon/room_templates/hub1.png" caption="Hub" />
-    <GalleryImage src="2d/examples/gungeon/room_templates/normal5.png" caption="Normal" />
-    <GalleryImage src="2d/examples/gungeon/room_templates/reward.png" caption="Reward" />
-    <GalleryImage src="2d/examples/gungeon/room_templates/shop.png" caption="Shop" />
-    <GalleryImage src="2d/examples/gungeon/room_templates/secret.png" caption="Secret" />
+    <Image src="2d/examples/gungeon/room_templates/entrance.png" caption="Entrance" />
+    <Image src="2d/examples/gungeon/room_templates/hub1.png" caption="Hub" />
+    <Image src="2d/examples/gungeon/room_templates/normal5.png" caption="Normal" />
+    <Image src="2d/examples/gungeon/room_templates/reward.png" caption="Reward" />
+    <Image src="2d/examples/gungeon/room_templates/shop.png" caption="Shop" />
+    <Image src="2d/examples/gungeon/room_templates/secret.png" caption="Secret" />
 </Gallery>
 
 ## Level graphs
@@ -38,8 +38,8 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 In Enter the Gungeon, they use multiple level graphs for each stage of the game.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="2d/examples/gungeon/level_graph_2.png" caption="Stage 1 level graph" /> 
-    <GalleryImage src="2d/examples/gungeon/level_graph_1.png" caption="Stage 2 level graph" /> 
+    <Image src="2d/examples/gungeon/level_graph_2.png" caption="Stage 1 level graph" /> 
+    <Image src="2d/examples/gungeon/level_graph_1.png" caption="Stage 2 level graph" /> 
 </Gallery>
 
 ### Custom rooms and connections
@@ -62,75 +62,12 @@ values={[
 ]}>
 <TabItem value="room">
 
-```
-public class GungeonRoom : RoomBase
-    {
-        public GungeonRoomType Type;
-
-        public override List<GameObject> GetRoomTemplates()
-        {
-            // We do not need any room templates here because they are resolved based on the type of the room.
-            return null;
-        }
-
-        public override string GetDisplayName()
-        {
-            // Use the type of the room as its display name.
-            return Type.ToString();
-        }
-
-        public override RoomEditorStyle GetEditorStyle(bool isFocused)
-        {
-            var style = base.GetEditorStyle(isFocused);
-
-            var backgroundColor = style.BackgroundColor;
-
-            // Use different colors for different types of rooms
-            switch (Type)
-            {
-                case GungeonRoomType.Entrance:
-                    backgroundColor = new Color(38/256f, 115/256f, 38/256f);
-                    break;
-
-                /* ... */
-            }
-
-            style.BackgroundColor = backgroundColor;
-
-            // Darken the color when focused
-            if (isFocused)
-            {
-                style.BackgroundColor = Color.Lerp(style.BackgroundColor, Color.black, 0.7f);
-            }
-
-            return style;
-        }
-    }
-```
+<ExternalCode name="2d_gungeon_room" />
 
   </TabItem>
   <TabItem value="connection">
 
-```
-    public class GungeonConnection : Connection
-    {
-        // Whether the corresponding corridor should be locked
-        public bool IsLocked;
-
-        public override ConnectionEditorStyle GetEditorStyle(bool isFocused)
-        {
-            var style = base.GetEditorStyle(isFocused);
-
-            // Use red color when locked
-            if (IsLocked)
-            {
-                style.LineColor = Color.red;
-            }
-
-            return style;
-        }
-    }
-```
+<ExternalCode name="2d_gungeon_connection" />
 
   </TabItem>
 </Tabs>
@@ -143,38 +80,11 @@ We will use a [custom input setup task](generators/custom-input.md) because it g
 
 Because we have multiple level graphs for each stage of the game, we want to choose the level graph randomly from the available options. The implementation is straightforward:
 
-    public class GungeonInputSetupTask : DungeonGeneratorInputBase
-    {
-        [Range(1, 2)]
-        public int Stage = 1;
-
-        public LevelGraph[] Stage1LevelGraphs;
-
-        public LevelGraph[] Stage2LevelGraphs;
-
-        protected override LevelDescription GetLevelDescription()
-        {
-            // Pick random level graph
-            var levelGraphs = Stage == 1 ? Stage1LevelGraphs : Stage2LevelGraphs;
-            var levelGraph = levelGraphs.GetRandom(Payload.Random);
-            GungeonGameManager.Instance.CurrentLevelGraph = levelGraph;
-
-            /* ... */
-        }
-    }
+<ExternalCode name="2d_gungeon_inputSetup_1" />
 
 Then we just assign level graphs to the two arrays. The last step is to control the current stage of the game. We can do that in the game manager before we generate a level:
 
-    private IEnumerator GeneratorCoroutine(DungeonGenerator generator)
-    {
-        /* ... */
-
-        // Configure the generator with the current stage number
-        var inputTask = (GungeonInputSetupTask) generator.CustomInputTask;
-        inputTask.Stage = Stage;
-
-        /* ... */
-    }
+<ExternalCode name="2d_gungeon_generatorStage" />
 
 ### Random secret rooms
 
@@ -187,65 +97,7 @@ To add the secret room to the level, we first get all the rooms from the level d
 <details><summary>Show code block</summary>
 <div>
 
-```
-    public class GungeonInputSetupTask : DungeonGeneratorInputBase
-    {
-        public LevelGraph LevelGraph;
-
-        public GungeonRoomTemplatesConfig RoomTemplates;
-
-        // The probability that a secret room is added to the level
-        [Range(0f, 1f)]
-        public float SecretRoomChance = 0.9f;
-
-        // The probability that a secret room is attached to a dead-end room
-        [Range(0f, 1f)]
-        public float SecretRoomDeadEndChance = 0.5f;
-
-        protected override LevelDescription GetLevelDescription()
-        {
-            /* ... */
-
-            // Add secret rooms
-            AddSecretRoom(levelDescription);
-
-            /* ... */
-        }
-
-        private void AddSecretRoom(LevelDescription levelDescription)
-        {
-            // Return early if no secret room should be added to the level
-            if (Payload.Random.NextDouble() > SecretRoomChance) return;
-
-            // Get the graphs of rooms
-            var graph = levelDescription.GetGraph();
-
-            // Decide whether to attach the secret room to a dead end room or not
-            var attachToDeadEnd = Payload.Random.NextDouble() < SecretRoomDeadEndChance;
-
-            // Find all the possible rooms to attach to and choose a random one
-            var possibleRoomsToAttachTo = graph.Vertices.Cast<GungeonRoom>().Where(x =>
-                (!attachToDeadEnd || graph.GetNeighbours(x).Count() == 1) && x.Type != GungeonRoomType.Entrance
-            ).ToList();
-            var roomToAttachTo = possibleRoomsToAttachTo[Payload.Random.Next(possibleRoomsToAttachTo.Count)];
-
-            // Create secret room
-            var secretRoom = ScriptableObject.CreateInstance<GungeonRoom>();
-            secretRoom.Type = GungeonRoomType.Secret;
-            levelDescription.AddRoom(secretRoom, RoomTemplates.GetRoomTemplates(secretRoom).ToList());
-
-            // Prepare the connection between secretRoom and roomToAttachTo
-            var connection = ScriptableObject.CreateInstance<GungeonConnection>();
-            connection.From = roomToAttachTo;
-            connection.To = secretRoom;
-
-            // Connect the two rooms with a corridor
-            var corridorRoom = ScriptableObject.CreateInstance<GungeonRoom>();
-            corridorRoom.Type = GungeonRoomType.Corridor;
-            levelDescription.AddCorridorConnection(connection, RoomTemplates.CorridorRoomTemplates.ToList(), corridorRoom);
-        }
-    }
-```
+<ExternalCode name="2d_gungeon_inputSecretRooms" />
 
 </div>
 </details>
@@ -278,58 +130,7 @@ The algorithm works as follows:
 <details><summary>Show code block</summary>
 <div>
 
-```
-
-    public class GungeonRoomManager : MonoBehaviour
-    {
-        /// <summary>
-        /// Enemies that can spawn inside the room.
-        /// </summary>
-        public GameObject[] Enemies;
-
-        /// <summary>
-        /// Collider of the floor tilemap layer.
-        /// </summary>
-        public Collider2D FloorCollider;
-
-        /* ... */
-
-        private void SpawnEnemies()
-        {
-            EnemiesSpawned = true;
-
-            var enemies = new List<GameObject>();
-            var totalEnemiesCount = GungeonGameManager.Instance.Random.Next(4, 8);
-
-            while(enemies.Count < totalEnemiesCount)
-            {
-                // Find random position inside floor collider bounds
-                var position = RandomPointInBounds(FloorCollider.bounds, 1f);
-
-                // Check if the point is actually inside the collider as there may be holes in the floor, etc.
-                if (!IsPointWithinCollider(FloorCollider, position))
-                {
-                    continue;
-                }
-
-                // We want to make sure that there is no other collider in the radius of 1
-                if (Physics2D.OverlapCircleAll(position, 0.5f).Any(x => !x.isTrigger))
-                {
-                    continue;
-                }
-
-                // Pick random enemy prefab
-                var enemyPrefab = Enemies[Random.Range(0, Enemies.Length)];
-
-                // Create an instance of the enemy and set position and parent
-                var enemy = Instantiate(enemyPrefab);
-                enemy.transform.position = position;
-                enemy.transform.parent = roomInstance.RoomTemplateInstance.transform;
-                enemies.Add(enemy);
-            }
-        }
-    }
-```
+<ExternalCode name="2d_gungeon_roomManager" />
 
 </div>
 </details>
@@ -343,8 +144,8 @@ The algorithm works as follows:
 Our goal is to close neighbouring corridors with doors when the player enters the room and then open the doors when all the enemies are dead. The only slightly complex part is how to obtain the game objects that represent the doors. To make our lives easier, we added the doors directly to each corridor room template. That means that after the level is generated we just have to retrieve the doors from corridor room templates.
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="2d/examples/gungeon/room_templates/ver5.png" caption="Vertical corridor" />
-    <GalleryImage src="2d/examples/gungeon/room_templates/hor5.png" caption="Horizontal corridor" />
+    <Image src="2d/examples/gungeon/room_templates/ver5.png" caption="Vertical corridor" />
+    <Image src="2d/examples/gungeon/room_templates/hor5.png" caption="Horizontal corridor" />
 </Gallery>
 
 We can do it like this:
@@ -360,79 +161,7 @@ When we have the game objects, we can simply activate them when the player enter
 <details><summary>Show code block</summary>
 <div>
 
-```
-
-    public class GungeonPostProcessTask : DungeonGeneratorPostProcessBase
-    {
-        public GameObject[] Enemies;
-
-        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
-        {
-            /* ... */
-
-            foreach (var roomInstance in level.GetRoomInstances())
-            {
-                var room = (GungeonRoom) roomInstance.Room;
-                var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-
-                // Find floor tilemap layer
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
-                var floor = tilemaps.Single(x => x.name == "Floor").gameObject;
-
-                // Add current room detection handler
-                floor.AddComponent<GungeonCurrentRoomHandler>();
-
-                // Add room manager
-                var roomManager = roomTemplateInstance.AddComponent<GungeonRoomManager>();
-                
-                if (room.Type != GungeonRoomType.Corridor)
-                {
-                    // Set enemies and floor collider to the room manager
-                    roomManager.Enemies = Enemies;
-                    roomManager.FloorCollider = floor.GetComponent<CompositeCollider2D>();
-
-                    // Find all the doors of neighboring corridors and save them in the room manager
-                    // The term "door" has two different meanings here:
-                    //   1. it represents the connection point between two rooms in the level
-                    //   2. it represents the door game object that we have inside each corridor
-                    foreach (var door in roomInstance.Doors)
-                    {
-                        // Get the room instance of the room that is connected via this door
-                        var corridorRoom = door.ConnectedRoomInstance;
-
-                        // Get the room template instance of the corridor room
-                        var corridorGameObject = corridorRoom.RoomTemplateInstance;
-
-                        // Find the door game object by its name
-                        var doorsGameObject = corridorGameObject.transform.Find("Door")?.gameObject;
-
-                        // Each corridor room instance has a connection that represents the edge in the level graph
-                        // We use the connection object to check if the corridor should be locked or not
-                        var connection = (GungeonConnection) corridorRoom.Connection;
-
-                        if (doorsGameObject != null)
-                        {
-                            // If the connection is locked, we set the Locked state and keep the game object active
-                            // Otherwise we set the EnemyLocked state and deactivate the door. That means that the door is active and locked
-                            // only when there are enemies in the room.
-                            if (connection.IsLocked)
-                            {
-                                doorsGameObject.GetComponent<GungeonDoor>().State = GungeonDoor.DoorState.Locked;
-                            }
-                            else
-                            {
-                                doorsGameObject.GetComponent<GungeonDoor>().State = GungeonDoor.DoorState.EnemyLocked;
-                                doorsGameObject.SetActive(false);
-                            }
-                            
-                            roomManager.Doors.Add(doorsGameObject);
-                        }
-                    }
-                }
-            }
-        }
-    }
-```
+<ExternalCode name="2d_gungeon_doors" />
 
 </div>
 </details>
@@ -452,6 +181,6 @@ In this example, the [Fog of War](guides/fog-of-war.md) feature is enabled. For 
 ## Results
 
 <Gallery cols={2} fixedHeight>
-    <GalleryImage src="2d/examples/gungeon/result3.png" caption="Example result" />
-    <GalleryImage src="2d/examples/gungeon/result4.png" caption="Example result" />
+    <Image src="2d/examples/gungeon/result3.png" caption="Example result" />
+    <Image src="2d/examples/gungeon/result4.png" caption="Example result" />
 </Gallery>

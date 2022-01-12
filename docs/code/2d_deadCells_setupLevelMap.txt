@@ -1,0 +1,45 @@
+public TileBase WallTile;
+public TileBase LevelMapWallTile;
+public TileBase LevelMapWallBackgroundTile;
+public TileBase LevelMapBackgroundTile;
+public TileBase LevelMapPlatformTile;
+
+/* ... */
+
+/// <summary>
+/// Setup a schematic level map.
+/// </summary>
+private void SetupLevelMap(DungeonGeneratorLevelGrid2D level)
+{
+    // Return if level map not supported
+    if (!Application.isPlaying || !DeadCellsGameManager.Instance.LevelMapSupported())
+    {
+        return;
+    }
+
+    // Create new tilemap layer for the level map
+    var tilemaps = level.GetSharedTilemaps();
+    var tilemapsRoot = level.RootGameObject.transform.Find(GeneratorConstantsGrid2D.TilemapsRootName);
+    var tilemapObject = new GameObject("LevelMap");
+    tilemapObject.transform.SetParent(tilemapsRoot);
+    tilemapObject.transform.localPosition = Vector3.zero;
+    var tilemap = tilemapObject.AddComponent<Tilemap>();
+    var tilemapRenderer = tilemapObject.AddComponent<TilemapRenderer>();
+    tilemapRenderer.sortingOrder = 20;
+
+    // Assign special layer
+    var mapLayer = LayerMask.NameToLayer(DeadCellsGameManager.LevelMapLayer);
+    tilemapObject.layer = mapLayer;
+
+    // Copy background tiles
+    CopyTilesToLevelMap(level, new[] { "Background", "Other 1" }, tilemap, LevelMapBackgroundTile);
+
+    // Copy wall background tiles
+    CopyTilesToLevelMap(level, new[] { "Background" }, tilemap, LevelMapWallBackgroundTile, x => x == WallTile);
+
+    // Copy platforms tiles
+    CopyTilesToLevelMap(level, new[] { "Platforms" }, tilemap, LevelMapPlatformTile);
+
+    // Copy wall tiles
+    CopyTilesToLevelMap(level, new[] { "Walls" }, tilemap, LevelMapWallTile);
+}

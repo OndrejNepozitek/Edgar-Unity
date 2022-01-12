@@ -1,0 +1,24 @@
+[Serializable]
+public class DeadCellsRoomTemplatesConfig
+{
+    public GameObject[] DefaultRoomTemplates;
+
+    public GameObject[] ShopRoomTemplates;
+
+    /* ... */
+
+
+    public GameObject[] GetRoomTemplates(DeadCellsRoom room)
+    {
+        switch (room.Type)
+        {
+            case DeadCellsRoomType.Shop:
+                return ShopRoomTemplates;
+
+            /* ... */
+
+            default:
+                return DefaultRoomTemplates;
+        }
+    }
+}
