@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+#region codeBlock:2d_example1_postProcessing
 namespace Edgar.Unity.Examples.Example1
 {
     [CreateAssetMenu(menuName = "Edgar/Examples/Example 1/Post-processing", fileName = "Example1PostProcessing")]
@@ -47,3 +48,4 @@ namespace Edgar.Unity.Examples.Example1
         }
     }
 }
+#endregion

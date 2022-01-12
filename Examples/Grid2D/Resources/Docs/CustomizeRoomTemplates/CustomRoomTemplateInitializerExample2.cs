@@ -2,10 +2,7 @@
 
 namespace Edgar.Unity.Examples.Resources
 {
-#if UNITY_EDITOR
-
-#endif
-
+    #region codeBlock:2d_roomTemplateCustomization_initializer_2
     public class CustomRoomTemplateInitializerExample2 : RoomTemplateInitializerBaseGrid2D
     {
         public override void Initialize()
@@ -31,13 +28,13 @@ namespace Edgar.Unity.Examples.Resources
             tilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
         }
 
-        #if UNITY_EDITOR
+        // Change the attribute below to anything you want. (And uncomment it)
         // [MenuItem("Assets/Create/Dungeon generator/Custom room template")]
         public static void CreateRoomTemplatePrefab()
         {
             // Make sure to use the correct generic parameter - it should be the type of this class
             RoomTemplateInitializerUtilsGrid2D.CreateRoomTemplatePrefab<CustomRoomTemplateInitializerExample2>();
         }
-        #endif
     }
+    #endregion
 }

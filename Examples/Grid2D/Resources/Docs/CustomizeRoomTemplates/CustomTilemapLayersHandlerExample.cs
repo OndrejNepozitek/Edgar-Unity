@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 
 namespace Edgar.Unity.Examples.Resources
 {
+    #region codeBlock:2d_roomTemplateCustomization_handler
     // TilemapLayersHandlerBase inherit from ScriptableObject so we need to create an asset
     // menu item that we will use to create the scriptable object instance.
     // The menu name can be changed to anything you want.
@@ -58,4 +59,5 @@ namespace Edgar.Unity.Examples.Resources
             tilemapGameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
     }
+    #endregion
 }
