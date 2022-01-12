@@ -38,7 +38,7 @@ Level graphs must be **connected**. We say that a graph is connected if there is
 
 ### Graph editor
 
-The Graph editor window can be opened by clicking the *Open graph editor* button.
+The Graph editor window can be opened double-clicking the level graph *ScriptableObject*.
 
 <Image src="2d/level_graphs/level_graph_window.png" caption="Graph editor window" />
 
@@ -50,7 +50,7 @@ Window controls:
 Working with level graphs:
 - *Create room*: double-click on an empty space in the grid
 - *Configure room*: double-click on an existing room
-- *Delete room*: right-click on a room and select *Delete room*
+- *Delete room*: press *Ctrl + Del*, or right-click on a room and select *Delete room*
 - *Move room*: left click and then drag around
 - *Add connection*: hold *Ctrl* while left-clicking a room and then move the cursor to a different room
 - *Delete connection*: right-click on a connection handle and select *Delete connection*

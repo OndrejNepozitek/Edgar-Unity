@@ -44,3 +44,5 @@
 {"rule":"A_INFINITIVE","sentence":"^\\QFor each door, use the Rotate -90/Rotate +90 buttons to rotate the door in a way the darker-red side points away from the room.\\E$"}
 {"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QThe last step is to assign the blocker game object to the Blockers field in the Door Handler Grid 3D script.\\E$"}
 {"rule":"POSSESSIVE_APOSTROPHE","sentence":"^\\QThen assign this game object to the Connectors field of the Door Handler script.\\E$"}
+{"rule":"ADMIT_ENJOY_VB","sentence":"^\\QBefore designing your first room template, you should be familiar with Unity Tilemaps as they are used to draw and store individual\\E$"}
+{"rule":"ADMIT_ENJOY_VB","sentence":"^\\QBefore designing your first room template, you should be familiar with Unity Tilemaps as they are used to draw and store individual tiles.\\E$"}
