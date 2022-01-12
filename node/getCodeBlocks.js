@@ -43,10 +43,6 @@ function readCsharpFiles(dirname, onFileContent, onError) {
 }
 
 function parseFile(filename, content) {
-  if (filename !== "Example1PostProcessing.cs") {
-    return;
-  }
-
   const codeBlocks = [];
   const lines = content.split("\r\n");
 
@@ -85,6 +81,6 @@ function parseFile(filename, content) {
   }
 }
 
-//fs.rmSync(outputPath, { recursive: true, force: true });
+fs.rmSync(outputPath, { recursive: true, force: true });
 fs.mkdirSync(outputPath, { recursive: true })
 readCsharpFiles(edgarPath, parseFile, (err) => console.log(err));

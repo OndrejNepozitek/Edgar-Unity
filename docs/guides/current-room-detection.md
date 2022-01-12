@@ -31,147 +31,27 @@ An advantage of the first approach is that Unity does not have to recompute the 
 
 Below you can see the post-processing code that is needed to add this floor collider to each of the rooms in a generated level.
 
-    public class CurrentRoomDetectionPostProcess : DungeonGeneratorPostProcessBase
-    {
-        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
-        {
-            foreach (var roomInstance in level.GetRoomInstances())
-            {
-                var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-
-                // Find floor tilemap layer
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
-                var floor = tilemaps.Single(x => x.name == "Floor").gameObject;
-
-                // Add floor collider
-                AddFloorCollider(floor);
-            }
-        }
-
-        protected void AddFloorCollider(GameObject floor)
-        {
-            var tilemapCollider2D = floor.AddComponent<TilemapCollider2D>();
-            tilemapCollider2D.usedByComposite = true;
-
-            var compositeCollider2d = floor.AddComponent<CompositeCollider2D>();
-            compositeCollider2d.geometryType = CompositeCollider2D.GeometryType.Polygons;
-            compositeCollider2d.isTrigger = true;
-            compositeCollider2d.generationType = CompositeCollider2D.GenerationType.Manual;
-
-            floor.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        }
-    }
+<ExternalCode name="2d_currentRoomDetection_postProcessing_1" />
 
 ## Trigger handler
 
 When we have our floor colliders enabled, we must be able to do something when the player triggers the collider. We will create a very simple component that will be added the floor tilemap layer. This component will have two methods - **OnTriggerEnter2D** and **OnTriggerExit2D** - and inside these methods we will call the room manager that we will create in the next step.
 
-    public class CurrentRoomDetectionTriggerHandler : MonoBehaviour
-    {
-        private CurrentRoomDetectionRoomManager roomManager;
-
-        public void Start()
-        {
-            roomManager = transform.parent.parent.gameObject.GetComponent<CurrentRoomDetectionRoomManager>();
-        }
-
-        public void OnTriggerEnter2D(Collider2D otherCollider)
-        {
-            if (otherCollider.gameObject.tag == "Player")
-            {
-                roomManager?.OnRoomEnter(otherCollider.gameObject);
-            }
-        }
-
-        public void OnTriggerExit2D(Collider2D otherCollider)
-        {
-            if (otherCollider.gameObject.tag == "Player")
-            {
-                roomManager?.OnRoomLeave(otherCollider.gameObject);
-            }
-        }
-    }
+<ExternalCode name="2d_currentRoomDetection_triggerHandler" />
 
 We have to add this component to each room in the generated level. We will modify our post-processing logic to look like this:
 
-    public class CurrentRoomDetectionPostProcess : DungeonGeneratorPostProcessBase
-    {
-        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
-        {
-            foreach (var roomInstance in level.GetRoomInstances())
-            {
-                var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-
-                // Find floor tilemap layer
-                var tilemaps = RoomTemplateUtils.GetTilemaps(roomTemplateInstance);
-                var floor = tilemaps.Single(x => x.name == "Floor").gameObject;
-
-                // Add floor collider
-                AddFloorCollider(floor);
-
-                // Add current room detection handler
-                floor.AddComponent<CurrentRoomDetectionTriggerHandler>();
-            }
-        }
-
-        protected void AddFloorCollider(GameObject floor) { ... }
-    }
+<ExternalCode name="2d_currentRoomDetection_postProcessing_2" />
 
 ## Room manager
 
 We could handle all the logic inside the handler that we created in the previous step. However, it might be better to have a central place where all the logic regarding individual rooms takes place. Therefore, we will create a simple room manager component with two methods - **OnRoomEnter** and **OnRoomLeave** which will be called by the handler from the previous step.
 
-    public class CurrentRoomDetectionRoomManager : MonoBehaviour
-    {
-        /// <summary>
-        /// Room instance of the corresponding room.
-        /// </summary>
-        public RoomInstance RoomInstance;
-
-        /// <summary>
-        /// Gets called when a player enters the room.
-        /// </summary>
-        /// <param name="player"></param>
-        public void OnRoomEnter(GameObject player)
-        {
-            Debug.Log($"Room enter. Room name: {RoomInstance.Room.GetDisplayName()}, Room template: {RoomInstance.RoomTemplatePrefab.name}");
-            CurrentRoomDetectionGameManager.Instance.OnRoomEnter(RoomInstance);
-        }
-
-        /// <summary>
-        /// Gets called when a player leaves the room.
-        /// </summary>
-        /// <param name="player"></param>
-        public void OnRoomLeave(GameObject player)
-        {
-            Debug.Log($"Room leave {RoomInstance.Room.GetDisplayName()}");
-            CurrentRoomDetectionGameManager.Instance.OnRoomLeave(RoomInstance);
-        }
-    }
+<ExternalCode name="2d_currentRoomDetection_roomManager" />
 
 Again, we will use our post-processing logic to add this room manager to each room in the level. Moreover, we will also set the `RoomInstance` field so that the room manager has access to all the information about the room.
 
-    public class CurrentRoomDetectionPostProcess : DungeonGeneratorPostProcessBase
-    {
-        public override void Run(GeneratedLevel level, LevelDescription levelDescription)
-        {
-            foreach (var roomInstance in level.GetRoomInstances())
-            {
-                var roomTemplateInstance = roomInstance.RoomTemplateInstance;
-
-                // Find floor tilemap layer
-                // Add floor collider
-
-                // Add the room manager component
-                var roomManager = roomTemplateInstance.AddComponent<CurrentRoomDetectionRoomManager>();
-                roomManager.RoomInstance = roomInstance;
-
-                // Add current room detection handler
-            }
-        }
-
-        protected void AddFloorCollider(GameObject floor) { ... }
-    }
+<ExternalCode name="2d_currentRoomDetection_postProcessing_3" />
 
 ## Game manager
 

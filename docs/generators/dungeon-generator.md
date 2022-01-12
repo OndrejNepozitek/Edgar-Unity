@@ -63,8 +63,7 @@ It is very simple to call the generator from a script:
 
 Example:
 
-    var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGenerator>();
-    generator.Generate();
+<ExternalCode name="2d_generator_run" />
 
 > **Note:** The `Generate()` method blocks the main Unity thread, so the game may freeze while the dungeon is generated. The PRO version comes with an implementation that uses coroutines to make sure that the games does not freeze.
 

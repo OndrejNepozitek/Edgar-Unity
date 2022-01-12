@@ -36,61 +36,7 @@ Typical use case:
 
 The last way of customizing the structure of tilemap layers requires writing a piece of code. You have to create a class that inherits from the `TilemapLayersHandlerBase` class. Below is a commented example of how to do that:
 
-    // TilemapLayersHandlerBase inherit from ScriptableObject so we need to create an asset
-    // menu item that we will use to create the scriptable object instance.
-    // The menu name can be changed to anything you want.
-    // [CreateAssetMenu(menuName = "Dungeon generator/Custom tilemap layers handler", fileName = "CustomTilemapLayersHandler")]
-    public class CustomTilemapLayersHandlerExample : TilemapLayersHandlerBase
-    {
-        public override void InitializeTilemaps(GameObject gameObject)
-        {
-            // First make sure that you add the grid component
-            var grid = gameObject.AddComponent<Grid>();
-
-            // If we want a different cell size, we can configure that here
-            // grid.cellSize = new Vector3(1, 2, 1);
-
-            // And now we create individual tilemap layers
-            var floorTilemapObject = CreateTilemapGameObject("Floor", gameObject, 0);
-
-            var wallsTilemapObject = CreateTilemapGameObject("Walls", gameObject, 1);
-            AddCompositeCollider(wallsTilemapObject);
-
-            CreateTilemapGameObject("Additional layer 1", gameObject, 2);
-            CreateTilemapGameObject("Additional layer 2", gameObject, 3);
-        }
-
-        /// <summary>
-        /// Helper to create a tilemap layer
-        /// </summary>
-        protected GameObject CreateTilemapGameObject(string name, GameObject parentObject, int sortingOrder)
-        {
-            // Create a new game object that will hold our tilemap layer
-            var tilemapObject = new GameObject(name);
-            // Make sure to correctly set the parent
-            tilemapObject.transform.SetParent(parentObject.transform);
-            var tilemap = tilemapObject.AddComponent<Tilemap>();
-            var tilemapRenderer = tilemapObject.AddComponent<TilemapRenderer>();
-            tilemapRenderer.sortingOrder = sortingOrder;
-
-            return tilemapObject;
-        }
-
-        /// <summary>
-        /// Helper to add a collider to a given tilemap game object.
-        /// </summary>
-        protected void AddCompositeCollider(GameObject tilemapGameObject, bool isTrigger = false)
-        {
-            var tilemapCollider2D = tilemapGameObject.AddComponent<TilemapCollider2D>();
-            tilemapCollider2D.usedByComposite = true;
-
-            var compositeCollider2d = tilemapGameObject.AddComponent<CompositeCollider2D>();
-            compositeCollider2d.geometryType = CompositeCollider2D.GeometryType.Polygons;
-            compositeCollider2d.isTrigger = isTrigger;
-
-            tilemapGameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-        }
-    }
+<ExternalCode name="2d_roomTemplateCustomization_handler" />
 
 When we have our custom tilemap layers handler prepared, there are 2 additional steps:
 
@@ -109,32 +55,7 @@ And second, we have to drag and drop this file to the *Tilemap Layers Handler* f
 
 Now we will add a *Create menu* shortcut to create a room template with a custom tilemap layers handler. This is better explained in the next section, below is the minimal working example. It will add a <Path path="2d:Custom room template" /> menu item that will create a room template prefab with our custom tilemap layers.
 
-    using UnityEngine;
-    #if UNITY_EDITOR
-    using UnityEditor;
-    #endif
-
-    public class CustomRoomTemplateInitializerExample : RoomTemplateInitializerBase
-    {
-        protected override void InitializeTilemaps(GameObject tilemapsRoot)
-        {
-            // Create an instance of our custom tilemap layers handler
-            var tilemapLayersHandler = ScriptableObject.CreateInstance<CustomTilemapLayersHandlerExample>();
-
-            // Initialize tilemaps
-            tilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
-        }
-
-        #if UNITY_EDITOR
-        [MenuItem("Assets/Create/Edgar/Custom room template")]
-        public static void CreateRoomTemplatePrefab()
-        {
-            // Make sure to use the correct generic parameter - it should be the type of this class
-            RoomTemplateInitializerUtils.CreateRoomTemplatePrefab<CustomRoomTemplateInitializerExample>();
-        }
-        #endif
-    }
-
+<ExternalCode name="2d_roomTemplateCustomization_initializer_1" />
 
 ## Room template initializers
 
@@ -159,42 +80,4 @@ The steps to create a custom room template initializer are the following:
 
 An example can be seen below:
 
-    using UnityEngine;
-    #if UNITY_EDITOR
-    using UnityEditor;
-    #endif
-
-    public class CustomRoomTemplateInitializerExample2 : RoomTemplateInitializerBase
-    {
-        public override void Initialize()
-        {
-            // Call the default initialization
-            base.Initialize();
-
-            // Place your custom logic after initialization here
-            // This script is attached to the room template game object that is being created (and this component is later removed)
-            // So you can access the gameObject field and add e.g. additional game object
-
-            // For example, we can add a game object that will hold lights
-            var lightsGameObject = new GameObject("Lights");
-            lightsGameObject.transform.SetParent(gameObject.transform);
-        }
-
-        protected override void InitializeTilemaps(GameObject tilemapsRoot)
-        {
-            // Create an instance of our custom tilemap layers handler
-            var tilemapLayersHandler = ScriptableObject.CreateInstance<CustomTilemapLayersHandlerExample>();
-
-            // Initialize tilemaps
-            tilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
-        }
-
-        #if UNITY_EDITOR
-        [MenuItem("Assets/Create/Edgar/Custom room template")]
-        public static void CreateRoomTemplatePrefab()
-        {
-            // Make sure to use the correct generic parameter - it should be the type of this class
-            RoomTemplateInitializerUtils.CreateRoomTemplatePrefab<CustomRoomTemplateInitializerExample2>();
-        }
-        #endif
-    }
+<ExternalCode name="2d_roomTemplateCustomization_initializer_2" />
