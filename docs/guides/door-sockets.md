@@ -53,8 +53,12 @@ You can also have non-corridor rooms with some doors being skull doors and some 
 
 ## Advanced
 
-The default socket implementation considers two doors to be compatible if the sockets are equal. If you need more control over this, you can implement your own socket class that inherits from the `DoorSocketBase` class and provide an implementation of the `IsCompatibleWith(IDoorSocket otherSocket)` method. An example of a behaviour that is not possible with the default implementation:
+The default socket implementation considers two doors to be compatible if the sockets are equal (i.e. they are the same instance of the same scriptable object). If you need more control over this, you can implement your own socket class that inherits from the `DoorSocketBase` class and provide an implementation of the `IsCompatibleWith(IDoorSocket otherSocket)` method. 
 
-- Socket A is compatible with B
-- Socket B is compatible with C
-- Socket A is not compatible with C
+The rules of deciding if two sockets are compatible are as follows:
+
+- If both sockets are null, they are compatible
+- If one socket is null, the other socket decides whether they are compatible
+- If no socket is null
+    - both sockets must agree on the same outcome (of whether they are compatible or not)
+    - if they disagree, an exception is thrown
