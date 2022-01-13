@@ -115,13 +115,17 @@ If we now generate the dungeon, we will see that it contains all the enemies tha
 
 If we are happy with the results, we can stop here. However, to showcase how we can add some post-processing logic to the generator, we will try to spawn each monster with some predefined probability so that different monsters spawn every time. The result can be found below.
 
-We have to create a class that inherits from `DungeonGeneratorPostProcessBase` and because the base class is a ScriptableObject, we need to add the `CreateAssetMenu` attribute, so we are able to create an instance of that ScriptableObject. After a level is generated, the `Run` method is called and that is the place where we call our post-process logic.
+> **Note:** Since version `2.0.0-beta.0`, the easiest way to implement a post-processing logic is with a `MonoBehaviour` rather than a `ScriptableObject`. So we will showcase that here.
 
-<ExternalCode name="2d_example1_postProcessing" />
+We have to create a class that inherits from `DungeonGeneratorPostProcessingComponentGrid2D`. After a level is generated, the `Run` method is called and that is the place where we call our post-processing logic.
 
-With the implementation ready, we now have to create an instance of that ScriptableObject by right-clicking in the project view and <Path path="2d:Examples/Example 1/Post-processing" />. And the last step is to drag and drop this GameObject in the *Custom post process tasks* section of the dungeon generator.
+<ExternalCode name="2d_example1_postProcessingComponent" />
 
-<Image src="2d/examples/example1/custom_post_process.png" caption="Add the ScriptableObject to the Custom post-processing tasks array" />
+With the implementation ready, we now have to attach this component to the game object where we have our generator component attached.
+
+ create an instance of that ScriptableObject by right-clicking in the project view and <Path path="2d:Examples/Example 1/Post-processing" />. And the last step is to drag and drop this GameObject in the *Custom post process tasks* section of the dungeon generator.
+
+<Image src="2d/examples/example1/custom_post_processing_component.png" caption="Attach the component to the game object with the generator" />
 
 ### Level graph
 

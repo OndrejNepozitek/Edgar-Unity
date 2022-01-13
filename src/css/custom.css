@@ -183,6 +183,7 @@ blockquote {
 
 .prism-code {
   font-size: 12px !important;
+  margin-bottom: 10px !important;
 }
 
 .path {

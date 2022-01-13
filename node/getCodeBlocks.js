@@ -22,8 +22,6 @@ const version = myArgs[0] || 'Next';
 // Usage: npm run codeBlocks -- --keep-old
 const keepOldFiles = myArgs.some(x => x === "--keep-old");
 
-console.log(myArgs);
-
 let outputPath = path.join(__dirname, "..", "docs", "code");
 if (version !== 'Next' && !version.startsWith("--")) {
   const outputPathRoot = path.join(__dirname, "..", "versioned_docs", "version-" + version);

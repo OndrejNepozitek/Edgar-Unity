@@ -52,3 +52,4 @@ tilesets
 DoorSockets
 DirectedLevelGraphs
 quickstart
+ScriptableObjects
