@@ -1,7 +1,17 @@
+/*
+
+The goal of this file is to locate the source code of Edgar and find
+all the marked code blocks. For each such code blocks, one txt file
+is created.
+
+A version positional argument can be given, default is the "Next" version.
+Example format "2.0.0-beta.0".
+
+*/
+const edgarPath = "C:/Users/ondra/Projects/Unity/Edgar-Unity/Assets/Edgar";
 const fs = require("fs");
 const path = require("path");
 const stripIndent = require("strip-indent");
-const edgarPath = "C:/Users/ondra/Projects/Unity/Edgar-Unity/Assets/Edgar";
 const startOfRegionSequence = "#region";
 const startOfBlockSequence = "#region codeBlock:";
 const startOfHidden = "#region hide"
@@ -14,6 +24,7 @@ if (version !== 'Next') {
   outputPath = path.join(__dirname, "..", "versioned_docs", "version-" + version, "code");
 }
 
+// Read all csharp files in a given directory
 function readCsharpFiles(dirname, onFileContent, onError) {
   fs.readdir(dirname, function (err, filenames) {
     if (err) {
@@ -43,21 +54,24 @@ function readCsharpFiles(dirname, onFileContent, onError) {
   });
 }
 
+// Find all marked code blocks in a given file
 function parseFile(filename, content) {
   const codeBlocks = [];
   const lines = content.split("\r\n");
 
+  // Go through all the lines in the file, looking for #region and #endregion blocks
   for (const line of lines) {
     const trimmedLine = line.trimStart();    
 
+    // Look for "#region codeBlock:codeBlockName"
     if (trimmedLine.startsWith(startOfBlockSequence)) {
       const blockName = trimmedLine.substring(startOfBlockSequence.length);
       codeBlocks.push({
         name: blockName,
         lines: [],
       });
-
       continue;
+    // Look for "#region hide"
     } else if (trimmedLine.startsWith(startOfHidden)) {
       codeBlocks.push({
         isPlaceholder: true,
@@ -74,10 +88,12 @@ function parseFile(filename, content) {
       }
 
       continue;
+    // Look for "#region"
     } else if (trimmedLine.startsWith(startOfRegionSequence)) {
       codeBlocks.push({
         isPlaceholder: true,
       });
+    // Look for "#endregion", create a new file for the block
     } else if (trimmedLine.startsWith(endOfRegionSequence)) {
       const codeBlock = codeBlocks.pop();
 
@@ -91,6 +107,7 @@ function parseFile(filename, content) {
       continue;
     }
 
+    // Ignore the current line if there is a hidden region
     let isHidden = false;
     for (const codeBlock of codeBlocks) {
       if (codeBlock.isHidden) {
@@ -101,6 +118,7 @@ function parseFile(filename, content) {
       continue;
     }
 
+    // Otherwise append the line to all the regions
     for (const codeBlock of codeBlocks) {
       if (!codeBlock.isPlaceholder) {
         codeBlock.lines.push(line);

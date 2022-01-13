@@ -70,6 +70,6 @@ export function requireVersionedCode(name) {
     } else {
         const path = `version-${label}/code/` + name
         // return require('!!raw-loader!@site/versioned_docs/' + path + '.txt').default;
-        throw 'Uncomment above'
+        throw 'Uncomment above when at least a single version exists'
     }
 }
