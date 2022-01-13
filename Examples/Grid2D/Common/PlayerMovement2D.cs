@@ -5,7 +5,7 @@ namespace Edgar.Unity.Examples
     /// <summary>
     /// A simple player movement script.
     /// </summary>
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement2D : MonoBehaviour
     {
         public float MoveSpeed = 5f;
 

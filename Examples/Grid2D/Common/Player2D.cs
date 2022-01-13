@@ -5,7 +5,7 @@ namespace Edgar.Unity.Examples
     /// <summary>
     /// Very simple implementation of a player that can interact with objects.
     /// </summary>
-    public class Player : MonoBehaviour
+    public class Player2D : MonoBehaviour
     {
         private IInteractable interactableInFocus;
 
