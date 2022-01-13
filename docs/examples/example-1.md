@@ -123,8 +123,6 @@ We have to create a class that inherits from `DungeonGeneratorPostProcessingComp
 
 With the implementation ready, we now have to attach this component to the game object where we have our generator component attached.
 
- create an instance of that ScriptableObject by right-clicking in the project view and <Path path="2d:Examples/Example 1/Post-processing" />. And the last step is to drag and drop this GameObject in the *Custom post process tasks* section of the dungeon generator.
-
 <Image src="2d/examples/example1/custom_post_processing_component.png" caption="Attach the component to the game object with the generator" />
 
 ### Level graph
