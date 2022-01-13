@@ -10,6 +10,11 @@
 ### PRO
 - git push pro PRO-v2.0.0-alpha.2
 
+### Docs
+- make sure to update code blocks with `npm run codeBlocks`
+- npm run version 2.0.0-alpha.1
+- cmd /C "set "GIT_USER=OndrejNepozitek" && npm run deploy"
+
 ### Old
 - export Unity package
 - test exported package in different Unity project
@@ -18,5 +23,4 @@
 - tag and name v2.0.0-alpha.X
 - create changelog
 - attach unity package
-- npm run version 2.0.0-alpha.1
-- cmd /C "set "GIT_USER=OndrejNepozitek" && npm run deploy"
+
