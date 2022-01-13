@@ -19,9 +19,20 @@ const endOfRegionSequence = "#endregion";
 const myArgs = process.argv.slice(2);
 const version = myArgs[0] || 'Next';
 
+// Usage: npm run codeBlocks -- --keep-old
+const keepOldFiles = myArgs.some(x => x === "--keep-old");
+
+console.log(myArgs);
+
 let outputPath = path.join(__dirname, "..", "docs", "code");
-if (version !== 'Next') {
-  outputPath = path.join(__dirname, "..", "versioned_docs", "version-" + version, "code");
+if (version !== 'Next' && !version.startsWith("--")) {
+  const outputPathRoot = path.join(__dirname, "..", "versioned_docs", "version-" + version);
+
+  if (!fs.existsSync(outputPathRoot)) {
+    throw `Version ${version} is not recognized!`;
+  }
+
+  outputPath = path.join(outputPathRoot, "code");
 }
 
 // Read all csharp files in a given directory
@@ -127,6 +138,9 @@ function parseFile(filename, content) {
   }
 }
 
-fs.rmSync(outputPath, { recursive: true, force: true });
-fs.mkdirSync(outputPath, { recursive: true })
+if (!keepOldFiles) {
+  fs.rmSync(outputPath, { recursive: true, force: true });
+  fs.mkdirSync(outputPath, { recursive: true })
+}
+
 readCsharpFiles(edgarPath, parseFile, (err) => console.log(err));
