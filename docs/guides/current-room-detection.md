@@ -6,7 +6,7 @@ In this guide, we will learn how to detect when a player enters or leaves a room
 
 <Image src="2d/guides/current_room_detection/result.png" caption="Information about the current room are displayed in the top-left corner." />
 
-> **Note:** All files from this example can be found at *Edgar/Examples/CurrentRoomDetection*.
+> **Note:** All files from this example can be found at <Path path="2de:CurrentRoomDetection" />.
 
 ## Setup
 

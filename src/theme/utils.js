@@ -4,6 +4,7 @@ import {useActiveVersion} from '@theme/hooks/useDocs';
 export const Path = props => {
     let { path, type, par } = props;
     const colonIndex = path.indexOf(':');
+    let joinSequence = ' \u2192 ';
 
     if (colonIndex !== -1) {
         type = path.substring(0, colonIndex);
@@ -18,8 +19,13 @@ export const Path = props => {
         path = 'Create/Edgar (Grid3D)/' + path;
     }
 
+    if (type === '2de') {
+        path = 'Examples/Grid2D/' + path;
+        joinSequence = '/';
+    }
+
     const parts = path.split('/');
-    let result = parts.join(' \u2192 ');
+    let result = parts.join(joinSequence);
 
     if (par) {
         result = '(' + result + ')';

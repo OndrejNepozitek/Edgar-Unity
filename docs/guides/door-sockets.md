@@ -6,6 +6,8 @@ In this guide, we will learn about door sockets and how to use them.
 
 <Image src="2d/guides/door_sockets/result2.png" caption="Door sockets used to connect normal rooms and skull rooms with special corridors." />
 
+> **Note:** All files from this example can be found at <Path path="2de:DoorSockets" />.
+
 ## Introduction
 
 **Door sockets are a mechanism to instruct the generator that only some doors are compatible.** By default, when the generator computes how can two room templates be connected, it looks for doors with the same length. However, that might not always fit our needs. For example, imagine that we have two or more biomes in our game, and we need a special transition corridor to connect these biomes correctly. With the default behaviour, that is not possible because the generator does not know that some doors are not compatible. That is where door sockets come into play. You can assign a door socket to each door, and the generator will connect only doors with the same socket.

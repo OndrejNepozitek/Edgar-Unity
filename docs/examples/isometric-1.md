@@ -4,7 +4,7 @@ title: (PRO) Isometric 1
 
 In this tutorial, we will use [this tileset](https://www.kenney.nl/assets/isometric-prototype-tiles) by [@KenneyNL](https://twitter.com/KenneyNL) to create very basic isometric levels. Be sure to check out their work if you like the tileset. 
 
-<Image src="2d/examples/isometric1/result1.png" caption="Example result" />
+> **Note:** All files from this example can be found at <Path path="2de:Isometric1" />.
 
 ## Scope
 

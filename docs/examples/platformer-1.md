@@ -11,6 +11,8 @@ In this tutorial, we will use [this tileset](https://www.kenney.nl/assets/abstra
 
 > **Note:** I recommend reading [Example 1](example-1.md) first as this is a bit harder to set up, and I will not repeat the basics here.
 
+> **Note:** All files from this example can be found at <Path path="2de:Platformer1" />.
+
 ## Limitations
 
 If this is your first time reading about procedural platformers, please see the [Limitations section](../generators/platformer-generator#limitations) of the Platformer generator page.

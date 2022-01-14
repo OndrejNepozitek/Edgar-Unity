@@ -8,7 +8,7 @@ In this guide, we will learn how to implement a simple minimap functionality.
 
 ## Example scene
 
-An example scene can be found at *Edgar/Examples/MinimapExample* and *Edgar/Examples/MinimapExample2*. 
+An example scene can be found at <Path path="2de:MinimapExample" /> and <Path path="2de:MinimapExample2" />. 
 
 ## Setup
 

@@ -18,7 +18,7 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 
 <Video src="videos/gungeon_example_video.mp4" style={{ marginBottom: 15, marginTop: -15 }} />
 
-> **Note:** All files from this example can be found at *Edgar/Examples/EnterTheGungeon*.
+> **Note:** All files from this example can be found at <Path path="2de:EnterTheGungeon" />.
 
 ## Room templates
 

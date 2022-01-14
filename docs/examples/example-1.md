@@ -9,7 +9,7 @@ In this tutorial, we will use [this tileset](https://pixel-poem.itch.io/dungeon-
     <Image src="2d/examples/example1/result_reallife1.png" caption="Real-life example" />
 </Gallery>
 
-> **Note:** All files from this example can be found at *Edgar/Examples/Example1*.
+> **Note:** All files from this example can be found at <Path path="2de:Example1" />.
 
 <ExampleFeatures id="example-1" />
 

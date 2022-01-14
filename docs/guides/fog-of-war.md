@@ -23,7 +23,7 @@ In this guide, we will learn how to enable a simple fog of war functionality.
 
 ## Example scene
 
-An example scene can be found at *Edgar/Examples/FogOfWarExample*. 
+An example scene can be found at <Path path="2de:FogOfWarExample" />. 
 
 > **Note:** Please see the [Add custom renderer feature](fog-of-war.md#add-custom-renderer-feature) setup step below to make the example scene work in URP/LWRP.
 

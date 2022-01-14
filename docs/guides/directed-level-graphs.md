@@ -6,6 +6,8 @@ In this guide, we will see what we can do if we make the level graph directed an
 
 <Image src="2d/guides/directed_level_graphs/result_1.png" caption="Level generated from a level graph where all connections were directed away from the spawn. Arrow tiles show that all room templates are correctly oriented." />
 
+> **Note:** All files from this example can be found at <Path path="2de:DirectedLevelGraphs" />.
+
 ## Introduction
 
 By default, all level graphs are undirected. That means that if you create a connection from Room 1 to Room 2 or from Room 2 to Room 1, the generator sees both cases to be equivalent. While this is fine for the majority of scenarios, it prevents us from doing some interesting things with the level design. 
