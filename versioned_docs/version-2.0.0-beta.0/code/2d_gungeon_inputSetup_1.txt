@@ -1,0 +1,25 @@
+[CreateAssetMenu(menuName = "Edgar/Examples/Enter The Gungeon/Input setup", fileName = "Gungeon Input Setup")]
+public class GungeonInputSetupTask : DungeonGeneratorInputBaseGrid2D
+{
+    [Range(1, 2)]
+    public int Stage = 1;
+
+    public LevelGraph[] Stage1LevelGraphs;
+
+    public LevelGraph[] Stage2LevelGraphs;
+
+    protected override LevelDescriptionGrid2D GetLevelDescription()
+    {
+        // Pick random level graph
+        var levelGraphs = Stage == 1 ? Stage1LevelGraphs : Stage2LevelGraphs;
+        var levelGraph = levelGraphs.GetRandom(Payload.Random);
+
+        // The instance of the game manager will not exist in Editor
+        if (GungeonGameManager.Instance != null)
+        {
+            GungeonGameManager.Instance.CurrentLevelGraph = levelGraph;
+        }
+
+        /* ... */
+    }
+}

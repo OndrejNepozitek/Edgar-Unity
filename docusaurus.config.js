@@ -4,6 +4,10 @@ const [latestVersion] = require('./versions.json');
 const remarkBookmarks = require('remark-bookmarks')
 const remarkHelpers = require('@ondrej-nepozitek/remark-helpers/images');
 const path = require('path');
+const archiveVersions = [
+  "2.0.0-alpha.9", "2.0.0-alpha.8", "2.0.0-alpha.7"
+]
+
 
 module.exports = {
   title: "Edgar - Unity",
@@ -53,6 +57,12 @@ module.exports = {
             ...versions.slice(1, 3).map((version) => ({
               label: version,
               to: `docs/${version}/introduction`,
+            })),
+            ...archiveVersions.slice(0, 3).map((version) => ({
+              label: `Archive ${version}`,
+              to: version == '2.0.0-alpha.9' ?
+                `https://ondrejnepozitek.github.io/Edgar-Unity-DocsArchive/docs/introduction/` :
+                `https://ondrejnepozitek.github.io/Edgar-Unity-DocsArchive/docs/${version}/introduction/`,
             })),
             {
               label: 'Master/Unreleased',
