@@ -48,11 +48,11 @@ const nextImages = require.context(
     /(\.png|\.gif)$/
 );
 
-/*const versionedImages = require.context(
+const versionedImages = require.context(
     '@site/versioned_docs/',
     true,
     /(\.png|\.gif)$/
-);*/
+);
 
 export function requireVersionedAsset(src) {
     const activeVersion = useActiveVersion('default');
@@ -75,7 +75,7 @@ export function requireVersionedCode(name) {
         return require('!!raw-loader!@site/docs/' + path + '.txt').default;
     } else {
         const path = `version-${label}/code/` + name
-        // return require('!!raw-loader!@site/versioned_docs/' + path + '.txt').default;
-        throw 'Uncomment above when at least a single version exists'
+        return require('!!raw-loader!@site/versioned_docs/' + path + '.txt').default;
+        // throw 'Uncomment above when at least a single version exists'
     }
 }
