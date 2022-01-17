@@ -8,6 +8,16 @@ namespace Edgar.Unity.Editor
 {
     public partial class LevelGraphEditor
     {
+        private readonly List<string> supportedCommands = new List<string>()
+        {
+            "SoftDelete", "Duplicate",
+        };
+
+        /// <summary>
+        /// This field is used to track if there was a drag between MouseDown and MouseUp events.
+        /// </summary>
+        private Vector2 mouseDownPosition;
+
         /// <summary>
         /// Handles are the controls of the editor - adding/deleting rooms/connections, etc.
         /// </summary>
@@ -20,6 +30,7 @@ namespace Edgar.Unity.Editor
                 case EventType.MouseDown:
                 {
                     isDoubleClick = e.clickCount == 2;
+                    mouseDownPosition = e.mousePosition;
 
                     if (CurrentState == State.Idle)
                     {
@@ -63,10 +74,23 @@ namespace Edgar.Unity.Editor
 
                     if (currentHoverRoomNode != null)
                     {
+                        var mouseDownDistance = Vector2.Distance(mouseDownPosition, e.mousePosition);
+
                         // Configure room on double click
-                        if (e.button == 0 && !e.control && isDoubleClick)
+                        if (e.button == 0 && !e.control && (/*mouseDownDistance <= 2 ||*/ isDoubleClick))
                         {
-                            Selection.activeObject = currentHoverRoomNode.Room;
+                            if (!e.shift)
+                            {
+                                Selection.activeObject = currentHoverRoomNode.Room;
+                            }
+                            else
+                            {
+                                Selection.objects = new List<UnityEngine.Object>(Selection.objects)
+                                {
+                                    currentHoverRoomNode.Room
+                                }.ToArray();
+                            }
+                            
                             GUI.changed = true;
                             CurrentState = State.Idle;
                         }
@@ -111,6 +135,7 @@ namespace Edgar.Unity.Editor
                     }
 
                     CurrentState = State.Idle;
+
                     break;
                 }
 
@@ -162,6 +187,33 @@ namespace Edgar.Unity.Editor
                 }
             }
 
+            if (e.type == EventType.ExecuteCommand || e.type == EventType.ValidateCommand)
+            {
+                if (e.type == EventType.ValidateCommand && supportedCommands.Contains(e.commandName))
+                {
+                    e.Use();
+                }
+
+                if (e.type is EventType.ExecuteCommand)
+                {
+                    switch (e.commandName)
+                    {
+                        case "SoftDelete":
+                            DeleteSelectedRooms();
+                            break;
+
+                        case "Duplicate":
+                            DuplicateSelectedRooms();
+                            break;
+                    }
+                }
+            }
+
+            //if (e.type != EventType.Layout && e.type != EventType.Repaint)
+            //{
+            //    Debug.Log(e);
+            //}
+           
             if (GUI.changed)
             {
                 Repaint();
@@ -430,6 +482,49 @@ namespace Edgar.Unity.Editor
             }
 
             EditorUtility.SetDirty(LevelGraph);
+        }
+
+        private void DeleteSelectedRooms()
+        {
+            foreach (var room in Selection.objects.OfType<RoomBase>())
+            {
+                var roomNode = roomNodes.FirstOrDefault(x => x.Room == room);
+
+                if (roomNode == null)
+                {
+                    continue;
+                }
+
+                DeleteRoomNode(roomNode);
+            }
+
+            GUI.changed = true;
+        }
+
+        private void DuplicateSelectedRooms()
+        {
+            foreach (var room in Selection.objects.OfType<RoomBase>())
+            {
+                var roomNode = roomNodes.FirstOrDefault(x => x.Room == room);
+
+                if (roomNode == null)
+                {
+                    continue;
+                }
+
+                var duplicatedRoom = Instantiate(room);
+                duplicatedRoom.Position += 2 * new Vector2(gridSize, -gridSize);
+
+                var duplicatedRoomNode = CreateRoomNode(duplicatedRoom);
+
+                // Add room to the level graph
+                LevelGraph.Rooms.Add(duplicatedRoom);
+                AssetDatabase.AddObjectToAsset(duplicatedRoom, LevelGraph);
+
+                EditorUtility.SetDirty(LevelGraph);
+            }
+
+            GUI.changed = true;
         }
     }
 }

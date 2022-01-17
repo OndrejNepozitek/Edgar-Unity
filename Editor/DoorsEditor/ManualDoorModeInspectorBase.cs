@@ -17,10 +17,10 @@ namespace Edgar.Unity.Editor
         // ReSharper disable once InconsistentNaming
         protected readonly SerializedProperty serializedProperty;
         // ReSharper disable once InconsistentNaming
-        protected readonly Doors doors;
+        protected readonly DoorsGrid2D doors;
 
 
-        protected ManualDoorModeInspectorBase(SerializedObject serializedObject, Doors doors, SerializedProperty serializedProperty)
+        protected ManualDoorModeInspectorBase(SerializedObject serializedObject, DoorsGrid2D doors, SerializedProperty serializedProperty)
         {
             this.serializedObject = serializedObject;
             this.doors = doors;
@@ -52,9 +52,9 @@ namespace Edgar.Unity.Editor
 
             try
             {
-                if (doors.SelectedMode == Doors.DoorMode.Manual)
+                if (doors.SelectedMode == DoorsGrid2D.DoorMode.Manual)
                 {
-                    var polygon = RoomTemplatesLoader.GetPolygonFromRoomTemplate(doors.gameObject);
+                    var polygon = RoomTemplateLoaderGrid2D.GetPolygonFromRoomTemplate(doors.gameObject);
                     var doorPositions = doors.GetDoorMode().GetDoors(polygon);
 
                     if (doorPositions.Count != doors.ManualDoorModeData.DoorsList.Count)

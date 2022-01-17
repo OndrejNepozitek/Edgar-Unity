@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Edgar.Unity.Editor
 {
-    [CustomEditor(typeof(RoomTemplateInitializerBase), true)]
+    [CustomEditor(typeof(RoomTemplateInitializerBaseGrid2D), true)]
 	public class RoomTemplateInitializerInspector : UnityEditor.Editor
 	{
 		public override void OnInspectorGUI()
 		{
-			var roomTemplateInitializer = (RoomTemplateInitializerBase) target;
+			var roomTemplateInitializer = (RoomTemplateInitializerBaseGrid2D) target;
 
 			DrawDefaultInspector();
 

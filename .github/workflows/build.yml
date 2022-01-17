@@ -48,7 +48,7 @@ jobs:
       - name: Prepare unitypackage file list
         run: |
           echo "Assets/Edgar.meta" > unitypackageFiles
-          find ./Assets/Edgar/ -name \*.meta ! -path "./Assets/Edgar/Tests*" >> unitypackageFiles
+          find ./Assets/Edgar/ -name \*.meta ! -path "./Assets/Edgar/Tests*" ! -path "./Assets/Edgar/Examples/Grid2D/Resources/Docs*" >> unitypackageFiles
 
       # Package files
       - name: Package files

@@ -13,7 +13,7 @@ namespace Edgar.Unity.Editor
         private static Vector3 ComputeCenter(GameObject gameObject)
         {
             var tilemaps = gameObject.GetComponentsInChildren<Tilemap>().ToList();
-            return PostProcessUtils.GetTilemapsCenter(tilemaps, true);
+            return PostProcessUtilsGrid2D.GetTilemapsCenter(tilemaps, true);
         }
 
 #if OndrejNepozitekEdgar

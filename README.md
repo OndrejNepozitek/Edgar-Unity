@@ -132,6 +132,10 @@ After installing the package, Unity adds something like this to your `manifest.j
 ```
 
 Remove it to let Unity download a new version of the plugin.
+
+### Do not clone the repository
+
+When installing the plugin, use the two methods described above. If you clone the repository directly, you will probably get an error related to some tests and missing types/namespaces. This error is caused by the fact that the plugin is developed with Unity 2018.4 (for better compatibility), but the assembly definition format was changed in newer versions (a reference to the Edgar .NET assembly is missing).
                                                              
 ## Workflow 
 

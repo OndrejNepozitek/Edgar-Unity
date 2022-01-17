@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Edgar.Unity.Editor
 {
-    [CustomEditor(typeof(Doors))]
+    [CustomEditor(typeof(DoorsGrid2D))]
 	public class DoorsInspector : UnityEditor.Editor
     {
         private HybridDoorModeInspector hybridDoorModeInspector;
@@ -13,38 +13,38 @@ namespace Edgar.Unity.Editor
 
         public void OnEnable()
         {
-            var doors = (Doors) target;
+            var doors = (DoorsGrid2D) target;
 
             hybridDoorModeInspector = new HybridDoorModeInspector(
                 serializedObject,
                 doors,
-                serializedObject.FindProperty(nameof(Doors.HybridDoorModeData)));
+                serializedObject.FindProperty(nameof(DoorsGrid2D.HybridDoorModeData)));
             simpleDoorModeInspector = new SimpleDoorModeInspector(
                 serializedObject,
                 doors);
             manualDoorModeInspector = new ManualDoorModeInspector(
                 serializedObject,
                 doors,
-                serializedObject.FindProperty(nameof(Doors.ManualDoorModeData)));
+                serializedObject.FindProperty(nameof(DoorsGrid2D.ManualDoorModeData)));
 
             SceneView.RepaintAll();
         }
 
 		public void OnSceneGUI()
 		{
-			var doors = (Doors) target;
+			var doors = (DoorsGrid2D) target;
 
             switch (doors.SelectedMode)
 			{
-				case Doors.DoorMode.Manual:
+				case DoorsGrid2D.DoorMode.Manual:
                     manualDoorModeInspector.OnSceneGUI();
                     break;
 
-				case Doors.DoorMode.Simple:
+				case DoorsGrid2D.DoorMode.Simple:
                     simpleDoorModeInspector.OnSceneGUI();
                     break;
 
-                case Doors.DoorMode.Hybrid:
+                case DoorsGrid2D.DoorMode.Hybrid:
                     hybridDoorModeInspector.OnSceneGUI();
                     break;
 
@@ -57,9 +57,9 @@ namespace Edgar.Unity.Editor
 		{
 			serializedObject.Update();
 
-            var doors = (Doors) target;
+            var doors = (DoorsGrid2D) target;
 
-            var selectedModeProp = serializedObject.FindProperty(nameof(Doors.SelectedMode));
+            var selectedModeProp = serializedObject.FindProperty(nameof(DoorsGrid2D.SelectedMode));
 			selectedModeProp.intValue = GUILayout.SelectionGrid((int) doors.SelectedMode, new[]
             {
                 "Simple mode",
@@ -71,15 +71,15 @@ namespace Edgar.Unity.Editor
 
 			switch (doors.SelectedMode)
             {
-                case Doors.DoorMode.Simple:
+                case DoorsGrid2D.DoorMode.Simple:
                     simpleDoorModeInspector.OnInspectorGUI();
                     break;
 
-                case Doors.DoorMode.Manual:
+                case DoorsGrid2D.DoorMode.Manual:
                     manualDoorModeInspector.OnInspectorGUI();
                     break;
 
-                case Doors.DoorMode.Hybrid:
+                case DoorsGrid2D.DoorMode.Hybrid:
                     hybridDoorModeInspector.OnInspectorGUI();
                     break;
             }

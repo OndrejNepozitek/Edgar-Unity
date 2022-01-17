@@ -5,7 +5,7 @@ namespace Edgar.Unity.Editor
 {
     public class ManualDoorModeInspector : ManualDoorModeInspectorBase
     {
-        public ManualDoorModeInspector(SerializedObject serializedObject, Doors doors, SerializedProperty serializedProperty) : base(serializedObject, doors, serializedProperty)
+        public ManualDoorModeInspector(SerializedObject serializedObject, DoorsGrid2D doors, SerializedProperty serializedProperty) : base(serializedObject, doors, serializedProperty)
         {
         }
 
@@ -55,7 +55,7 @@ namespace Edgar.Unity.Editor
         private void DrawDoor(Grid grid, Vector3Int from, Vector3Int to)
         {
             var length = new OrthogonalLine(from, to).Length;
-            var doorLine = new DoorLine()
+            var doorLine = new DoorLineGrid2D()
             {
                 From = from,
                 To = to,
@@ -69,7 +69,7 @@ namespace Edgar.Unity.Editor
 
         protected override void AddDoor(Vector3Int from, Vector3Int to)
         {
-            var newDoor = new Door()
+            var newDoor = new DoorGrid2D()
             {
                 From = from,
                 To = to,

@@ -7,7 +7,7 @@ namespace Edgar.Unity.Editor
 {
     public class HybridDoorModeInspector : ManualDoorModeInspectorBase
     {
-        public HybridDoorModeInspector(SerializedObject serializedObject, Doors doors, SerializedProperty serializedProperty) : base(serializedObject, doors, serializedProperty)
+        public HybridDoorModeInspector(SerializedObject serializedObject, DoorsGrid2D doors, SerializedProperty serializedProperty) : base(serializedObject, doors, serializedProperty)
         {
         }
 
@@ -66,7 +66,7 @@ namespace Edgar.Unity.Editor
             var gameObject = doors.transform.gameObject;
             var grid = gameObject.GetComponentInChildren<Grid>();
             var length = doors.HybridDoorModeData.DefaultLength;
-            var doorLine = new DoorLine()
+            var doorLine = new DoorLineGrid2D()
             {
                 From = from,
                 To = to,
@@ -81,7 +81,7 @@ namespace Edgar.Unity.Editor
         protected override void AddDoor(Vector3Int from, Vector3Int to)
         {
             var length = doors.HybridDoorModeData.DefaultLength;
-            var doorLine = new DoorLine()
+            var doorLine = new DoorLineGrid2D()
             {
                 From = from,
                 To = to,
@@ -115,7 +115,7 @@ namespace Edgar.Unity.Editor
 
         protected override void ShowAdditionalFields()
         {
-            EditorGUILayout.PropertyField(serializedProperty.FindPropertyRelative(nameof(HybridDoorModeData.DefaultLength)), new GUIContent("New door length"));
+            EditorGUILayout.PropertyField(serializedProperty.FindPropertyRelative(nameof(HybridDoorModeDataGrid2D.DefaultLength)), new GUIContent("New door length"));
         }
     }
 }

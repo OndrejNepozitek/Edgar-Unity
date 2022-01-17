@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Edgar.Unity.Editor
 {
-    [CustomEditor(typeof(RoomTemplateSettings))]
+    [CustomEditor(typeof(RoomTemplateSettingsGrid2D))]
     public class RoomTemplateSettingsInspector : UnityEditor.Editor
     {
         public override void OnInspectorGUI()
@@ -16,7 +16,7 @@ namespace Edgar.Unity.Editor
 
             DrawDefaultInspector();
 
-            var roomTemplate = (RoomTemplateSettings) target;
+            var roomTemplate = (RoomTemplateSettingsGrid2D) target;
             var validityCheck = RoomTemplateDiagnostics.CheckAll(roomTemplate.gameObject);
 
             if (!validityCheck.HasErrors)
@@ -61,14 +61,14 @@ namespace Edgar.Unity.Editor
                 }
             }
 
-            var boundingBoxOutlineHandler = roomTemplate.GetComponent<BoundingBoxOutlineHandler>();
+            var boundingBoxOutlineHandler = roomTemplate.GetComponent<BoundingBoxOutlineHandlerGrid2D>();
             var boundingBoxRemoved = false;
 
             if (boundingBoxOutlineHandler == null)
             {
                 if (GUILayout.Button("Add bounding box outline handler", EditorStyles.miniButton))
                 {
-                    roomTemplate.gameObject.AddComponent<BoundingBoxOutlineHandler>();
+                    roomTemplate.gameObject.AddComponent<BoundingBoxOutlineHandlerGrid2D>();
                     EditorUtility.SetDirty(roomTemplate);
                 }
             }
@@ -99,7 +99,7 @@ namespace Edgar.Unity.Editor
 
         private void ShowStatus()
         {
-            var roomTemplate = (RoomTemplateSettings)target;
+            var roomTemplate = (RoomTemplateSettingsGrid2D)target;
             var originalBackground = GUI.backgroundColor;
 
             Handles.BeginGUI();
@@ -156,7 +156,7 @@ namespace Edgar.Unity.Editor
 
             try
             {
-                var roomTemplate = (RoomTemplateSettings) target;
+                var roomTemplate = (RoomTemplateSettingsGrid2D) target;
                 var outline = roomTemplate.GetOutline();
 
                 if (outline == null)
