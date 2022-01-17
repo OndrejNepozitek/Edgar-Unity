@@ -185,7 +185,7 @@ export const ExampleFeatures = (props) => {
           {usages.map((x, id) => (
             <tr key={id}>
               <td>
-                <Link to={x.feature.url}>{x.feature.name}</Link>
+                <Link to={getUrl(x.feature.url)}>{x.feature.name}</Link>
               </td>
               <td>{x.featureUsage.description}</td>
             </tr>
