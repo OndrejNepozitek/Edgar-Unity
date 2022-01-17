@@ -109,7 +109,7 @@ This is the recommended approach for the majority of users.
 
 ### Inherit from [RoomBase][]
 
-The second approach is that we inherit directly from the [RoomBase][] class. If we do that, we have to implement all the abstract methods (currently `GetDisplayName()` and `GetRoomTemplates()`). An advantage of this approach is that in some situations, we may not need any logic related to room templates so we just return null from the method and we will not see anything related to room templates in the inspector of the room. This may be useful in a situation where we resolve room templates manually based on the type of the room.
+The second approach is that we inherit directly from the [RoomBase][] class. If we do that, we have to implement all the abstract methods (currently `GetDisplayName()` and `GetRoomTemplates()`). An advantage of this approach is that in some situations, we may not need any logic related to room templates, so we just return null from the method, and we will not see anything related to room templates in the inspector of the room. This may be useful in a situation where we resolve room templates manually based on the type of the room.
 
 > **Note:** The same logic applies to inheriting from [Connection][] or [ConnectionBase][].
 
@@ -123,7 +123,7 @@ When we have our custom room or connection type ready, we have to configure the 
 
 ### Accessing room information
 
-If we add some additional information to a room or connection, we probably expect to somehow use this information later. The first step is to get access to the [RoomInstance][RoomInstance#properties] class which is described [here](../basics/generated-level-info.md). When we have an instance of this class, we can use the `RoomInstance.Room` property. This property is of the `RoomBase` type so we have to cast it to our custom room type.
+If we add some additional information to a room or connection, we probably expect to somehow use this information later. The first step is to get access to the [RoomInstance][RoomInstance#properties] class which is described [here](../basics/generated-level-info.md). When we have an instance of this class, we can use the `RoomInstance.Room` property. This property is of the `RoomBase` type, so we have to cast it to our custom room type.
 
 ### Custom colours in the level graph editor
 
@@ -167,4 +167,4 @@ It is also possible to change how custom rooms and connections look in the level
 
 ## (PRO) Directed level graphs
 
-By default, all level graphs are undirected, meaning that it does not matter whether you create a connection from *Room 1* to *Room 2* or the other way around. If you want to have more control over generated levels, you can make level graphs directed and combine that with entrance-only and exit-only doors. See the [Directed level graphs](../guides/directed-level-graphs) guide for more information and examples.
+By default, all level graphs are undirected, meaning that it does not matter whether you create a connection from *Room 1* to *Room 2* or the other way around. If you want to have more control over generated levels, you can make level graphs directed and combine that with entrance-only and exit-only doors. See the [Directed level graphs](../guides/directed-level-graphs.md) guide for more information and examples.

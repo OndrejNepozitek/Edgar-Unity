@@ -16,7 +16,7 @@ Our plan is the following:
 - Add a *handler* that will react to the **OnTriggerEnter2D** and **OnTriggerExit2D** events and delegate that to the room manager
 - *(Optional)* Add a **GameManager** component that will display the **currently active room**
 
-We will use the room templates from [Example 1](../examples/example-1) and the following level graph:
+We will use the room templates from [Example 1](../examples/example-1.md) and the following level graph:
 
 <Image src="2d/guides/current_room_detection/level_graph.png" caption="The level graph that is used in this guide. Each room has a unique name so that we can easily recognize if our implementation works or not." />
 
@@ -24,10 +24,10 @@ We will use the room templates from [Example 1](../examples/example-1) and the f
 
 We will use a trigger collider attached to the floor layer of individual room templates to detect when a player enters or leaves a room. There are at least two ways of adding this collider:
 
-1. We can [override the default structure of tilemaps](../guides/room-template-customization) in order to add the floor collider to each room template right after it is created.
+1. We can [override the default structure of tilemaps](./room-template-customization.md) in order to add the floor collider to each room template right after it is created.
 2. We can use a custom post-processing script to add the floor collider to each room after a level is generated.
 
-An advantage of the first approach is that Unity does not have to recompute the colliders every time a level is generated. An advantage of the second approach is that it is more flexible and easier to experiment with because we can just write a simple post-processing script a do not have to modify any room templates. We decided to use the second approach because we use a room template from [Example 1](../examples/example-1), and they do not have any floor colliders.
+An advantage of the first approach is that Unity does not have to recompute the colliders every time a level is generated. An advantage of the second approach is that it is more flexible and easier to experiment with because we can just write a simple post-processing script a do not have to modify any room templates. We decided to use the second approach because we use a room template from [Example 1](../examples/example-1.md), and they do not have any floor colliders.
 
 Below you can see the post-processing code that is needed to add this floor collider to each of the rooms in a generated level.
 

@@ -4,7 +4,7 @@ title: Post-processing
 
 After a level is generated, we may often want to run some additional logic like spawning enemies, etc. This can be achieved by providing your own post-processing logic that will be called after the level is generated and provided with information about the level. 
 
-To better understand how the generator works, we will first describe which post-processing is done by the generator itself and then provide ways to extend this behaviour and provide your own logic. You can skip right to [Custom post-processing](./post-process#custom-post-processing) if that is what you are looking for.
+To better understand how the generator works, we will first describe which post-processing is done by the generator itself and then provide ways to extend this behaviour and provide your own logic. You can skip right to [Custom post-processing](./post-process.md#custom-post-processing) if that is what you are looking for.
 
 ## Built-in post-processing steps
 

@@ -67,7 +67,7 @@ Our underground level is inspired by the Prisoners Quarters level in Dead Cells.
 
 <Image src="2d/examples/dead_cells/underground_level_graph.png" caption="Level graph for the underground level" />
 
-> **Note:** It seems like the structure of the level may slightly differ between individual runs of the game. For example, the positions of the shop room and the treasure room may be swapped. However, to keep it simple, we will use a fixed level graph. You can see the [Enter the Gungeon](../examples/enter-the-gungeon) for an example of procedurally generated levels.
+> **Note:** It seems like the structure of the level may slightly differ between individual runs of the game. For example, the positions of the shop room and the treasure room may be swapped. However, to keep it simple, we will use a fixed level graph. You can see the [Enter the Gungeon](../examples/enter-the-gungeon.md) for an example of procedurally generated levels.
 
 ### Custom room and connection types
 
@@ -170,7 +170,7 @@ The last step is to add wall tiles under individual rooms so that the level look
 
 > **Note:** Once again, it is **very important** that we use collider for as few tiles as possible. We are adding many tiles and do not want to spend too much time recomputing colliders.
 
-One problem that we have to solve is when we should call this post-processing logic. In the next section, we will add rooms inside the towers. But if we draw walls after all the rooms are drawn, we will overwrite all the rooms that are inside the tower. We would have to do some checks to avoid that. An easier solution is to call our logic after shared tilemaps are initialized but before any rooms are drawn. That means that we first draw the walls and if there is a room occupying the same tiles, the room overwrites the walls, which is what we want. To achieve that, we use [Priority callbacks](../generators/post-process#pro-priority-callbacks) and register our logic right after shared tilemaps are initialized.
+One problem that we have to solve is when we should call this post-processing logic. In the next section, we will add rooms inside the towers. But if we draw walls after all the rooms are drawn, we will overwrite all the rooms that are inside the tower. We would have to do some checks to avoid that. An easier solution is to call our logic after shared tilemaps are initialized but before any rooms are drawn. That means that we first draw the walls and if there is a room occupying the same tiles, the room overwrites the walls, which is what we want. To achieve that, we use [Priority callbacks](../generators/post-process.md#pro-priority-callbacks) and register our logic right after shared tilemaps are initialized.
 
 <ExternalCode name="2d_deadCells_registerCallbacks" />
 

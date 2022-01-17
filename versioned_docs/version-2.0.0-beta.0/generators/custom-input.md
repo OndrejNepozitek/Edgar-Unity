@@ -43,7 +43,7 @@ For an example of how can this be implemented, see the [Enter the Gungeon](../ex
 
 ### Assign room templates automatically
 
-Another typical use case is implementing custom logic for assigning room templates to individual rooms. For example, if we use [custom rooms](../basics/level-graphs#pro-custom-rooms-and-connections), we may want to assign room templates based on the type of the room instead of manually assigning room templates to individual rooms. This can be seen both in [Enter the Gungeon](../examples/enter-the-gungeon.md) and [Dead Cells](../examples/dead-cells.md) examples.
+Another typical use case is implementing custom logic for assigning room templates to individual rooms. For example, if we use [custom rooms](../basics/level-graphs.md#pro-custom-rooms-and-connections), we may want to assign room templates based on the type of the room instead of manually assigning room templates to individual rooms. This can be seen both in [Enter the Gungeon](../examples/enter-the-gungeon.md) and [Dead Cells](../examples/dead-cells.md) examples.
 
 ### Procedural graphs
 

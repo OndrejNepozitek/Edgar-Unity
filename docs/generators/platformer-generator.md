@@ -10,7 +10,7 @@ title: (PRO) Platformer generator
 
 ## Configuration and usage
 
-The configuration is currently the same as for the Dungeon Generator. See [this](../generators/dungeon-generator#configuration) page. The only difference is that if we want to use the generator from code, we use the `PlatformerGenerator` class.
+The configuration is currently the same as for the Dungeon Generator. See [this](../generators/dungeon-generator.md#configuration) page. The only difference is that if we want to use the generator from code, we use the `PlatformerGenerator` class.
 
 ## Default tilemaps structure
 

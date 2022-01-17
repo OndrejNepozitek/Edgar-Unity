@@ -8,7 +8,7 @@ On this page, you should learn the basics needed to generate your first level. T
 
 <small>
 
-The main documentation page about room templates can be found [here](./room-templates).
+The main documentation page about room templates can be found [here](./room-templates.md).
 
 </small>
 
@@ -30,7 +30,7 @@ To create a new room template, you have to:
 
 After you open a room template prefab, you will see that there is a *Tilemap* game object that contains multiple tilemap layers like *Walls*, *Floor*, etc. You can use all the available tilemap tools like brushes or rule tiles to design the room template.
 
-> **VERY IMPORTANT:** If you want to change the structure of room templates (add another tilemap layer, add a collider), read the [Room template customization](../guides/room-template-customization) guide. But you should probably use the default structure if this is the first time working with Edgar. 
+> **VERY IMPORTANT:** If you want to change the structure of room templates (add another tilemap layer, add a collider), read the [Room template customization](../guides/room-template-customization.md) guide. But you should probably use the default structure if this is the first time working with Edgar. 
 
 > **Note:** Under the hood, the generator has to compute an outline of each room template. Therefore, there are some limitation as to how a room template can look like. For example, a room template cannot consist of two groups of tiles that are not connected by any other tile.
 
@@ -63,7 +63,7 @@ In order to connect two ordinary room templates in a level, the generator uses s
 
 <small>
 
-The main documentation page about level graphs can be found [here](./level-graphs).
+The main documentation page about level graphs can be found [here](./level-graphs.md).
 
 </small>
 
@@ -105,7 +105,7 @@ When you have the level structure ready, it is time to choose which room templat
 
 <small>
 
-The main documentation page about the dungeon generator setup can be found [here](../generators/dungeon-generator).
+The main documentation page about the dungeon generator setup can be found [here](../generators/dungeon-generator.md).
 
 </small>
 

@@ -38,7 +38,7 @@ title: Dungeon generator
 
 #### Post-processing config
 
-Please see the [Post-processing](../generators/post-process) page to find detailed information about this configuration.
+Please see the [Post-processing](../generators/post-process.md) page to find detailed information about this configuration.
 
 - **Initialize Shared Tilemaps** - Whether to initialize tilemaps that will hold the generated level.
 - **Tilemap Layers Handler** - Which tilemap layers handler should be used to initialize shared tilemaps. Uses the `DungeonTilemapLayersHandler` if not set.

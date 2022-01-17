@@ -36,7 +36,7 @@ We will use Unity [Tilemaps](https://docs.unity3d.com/Manual/class-Tilemap.html)
 - **Other 2** - order 4
 - **Other 3** - order 5
 
-It is **VERY IMPORTANT** that all the room templates have exactly the same structure of tilemaps because the generator will copy all the tiles from individual room templates to shared tilemaps. If you need a different structure of tilemaps, you can override the default behaviour. See [Room template customization](../guides/room-template-customization).
+It is **VERY IMPORTANT** that all the room templates have exactly the same structure of tilemaps because the generator will copy all the tiles from individual room templates to shared tilemaps. If you need a different structure of tilemaps, you can override the default behaviour. See [Room template customization](../guides/room-template-customization.md).
 
 <Image src="2d/room_templates/room_template_drawing.gif" caption="You can use all the available tools (brushes, rule tiles, etc.) to draw room templates" obsolete />
 
@@ -183,7 +183,7 @@ By default, when the generator computes how can two room templates be connected,
 
 ### (PRO) Door directions
 
-By default, all doors are undirected, meaning that they can be used both as an entrance or as an exit. With manual door mode, it is possible to configure doors as entrance-only or exit-only. When combined with directed level graphs, it gives you more control over generated levels. See the [Directed level graphs](../guides/directed-level-graphs) guide for more information and examples.
+By default, all doors are undirected, meaning that they can be used both as an entrance or as an exit. With manual door mode, it is possible to configure doors as entrance-only or exit-only. When combined with directed level graphs, it gives you more control over generated levels. See the [Directed level graphs](../guides/directed-level-graphs.md) guide for more information and examples.
 
 ## Repeat mode
 

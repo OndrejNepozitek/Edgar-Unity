@@ -91,7 +91,7 @@ const examples = [
 ];
 
 function getUrl(path) {
-    if (typeof window !== 'undefined') {
+    /*if (typeof window !== 'undefined') {
         const currentUrl = window.location.href;
         const splitBySlash = currentUrl.split("/");
         const lastSplit = splitBySlash[splitBySlash.length - 1];;
@@ -99,7 +99,8 @@ function getUrl(path) {
         if (lastSplit.startsWith("#") || currentUrl.endsWith("/")) {
             path = "../" + path;
         }
-    }
+    }*/
+    path = "../" + path;
 
     return path;
 }

@@ -15,7 +15,7 @@ In this tutorial, we will use [this tileset](https://www.kenney.nl/assets/abstra
 
 ## Limitations
 
-If this is your first time reading about procedural platformers, please see the [Limitations section](../generators/platformer-generator#limitations) of the Platformer generator page.
+If this is your first time reading about procedural platformers, please see the [Limitations section](../generators/platformer-generator.md#limitations) of the Platformer generator page.
 
 ## Room templates
 
