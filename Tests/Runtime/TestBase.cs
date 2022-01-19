@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-namespace Edgar.Unity.Tests 
+namespace Edgar.Unity.Tests
 {
     public class TestBase : IPrebuildSetup, IPostBuildCleanup
     {
@@ -43,8 +43,10 @@ namespace Edgar.Unity.Tests
         // Helper to find a scene path
         protected static string GetSceneFilePath(string sceneName)
         {
-            foreach (var scene in EditorBuildSettings.scenes) {
-                if (scene.path.Contains(sceneName)) {
+            foreach (var scene in EditorBuildSettings.scenes)
+            {
+                if (scene.path.Contains(sceneName))
+                {
                     return scene.path;
                 }
             }
@@ -57,7 +59,7 @@ namespace Edgar.Unity.Tests
         /// Add all scenes to the build settings that are in the test scene folder.
         private static void AddTestScenesToBuildSettings()
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             var scenes = new List<EditorBuildSettingsScene>();
             var guids = AssetDatabase.FindAssets("t:Scene", new[] {TestSceneFolder});
             if (guids != null)
@@ -72,19 +74,19 @@ namespace Edgar.Unity.Tests
                     }
                 }
             }
- 
+
             Debug.Log("Adding test scenes to build settings:\n" + string.Join("\n", scenes.Select(scene => scene.path)));
             EditorBuildSettings.scenes = EditorBuildSettings.scenes.Union(scenes).ToArray();
-#endif
+            #endif
         }
- 
+
         /// Remove all scenes from the build settings that are in the test scene folder.
         private static void RemoveTestScenesFromBuildSettings()
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             EditorBuildSettings.scenes = EditorBuildSettings.scenes
                 .Where(scene => !scene.path.StartsWith(TestSceneFolder)).ToArray();
-#endif
+            #endif
         }
     }
 }

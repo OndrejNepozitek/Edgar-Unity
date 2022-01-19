@@ -49,7 +49,7 @@ namespace Edgar.Unity.Tests.Runtime.Meta
                 .Where(x => typeof(MonoBehaviour).IsAssignableFrom(x))
                 .ToList();
 
-            var possibleSuffixes = new List<string>() { "Grid2D", "Grid3D" };
+            var possibleSuffixes = new List<string>() {"Grid2D", "Grid3D"};
             var wrongMenuPaths = new List<string>();
 
             foreach (var component in components)
