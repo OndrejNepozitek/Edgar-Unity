@@ -31,20 +31,20 @@ namespace Edgar.Unity
 
         public IDoorModeGrid2D GetDoorMode()
         {
-            if (SelectedMode == DoorMode.Manual)
-            {
-                return ManualDoorModeData.GetDoorMode(this as DoorsGrid2D);
-            }
+            //if (SelectedMode == DoorMode.Manual)
+            //{
+            //    return ManualDoorModeData.GetDoorMode(this as DoorsGrid2D);
+            //}
 
-            if (SelectedMode == DoorMode.Simple)
-            {
-                return SimpleDoorModeData.GetDoorMode(this as DoorsGrid2D);
-            }
+            //if (SelectedMode == DoorMode.Simple)
+            //{
+            //    return SimpleDoorModeData.GetDoorMode(this as DoorsGrid2D);
+            //}
 
-            if (SelectedMode == DoorMode.Hybrid)
-            {
-                return HybridDoorModeData.GetDoorMode(this as DoorsGrid2D);
-            }
+            //if (SelectedMode == DoorMode.Hybrid)
+            //{
+            //    return HybridDoorModeData.GetDoorMode(this as DoorsGrid2D);
+            //}
 
             throw new ArgumentException("Invalid door mode selected");
         }

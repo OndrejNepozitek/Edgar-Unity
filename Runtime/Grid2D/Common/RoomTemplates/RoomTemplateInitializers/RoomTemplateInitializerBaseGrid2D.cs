@@ -1,19 +1,55 @@
-#pragma warning disable 612, 618
+using System.Linq;
+using UnityEngine;
+
 namespace Edgar.Unity
 {
     /// <summary>
     ///     Base class for initializing room templates.
     /// </summary>
-    /// <remarks>
-    /// This file is temporarily empty to make it easier to adapt the new classNameGrid2D naming convention.
-    /// The motivation for this action is to prevent name clashes in the future when/if a 3D version is released.
-    /// 
-    /// See <see cref="RoomTemplateInitializerBase"/> for an actual implementation.
-    /// The RoomTemplateInitializerBase class is now obsolete and will be removed in a future release.
-    /// When that happens, the implementation of RoomTemplateInitializerBase will move to this file.
-    /// </remarks>
-    public abstract class RoomTemplateInitializerBaseGrid2D : RoomTemplateInitializerBase
+
+    public abstract class RoomTemplateInitializerBaseGrid2D : MonoBehaviour
     {
+        public virtual void Initialize()
+        {
+            // Remove all children game objects
+            foreach (var child in transform.Cast<Transform>().ToList())
+            {
+                PostProcessUtilsGrid2D.Destroy(child.gameObject);
+            }
+
+            // Add room template component
+            if (gameObject.GetComponent<RoomTemplateSettingsGrid2D>() == null)
+            {
+                gameObject.AddComponent<RoomTemplateSettingsGrid2D>();
+            }
+
+            // Create tilemaps root
+            var tilemapsRoot = new GameObject(GeneratorConstantsGrid2D.TilemapsRootName);
+            tilemapsRoot.transform.parent = gameObject.transform;
+
+            // Init tilemaps
+            InitializeTilemaps(tilemapsRoot);
+
+            // Fix positions
+            tilemapsRoot.transform.localPosition = Vector3.zero;
+            transform.localPosition = Vector3.zero;
+
+            // Add doors
+            InitializeDoors();
+        }
+
+        protected virtual void InitializeTilemaps(GameObject tilemapsRoot)
+        {
+
+        }
+
+        protected virtual void InitializeDoors()
+        {
+            // Add Doors component
+            if (gameObject.GetComponent<DoorsGrid2D>() == null)
+            {
+                gameObject.AddComponent<DoorsGrid2D>();
+            }
+        }
     }
 }
-#pragma warning restore 612, 618

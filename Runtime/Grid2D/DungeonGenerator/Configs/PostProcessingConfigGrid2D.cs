@@ -11,9 +11,7 @@ namespace Edgar.Unity
         public TilemapLayersStructureModeGrid2D TilemapLayersStructure = TilemapLayersStructureModeGrid2D.Default;
 
         [ConditionalHide(nameof(IsTilemapsCustom))]
-#pragma warning disable 618
-        public TilemapLayersHandlerBase TilemapLayersHandler;
-#pragma warning restore 618
+        public TilemapLayersHandlerBaseGrid2D TilemapLayersHandler;
 
         [ConditionalHide(nameof(IsTilemapsFromExample))]
         public GameObject TilemapLayersExample;

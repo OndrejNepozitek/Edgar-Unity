@@ -3,9 +3,6 @@ namespace Edgar.Unity
     /// <summary>
     /// Priorities of post-processing steps.
     /// </summary>
-    /// <remarks>
-    /// Priorities of post-processing steps.
-    /// </remarks>
     public class PostProcessPrioritiesGrid2D
     {
         public static int InitializeSharedTilemaps = 100;

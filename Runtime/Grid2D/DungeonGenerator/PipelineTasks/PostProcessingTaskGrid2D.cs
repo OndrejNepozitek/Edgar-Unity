@@ -1,5 +1,4 @@
-﻿#pragma warning disable 612, 618
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -14,13 +13,13 @@ namespace Edgar.Unity
         private readonly Func<ITilemapLayersHandlerGrid2D> defaultTilemapLayersHandlerFactory;
 
         // TODO(rename):
-        private readonly List<DungeonGeneratorPostProcessBase> customPostProcessingTasks;
+        private readonly List<DungeonGeneratorPostProcessingGrid2D> customPostProcessingTasks;
         private readonly List<DungeonGeneratorPostProcessingComponentGrid2D> customPostProcessingComponents;
 
         public PostProcessingTaskGrid2D(
             PostProcessingConfigGrid2D config,
             Func<ITilemapLayersHandlerGrid2D> defaultTilemapLayersHandlerFactory,
-            List<DungeonGeneratorPostProcessBase> customPostProcessingTasks,
+            List<DungeonGeneratorPostProcessingGrid2D> customPostProcessingTasks,
             List<DungeonGeneratorPostProcessingComponentGrid2D> customPostProcessingComponents)
         {
             this.config = config;
@@ -47,13 +46,7 @@ namespace Edgar.Unity
                     }
 
                     postProcessingTask.SetRandomGenerator(Payload.Random);
-                    callbacks.RegisterAfterAll(postProcessingTask.Run);
-
-                    // Check if the task inherits from the refactored base class
-                    if (postProcessingTask is DungeonGeneratorPostProcessingGrid2D grid2DTask)
-                    {
-                        callbacks.RegisterAfterAll(WrapCallback(grid2DTask.Run));
-                    }
+                    callbacks.RegisterAfterAll(WrapCallback(postProcessingTask.Run));
                 }
             }
 
@@ -130,4 +123,3 @@ namespace Edgar.Unity
         }
     }
 }
-#pragma warning restore 612, 618

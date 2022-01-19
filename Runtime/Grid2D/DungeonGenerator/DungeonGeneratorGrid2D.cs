@@ -1,6 +1,5 @@
 using UnityEngine;
 
-#pragma warning disable 612, 618
 namespace Edgar.Unity
 {
     /// <summary>
@@ -15,8 +14,7 @@ namespace Edgar.Unity
     /// When that happens, the implementation of DungeonGenerator will move to this file.
     /// </remarks>
     [AddComponentMenu("Edgar/Grid2D/Dungeon Generator (Grid2D)")]
-    public class DungeonGeneratorGrid2D : DungeonGenerator
+    public class DungeonGeneratorGrid2D : DungeonGeneratorBaseGrid2D
     {
     }
 }
-#pragma warning restore 612, 618

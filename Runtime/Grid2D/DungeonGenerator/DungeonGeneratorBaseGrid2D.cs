@@ -24,9 +24,7 @@ namespace Edgar.Unity
 
         // TODO(rename):
         [ExpandableScriptableObject(CanFold = false)]
-#pragma warning disable 618
-        public List<DungeonGeneratorPostProcessBase> CustomPostProcessTasks;
-#pragma warning restore 618
+        public List<DungeonGeneratorPostProcessingGrid2D> CustomPostProcessTasks;
 
         [Expandable]
         [Obsolete("Please use directly the properties UseRandomSeed, RandomGeneratorSeed and GenerateOnStart")]
@@ -96,11 +94,9 @@ namespace Edgar.Unity
 
         protected virtual IPipelineTask<DungeonGeneratorPayloadGrid2D> GetPostProcessingTask()
         {
-#pragma warning disable 618
             var postProcessingTasks = !DisableCustomPostProcessing
                 ? CustomPostProcessTasks
-                : new List<DungeonGeneratorPostProcessBase>();
-#pragma warning restore 618
+                : new List<DungeonGeneratorPostProcessingGrid2D>();
 
             var postProcessingComponents = !DisableCustomPostProcessing
                 ? GetComponents<DungeonGeneratorPostProcessingComponentGrid2D>().ToList()
