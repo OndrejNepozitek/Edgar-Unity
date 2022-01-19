@@ -45,7 +45,8 @@ namespace Edgar.Unity
             }
 
             // We delete all the children from the root game object - we do not want to combine levels from different runs of the algorithm
-            foreach (var child in rootGameObject.transform.Cast<Transform>().ToList()) {
+            foreach (var child in rootGameObject.transform.Cast<Transform>().ToList())
+            {
                 child.transform.parent = null;
                 PostProcessUtilsGrid2D.Destroy(child.gameObject);
             }
@@ -93,7 +94,7 @@ namespace Edgar.Unity
             }
 
             // Transform the level to its Unity representation
-            var generatedLevel = GeneratorUtilsGrid2D.TransformLayout(layout, levelDescription, rootGameObject); 
+            var generatedLevel = GeneratorUtilsGrid2D.TransformLayout(layout, levelDescription, rootGameObject);
 
             var stats = new GeneratorStats()
             {

@@ -5,6 +5,5 @@
     /// </summary>
     public class Connection : ConnectionBase
     {
-
     }
 }

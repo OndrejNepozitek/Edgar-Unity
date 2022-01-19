@@ -51,7 +51,7 @@ namespace Edgar.Unity
                     {
                         basicRoom.Name = "Corridor";
                     }
-                    
+
                     levelDescription.AddCorridorConnection(connection, corridorRoom,
                         GetRoomTemplates(config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates));
                 }

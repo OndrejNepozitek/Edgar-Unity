@@ -61,7 +61,7 @@ namespace Edgar.Unity
         {
             if (GenerateOnStart)
             {
-                Generate(); 
+                Generate();
             }
         }
 
@@ -123,7 +123,7 @@ namespace Edgar.Unity
             var payload = InitializePayload();
             var inputSetup = GetInputTask();
 
-            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayloadGrid2D>> { inputSetup };
+            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayloadGrid2D>> {inputSetup};
 
             PipelineRunner.Run(pipelineItems, payload);
 
@@ -218,7 +218,7 @@ namespace Edgar.Unity
 
         protected override int OnUpgradeSerializedData(int version)
         {
-#pragma warning disable 618
+            #pragma warning disable 618
             if (version < 2)
             {
                 if (OtherConfig != null)
@@ -252,7 +252,7 @@ namespace Edgar.Unity
                     }
                 }
             }
-#pragma warning restore 618
+            #pragma warning restore 618
 
             return 3;
         }

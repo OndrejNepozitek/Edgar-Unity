@@ -6,7 +6,6 @@ namespace Edgar.Unity
     /// <summary>
     ///     Base class for initializing room templates.
     /// </summary>
-
     public abstract class RoomTemplateInitializerBaseGrid2D : MonoBehaviour
     {
         public virtual void Initialize()
@@ -40,7 +39,6 @@ namespace Edgar.Unity
 
         protected virtual void InitializeTilemaps(GameObject tilemapsRoot)
         {
-
         }
 
         protected virtual void InitializeDoors()

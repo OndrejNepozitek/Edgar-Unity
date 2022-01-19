@@ -8,7 +8,7 @@ namespace Edgar.Unity
     ///     Class that holds information about a laid out room.
     /// </summary>
     [Serializable]
-    public class RoomInstanceGrid2D 
+    public class RoomInstanceGrid2D
     {
         /// <summary>
         ///     The room associated with this room instance.
@@ -19,20 +19,26 @@ namespace Edgar.Unity
         ///     outside of Unity without creating corresponding asset files.
         /// </remarks>
         public RoomBase Room => room;
-        [SerializeField] private RoomBase room;
+
+        [SerializeField]
+        private RoomBase room;
 
         /// <summary>
         ///     Whether the room instance corresponds to a Room or to a Corridor.
         /// </summary>
         public bool IsCorridor => isCorridor;
-        [SerializeField] private bool isCorridor;
+
+        [SerializeField]
+        private bool isCorridor;
 
         /// <summary>
         ///     If this is a corridor room, this property contains the corresponding connection.
         ///     Otherwise it is null.
         /// </summary>
         public ConnectionBase Connection => connection;
-        [SerializeField] private ConnectionBase connection;
+
+        [SerializeField]
+        private ConnectionBase connection;
 
         /// <summary>
         ///     Room template that was selected for a given room.
@@ -41,7 +47,9 @@ namespace Edgar.Unity
         ///     This is the original saved asset used in the input.
         /// </remarks>
         public GameObject RoomTemplatePrefab => roomTemplatePrefab;
-        [SerializeField] private GameObject roomTemplatePrefab;
+
+        [SerializeField]
+        private GameObject roomTemplatePrefab;
 
         /// <summary>
         ///     Instance of the RoomTemplatePrefab that is correctly positioned.
@@ -52,7 +60,9 @@ namespace Edgar.Unity
         ///     It can be used to copy tiles from the template to the combined tilemaps.
         /// </remarks>
         public GameObject RoomTemplateInstance => roomTemplateInstance;
-        [SerializeField] private GameObject roomTemplateInstance;
+
+        [SerializeField]
+        private GameObject roomTemplateInstance;
 
         /// <summary>
         ///     Position of the room relative to the generated layout.
@@ -62,7 +72,9 @@ namespace Edgar.Unity
         ///     must be added to relative positions of tile in Room's tilemaps.
         /// </remarks>
         public Vector3Int Position => position;
-        [SerializeField] private Vector3Int position;
+
+        [SerializeField]
+        private Vector3Int position;
 
         /// <summary>
         ///     List of doors together with the information to which room they are connected.
@@ -72,7 +84,9 @@ namespace Edgar.Unity
         ///     exactly is the door situated in the level, you have to add the position of the room.
         /// </remarks>
         public List<DoorInstanceGrid2D> Doors => doors;
-        [SerializeField] private List<DoorInstanceGrid2D> doors;
+
+        [SerializeField]
+        private List<DoorInstanceGrid2D> doors;
 
         /// <summary>
         ///     The polygon that was used as the outline of the room.
@@ -83,7 +97,9 @@ namespace Edgar.Unity
         ///     needed to add the position of the room to its points.
         /// </remarks>
         public Polygon2D OutlinePolygon => outlinePolygon;
-        [SerializeField] private Polygon2D outlinePolygon;
+
+        [SerializeField]
+        private Polygon2D outlinePolygon;
 
         public RoomInstanceGrid2D(RoomBase room, bool isCorridor, ConnectionBase connection, GameObject roomTemplatePrefab, GameObject roomTemplateInstance, Vector3Int position, Polygon2D outlinePolygon)
         {

@@ -48,7 +48,6 @@ namespace Edgar.Unity
                 {
                     TextColor = Color.red
                 };
-                
             }
             else
             {

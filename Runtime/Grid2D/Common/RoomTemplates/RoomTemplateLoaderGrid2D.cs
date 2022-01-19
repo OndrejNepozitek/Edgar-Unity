@@ -159,7 +159,7 @@ namespace Edgar.Unity
 
             return usedTiles;
         }
-        
+
         /// <summary>
         ///     Computes a room room template from a given room template game object.
         /// </summary>
@@ -199,7 +199,7 @@ namespace Edgar.Unity
                 return false;
             }
 
-            var allowedTransformations = new List<TransformationGrid2D> { TransformationGrid2D.Identity };
+            var allowedTransformations = new List<TransformationGrid2D> {TransformationGrid2D.Identity};
             var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplateSettingsGrid2D>();
             var repeatMode = roomTemplateComponent?.RepeatMode ?? RoomTemplateRepeatMode.AllowRepeat;
             var doors = roomTemplatePrefab.GetComponent<DoorsGrid2D>();

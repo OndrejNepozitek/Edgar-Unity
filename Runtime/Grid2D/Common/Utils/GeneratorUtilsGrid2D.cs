@@ -17,7 +17,7 @@ namespace Edgar.Unity
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
             var corridorToConnectionMapping = levelDescription.GetCorridorToConnectionMapping();
-            
+
             // Prepare an object to hold instantiated room templates
             var roomTemplateInstancesRoot = new GameObject(GeneratorConstantsGrid2D.RoomsRootName);
             roomTemplateInstancesRoot.transform.parent = rootGameObject.transform;
@@ -33,7 +33,7 @@ namespace Edgar.Unity
                 var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
                 roomTemplateInstance.name = $"{layoutRoom.Room.GetDisplayName()} - {roomTemplatePrefab.name}";
-                
+
                 // Compute correct room position
                 var position = layoutRoom.Position.ToUnityIntVector3();
                 roomTemplateInstance.transform.position = position;

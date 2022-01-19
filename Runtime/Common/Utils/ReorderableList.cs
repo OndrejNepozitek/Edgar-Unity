@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace Edgar.Unity
 {
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     public class ReorderableList
     {
         private readonly UnityEditorInternal.ReorderableList list;
@@ -43,7 +43,6 @@ namespace Edgar.Unity
                     EditorGUI.LabelField(rect, label);
                 };
             }
-
         }
 
         public void DoLayoutList()
@@ -51,5 +50,5 @@ namespace Edgar.Unity
             list.DoLayoutList();
         }
     }
-#endif
+    #endif
 }

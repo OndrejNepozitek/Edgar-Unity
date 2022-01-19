@@ -23,7 +23,7 @@ namespace Edgar.Unity
             {
                 line = line.Shrink(0, Length - 1);
             }
-            
+
             return new GraphBasedGenerator.Grid2D.DoorLineGrid2D(
                 line,
                 Length - 1,
@@ -43,7 +43,7 @@ namespace Edgar.Unity
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DoorLineGrid2D)obj);
+            return Equals((DoorLineGrid2D) obj);
         }
 
         public override int GetHashCode()

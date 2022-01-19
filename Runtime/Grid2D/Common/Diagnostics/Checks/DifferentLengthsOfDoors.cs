@@ -83,7 +83,7 @@ namespace Edgar.Unity.Diagnostics
 
             return doorLengths;
         }
-            
+
         public class Result : IDiagnosticResult
         {
             public string Name => "Different lengths of doors";

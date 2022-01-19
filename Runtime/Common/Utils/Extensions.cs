@@ -52,7 +52,7 @@ namespace Edgar.Unity
             return new HashSet<T>(source, comparer);
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         /// <summary>
         /// Gets visible children of `SerializedProperty` at 1 level depth.
         /// </summary>
@@ -63,19 +63,18 @@ namespace Edgar.Unity
             var currentProperty = serializedProperty.Copy();
             var nextSiblingProperty = serializedProperty.Copy();
             nextSiblingProperty.NextVisible(false);
- 
+
             if (currentProperty.NextVisible(true))
             {
                 do
                 {
                     if (SerializedProperty.EqualContents(currentProperty, nextSiblingProperty))
                         break;
- 
+
                     yield return currentProperty;
-                }
-                while (currentProperty.NextVisible(includeNested));
+                } while (currentProperty.NextVisible(includeNested));
             }
         }
-#endif
+        #endif
     }
 }

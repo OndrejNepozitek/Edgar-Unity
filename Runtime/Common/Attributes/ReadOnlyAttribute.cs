@@ -7,10 +7,9 @@ namespace Edgar.Unity
 {
     public class ReadOnlyAttribute : PropertyAttribute
     {
- 
     }
-    
-#if UNITY_EDITOR
+
+    #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
     public class ReadOnlyDrawer : PropertyDrawer
     {
@@ -19,7 +18,7 @@ namespace Edgar.Unity
         {
             return EditorGUI.GetPropertyHeight(property, label, true);
         }
- 
+
         public override void OnGUI(Rect position,
             SerializedProperty property,
             GUIContent label)
@@ -29,5 +28,5 @@ namespace Edgar.Unity
             GUI.enabled = true;
         }
     }
-#endif
+    #endif
 }

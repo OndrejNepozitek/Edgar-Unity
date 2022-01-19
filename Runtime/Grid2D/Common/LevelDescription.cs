@@ -20,7 +20,7 @@ namespace Edgar.Unity
         private readonly TwoWayDictionary<RoomBase, ConnectionBase> corridorToConnectionMapping = new TwoWayDictionary<RoomBase, ConnectionBase>();
         private readonly LevelDescriptionGrid2D<RoomBase> levelDescription = new LevelDescriptionGrid2D<RoomBase>();
         private readonly TwoWayDictionary<GameObject, RoomTemplateGrid2D> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplateGrid2D>();
-        
+
         /// <summary>
         /// Adds a given room together with a list of available room templates.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Edgar.Unity
         /// <param name="connection">Connection that is added to the level description</param>
         /// <param name="corridorRoom">Room that represents the corridor room between the two rooms from the connection</param>
         /// <param name="corridorRoomTemplates">Room templates that are available for the corridor</param>
-        public void AddCorridorConnection(ConnectionBase connection,RoomBase corridorRoom, List<GameObject> corridorRoomTemplates)
+        public void AddCorridorConnection(ConnectionBase connection, RoomBase corridorRoom, List<GameObject> corridorRoomTemplates)
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
             if (corridorRoom == null) throw new ArgumentNullException(nameof(corridorRoom));
@@ -88,7 +88,7 @@ namespace Edgar.Unity
                 }
             }
 
-            var corridorRoomDescription = new RoomDescriptionGrid2D(true,roomTemplatePrefabs.Select(GetRoomTemplate).ToList());
+            var corridorRoomDescription = new RoomDescriptionGrid2D(true, roomTemplatePrefabs.Select(GetRoomTemplate).ToList());
             corridorRoomDescriptions.Add(corridorRoomDescription);
 
             return corridorRoomDescription;
@@ -125,7 +125,7 @@ namespace Edgar.Unity
             return levelDescription;
         }
 
-        
+
         /// <summary>
         /// Gets the mapping from room template game objects to room template instances.
         /// </summary>

@@ -13,7 +13,9 @@ namespace Edgar.Unity
         ///     Line containing all points of the door.
         /// </summary>
         public OrthogonalLine DoorLine => doorLine;
-        [SerializeField] private OrthogonalLine doorLine;
+
+        [SerializeField]
+        private OrthogonalLine doorLine;
 
         /// <summary>
         ///     Direction in which a room is connected to this door.
@@ -33,19 +35,25 @@ namespace Edgar.Unity
         ///     Here the facing direction is equal to Vector2Int.right.
         /// </remarks>
         public Vector2Int FacingDirection => facingDirection;
-        [SerializeField] private Vector2Int facingDirection;
+
+        [SerializeField]
+        private Vector2Int facingDirection;
 
         /// <summary>
         ///     Whether the door line is horizontal or vertical.
         /// </summary>
         public bool IsHorizontal => isHorizontal;
-        [SerializeField] private bool isHorizontal;
+
+        [SerializeField]
+        private bool isHorizontal;
 
         /// <summary>
         ///     To which room is the room that contains this door connected.
         /// </summary>
         public RoomBase ConnectedRoom => connectedRoom;
-        [SerializeField] private RoomBase connectedRoom;
+
+        [SerializeField]
+        private RoomBase connectedRoom;
 
         /// <summary>
         ///     To which room instance is the room that contains this door connected.
@@ -55,7 +63,9 @@ namespace Edgar.Unity
         ///     by value and that would make Unity try to serialize the whole graph.
         /// </remarks>
         public RoomInstanceGrid2D ConnectedRoomInstance => connectedRoomInstance;
-        [NonSerialized] private RoomInstanceGrid2D connectedRoomInstance;
+
+        [NonSerialized]
+        private RoomInstanceGrid2D connectedRoomInstance;
 
         public DoorInstanceGrid2D(OrthogonalLine doorLine, Vector2Int facingDirection, RoomBase connectedRoom, RoomInstanceGrid2D connectedRoomInstance)
         {

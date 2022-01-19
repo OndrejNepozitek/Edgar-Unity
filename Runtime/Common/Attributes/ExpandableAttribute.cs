@@ -14,7 +14,7 @@ namespace Edgar.Unity
     {
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     /// <summary>
     ///     Draws the property field for any field marked with ExpandableAttribute.
     /// </summary>
@@ -37,7 +37,7 @@ namespace Edgar.Unity
 
             foreach (var child in property.GetVisibleChildren(false))
             {
-                totalHeight += EditorGUI.GetPropertyHeight(child, true) + EditorGUIUtility.standardVerticalSpacing;  
+                totalHeight += EditorGUI.GetPropertyHeight(child, true) + EditorGUIUtility.standardVerticalSpacing;
             }
 
             totalHeight += INNER_SPACING * 2;
@@ -191,5 +191,5 @@ namespace Edgar.Unity
 
         #endregion
     }
-#endif
+    #endif
 }

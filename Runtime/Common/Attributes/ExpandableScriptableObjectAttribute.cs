@@ -16,7 +16,7 @@ namespace Edgar.Unity
         public bool CanFold { get; set; } = true;
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     /// <summary>
     ///     Draws the property field for any field marked with ExpandableAttribute.
     /// </summary>
@@ -233,5 +233,5 @@ namespace Edgar.Unity
 
         #endregion
     }
-#endif
+    #endif
 }

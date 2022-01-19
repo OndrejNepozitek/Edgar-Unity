@@ -28,7 +28,7 @@ namespace Edgar.Unity.Diagnostics
             results.Add(new WrongManualDoors().Run(levelDescription));
             results.Add(new NumberOfCycles().Run(levelDescription));
             results.Add(new NumberOfRooms().Run(levelDescription));
-            
+
             return results;
         }
 
@@ -86,7 +86,7 @@ namespace Edgar.Unity.Diagnostics
 
             Debug.LogWarning($"<size=17><b>--- Error diagnostic ---</b></size>");
             Debug.LogWarning($"The generator was not able to produce a level due to an error with one or more room templates.");
-            
+
             if (wrongManualDoors != null)
             {
                 Debug.LogWarning("--");

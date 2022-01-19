@@ -11,13 +11,23 @@ namespace Edgar.Unity
     [Serializable]
     public struct OrthogonalLine : IEquatable<OrthogonalLine>
     {
-        [SerializeField] private int fromX;
-        [SerializeField] private int fromY;
-        [SerializeField] private int fromZ;
+        [SerializeField]
+        private int fromX;
 
-        [SerializeField] private int toX;
-        [SerializeField] private int toY;
-        [SerializeField] private int toZ;
+        [SerializeField]
+        private int fromY;
+
+        [SerializeField]
+        private int fromZ;
+
+        [SerializeField]
+        private int toX;
+
+        [SerializeField]
+        private int toY;
+
+        [SerializeField]
+        private int toZ;
 
         public Vector3Int From => new Vector3Int(fromX, fromY, fromZ);
 

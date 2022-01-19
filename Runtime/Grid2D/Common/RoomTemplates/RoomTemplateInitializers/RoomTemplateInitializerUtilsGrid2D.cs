@@ -12,7 +12,7 @@ namespace Edgar.Unity
         /// <typeparam name="TRoomTemplateInitializer"></typeparam>
         public static void CreateRoomTemplatePrefab<TRoomTemplateInitializer>() where TRoomTemplateInitializer : RoomTemplateInitializerBaseGrid2D
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             // Create empty game object
             var roomTemplate = new GameObject();
 
@@ -27,10 +27,10 @@ namespace Edgar.Unity
 
             // Remove game object from scene
             Object.DestroyImmediate(roomTemplate);
-#endif
+            #endif
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         private static string GetCurrentPath()
         {
             var path = AssetDatabase.GetAssetPath(Selection.activeObject);
@@ -46,6 +46,6 @@ namespace Edgar.Unity
 
             return path;
         }
-#endif
+        #endif
     }
 }

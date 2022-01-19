@@ -53,11 +53,11 @@ namespace Edgar.Unity
         {
             if (version == 1)
             {
-#pragma warning disable 612
+                #pragma warning disable 612
                 SimpleDoorModeData.DistanceFromCorners = DistanceFromCorners;
                 SimpleDoorModeData.DoorLength = DoorLength;
                 ManualDoorModeData.DoorsList = DoorsList;
-#pragma warning restore 612
+                #pragma warning restore 612
             }
 
             return 2;

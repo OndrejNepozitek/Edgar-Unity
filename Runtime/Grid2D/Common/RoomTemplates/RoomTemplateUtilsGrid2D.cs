@@ -77,7 +77,7 @@ namespace Edgar.Unity
 
             if (overrideOutline != null)
             {
-                return new List<Tilemap>() { overrideOutline };
+                return new List<Tilemap>() {overrideOutline};
             }
 
             return tilemaps

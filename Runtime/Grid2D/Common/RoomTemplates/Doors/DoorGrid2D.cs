@@ -27,7 +27,7 @@ namespace Edgar.Unity
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DoorGrid2D)obj);
+            return Equals((DoorGrid2D) obj);
         }
 
         public override int GetHashCode()
