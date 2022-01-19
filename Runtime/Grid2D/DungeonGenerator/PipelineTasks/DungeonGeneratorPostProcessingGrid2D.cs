@@ -3,6 +3,8 @@ using Random = System.Random;
 
 namespace Edgar.Unity
 {
+    public delegate void DungeonGeneratorPostProcessCallbackGrid2D(DungeonGeneratorLevelGrid2D level);
+
     /// <summary>
     /// Base class for custom post-processing logic.
     /// </summary>

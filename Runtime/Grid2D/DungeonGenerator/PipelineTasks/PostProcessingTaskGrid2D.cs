@@ -30,7 +30,7 @@ namespace Edgar.Unity
 
         public override IEnumerator Process()
         {
-            var callbacks = new PriorityCallbacks<DungeonGeneratorPostProcessCallback>();
+            var callbacks = new PriorityCallbacks<DungeonGeneratorPostProcessCallbackGrid2D>();
 
             // Register default callbacks
             RegisterCallbacks(callbacks);
@@ -46,7 +46,7 @@ namespace Edgar.Unity
                     }
 
                     postProcessingTask.SetRandomGenerator(Payload.Random);
-                    callbacks.RegisterAfterAll(WrapCallback(postProcessingTask.Run));
+                    callbacks.RegisterAfterAll(postProcessingTask.Run);
                 }
             }
 
@@ -61,23 +61,23 @@ namespace Edgar.Unity
                     }
 
                     postProcessingTask.SetRandomGenerator(Payload.Random);
-                    callbacks.RegisterAfterAll(WrapCallback(postProcessingTask.Run));
+                    callbacks.RegisterAfterAll(postProcessingTask.Run);
                 }
             }
 
             // Run callbacks
             foreach (var callback in callbacks.GetCallbacks())
             {
-                callback(Payload.GeneratedLevel, Payload.LevelDescription);
+                callback(Payload.GeneratedLevel);
                 yield return null;
             }
         }
 
-        private void RegisterCallbacks(PriorityCallbacks<DungeonGeneratorPostProcessCallback> callbacks)
+        private void RegisterCallbacks(PriorityCallbacks<DungeonGeneratorPostProcessCallbackGrid2D> callbacks)
         {
             if (config.InitializeSharedTilemaps)
             {
-                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.InitializeSharedTilemaps, (level, _) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.InitializeSharedTilemaps, (level) =>
                 {
                     PostProcessUtilsGrid2D.InitializeSharedTilemaps(level, config.TilemapLayersStructure, defaultTilemapLayersHandlerFactory(), config.TilemapLayersHandler, config.TilemapLayersExample);
                     PostProcessUtilsGrid2D.SetTilemapsMaterial(level, config.TilemapMaterial);
@@ -86,7 +86,7 @@ namespace Edgar.Unity
 
             if (config.CopyTilesToSharedTilemaps)
             {
-                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.CopyTilesToSharedTilemaps, (level, _) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.CopyTilesToSharedTilemaps, (level) =>
                 {
                     PostProcessUtilsGrid2D.CopyTilesToSharedTilemaps(level);
                 });
@@ -94,7 +94,7 @@ namespace Edgar.Unity
 
             if (config.CenterGrid)
             {
-                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.CenterGrid, (level, _) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.CenterGrid, (level) =>
                 {
                     PostProcessUtilsGrid2D.CenterGrid(level);
                 });
@@ -102,7 +102,7 @@ namespace Edgar.Unity
 
             if (config.DisableRoomTemplatesRenderers)
             {
-                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateRenderers, (level, _) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateRenderers, (level) =>
                 {
                     PostProcessUtilsGrid2D.DisableRoomTemplateRenderers(level);
                 });
@@ -110,16 +110,11 @@ namespace Edgar.Unity
 
             if (config.DisableRoomTemplatesColliders)
             {
-                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateColliders, (level, _) =>
+                callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateColliders, (level) =>
                 {
                     PostProcessUtilsGrid2D.DisableRoomTemplateColliders(level);
                 });
             }
-        }
-
-        private static DungeonGeneratorPostProcessCallback WrapCallback(DungeonGeneratorPostProcessCallbackGrid2D callback)
-        {
-            return (level, _) => callback(level);
         }
     }
 }
