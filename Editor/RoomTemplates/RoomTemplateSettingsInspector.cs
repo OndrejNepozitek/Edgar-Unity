@@ -99,7 +99,7 @@ namespace Edgar.Unity.Editor
 
         private void ShowStatus()
         {
-            var roomTemplate = (RoomTemplateSettingsGrid2D)target;
+            var roomTemplate = (RoomTemplateSettingsGrid2D) target;
             var originalBackground = GUI.backgroundColor;
 
             Handles.BeginGUI();
@@ -131,12 +131,12 @@ namespace Edgar.Unity.Editor
                 }
             }
 
-            GUILayout.Label($"Outline: <b>{outlineText}</b>", new GUIStyle(EditorStyles.label) { richText = true });
-            GUILayout.Label($"Doors: <b>{doorsText}</b>", new GUIStyle(EditorStyles.label) { richText = true });
+            GUILayout.Label($"Outline: <b>{outlineText}</b>", new GUIStyle(EditorStyles.label) {richText = true});
+            GUILayout.Label($"Doors: <b>{doorsText}</b>", new GUIStyle(EditorStyles.label) {richText = true});
 
             if (!isOutlineValid || !areDoorsValid)
             {
-                GUILayout.Label($"<size=9>See the Room template settings component for details</size>", new GUIStyle(EditorStyles.label) { richText = true, wordWrap = true });
+                GUILayout.Label($"<size=9>See the Room template settings component for details</size>", new GUIStyle(EditorStyles.label) {richText = true, wordWrap = true});
             }
 
             GUILayout.EndVertical();
@@ -174,26 +174,25 @@ namespace Edgar.Unity.Editor
             }
             catch (ArgumentException)
             {
-
             }
         }
 
         private void AddOnSceneGUIDelegate()
         {
-#if UNITY_2019_1_OR_NEWER
+            #if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui += DrawOutline;
-#else
+            #else
             SceneView.onSceneGUIDelegate += DrawOutline;
-#endif
+            #endif
         }
 
         private void RemoveOnSceneGUIDelegate()
         {
-#if UNITY_2019_1_OR_NEWER
+            #if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui -= DrawOutline;
-#else
+            #else
             SceneView.onSceneGUIDelegate -= DrawOutline;
-#endif
+            #endif
         }
     }
 }

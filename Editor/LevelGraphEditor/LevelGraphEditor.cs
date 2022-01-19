@@ -10,7 +10,7 @@ namespace Edgar.Unity.Editor
         public LevelGraph LevelGraph { get; private set; }
 
         private List<RoomNode> roomNodes = new List<RoomNode>();
-        
+
         private List<ConnectionNode> connectionNodes = new List<ConnectionNode>();
 
         public State CurrentState;
@@ -71,7 +71,7 @@ namespace Edgar.Unity.Editor
         /// <param name="levelGraph"></param>
         public void Initialize(LevelGraph levelGraph)
         {
-            LevelGraph = levelGraph; 
+            LevelGraph = levelGraph;
             CurrentState = State.Idle;
             zoom = LevelGraph.EditorData.Zoom;
             panOffset = LevelGraph.EditorData.PanOffset;
@@ -196,7 +196,7 @@ namespace Edgar.Unity.Editor
 
             if (LevelGraph != null)
             {
-                GUILayout.Label($"Selected graph: {LevelGraph.name}"); 
+                GUILayout.Label($"Selected graph: {LevelGraph.name}");
             }
             else
             {
@@ -302,7 +302,12 @@ namespace Edgar.Unity.Editor
 
         public enum State
         {
-            Idle, HoldGrid, DragGrid, HoldRoom, DragRoom, CreateConnection
+            Idle,
+            HoldGrid,
+            DragGrid,
+            HoldRoom,
+            DragRoom,
+            CreateConnection
         }
     }
 }

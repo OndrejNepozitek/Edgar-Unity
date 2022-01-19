@@ -9,7 +9,7 @@ namespace Edgar.Unity.Editor
     {
         private const float BottomSpacing = 2;
         private const float PropertyHeight = 14;
-        private readonly string[] keywords = new[] { "Top", "Bottom", "Vertical" };
+        private readonly string[] keywords = new[] {"Top", "Bottom", "Vertical"};
         private const float CheckboxOffset = 18;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)

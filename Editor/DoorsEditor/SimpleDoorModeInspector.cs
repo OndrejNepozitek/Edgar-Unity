@@ -24,7 +24,7 @@ namespace Edgar.Unity.Editor
             {
                 EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeDataGrid2D.DoorLength)), 1, 10, "Door length");
                 EditorGUILayout.IntSlider(FindProperty(nameof(SimpleDoorModeDataGrid2D.DistanceFromCorners)), 0, 10, "Margin");
-            } 
+            }
             else if (doors.SimpleDoorModeData.Mode == SimpleDoorModeDataGrid2D.SettingsMode.DifferentHorizontalAndVertical)
             {
                 EditorGUILayout.PropertyField(FindProperty(nameof(SimpleDoorModeDataGrid2D.VerticalDoors)), true);
@@ -45,10 +45,10 @@ namespace Edgar.Unity.Editor
 
             var color = Color.red;
 
-            foreach (var doorLine in doorLines) 
+            foreach (var doorLine in doorLines)
             {
                 DoorsInspectorUtils.DrawDoorLine(doorLine, grid, color);
-            } 
+            }
         }
     }
 }

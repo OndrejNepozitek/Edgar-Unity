@@ -51,7 +51,7 @@ namespace Edgar.Unity.Editor
                                 CurrentState = State.CreateConnection;
                                 connectionStartNode = currentHoverRoomNode;
                             }
-                        } 
+                        }
                         else if (currentHoverConnectionNode != null)
                         {
                             /* empty */
@@ -60,8 +60,7 @@ namespace Edgar.Unity.Editor
                         else if (e.button == 1 || e.button == 2)
                         {
                             CurrentState = State.HoldGrid;
-                        } 
-
+                        }
                     }
 
                     break;
@@ -77,7 +76,7 @@ namespace Edgar.Unity.Editor
                         var mouseDownDistance = Vector2.Distance(mouseDownPosition, e.mousePosition);
 
                         // Configure room on double click
-                        if (e.button == 0 && !e.control && (/*mouseDownDistance <= 2 ||*/ isDoubleClick))
+                        if (e.button == 0 && !e.control && ( /*mouseDownDistance <= 2 ||*/ isDoubleClick))
                         {
                             if (!e.shift)
                             {
@@ -90,7 +89,7 @@ namespace Edgar.Unity.Editor
                                     currentHoverRoomNode.Room
                                 }.ToArray();
                             }
-                            
+
                             GUI.changed = true;
                             CurrentState = State.Idle;
                         }
@@ -99,14 +98,14 @@ namespace Edgar.Unity.Editor
                         {
                             ShowRoomContextMenu(currentHoverRoomNode);
                             GUI.changed = true;
-                        } 
+                        }
                         // Create a connection if hovering node
                         else if (CurrentState == State.CreateConnection)
                         {
                             CreateConnection(connectionStartNode, currentHoverRoomNode);
                             GUI.changed = true;
                         }
-                    } 
+                    }
                     else if (currentHoverConnectionNode != null)
                     {
                         // Configure connection on double click
@@ -114,7 +113,7 @@ namespace Edgar.Unity.Editor
                         {
                             Selection.activeObject = currentHoverConnectionNode.Connection;
                             GUI.changed = true;
-                        } 
+                        }
                         // Show connection context menu on right click
                         else if (e.button == 1)
                         {
@@ -126,7 +125,7 @@ namespace Edgar.Unity.Editor
                     else if (CurrentState == State.CreateConnection)
                     {
                         GUI.changed = true;
-                    } 
+                    }
                     // Create room on double click
                     else if (e.button == 0 && isDoubleClick)
                     {
@@ -213,7 +212,7 @@ namespace Edgar.Unity.Editor
             //{
             //    Debug.Log(e);
             //}
-           
+
             if (GUI.changed)
             {
                 Repaint();
@@ -250,7 +249,7 @@ namespace Edgar.Unity.Editor
             }
 
             room.Position = normalizedPosition;
-            
+
             // Select the room in the inspector after creating
             Selection.activeObject = room;
 
@@ -314,7 +313,7 @@ namespace Edgar.Unity.Editor
             CreateConnectionNode(connection);
 
             EditorUtility.SetDirty(LevelGraph);
-            
+
             return connection;
         }
 

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Edgar.Unity.Editor
 {
-    [CustomEditor(typeof(DungeonGeneratorBaseGrid2D), true)] 
-    public class DungeonGeneratorInspector : UnityEditor.Editor 
+    [CustomEditor(typeof(DungeonGeneratorBaseGrid2D), true)]
+    public class DungeonGeneratorInspector : UnityEditor.Editor
     {
         private ReorderableList customPostProcessTasksList;
 
@@ -27,7 +27,7 @@ namespace Edgar.Unity.Editor
 
             EditorGUILayout.LabelField("Input config", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.FixedLevelGraphConfig)));
-            
+
             EditorGUILayout.LabelField("Generator config", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.GeneratorConfig)));
 
@@ -42,7 +42,7 @@ namespace Edgar.Unity.Editor
             {
                 customPostProcessTasksList.DoLayoutList();
             }
-            
+
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.UseRandomSeed)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.RandomGeneratorSeed)));

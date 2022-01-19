@@ -46,7 +46,7 @@ namespace Edgar.Unity.Editor
             }
 
             // Calculate world coordinates of the cells
-            var fromWorld = grid.CellToWorld(fromTile); 
+            var fromWorld = grid.CellToWorld(fromTile);
             var toWorld = grid.CellToWorld(toTile);
 
             var cellSizeX = grid.cellSize.x;
@@ -77,9 +77,9 @@ namespace Edgar.Unity.Editor
 
             points[0] += xSizeModifier + ySizeModifier;
             points[1] += xSizeModifier - ySizeModifier;
-            points[2] += - xSizeModifier - ySizeModifier;
-            points[3] += - xSizeModifier + ySizeModifier;
-            
+            points[2] += -xSizeModifier - ySizeModifier;
+            points[3] += -xSizeModifier + ySizeModifier;
+
             var originalColor = Handles.color;
             Handles.color = color;
 

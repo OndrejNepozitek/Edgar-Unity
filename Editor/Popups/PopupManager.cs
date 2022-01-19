@@ -29,7 +29,6 @@ namespace Edgar.Unity.Editor
 
         private static void AddProPopups()
         {
-
         }
 
         private static void SceneOpenedCallback(Scene scene, OpenSceneMode mode)

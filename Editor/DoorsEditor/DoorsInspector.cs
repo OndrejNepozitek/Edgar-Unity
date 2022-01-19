@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Edgar.Unity.Editor
 {
     [CustomEditor(typeof(DoorsGrid2D))]
-	public class DoorsInspector : UnityEditor.Editor
+    public class DoorsInspector : UnityEditor.Editor
     {
         private HybridDoorModeInspector hybridDoorModeInspector;
         private SimpleDoorModeInspector simpleDoorModeInspector;
@@ -30,17 +30,17 @@ namespace Edgar.Unity.Editor
             SceneView.RepaintAll();
         }
 
-		public void OnSceneGUI()
-		{
-			var doors = (DoorsGrid2D) target;
+        public void OnSceneGUI()
+        {
+            var doors = (DoorsGrid2D) target;
 
             switch (doors.SelectedMode)
-			{
-				case DoorsGrid2D.DoorMode.Manual:
+            {
+                case DoorsGrid2D.DoorMode.Manual:
                     manualDoorModeInspector.OnSceneGUI();
                     break;
 
-				case DoorsGrid2D.DoorMode.Simple:
+                case DoorsGrid2D.DoorMode.Simple:
                     simpleDoorModeInspector.OnSceneGUI();
                     break;
 
@@ -54,13 +54,13 @@ namespace Edgar.Unity.Editor
         }
 
         public override void OnInspectorGUI()
-		{
-			serializedObject.Update();
+        {
+            serializedObject.Update();
 
             var doors = (DoorsGrid2D) target;
 
             var selectedModeProp = serializedObject.FindProperty(nameof(DoorsGrid2D.SelectedMode));
-			selectedModeProp.intValue = GUILayout.SelectionGrid((int) doors.SelectedMode, new[]
+            selectedModeProp.intValue = GUILayout.SelectionGrid((int) doors.SelectedMode, new[]
             {
                 "Simple mode",
                 "Manual mode",
@@ -69,7 +69,7 @@ namespace Edgar.Unity.Editor
 
             EditorGUILayout.Space();
 
-			switch (doors.SelectedMode)
+            switch (doors.SelectedMode)
             {
                 case DoorsGrid2D.DoorMode.Simple:
                     simpleDoorModeInspector.OnInspectorGUI();
@@ -84,7 +84,7 @@ namespace Edgar.Unity.Editor
                     break;
             }
 
-            serializedObject.ApplyModifiedProperties();  
-		}
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Edgar.Unity.Editor
         public string SceneName { get; }
 
         public string ScenePath { get; }
-        
+
         public string Title { get; }
 
         public string Content { get; }
