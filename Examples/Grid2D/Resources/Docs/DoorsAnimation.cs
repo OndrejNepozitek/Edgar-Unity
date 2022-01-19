@@ -11,7 +11,7 @@ namespace Edgar.Unity.Examples
 {
     public class DoorsAnimation : MonoBehaviour
     {
-#if OndrejNepozitekEdgar
+        #if OndrejNepozitekEdgar
         public DoorLineGrid2D DoorLine;
         public bool Show = false;
 
@@ -133,7 +133,7 @@ namespace Edgar.Unity.Examples
             private static void DrawRectangleOutline(Grid grid, Vector3Int fromTile, Vector3Int toTile, Color color, Vector2 sizeModifier = default, bool addDiagonal = false, string label = null, bool isDotted = false)
             {
                 var drawLine = isDotted
-                    ? (Action<Vector3, Vector3>)((p1, p2) => Handles.DrawDottedLine(p1, p2, 2f))
+                    ? (Action<Vector3, Vector3>) ((p1, p2) => Handles.DrawDottedLine(p1, p2, 2f))
                     : (p1, p2) => Handles.DrawLine(p1, p2);
 
                 // Make sure that the from tile is on the bottom-left
@@ -188,7 +188,7 @@ namespace Edgar.Unity.Examples
 
                     var style = new GUIStyle();
                     style.normal.textColor = color;
-                    style.fontSize = (int)(15 / size);
+                    style.fontSize = (int) (15 / size);
 
                     Handles.Label(points[1] + new Vector3(0.08f, 0), label, style);
                 }
@@ -211,7 +211,6 @@ namespace Edgar.Unity.Examples
 
         public static class EditorCoroutines
         {
-
             public class Coroutine
             {
                 public IEnumerator enumerator;
@@ -227,7 +226,8 @@ namespace Edgar.Unity.Examples
                 {
                     EditorApplication.update += Update;
                 }
-                var coroutine = new Coroutine { enumerator = enumerator, OnUpdate = OnUpdate };
+
+                var coroutine = new Coroutine {enumerator = enumerator, OnUpdate = OnUpdate};
                 coroutines.Add(coroutine);
             }
 
@@ -256,11 +256,13 @@ namespace Edgar.Unity.Examples
                         if (coroutine.enumerator.Current is IEnumerator)
                         {
                             coroutine.history.Add(coroutine.enumerator);
-                            coroutine.enumerator = (IEnumerator)coroutine.enumerator.Current;
+                            coroutine.enumerator = (IEnumerator) coroutine.enumerator.Current;
                         }
                     }
+
                     if (coroutine.OnUpdate != null) coroutine.OnUpdate(done);
                 }
+
                 if (coroutines.Count == 0) EditorApplication.update -= Update;
             }
 
@@ -269,8 +271,7 @@ namespace Edgar.Unity.Examples
                 coroutines.Clear();
                 EditorApplication.update -= Update;
             }
-
         }
-#endif
+        #endif
     }
 }

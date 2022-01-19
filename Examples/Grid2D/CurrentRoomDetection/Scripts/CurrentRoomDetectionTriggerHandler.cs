@@ -3,6 +3,7 @@
 namespace Edgar.Unity.Examples.CurrentRoomDetection
 {
     #region codeBlock:2d_currentRoomDetection_triggerHandler
+
     public class CurrentRoomDetectionTriggerHandler : MonoBehaviour
     {
         private CurrentRoomDetectionRoomManager roomManager;
@@ -28,5 +29,6 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
             }
         }
     }
+
     #endregion
 }

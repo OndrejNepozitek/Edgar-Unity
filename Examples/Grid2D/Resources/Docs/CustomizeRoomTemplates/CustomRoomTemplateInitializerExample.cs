@@ -3,6 +3,7 @@
 namespace Edgar.Unity.Examples.Resources
 {
     #region codeBlock:2d_roomTemplateCustomization_initializer_1
+
     public class CustomRoomTemplateInitializerExample : RoomTemplateInitializerBaseGrid2D
     {
         protected override void InitializeTilemaps(GameObject tilemapsRoot)
@@ -22,5 +23,6 @@ namespace Edgar.Unity.Examples.Resources
             RoomTemplateInitializerUtilsGrid2D.CreateRoomTemplatePrefab<CustomRoomTemplateInitializerExample>();
         }
     }
+
     #endregion
 }

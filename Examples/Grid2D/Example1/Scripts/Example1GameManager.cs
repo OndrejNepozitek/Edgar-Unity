@@ -50,7 +50,7 @@ namespace Edgar.Unity.Examples.Example1
 
             stopwatch.Stop();
 
-            SetLevelInfo($"Generated in {stopwatch.ElapsedMilliseconds/1000d:F}s");
+            SetLevelInfo($"Generated in {stopwatch.ElapsedMilliseconds / 1000d:F}s");
             HideLoadingScreen();
         }
     }

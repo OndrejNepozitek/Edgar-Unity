@@ -5,7 +5,9 @@ namespace Edgar.Unity.Examples.Example1
     /// <summary>
     /// The logic in this class is the same as in <see cref="Example1PostProcessing"/> but implemented as a component rather than a scriptable object.
     /// </summary>
+
     #region codeBlock:2d_example1_postProcessingComponent
+
     public class Example1PostProcessingComponent : DungeonGeneratorPostProcessingComponentGrid2D
     {
         [Range(0, 1)]
@@ -49,5 +51,6 @@ namespace Edgar.Unity.Examples.Example1
             }
         }
     }
+
     #endregion
 }

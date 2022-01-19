@@ -8,7 +8,7 @@ namespace Edgar.Unity.Examples
     /// Game manager base class.
     /// </summary>
     /// <typeparam name="TGameManager">Actual type of the game manager</typeparam>
-    public abstract class GameManagerBase<TGameManager> : MonoBehaviour 
+    public abstract class GameManagerBase<TGameManager> : MonoBehaviour
         where TGameManager : class
     {
         /// <summary>
