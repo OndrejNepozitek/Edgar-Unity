@@ -64,7 +64,7 @@ namespace Edgar.Unity
             var corridorRoomDescription = GetCorridorRoomDescription(corridorRoomTemplates);
             levelDescription.AddRoom(corridorRoom, corridorRoomDescription);
             levelDescription.AddConnection(connection.From, corridorRoom);
-            levelDescription.AddConnection(connection.To, corridorRoom);
+            levelDescription.AddConnection(corridorRoom, connection.To);
         }
 
         private RoomDescriptionGrid2D GetBasicRoomDescription(List<GameObject> roomTemplatePrefabs)
