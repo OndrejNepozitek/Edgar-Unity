@@ -4,6 +4,7 @@ using System.Linq;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common;
 using Edgar.GraphBasedGenerator.Grid2D;
+using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Vector2Int = UnityEngine.Vector2Int;
@@ -29,8 +30,9 @@ namespace Edgar.Unity
             {
                 var roomTemplatePrefab = prefabToRoomTemplateMapping.GetByValue(layoutRoom.RoomTemplate);
 
-                // Instantiate room template
-                var roomTemplateInstance = Object.Instantiate(roomTemplatePrefab);
+                // Instantiate the room template
+                var roomTemplateInstance = InstantiateRoomTemplate(roomTemplatePrefab);
+
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
                 roomTemplateInstance.name = $"{layoutRoom.Room.GetDisplayName()} - {roomTemplatePrefab.name}";
 
@@ -138,5 +140,42 @@ namespace Edgar.Unity
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        #region codeBlock:2d_keepPrefabsInEditor
+
+        private static GameObject InstantiateRoomTemplate(GameObject roomTemplatePrefab)
+        {
+            // Set to true if you want to keep prefabs when generating levels in the editor
+            const bool keepPrefabsInEditor = false;
+
+            // Set to true if you want to unpack the root game object of the prefab
+            // (keepPrefabsInEditor must be true for this constant to change anything)
+            const bool unpackRootObject = false;
+
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+            if (!Application.isPlaying && keepPrefabsInEditor)
+            {
+                #if UNITY_EDITOR
+                var roomTemplateInstance = (GameObject) PrefabUtility.InstantiatePrefab(roomTemplatePrefab);
+
+                if (unpackRootObject)
+                {
+                    #pragma warning disable CS0162 // Unreachable code detected
+                    PrefabUtility.UnpackPrefabInstance(
+                        roomTemplateInstance,
+                        PrefabUnpackMode.OutermostRoot,
+                        InteractionMode.AutomatedAction
+                    );
+                    #pragma warning restore CS0162 // Unreachable code detected
+                }
+
+                return roomTemplateInstance;
+                #endif
+            }
+
+            return Object.Instantiate(roomTemplatePrefab);
+        }
+
+        #endregion
     }
 }
