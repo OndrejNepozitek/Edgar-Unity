@@ -12,12 +12,12 @@ title: Dungeon generator
 
 ## Configuration
 
-#### Input config
+#### Input config (`FixedLevelGraphConfigGrid2D`) {#input-config}
 
 - **Level Graph** - Level graph that should be used. Must not be null.
 - **Use corridors** - Whether corridors should be used between neighbouring rooms. If enabled, corridor room templates must be provided in the level graph.
 
-#### Generator config
+#### Generator config (`DungeonGeneratorConfigGrid2D`) {#generator-config}
 
 - **Root Game Object** - Game Object to which the generated level will be attached. New Game Object will be created if null.
 - **Timeout** - How long (in milliseconds) should we wait for the algorithm to generate a level. We may sometimes create an input that is too hard for the algorithm, so it is good to stop after some amount of time with an error.
@@ -36,7 +36,7 @@ title: Dungeon generator
 
 > **Note:** Higher values of *Minimum Room Distance* may negatively affect the performance of the generator. Moreover, with very short corridor, it might even be impossible to generate a level with a high value of this parameter.
 
-#### Post-processing config
+#### Post-processing config (`PostProcessingConfigGrid2D`) {#post-processing-config}
 
 Please see the [Post-processing](../generators/post-process.md) page to find detailed information about this configuration.
 
@@ -48,11 +48,17 @@ Please see the [Post-processing](../generators/post-process.md) page to find det
 - **Disable Room Template Renderers** - Whether to disable tilemap renderers of individual rooms, useful only when *Copy Tiles To Shared Tilemaps* is enabled.
 - **Disable Room Template Colliders** - Whether to disable tilemap colliders of individual rooms, useful only when *Copy Tiles To Shared Tilemaps* is enabled.
 
-#### Other config
+#### Other config (available directly on the generator class) {#other-config}
 
 - **Use Random Seed** - Whether to use a random seed for each new generated level. 
 - **Random Generator Seed** - Random generator seed that will be used when **Use Random Seed** is disabled. Useful for debugging.
 - **Generate On Start** - Whether to generate a new level when play mode is entered.
+
+### Change the configuration from a script
+
+You can also easily change the configuration of the generator directly from a script:
+
+<ExternalCode name="2d_generator_changeConfiguration" />
 
 ## Call the generator from a script
 
