@@ -12,7 +12,7 @@ public class GungeonInputSetupTask : DungeonGeneratorInputBaseGrid2D
     {
         // Pick random level graph
         var levelGraphs = Stage == 1 ? Stage1LevelGraphs : Stage2LevelGraphs;
-        var levelGraph = levelGraphs.GetRandom(Payload.Random);
+        var levelGraph = levelGraphs.GetRandom(Random);
 
         // The instance of the game manager will not exist in Editor
         if (GungeonGameManager.Instance != null)

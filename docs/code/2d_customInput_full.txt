@@ -1,4 +1,3 @@
-
 // [CreateAssetMenu(menuName = "Dungeon generator/Examples/Docs/My custom input task", fileName = "MyCustomInputSetup")]
 public class CustomInputExample : DungeonGeneratorInputBaseGrid2D
 {
