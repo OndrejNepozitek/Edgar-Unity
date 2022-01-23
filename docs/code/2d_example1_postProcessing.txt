@@ -7,7 +7,7 @@ namespace Edgar.Unity.Examples.Example1
         public float EnemySpawnChance = 0.5f;
 
         public override void Run(DungeonGeneratorLevelGrid2D level)
-        { 
+        {
             HandleEnemies(level);
         }
 

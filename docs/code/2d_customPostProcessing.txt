@@ -2,7 +2,7 @@
 public class MyCustomPostProcessing : DungeonGeneratorPostProcessingGrid2D
 {
     public override void Run(DungeonGeneratorLevelGrid2D level)
-    { 
+    {
         // Implement the logic here
     }
 }

@@ -35,6 +35,7 @@
     ]
   },
   "devDependencies": {
+    "mr-pdf": "github:OndrejNepozitek/mr-pdf",
     "strip-indent": "^3.0.0"
   }
 }

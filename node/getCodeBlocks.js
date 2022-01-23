@@ -108,6 +108,14 @@ function parseFile(filename, content) {
 
       if (!codeBlock.isPlaceholder) {
         console.log(codeBlock.name);
+
+        if (codeBlock.lines.at(0).trim().length == 0) {
+          codeBlock.lines.shift();
+        }
+        if (codeBlock.lines.at(-1).trim().length == 0) {
+          codeBlock.lines.pop();
+        }
+        
         const codeBlockPath = path.join(outputPath, codeBlock.name + ".txt");
         const codeBlockContent = stripIndent(codeBlock.lines.join("\r\n"));
         fs.writeFileSync(codeBlockPath, codeBlockContent);
