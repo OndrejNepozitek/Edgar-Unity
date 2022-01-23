@@ -94,6 +94,19 @@ namespace Edgar.Unity.Tests.Runtime
             Assert.That(result.IsPotentialProblem, Is.True);
         }
 
+        [Test]
+        public void MinimumRoomDistance()
+        {
+            var dungeonGeneratorGameObject = GameObject.Find("MinimumRoomDistance");
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
+
+            var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
+            var result = GetResult<MinimumRoomDistance.Result>(exception);
+
+            Assert.That(result.MinimumRoomDistance, Is.EqualTo(3));
+            Assert.That(result.IsPotentialProblem, Is.True);
+        }
+
         private TResult GetResult<TResult>(TimeoutException exception, bool allowOnlySingle = true) where TResult : class
         {
             if (allowOnlySingle && typeof(TResult) != typeof(TimeoutLength.Result))

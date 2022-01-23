@@ -15,6 +15,7 @@ namespace Edgar.Unity.Diagnostics
             {
                 results.AddRange(Run(dungeonGeneratorPayload.LevelDescription));
                 results.Add(new TimeoutLength().Run(dungeonGeneratorPayload.DungeonGenerator));
+                results.Add(new MinimumRoomDistance().Run(dungeonGeneratorPayload.DungeonGenerator));
             }
 
             return results;

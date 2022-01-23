@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: e83360f8587f2824c859dbb12125395f, type: 2}
     UseCorridors: 1
@@ -149,6 +150,7 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 1
     RepeatModeOverride: 0
+    MinimumRoomDistance: 1
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     TilemapLayersStructure: 0
@@ -170,6 +172,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!4 &26856717
 Transform:
   m_ObjectHideFlags: 0
@@ -214,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: 4f4f7262aeb5f4846a86bbea18472c5f, type: 2}
     UseCorridors: 0
@@ -221,6 +225,7 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 1
     RepeatModeOverride: 0
+    MinimumRoomDistance: 1
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     TilemapLayersStructure: 0
@@ -242,6 +247,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!4 &333467246
 Transform:
   m_ObjectHideFlags: 0
@@ -286,6 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: 1f0bb94ac2cba4b42a35a8cea1da1d77, type: 2}
     UseCorridors: 0
@@ -293,6 +300,7 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 1
     RepeatModeOverride: 0
+    MinimumRoomDistance: 1
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     TilemapLayersStructure: 0
@@ -314,6 +322,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!4 &458818327
 Transform:
   m_ObjectHideFlags: 0
@@ -327,6 +336,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &712269960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 712269962}
+  - component: {fileID: 712269961}
+  m_Layer: 0
+  m_Name: MinimumRoomDistance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &712269961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712269960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11725bdbb93631241b38951f78cae60c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 3
+  EnableDiagnostics: 0
+  FixedLevelGraphConfig:
+    LevelGraph: {fileID: 11400000, guid: 6b0cd4f14ebe2144992a301980982fef, type: 2}
+    UseCorridors: 1
+  GeneratorConfig:
+    RootGameObject: {fileID: 0}
+    Timeout: 1
+    RepeatModeOverride: 0
+    MinimumRoomDistance: 3
+  PostProcessConfig:
+    InitializeSharedTilemaps: 1
+    TilemapLayersStructure: 0
+    TilemapLayersHandler: {fileID: 0}
+    TilemapLayersExample: {fileID: 0}
+    TilemapMaterial: {fileID: 0}
+    CopyTilesToSharedTilemaps: 1
+    CenterGrid: 1
+    DisableRoomTemplatesRenderers: 1
+    DisableRoomTemplatesColliders: 1
+  CustomPostProcessTasks: []
+  OtherConfig:
+    UseRandomSeed: 1
+    RandomGeneratorSeed: 0
+    GenerateOnStart: 1
+  AdvancedConfig:
+    ThrowExceptionsImmediately: 0
+  UseRandomSeed: 0
+  RandomGeneratorSeed: 0
+  GenerateOnStart: 0
+  ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
+--- !u!4 &712269962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712269960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &876086395
 GameObject:
@@ -358,6 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: e8192c252fa882345a3b48bfba2c0c3d, type: 2}
     UseCorridors: 0
@@ -365,6 +450,7 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 1
     RepeatModeOverride: 0
+    MinimumRoomDistance: 1
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     TilemapLayersStructure: 0
@@ -386,6 +472,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!4 &876086397
 Transform:
   m_ObjectHideFlags: 0
@@ -430,6 +517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: 0e12930b379ccb049ae9a800a6450720, type: 2}
     UseCorridors: 0
@@ -437,6 +525,7 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 1
     RepeatModeOverride: 0
+    MinimumRoomDistance: 1
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     TilemapLayersStructure: 0
@@ -458,6 +547,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!4 &1020620961
 Transform:
   m_ObjectHideFlags: 0
@@ -502,6 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: 2230ddfcb8f7ef54daaa8eba9bddbc72, type: 2}
     UseCorridors: 0
@@ -509,6 +600,7 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 1
     RepeatModeOverride: 0
+    MinimumRoomDistance: 1
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     TilemapLayersStructure: 0
@@ -530,6 +622,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!4 &1078793628
 Transform:
   m_ObjectHideFlags: 0
@@ -588,6 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: 0ad106872b9324f4cb7c23cec80f70f8, type: 2}
     UseCorridors: 0
@@ -595,6 +689,7 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 1
     RepeatModeOverride: 0
+    MinimumRoomDistance: 1
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     TilemapLayersStructure: 0
@@ -616,6 +711,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!1 &2142243157
 GameObject:
   m_ObjectHideFlags: 0
