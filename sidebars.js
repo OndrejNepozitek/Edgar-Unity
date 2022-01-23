@@ -52,6 +52,11 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Other",
+      items: ["other/faq"]
+    },
+    {
+      type: "category",
       label: "Recipes",
       className: "hidden-category",
       items: [{
