@@ -9,7 +9,6 @@ In this guide, we will learn how to enable a simple fog of war functionality.
 ## Limitations
 
 - **Performance on large levels** - Not suitable for very large levels (e.g. area larger than 500x500 tiles) - see [Implementation and performance](guides/fog-of-war.md#implementation-and-performance)
-- **Cell size of the grid** - The Fog of War currently works only when the *Cell size* of the Grid is set to *1* and the *Cell gap* set to *0*. If you want to use this feature and have a different cell size or cell gap, please let me know on [Github](https://github.com/OndrejNepozitek/Edgar-Unity/issues) and I will try to improve the implementation.
 
 ## Prerequisites
 
