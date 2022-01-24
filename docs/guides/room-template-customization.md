@@ -9,15 +9,27 @@ In this guide, we will cover:
 
 ## Tilemap layers structure
 
-Each room template comes with a set of tilemap layers that are all children of the *Tilemaps* game object in the room template. For dungeon room templates, we usually want a tilemap layer for wall tiles, floor tiles, etc. We tried to provide a reasonable default setup, but it is expected that users may want to use a different structure.
+Each room template comes with a set of tilemap layers that are all children of the *Tilemaps* game object in the room template. For dungeon room templates, we usually want a tilemap layer for wall tiles, floor tiles, etc. I tried to provide a reasonable default setup, but it is expected that users may want to use a different structure.
+
+### Why so difficult?
+
+*Wait, cannot I just take a room template, do some changes (add a tilemap layer, collider, etc.), save the changes and be done?*
+
+Unfortunately, no, it is not that simple. After a level is generated, all the room templates are merged to a single set of shared tilemaps. So, if you want to change something, you also have to instruct the generator that the changes should also be applied to the shared tilemaps.
+
+*But cannot this be done automatically?*
+
+Yes, it can. But it would often lead to unexpected results. Imagine that you do two conflicting changes to your room templates: you keep a collider in one room template and remove the collider in another one. Now what should the generator do? If it chooses to do the wrong thing, you will be confused due to not knowing where the problem is.
+
+### Different modes
 
 There is a *Tilemap Layers Structure* field in the *Post-processing config* section of the *Dungeon Generator* component that controls the structure of tilemaps. This field is backed by an enum which currently has 3 possible values:
 
-### `Default`
+#### `Default`
 
 The default tilemaps structure is what you get when you create a room template via the *Create* menu dialogue. This structure of tilemaps is *fixed*, meaning that if you customize the structure of some of your room templates, the resulting structure will always be the same. **Therefore, it is not recommended making any changes to the structure of tilemaps when using this mode,** as it can lead to unexpected results.
 
-### `FromExample`
+#### `FromExample`
 
 This mode makes it possible to infer the desired structure of tilemaps from an example room template given to the generator. When enabled, there is a new field - *Tilemaps Layers Example*. To configure this mode, you have to take one of your room templates and assign it to that field. After a level is generated, the generator will take the example room template, look for the `Tilemaps` game object inside the room template and then instantiate this game object. It means that anything that is inside the `Tilemaps` game object will be included in the generated level, including the structure of tilemaps in the example. The last thing that the generator does is that it removes all the tiles in the example so that you can use a real room template as an example.
 
@@ -32,7 +44,7 @@ Typical use case:
 
 > **Note:** It is still very important to have the same structure of tilemaps across all room templates. So make sure that all the room templates have the same structure as the example room template.
 
-### `Custom`
+#### `Custom`
 
 The last way of customizing the structure of tilemap layers requires writing a piece of code. You have to create a class that inherits from the `TilemapLayersHandlerBase` class. Below is a commented example of how to do that:
 

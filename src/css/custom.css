@@ -206,3 +206,7 @@ blockquote {
   position: relative;
   font-size: 0px;
 }
+  
+.hidden-category {
+  display: none;
+}
