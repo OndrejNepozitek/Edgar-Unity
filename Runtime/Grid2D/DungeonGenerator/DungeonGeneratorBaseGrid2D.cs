@@ -104,9 +104,14 @@ namespace Edgar.Unity
 
             return new PostProcessingTaskGrid2D(
                 PostProcessConfig,
-                () => new DungeonTilemapLayersHandlerGrid2D(),
+                GetTilemapLayersHandler(),
                 postProcessingTasks,
                 postProcessingComponents);
+        }
+
+        protected virtual Func<ITilemapLayersHandlerGrid2D> GetTilemapLayersHandler()
+        {
+            return () => new DungeonTilemapLayersHandlerGrid2D();
         }
 
         protected virtual DungeonGeneratorPayloadGrid2D InitializePayload()
