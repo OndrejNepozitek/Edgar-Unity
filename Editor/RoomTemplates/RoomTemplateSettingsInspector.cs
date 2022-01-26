@@ -94,7 +94,18 @@ namespace Edgar.Unity.Editor
         {
             RemoveOnSceneGUIDelegate();
             AddOnSceneGUIDelegate();
+        }
+
+        private void OnSceneGUIPersistent(SceneView sceneView)
+        {
+            if (target == null || PrefabStageUtility.GetCurrentPrefabStage() == null)
+            {
+                RemoveOnSceneGUIDelegate();
+                return;
+            }
+
             ShowStatus();
+            DrawOutline();
         }
 
         private void ShowStatus()
@@ -146,14 +157,8 @@ namespace Edgar.Unity.Editor
             GUI.backgroundColor = originalBackground;
         }
 
-        private void DrawOutline(SceneView sceneView)
+        private void DrawOutline()
         {
-            if (target == null || PrefabStageUtility.GetCurrentPrefabStage() == null)
-            {
-                RemoveOnSceneGUIDelegate();
-                return;
-            }
-
             try
             {
                 var roomTemplate = (RoomTemplateSettingsGrid2D) target;
@@ -180,18 +185,18 @@ namespace Edgar.Unity.Editor
         private void AddOnSceneGUIDelegate()
         {
             #if UNITY_2019_1_OR_NEWER
-            SceneView.duringSceneGui += DrawOutline;
+            SceneView.duringSceneGui += OnSceneGUIPersistent;
             #else
-            SceneView.onSceneGUIDelegate += DrawOutline;
+            SceneView.onSceneGUIDelegate += OnSceneGUIPersistent;
             #endif
         }
 
         private void RemoveOnSceneGUIDelegate()
         {
             #if UNITY_2019_1_OR_NEWER
-            SceneView.duringSceneGui -= DrawOutline;
+            SceneView.duringSceneGui -= OnSceneGUIPersistent;
             #else
-            SceneView.onSceneGUIDelegate -= DrawOutline;
+            SceneView.onSceneGUIDelegate -= OnSceneGUIPersistent;
             #endif
         }
     }
