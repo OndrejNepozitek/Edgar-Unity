@@ -11,7 +11,7 @@ namespace Edgar.Unity.Examples
 {
     public class DoorsAnimation : MonoBehaviour
     {
-        #if OndrejNepozitekEdgar
+        #if OndrejNepozitekEdgar && UNITY_EDITOR
         public DoorLineGrid2D DoorLine;
         public bool Show = false;
 
