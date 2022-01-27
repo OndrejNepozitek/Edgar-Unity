@@ -25,7 +25,7 @@ namespace Edgar.Unity
         {
             if (allPoints.Count == 0)
             {
-                throw new ArgumentException("There must be at least one point");
+                throw new InvalidOutlineException("There must be at least a single tile in the room template.");
             }
 
             var orderedDirections = new Dictionary<EdgarVector2Int, List<EdgarVector2Int>>
@@ -52,7 +52,7 @@ namespace Edgar.Unity
 
             if (!allPointsInternal.Contains(currentPoint))
             {
-                throw new ArgumentException("Invalid room shape.");
+                throw new InvalidOutlineException("Invalid room shape. Please consult the docs.");
             }
 
             while (true)
@@ -73,7 +73,7 @@ namespace Edgar.Unity
                 }
 
                 if (!foundNeighbor)
-                    throw new ArgumentException("Invalid room shape.");
+                    throw new InvalidOutlineException("Invalid room shape. Please consult the docs.");
 
                 if (currentDirection != previousDirection)
                 {
@@ -179,23 +179,17 @@ namespace Edgar.Unity
                 return false;
             }
 
-            PolygonGrid2D polygon = null;
+            PolygonGrid2D polygon;
 
-            // TODO: improve
+            // Check that the outline of the room template is valid
             try
             {
                 polygon = GetPolygonFromRoomTemplate(roomTemplatePrefab);
             }
-            catch (ArgumentException)
-            {
-                /* empty */
-            }
-
-            // Check that the outline of the room template is valid
-            if (polygon == null)
+            catch (InvalidOutlineException e)
             {
                 result = new ActionResult();
-                result.AddError("The outline of the room template is not valid. Please consult the documentation.");
+                result.AddError($"The outline of the room template is not valid: {e.Message}");
                 return false;
             }
 

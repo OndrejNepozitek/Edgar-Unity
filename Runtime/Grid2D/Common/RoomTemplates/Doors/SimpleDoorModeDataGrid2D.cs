@@ -86,7 +86,7 @@ namespace Edgar.Unity
                     doorLines.Add(doorLine);
                 }
             }
-            catch (ArgumentException)
+            catch (InvalidOutlineException)
             {
             }
 

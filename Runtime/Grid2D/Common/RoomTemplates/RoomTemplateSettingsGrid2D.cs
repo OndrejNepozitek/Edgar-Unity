@@ -22,7 +22,7 @@ namespace Edgar.Unity
 
                 return polygon;
             }
-            catch (ArgumentException)
+            catch (InvalidOutlineException)
             {
                 return null;
             }
