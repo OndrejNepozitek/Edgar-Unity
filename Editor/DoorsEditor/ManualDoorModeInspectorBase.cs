@@ -70,6 +70,9 @@ namespace Edgar.Unity.Editor
             catch (DoorModeException)
             {
             }
+            catch (InvalidOutlineException)
+            {
+            }
 
             ShowAdditionalFields();
         }
