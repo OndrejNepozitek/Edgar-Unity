@@ -98,7 +98,19 @@ namespace Edgar.Unity
                 polygonPoints.Reverse();
             }
 
-            return new PolygonGrid2D(polygonPoints);
+            if (polygonPoints.Count < 4)
+            {
+                throw new InvalidOutlineException("Invalid room shape. Please consult the docs.");
+            }
+
+            try
+            {
+                return new PolygonGrid2D(polygonPoints);
+            }
+            catch (ArgumentException e)
+            {
+                throw new InvalidOutlineException($"Invalid room shape. Please consult the docs. Internal error: {e.Message}");
+            }
         }
 
         /// <summary>
