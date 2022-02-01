@@ -6,13 +6,14 @@
     "start": "node getApiUrls.js && docusaurus start",
     "build": "node getApiUrls.js && docusaurus build",
     "swizzle": "docusaurus swizzle",
+    "clear": "docusaurus clear",
     "version": "docusaurus docs:version",
     "deploy": "node getApiUrls.js && docusaurus deploy",
     "codeBlocks": "node node/getCodeBlocks"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.14",
-    "@docusaurus/preset-classic": "^2.0.0-beta.14",
+    "@docusaurus/core": "^2.0.0-beta.15",
+    "@docusaurus/preset-classic": "^2.0.0-beta.15",
     "@ondrej-nepozitek/remark-helpers": "git+https://github.com/OndrejNepozitek/remark-helpers.git",
     "classnames": "^2.2.6",
     "js-yaml": "^3.14.0",

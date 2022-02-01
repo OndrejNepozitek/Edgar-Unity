@@ -22,9 +22,6 @@ module.exports = {
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "error",
   themeConfig: {
-    googleAnalytics: {
-      trackingID: 'UA-31904365-17',
-    },
     algolia: {
       apiKey: 'b81526b8f4babcdebfa613315ee05014',
       indexName: 'edgar-unity',
@@ -86,7 +83,8 @@ module.exports = {
     },
     prism: {
       defaultLanguage: "csharp",
-      theme: require("./src/theme/prism-darcula")
+      theme: require("./src/theme/prism-darcula"),
+      additionalLanguages: ['csharp'],
     },
     footer: {
       style: "dark",
@@ -151,8 +149,11 @@ module.exports = {
           ],
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css")
-        }
+          customCss: require.resolve("./src/css/custom.css"),
+        },
+        googleAnalytics: {
+          trackingID: 'UA-31904365-17',
+        },
       }
     ]
   ],

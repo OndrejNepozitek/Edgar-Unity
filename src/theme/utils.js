@@ -1,5 +1,5 @@
 import React from "react";
-import {useActiveVersion} from '@theme/hooks/useDocs';
+import {useActiveVersion} from '@docusaurus/plugin-content-docs/client';
 
 export const Path = props => {
     let { path, type, par } = props;
