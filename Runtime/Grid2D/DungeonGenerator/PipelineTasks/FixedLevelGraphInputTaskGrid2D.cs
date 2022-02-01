@@ -22,12 +22,12 @@ namespace Edgar.Unity
         {
             if (config.LevelGraph == null)
             {
-                throw new ArgumentException("LevelGraph must not be null.");
+                throw new ConfigurationException("The LevelGraph field must not be null. Please assign a level graph in the Input config section of the generator component.");
             }
 
             if (config.LevelGraph.Rooms.Count == 0)
             {
-                throw new ArgumentException("LevelGraph must contain at least one room.");
+                throw new ConfigurationException($"Each level graph must contain at least one room. Please add some rooms to the level graph called \"{config.LevelGraph.name}\".");
             }
 
             var levelDescription = new LevelDescriptionGrid2D();
