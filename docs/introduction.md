@@ -13,11 +13,10 @@ Similar approaches are used in games like [**Enter the Gungeon**](https://www.bo
 - **Complete control over the look of individual rooms.** You can draw room templates using Unity built-in Tilemap feature. You can use all available tools (brushes, rule tiles, etc.) to design room templates.
 - **Rooms either directly connected by doors or connected by corridors.** You can choose to either connect rooms by corridors or directly via doors.
 - **Easy to customize.** The plugin is ready to be customized and extended.
-- **Supports Unity 2018.4 and newer**.
-- **2 example scenes included.**
+- **Supports Unity 2018.4 and newer.**
+- **Multiple example scenes included.**
 
 ## Limitations
-- **Alpha version.** There may be some **breaking changes** in the API.
 - **Some inputs are too hard for the generator.** You need to follow some guidelines in order to achieve good performance.
 - **Not suitable for large levels.** The generator usually works best for levels with less than 30 rooms.
 - **Not everything can be configured via editor.** You need to have programming knowledge in order to generate anything non-trivial.
