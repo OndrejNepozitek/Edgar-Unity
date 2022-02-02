@@ -1,7 +1,7 @@
 import React from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import logger from '@docusaurus/logger';
-import { requireVersionedAsset } from '@theme/utils';
+import { requireVersionedAsset, getImageSize } from '@theme/utils';
 
 const gutter = 2;
 const StyledImage = props => (
@@ -51,7 +51,9 @@ export const GalleryImage = props => (
     <a href={getUrl(props.src, props.isGlobal)} target="_blank">
       <img
         src={getUrl(props.src, props.isGlobal)}
-        alt="result"
+        alt="image"
+        width={props.width}
+        height={props.height}
         style={{
           height: props.fixedHeight === true ? (800 / props.cols) + "px" : "auto",
           objectFit: props.fixedHeight === true ? "cover" : "initial",
@@ -82,14 +84,27 @@ const Caption = props => (
 export const Image = props => {
   const { src, caption, isInsideGallery, obsolete, ...otherProps } = props;
 
+  let size = {
+    width: "auto",
+    height: "auto",
+  }
+
+  if (!props.isGlobal) {
+    const computedSize = getImageSize(src);
+    size = Object.assign(size, {
+      width: computedSize.width,
+      height: computedSize.height,
+    });
+  }
+
   if (isInsideGallery) {
-    return <GalleryImage {...props} />
+    return <GalleryImage {...size} {...props} />
   }
 
   return (
     <div style={{ textAlign: "center" }}>
       <div className="image-inner">
-        <img src={getUrl(src, props.isGlobal)} {...otherProps} />
+        <img src={getUrl(src, props.isGlobal)} {...size} {...otherProps} />
         {obsolete && <div className="obsolete-image">Note: This image was taken in an older version of the generator. Details may differ.</div>}
       </div>
       {props.caption !== undefined && <Caption>{props.caption}</Caption>}

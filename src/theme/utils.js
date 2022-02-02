@@ -54,6 +54,18 @@ const versionedImages = require.context(
     /(\.png|\.gif)$/
 );
 
+const nextImagesSizes = require.context(
+    '!!image-dimensions-loader!@site/docs/',
+    true,
+    /(\.png|\.gif)$/
+);
+
+const versionedImagesSizes = require.context(
+    '!!image-dimensions-loader!@site/versioned_docs//',
+    true,
+    /(\.png|\.gif)$/
+);
+
 export function requireVersionedAsset(src) {
     const activeVersion = useActiveVersion('default');
     const label = activeVersion.label;
@@ -63,6 +75,18 @@ export function requireVersionedAsset(src) {
     } else {
         const path = `./version-${label}/assets/` + src;
         return versionedImages(path).default;
+    }
+}
+
+export function getImageSize(src) {
+    const activeVersion = useActiveVersion('default');
+    const label = activeVersion.label;
+
+    if (label === 'Next') {
+        return nextImagesSizes('./assets/' + src);
+    } else {
+        const path = `./version-${label}/assets/` + src;
+        return versionedImagesSizes(path);
     }
 }
 

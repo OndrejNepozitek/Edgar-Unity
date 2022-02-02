@@ -105,15 +105,6 @@ function getUrl(path) {
     return path;
 }
 
-function scrollToElement(hash) {
-    setTimeout(function(){ 
-        var element = document.getElementById(hash);
-        if (element) {
-            element.scrollIntoView();
-          }
-    }, 1000);
-}
-
 export const FeatureUsage = (props) => {
   const feature = features.find((x) => x.id === props.id);
   const usages = feature.usages.map((x) => ({ ...x, examples: [] }));
@@ -145,7 +136,6 @@ export const FeatureUsage = (props) => {
                     {index ? ", " : ""}
                     <Link
                       to={getUrl(example.example.url + "#" + example.feature.anchor)}
-                      onClick={() => scrollToElement(example.feature.anchor)}
                     >
                       {example.example.name}
                     </Link>

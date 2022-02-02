@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node getApiUrls.js && docusaurus start",
     "build": "node getApiUrls.js && docusaurus build",
+    "serve": "docusaurus serve",
     "swizzle": "docusaurus swizzle",
     "clear": "docusaurus clear",
     "version": "docusaurus docs:version",
@@ -16,6 +17,7 @@
     "@docusaurus/preset-classic": "^2.0.0-beta.15",
     "@ondrej-nepozitek/remark-helpers": "git+https://github.com/OndrejNepozitek/remark-helpers.git",
     "classnames": "^2.2.6",
+    "image-dimensions-loader": "^0.1.0",
     "js-yaml": "^3.14.0",
     "prismjs": "^1.19.0",
     "raw-loader": "^4.0.2",
