@@ -452,6 +452,7 @@ namespace Edgar.Unity.Editor
         private void ShowRoomContextMenu(RoomNode roomNode)
         {
             var genericMenu = new GenericMenu();
+            genericMenu.AddItem(new GUIContent("Configure room"), false, () => Selection.activeObject = roomNode.Room);
             genericMenu.AddItem(new GUIContent("Delete room"), false, () => DeleteRoomNode(roomNode));
             genericMenu.ShowAsContext();
         }
