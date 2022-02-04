@@ -65,6 +65,15 @@ namespace Edgar.Unity.Editor
             DrawMenuBar();
         }
 
+        protected void Update()
+        {
+            if (LevelGraph.HasChanges)
+            {
+                Repaint();
+                LevelGraph.HasChanges = false;
+            }
+        }
+
         /// <summary>
         /// Initialize the window with a given level graph.
         /// </summary>

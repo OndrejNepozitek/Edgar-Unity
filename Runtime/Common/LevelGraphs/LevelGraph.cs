@@ -26,7 +26,7 @@ namespace Edgar.Unity
         public List<RoomTemplatesSet> CorridorRoomTemplateSets = new List<RoomTemplatesSet>();
 
         /// <summary>
-        ///     Set of room templates that is used for room thah do not have any room templates assigned.
+        ///     Set of room templates that is used for room that do not have any room templates assigned.
         /// </summary>
         public List<GameObject> DefaultIndividualRoomTemplates = new List<GameObject>();
 
@@ -45,6 +45,12 @@ namespace Edgar.Unity
         ///     Editor data like zoom, etc.
         /// </summary>
         public LevelGraphEditorData EditorData = new LevelGraphEditorData();
+
+        /// <summary>
+        /// Helper static property to indicate that a level graph was changed (e.g. a name of one of the rooms changed).
+        /// This field is used to indicate that the Graph editor window should repaint.
+        /// </summary>
+        public static bool HasChanges { get; set; }
 
         public string RoomType = typeof(Room).FullName;
 

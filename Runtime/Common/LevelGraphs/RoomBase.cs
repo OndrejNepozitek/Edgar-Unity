@@ -54,5 +54,10 @@ namespace Edgar.Unity
                 return new RoomEditorStyle();
             }
         }
+
+        protected virtual void OnValidate()
+        {
+            LevelGraph.HasChanges = true;
+        }
     }
 }
