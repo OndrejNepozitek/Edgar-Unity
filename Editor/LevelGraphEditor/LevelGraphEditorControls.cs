@@ -78,17 +78,7 @@ namespace Edgar.Unity.Editor
                         // Configure room on double click
                         if (e.button == 0 && !e.control && ( /*mouseDownDistance <= 2 ||*/ isDoubleClick))
                         {
-                            if (!e.shift)
-                            {
-                                Selection.activeObject = currentHoverRoomNode.Room;
-                            }
-                            else
-                            {
-                                Selection.objects = new List<UnityEngine.Object>(Selection.objects)
-                                {
-                                    currentHoverRoomNode.Room
-                                }.ToArray();
-                            }
+                            SelectObject(currentHoverRoomNode.Room, e.shift);
 
                             GUI.changed = true;
                             CurrentState = State.Idle;
@@ -111,7 +101,7 @@ namespace Edgar.Unity.Editor
                         // Configure connection on double click
                         if (e.button == 0 && isDoubleClick)
                         {
-                            Selection.activeObject = currentHoverConnectionNode.Connection;
+                            SelectObject(currentHoverConnectionNode.Connection);
                             GUI.changed = true;
                         }
                         // Show connection context menu on right click
@@ -251,7 +241,7 @@ namespace Edgar.Unity.Editor
             room.Position = normalizedPosition;
 
             // Select the room in the inspector after creating
-            Selection.activeObject = room;
+            SelectObject(room);
 
             EditorUtility.SetDirty(LevelGraph);
 
@@ -452,7 +442,7 @@ namespace Edgar.Unity.Editor
         private void ShowRoomContextMenu(RoomNode roomNode)
         {
             var genericMenu = new GenericMenu();
-            genericMenu.AddItem(new GUIContent("Configure room"), false, () => Selection.activeObject = roomNode.Room);
+            genericMenu.AddItem(new GUIContent("Configure room"), false, () => SelectObject(roomNode.Room));
             genericMenu.AddItem(new GUIContent("Delete room"), false, () => DeleteRoomNode(roomNode));
             genericMenu.ShowAsContext();
         }
@@ -525,6 +515,20 @@ namespace Edgar.Unity.Editor
             }
 
             GUI.changed = true;
+        }
+
+        private static void SelectObject(UnityEngine.Object o, bool expandSelection = false)
+        {
+            ProjectBrowserLocker.Lock();
+
+            if (!expandSelection)
+            {
+                Selection.activeObject = o;
+            }
+            else
+            {
+                Selection.objects = new List<UnityEngine.Object>(Selection.objects) {o}.ToArray();
+            }
         }
     }
 }

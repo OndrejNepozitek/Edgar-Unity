@@ -37,10 +37,17 @@ namespace Edgar.Unity.Editor
 
         public void OnEnable()
         {
+            Selection.selectionChanged += ProjectBrowserLocker.Unlock;
+
             if (LevelGraph != null)
             {
                 Initialize(LevelGraph);
             }
+        }
+
+        public void OnDisable()
+        {
+            Selection.selectionChanged -= ProjectBrowserLocker.Unlock;
         }
 
         public void OnGUI()
