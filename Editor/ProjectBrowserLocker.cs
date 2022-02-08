@@ -61,8 +61,6 @@ namespace Edgar.Unity.Editor
 
         public static void Unlock()
         {
-            Debug.Log("Unlock");
-
             foreach (var projectBrowser in WindowsToUnlock)
             {
                 IsLockedProperty.SetValue(projectBrowser, false);
