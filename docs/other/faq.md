@@ -16,6 +16,17 @@ The easiest solution is to design a special *spawn* room template and place the 
 
 Another option is to move your player in a post-processing logic. Instead of putting the player prefabs inside the *Spawn* room template, you can just mark the spawn spot with an empty game object. Then, after a level is generated, you can run a post-processing script that will move the player to the marked position. This approach is described in the [Dead Cells example](../examples/dead-cells.md#spawn-position).
 
+## What to do with a `TimeoutException`
+
+Sometimes, when you want to generate a level, you get a `TimeoutException` in the console instead. The error means that the generator was not able to produce a level in a given time limit which is 10 seconds by default. The error can have two different meanings: 
+
+- the level graph is too hard for the generator (there are too many rooms, too many cycles, restrictive room templates, etc.)
+- or there is a problem somewhere in the configuration (maybe the doors of two neighbouring room templates are not compatible)
+
+Usually, it is the second case. To help you fix the error, the generator dumps some diagnostic information *above* the error in the console. The type of information that you can find in the console is for example that the lengths of doors are suspicious or that there are maybe too many rooms in the level graph.
+
+If you are not able to fix the problem yourself, come to our Discord and I will try to help.
+
 ## Changes to a room template are lost after a level is generated
 
 It often happens that you want to change the default structure of a room template. Maybe you want to add a collider, add another tilemap layer, or change the properties of the grid like the cell size. But when you hit the *Generate* button, the changes are not there and the level looks exactly like before.
