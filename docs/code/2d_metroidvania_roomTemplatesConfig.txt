@@ -1,5 +1,5 @@
 [Serializable]
-public class DeadCellsRoomTemplatesConfig
+public class MetroidvaniaRoomTemplatesConfig
 {
     public GameObject[] DefaultRoomTemplates;
 
@@ -8,11 +8,11 @@ public class DeadCellsRoomTemplatesConfig
     /* ... */
 
 
-    public GameObject[] GetRoomTemplates(DeadCellsRoom room)
+    public GameObject[] GetRoomTemplates(MetroidvaniaRoom room)
     {
         switch (room.Type)
         {
-            case DeadCellsRoomType.Shop:
+            case MetroidvaniaRoomType.Shop:
                 return ShopRoomTemplates;
 
             /* ... */

@@ -18,11 +18,11 @@ In this tutorial, we will look into how to generate levels similar to what we ca
 
 <Video src="videos/gungeon_example_video.mp4" style={{ marginBottom: 15, marginTop: -15 }} />
 
-> **Note:** All files from this example can be found at <Path path="2de:EnterTheGungeon" />.
+> **Note:** All files from this example can be found at <Path path="2de:Gungeon" />.
 
 ## Room templates
 
-> **Note:** If you want to add some more room templates, be sure to use the *Create* menu (*Examples/Enter the Gungeon/Room template*) or duplicate one of the existing room templates.
+> **Note:** If you want to add some more room templates, be sure to use the *Create* menu (*Examples/Gungeon/Room template*) or duplicate one of the existing room templates.
 
 <Gallery cols={2} fixedHeight>
     <Image src="2d/examples/gungeon/room_templates/entrance.png" caption="Entrance" />

@@ -1,6 +1,6 @@
-public class DeadCellsRoom : RoomBase
+public class MetroidvaniaRoom : RoomBase
 {
-    public DeadCellsRoomType Type;
+    public MetroidvaniaRoomType Type;
 
     public bool Outside;
 

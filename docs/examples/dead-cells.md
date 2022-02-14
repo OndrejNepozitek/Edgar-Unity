@@ -73,7 +73,7 @@ Our underground level is inspired by the Prisoners Quarters level in Dead Cells.
 
 In the level graph above, we used custom room and connection types. The implementation of the custom room type can be seen below. Each room has its type (entrance, treasure, etc) and also a flag that indicates where it is outside (which is used for rooftop levels). Additionally, we override the `ToString()` implementation so that the type of room is displayed in the level graph.
 
-<ExternalCode name="2d_deadCells_room" />
+<ExternalCode name="2d_metroidvania_room" />
 
 We also have a custom connection type. It currently looks exactly like the default implementation, but we use it just in case we need some additional functionality later.
 
@@ -83,17 +83,17 @@ We decided to use a custom input setup to prepare our inputs. The main idea is t
 
 First, we create the mapping between the type of the room and the available room templates:
 
-<ExternalCode name="2d_deadCells_roomTemplatesConfig" />
+<ExternalCode name="2d_metroidvania_roomTemplatesConfig" />
 
 And then we create a simple input setup task that prepares the level description:
 
-<ExternalCode name="2d_deadCells_inputSetup" />
+<ExternalCode name="2d_metroidvania_inputSetup" />
 
 ### Spawn position
 
 In [Example 1](examples/example-1.md), we placed the player prefab directly in the Spawn room template to make sure that the player always starts in the correct room. However, there is also a different approach to achieve the same result. Instead of placing the player prefab inside the room template, we simply create an empty GameObject that will act as a marker of the spawn position. We place the player prefab directly into the scene and implement a simple post-processing logic that finds the spawn position marker and moves the player there after the level is generated.
 
-<ExternalCode name="2d_deadCells_setSpawnPosition" />
+<ExternalCode name="2d_metroidvania_setSpawnPosition" />
 
 ### Enemies
 
@@ -103,7 +103,7 @@ We did not implement any combat, just a simple patrol AI that makes the enemy ch
 
 Below you can see a method that we can put inside a post-processing task to handle the spawn of enemies.
 
-<ExternalCode name="2d_deadCells_spawnEnemies" />
+<ExternalCode name="2d_metroidvania_spawnEnemies" />
 
 ### Level map
 
@@ -113,7 +113,7 @@ Dead Cells comes with a schematic level map that shows the overview of the whole
 
 After a level is generated, we create an additional tilemap which will contain all the information about the level map. We go through individual tilemap layers of the level and copy them to the level map tilemap. First, we find all the tiles from the *Background* tilemap layer and copy them to the level map. But instead of using the normal graphics of individual tiles, we use a tile that is completely blue. Then we repeat this process with other layers and different colours of tiles.
 
-<ExternalCode name="2d_deadCells_setupLevelMap" />
+<ExternalCode name="2d_metroidvania_setupLevelMap" />
 
 The last part of the setup is to create a camera the displays only the level map tilemap layer. To achieve that, we assign a special layer to the tilemap and then set the culling mask. We also added a simple camera control that reacts to players pressing a button and toggles between the default view and the level map view.
 
@@ -166,13 +166,13 @@ Below we can see how the level looks now. All the rooms are connected only horiz
 
 The last step is to add wall tiles under individual rooms so that the level looks like there are towers. This can be done with a custom post-processing logic that goes through all the rooms and for each used room template it finds the bottom-most layer of tiles. For each tile position in this layer, if it contains a non-null tile, we add a column of wall tiles under it.
 
-<ExternalCode name="2d_deadCells_addWalls" />
+<ExternalCode name="2d_metroidvania_addWalls" />
 
 > **Note:** Once again, it is **very important** that we use collider for as few tiles as possible. We are adding many tiles and do not want to spend too much time recomputing colliders.
 
 One problem that we have to solve is when we should call this post-processing logic. In the next section, we will add rooms inside the towers. But if we draw walls after all the rooms are drawn, we will overwrite all the rooms that are inside the tower. We would have to do some checks to avoid that. An easier solution is to call our logic after shared tilemaps are initialized but before any rooms are drawn. That means that we first draw the walls and if there is a room occupying the same tiles, the room overwrites the walls, which is what we want. To achieve that, we use [Priority callbacks](../generators/post-process.md#pro-priority-callbacks) and register our logic right after shared tilemaps are initialized.
 
-<ExternalCode name="2d_deadCells_registerCallbacks" />
+<ExternalCode name="2d_metroidvania_registerCallbacks" />
 
 The resulting level can be seen below:
 

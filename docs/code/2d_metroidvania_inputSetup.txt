@@ -1,9 +1,9 @@
-[CreateAssetMenu(menuName = "Edgar/Examples/Dead Cells/Input setup", fileName = "Dead Cells Input Setup")]
-public class DeadCellsInputSetupTask : DungeonGeneratorInputBaseGrid2D
+[CreateAssetMenu(menuName = "Edgar/Examples/Metroidvania/Input setup", fileName = "Metroidvania Input Setup")]
+public class MetroidvaniaInputSetupTask : DungeonGeneratorInputBaseGrid2D
 {
     public LevelGraph LevelGraph;
 
-    public DeadCellsRoomTemplatesConfig RoomTemplates;
+    public MetroidvaniaRoomTemplatesConfig RoomTemplates;
 
     /// <summary>
     /// This is the main method of the input setup.
@@ -16,16 +16,16 @@ public class DeadCellsInputSetupTask : DungeonGeneratorInputBaseGrid2D
 
         // Go through individual rooms and add each room to the level description
         // Room templates are resolved based on their type
-        foreach (var room in LevelGraph.Rooms.Cast<DeadCellsRoom>())
+        foreach (var room in LevelGraph.Rooms.Cast<MetroidvaniaRoom>())
         {
             levelDescription.AddRoom(room, RoomTemplates.GetRoomTemplates(room).ToList());
         }
 
         // Go through individual connections and for each connection create a corridor room
-        foreach (var connection in LevelGraph.Connections.Cast<DeadCellsConnection>())
+        foreach (var connection in LevelGraph.Connections.Cast<MetroidvaniaConnection>())
         {
-            var corridorRoom = ScriptableObject.CreateInstance<DeadCellsRoom>();
-            corridorRoom.Type = DeadCellsRoomType.Corridor;
+            var corridorRoom = ScriptableObject.CreateInstance<MetroidvaniaRoom>();
+            corridorRoom.Type = MetroidvaniaRoomType.Corridor;
             levelDescription.AddCorridorConnection(connection, corridorRoom, RoomTemplates.CorridorRoomTemplates.ToList());
         }
 

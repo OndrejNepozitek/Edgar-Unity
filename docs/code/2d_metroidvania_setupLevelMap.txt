@@ -12,7 +12,7 @@ public TileBase LevelMapPlatformTile;
 private void SetupLevelMap(DungeonGeneratorLevelGrid2D level)
 {
     // Return if level map not supported
-    if (!Application.isPlaying || !DeadCellsGameManager.Instance.LevelMapSupported())
+    if (!Application.isPlaying || !MetroidvaniaGameManager.Instance.LevelMapSupported())
     {
         return;
     }
@@ -28,7 +28,7 @@ private void SetupLevelMap(DungeonGeneratorLevelGrid2D level)
     tilemapRenderer.sortingOrder = 20;
 
     // Assign special layer
-    var mapLayer = LayerMask.NameToLayer(DeadCellsGameManager.LevelMapLayer);
+    var mapLayer = LayerMask.NameToLayer(MetroidvaniaGameManager.LevelMapLayer);
     tilemapObject.layer = mapLayer;
 
     // Copy background tiles
