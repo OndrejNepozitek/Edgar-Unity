@@ -35,7 +35,14 @@ namespace Edgar.Unity
             // Setup individual rooms
             foreach (var room in config.LevelGraph.Rooms)
             {
-                levelDescription.AddRoom(room, GetRoomTemplates(room));
+                var roomTemplates = GetRoomTemplates(room);
+
+                if (roomTemplates.Count == 0)
+                {
+                    throw new ConfigurationException($"There are no room templates for the room \"{room.GetDisplayName()}\" and also no room templates in the default set of room templates. Please make sure that the room has at least one room template available.");
+                }
+
+                levelDescription.AddRoom(room, roomTemplates);
             }
 
             var typeOfRooms = config.LevelGraph.Rooms.First().GetType();
