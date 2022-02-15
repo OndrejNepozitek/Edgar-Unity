@@ -25,7 +25,7 @@ Sometimes, when you want to generate a level, you get a `TimeoutException` in th
 
 Usually, it is the second case. To help you fix the error, the generator dumps some diagnostic information *above* the error in the console. The type of information that you can find in the console is for example that the lengths of doors are suspicious or that there are maybe too many rooms in the level graph.
 
-If you are not able to fix the problem yourself, come to our Discord and I will try to help.
+If you are not able to fix the problem yourself, come to our Discord and I will try to help. Also, you can read the [Performance tips](../basics/performance-tips.md) page.
 
 ## Changes to a room template are lost after a level is generated
 

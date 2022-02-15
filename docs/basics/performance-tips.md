@@ -2,17 +2,21 @@
 title: Performance tips
 ---
 
+When used correctly, Edgar can generate very complex levels. Unfortunately, it is also relatively simple to prepare an input that is just too difficult for the generator, and you will end up with a `TimeoutException`. The goal of this page is to provide some performance tips that you can follow to improve the performance of the generator.
+
+The general idea is that if you make it harder for the generator in one way (e.g. by having many rooms), you should compensate for that in some other way (e.g. by not having cycles in your level graph). Also, I recommend starting simple and only making things more complex when you get the hang of how the generator behaves.
+
 ## Room templates
 
-**Try to provide as many door positions as possible.** The core idea of the algorithm is that it picks a random room and slightly changes its position, hopefully making new connections with neighbouring rooms. If there are too few available door positions, the algorithm will often break already existing connections when trying to connect the room to other neighbours, resulting in poor performance. However, note that if you have all door positions with the same length, it usually *does not* help to add door positions with different lengths just to make the algorithm faster.
+**Try to provide as many door positions as possible.** I cannot stress enough how important this is. You should aim to use the *Simple* or *Hybrid* door modes as much as possible, and only use the *Manual* door mode when it is absolutely necessary. The only exception is when you are trying to generate levels without cycles, then you can get away with having a relatively small number of door positions. 
 
-**Try to provide rotated versions of room templates.** If you provide rotated versions of your room templates, the algorithm will have more options to choose from and therefore usually converge faster. However, it is quite time-consuming to manually prepare all rotations - the plugin will hopefully support doing that at least semi-automatically.
+**Make sure that default room templates make sense.** The easiest way to configure room templates is to add them as *Default room templates*, making them available to all rooms in the level graph. However, it is not recommended adding room templates that can be used only in very specific scenarios. For example, if you have a secret room that has exactly one door position, you should not add it to the default list. The reason is that the generator might try to use this room template for a room that has multiple neighbours, wasting precious time. Instead, assign these unique room templates only to the rooms where it makes sense.
 
 ## Level graphs
 
-**Limit the number of rooms.** The core idea of the algorithm is that it decomposes the level graph into smaller subgraphs and tries to lay them out one at a time, connecting them to already laid out rooms. If this step fails, the algorithm needs to backtrack to a previous configuration. If we have too many rooms, backtracking can get quite costly, making the performance bad. We successfully generated dungeons with up to 60 rooms but it also depends on the overall complexity of the level graph - see the next point.
+**Limit the number of rooms.** The number of rooms in a level graph greatly affects the performance. As a rule of thumb, you should aim to have **less than 20 rooms**. However, if you follow the other performance tips, you can generate levels with up to 40 rooms.
 
-**Limit the number of cycles.** Cycles are very hard to lay out so make sure that there are not too many of them. If you are not sure if cycles are the problem, try to remove some edges that form cycles and see if it makes the performance better.
+**Limit the number of cycles.** It is very hard to generate levels with cycles. Therefore, the number of cycles greatly affects the performance. Usually, you should start with 0-1 cycles and only increase the number when you are already familiar with the core concepts of Edgar. In the [Enter the Gungeon](../examples/enter-the-gungeon.md#level-graphs) example, you can see levels graphs with up to 3 cycles and the generator is still relatively fast.
 
-**Make sure that default room templates make sense for rooms without their own room templates.** The easiest way to configure room templates it to add all templates as *Default room templates*, making them available to all rooms in the level graph. Now imagine that you design a room template for your dead-end rooms and that it can be connected via doors to only one neighbouring room. Adding this room template to *Default room templates* will make the performance worse because the algorithm will waste time trying to use it for rooms that have more than 1 neighbour. Instead, you should add this room template only to rooms that have just a single neighbour.
+**Avoid interconnected cycles.** Cycles are hard, but interconnected cycles are even harder. If you want to have multiple cycles in a level graph, make sure that the cycles do not have any rooms in common. Usually, it should not be too hard to design your level graphs without interconnected cycles. For example, all the level graphs in *Enter the Gungeon* have this property, and it does not make the game any worse.
 
