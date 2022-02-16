@@ -123,7 +123,7 @@ We have to create a class that inherits from `DungeonGeneratorPostProcessingComp
 
 With the implementation ready, we now have to attach this component to the game object where we have our generator component attached.
 
-<Image src="2d/examples/example1/custom_post_processing_component.png" caption="Attach the component to the game object with the generator" />
+<Image src="2d/examples/example1/custom_post_processing_component.png" caption="Attach the component to the game object with the generator" height="700" /> 
 
 ### Level graph
 

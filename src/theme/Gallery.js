@@ -82,7 +82,7 @@ const Caption = props => (
 );
 
 export const Image = props => {
-  const { src, caption, isInsideGallery, obsolete, ...otherProps } = props;
+  const { src, caption, isInsideGallery, obsolete, width, height, ...otherProps } = props;
 
   let size = {
     width: "auto",
@@ -95,6 +95,17 @@ export const Image = props => {
       width: computedSize.width,
       height: computedSize.height,
     });
+    const ratio = size.width / size.height;
+
+    if (height) {
+      size.height = height;
+      size.width = height * ratio;
+    }
+
+    if (width) {
+      size.width = width;
+      size.height = width / ratio;
+    }
   }
 
   if (isInsideGallery) {
