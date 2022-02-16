@@ -10,7 +10,8 @@ namespace Edgar.Unity
     public class DoorInstanceGrid2D
     {
         /// <summary>
-        ///     Line containing all points of the door.
+        /// Line containing all points of the door.
+        /// The line is in the local coordinates relative to the room template prefab.
         /// </summary>
         public OrthogonalLine DoorLine => doorLine;
 

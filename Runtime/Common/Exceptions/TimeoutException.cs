@@ -3,6 +3,9 @@ using Edgar.Unity.Diagnostics;
 
 namespace Edgar.Unity
 {
+    /// <summary>
+    /// This exception is used when the generator is not able to produce an output in a given time.
+    /// </summary>
     public class TimeoutException : GeneratorException
     {
         public List<IDiagnosticResult> DiagnosticResults { get; set; }

@@ -3,7 +3,7 @@
 namespace Edgar.Unity
 {
     /// <summary>
-    /// Base class for connections in a level graph.
+    /// Represents a connection between two rooms in a level graph.
     /// </summary>
     /// <remarks>
     /// We usually do not care about the direction, i.e. it does not matter which room is From and which is To.
