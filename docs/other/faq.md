@@ -10,7 +10,7 @@ This document contains solutions to common questions that are often asked on Dis
 
 <TOCInline toc={toc} maxHeadingLevel={2} />
 
-## How to spawn player in a specific room?
+## How to spawn player in a specific room
 
 The easiest solution is to design a special *spawn* room template and place the player prefabs inside that room template. Then, make this room template the only room template for the *Spawn* room in your level graph. This approach is described in [Example 1](../examples/example-1.md#spawn-room).
 
@@ -26,6 +26,10 @@ Sometimes, when you want to generate a level, you get a `TimeoutException` in th
 Usually, it is the second case. To help you fix the error, the generator dumps some diagnostic information *above* the error in the console. The type of information that you can find in the console is for example that the lengths of doors are suspicious or that there are maybe too many rooms in the level graph.
 
 If you are not able to fix the problem yourself, come to our Discord and I will try to help. Also, you can read the [Performance tips](../basics/performance-tips.md) page.
+
+## How to deal with wider walls
+
+Some tilesets have walls that are wider than a single tile.
 
 ## Changes to a room template are lost after a level is generated
 
