@@ -11,7 +11,7 @@ namespace Edgar.Unity
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property |
                     AttributeTargets.Class | AttributeTargets.Struct, Inherited = true)]
-    public class ConditionalHideAttribute : PropertyAttribute
+    internal class ConditionalHideAttribute : PropertyAttribute
     {
         public string ConditionalSourceField = "";
         public string ConditionalSourceField2 = "";
@@ -72,7 +72,7 @@ namespace Edgar.Unity
 
     #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(ConditionalHideAttribute))]
-    public class ConditionalHidePropertyDrawer : PropertyDrawer
+    internal class ConditionalHidePropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
