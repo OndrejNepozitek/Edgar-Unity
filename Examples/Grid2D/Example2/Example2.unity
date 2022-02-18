@@ -1372,6 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 3
   DoorsList:
@@ -1448,6 +1449,97 @@ MonoBehaviour:
   - From: {x: 4, y: -2, z: 0}
     To: {x: 5, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 5, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 3, z: 0}
+      To: {x: -3, y: 3, z: 0}
+    - From: {x: -3, y: 4, z: 0}
+      To: {x: -3, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: -1, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 5, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: 7, y: 0, z: 0}
+      To: {x: 7, y: 0, z: 0}
+    - From: {x: 7, y: 1, z: 0}
+      To: {x: 7, y: 1, z: 0}
+    - From: {x: 7, y: 2, z: 0}
+      To: {x: 7, y: 2, z: 0}
+    - From: {x: 7, y: 3, z: 0}
+      To: {x: 7, y: 3, z: 0}
+    - From: {x: 7, y: 4, z: 0}
+      To: {x: 7, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 3
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &69438245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3447,6 +3539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -3455,6 +3548,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -2, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -2, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -2, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &138823186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3549,6 +3665,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -3557,6 +3674,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &161643269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3730,6 +3870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -3738,6 +3879,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &175930385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21169,7 +21333,7 @@ Transform:
   m_GameObject: {fileID: 589247296}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -21436,6 +21600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -21488,6 +21653,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &605129123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22184,6 +22416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -22236,6 +22469,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &615279402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22559,6 +22859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -22567,6 +22868,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -2, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -2, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -2, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &621467508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24363,6 +24687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -24371,6 +24696,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &690489534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25550,6 +25898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -25558,6 +25907,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &735947023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25945,6 +26317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -25997,6 +26370,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &754903075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40057,6 +40497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -40109,6 +40550,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &861280249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40225,6 +40733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 3
   DoorsList:
@@ -40301,6 +40810,97 @@ MonoBehaviour:
   - From: {x: 4, y: -2, z: 0}
     To: {x: 5, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 5, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 3, z: 0}
+      To: {x: -3, y: 3, z: 0}
+    - From: {x: -3, y: 4, z: 0}
+      To: {x: -3, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: -1, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 5, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: 7, y: 0, z: 0}
+      To: {x: 7, y: 0, z: 0}
+    - From: {x: 7, y: 1, z: 0}
+      To: {x: 7, y: 1, z: 0}
+    - From: {x: 7, y: 2, z: 0}
+      To: {x: 7, y: 2, z: 0}
+    - From: {x: 7, y: 3, z: 0}
+      To: {x: 7, y: 3, z: 0}
+    - From: {x: 7, y: 4, z: 0}
+      To: {x: 7, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 3
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &862343767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41790,6 +42390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 3
   DoorsList:
@@ -41866,6 +42467,97 @@ MonoBehaviour:
   - From: {x: 4, y: -2, z: 0}
     To: {x: 5, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 5, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 3, z: 0}
+      To: {x: -3, y: 3, z: 0}
+    - From: {x: -3, y: 4, z: 0}
+      To: {x: -3, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: -1, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 5, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: 7, y: 0, z: 0}
+      To: {x: 7, y: 0, z: 0}
+    - From: {x: 7, y: 1, z: 0}
+      To: {x: 7, y: 1, z: 0}
+    - From: {x: 7, y: 2, z: 0}
+      To: {x: 7, y: 2, z: 0}
+    - From: {x: 7, y: 3, z: 0}
+      To: {x: 7, y: 3, z: 0}
+    - From: {x: 7, y: 4, z: 0}
+      To: {x: 7, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 3
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &880743064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42969,6 +43661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -42977,6 +43670,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &939042873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43750,6 +44466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 3
   DoorsList:
@@ -43826,6 +44543,97 @@ MonoBehaviour:
   - From: {x: 4, y: -2, z: 0}
     To: {x: 5, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 5, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 3, z: 0}
+      To: {x: -3, y: 3, z: 0}
+    - From: {x: -3, y: 4, z: 0}
+      To: {x: -3, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: -1, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 5, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: 7, y: 0, z: 0}
+      To: {x: 7, y: 0, z: 0}
+    - From: {x: 7, y: 1, z: 0}
+      To: {x: 7, y: 1, z: 0}
+    - From: {x: 7, y: 2, z: 0}
+      To: {x: 7, y: 2, z: 0}
+    - From: {x: 7, y: 3, z: 0}
+      To: {x: 7, y: 3, z: 0}
+    - From: {x: 7, y: 4, z: 0}
+      To: {x: 7, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 3
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &979031785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47058,6 +47866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -47066,6 +47875,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -2, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -2, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -2, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1017919984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47402,6 +48234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -47410,6 +48243,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1033131247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48995,6 +49851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -49047,6 +49904,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1108474619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54013,6 +54937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -54065,6 +54990,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1138672809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54310,6 +55302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -54318,6 +55311,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1162928948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56931,6 +57947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -56939,6 +57956,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -2, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -2, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -2, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1227988964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57955,6 +58995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -57963,6 +59004,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -2, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -2, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -2, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1296523057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58163,6 +59227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 3
   DoorsList:
@@ -58239,6 +59304,97 @@ MonoBehaviour:
   - From: {x: 4, y: -2, z: 0}
     To: {x: 5, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 5, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 3, z: 0}
+      To: {x: -3, y: 3, z: 0}
+    - From: {x: -3, y: 4, z: 0}
+      To: {x: -3, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: -1, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 5, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: 7, y: 0, z: 0}
+      To: {x: 7, y: 0, z: 0}
+    - From: {x: 7, y: 1, z: 0}
+      To: {x: 7, y: 1, z: 0}
+    - From: {x: 7, y: 2, z: 0}
+      To: {x: 7, y: 2, z: 0}
+    - From: {x: 7, y: 3, z: 0}
+      To: {x: 7, y: 3, z: 0}
+    - From: {x: 7, y: 4, z: 0}
+      To: {x: 7, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 3
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1302173019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61119,6 +62275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 3
   DoorsList:
@@ -61195,6 +62352,97 @@ MonoBehaviour:
   - From: {x: 4, y: -2, z: 0}
     To: {x: 5, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 5, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 3, z: 0}
+      To: {x: -3, y: 3, z: 0}
+    - From: {x: -3, y: 4, z: 0}
+      To: {x: -3, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: -1, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 5, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: 7, y: 0, z: 0}
+      To: {x: 7, y: 0, z: 0}
+    - From: {x: 7, y: 1, z: 0}
+      To: {x: 7, y: 1, z: 0}
+    - From: {x: 7, y: 2, z: 0}
+      To: {x: 7, y: 2, z: 0}
+    - From: {x: 7, y: 3, z: 0}
+      To: {x: 7, y: 3, z: 0}
+    - From: {x: 7, y: 4, z: 0}
+      To: {x: 7, y: 4, z: 0}
+    - From: {x: -1, y: 7, z: 0}
+      To: {x: 0, y: 7, z: 0}
+    - From: {x: 0, y: 7, z: 0}
+      To: {x: 1, y: 7, z: 0}
+    - From: {x: 1, y: 7, z: 0}
+      To: {x: 2, y: 7, z: 0}
+    - From: {x: 2, y: 7, z: 0}
+      To: {x: 3, y: 7, z: 0}
+    - From: {x: 3, y: 7, z: 0}
+      To: {x: 4, y: 7, z: 0}
+    - From: {x: 4, y: 7, z: 0}
+      To: {x: 5, y: 7, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 5, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 3
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1376300482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61546,6 +62794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -61598,6 +62847,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1383677630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62048,6 +63364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -62108,6 +63425,81 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -11, y: 1, z: 0}
+      To: {x: -11, y: 1, z: 0}
+    - From: {x: -11, y: 0, z: 0}
+      To: {x: -11, y: 0, z: 0}
+    - From: {x: -11, y: -1, z: 0}
+      To: {x: -11, y: -1, z: 0}
+    - From: {x: 0, y: 1, z: 0}
+      To: {x: 0, y: 1, z: 0}
+    - From: {x: 0, y: 0, z: 0}
+      To: {x: 0, y: 0, z: 0}
+    - From: {x: 0, y: -1, z: 0}
+      To: {x: 0, y: -1, z: 0}
+    - From: {x: -7, y: -6, z: 0}
+      To: {x: -7, y: -6, z: 0}
+    - From: {x: -6, y: -6, z: 0}
+      To: {x: -6, y: -6, z: 0}
+    - From: {x: -5, y: -6, z: 0}
+      To: {x: -5, y: -6, z: 0}
+    - From: {x: -4, y: -6, z: 0}
+      To: {x: -4, y: -6, z: 0}
+    - From: {x: -7, y: 6, z: 0}
+      To: {x: -7, y: 6, z: 0}
+    - From: {x: -6, y: 6, z: 0}
+      To: {x: -6, y: 6, z: 0}
+    - From: {x: -5, y: 6, z: 0}
+      To: {x: -5, y: 6, z: 0}
+    - From: {x: -4, y: 6, z: 0}
+      To: {x: -4, y: 6, z: 0}
+    - From: {x: -7, y: 6, z: 0}
+      To: {x: -6, y: 6, z: 0}
+    - From: {x: -6, y: 6, z: 0}
+      To: {x: -5, y: 6, z: 0}
+    - From: {x: -5, y: 6, z: 0}
+      To: {x: -4, y: 6, z: 0}
+    - From: {x: -11, y: 1, z: 0}
+      To: {x: -11, y: 0, z: 0}
+    - From: {x: -11, y: 0, z: 0}
+      To: {x: -11, y: -1, z: 0}
+    - From: {x: 0, y: 1, z: 0}
+      To: {x: 0, y: 0, z: 0}
+    - From: {x: 0, y: 0, z: 0}
+      To: {x: 0, y: -1, z: 0}
+    - From: {x: -7, y: -6, z: 0}
+      To: {x: -6, y: -6, z: 0}
+    - From: {x: -6, y: -6, z: 0}
+      To: {x: -5, y: -6, z: 0}
+    - From: {x: -5, y: -6, z: 0}
+      To: {x: -4, y: -6, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -1, z: 0}
+    - From: {x: -11, y: -2, z: 0}
+      To: {x: -11, y: -1, z: 0}
+    - From: {x: -11, y: -2, z: 0}
+      To: {x: -11, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1401010386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63379,6 +64771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -63387,6 +64780,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1449960591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63503,6 +64919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -63555,6 +64972,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1457234825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63700,6 +65184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -63752,6 +65237,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1464080591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66231,6 +67783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -66239,6 +67792,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1497395130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70363,6 +71939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -70371,6 +71948,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -1, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -1, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -1, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1612616342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71902,6 +73502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -71910,6 +73511,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -1, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -1, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -1, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1711203071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72262,6 +73886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 3
+  EnableDiagnostics: 0
   FixedLevelGraphConfig:
     LevelGraph: {fileID: 11400000, guid: 50956a7efd5eb9047ab43fe76d6c02ab, type: 2}
     UseCorridors: 1
@@ -72269,6 +73894,7 @@ MonoBehaviour:
     RootGameObject: {fileID: 0}
     Timeout: 10000
     RepeatModeOverride: 2
+    MinimumRoomDistance: 1
   PostProcessConfig:
     InitializeSharedTilemaps: 1
     TilemapLayersStructure: 0
@@ -72290,6 +73916,7 @@ MonoBehaviour:
   RandomGeneratorSeed: 0
   GenerateOnStart: 0
   ThrowExceptionsImmediately: 0
+  DisableCustomPostProcessing: 0
 --- !u!1 &1720025726
 GameObject:
   m_ObjectHideFlags: 0
@@ -75963,6 +77590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -75971,6 +77599,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -2, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -2, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -2, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1843074973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79808,6 +81459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 2
   DoorLength: 1
   DoorsList:
@@ -79860,6 +81512,73 @@ MonoBehaviour:
   - From: {x: 4, y: 1, z: 0}
     To: {x: 4, y: 2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 2, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: -1, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 2, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 2, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 2, y: 5, z: 0}
+    - From: {x: -1, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 1, y: -2, z: 0}
+    - From: {x: 1, y: -2, z: 0}
+      To: {x: 2, y: -2, z: 0}
+    - From: {x: -3, y: 0, z: 0}
+      To: {x: -3, y: 1, z: 0}
+    - From: {x: -3, y: 1, z: 0}
+      To: {x: -3, y: 2, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 2
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1964311040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80477,6 +82196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -80601,6 +82321,145 @@ MonoBehaviour:
   - From: {x: -7, y: 5, z: 0}
     To: {x: -7, y: 5, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -7, y: 5, z: 0}
+      To: {x: -6, y: 5, z: 0}
+    - From: {x: -6, y: 5, z: 0}
+      To: {x: -5, y: 5, z: 0}
+    - From: {x: -5, y: 5, z: 0}
+      To: {x: -4, y: 5, z: 0}
+    - From: {x: -4, y: 5, z: 0}
+      To: {x: -3, y: 5, z: 0}
+    - From: {x: -3, y: 5, z: 0}
+      To: {x: -2, y: 5, z: 0}
+    - From: {x: -2, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: -10, y: 2, z: 0}
+      To: {x: -10, y: 1, z: 0}
+    - From: {x: -10, y: 1, z: 0}
+      To: {x: -10, y: 0, z: 0}
+    - From: {x: -10, y: 0, z: 0}
+      To: {x: -10, y: -1, z: 0}
+    - From: {x: -10, y: -1, z: 0}
+      To: {x: -10, y: -2, z: 0}
+    - From: {x: -10, y: -2, z: 0}
+      To: {x: -10, y: -3, z: 0}
+    - From: {x: -8, y: -6, z: 0}
+      To: {x: -7, y: -6, z: 0}
+    - From: {x: -7, y: -6, z: 0}
+      To: {x: -6, y: -6, z: 0}
+    - From: {x: -6, y: -6, z: 0}
+      To: {x: -5, y: -6, z: 0}
+    - From: {x: -5, y: -6, z: 0}
+      To: {x: -4, y: -6, z: 0}
+    - From: {x: -4, y: -6, z: 0}
+      To: {x: -3, y: -6, z: 0}
+    - From: {x: -3, y: -6, z: 0}
+      To: {x: -2, y: -6, z: 0}
+    - From: {x: -2, y: -6, z: 0}
+      To: {x: -1, y: -6, z: 0}
+    - From: {x: -1, y: -6, z: 0}
+      To: {x: 0, y: -6, z: 0}
+    - From: {x: 0, y: -6, z: 0}
+      To: {x: 1, y: -6, z: 0}
+    - From: {x: 1, y: -6, z: 0}
+      To: {x: 2, y: -6, z: 0}
+    - From: {x: 4, y: -3, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 4, y: -1, z: 0}
+    - From: {x: 4, y: -1, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: -10, y: 2, z: 0}
+      To: {x: -10, y: 2, z: 0}
+    - From: {x: -10, y: 1, z: 0}
+      To: {x: -10, y: 1, z: 0}
+    - From: {x: -10, y: 0, z: 0}
+      To: {x: -10, y: 0, z: 0}
+    - From: {x: -10, y: -1, z: 0}
+      To: {x: -10, y: -1, z: 0}
+    - From: {x: -10, y: -2, z: 0}
+      To: {x: -10, y: -2, z: 0}
+    - From: {x: -10, y: -3, z: 0}
+      To: {x: -10, y: -3, z: 0}
+    - From: {x: -8, y: -6, z: 0}
+      To: {x: -8, y: -6, z: 0}
+    - From: {x: -7, y: -6, z: 0}
+      To: {x: -7, y: -6, z: 0}
+    - From: {x: -6, y: -6, z: 0}
+      To: {x: -6, y: -6, z: 0}
+    - From: {x: -5, y: -6, z: 0}
+      To: {x: -5, y: -6, z: 0}
+    - From: {x: -4, y: -6, z: 0}
+      To: {x: -4, y: -6, z: 0}
+    - From: {x: -3, y: -6, z: 0}
+      To: {x: -3, y: -6, z: 0}
+    - From: {x: -2, y: -6, z: 0}
+      To: {x: -2, y: -6, z: 0}
+    - From: {x: -1, y: -6, z: 0}
+      To: {x: -1, y: -6, z: 0}
+    - From: {x: 0, y: -6, z: 0}
+      To: {x: 0, y: -6, z: 0}
+    - From: {x: 1, y: -6, z: 0}
+      To: {x: 1, y: -6, z: 0}
+    - From: {x: 2, y: -6, z: 0}
+      To: {x: 2, y: -6, z: 0}
+    - From: {x: 4, y: -3, z: 0}
+      To: {x: 4, y: -3, z: 0}
+    - From: {x: 4, y: -2, z: 0}
+      To: {x: 4, y: -2, z: 0}
+    - From: {x: 4, y: -1, z: 0}
+      To: {x: 4, y: -1, z: 0}
+    - From: {x: 4, y: 0, z: 0}
+      To: {x: 4, y: 0, z: 0}
+    - From: {x: 4, y: 1, z: 0}
+      To: {x: 4, y: 1, z: 0}
+    - From: {x: 4, y: 2, z: 0}
+      To: {x: 4, y: 2, z: 0}
+    - From: {x: 1, y: 5, z: 0}
+      To: {x: 1, y: 5, z: 0}
+    - From: {x: 0, y: 5, z: 0}
+      To: {x: 0, y: 5, z: 0}
+    - From: {x: -1, y: 5, z: 0}
+      To: {x: -1, y: 5, z: 0}
+    - From: {x: -2, y: 5, z: 0}
+      To: {x: -2, y: 5, z: 0}
+    - From: {x: -3, y: 5, z: 0}
+      To: {x: -3, y: 5, z: 0}
+    - From: {x: -4, y: 5, z: 0}
+      To: {x: -4, y: 5, z: 0}
+    - From: {x: -5, y: 5, z: 0}
+      To: {x: -5, y: 5, z: 0}
+    - From: {x: -6, y: 5, z: 0}
+      To: {x: -6, y: 5, z: 0}
+    - From: {x: -7, y: 5, z: 0}
+      To: {x: -7, y: 5, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &1987384931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82915,6 +84774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -82923,6 +84783,29 @@ MonoBehaviour:
   - From: {x: 0, y: -2, z: 0}
     To: {x: 0, y: -2, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: 3, y: -2, z: 0}
+      To: {x: 3, y: -2, z: 0}
+    - From: {x: 0, y: -2, z: 0}
+      To: {x: 0, y: -2, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &2058305299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83313,6 +85196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
   DoorsList:
@@ -83321,6 +85205,29 @@ MonoBehaviour:
   - From: {x: -2, y: 0, z: 0}
     To: {x: -1, y: 0, z: 0}
   SelectedMode: 1
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList:
+    - From: {x: -2, y: 1, z: 0}
+      To: {x: -1, y: 1, z: 0}
+    - From: {x: -2, y: 0, z: 0}
+      To: {x: -1, y: 0, z: 0}
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 0
+    VerticalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 1
+      Margin2: 1
+      Enabled: 1
 --- !u!114 &2074280217
 MonoBehaviour:
   m_ObjectHideFlags: 0

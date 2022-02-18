@@ -283,54 +283,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c4bdbbf5a3651f498b2114a8a7bb97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
   DistanceFromCorners: 1
   DoorLength: 1
-  DoorsList:
-  - From: {x: -10, y: -1, z: 0}
-    To: {x: -10, y: -1, z: 0}
-  - From: {x: -10, y: 0, z: 0}
-    To: {x: -10, y: 1, z: 0}
-  - From: {x: -10, y: 2, z: 0}
-    To: {x: -10, y: 2, z: 0}
-  - From: {x: -10, y: -2, z: 0}
-    To: {x: -10, y: -3, z: 0}
-  - From: {x: -10, y: -4, z: 0}
-    To: {x: -10, y: -4, z: 0}
-  - From: {x: -7, y: 5, z: 0}
-    To: {x: -7, y: 5, z: 0}
-  - From: {x: -6, y: 5, z: 0}
-    To: {x: -5, y: 5, z: 0}
-  - From: {x: -4, y: 5, z: 0}
-    To: {x: -4, y: 5, z: 0}
-  - From: {x: -3, y: 5, z: 0}
-    To: {x: -2, y: 5, z: 0}
-  - From: {x: -1, y: 5, z: 0}
-    To: {x: -1, y: 5, z: 0}
-  - From: {x: 0, y: 5, z: 0}
-    To: {x: 1, y: 5, z: 0}
-  - From: {x: 4, y: 2, z: 0}
-    To: {x: 4, y: 2, z: 0}
-  - From: {x: 4, y: 1, z: 0}
-    To: {x: 4, y: 0, z: 0}
-  - From: {x: 4, y: -1, z: 0}
-    To: {x: 4, y: -1, z: 0}
-  - From: {x: 4, y: -2, z: 0}
-    To: {x: 4, y: -3, z: 0}
-  - From: {x: 4, y: -4, z: 0}
-    To: {x: 4, y: -4, z: 0}
-  - From: {x: -7, y: -6, z: 0}
-    To: {x: -7, y: -6, z: 0}
-  - From: {x: -6, y: -6, z: 0}
-    To: {x: -5, y: -6, z: 0}
-  - From: {x: -4, y: -6, z: 0}
-    To: {x: -4, y: -6, z: 0}
-  - From: {x: -3, y: -6, z: 0}
-    To: {x: -2, y: -6, z: 0}
-  - From: {x: -1, y: -6, z: 0}
-    To: {x: -1, y: -6, z: 0}
-  - From: {x: 0, y: -6, z: 0}
-    To: {x: 1, y: -6, z: 0}
-  SelectedMode: 1
+  DoorsList: []
+  SelectedMode: 0
+  HybridDoorModeData:
+    DefaultLength: 1
+    DoorLines: []
+  ManualDoorModeData:
+    DoorsList: []
+  SimpleDoorModeData:
+    DistanceFromCorners: 1
+    DoorLength: 1
+    Mode: 1
+    VerticalDoors:
+      Length: 1
+      Margin1: 2
+      Margin2: 3
+      Enabled: 1
+    HorizontalDoors:
+      Length: 1
+      Margin1: 3
+      Margin2: 3
+      Enabled: 1
 --- !u!1 &3827188188517570714
 GameObject:
   m_ObjectHideFlags: 0

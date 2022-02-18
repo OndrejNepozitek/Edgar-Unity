@@ -61,7 +61,7 @@ namespace Edgar.Unity.Editor
 
             byte[] pngData = result.EncodeToPNG();
             var path =
-                "C:\\Users\\ondrej.nepozitek\\OneDrive\\Dokumenty\\VS_Projects\\Edgar-Unity\\static\\img\\v2\\guides\\directed_level_graphs\\";
+                "C:\\Users\\ondra\\Projects\\JavaScript\\Edgar-Unity\\docs\\assets\\2d\\examples\\example2\\";
 
             FileStream file = File.Create($"{path}{name}.png");
 
