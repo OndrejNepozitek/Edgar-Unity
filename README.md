@@ -10,7 +10,7 @@
   <a href="https://ondrejnepozitek.github.io/Edgar-Unity/docs/introduction/"><img src="https://img.shields.io/badge/online-docs-important" /></a>
   <a href="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg"><img src="https://github.com/OndrejNepozitek/Edgar-Unity/workflows/Build/badge.svg" /></a>
   <a href="https://github.com/OndrejNepozitek/Edgar-Unity/releases/tag/v2.0.0-alpha.5"><img src="https://img.shields.io/github/v/release/OndrejNepozitek/Edgar-Unity" /></a>
-  <a href="https://ondrejnepozitek.itch.io/edgar-pro"><img src="https://img.shields.io/badge/itch.io-PRO%20version-important" /></a>
+  <a href="https://github.com/OndrejNepozitek/Edgar-Unity/blob/master/BUY.md"><img src="https://img.shields.io/badge/buy-PRO%20version-important" /></a>
   <a href="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue"><img src="https://img.shields.io/badge/Unity-%3E%3D%202018.4-blue" /></a>
   <a href="https://discord.gg/syktZ6VWq9"><img src="https://img.shields.io/discord/795301453131415554?label=discord" /></a>
 </p>
@@ -72,7 +72,7 @@ The appearance of individual rooms is controlled with so-called room templates. 
 
 ## PRO version
 
-There are two versions of this asset - free version and PRO version. The free version contains the core functions of the generator and should be fine for simple procedural dungeons. The PRO version can be bought at [itch.io](https://ondrejnepozitek.itch.io/edgar-pro) and contains some additional features. As of now, the PRO version contains features like platformer generator or isometric levels and also two advanced example scenes. If you like this asset, please consider buying the PRO version to support the development.
+There are two versions of this asset - free version and PRO version. The free version contains the core functions of the generator and should be fine for simple procedural dungeons. The PRO version can be bought [here](https://github.com/OndrejNepozitek/Edgar-Unity/blob/master/BUY.md) and contains some additional features. As of now, the PRO version contains features like platformer generator or isometric levels and also two advanced example scenes. If you like this asset, please consider buying the PRO version to support the development.
 
 - Coroutines - Call the generator as a coroutine so that the game does not freeze when generating a level ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/generators/dungeon-generator#pro-with-coroutines))
 - Custom rooms - It is possible to add additional fields to rooms and connections in a level graph ([docs](https://ondrejnepozitek.github.io/Edgar-Unity/docs/basics/level-graphs#pro-custom-rooms-and-connections))      
