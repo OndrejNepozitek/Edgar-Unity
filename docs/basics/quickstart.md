@@ -4,6 +4,8 @@ title: Quickstart
 
 On this page, you should learn the basics needed to generate your first level. This guide is not meant to be comprehensive. Each topic covered in this guide has its own dedicated page containing all the details that were not mentioned here. 
 
+> **Note:** If you prefer a video tutorial, you can watch one on [youtube](https://www.youtube.com/watch?v=JpWWwneEaPo).
+
 ## Room templates
 
 <small>

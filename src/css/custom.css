@@ -210,3 +210,13 @@ blockquote {
 .hidden-category {
   display: none;
 }
+
+@media print {
+  .theme-doc-version-badge, [class^="tocCollapsible"], [class^="copyButton"], .theme-edit-this-page {
+    display: none;
+  }
+
+  .markdown p {
+    text-align: initial;
+  }
+}
