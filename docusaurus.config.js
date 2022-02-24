@@ -32,7 +32,7 @@ module.exports = {
     announcementBar: {
       id: 'support_us',
       content:
-        'Check out the PRO version of the generator at <a href="https://ondrejnepozitek.itch.io/edgar-pro" target="_blank">itch.io</a>!',
+        'Check out the PRO version of the generator <a href="https://github.com/OndrejNepozitek/Edgar-Unity/blob/master/BUY.md" target="_blank">here</a>!',
       backgroundColor: '#fafbfc', // Defaults to `#fff`.
       textColor: '#091E42', // Defaults to `#000`.
     },
