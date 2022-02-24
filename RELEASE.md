@@ -1,4 +1,5 @@
-### New
+### Git
+
 - upgrade version in package.json
 - merge dev to master
 - merge master to upm
@@ -8,19 +9,19 @@
 - release should be created as draft, add changelog
 
 ### PRO
+
+- git tag PRO-v2.0.0-alpha.2
 - git push pro PRO-v2.0.0-alpha.2
 
-### Docs
+### Online docs
+
 - make sure to update code blocks with `npm run codeBlocks`
 - npm run version 2.0.0-alpha.1
-- cmd /C "set "GIT_USER=OndrejNepozitek" && npm run deploy"
+- `cmd /C "set "GIT_USER=OndrejNepozitek" && npm run deploy"`
 
-### Old
-- export Unity package
-- test exported package in different Unity project
-- merge dev to master
-- prepare new release
-- tag and name v2.0.0-alpha.X
-- create changelog
-- attach unity package
+### Offline docs
 
+- make sure that the `next` version contains docs that should be published
+- run the documentation locally `npm start`
+- then run `npx mr-pdf --initialDocURLs="http://localhost:3000/Edgar-Unity/docs/next/offline/unity/,http://localhost:3000/Edgar-Unity/docs/next/basics/quickstart/" --contentSelector="article" --paginationSelector=".pagination-nav__item--next > a" --excludeSelectors=".margin-vert--xl a" --coverTitle="Edgar" --outputPDFFilename="documentation.pdf" --coverSub="Offline documentation for version 2.0.0"`
+- the command above generates a `documentation.pdf` file
