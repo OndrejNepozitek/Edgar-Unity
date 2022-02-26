@@ -1,0 +1,72 @@
+public class GungeonRoomManager : MonoBehaviour
+{
+    /* ... */
+
+    /// <summary>
+    /// Enemies that can spawn inside the room.
+    /// </summary>
+    public GameObject[] Enemies;
+
+    /// <summary>
+    /// Whether enemies were spawned.
+    /// </summary>
+    public bool EnemiesSpawned;
+
+    /// <summary>
+    /// Collider of the floor tilemap layer.
+    /// </summary>
+    public Collider2D FloorCollider;
+
+    /* ... */
+
+    private void SpawnEnemies()
+    {
+        EnemiesSpawned = true;
+
+        var enemies = new List<GameObject>();
+        var totalEnemiesCount = GungeonGameManager.Instance.Random.Next(4, 8);
+
+        while(enemies.Count < totalEnemiesCount)
+        {
+            // Find random position inside floor collider bounds
+            var position = RandomPointInBounds(FloorCollider.bounds, 1f);
+
+            // Check if the point is actually inside the collider as there may be holes in the floor, etc.
+            if (!IsPointWithinCollider(FloorCollider, position))
+            {
+                continue;
+            }
+
+            // We want to make sure that there is no other collider in the radius of 1
+            if (Physics2D.OverlapCircleAll(position, 0.5f).Any(x => !x.isTrigger))
+            {
+                continue;
+            }
+
+            // Pick random enemy prefab
+            var enemyPrefab = Enemies[Random.Range(0, Enemies.Length)];
+
+            // Create an instance of the enemy and set position and parent
+            var enemy = Instantiate(enemyPrefab);
+            enemy.transform.position = position;
+            enemy.transform.parent = roomInstance.RoomTemplateInstance.transform;
+            enemies.Add(enemy);
+        }
+    }
+
+    private static bool IsPointWithinCollider(Collider2D collider, Vector2 point)
+    {
+        return collider.OverlapPoint(point);
+    }
+
+    private static Vector3 RandomPointInBounds(Bounds bounds, float margin = 0)
+    {
+        return new Vector3(
+            Random.Range(bounds.min.x + margin, bounds.max.x - margin),
+            Random.Range(bounds.min.y + margin, bounds.max.y - margin),
+            Random.Range(bounds.min.z + margin, bounds.max.z - margin)
+        );
+    }
+
+    /* ... */
+}

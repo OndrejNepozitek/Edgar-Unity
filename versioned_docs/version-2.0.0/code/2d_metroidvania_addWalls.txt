@@ -1,0 +1,33 @@
+private void AddWallsUnderRoom(RoomInstanceGrid2D roomInstance)
+{
+    // Get the room template and all the used tiles
+    var roomTemplate = roomInstance.RoomTemplateInstance;
+    var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(roomTemplate);
+    var usedTiles = RoomTemplateLoaderGrid2D.GetUsedTiles(tilemaps).ToList();
+    var roomTemplateWalls = tilemaps.Single(x => x.name == "Walls");
+
+    // Find the minimum y coordinate of all the tiles and use it to find the bottom layer of tiles
+    var minY = usedTiles.Min(x => x.y);
+    var bottomLayerTiles = usedTiles.Where(x => x.y == minY).ToList();
+
+    foreach (var pos in bottomLayerTiles)
+    {
+        var tilemap = backgroundTilemap;
+
+        // Use the walls tilemap only if the collider is really needed
+        // That means we only use it if the tile is the border tile of a tower
+        var leftTilePos = pos + Vector3Int.left;
+        var rightTilePos = pos + Vector3Int.right;
+        if (roomTemplateWalls.GetTile(pos) != null && !(bottomLayerTiles.Contains(leftTilePos) && bottomLayerTiles.Contains(rightTilePos)))
+        {
+            tilemap = wallsTilemap;
+        }
+
+        // Add tiles under this position
+        for (var i = 1; i <= WallDepth; i++)
+        {
+            var wallPosition = roomInstance.Position + pos + Vector3Int.down * i;
+            tilemap.SetTile(wallPosition, WallTile);
+        }
+    }
+}
