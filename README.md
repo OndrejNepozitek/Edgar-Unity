@@ -141,25 +141,25 @@ When installing the plugin, use the two methods described above. If you clone th
 
 ### 1. Draw rooms and corridors
 
-![](https://ondrejnepozitek.github.io/Edgar-Unity/img/v2/room_templates_multiple.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/intro/room_templates_multiple.png)
 
 ### 2. Prepare the structure of the level
 
-<img src="https://ondrejnepozitek.github.io/Edgar-Unity/img/v2/examples/example1_level_graph2.png" height="500" />
+<img src="https://ondrejnepozitek.github.io/Edgar-Unity/intro/level_graph.png" height="500" />
 
 ### 3. Generate levels
 
-![](https://ondrejnepozitek.github.io/Edgar-Unity/img/v2/generated_levels_multiple.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/intro/generated_levels_multiple.png)
 
 ## Examples
 
-![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example1_result1.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/intro/example1_result1.png)
 
-![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example1_result_reallife1.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/intro/example1_result2.png)
 
-![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example2_result1.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/intro/example2_result1.png)
 
-![](https://ondrejnepozitek.github.io/Edgar-Unity/img/original/example2_result_reallife1.png)
+![](https://ondrejnepozitek.github.io/Edgar-Unity/intro/example2_result2.png)
 
 ## Get in touch
 
