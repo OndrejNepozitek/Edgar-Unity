@@ -19,12 +19,12 @@ namespace Edgar.Unity
             tilemapLayersHandlers.InitializeTilemaps(tilemapsRoot);
         }
 
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         [MenuItem("Assets/Create/Edgar/Dungeon room template")]
         public static void CreateRoomTemplatePrefab()
         {
             RoomTemplateInitializerUtilsGrid2D.CreateRoomTemplatePrefab<DungeonRoomTemplateInitializerGrid2D>();
         }
-#endif
+        #endif
     }
 }

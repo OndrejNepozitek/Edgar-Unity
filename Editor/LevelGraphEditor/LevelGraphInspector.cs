@@ -5,22 +5,22 @@ using UnityEngine;
 namespace Edgar.Unity.Editor
 {
     [CustomEditor(typeof(LevelGraph))]
-	public class LevelGraphInspector : UnityEditor.Editor
-	{
-		private bool defaultRoomTemplatesFoldout;
-		private bool corridorRoomTemplatesFoldout;
+    public class LevelGraphInspector : UnityEditor.Editor
+    {
+        private bool defaultRoomTemplatesFoldout;
+        private bool corridorRoomTemplatesFoldout;
 
-		public override void OnInspectorGUI()
-		{
-			serializedObject.Update();
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
 
             var foldoutStyle = new GUIStyle(EditorStyles.foldout) {fontStyle = FontStyle.Bold};
 
             defaultRoomTemplatesFoldout = EditorGUILayout.Foldout(defaultRoomTemplatesFoldout, "Default room templates", foldoutStyle);
 
-			if (defaultRoomTemplatesFoldout)
-			{
-				EditorGUI.indentLevel++;
+            if (defaultRoomTemplatesFoldout)
+            {
+                EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(
                     serializedObject.FindProperty(nameof(LevelGraph.DefaultIndividualRoomTemplates)),
                     new GUIContent("Room Templates"),
@@ -29,32 +29,32 @@ namespace Edgar.Unity.Editor
                     serializedObject.FindProperty(nameof(LevelGraph.DefaultRoomTemplateSets)),
                     new GUIContent("Room Templates Sets"),
                     true);
-				EditorGUI.indentLevel--;
-			}
+                EditorGUI.indentLevel--;
+            }
 
-			corridorRoomTemplatesFoldout = EditorGUILayout.Foldout(corridorRoomTemplatesFoldout, "Corridor room templates", foldoutStyle);
+            corridorRoomTemplatesFoldout = EditorGUILayout.Foldout(corridorRoomTemplatesFoldout, "Corridor room templates", foldoutStyle);
 
-			if (corridorRoomTemplatesFoldout)
-			{
-				EditorGUI.indentLevel++;
+            if (corridorRoomTemplatesFoldout)
+            {
+                EditorGUI.indentLevel++;
                 EditorGUILayout.PropertyField(serializedObject.FindProperty(
-                    nameof(LevelGraph.CorridorIndividualRoomTemplates)),
+                        nameof(LevelGraph.CorridorIndividualRoomTemplates)),
                     new GUIContent("Room Templates"),
                     true);
                 EditorGUILayout.PropertyField(
                     serializedObject.FindProperty(nameof(LevelGraph.CorridorRoomTemplateSets)),
                     new GUIContent("Room Templates Sets"),
                     true);
-				EditorGUI.indentLevel--;
-			}
+                EditorGUI.indentLevel--;
+            }
 
             if (GUILayout.Button("Open graph editor"))
             {
                 OpenWindow((LevelGraph) target);
             }
 
-			serializedObject.ApplyModifiedProperties(); 
-		}
+            serializedObject.ApplyModifiedProperties();
+        }
 
         [UnityEditor.Callbacks.OnOpenAsset(1)]
         public static bool OnOpenAsset(int instanceID, int line)
@@ -79,5 +79,5 @@ namespace Edgar.Unity.Editor
             window.Initialize(levelGraph);
             window.Show();
         }
-	}
+    }
 }

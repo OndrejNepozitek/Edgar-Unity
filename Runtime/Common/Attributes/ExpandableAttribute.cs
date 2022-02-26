@@ -7,19 +7,19 @@ using UnityEditor;
 namespace Edgar.Unity
 {
     /// <summary>
-    ///     Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable
-    ///     area that allows for changing the values on the object without having to change editor.
+    /// Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable
+    /// area that allows for changing the values on the object without having to change editor.
     /// </summary>
-    public class ExpandableAttribute : PropertyAttribute
+    internal class ExpandableAttribute : PropertyAttribute
     {
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     /// <summary>
-    ///     Draws the property field for any field marked with ExpandableAttribute.
+    /// Draws the property field for any field marked with ExpandableAttribute.
     /// </summary>
     [CustomPropertyDrawer(typeof(ExpandableAttribute), true)]
-    public class ExpandableAttributeDrawer : PropertyDrawer
+    internal class ExpandableAttributeDrawer : PropertyDrawer
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -37,7 +37,7 @@ namespace Edgar.Unity
 
             foreach (var child in property.GetVisibleChildren(false))
             {
-                totalHeight += EditorGUI.GetPropertyHeight(child, true) + EditorGUIUtility.standardVerticalSpacing;  
+                totalHeight += EditorGUI.GetPropertyHeight(child, true) + EditorGUIUtility.standardVerticalSpacing;
             }
 
             totalHeight += INNER_SPACING * 2;
@@ -191,5 +191,5 @@ namespace Edgar.Unity
 
         #endregion
     }
-#endif
+    #endif
 }

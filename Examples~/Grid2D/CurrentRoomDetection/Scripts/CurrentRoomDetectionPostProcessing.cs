@@ -5,7 +5,9 @@ using UnityEngine.Tilemaps;
 namespace Edgar.Unity.Examples.CurrentRoomDetection
 {
     [CreateAssetMenu(menuName = "Edgar/Examples/Current room detection/Post-processing", fileName = "CurrentRoomDetectionPostProcessing")]
+
     #region codeBlock:2d_currentRoomDetection_postProcessing
+
     public class CurrentRoomDetectionPostProcessing : DungeonGeneratorPostProcessingGrid2D
     {
         public override void Run(DungeonGeneratorLevelGrid2D level)
@@ -43,5 +45,6 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
             floor.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         }
     }
+
     #endregion
 }

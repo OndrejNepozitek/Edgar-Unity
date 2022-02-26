@@ -5,21 +5,23 @@ using UnityEditor;
 
 namespace Edgar.Unity
 {
-    public class ReadOnlyAttribute : PropertyAttribute
+    /// <summary>
+    /// Makes an inspector field readonly.
+    /// </summary>
+    internal class ReadOnlyAttribute : PropertyAttribute
     {
- 
     }
-    
-#if UNITY_EDITOR
+
+    #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(ReadOnlyAttribute))]
-    public class ReadOnlyDrawer : PropertyDrawer
+    internal class ReadOnlyDrawer : PropertyDrawer
     {
         public override float GetPropertyHeight(SerializedProperty property,
             GUIContent label)
         {
             return EditorGUI.GetPropertyHeight(property, label, true);
         }
- 
+
         public override void OnGUI(Rect position,
             SerializedProperty property,
             GUIContent label)
@@ -29,5 +31,5 @@ namespace Edgar.Unity
             GUI.enabled = true;
         }
     }
-#endif
+    #endif
 }

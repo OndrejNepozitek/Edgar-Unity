@@ -8,20 +8,20 @@ using UnityEditor;
 namespace Edgar.Unity
 {
     /// <summary>
-    ///     Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable
-    ///     area that allows for changing the values on the object without having to change editor.
+    /// Use this property on a ScriptableObject type to allow the editors drawing the field to draw an expandable
+    /// area that allows for changing the values on the object without having to change editor.
     /// </summary>
-    public class ExpandableScriptableObjectAttribute : PropertyAttribute
+    internal class ExpandableScriptableObjectAttribute : PropertyAttribute
     {
         public bool CanFold { get; set; } = true;
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     /// <summary>
-    ///     Draws the property field for any field marked with ExpandableAttribute.
+    /// Draws the property field for any field marked with ExpandableAttribute.
     /// </summary>
     [CustomPropertyDrawer(typeof(ExpandableScriptableObjectAttribute), true)]
-    public class ExpandableScriptableObjectAttributeDrawer : PropertyDrawer
+    internal class ExpandableScriptableObjectAttributeDrawer : PropertyDrawer
     {
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
@@ -233,5 +233,5 @@ namespace Edgar.Unity
 
         #endregion
     }
-#endif
+    #endif
 }

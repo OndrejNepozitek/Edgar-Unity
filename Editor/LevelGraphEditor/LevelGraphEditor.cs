@@ -10,7 +10,7 @@ namespace Edgar.Unity.Editor
         public LevelGraph LevelGraph { get; private set; }
 
         private List<RoomNode> roomNodes = new List<RoomNode>();
-        
+
         private List<ConnectionNode> connectionNodes = new List<ConnectionNode>();
 
         public State CurrentState;
@@ -37,10 +37,17 @@ namespace Edgar.Unity.Editor
 
         public void OnEnable()
         {
+            Selection.selectionChanged += ProjectBrowserLocker.Unlock;
+
             if (LevelGraph != null)
             {
                 Initialize(LevelGraph);
             }
+        }
+
+        public void OnDisable()
+        {
+            Selection.selectionChanged -= ProjectBrowserLocker.Unlock;
         }
 
         public void OnGUI()
@@ -65,13 +72,22 @@ namespace Edgar.Unity.Editor
             DrawMenuBar();
         }
 
+        protected void Update()
+        {
+            if (LevelGraph.HasChanges)
+            {
+                Repaint();
+                LevelGraph.HasChanges = false;
+            }
+        }
+
         /// <summary>
         /// Initialize the window with a given level graph.
         /// </summary>
         /// <param name="levelGraph"></param>
         public void Initialize(LevelGraph levelGraph)
         {
-            LevelGraph = levelGraph; 
+            LevelGraph = levelGraph;
             CurrentState = State.Idle;
             zoom = LevelGraph.EditorData.Zoom;
             panOffset = LevelGraph.EditorData.PanOffset;
@@ -196,7 +212,7 @@ namespace Edgar.Unity.Editor
 
             if (LevelGraph != null)
             {
-                GUILayout.Label($"Selected graph: {LevelGraph.name}"); 
+                GUILayout.Label($"Selected graph: {LevelGraph.name}");
             }
             else
             {
@@ -302,7 +318,12 @@ namespace Edgar.Unity.Editor
 
         public enum State
         {
-            Idle, HoldGrid, DragGrid, HoldRoom, DragRoom, CreateConnection
+            Idle,
+            HoldGrid,
+            DragGrid,
+            HoldRoom,
+            DragRoom,
+            CreateConnection
         }
     }
 }

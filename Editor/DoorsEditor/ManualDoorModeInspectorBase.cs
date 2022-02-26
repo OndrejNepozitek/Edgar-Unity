@@ -14,8 +14,10 @@ namespace Edgar.Unity.Editor
 
         // ReSharper disable once InconsistentNaming
         protected readonly SerializedObject serializedObject;
+
         // ReSharper disable once InconsistentNaming
         protected readonly SerializedProperty serializedProperty;
+
         // ReSharper disable once InconsistentNaming
         protected readonly DoorsGrid2D doors;
 
@@ -67,7 +69,9 @@ namespace Edgar.Unity.Editor
             }
             catch (DoorModeException)
             {
-
+            }
+            catch (InvalidOutlineException)
+            {
             }
 
             ShowAdditionalFields();
@@ -77,7 +81,6 @@ namespace Edgar.Unity.Editor
 
         protected virtual void ShowAdditionalFields()
         {
-
         }
 
         public void OnSceneGUI()
@@ -159,6 +162,7 @@ namespace Edgar.Unity.Editor
                         {
                             hasSecondTile = true;
                         }
+
                         e.Use();
                     }
 
@@ -210,7 +214,9 @@ namespace Edgar.Unity.Editor
 
         protected enum Mode
         {
-            Idle, AddDoors, DeleteDoors
+            Idle,
+            AddDoors,
+            DeleteDoors
         }
     }
 }

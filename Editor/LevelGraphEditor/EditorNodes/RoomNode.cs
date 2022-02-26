@@ -17,7 +17,7 @@ namespace Edgar.Unity.Editor
         {
             var width = 80 * zoom;
             var height = 32 * zoom;
-            
+
             return new Rect((Room.Position.x + gridOffset.x) * zoom, (Room.Position.y + gridOffset.y) * zoom, width, height);
         }
 

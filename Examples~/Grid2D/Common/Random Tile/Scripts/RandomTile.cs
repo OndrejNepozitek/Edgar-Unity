@@ -33,7 +33,7 @@ namespace Edgar.Unity.Examples
         }
     }
 
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     [CustomEditor(typeof(RandomTile))]
     public class RandomTileEditor : Editor
     {
@@ -65,5 +65,5 @@ namespace Edgar.Unity.Examples
                 EditorUtility.SetDirty(tile);
         }
     }
-#endif
+    #endif
 }

@@ -1,22 +1,43 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-#pragma warning disable 612, 618
 namespace Edgar.Unity
 {
     /// <summary>
     /// Bounding box outline handler.
     /// </summary>
-    /// <remarks>
-    /// This file is temporarily empty to make it easier to adapt the new classNameGrid2D naming convention.
-    /// The motivation for this action is to prevent name clashes in the future when/if a 3D version is released.
-    /// 
-    /// See <see cref="BoundingBoxOutlineHandler"/> for an actual implementation.
-    /// The BoundingBoxOutlineHandler class is now obsolete and will be removed in a future release.
-    /// When that happens, the implementation of BoundingBoxOutlineHandler will move to this file.
-    /// </remarks>
     [AddComponentMenu("Edgar/Grid2D/Bounding Box Outline Handler (Grid2D)")]
-    public class BoundingBoxOutlineHandlerGrid2D : BoundingBoxOutlineHandler
+    public class BoundingBoxOutlineHandlerGrid2D : MonoBehaviour, IRoomTemplateOutlineHandlerGrid2D
     {
+        [Min(0)]
+        public int PaddingTop = 0;
+
+        public Polygon2D GetRoomTemplateOutline()
+        {
+            var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(gameObject);
+            var outlineTilemaps = RoomTemplateUtilsGrid2D.GetTilemapsForOutline(tilemaps);
+            var usedTiles = RoomTemplateUtilsGrid2D.GetUsedTiles(outlineTilemaps);
+
+            if (usedTiles.Count == 0)
+            {
+                return null;
+            }
+
+            var minX = usedTiles.Min(x => x.x);
+            var maxX = usedTiles.Max(x => x.x);
+            var minY = usedTiles.Min(x => x.y);
+            var maxY = usedTiles.Max(x => x.y) + PaddingTop;
+
+            var polygonPoints = new List<Vector2Int>()
+            {
+                new Vector2Int(minX, minY),
+                new Vector2Int(minX, maxY),
+                new Vector2Int(maxX, maxY),
+                new Vector2Int(maxX, minY),
+            };
+
+            return new Polygon2D(polygonPoints);
+        }
     }
 }
-#pragma warning restore 612, 618

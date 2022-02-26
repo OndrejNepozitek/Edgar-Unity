@@ -48,12 +48,16 @@ namespace Edgar.Unity
                 {
                     TextColor = Color.red
                 };
-                
             }
             else
             {
                 return new RoomEditorStyle();
             }
+        }
+
+        protected virtual void OnValidate()
+        {
+            LevelGraph.HasChanges = true;
         }
     }
 }

@@ -94,12 +94,23 @@ namespace Edgar.Unity.Editor
         {
             RemoveOnSceneGUIDelegate();
             AddOnSceneGUIDelegate();
+        }
+
+        private void OnSceneGUIPersistent(SceneView sceneView)
+        {
+            if (target == null || PrefabStageUtility.GetCurrentPrefabStage() == null)
+            {
+                RemoveOnSceneGUIDelegate();
+                return;
+            }
+
             ShowStatus();
+            DrawOutline();
         }
 
         private void ShowStatus()
         {
-            var roomTemplate = (RoomTemplateSettingsGrid2D)target;
+            var roomTemplate = (RoomTemplateSettingsGrid2D) target;
             var originalBackground = GUI.backgroundColor;
 
             Handles.BeginGUI();
@@ -131,12 +142,12 @@ namespace Edgar.Unity.Editor
                 }
             }
 
-            GUILayout.Label($"Outline: <b>{outlineText}</b>", new GUIStyle(EditorStyles.label) { richText = true });
-            GUILayout.Label($"Doors: <b>{doorsText}</b>", new GUIStyle(EditorStyles.label) { richText = true });
+            GUILayout.Label($"Outline: <b>{outlineText}</b>", new GUIStyle(EditorStyles.label) {richText = true});
+            GUILayout.Label($"Doors: <b>{doorsText}</b>", new GUIStyle(EditorStyles.label) {richText = true});
 
             if (!isOutlineValid || !areDoorsValid)
             {
-                GUILayout.Label($"<size=9>See the Room template settings component for details</size>", new GUIStyle(EditorStyles.label) { richText = true, wordWrap = true });
+                GUILayout.Label($"<size=9>See the Room template settings component for details</size>", new GUIStyle(EditorStyles.label) {richText = true, wordWrap = true});
             }
 
             GUILayout.EndVertical();
@@ -146,14 +157,8 @@ namespace Edgar.Unity.Editor
             GUI.backgroundColor = originalBackground;
         }
 
-        private void DrawOutline(SceneView sceneView)
+        private void DrawOutline()
         {
-            if (target == null || PrefabStageUtility.GetCurrentPrefabStage() == null)
-            {
-                RemoveOnSceneGUIDelegate();
-                return;
-            }
-
             try
             {
                 var roomTemplate = (RoomTemplateSettingsGrid2D) target;
@@ -174,26 +179,25 @@ namespace Edgar.Unity.Editor
             }
             catch (ArgumentException)
             {
-
             }
         }
 
         private void AddOnSceneGUIDelegate()
         {
-#if UNITY_2019_1_OR_NEWER
-            SceneView.duringSceneGui += DrawOutline;
-#else
-            SceneView.onSceneGUIDelegate += DrawOutline;
-#endif
+            #if UNITY_2019_1_OR_NEWER
+            SceneView.duringSceneGui += OnSceneGUIPersistent;
+            #else
+            SceneView.onSceneGUIDelegate += OnSceneGUIPersistent;
+            #endif
         }
 
         private void RemoveOnSceneGUIDelegate()
         {
-#if UNITY_2019_1_OR_NEWER
-            SceneView.duringSceneGui -= DrawOutline;
-#else
-            SceneView.onSceneGUIDelegate -= DrawOutline;
-#endif
+            #if UNITY_2019_1_OR_NEWER
+            SceneView.duringSceneGui -= OnSceneGUIPersistent;
+            #else
+            SceneView.onSceneGUIDelegate -= OnSceneGUIPersistent;
+            #endif
         }
     }
 }

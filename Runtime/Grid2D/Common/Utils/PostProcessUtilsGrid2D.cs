@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
 
-#pragma warning disable 612, 618
 namespace Edgar.Unity
 {
     /// <summary>
@@ -29,7 +28,41 @@ namespace Edgar.Unity
         /// <returns></returns>
         public static Vector3 GetTilemapsCenter(List<Tilemap> tilemaps, bool compressBounds = false)
         {
-            return PostProcessUtils.GetTilemapsCenter(tilemaps, compressBounds);
+            var minX = int.MaxValue;
+            var maxX = int.MinValue;
+            var minY = int.MaxValue;
+            var maxY = int.MinValue;
+
+            foreach (var tilemap in tilemaps)
+            {
+                if (compressBounds)
+                {
+                    tilemap.CompressBounds();
+                }
+
+                var cellBounds = tilemap.cellBounds;
+
+                if (cellBounds.size.x + cellBounds.size.y == 0)
+                {
+                    continue;
+                }
+
+                minX = Math.Min(minX, cellBounds.xMin);
+                maxX = Math.Max(maxX, cellBounds.xMax);
+                minY = Math.Min(minY, cellBounds.yMin);
+                maxY = Math.Max(maxY, cellBounds.yMax);
+            }
+
+            var offset = new Vector3((maxX + minX) / 2f, (maxY + minY) / 2f);
+
+            var grid = tilemaps[0].layoutGrid;
+
+            if (grid != null)
+            {
+                offset = grid.GetCellCenterLocal((offset * 100).RoundToUnityIntVector3()) / 100;
+            }
+
+            return offset;
         }
 
         /// <summary>
@@ -39,7 +72,12 @@ namespace Edgar.Unity
         /// <param name="compressBounds">Whether to compress bounds of individual tilemaps before computing the center.</param>
         public static void CenterGrid(DungeonGeneratorLevelGrid2D level, bool compressBounds = false)
         {
-            PostProcessUtils.CenterGrid(level, compressBounds);
+            var center = GetTilemapsCenter(level.GetSharedTilemaps(), compressBounds);
+
+            foreach (Transform transform in level.RootGameObject.transform)
+            {
+                transform.position -= center;
+            }
         }
 
         /// <summary>
@@ -52,7 +90,51 @@ namespace Edgar.Unity
         /// <param name="example">Example game object for tilemaps structure. Used for the FromExample mode.</param>
         public static void InitializeSharedTilemaps(DungeonGeneratorLevelGrid2D level, TilemapLayersStructureModeGrid2D mode, ITilemapLayersHandlerGrid2D defaultTilemapLayersHandler, ITilemapLayersHandlerGrid2D customTilemapLayersHandler, GameObject example)
         {
-            PostProcessUtils.InitializeSharedTilemaps(level, mode, defaultTilemapLayersHandler, customTilemapLayersHandler, example);
+            GameObject tilemapsRoot;
+
+            if (mode == TilemapLayersStructureModeGrid2D.FromExample)
+            {
+                if (example == null)
+                {
+                    throw new ConfigurationException($"When {nameof(PostProcessingConfigGrid2D.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureModeGrid2D.FromExample)}, {nameof(PostProcessingConfigGrid2D.TilemapLayersExample)} must not be null. Please set the field in the Dungeon Generator component.");
+                }
+
+                var tilemapsSource = example;
+                var tilemapsSourceRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(tilemapsSource);
+
+                if (tilemapsSourceRoot == tilemapsSource)
+                {
+                    throw new ConfigurationException($"Given {nameof(PostProcessingConfigGrid2D.TilemapLayersExample)} is not valid as it does not contain a game object called {GeneratorConstantsGrid2D.TilemapsRootName} that holds individual tilemap layers.");
+                }
+
+                tilemapsRoot = Object.Instantiate(tilemapsSourceRoot, level.RootGameObject.transform);
+                tilemapsRoot.name = GeneratorConstantsGrid2D.TilemapsRootName;
+
+                foreach (var tilemap in tilemapsRoot.GetComponentsInChildren<Tilemap>())
+                {
+                    tilemap.ClearAllTiles();
+                }
+            }
+            else
+            {
+                // Initialize GameObject that will hold tilemaps
+                tilemapsRoot = new GameObject(GeneratorConstantsGrid2D.TilemapsRootName);
+                tilemapsRoot.transform.parent = level.RootGameObject.transform;
+
+                if (mode == TilemapLayersStructureModeGrid2D.Default)
+                {
+                    defaultTilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+                }
+                else if (mode == TilemapLayersStructureModeGrid2D.Custom)
+                {
+                    if (customTilemapLayersHandler == null)
+                    {
+                        throw new ConfigurationException($"When {nameof(PostProcessingConfigGrid2D.TilemapLayersStructure)} is set to {nameof(TilemapLayersStructureModeGrid2D.Custom)}, {nameof(PostProcessingConfigGrid2D.TilemapLayersHandler)} must not be null. Please set the field in the Dungeon Generator component.");
+                    }
+
+                    customTilemapLayersHandler.InitializeTilemaps(tilemapsRoot);
+                }
+            }
         }
 
         /// <summary>
@@ -60,9 +142,19 @@ namespace Edgar.Unity
         /// </summary>
         /// <param name="level"></param>
         /// <param name="tilemapMaterial"></param>
-        public static void SetTilemapsMaterial(GeneratedLevel level, Material tilemapMaterial)
+        public static void SetTilemapsMaterial(DungeonGeneratorLevelGrid2D level, Material tilemapMaterial)
         {
-            PostProcessUtils.SetTilemapsMaterial(level, tilemapMaterial);
+            if (tilemapMaterial == null)
+            {
+                return;
+            }
+
+            var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(level.RootGameObject);
+
+            foreach (var tilemapRenderer in tilemapsRoot.GetComponentsInChildren<TilemapRenderer>())
+            {
+                tilemapRenderer.material = tilemapMaterial;
+            }
         }
 
         /// <summary>
@@ -72,9 +164,14 @@ namespace Edgar.Unity
         /// The order is important. First, copy all basic rooms and only then copy corridor rooms.
         /// </remarks>
         /// <param name="level"></param>
-        public static void CopyTilesToSharedTilemaps(GeneratedLevel level)
+        public static void CopyTilesToSharedTilemaps(DungeonGeneratorLevelGrid2D level)
         {
-            PostProcessUtils.CopyTilesToSharedTilemaps(level);
+            var destinationTilemaps = level.GetSharedTilemaps();
+
+            foreach (var roomInstance in level.RoomInstances.OrderBy(x => x.IsCorridor))
+            {
+                CopyTiles(roomInstance, destinationTilemaps, true, false);
+            }
         }
 
         /// <summary>
@@ -96,9 +193,47 @@ namespace Edgar.Unity
         /// <param name="destinationTilemaps">List of destination tilemaps.</param>
         /// <param name="deleteNonNullTiles">Whether to delete non-null tiles from destination tilemaps.</param>
         /// <param name="deleteTilesInsideOutline">Whether to delete all tiles insides the outline from destination tilemaps.</param>
-        public static void CopyTiles(RoomInstance roomInstance, List<Tilemap> destinationTilemaps, bool deleteNonNullTiles, bool deleteTilesInsideOutline)
+        public static void CopyTiles(RoomInstanceGrid2D roomInstance, List<Tilemap> destinationTilemaps, bool deleteNonNullTiles, bool deleteTilesInsideOutline)
         {
-            PostProcessUtils.CopyTiles(roomInstance, destinationTilemaps, deleteNonNullTiles, deleteTilesInsideOutline);
+            var sourceTilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(roomInstance.RoomTemplateInstance);
+            sourceTilemaps = RoomTemplateUtilsGrid2D.GetTilemapsForCopying(sourceTilemaps);
+
+            var tilesToRemove = new List<Vector3Int>();
+
+            if (deleteNonNullTiles)
+            {
+                var tiles = GetNonNullTiles(sourceTilemaps);
+                tilesToRemove.AddRange(tiles.Select(x => x + roomInstance.Position));
+            }
+
+            if (deleteTilesInsideOutline)
+            {
+                var tiles = GetTilesInsideOutline(roomInstance, false);
+                tilesToRemove.AddRange(tiles);
+            }
+
+            RemoveTiles(destinationTilemaps, tilesToRemove);
+
+            foreach (var sourceTilemap in sourceTilemaps)
+            {
+                var destinationTilemap = destinationTilemaps.FirstOrDefault(x => x.name == sourceTilemap.name);
+
+                if (destinationTilemap == null)
+                {
+                    continue;
+                }
+
+                foreach (var tilemapPosition in sourceTilemap.cellBounds.allPositionsWithin)
+                {
+                    var tile = sourceTilemap.GetTile(tilemapPosition);
+
+                    if (tile != null)
+                    {
+                        destinationTilemap.SetTile(tilemapPosition + roomInstance.Position, tile);
+                        destinationTilemap.SetTransformMatrix(tilemapPosition + roomInstance.Position, sourceTilemap.GetTransformMatrix(tilemapPosition));
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -108,9 +243,14 @@ namespace Edgar.Unity
         /// This method is useful when using shared tilemaps.
         /// </remarks>
         /// <param name="level"></param>
-        public static void DisableRoomTemplateRenderers(GeneratedLevel level)
+        public static void DisableRoomTemplateRenderers(DungeonGeneratorLevelGrid2D level)
         {
-            PostProcessUtils.DisableRoomTemplatesRenderers(level);
+            // Iterate through all the rooms
+            foreach (var roomInstance in level.RoomInstances)
+            {
+                var roomTemplateInstance = roomInstance.RoomTemplateInstance;
+                DisableRoomTemplateRenderers(roomTemplateInstance);
+            }
         }
 
         /// <summary>
@@ -118,7 +258,7 @@ namespace Edgar.Unity
         /// </summary>
         public static void DisableRoomTemplateRenderers(GameObject roomTemplate)
         {
-            var tilemaps = PostProcessUtils.GetTilemaps(roomTemplate, x => x.IgnoreWhenDisablingRenderers);
+            var tilemaps = GetTilemaps(roomTemplate, x => x.IgnoreWhenDisablingRenderers);
 
             foreach (var tilemap in tilemaps)
             {
@@ -132,9 +272,14 @@ namespace Edgar.Unity
         /// The goal is to try to keep triggers functioning.
         /// </summary>
         /// <param name="level"></param>
-        public static void DisableRoomTemplateColliders(GeneratedLevel level)
+        public static void DisableRoomTemplateColliders(DungeonGeneratorLevelGrid2D level)
         {
-            PostProcessUtils.DisableRoomTemplatesColliders(level);
+            // Iterate through all the rooms
+            foreach (var roomInstance in level.RoomInstances)
+            {
+                var roomTemplateInstance = roomInstance.RoomTemplateInstance;
+                DisableRoomTemplateColliders(roomTemplateInstance);
+            }
         }
 
 
@@ -144,7 +289,7 @@ namespace Edgar.Unity
         /// </summary>
         public static void DisableRoomTemplateColliders(GameObject roomTemplate)
         {
-            var tilemaps = PostProcessUtils.GetTilemaps(roomTemplate, x => x.IgnoreWhenDisablingColliders);
+            var tilemaps = GetTilemaps(roomTemplate, x => x.IgnoreWhenDisablingColliders);
 
             foreach (var tilemap in tilemaps)
             {
@@ -168,11 +313,71 @@ namespace Edgar.Unity
             }
         }
 
+        private static List<Vector3Int> GetTilesInsideOutline(RoomInstanceGrid2D roomInstance, bool useLocalPositions)
+        {
+            return roomInstance
+                .OutlinePolygon
+                .GetAllPoints()
+                .Select(x => new Vector3Int(x.x, x.y, 0))
+                .Select(x => useLocalPositions ? x - roomInstance.Position : x)
+                .ToList();
+        }
+
+        private static List<Vector3Int> GetNonNullTiles(List<Tilemap> tilemap)
+        {
+            var tiles = new HashSet<Vector3Int>();
+
+            // Find non-null tiles across all source tilemaps
+            foreach (var sourceTilemap in tilemap)
+            {
+                foreach (var tilemapPosition in sourceTilemap.cellBounds.allPositionsWithin)
+                {
+                    var tile = sourceTilemap.GetTile(tilemapPosition);
+
+                    if (tile != null)
+                    {
+                        tiles.Add(tilemapPosition);
+                    }
+                }
+            }
+
+            return tiles.ToList();
+        }
+
+        private static void RemoveTiles(List<Tilemap> tilemaps, List<Vector3Int> tiles)
+        {
+            foreach (var tile in tiles)
+            {
+                foreach (var tilemap in tilemaps)
+                {
+                    tilemap.SetTile(tile, null);
+                }
+            }
+        }
+
+        internal static List<Tilemap> GetTilemaps(GameObject gameObject, Predicate<IgnoreTilemapGrid2D> excludePredicate)
+        {
+            return RoomTemplateUtilsGrid2D
+                .GetTilemaps(gameObject)
+                .Where(tilemap =>
+                {
+                    var ignoreTilemap = tilemap.GetComponent<IgnoreTilemapGrid2D>();
+                    return ignoreTilemap == null || !excludePredicate(ignoreTilemap);
+                })
+                .ToList();
+        }
+
         // TODO: where to put this?
         public static void Destroy(Object gameObject)
         {
-            PostProcessUtils.Destroy(gameObject);
+            if (Application.isPlaying)
+            {
+                Object.Destroy(gameObject);
+            }
+            else
+            {
+                Object.DestroyImmediate(gameObject);
+            }
         }
     }
 }
-#pragma warning restore 612, 618

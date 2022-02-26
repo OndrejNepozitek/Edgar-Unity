@@ -1,27 +1,54 @@
+using System;
 using System.Collections.Generic;
 using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-#pragma warning disable 612, 618
 namespace Edgar.Unity
 {
     /// <summary>
     /// Holds information about the generated level.
     /// Currently cannot be serialized.
     /// </summary>
-    /// <remarks>
-    /// This file is temporarily empty to make it easier to adapt the new classNameGrid2D naming convention.
-    /// The motivation for this action is to prevent name clashes in the future when/if a 3D version is released.
-    /// 
-    /// See <see cref="GeneratedLevel"/> for an actual implementation.
-    /// The GeneratedLevel class is now obsolete and will be removed in a future release.
-    /// When that happens, the implementation of GeneratedLevel will move to this file.
-    /// </remarks>
-    public class DungeonGeneratorLevelGrid2D : GeneratedLevel
+    public class DungeonGeneratorLevelGrid2D : GeneratedLevelBase<RoomInstanceGrid2D, LevelDescriptionGrid2D>
     {
-        public DungeonGeneratorLevelGrid2D(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject, LevelDescriptionGrid2D levelDescription) : base(roomInstances, mapLayout, rootGameObject, levelDescription)
+        private readonly LayoutGrid2D<RoomBase> mapLayout;
+
+        public DungeonGeneratorLevelGrid2D(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject, LevelDescriptionGrid2D levelDescription) : base(roomInstances, rootGameObject, levelDescription)
         {
+            this.mapLayout = mapLayout;
+        }
+
+        /// <summary>
+        /// Gets information about all the rooms that are present in the generated level.
+        /// </summary>
+        /// <returns></returns>
+        [Obsolete("Please use the RoomInstances property instead.")]
+        public List<RoomInstanceGrid2D> GetRoomInstances()
+        {
+            return RoomInstances;
+        }
+
+
+        /// <summary>
+        /// Gets the internal representation of the generated layout.
+        /// </summary>
+        /// <remarks>
+        /// This method is usually only used by for very advanced/debugging use cases.
+        /// </remarks>
+        /// <returns></returns>
+        public LayoutGrid2D<RoomBase> GetInternalLayoutRepresentation()
+        {
+            return mapLayout;
+        }
+
+        /// <summary>
+        /// Gets all the shared tilemaps.
+        /// </summary>
+        /// <returns></returns>
+        public List<Tilemap> GetSharedTilemaps()
+        {
+            return RoomTemplateUtilsGrid2D.GetTilemaps(RootGameObject);
         }
     }
 }
-#pragma warning restore 612, 618

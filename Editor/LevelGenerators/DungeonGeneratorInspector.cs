@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Edgar.Unity.Editor
 {
-    [CustomEditor(typeof(DungeonGeneratorBaseGrid2D), true)] 
-    public class DungeonGeneratorInspector : UnityEditor.Editor 
+    [CustomEditor(typeof(DungeonGeneratorBaseGrid2D), true)]
+    public class DungeonGeneratorInspector : UnityEditor.Editor
     {
         private ReorderableList customPostProcessTasksList;
 
@@ -27,7 +27,7 @@ namespace Edgar.Unity.Editor
 
             EditorGUILayout.LabelField("Input config", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.FixedLevelGraphConfig)));
-            
+
             EditorGUILayout.LabelField("Generator config", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.GeneratorConfig)));
 
@@ -42,13 +42,13 @@ namespace Edgar.Unity.Editor
             {
                 customPostProcessTasksList.DoLayoutList();
             }
-            
+
             EditorGUILayout.LabelField("Other", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.UseRandomSeed)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.RandomGeneratorSeed)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.GenerateOnStart)));
 
-            EditorGUILayout.HelpBox("If you have problems with the performance of the generator, you can enable a diagnostic procedure what will run after a level is generated and print results to the console. The diagnostics are automatically enabled when a timeout error occurs. Do not use this in production.", MessageType.Info);
+            EditorGUILayout.HelpBox("If you have problems with the performance of the generator, you can enable diagnostics what will run after a level is generated and print results to the console. Do not use in production.", MessageType.Info);
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.EnableDiagnostics)));
             EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(DungeonGeneratorBaseGrid2D.DisableCustomPostProcessing)));
 

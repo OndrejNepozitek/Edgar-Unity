@@ -54,7 +54,7 @@ namespace Edgar.Unity
         {
             callbacksAfter.Add(callback);
         }
-        
+
         public List<TCallback> GetCallbacks()
         {
             var orderedCallbacks = new List<TCallback>();

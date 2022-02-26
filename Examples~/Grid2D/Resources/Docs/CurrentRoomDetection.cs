@@ -8,6 +8,7 @@ namespace Edgar.Unity.Examples.Grid2D.Resources.Docs
     internal class CurrentRoomDetectionDocs1
     {
         #region codeBlock:2d_currentRoomDetection_postProcessing_1
+
         public class CurrentRoomDetectionPostProcessing : DungeonGeneratorPostProcessingGrid2D
         {
             public override void Run(DungeonGeneratorLevelGrid2D level)
@@ -38,12 +39,14 @@ namespace Edgar.Unity.Examples.Grid2D.Resources.Docs
                 floor.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             }
         }
+
         #endregion
     }
 
     internal class CurrentRoomDetectionDocs2
     {
         #region codeBlock:2d_currentRoomDetection_postProcessing_2
+
         public class CurrentRoomDetectionPostProcessing : DungeonGeneratorPostProcessingGrid2D
         {
             public override void Run(DungeonGeneratorLevelGrid2D level)
@@ -69,12 +72,14 @@ namespace Edgar.Unity.Examples.Grid2D.Resources.Docs
                 /* ... */
             }
         }
+
         #endregion
     }
 
     internal class CurrentRoomDetectionDocs3
     {
         #region codeBlock:2d_currentRoomDetection_postProcessing_3
+
         public class CurrentRoomDetectionPostProcessing : DungeonGeneratorPostProcessingGrid2D
         {
             public override void Run(DungeonGeneratorLevelGrid2D level)
@@ -99,6 +104,7 @@ namespace Edgar.Unity.Examples.Grid2D.Resources.Docs
                 /* ... */
             }
         }
+
         #endregion
     }
 }

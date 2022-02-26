@@ -21,8 +21,8 @@ namespace Edgar.Unity.Editor
             }
 
             const int margin = 10;
-            GUILayout.BeginVertical(new GUIStyle() { padding = new RectOffset(margin, margin, margin, margin)});
-            GUILayout.Label(popup.Content, new GUIStyle(EditorStyles.label) { richText = true, wordWrap = true });
+            GUILayout.BeginVertical(new GUIStyle() {padding = new RectOffset(margin, margin, margin, margin)});
+            GUILayout.Label(popup.Content, new GUIStyle(EditorStyles.label) {richText = true, wordWrap = true});
             GUILayout.FlexibleSpace();
 
             if (popup.Links != null && popup.Links.Count > 0)
@@ -40,17 +40,17 @@ namespace Edgar.Unity.Editor
                     GUI.Label(lastRect, "   ___");
                 }
             }
-            
+
             GUILayout.Space(10);
 
             if (GUILayout.Button("Close"))
                 Close();
 
-            doNotShowAgain = GUILayout.Toggle(doNotShowAgain, "Do not show this popup again. <size=8>(All popups can be enabled again by going to \"Edit/Edgar - Enable all popups again\")</size>", new GUIStyle(EditorStyles.toggle) { richText = true });
+            doNotShowAgain = GUILayout.Toggle(doNotShowAgain, "Do not show this popup again. <size=8>(All popups can be enabled again by going to \"Edit/Edgar - Enable all popups again\")</size>", new GUIStyle(EditorStyles.toggle) {richText = true});
 
             GUILayout.Space(10);
 
-            GUILayout.Label("<b>! Warning !</b>: <size=9>Please do not create your game directly inside this scene. If you modify this scene, it will be harder for you to update the asset to new versions in the future. It is okay to use this scene as a playground. However, be prepared to lose all your modifications as I recommend to delete the whole asset folder when upgrading.</size>", new GUIStyle(EditorStyles.label) { richText = true, wordWrap = true });
+            GUILayout.Label("<b>! Warning !</b>: <size=9>Please do not create your game directly inside this scene. If you modify this scene, it will be harder for you to update the asset to new versions in the future. It is okay to use this scene as a playground. However, be prepared to lose all your modifications as I recommend to delete the whole asset folder when upgrading.</size>", new GUIStyle(EditorStyles.label) {richText = true, wordWrap = true});
 
             GUILayout.EndVertical();
         }

@@ -22,7 +22,8 @@ namespace Edgar.Unity
 
         public enum SettingsMode
         {
-            Basic, DifferentHorizontalAndVertical
+            Basic,
+            DifferentHorizontalAndVertical
         }
 
         public IDoorModeGrid2D GetDoorMode(DoorsGrid2D doors)
@@ -63,7 +64,7 @@ namespace Edgar.Unity
                     {
                         continue;
                     }
-                    
+
                     if (!settings.Enabled)
                     {
                         continue;
@@ -85,9 +86,8 @@ namespace Edgar.Unity
                     doorLines.Add(doorLine);
                 }
             }
-            catch (ArgumentException)
+            catch (InvalidOutlineException)
             {
-
             }
 
             return doorLines;

@@ -24,9 +24,7 @@ namespace Edgar.Unity
 
         // TODO(rename):
         [ExpandableScriptableObject(CanFold = false)]
-#pragma warning disable 618
-        public List<DungeonGeneratorPostProcessBase> CustomPostProcessTasks;
-#pragma warning restore 618
+        public List<DungeonGeneratorPostProcessingGrid2D> CustomPostProcessTasks;
 
         [Expandable]
         [Obsolete("Please use directly the properties UseRandomSeed, RandomGeneratorSeed and GenerateOnStart")]
@@ -63,7 +61,7 @@ namespace Edgar.Unity
         {
             if (GenerateOnStart)
             {
-                Generate(); 
+                Generate();
             }
         }
 
@@ -96,11 +94,9 @@ namespace Edgar.Unity
 
         protected virtual IPipelineTask<DungeonGeneratorPayloadGrid2D> GetPostProcessingTask()
         {
-#pragma warning disable 618
             var postProcessingTasks = !DisableCustomPostProcessing
                 ? CustomPostProcessTasks
-                : new List<DungeonGeneratorPostProcessBase>();
-#pragma warning restore 618
+                : new List<DungeonGeneratorPostProcessingGrid2D>();
 
             var postProcessingComponents = !DisableCustomPostProcessing
                 ? GetComponents<DungeonGeneratorPostProcessingComponentGrid2D>().ToList()
@@ -108,9 +104,14 @@ namespace Edgar.Unity
 
             return new PostProcessingTaskGrid2D(
                 PostProcessConfig,
-                () => new DungeonTilemapLayersHandlerGrid2D(),
+                GetTilemapLayersHandler(),
                 postProcessingTasks,
                 postProcessingComponents);
+        }
+
+        protected virtual Func<ITilemapLayersHandlerGrid2D> GetTilemapLayersHandler()
+        {
+            return () => new DungeonTilemapLayersHandlerGrid2D();
         }
 
         protected virtual DungeonGeneratorPayloadGrid2D InitializePayload()
@@ -127,7 +128,7 @@ namespace Edgar.Unity
             var payload = InitializePayload();
             var inputSetup = GetInputTask();
 
-            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayloadGrid2D>> { inputSetup };
+            var pipelineItems = new List<IPipelineTask<DungeonGeneratorPayloadGrid2D>> {inputSetup};
 
             PipelineRunner.Run(pipelineItems, payload);
 
@@ -222,7 +223,7 @@ namespace Edgar.Unity
 
         protected override int OnUpgradeSerializedData(int version)
         {
-#pragma warning disable 618
+            #pragma warning disable 618
             if (version < 2)
             {
                 if (OtherConfig != null)
@@ -256,7 +257,7 @@ namespace Edgar.Unity
                     }
                 }
             }
-#pragma warning restore 618
+            #pragma warning restore 618
 
             return 3;
         }

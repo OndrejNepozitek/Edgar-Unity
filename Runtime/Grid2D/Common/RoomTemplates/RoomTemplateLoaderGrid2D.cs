@@ -25,7 +25,7 @@ namespace Edgar.Unity
         {
             if (allPoints.Count == 0)
             {
-                throw new ArgumentException("There must be at least one point");
+                throw new InvalidOutlineException("There must be at least a single tile in the room template.");
             }
 
             var orderedDirections = new Dictionary<EdgarVector2Int, List<EdgarVector2Int>>
@@ -52,7 +52,7 @@ namespace Edgar.Unity
 
             if (!allPointsInternal.Contains(currentPoint))
             {
-                throw new ArgumentException("Invalid room shape.");
+                throw new InvalidOutlineException("Invalid room shape. Please consult the docs.");
             }
 
             while (true)
@@ -73,7 +73,7 @@ namespace Edgar.Unity
                 }
 
                 if (!foundNeighbor)
-                    throw new ArgumentException("Invalid room shape.");
+                    throw new InvalidOutlineException("Invalid room shape. Please consult the docs.");
 
                 if (currentDirection != previousDirection)
                 {
@@ -98,7 +98,19 @@ namespace Edgar.Unity
                 polygonPoints.Reverse();
             }
 
-            return new PolygonGrid2D(polygonPoints);
+            if (polygonPoints.Count < 4)
+            {
+                throw new InvalidOutlineException("Invalid room shape. Please consult the docs.");
+            }
+
+            try
+            {
+                return new PolygonGrid2D(polygonPoints);
+            }
+            catch (ArgumentException e)
+            {
+                throw new InvalidOutlineException($"Invalid room shape. Please consult the docs. Internal error: {e.Message}");
+            }
         }
 
         /// <summary>
@@ -159,7 +171,7 @@ namespace Edgar.Unity
 
             return usedTiles;
         }
-        
+
         /// <summary>
         ///     Computes a room room template from a given room template game object.
         /// </summary>
@@ -179,27 +191,21 @@ namespace Edgar.Unity
                 return false;
             }
 
-            PolygonGrid2D polygon = null;
+            PolygonGrid2D polygon;
 
-            // TODO: improve
+            // Check that the outline of the room template is valid
             try
             {
                 polygon = GetPolygonFromRoomTemplate(roomTemplatePrefab);
             }
-            catch (ArgumentException)
-            {
-                /* empty */
-            }
-
-            // Check that the outline of the room template is valid
-            if (polygon == null)
+            catch (InvalidOutlineException e)
             {
                 result = new ActionResult();
-                result.AddError("The outline of the room template is not valid. Please consult the documentation.");
+                result.AddError($"The outline of the room template is not valid: {e.Message}");
                 return false;
             }
 
-            var allowedTransformations = new List<TransformationGrid2D> { TransformationGrid2D.Identity };
+            var allowedTransformations = new List<TransformationGrid2D> {TransformationGrid2D.Identity};
             var roomTemplateComponent = roomTemplatePrefab.GetComponent<RoomTemplateSettingsGrid2D>();
             var repeatMode = roomTemplateComponent?.RepeatMode ?? RoomTemplateRepeatMode.AllowRepeat;
             var doors = roomTemplatePrefab.GetComponent<DoorsGrid2D>();

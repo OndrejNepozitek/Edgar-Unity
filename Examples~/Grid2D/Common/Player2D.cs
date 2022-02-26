@@ -26,7 +26,6 @@ namespace Edgar.Unity.Examples
                     interactableInFocus = null;
                 }
             }
-            
         }
 
         /// <summary>

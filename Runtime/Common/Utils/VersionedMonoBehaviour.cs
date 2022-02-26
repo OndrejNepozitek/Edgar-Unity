@@ -8,13 +8,13 @@ namespace Edgar.Unity
         [HideInInspector]
         private int version = 1;
 
-        protected virtual int OnUpgradeSerializedData(int version) {
+        protected virtual int OnUpgradeSerializedData(int version)
+        {
             return 1;
         }
 
         public void OnBeforeSerialize()
         {
-
         }
 
         public void OnAfterDeserialize()
