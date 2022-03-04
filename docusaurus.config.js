@@ -32,7 +32,7 @@ module.exports = {
     announcementBar: {
       id: 'support_us',
       content:
-        'Check out the PRO version of the generator on the <a href="https://u3d.as/2KTN" target="_blank">Unity Asset Store</a>!',
+        'Check out the PRO version of the generator on the <a href="https://assetstore.unity.com/packages/tools/utilities/edgar-pro-procedural-level-generator-212735?aid=1100lozBv&pubref=edgar-docs" target="_blank">Unity Asset Store</a>!',
       backgroundColor: '#fafbfc', // Defaults to `#fff`.
       textColor: '#091E42', // Defaults to `#000`.
     },
