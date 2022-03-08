@@ -35,7 +35,7 @@ namespace Edgar.Unity
             // Setup individual rooms
             foreach (var room in config.LevelGraph.Rooms)
             {
-                var roomTemplates = GetRoomTemplates(room);
+                var roomTemplates = InputSetupUtils.GetRoomTemplates(room, config.LevelGraph.DefaultRoomTemplateSets, config.LevelGraph.DefaultIndividualRoomTemplates);
 
                 if (roomTemplates.Count == 0)
                 {
@@ -60,7 +60,7 @@ namespace Edgar.Unity
                     }
 
                     levelDescription.AddCorridorConnection(connection, corridorRoom,
-                        GetRoomTemplates(config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates));
+                        InputSetupUtils.GetRoomTemplates(config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates));
                 }
                 else
                 {
@@ -71,33 +71,6 @@ namespace Edgar.Unity
             Payload.LevelDescription = levelDescription;
 
             yield return null;
-        }
-
-        private List<GameObject> GetRoomTemplates(List<RoomTemplatesSet> roomTemplatesSets, List<GameObject> individualRoomTemplates)
-        {
-            return individualRoomTemplates
-                .Where(x => x != null)
-                .Union(roomTemplatesSets
-                    .Where(x => x != null)
-                    .SelectMany(x => x.RoomTemplates))
-                .Distinct()
-                .ToList();
-        }
-
-        /// <summary>
-        ///     Setups room shapes for a given room.
-        /// </summary>
-        /// <param name="room"></param>
-        protected List<GameObject> GetRoomTemplates(RoomBase room)
-        {
-            var roomTemplates = room.GetRoomTemplates();
-
-            if (roomTemplates == null || roomTemplates.Count == 0)
-            {
-                return GetRoomTemplates(config.LevelGraph.DefaultRoomTemplateSets, config.LevelGraph.DefaultIndividualRoomTemplates);
-            }
-
-            return roomTemplates;
         }
     }
 }
