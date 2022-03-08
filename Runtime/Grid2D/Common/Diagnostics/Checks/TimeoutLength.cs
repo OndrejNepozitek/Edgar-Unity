@@ -6,9 +6,13 @@ namespace Edgar.Unity.Diagnostics
     {
         public Result Run(DungeonGeneratorBaseGrid2D dungeonGenerator)
         {
+            return Run(dungeonGenerator.GeneratorConfig.Timeout);
+        }
+
+        public Result Run(int timeout)
+        {
             var result = new Result();
             var limit = 3000;
-            var timeout = dungeonGenerator.GeneratorConfig.Timeout;
             result.Timeout = timeout;
 
             if (timeout < limit)

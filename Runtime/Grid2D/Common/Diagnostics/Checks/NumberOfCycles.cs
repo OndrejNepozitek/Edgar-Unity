@@ -5,7 +5,7 @@ namespace Edgar.Unity.Diagnostics
 {
     public class NumberOfCycles
     {
-        public Result Run(LevelDescriptionGrid2D levelDescription)
+        public Result Run(LevelDescriptionBase levelDescription)
         {
             var graph = levelDescription.GetGraph();
             var nonTreeEdges = graph.Edges.Count() - graph.VerticesCount + 1;
