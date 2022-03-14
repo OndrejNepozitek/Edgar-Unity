@@ -5,8 +5,11 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Test & build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        unityVersion: [2018.4.18f1, 2019.4.36f1]
     steps:
       # Checkout Unity project structure
       - name: Checkout Unity project structure
@@ -26,7 +29,7 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          unityVersion: ${{ inputs.UNITY_VERSION }}
+          unityVersion: ${{ matrix.UNITY_VERSION }}
 
       # Build
       - uses: game-ci/unity-builder@v2
@@ -35,7 +38,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          unityVersion: ${{ inputs.UNITY_VERSION }}
+          unityVersion: ${{ matrix.UNITY_VERSION }}
           targetPlatform: StandaloneWindows
           versioning: None
 
