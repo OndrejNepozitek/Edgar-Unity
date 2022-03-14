@@ -9,6 +9,10 @@ on:
     secrets:
       UNITY_LICENSE:
         required: true
+      UNITY_EMAIL:
+        required: true
+      UNITY_PASSWORD:
+        required: true
 
 jobs:
   build:

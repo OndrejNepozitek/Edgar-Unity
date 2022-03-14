@@ -9,9 +9,13 @@ jobs:
       UNITY_VERSION: 2018.4.18f1
     secrets:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
+      UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
   build-unity-2019:
     uses: ./.github/workflows/build-reusable.yml
     with:
-      UNITY_VERSION: 2019.4.34f1
+      UNITY_VERSION: 2019.4.36f1
     secrets:
       UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
+      UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
