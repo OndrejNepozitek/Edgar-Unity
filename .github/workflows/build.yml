@@ -110,7 +110,7 @@ jobs:
         uses: actions/upload-artifact@v2-preview
         with:
           path: Edgar.unitypackage
-          name: Edgar${{ github.ref }}.unitypackage
+          name: Edgar${{ github.ref_name }}.unitypackage
 
   release:
     name: Release
@@ -122,7 +122,7 @@ jobs:
       - name: Download package
         uses: actions/download-artifact@v3
         with:
-          name: Edgar${{ github.ref }}.unitypackage
+          name: Edgar${{ github.ref_name }}.unitypackage
           path: Edgar.unitypackage
 
       # Prepare release package name
