@@ -36,8 +36,8 @@ jobs:
         run: |
           curl -XPOST -u "${{secrets.GH_PAT_USERNAME}}:${{secrets.GH_PAT}}" -H "Accept: application/vnd.github.everest-preview+json"  -H "Content-Type: application/json" https://api.github.com/repos/OndrejNepozitek/ProceduralLevelGenerator-UnityApiDocs/dispatches --data '{"event_type": "build_application"}'
 
-  build:
-    name: Build
+  package:
+    name: Package
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
