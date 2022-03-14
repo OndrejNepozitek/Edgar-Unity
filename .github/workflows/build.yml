@@ -101,7 +101,7 @@ jobs:
           ref="${ref/refs\/tags\/v/}"
           ref="${ref//./_}"
           ref="${ref//-/_}"
-          package_name="Edgar_$ref.unitypackage"
+          package_name="Edgar_ref.unitypackage"
           echo "::set-output name=PACKAGE_NAME::${package_name}"
           cp Edgar.unitypackage $package_name
         env:
