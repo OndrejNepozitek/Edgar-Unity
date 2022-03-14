@@ -29,16 +29,17 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
         with:
-          unityVersion: ${{ matrix.UNITY_VERSION }}
+          unityVersion: ${{ matrix.unityVersion }}
 
       # Build
-      - uses: game-ci/unity-builder@v2
+      - name: Run build
+        uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          unityVersion: ${{ matrix.UNITY_VERSION }}
+          unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: StandaloneWindows
           versioning: None
 
@@ -97,7 +98,7 @@ jobs:
           ref="${ref/refs\/tags\/v/}"
           ref="${ref//./_}"
           ref="${ref//-/_}"
-          package_name="Edgar_ref.unitypackage"
+          package_name="Edgar_$ref.unitypackage"
           echo "::set-output name=PACKAGE_NAME::${package_name}"
           cp Edgar.unitypackage $package_name
         env:
