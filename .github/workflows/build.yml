@@ -24,7 +24,7 @@ jobs:
             }
             for unityVersion in unityVersions
             for renderPipeline in renderPipelines
-            if renderPipeline == 'builtin' or (not unityVersion.startswith('2018') and isProMaster))
+            if renderPipeline == 'builtin' or (not unityVersion.startswith('2018') and isProMaster)
           ]
 
           print(f'::set-output name=jobs::{jobs!s}')
