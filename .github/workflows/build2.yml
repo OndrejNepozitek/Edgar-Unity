@@ -10,7 +10,7 @@ jobs:
     steps:
       # Checkout
       - name: Checkout
-        uses: ./.github/workflows/checkout.yml
+        uses: ./.github/workflows/checkout.yml@dev-better-build
     
       # Test
       - name: Run tests
