@@ -1,17 +1,16 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
 #if UNITY_EDITOR
-
+using UnityEditor;
 #endif
 
 namespace Edgar.Unity.Examples
 {
     [Serializable]
     [CreateAssetMenu(fileName = "New Random Tile", menuName = "Edgar/Examples/Random Tile")]
-    public class RandomTile : Tile
+    public class RandomTile : UnityEngine.Tilemaps.Tile
     {
         [SerializeField]
         public Sprite[] m_Sprites;
@@ -35,7 +34,7 @@ namespace Edgar.Unity.Examples
 
     #if UNITY_EDITOR
     [CustomEditor(typeof(RandomTile))]
-    public class RandomTileEditor : Editor
+    public class RandomTileEditor : UnityEditor.Editor
     {
         private RandomTile tile => target as RandomTile;
 
