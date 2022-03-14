@@ -4,6 +4,20 @@ on:
   push:
 
 jobs:
+  params:
+    runs-on: ubuntu-latest
+    outputs:
+      jobs: ${{ steps.params.outputs.jobs }}
+    steps:
+      - name: Parameters
+        id: params
+        shell: python
+        run: |
+          jobs = [{'ver': 1}, {'ver': 2}]
+          print(f'::set-output name=jobs::{jobs!s}')
+          print("Jobs:")
+          print(jobs)
+
   build:
     name: Test & build
     runs-on: ubuntu-latest
@@ -26,6 +40,7 @@ jobs:
     
       # Test
       - name: Run tests
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: game-ci/unity-test-runner@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
@@ -34,6 +49,7 @@ jobs:
 
       # Build
       - name: Run build
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
