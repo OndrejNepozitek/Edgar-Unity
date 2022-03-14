@@ -51,6 +51,12 @@ jobs:
     name: Package
     runs-on: ubuntu-latest
     steps:
+      # Checkout Unity project structure
+      - name: Checkout Unity project structure
+        uses: actions/checkout@v2
+        with:
+          repository: OndrejNepozitek/ProceduralLevelGenerator-UnityProjectStructure
+
       # Checkout this repository
       - name: Checkout this repository
         uses: actions/checkout@v2
