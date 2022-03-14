@@ -1,21 +1,105 @@
-name: Build
+name: Build (multiple jobs)
 
-on: push
+on:
+  push:
 
 jobs:
-  build-unity-2018:
-    uses: ./.github/workflows/build-reusable.yml
-    with:
-      UNITY_VERSION: 2018.4.18f1
-    secrets:
-      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
-      UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-  build-unity-2019:
-    uses: ./.github/workflows/build-reusable.yml
-    with:
-      UNITY_VERSION: 2019.4.36f1
-    secrets:
-      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
-      UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-      UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout Unity project structure
+      - name: Checkout Unity project structure
+        uses: actions/checkout@v2
+        with:
+          repository: OndrejNepozitek/ProceduralLevelGenerator-UnityProjectStructure
+
+      # Checkout this repository
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+        with:
+          path: Assets/Edgar
+    
+      # Test
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: ${{ inputs.UNITY_VERSION }}
+
+      # Build
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: ${{ inputs.UNITY_VERSION }}
+          targetPlatform: StandaloneWindows
+          versioning: None
+
+      # Trigger api docs build
+      - name: Trigger api docs build
+        run: |
+          curl -XPOST -u "${{secrets.GH_PAT_USERNAME}}:${{secrets.GH_PAT}}" -H "Accept: application/vnd.github.everest-preview+json"  -H "Content-Type: application/json" https://api.github.com/repos/OndrejNepozitek/ProceduralLevelGenerator-UnityApiDocs/dispatches --data '{"event_type": "build_application"}'
+
+  package:
+    name: Package
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      # Checkout Unity project structure
+      - name: Checkout Unity project structure
+        uses: actions/checkout@v2
+        with:
+          repository: OndrejNepozitek/ProceduralLevelGenerator-UnityProjectStructure
+
+      # Checkout this repository
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+        with:
+          path: Assets/Edgar
+
+      # Prepare unitypackage file list
+      - name: Prepare unitypackage file list
+        run: |
+          echo "Assets/Edgar.meta" > unitypackageFiles
+          find ./Assets/Edgar/ -name \*.meta ! -path "./Assets/Edgar/Tests*" ! -path "./Assets/Edgar/Examples/Grid2D/Resources/Docs*" ! -path "./Assets/Edgar/*.md.meta" ! -path "./Assets/Edgar/Edgar-Unity.sln.DotSettings.meta" >> unitypackageFiles
+
+      # Package files
+      - name: Package files
+        uses: pCYSl5EDgo/create-unitypackage@master
+        with:
+          package-path: 'Edgar.unitypackage'
+          include-files: unitypackageFiles
+      
+      # Upload unitypackage
+      - name: Upload unitypackage
+        uses: actions/upload-artifact@v2-preview
+        with:
+          path: Edgar.unitypackage
+          name: Edgar.unitypackage
+
+      # Prepare release package name
+      - name: Prepare release package name
+        run: |
+          ref="${GITHUB_REF}"
+          ref="${ref/refs\/tags\/v/}"
+          ref="${ref//./_}"
+          ref="${ref//-/_}"
+          package_name="Edgar_$ref.unitypackage"
+          echo "::set-output name=PACKAGE_NAME::${package_name}"
+          cp Edgar.unitypackage $package_name
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        id: get_package_name
+
+      # Release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ${{ steps.get_package_name.outputs.PACKAGE_NAME }}
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
