@@ -14,6 +14,7 @@ jobs:
         id: params
         shell: python
         run: |
+          import os
           print(os.environ['IS_RELEASE'])
           unityVersions = ['2018.4.18f1', '2019.4.36f1', '2020.3.30f1', '2021.2.15f1']
           renderPipelines = ['builtin', 'URP']
@@ -24,14 +25,14 @@ jobs:
             }
             for unityVersion in unityVersions
             for renderPipeline in renderPipelines
-            if renderPipeline == 'builtin' or (not unityVersion.startswith('2018') and bool(os.environ['IS_RELEASE']))
+            if renderPipeline == 'builtin' or (not unityVersion.startswith('2018') and bool(os.environ['IS_PRO_MASTER']))
           ]
 
           print(f'::set-output name=jobs::{jobs!s}')
           print("Jobs:")
           print(jobs)
         env:
-          IS_RELEASE: ${{ startsWith(github.ref, 'refs/tags/v') }}
+          IS_PRO_MASTER: ${{ github.ref == 'refs/heads/pro-master' }}
 
 
   build:
