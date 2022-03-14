@@ -1,0 +1,104 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      UNITY_VERSION:
+        required: true
+        type: string
+    secrets:
+      UNITY_LICENSE:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    
+      # Checkout Unity project structure
+      - name: Checkout Unity project structure
+        uses: actions/checkout@v2
+        with:
+          repository: OndrejNepozitek/ProceduralLevelGenerator-UnityProjectStructure
+
+      # Checkout this repository
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+        with:
+          path: Assets/Edgar
+    
+      # Test
+      - name: Run tests
+        uses: webbertakken/unity-test-runner@v1.3
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: ${{ inputs.UNITY_VERSION }}
+
+      # Build
+      - name: Build project
+        uses: webbertakken/unity-builder@v0.10
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          unityVersion: ${{ inputs.UNITY_VERSION }}
+          targetPlatform: StandaloneWindows64
+
+      # Upload build
+      # - name: Upload project
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: Build
+      #     path: build
+
+      # Prepare unitypackage file list
+      - name: Prepare unitypackage file list
+        run: |
+          echo "Assets/Edgar.meta" > unitypackageFiles
+          find ./Assets/Edgar/ -name \*.meta ! -path "./Assets/Edgar/Tests*" ! -path "./Assets/Edgar/Examples/Grid2D/Resources/Docs*" ! -path "./Assets/Edgar/*.md.meta" ! -path "./Assets/Edgar/Edgar-Unity.sln.DotSettings.meta" >> unitypackageFiles
+
+      # Package files
+      - name: Package files
+        uses: pCYSl5EDgo/create-unitypackage@master
+        with:
+          package-path: 'Edgar.unitypackage'
+          include-files: unitypackageFiles
+      
+      # Upload unitypackage
+      - name: Upload unitypackage
+        uses: actions/upload-artifact@v2-preview
+        with:
+          path: Edgar.unitypackage
+          name: Edgar.unitypackage
+
+      # Prepare release package name
+      - name: Prepare release package name
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          ref="${GITHUB_REF}"
+          ref="${ref/refs\/tags\/v/}"
+          ref="${ref//./_}"
+          ref="${ref//-/_}"
+          package_name="Edgar_$ref.unitypackage"
+          echo "::set-output name=PACKAGE_NAME::${package_name}"
+          cp Edgar.unitypackage $package_name
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        id: get_package_name
+
+      # Release
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          files: ${{ steps.get_package_name.outputs.PACKAGE_NAME }}
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Trigger api docs build
+      - name: Trigger api docs build
+        run: |
+          curl -XPOST -u "${{secrets.GH_PAT_USERNAME}}:${{secrets.GH_PAT}}" -H "Accept: application/vnd.github.everest-preview+json"  -H "Content-Type: application/json" https://api.github.com/repos/OndrejNepozitek/ProceduralLevelGenerator-UnityApiDocs/dispatches --data '{"event_type": "build_application"}'
