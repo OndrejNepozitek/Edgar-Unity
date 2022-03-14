@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build-unity-2018:
-    uses: octo-org/example-repo/.github/workflows/build-reusable.yml
+    uses: ./.github/workflows/build-reusable.yml
     with:
       UNITY_VERSION: 2018.4.18f1
     secrets:
