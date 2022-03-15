@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿#if UNITY_2019_1_OR_NEWER
+#else
+using System.Collections.Generic;
 using Edgar.Geometry;
 using NUnit.Framework;
 using UnityEngine;
@@ -69,3 +71,4 @@ namespace Edgar.Unity.Tests.Runtime
         }
     }
 }
+#endif
