@@ -1,13 +1,4 @@
-﻿/*
- * If you see this file causing you problems, just delete it.
- *
- * The problem is that this script has the original GUID from 2D-Extras so you might encounter GUID collisions
- * if a different package also does the same thing and includes this script.
- *
- * An official fix will be released in the next "breaking" build of Edgar which means a build where the whole
- * asset needs to be removed before a new version is imported.
- */
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Random = UnityEngine.Random;
@@ -15,10 +6,11 @@ using Random = UnityEngine.Random;
 using UnityEditor;
 #endif
 
-namespace Edgar.Unity.Examples.Deprecated
+namespace Edgar.Unity.Examples
 {
     [Serializable]
-    public class RandomTile : UnityEngine.Tilemaps.Tile
+    [CreateAssetMenu(fileName = "New Random Tile", menuName = "Edgar/Examples/Random Tile")]
+    public class RandomTile : Tile
     {
         [SerializeField]
         public Sprite[] m_Sprites;
@@ -42,7 +34,7 @@ namespace Edgar.Unity.Examples.Deprecated
 
     #if UNITY_EDITOR
     [CustomEditor(typeof(RandomTile))]
-    public class RandomTileEditor : UnityEditor.Editor
+    public class RandomTileEditor : Editor
     {
         private RandomTile tile => target as RandomTile;
 
