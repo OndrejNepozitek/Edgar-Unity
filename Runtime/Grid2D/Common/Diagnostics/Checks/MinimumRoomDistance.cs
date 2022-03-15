@@ -6,8 +6,13 @@ namespace Edgar.Unity.Diagnostics
     {
         public Result Run(DungeonGeneratorBaseGrid2D dungeonGenerator)
         {
+            return Run(dungeonGenerator.GeneratorConfig.MinimumRoomDistance);
+        }
+
+        public Result Run(int minimumRoomDistance)
+        {
             var result = new Result();
-            result.MinimumRoomDistance = dungeonGenerator.GeneratorConfig.MinimumRoomDistance;
+            result.MinimumRoomDistance = minimumRoomDistance;
 
             if (result.MinimumRoomDistance > 1)
             {

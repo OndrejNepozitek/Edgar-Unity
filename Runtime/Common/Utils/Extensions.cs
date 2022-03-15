@@ -10,19 +10,19 @@ namespace Edgar.Unity
 {
     public static class Extensions
     {
-        public static Vector3 ToVector3(this Edgar.Geometry.EdgarVector2Int vector)
+        public static Vector3 ToVector3(this EdgarVector2Int vector)
         {
             return new Vector3(vector.X, vector.Y);
         }
 
         public static EdgarVector2Int ToCustomIntVector2(this Vector2Int vector)
         {
-            return new Edgar.Geometry.EdgarVector2Int(vector.x, vector.y);
+            return new EdgarVector2Int(vector.x, vector.y);
         }
 
         public static EdgarVector2Int ToCustomIntVector2(this Vector3Int vector)
         {
-            return new Edgar.Geometry.EdgarVector2Int(vector.x, vector.y);
+            return new EdgarVector2Int(vector.x, vector.y);
         }
 
         public static Vector3Int ToUnityIntVector3(this EdgarVector2Int vector)
@@ -32,19 +32,7 @@ namespace Edgar.Unity
 
         public static Vector3Int RoundToUnityIntVector3(this Vector3 vector)
         {
-            return new Vector3Int((int) vector.x, (int) vector.y, 0);
-        }
-
-        // TODO: not nice
-        public static Vector3Int RotateAroundCenter(this Vector3Int vector, int degrees)
-        {
-            return vector.ToCustomIntVector2().RotateAroundCenter(degrees).ToUnityIntVector3();
-        }
-
-        // TODO: not nice
-        public static Vector3Int Transform(this Vector3Int vector, TransformationGrid2D transformation)
-        {
-            return vector.ToCustomIntVector2().Transform(transformation).ToUnityIntVector3();
+            return new Vector3Int((int) vector.x, (int) vector.y, (int) vector.z);
         }
 
         public static HashSet<T> ToHashSet<T>(this IEnumerable<T> source, IEqualityComparer<T> comparer = null)

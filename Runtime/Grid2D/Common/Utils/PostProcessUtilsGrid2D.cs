@@ -8,16 +8,8 @@ using Object = UnityEngine.Object;
 namespace Edgar.Unity
 {
     /// <summary>
-    /// Utility post-processing functions
+    /// Utility post-processing functions used mainly in built-in post-processing logic.
     /// </summary>
-    /// <remarks>
-    /// This file is temporarily empty to make it easier to adapt the new classNameGrid2D naming convention.
-    /// The motivation for this action is to prevent name clashes in the future when/if a 3D version is released.
-    /// 
-    /// See <see cref="PostProcessUtils"/> for an actual implementation.
-    /// The PostProcessUtils class is now obsolete and will be removed in a future release.
-    /// When that happens, the implementation of PostProcessUtils will move to this file.
-    /// </remarks>
     public static class PostProcessUtilsGrid2D
     {
         /// <summary>
@@ -60,6 +52,7 @@ namespace Edgar.Unity
             if (grid != null)
             {
                 offset = grid.GetCellCenterLocal((offset * 100).RoundToUnityIntVector3()) / 100;
+                offset = offset.RoundToUnityIntVector3();
             }
 
             return offset;

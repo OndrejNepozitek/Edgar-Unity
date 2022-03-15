@@ -4,7 +4,7 @@ namespace Edgar.Unity.Diagnostics
 {
     public class NumberOfRooms
     {
-        public Result Run(LevelDescriptionGrid2D levelDescription)
+        public Result Run(LevelDescriptionBase levelDescription)
         {
             var graph = levelDescription.GetGraph();
             var vertices = graph.VerticesCount;

@@ -2,7 +2,11 @@
 using System.Text;
 using Edgar.Unity.Diagnostics;
 using UnityEditor;
+#if UNITY_2021_2_OR_NEWER
+using UnityEditor.SceneManagement;
+#else
 using UnityEditor.Experimental.SceneManagement;
+#endif
 using UnityEngine;
 
 namespace Edgar.Unity.Editor
@@ -184,20 +188,20 @@ namespace Edgar.Unity.Editor
 
         private void AddOnSceneGUIDelegate()
         {
-            #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui += OnSceneGUIPersistent;
-            #else
+#else
             SceneView.onSceneGUIDelegate += OnSceneGUIPersistent;
-            #endif
+#endif
         }
 
         private void RemoveOnSceneGUIDelegate()
         {
-            #if UNITY_2019_1_OR_NEWER
+#if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui -= OnSceneGUIPersistent;
-            #else
+#else
             SceneView.onSceneGUIDelegate -= OnSceneGUIPersistent;
-            #endif
+#endif
         }
     }
 }

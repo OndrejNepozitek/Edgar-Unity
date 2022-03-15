@@ -1,17 +1,86 @@
-name: Build
+name: Build (multiple jobs)
 
-on: push
-
-env:
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  UNITY_VERSION: 2018.4.18f1
+on:
+  push:
 
 jobs:
+  params:
+    name: Params
+    runs-on: ubuntu-latest
+    outputs:
+      jobs: ${{ steps.params.outputs.jobs }}
+    steps:
+      - name: Parameters
+        id: params
+        shell: python
+        run: |
+          import os
+          is_pro_master = os.environ['GITHUB_REF_NAME'] == 'pro-master'
+          is_pro = os.environ['GITHUB_REPOSITORY'] == "OndrejNepozitek/Edgar-UnityPRO"
+          unity_versions = ['2018.4.18f1', '2019.4.36f1', '2020.3.30f1', '2021.2.15f1']
+          render_pipelines = ['builtin', 'URP']
+          structure_branch = 'pro' if is_pro else 'master'
+          jobs = [
+            {
+              'unityVersion': unity_version,
+              'renderPipeline': render_pipeline,
+              'structureBranch': structure_branch if render_pipeline == 'builtin' else 'urp'
+            }
+            for unity_version in unity_versions
+            for render_pipeline in render_pipelines
+            if render_pipeline == 'builtin' or (not unity_version.startswith('2018') and is_pro_master) or (unity_version.startswith('2019') and is_pro)
+          ]
+
+          print(f'::set-output name=jobs::{jobs!s}')
+          print("Jobs:")
+          print(jobs)
+
   build:
-    name: Build
+    name: Test & build
+    needs: [params]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.params.outputs.jobs) }}
+    steps:
+      # Checkout Unity project structure
+      - name: Checkout Unity project structure
+        uses: actions/checkout@v2
+        with:
+          repository: OndrejNepozitek/Edgar-UnityProjectStructure
+          ref: ${{ matrix.structureBranch }}
+
+      # Checkout this repository
+      - name: Checkout this repository
+        uses: actions/checkout@v2
+        with:
+          path: Assets/Edgar
+    
+      # Test
+      - name: Run tests
+        uses: game-ci/unity-test-runner@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
+        with:
+          unityVersion: ${{ matrix.unityVersion }}
+
+      # Build
+      - name: Run build
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: StandaloneWindows
+          versioning: None
+
+  package:
+    name: Package
     runs-on: ubuntu-latest
     steps:
-    
       # Checkout Unity project structure
       - name: Checkout Unity project structure
         uses: actions/checkout@v2
@@ -23,26 +92,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: Assets/Edgar
-    
-      # Test
-      - name: Run tests
-        uses: webbertakken/unity-test-runner@v1.3
-        with:
-          unityVersion: ${{ env.UNITY_VERSION }}
-
-      # Build
-      - name: Build project
-        uses: webbertakken/unity-builder@v0.10
-        with:
-          unityVersion: ${{ env.UNITY_VERSION }}
-          targetPlatform: StandaloneWindows64
-
-      # Upload build
-      # - name: Upload project
-      #   uses: actions/upload-artifact@v1
-      #   with:
-      #     name: Build
-      #     path: build
 
       # Prepare unitypackage file list
       - name: Prepare unitypackage file list
@@ -59,36 +108,63 @@ jobs:
       
       # Upload unitypackage
       - name: Upload unitypackage
-        uses: actions/upload-artifact@v2-preview
+        uses: actions/upload-artifact@v3
         with:
           path: Edgar.unitypackage
-          name: Edgar.unitypackage
+          name: Edgar_CI_build.unitypackage
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    needs: [package, build]
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      # Download package
+      - name: Download package
+        uses: actions/download-artifact@v3
+        with:
+          name: Edgar_CI_build.unitypackage
 
       # Prepare release package name
       - name: Prepare release package name
-        if: startsWith(github.ref, 'refs/tags/v')
+        shell: python
         run: |
-          ref="${GITHUB_REF}"
-          ref="${ref/refs\/tags\/v/}"
-          ref="${ref//./_}"
-          ref="${ref//-/_}"
-          package_name="Edgar_$ref.unitypackage"
-          echo "::set-output name=PACKAGE_NAME::${package_name}"
-          cp Edgar.unitypackage $package_name
+          import os
+          ref = os.environ["GITHUB_REF_NAME"]
+          ref = ref.replace('v', '', 1)
+          ref = ref.replace('.', '_')
+          ref = ref.replace('-', '_')
+          package_name = f"Edgar_{ref}.unitypackage"
+          print(f"::set-output name=PACKAGE_NAME::{package_name}")
+
+          import shutil
+          shutil.copyfile('Edgar.unitypackage', package_name)
         env:
-          GITHUB_REF: ${{ github.ref }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
         id: get_package_name
+
+      # Upload unitypackage
+      - name: Upload unitypackage
+        uses: actions/upload-artifact@v3
+        with:
+          path: ${{ steps.get_package_name.outputs.PACKAGE_NAME }}
+          name: ${{ steps.get_package_name.outputs.PACKAGE_NAME }}
 
       # Release
       - name: Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/v')
         with:
           files: ${{ steps.get_package_name.outputs.PACKAGE_NAME }}
           draft: true
+          fail_on_unmatched_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  api-docs:
+    name: Rebuild API docs
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'pro-dev'
+    steps:
       # Trigger api docs build
       - name: Trigger api docs build
         run: |
