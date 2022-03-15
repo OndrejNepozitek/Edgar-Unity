@@ -137,7 +137,7 @@ jobs:
           print(f"::set-output name=PACKAGE_NAME::{package_name}")
 
           import shutil
-          shutil.copyfile(f"Edgar_CI_{os.environ["GITHUB_REF_NAME"]}.unitypackage", package_name)
+          shutil.copyfile(f"Edgar_CI_{os.environ['GITHUB_REF_NAME']}.unitypackage", package_name)
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
         id: get_package_name
