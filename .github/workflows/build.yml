@@ -110,7 +110,7 @@ jobs:
         uses: actions/upload-artifact@v2-preview
         with:
           path: Edgar.unitypackage
-          name: Edgar${{ github.ref_name }}.unitypackage
+          name: Edgar_build_${{ github.ref_name }}.unitypackage
 
   release:
     name: Release
@@ -126,7 +126,7 @@ jobs:
           ref = ref.replace('v', '', 1)
           ref = ref.replace('.', '_')
           ref = ref.replace('-', '_')
-          package_name = f"Edgar_{ref}"
+          package_name = f"Edgar_{ref}.unitypackage"
           print(f"::set-output name=PACKAGE_NAME::{package_name}")
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
@@ -136,7 +136,7 @@ jobs:
       - name: Download package
         uses: actions/download-artifact@v3
         with:
-          name: Edgar${{ github.ref_name }}.unitypackage
+          name: Edgar_build_${{ github.ref_name }}.unitypackage
           path: ${{ steps.get_package_name.outputs.PACKAGE_NAME }}
 
       # Upload unitypackage
