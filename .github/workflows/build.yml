@@ -126,20 +126,6 @@ jobs:
 
       # Prepare release package name
       - name: Prepare release package name
-        run: |
-          ref="${GITHUB_REF}"
-          ref="${ref/refs\/tags\/v/}"
-          ref="${ref//./_}"
-          ref="${ref//-/_}"
-          package_name="Edgar_$ref.unitypackage"
-          echo "::set-output name=PACKAGE_NAME::${package_name}"
-          cp Edgar.unitypackage $package_name
-        env:
-          GITHUB_REF: ${{ github.ref }}
-        id: get_package_name
-
-      # Prepare release package name
-      - name: Prepare release package name
         shell: python
         run: |
           import os
@@ -151,6 +137,20 @@ jobs:
           print(f"::set-output name=PACKAGE_NAME::{package_name}")
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
+
+      # Prepare release package name
+      - name: Prepare release package name
+        run: |
+          ref="${GITHUB_REF}"
+          ref="${ref/refs\/tags\/v/}"
+          ref="${ref//./_}"
+          ref="${ref//-/_}"
+          package_name="Edgar_$ref.unitypackage"
+          echo "::set-output name=PACKAGE_NAME::${package_name}"
+          cp Edgar.unitypackage $package_name
+        env:
+          GITHUB_REF: ${{ github.ref }}
+        id: get_package_name
 
       # Upload unitypackage
       - name: Upload unitypackage
