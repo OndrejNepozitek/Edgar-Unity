@@ -135,6 +135,7 @@ jobs:
           ref = ref.replace('-', '_')
           package_name = f"Edgar_{ref}"
           print(f"::set-output name=PACKAGE_NAME::{package_name}")
+          print(package_name)
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
 
