@@ -16,9 +16,10 @@ jobs:
         run: |
           import os
           is_pro_master = os.environ['GITHUB_REF_NAME'] == 'pro-master'
+          is_pro = os.environ['GITHUB_REPOSITORY'] == "OndrejNepozitek/Edgar-UnityPRO"
           unity_versions = ['2018.4.18f1', '2019.4.36f1', '2020.3.30f1', '2021.2.15f1']
           render_pipelines = ['builtin', 'URP']
-          structure_branch = "master" if os.environ['GITHUB_REPOSITORY'] == "OndrejNepozitek/Edgar-Unity" else "pro"
+          structure_branch = 'pro' if is_pro else 'master'
           jobs = [
             {
               'unityVersion': unity_version,
@@ -27,7 +28,7 @@ jobs:
             }
             for unity_version in unity_versions
             for render_pipeline in render_pipelines
-            if render_pipeline == 'builtin' or (not unity_version.startswith('2018') and is_pro_master) or unity_version.startswith('2019')
+            if render_pipeline == 'builtin' or (not unity_version.startswith('2018') and is_pro_master) or (unity_version.startswith('2019') and is_pro)
           ]
 
           print(f'::set-output name=jobs::{jobs!s}')
