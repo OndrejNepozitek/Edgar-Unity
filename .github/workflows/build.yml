@@ -123,7 +123,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: Edgar_CI_${{ github.ref_name }}.unitypackage
-          path: Edgar.unitypackage
 
       # Prepare release package name
       - name: Prepare release package name
@@ -138,7 +137,7 @@ jobs:
           print(f"::set-output name=PACKAGE_NAME::{package_name}")
 
           import shutil
-          shutil.copyfile('Edgar.unitypackage', package_name)
+          shutil.copyfile(f"Edgar_CI_{os.environ["GITHUB_REF_NAME"]}.unitypackage", package_name)
         env:
           GITHUB_REF_NAME: ${{ github.ref_name }}
         id: get_package_name
