@@ -25,6 +25,12 @@ namespace Edgar.Unity.Editor
         {
             var e = Event.current;
 
+            // Skip window controls if an object picker is currently shown
+            if (EditorGUIUtility.GetObjectPickerControlID() != 0)
+            {
+                return;
+            }
+
             switch (e.type)
             {
                 case EventType.MouseDown:
