@@ -66,12 +66,12 @@ namespace Edgar.Unity.Editor
             var gameObject = doors.transform.gameObject;
             var grid = gameObject.GetComponentInChildren<Grid>();
             var length = doors.HybridDoorModeData.DefaultLength;
-            var doorLine = new DoorLineGrid2D()
-            {
-                From = from,
-                To = to,
-                Length = length,
-            };
+            var doorLine = new DoorLineGrid2D
+            (
+                from,
+                to,
+                length
+            );
 
             var color = Color.red;
 
@@ -81,12 +81,12 @@ namespace Edgar.Unity.Editor
         protected override void AddDoor(Vector3Int from, Vector3Int to)
         {
             var length = doors.HybridDoorModeData.DefaultLength;
-            var doorLine = new DoorLineGrid2D()
-            {
-                From = from,
-                To = to,
-                Length = length,
-            };
+            var doorLine = new DoorLineGrid2D
+            (
+                from,
+                to,
+                length
+            );
             var line = new OrthogonalLineGrid2D(from.ToCustomIntVector2(), to.ToCustomIntVector2());
 
             if (doors.HybridDoorModeData.DoorLines.Any(x => x == doorLine))

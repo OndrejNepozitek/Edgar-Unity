@@ -143,7 +143,7 @@ namespace Edgar.Unity
                     break;
                 case Direction.Left:
                     for (var i = From.x; i >= To.x; i--)
-                        points.Add(new Vector3Int(i, From.x, From.z));
+                        points.Add(new Vector3Int(i, From.y, From.z));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

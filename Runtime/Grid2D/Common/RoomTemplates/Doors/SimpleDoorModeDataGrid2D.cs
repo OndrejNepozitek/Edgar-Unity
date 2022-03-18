@@ -77,12 +77,11 @@ namespace Edgar.Unity
                     }
 
                     var doorLineTemp = line.Shrink(settings.Margin1, settings.Margin2);
-                    var doorLine = new DoorLineGrid2D()
-                    {
-                        From = doorLineTemp.From.ToUnityIntVector3(),
-                        To = doorLineTemp.To.ToUnityIntVector3(),
-                        Length = settings.Length,
-                    };
+                    var doorLine = new DoorLineGrid2D(
+                        doorLineTemp.From.ToUnityIntVector3(),
+                        doorLineTemp.To.ToUnityIntVector3(),
+                        settings.Length
+                    );
                     doorLines.Add(doorLine);
                 }
             }

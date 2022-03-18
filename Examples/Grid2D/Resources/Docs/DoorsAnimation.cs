@@ -35,12 +35,12 @@ namespace Edgar.Unity.Examples
                 {
                     var end = start + doorLineGrid2D.Length * doorLineGrid2D.Line.GetDirectionVector();
 
-                    DoorLine = new DoorLineGrid2D()
-                    {
-                        From = start.ToUnityIntVector3(),
-                        To = end.ToUnityIntVector3(),
-                        Length = doorLineGrid2D.Length + 1,
-                    };
+                    DoorLine = new DoorLineGrid2D
+                    (
+                        start.ToUnityIntVector3(),
+                        end.ToUnityIntVector3(),
+                        doorLineGrid2D.Length + 1
+                    );
 
                     Debug.Log(1);
 

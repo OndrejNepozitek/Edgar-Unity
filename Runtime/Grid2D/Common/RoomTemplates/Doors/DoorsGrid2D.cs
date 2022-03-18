@@ -33,17 +33,17 @@ namespace Edgar.Unity
         {
             if (SelectedMode == DoorMode.Manual)
             {
-                return ManualDoorModeData.GetDoorMode(this as DoorsGrid2D);
+                return ManualDoorModeData.GetDoorMode(this);
             }
 
             if (SelectedMode == DoorMode.Simple)
             {
-                return SimpleDoorModeData.GetDoorMode(this as DoorsGrid2D);
+                return SimpleDoorModeData.GetDoorMode(this);
             }
 
             if (SelectedMode == DoorMode.Hybrid)
             {
-                return HybridDoorModeData.GetDoorMode(this as DoorsGrid2D);
+                return HybridDoorModeData.GetDoorMode(this);
             }
 
             throw new ArgumentException("Invalid door mode selected");
