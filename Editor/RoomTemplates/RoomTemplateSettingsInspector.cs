@@ -188,20 +188,20 @@ namespace Edgar.Unity.Editor
 
         private void AddOnSceneGUIDelegate()
         {
-#if UNITY_2019_1_OR_NEWER
+            #if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui += OnSceneGUIPersistent;
-#else
+            #else
             SceneView.onSceneGUIDelegate += OnSceneGUIPersistent;
-#endif
+            #endif
         }
 
         private void RemoveOnSceneGUIDelegate()
         {
-#if UNITY_2019_1_OR_NEWER
+            #if UNITY_2019_1_OR_NEWER
             SceneView.duringSceneGui -= OnSceneGUIPersistent;
-#else
+            #else
             SceneView.onSceneGUIDelegate -= OnSceneGUIPersistent;
-#endif
+            #endif
         }
     }
 }

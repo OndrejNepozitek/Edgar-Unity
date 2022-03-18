@@ -1,35 +1,19 @@
 ﻿using System;
 using Edgar.Geometry;
 using Edgar.GraphBasedGenerator.Common.Doors;
+using Edgar.GraphBasedGenerator.Grid2D;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Edgar.Unity
 {
     [Serializable]
     public class DoorLineGrid2D
     {
-        public Vector3Int From => from;
+        public Vector3Int From;
 
-        [SerializeField, FormerlySerializedAs("From")]
-        private Vector3Int from;
+        public Vector3Int To;
 
-        public Vector3Int To => to;
-
-        [SerializeField, FormerlySerializedAs("To")]
-        private Vector3Int to;
-
-        public int Length => length;
-
-        [SerializeField, FormerlySerializedAs("Length")]
-        private int length;
-
-        public DoorLineGrid2D(Vector3Int @from, Vector3Int to, int length)
-        {
-            this.from = from;
-            this.to = to;
-            this.length = length;
-        }
+        public int Length;
 
         internal GraphBasedGenerator.Grid2D.DoorLineGrid2D ToInternal()
         {

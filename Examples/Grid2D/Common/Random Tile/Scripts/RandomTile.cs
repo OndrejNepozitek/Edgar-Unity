@@ -7,6 +7,7 @@
  * An official fix will be released in the next "breaking" build of Edgar which means a build where the whole
  * asset needs to be removed before a new version is imported.
  */
+
 using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;

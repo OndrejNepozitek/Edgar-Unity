@@ -52,7 +52,7 @@ namespace Edgar.Unity
         public List<TileInfo> GetTiles()
         {
             var from = doorLine.From;
-            var to = doorLine.To + (Vector3Int)direction * doorLine.Length;
+            var to = doorLine.To + (Vector3Int) direction * doorLine.Length;
             var line = new OrthogonalLine(from, to);
             var result = new List<TileInfo>();
 

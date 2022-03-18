@@ -9,7 +9,6 @@ namespace Edgar.Unity
     {
         public DoorLineInfoGrid2D(DoorLineGrid2D doorLine, SerializableVector3Int direction, List<DoorInstanceGrid2D> usedDoors) : base(doorLine, direction, usedDoors)
         {
-
         }
 
         protected override OrthogonalLine GetLine(DoorInstanceGrid2D doorInstance)

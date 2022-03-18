@@ -111,11 +111,12 @@ namespace Edgar.Unity
                     }
                 }
 
-                var doorLineUnity = new DoorLineGrid2D(
-                    doorLine.Line.From.ToUnityIntVector3(),
-                    doorLine.Line.To.ToUnityIntVector3(),
-                    doorLine.Length
-                );
+                var doorLineUnity = new DoorLineGrid2D()
+                {
+                    From = doorLine.Line.From.ToUnityIntVector3(),
+                    To = doorLine.Line.To.ToUnityIntVector3(),
+                    Length = doorLine.Length
+                };
                 var doorLineInfo = new DoorLineInfoGrid2D(
                     doorLineUnity,
                     doorLine.Line.GetDirectionVector().ToUnityIntVector3(),

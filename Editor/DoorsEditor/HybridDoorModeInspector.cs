@@ -10,28 +10,7 @@ namespace Edgar.Unity.Editor
         public HybridDoorModeInspector(SerializedObject serializedObject, DoorsGrid2D doors, SerializedProperty serializedProperty) : base(serializedObject, doors, serializedProperty)
         {
         }
-
-//        public override void OnInspectorGUI()
-//        {
-//            base.OnInspectorGUI();
-
-//            var text = @"
-//<size=12>How does the <b>Hybrid mode</b> work?</size>
-//1. Select the length of doors in the 'New door length' field.
-//2. Click the 'Add door positions' button.
-//3. Click on the tile where the doors can start.
-//4. Drag the mouse to last possible tile of the door line.
-
-//<b>What if the door disappears?</b> The door line you drew is probably too short.
-//<b>What is the solid outline?</b> It shows the length of a single door.
-//<b>What is the dashed outline?</b> It shows the all the possible positions where the doors can be.
-//";
-
-//            var style = new GUIStyle(EditorStyles.helpBox) {richText = true};
-//            EditorGUILayout.TextArea(text.Trim(), style);
-//            //EditorGUILayout.HelpBox("How does the <b>Hybrid mode</b> work?", MessageType.Info);
-//        }
-
+        
         protected override void DrawAllDoors()
         {
             var gameObject = doors.transform.gameObject;
@@ -66,12 +45,12 @@ namespace Edgar.Unity.Editor
             var gameObject = doors.transform.gameObject;
             var grid = gameObject.GetComponentInChildren<Grid>();
             var length = doors.HybridDoorModeData.DefaultLength;
-            var doorLine = new DoorLineGrid2D
-            (
-                from,
-                to,
-                length
-            );
+            var doorLine = new DoorLineGrid2D()
+            {
+                From = from,
+                To = to,
+                Length = length,
+            };
 
             var color = Color.red;
 
@@ -81,12 +60,12 @@ namespace Edgar.Unity.Editor
         protected override void AddDoor(Vector3Int from, Vector3Int to)
         {
             var length = doors.HybridDoorModeData.DefaultLength;
-            var doorLine = new DoorLineGrid2D
-            (
-                from,
-                to,
-                length
-            );
+            var doorLine = new DoorLineGrid2D()
+            {
+                From = from,
+                To = to,
+                Length = length,
+            };
             var line = new OrthogonalLineGrid2D(from.ToCustomIntVector2(), to.ToCustomIntVector2());
 
             if (doors.HybridDoorModeData.DoorLines.Any(x => x == doorLine))
