@@ -213,12 +213,18 @@ namespace Edgar.Unity.Editor
             var gameObject = doors.transform.gameObject;
             var grid = gameObject.GetComponentInChildren<Grid>();
 
-            var mousePosition = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition).origin;
-            mousePosition.z = 0;
-            var tilePosition = grid.WorldToCell(mousePosition);
-            tilePosition.z = 0;
+            var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+            var plane = new Plane(Vector3.forward, Vector3.zero);
 
-            return tilePosition;
+            if (plane.Raycast(ray, out var enter))
+            {
+                var tilePosition = grid.WorldToCell(ray.GetPoint(enter));
+                tilePosition.z = 0;
+                return tilePosition;
+            }
+
+            Debug.LogWarning("It was not possible to find the tile below the cursor.");
+            return Vector3Int.zero;
         }
 
         protected enum Mode
