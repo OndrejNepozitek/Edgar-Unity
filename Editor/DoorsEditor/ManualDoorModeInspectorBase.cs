@@ -175,9 +175,18 @@ namespace Edgar.Unity.Editor
                 var from = firstPoint;
                 var to = tilePosition;
 
+                // Each door must be aligned with one of the axes, meaning that either from.x == to.x or from.y == to.y must hold
+                // If that is not true, we fix the direction of the door by choosing the alignment that leads to a longer selection
                 if (from.x != to.x && from.y != to.y)
                 {
-                    to.x = from.x;
+                    if (Mathf.Abs(to.x - from.x) > Mathf.Abs(to.y - from.y))
+                    {
+                        to.y = from.y;
+                    }
+                    else
+                    {
+                        to.x = from.x;
+                    }
                 }
 
                 DrawPreview(from, to);
