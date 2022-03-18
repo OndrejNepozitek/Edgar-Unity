@@ -1734,17 +1734,17 @@ MonoBehaviour:
   HybridDoorModeData:
     DefaultLength: 2
     DoorLines:
-    - From: {x: -3, y: -3, z: 0}
-      To: {x: -3, y: -4, z: 0}
-      Length: 2
-    - From: {x: 4, y: -3, z: 0}
-      To: {x: 4, y: -4, z: 0}
-      Length: 2
     - From: {x: -3, y: 4, z: 0}
       To: {x: -3, y: 3, z: 0}
       Length: 2
     - From: {x: 4, y: 4, z: 0}
       To: {x: 4, y: 3, z: 0}
+      Length: 2
+    - From: {x: 4, y: -3, z: 0}
+      To: {x: 4, y: -4, z: 0}
+      Length: 2
+    - From: {x: -3, y: -3, z: 0}
+      To: {x: -3, y: -4, z: 0}
       Length: 2
     - From: {x: -1, y: 6, z: 0}
       To: {x: 2, y: 6, z: 0}

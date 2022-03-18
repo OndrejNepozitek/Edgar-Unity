@@ -215,16 +215,23 @@ namespace Edgar.Unity.Editor
 
             var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
             var plane = new Plane(Vector3.forward, Vector3.zero);
+            Vector3Int tilePosition;
 
+            // Compute ray cast with the plane so that this works also in 3D view
             if (plane.Raycast(ray, out var enter))
             {
-                var tilePosition = grid.WorldToCell(ray.GetPoint(enter));
-                tilePosition.z = 0;
-                return tilePosition;
+                tilePosition = grid.WorldToCell(ray.GetPoint(enter));
+            }
+            // Fallback to the old behaviour just in case
+            else
+            {
+                var mousePosition = ray.origin;
+                mousePosition.z = 0;
+                tilePosition = grid.WorldToCell(mousePosition);
             }
 
-            Debug.LogWarning("It was not possible to find the tile below the cursor.");
-            return Vector3Int.zero;
+            tilePosition.z = 0;
+            return tilePosition;
         }
 
         protected enum Mode
