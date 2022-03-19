@@ -7,13 +7,19 @@ using UnityEngine;
 namespace Edgar.Unity
 {
     [Serializable]
-    public class DoorLineGrid2D
+    public class DoorLineGrid2D : IDoorLine
     {
         public Vector3Int From;
 
         public Vector3Int To;
 
         public int Length;
+
+        Vector3Int IDoorLine.From => From;
+
+        Vector3Int IDoorLine.To => To;
+
+        int IDoorLine.Length => Length;
 
         internal GraphBasedGenerator.Grid2D.DoorLineGrid2D ToInternal()
         {

@@ -16,15 +16,17 @@ namespace Edgar.Unity
     /// </remarks>
     /// <typeparam name="TDoorInstance"></typeparam>
     [Serializable]
-    public abstract class DoorLineInfoBase<TDoorInstance> where TDoorInstance : class
+    public abstract class DoorLineInfoBase<TDoorInstance, TDoorLine> 
+        where TDoorInstance : class
+        where TDoorLine : IDoorLine
     {
         /// <summary>
         /// Door line that described where doors can start and how wide they are.
         /// </summary>
-        public DoorLineGrid2D DoorLine => doorLine;
+        public TDoorLine DoorLine => doorLine;
 
         [SerializeField]
-        private DoorLineGrid2D doorLine;
+        private TDoorLine doorLine;
 
         [SerializeField]
         private SerializableVector3Int direction;
@@ -37,7 +39,7 @@ namespace Edgar.Unity
         [SerializeField]
         private List<TDoorInstance> usedDoors;
 
-        protected DoorLineInfoBase(DoorLineGrid2D doorLine, SerializableVector3Int direction, List<TDoorInstance> usedDoors)
+        protected DoorLineInfoBase(TDoorLine doorLine, SerializableVector3Int direction, List<TDoorInstance> usedDoors)
         {
             this.doorLine = doorLine;
             this.direction = direction;

@@ -5,7 +5,7 @@ namespace Edgar.Unity
 {
     /// <inheritdoc />
     [Serializable]
-    public class DoorLineInfoGrid2D : DoorLineInfoBase<DoorInstanceGrid2D>
+    public class DoorLineInfoGrid2D : DoorLineInfoBase<DoorInstanceGrid2D, DoorLineGrid2D>
     {
         public DoorLineInfoGrid2D(DoorLineGrid2D doorLine, SerializableVector3Int direction, List<DoorInstanceGrid2D> usedDoors) : base(doorLine, direction, usedDoors)
         {
