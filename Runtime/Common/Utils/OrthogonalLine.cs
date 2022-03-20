@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Edgar.Unity
 {
     /// <summary>
-    ///     Structure representing an orthogonal line in a integer grid.
+    /// Structure representing an orthogonal line in a integer grid.
     /// </summary>
     [Serializable]
     public struct OrthogonalLine : IEquatable<OrthogonalLine>
@@ -34,26 +34,29 @@ namespace Edgar.Unity
         public Vector3Int To => new Vector3Int(toX, toY, toZ);
 
         /// <summary>
-        ///     Returns number of points.
+        /// Returns number of points on the line.
+        /// If From equals To, the Length is 1 (point).
         /// </summary>
         public int Length { get; }
 
+        public Vector3Int Direction { get; }
+
         /// <summary>
-        ///     Construct an orthogonal line from given endpoints.
+        /// Construct an orthogonal line from given endpoints.
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <exception cref="ArgumentException">Thrown when given points do not form an orthogonal line.</exception>
         public OrthogonalLine(Vector3Int from, Vector3Int to)
         {
-            if (from.x != to.x && from.y != to.y)
-            {
-                throw new ArgumentException("The line is not orthogonal");
-            }
+            var sameComponentsCount = 0;
+            if (from.x == to.x) sameComponentsCount++;
+            if (from.y == to.y) sameComponentsCount++;
+            if (from.z == to.z) sameComponentsCount++;
 
-            if (from.z != to.z)
+            if (sameComponentsCount < 2)
             {
-                throw new ArgumentException("z values must be equal");
+                throw new ArgumentException("The line is not orthogonal. At least two components of from and to must be equal.");
             }
 
             fromX = from.x;
@@ -64,221 +67,112 @@ namespace Edgar.Unity
             toY = to.y;
             toZ = to.z;
 
+            var direction = to - from;
+            direction.Clamp(new Vector3Int(-1, -1, -1), new Vector3Int(1, 1, 1));
+            Direction = direction;
+
             Length = 0;
             Length = GetLength(From, To);
+            
         }
 
         private static int GetLength(Vector3Int from, Vector3Int to)
         {
-            return Math.Abs(from.x - to.x) + Math.Abs(from.y - to.y) + 1;
+            return Math.Abs(from.x - to.x) + Math.Abs(from.y - to.y) + Math.Abs(from.z - to.z) + 1;
         }
 
         /// <summary>
-        ///     Returns a direction of the line.
-        /// </summary>
-        /// <returns></returns>
-        private Direction GetDirection()
-        {
-            if (From == To)
-            {
-                return Direction.Undefined;
-            }
-
-            return GetDirection(From, To);
-        }
-
-        /// <summary>
-        ///     Gets a direction of an orthogonal lined formed by given points.
-        /// </summary>
-        /// <param name="from"></param>
-        /// <param name="to"></param>
-        /// <exception cref="ArgumentException">Thrown when given points do not form an orthogonal line</exception>
-        /// <returns></returns>
-        private static Direction GetDirection(Vector3Int from, Vector3Int to)
-        {
-            if (from == to)
-            {
-                return Direction.Undefined;
-            }
-
-            if (from.x == to.x)
-            {
-                return from.y > to.y ? Direction.Bottom : Direction.Top;
-            }
-
-            if (from.y == to.y)
-            {
-                return from.x > to.x ? Direction.Left : Direction.Right;
-            }
-
-            throw new ArgumentException("Given points do not form an orthogonal line");
-        }
-
-        /// <summary>
-        ///     Gets all points of the line. Both "From" and "To" are inclusive.
-        ///     The direction is from "From" to "To";
+        /// Gets all points of the line. Both "From" and "To" are inclusive.
+        /// The direction is from "From" to "To";
         /// </summary>
         /// <returns></returns>
         public List<Vector3Int> GetPoints()
         {
             var points = new List<Vector3Int>();
 
-            switch (GetDirection())
+            if (From == To)
             {
-                case var _ when From == To:
-                    points.Add(From);
-                    break;
-
-                case Direction.Top:
-                    for (var i = From.y; i <= To.y; i++)
-                        points.Add(new Vector3Int(From.x, i, From.z));
-                    break;
-                case Direction.Bottom:
-                    for (var i = From.y; i >= To.y; i--)
-                        points.Add(new Vector3Int(From.x, i, From.z));
-                    break;
-                case Direction.Right:
-                    for (var i = From.x; i <= To.x; i++)
-                        points.Add(new Vector3Int(i, From.y, From.z));
-                    break;
-                case Direction.Left:
-                    for (var i = From.x; i >= To.x; i--)
-                        points.Add(new Vector3Int(i, From.y, From.z));
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                points.Add(From);
+            }
+            else
+            {
+                for (int i = 0; i < Length; i++)
+                {
+                    points.Add(From + Direction * i);
+                }
             }
 
             return points;
         }
 
         /// <summary>
-        ///     Gets nth point on the line. (Counted from From)
+        /// Gets nth point on the line. (Counted from From)
         /// </summary>
         /// <param name="n"></param>
         /// <returns></returns>
         [Pure]
         public Vector3Int GetNthPoint(int n)
         {
-            if (n > Length)
-                throw new ArgumentException("n is greater than the length of the line.", nameof(n));
-
-            var direction = GetDirection();
-
-            switch (direction)
+            if (n >= Length)
             {
-                case Direction.Top:
-                    return From + new Vector3Int(0, n, 0);
-                case Direction.Right:
-                    return From + new Vector3Int(n, 0, 0);
-                case Direction.Bottom:
-                    return From - new Vector3Int(0, n, 0);
-                case Direction.Left:
-                    return From - new Vector3Int(n, 0, 0);
-                case Direction.Undefined:
-                {
-                    if (n > 0)
-                        throw new ArgumentException();
-
-                    return From;
-                }
-                default:
-                    throw new ArgumentOutOfRangeException();
+                throw new ArgumentException("n is greater than the length of the line.", nameof(n));
             }
+
+            if (n < 0)
+            {
+                throw new ArgumentException("n must be greater than or equal to 0", nameof(n));
+            }
+
+
+            return From + Direction * n;
         }
 
         /// <summary>
-        ///     Checks if the orthogonal line contains a given point.
+        /// Checks if the orthogonal line contains a given point.
         /// </summary>
         /// <remarks>
-        ///     Index is 0 for From and Count + 1 for To.
+        /// Index is 0 for From and Length - 1 for To.
         /// </remarks>
         /// <param name="point"></param>
         /// <returns>Index of a given point on the line or -1.</returns>
         [Pure]
         public int Contains(Vector3Int point)
         {
-            var direction = GetDirection();
-
-            switch (direction)
+            if (Direction == Vector3Int.zero)
             {
-                case Direction.Top:
-                {
-                    if (point.x == From.x && point.y <= To.y && point.y >= From.y)
-                    {
-                        return point.y - From.y;
-                    }
+                return point == From ? 0 : -1;
+            }
 
-                    break;
-                }
-                case Direction.Right:
-                {
-                    if (point.y == From.y && point.x <= To.x && point.x >= From.x)
-                    {
-                        return point.x - From.x;
-                    }
+            int index;
+            int sign;
 
-                    break;
-                }
-                case Direction.Bottom:
-                {
-                    if (point.x == From.x && point.y >= To.y && point.y <= From.y)
-                    {
-                        return From.y - point.y;
-                    }
+            if (Direction.x != 0)
+            {
+                index = point.x - From.x;
+                sign = Direction.x;
+            }
+            else if (Direction.y != 0)
+            {
+                index = point.y - From.y;
+                sign = Direction.y;
+            }
+            else if (Direction.z != 0)
+            {
+                index = point.z - From.z;
+                sign = Direction.z;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
 
-                    break;
-                }
-                case Direction.Left:
-                {
-                    if (point.y == From.y && point.x >= To.x && point.x <= From.x)
-                    {
-                        return From.x - point.x;
-                    }
-
-                    break;
-                }
-                case Direction.Undefined:
-                {
-                    if (point == From)
-                    {
-                        return 0;
-                    }
-
-                    break;
-                }
-                default:
-                    throw new ArgumentOutOfRangeException();
+            var absoluteIndex = Math.Abs(index);
+            if ((sign == Math.Sign(index) || index == 0) && absoluteIndex < Length)
+            {
+                return absoluteIndex;
             }
 
             return -1;
-        }
-
-        /// <summary>
-        ///     Gets a direction vector of the line.
-        /// </summary>
-        /// <remarks>
-        ///     That is a vector that satisfies that From + Length * direction_vector = To.
-        /// </remarks>
-        /// <returns></returns>
-        [Pure]
-        public Vector3Int GetDirectionVector()
-        {
-            switch (GetDirection())
-            {
-                case Direction.Top:
-                    return new Vector3Int(0, 1, 0);
-                case Direction.Right:
-                    return new Vector3Int(1, 0, 0);
-                case Direction.Bottom:
-                    return new Vector3Int(0, -1, 0);
-                case Direction.Left:
-                    return new Vector3Int(-1, 0, 0);
-                case Direction.Undefined:
-                    throw new InvalidOperationException("Degenerated lines without a direction set do not have a direction vector.");
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
 
         #region Operators
@@ -333,19 +227,7 @@ namespace Edgar.Unity
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"IntLine: {From} -> {To} ({GetDirection()})";
-        }
-
-        /// <summary>
-        ///     Enum that holds a direction of an orthogonal line.
-        /// </summary>
-        public enum Direction
-        {
-            Top,
-            Right,
-            Bottom,
-            Left,
-            Undefined
+            return $"IntLine: {From} -> {To}";
         }
     }
 }
