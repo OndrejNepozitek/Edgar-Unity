@@ -167,7 +167,7 @@ namespace Edgar.Unity
             }
 
             var absoluteIndex = Math.Abs(index);
-            if ((sign == Math.Sign(index) || index == 0) && absoluteIndex < Length)
+            if ((sign == Math.Sign(index) || (index == 0 && point == From)) && absoluteIndex < Length)
             {
                 return absoluteIndex;
             }
