@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Edgar.Unity.Editor
 {
@@ -236,7 +239,7 @@ namespace Edgar.Unity.Editor
             var normalizedPosition = WorldToGridPosition(position);
 
             // Subtract the center of the room node rect because we want the room to appear centered on the cursor
-            normalizedPosition -= roomNode.GetRect(1, Vector2.zero).center;
+            normalizedPosition -= roomNode.GetRect(Vector2.zero, 1).center;
 
             // Snap to grid if enabled
             if (snapToGrid)
@@ -268,9 +271,20 @@ namespace Edgar.Unity.Editor
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        private RoomNode CreateRoomNode(RoomBase room)
+        private RoomControl CreateRoomNode(RoomBase room)
         {
-            var roomNode = new RoomNode(room);
+            RoomControl roomNode;
+
+            if (roomTypeToControlType.TryGetValue(room.GetType(), out var customControl))
+            {
+                roomNode = (RoomControl) Activator.CreateInstance(customControl);
+            }
+            else
+            {
+                roomNode = new RoomControl();
+            }
+
+            roomNode.Initialize(room);
             roomNodes.Add(roomNode);
 
             return roomNode;
@@ -282,7 +296,7 @@ namespace Edgar.Unity.Editor
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        public ConnectionBase CreateConnection(RoomNode from, RoomNode to)
+        public ConnectionBase CreateConnection(RoomControl from, RoomControl to)
         {
             // Do not create the connection if the from room is same as the to room
             if (from.Room == to.Room)
@@ -318,12 +332,22 @@ namespace Edgar.Unity.Editor
         /// </summary>
         /// <param name="connection"></param>
         /// <returns></returns>
-        public ConnectionNode CreateConnectionNode(ConnectionBase connection)
+        public ConnectionControl CreateConnectionNode(ConnectionBase connection)
         {
             var from = roomNodes.Single(x => x.Room == connection.From);
             var to = roomNodes.Single(x => x.Room == connection.To);
 
-            var connectionNode = new ConnectionNode(connection, from, to);
+            ConnectionControl connectionNode;
+            if (connectionTypeToControlType.TryGetValue(connection.GetType(), out var customControl))
+            {
+                connectionNode = (ConnectionControl) Activator.CreateInstance(customControl);
+            }
+            else
+            {
+                connectionNode = new ConnectionControl();
+            }
+
+            connectionNode.Initialize(connection, from, to);
             connectionNodes.Add(connectionNode);
 
             return connectionNode;
@@ -385,11 +409,11 @@ namespace Edgar.Unity.Editor
         /// </summary>
         /// <param name="mousePosition"></param>
         /// <returns></returns>
-        private RoomNode GetHoverRoomNode(Vector2 mousePosition)
+        private RoomControl GetHoverRoomNode(Vector2 mousePosition)
         {
             foreach (var roomNode in roomNodes)
             {
-                if (roomNode.GetRect(zoom, panOffset).Contains(mousePosition))
+                if (roomNode.GetRect(panOffset, zoom).Contains(mousePosition))
                 {
                     return roomNode;
                 }
@@ -404,11 +428,11 @@ namespace Edgar.Unity.Editor
         /// </summary>
         /// <param name="mousePosition"></param>
         /// <returns></returns>
-        private ConnectionNode GetHoverConnectionNode(Vector2 mousePosition)
+        private ConnectionControl GetHoverConnectionNode(Vector2 mousePosition)
         {
             foreach (var connectionNode in connectionNodes)
             {
-                if (connectionNode.GetHandleRect(zoom, panOffset).Contains(mousePosition))
+                if (connectionNode.GetHandleRect(panOffset, zoom).Contains(mousePosition))
                 {
                     return connectionNode;
                 }
@@ -421,7 +445,7 @@ namespace Edgar.Unity.Editor
         /// Shows the connection context menu.
         /// </summary>
         /// <param name="connectionNode"></param>
-        private void ShowConnectionContextMenu(ConnectionNode connectionNode)
+        private void ShowConnectionContextMenu(ConnectionControl connectionNode)
         {
             var genericMenu = new GenericMenu();
             genericMenu.AddItem(new GUIContent("Delete connection"), false, () => DeleteConnectionNode(connectionNode));
@@ -432,7 +456,7 @@ namespace Edgar.Unity.Editor
         /// Deletes a given connection node.
         /// </summary>
         /// <param name="connectionNode"></param>
-        private void DeleteConnectionNode(ConnectionNode connectionNode)
+        private void DeleteConnectionNode(ConnectionControl connectionNode)
         {
             LevelGraph.Connections.Remove(connectionNode.Connection);
             DestroyImmediate(connectionNode.Connection, true);
@@ -445,7 +469,7 @@ namespace Edgar.Unity.Editor
         /// Shows the room context menu.
         /// </summary>
         /// <param name="roomNode"></param>
-        private void ShowRoomContextMenu(RoomNode roomNode)
+        private void ShowRoomContextMenu(RoomControl roomNode)
         {
             var genericMenu = new GenericMenu();
             genericMenu.AddItem(new GUIContent("Configure room"), false, () => SelectObject(roomNode.Room));
@@ -457,13 +481,13 @@ namespace Edgar.Unity.Editor
         /// Deletes a given room node.
         /// </summary>
         /// <param name="roomNode"></param>
-        private void DeleteRoomNode(RoomNode roomNode)
+        private void DeleteRoomNode(RoomControl roomNode)
         {
             LevelGraph.Rooms.Remove(roomNode.Room);
             DestroyImmediate(roomNode.Room, true);
             roomNodes.Remove(roomNode);
 
-            var connectionsToRemove = new List<ConnectionNode>();
+            var connectionsToRemove = new List<ConnectionControl>();
             foreach (var connectionNode in connectionNodes)
             {
                 if (connectionNode.From == roomNode || connectionNode.To == roomNode)
@@ -534,6 +558,77 @@ namespace Edgar.Unity.Editor
             else
             {
                 Selection.objects = new List<UnityEngine.Object>(Selection.objects) {o}.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Setups custom controls for rooms and connection using reflection and attributes.
+        /// </summary>
+        private void SetupCustomControls()
+        {
+            //var sw = new Stopwatch();
+            //sw.Start();
+
+            roomTypeToControlType = new Dictionary<Type, Type>();
+            foreach (var tuple in GetTypesWithAttribute<CustomRoomControlAttribute>())
+            {
+                var controlType = tuple.Item1;
+                var attribute = tuple.Item2;
+
+                if (!typeof(RoomControl).IsAssignableFrom(controlType))
+                {
+                    Debug.LogWarning($"Class '{controlType}' does not inherit from '{nameof(RoomControl)}'!");
+                    continue;
+                }
+
+                //Debug.Log($"{attribute.RoomType}, {controlType}");
+                roomTypeToControlType[attribute.RoomType] = controlType;
+            }
+
+            connectionTypeToControlType = new Dictionary<Type, Type>();
+            foreach (var tuple in GetTypesWithAttribute<CustomConnectionControlAttribute>())
+            {
+                var controlType = tuple.Item1;
+                var attribute = tuple.Item2;
+
+                if (!typeof(ConnectionControl).IsAssignableFrom(controlType))
+                {
+                    Debug.LogWarning($"Class '{controlType}' does not inherit from '{nameof(ConnectionControl)}'!");
+                    continue;
+                }
+
+                //Debug.Log($"{attribute.ConnectionType}, {controlType}");
+                connectionTypeToControlType[attribute.ConnectionType] = controlType;
+            }
+
+            //sw.Stop();
+            //Debug.Log($"{sw.ElapsedMilliseconds}");
+        }
+
+        /// <summary>
+        /// Finds types that contain a custom attribute.
+        /// </summary>
+        /// <typeparam name="TAttribute"></typeparam>
+        /// <returns></returns>
+        private IEnumerable<Tuple<Type, TAttribute>> GetTypesWithAttribute<TAttribute>()
+            where TAttribute : Attribute
+        {
+            var definedIn = typeof(TAttribute).Assembly.GetName().Name;
+
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                if (assembly == typeof(TAttribute).Assembly || assembly.GetReferencedAssemblies().Any(a => a.Name == definedIn))
+                {
+                    foreach (var type in assembly.GetTypes())
+                    {
+                        var attribute = type.GetCustomAttribute<TAttribute>();
+
+                        if (attribute != null)
+                        {
+                            yield return Tuple.Create(type, attribute);
+                        }
+                    }
+                }
             }
         }
     }

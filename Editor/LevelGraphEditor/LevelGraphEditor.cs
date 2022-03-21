@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Edgar.Unity.Editor
 {
@@ -9,9 +10,9 @@ namespace Edgar.Unity.Editor
     {
         public LevelGraph LevelGraph { get; private set; }
 
-        private List<RoomNode> roomNodes = new List<RoomNode>();
+        private List<RoomControl> roomNodes = new List<RoomControl>();
 
-        private List<ConnectionNode> connectionNodes = new List<ConnectionNode>();
+        private List<ConnectionControl> connectionNodes = new List<ConnectionControl>();
 
         public State CurrentState;
 
@@ -23,21 +24,25 @@ namespace Edgar.Unity.Editor
 
         private float zoom;
 
-        private RoomNode hoverRoomNode;
+        private RoomControl hoverRoomNode;
 
         private Vector2 originalDragRoomPosition;
 
         private int currentPickerWindow;
 
-        private RoomNode connectionStartNode;
+        private RoomControl connectionStartNode;
 
         private bool isDoubleClick;
 
         private int gridSize = 16;
 
+        private Dictionary<Type, Type> roomTypeToControlType;
+        private Dictionary<Type, Type> connectionTypeToControlType;
+
         public void OnEnable()
         {
             Selection.selectionChanged += ProjectBrowserLocker.Unlock;
+            SetupCustomControls();
 
             if (LevelGraph != null)
             {
@@ -95,7 +100,7 @@ namespace Edgar.Unity.Editor
             connectionStartNode = null;
 
             // Initialize room nodes
-            roomNodes = new List<RoomNode>();
+            roomNodes = new List<RoomControl>();
             foreach (var room in LevelGraph.Rooms)
             {
                 if (room != null)
@@ -109,7 +114,7 @@ namespace Edgar.Unity.Editor
             }
 
             // Initialize connection nodes
-            connectionNodes = new List<ConnectionNode>();
+            connectionNodes = new List<ConnectionControl>();
             foreach (var connection in LevelGraph.Connections)
             {
                 if (connection != null)
@@ -261,7 +266,7 @@ namespace Edgar.Unity.Editor
         {
             foreach (var roomNode in roomNodes)
             {
-                roomNode.Draw(zoom, panOffset);
+                roomNode.Draw(panOffset, zoom);
             }
         }
 
@@ -269,7 +274,7 @@ namespace Edgar.Unity.Editor
         {
             foreach (var connectionNode in connectionNodes)
             {
-                connectionNode.Draw(zoom, panOffset);
+                connectionNode.Draw(panOffset, zoom);
             }
         }
 
@@ -277,7 +282,7 @@ namespace Edgar.Unity.Editor
         {
             if (CurrentState == State.CreateConnection)
             {
-                Handles.DrawLine(connectionStartNode.GetRect(zoom, panOffset).center, e.mousePosition);
+                Handles.DrawLine(connectionStartNode.GetRect(panOffset, zoom).center, e.mousePosition);
             }
         }
 
