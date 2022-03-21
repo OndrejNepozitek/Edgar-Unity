@@ -115,7 +115,7 @@ namespace Edgar.Unity
                 {
                     From = doorLine.Line.From.ToUnityIntVector3(),
                     To = doorLine.Line.To.ToUnityIntVector3(),
-                    Length = doorLine.Length
+                    Length = doorLine.Length + 1,
                 };
                 var doorLineInfo = new DoorLineInfoGrid2D(
                     doorLineUnity,
