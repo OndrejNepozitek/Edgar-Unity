@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Edgar.Unity.Editor
 {
@@ -9,9 +10,9 @@ namespace Edgar.Unity.Editor
     {
         public LevelGraph LevelGraph { get; private set; }
 
-        private List<RoomNode> roomNodes = new List<RoomNode>();
+        private List<RoomControl> roomControls = new List<RoomControl>();
 
-        private List<ConnectionNode> connectionNodes = new List<ConnectionNode>();
+        private List<ConnectionControl> connectionControls = new List<ConnectionControl>();
 
         public State CurrentState;
 
@@ -23,21 +24,25 @@ namespace Edgar.Unity.Editor
 
         private float zoom;
 
-        private RoomNode hoverRoomNode;
+        private RoomControl hoverRoomControl;
 
         private Vector2 originalDragRoomPosition;
 
         private int currentPickerWindow;
 
-        private RoomNode connectionStartNode;
+        private RoomControl connectionStartControl;
 
         private bool isDoubleClick;
 
         private int gridSize = 16;
 
+        private Dictionary<Type, Type> roomTypeToControlType;
+        private Dictionary<Type, Type> connectionTypeToControlType;
+
         public void OnEnable()
         {
             Selection.selectionChanged += ProjectBrowserLocker.Unlock;
+            SetupCustomControls();
 
             if (LevelGraph != null)
             {
@@ -92,15 +97,15 @@ namespace Edgar.Unity.Editor
             zoom = LevelGraph.EditorData.Zoom;
             panOffset = LevelGraph.EditorData.PanOffset;
             snapToGrid = EditorPrefs.GetBool(EditorConstants.SnapToGridEditorPrefsKey, false);
-            connectionStartNode = null;
+            connectionStartControl = null;
 
-            // Initialize room nodes
-            roomNodes = new List<RoomNode>();
+            // Initialize room controls
+            roomControls = new List<RoomControl>();
             foreach (var room in LevelGraph.Rooms)
             {
                 if (room != null)
                 {
-                    CreateRoomNode(room);
+                    CreateRoomControl(room);
                 }
                 else
                 {
@@ -108,13 +113,13 @@ namespace Edgar.Unity.Editor
                 }
             }
 
-            // Initialize connection nodes
-            connectionNodes = new List<ConnectionNode>();
+            // Initialize connection controls
+            connectionControls = new List<ConnectionControl>();
             foreach (var connection in LevelGraph.Connections)
             {
                 if (connection != null)
                 {
-                    CreateConnectionNode(connection);
+                    CreateConnectionControl(connection);
                 }
                 else
                 {
@@ -259,17 +264,17 @@ namespace Edgar.Unity.Editor
 
         private void DrawRooms()
         {
-            foreach (var roomNode in roomNodes)
+            foreach (var roomControl in roomControls)
             {
-                roomNode.Draw(zoom, panOffset);
+                roomControl.Draw(panOffset, zoom);
             }
         }
 
         private void DrawConnections()
         {
-            foreach (var connectionNode in connectionNodes)
+            foreach (var connectionControl in connectionControls)
             {
-                connectionNode.Draw(zoom, panOffset);
+                connectionControl.Draw(panOffset, zoom);
             }
         }
 
@@ -277,7 +282,7 @@ namespace Edgar.Unity.Editor
         {
             if (CurrentState == State.CreateConnection)
             {
-                Handles.DrawLine(connectionStartNode.GetRect(zoom, panOffset).center, e.mousePosition);
+                Handles.DrawLine(connectionStartControl.GetRect(panOffset, zoom).center, e.mousePosition);
             }
         }
 
@@ -312,8 +317,8 @@ namespace Edgar.Unity.Editor
         private void ClearWindow()
         {
             LevelGraph = null;
-            connectionNodes.Clear();
-            roomNodes.Clear();
+            connectionControls.Clear();
+            roomControls.Clear();
         }
 
         public enum State
