@@ -124,19 +124,14 @@ function parseFile(filename, content) {
       continue;
     }
 
-    // Ignore the current line if there is a hidden region
-    let isHidden = false;
-    for (const codeBlock of codeBlocks) {
+    // Append the line to all code blocks
+    // Stop the process when the first ignored block is encountered
+    // This allows to nest code blocks
+    for (const codeBlock of codeBlocks.slice().reverse()) {
       if (codeBlock.isHidden) {
-        isHidden = true;
+        break;
       }
-    }
-    if (isHidden) {
-      continue;
-    }
 
-    // Otherwise append the line to all the regions
-    for (const codeBlock of codeBlocks) {
       if (!codeBlock.isPlaceholder) {
         codeBlock.lines.push(line);
       }

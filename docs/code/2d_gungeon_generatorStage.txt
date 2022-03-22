@@ -3,7 +3,7 @@ private IEnumerator GeneratorCoroutine(DungeonGeneratorGrid2D generator)
     /* ... */
 
     // Configure the generator with the current stage number
-    var inputTask = (GungeonInputSetupTask)generator.CustomInputTask;
+    var inputTask = (GungeonInputSetupTask) generator.CustomInputTask;
     inputTask.Stage = Stage;
 
     /* ... */

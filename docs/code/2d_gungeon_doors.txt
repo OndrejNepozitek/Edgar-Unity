@@ -1,4 +1,4 @@
-[CreateAssetMenu(menuName = "Edgar/Examples/Enter The Gungeon/Post-processing", fileName = "GungeonPostProcessing")]
+[CreateAssetMenu(menuName = "Edgar/Examples/Gungeon/Post-processing", fileName = "GungeonPostProcessing")]
 public class GungeonPostProcessingTask : DungeonGeneratorPostProcessingGrid2D
 {
     public GameObject[] Enemies;
@@ -21,7 +21,7 @@ public class GungeonPostProcessingTask : DungeonGeneratorPostProcessingGrid2D
 
             // Add room manager
             var roomManager = roomTemplateInstance.AddComponent<GungeonRoomManager>();
-            
+
             if (room.Type != GungeonRoomType.Corridor)
             {
                 // Set enemies and floor collider to the room manager
@@ -61,7 +61,7 @@ public class GungeonPostProcessingTask : DungeonGeneratorPostProcessingGrid2D
                             doorsGameObject.GetComponent<GungeonDoor>().State = GungeonDoor.DoorState.EnemyLocked;
                             doorsGameObject.SetActive(false);
                         }
-                        
+
                         roomManager.Doors.Add(doorsGameObject);
                     }
                 }
@@ -69,7 +69,6 @@ public class GungeonPostProcessingTask : DungeonGeneratorPostProcessingGrid2D
         }
 
         /* ... */
-
     }
 
     /* ... */

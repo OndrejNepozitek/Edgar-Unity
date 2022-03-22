@@ -24,19 +24,19 @@ public class GungeonRoom : RoomBase
         switch (Type)
         {
             case GungeonRoomType.Entrance:
-                backgroundColor = new Color(38/256f, 115/256f, 38/256f);
+                backgroundColor = new Color(38 / 256f, 115 / 256f, 38 / 256f);
                 break;
 
             case GungeonRoomType.Boss:
-                backgroundColor = new Color(128/256f, 0/256f, 0/256f);
+                backgroundColor = new Color(128 / 256f, 0 / 256f, 0 / 256f);
                 break;
 
             case GungeonRoomType.Shop:
-                backgroundColor = new Color(102/256f, 0/256f, 204/256f);
+                backgroundColor = new Color(102 / 256f, 0 / 256f, 204 / 256f);
                 break;
 
             case GungeonRoomType.Reward:
-                backgroundColor = new Color(102/256f, 0/256f, 204/256f);
+                backgroundColor = new Color(102 / 256f, 0 / 256f, 204 / 256f);
                 break;
         }
 

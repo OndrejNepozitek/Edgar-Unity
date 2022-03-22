@@ -7,7 +7,7 @@ private void SetSpawnPosition(DungeonGeneratorLevelGrid2D level)
     // Find the room with the Entrance type
     var entranceRoomInstance = level
         .RoomInstances
-        .FirstOrDefault(x => ((MetroidvaniaRoom)x.Room).Type == MetroidvaniaRoomType.Entrance);
+        .FirstOrDefault(x => ((MetroidvaniaRoom) x.Room).Type == MetroidvaniaRoomType.Entrance);
 
     if (entranceRoomInstance == null)
     {

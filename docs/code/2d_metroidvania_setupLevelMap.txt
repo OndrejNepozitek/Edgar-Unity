@@ -32,14 +32,14 @@ private void SetupLevelMap(DungeonGeneratorLevelGrid2D level)
     tilemapObject.layer = mapLayer;
 
     // Copy background tiles
-    CopyTilesToLevelMap(level, new[] { "Background", "Other 1" }, tilemap, LevelMapBackgroundTile);
+    CopyTilesToLevelMap(level, new[] {"Background", "Other 1"}, tilemap, LevelMapBackgroundTile);
 
     // Copy wall background tiles
-    CopyTilesToLevelMap(level, new[] { "Background" }, tilemap, LevelMapWallBackgroundTile, x => x == WallTile);
+    CopyTilesToLevelMap(level, new[] {"Background"}, tilemap, LevelMapWallBackgroundTile, x => x == WallTile);
 
     // Copy platforms tiles
-    CopyTilesToLevelMap(level, new[] { "Platforms" }, tilemap, LevelMapPlatformTile);
+    CopyTilesToLevelMap(level, new[] {"Platforms"}, tilemap, LevelMapPlatformTile);
 
     // Copy wall tiles
-    CopyTilesToLevelMap(level, new[] { "Walls" }, tilemap, LevelMapWallTile);
+    CopyTilesToLevelMap(level, new[] {"Walls"}, tilemap, LevelMapWallTile);
 }

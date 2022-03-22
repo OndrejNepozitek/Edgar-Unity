@@ -1,4 +1,4 @@
-[CreateAssetMenu(menuName = "Edgar/Examples/Enter The Gungeon/Input setup", fileName = "Gungeon Input Setup")]
+[CreateAssetMenu(menuName = "Edgar/Examples/Gungeon/Input setup", fileName = "Gungeon Input Setup")]
 public class GungeonInputSetupTask : DungeonGeneratorInputBaseGrid2D
 {
     [Range(1, 2)]

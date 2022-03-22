@@ -26,7 +26,7 @@ public class GungeonRoomManager : MonoBehaviour
         var enemies = new List<GameObject>();
         var totalEnemiesCount = GungeonGameManager.Instance.Random.Next(4, 8);
 
-        while(enemies.Count < totalEnemiesCount)
+        while (enemies.Count < totalEnemiesCount)
         {
             // Find random position inside floor collider bounds
             var position = RandomPointInBounds(FloorCollider.bounds, 1f);
