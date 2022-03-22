@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Edgar.Unity.Editor
+namespace Edgar.Unity
 {
     /// <summary>
     /// Use this attribute to define a custom room control for a given room type.

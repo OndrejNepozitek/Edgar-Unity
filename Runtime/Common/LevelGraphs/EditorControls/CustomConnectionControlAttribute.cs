@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Edgar.Unity.Editor
+namespace Edgar.Unity
 {
     /// <summary>
     /// Use this attribute to define a custom connection control for a given connection type.
