@@ -6,8 +6,8 @@ namespace Edgar.Unity.Editor
     {
         private static readonly LevelGraphEditorStyles currentStyles = new LevelGraphEditorStyles();
 
-        public static GUIStyle RoomNode => currentStyles.roomNode;
-        private GUIStyle roomNode;
+        public static GUIStyle RoomControl => currentStyles.roomControl;
+        private GUIStyle roomControl;
 
         public static GUIStyle ConnectionHandle => currentStyles.connectionHandle;
         private GUIStyle connectionHandle;
@@ -19,11 +19,11 @@ namespace Edgar.Unity.Editor
 
         private void InitStyles()
         {
-            roomNode = new GUIStyle();
-            roomNode.normal.background = Texture2D.whiteTexture;
-            roomNode.normal.textColor = Color.white;
-            roomNode.fontSize = 12;
-            roomNode.alignment = TextAnchor.MiddleCenter;
+            roomControl = new GUIStyle();
+            roomControl.normal.background = Texture2D.whiteTexture;
+            roomControl.normal.textColor = Color.white;
+            roomControl.fontSize = 12;
+            roomControl.alignment = TextAnchor.MiddleCenter;
 
             connectionHandle = new GUIStyle();
             connectionHandle.normal.background = Texture2D.whiteTexture;

@@ -57,7 +57,7 @@ namespace Edgar.Unity.Editor
 
             var rect = GetRect(gridOffset, zoom);
 
-            var rectStyle = new GUIStyle(LevelGraphEditorStyles.RoomNode);
+            var rectStyle = new GUIStyle(LevelGraphEditorStyles.RoomControl);
             rectStyle.fontSize = (int) (rectStyle.fontSize * zoom);
             rectStyle.normal.textColor = style.TextColor;
 
