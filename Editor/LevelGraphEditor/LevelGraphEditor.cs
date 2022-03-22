@@ -92,6 +92,11 @@ namespace Edgar.Unity.Editor
         /// <param name="levelGraph"></param>
         public void Initialize(LevelGraph levelGraph)
         {
+            if (roomTypeToControlType == null || connectionTypeToControlType == null)
+            {
+                SetupCustomControls();
+            }
+
             LevelGraph = levelGraph;
             CurrentState = State.Idle;
             zoom = LevelGraph.EditorData.Zoom;
@@ -274,7 +279,7 @@ namespace Edgar.Unity.Editor
         {
             foreach (var connectionControl in connectionControls)
             {
-                connectionControl.Draw(panOffset, zoom);
+                connectionControl.Draw(panOffset, zoom, false);
             }
         }
 
@@ -282,7 +287,10 @@ namespace Edgar.Unity.Editor
         {
             if (CurrentState == State.CreateConnection)
             {
+                var color = Handles.color;
+                Handles.color = Color.white;
                 Handles.DrawLine(connectionStartControl.GetRect(panOffset, zoom).center, e.mousePosition);
+                Handles.color = color;
             }
         }
 

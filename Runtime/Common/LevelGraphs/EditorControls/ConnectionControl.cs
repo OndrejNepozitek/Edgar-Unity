@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -63,23 +64,42 @@ namespace Edgar.Unity
         /// </remarks>
         /// <param name="gridOffset">Offset of the level graph editor window.</param>
         /// <param name="zoom">Zoom of the level graph editor window.</param>
-        public virtual void Draw(Vector2 gridOffset, float zoom)
+        public virtual void Draw(Vector2 gridOffset, float zoom, bool isDirected)
         {
             #if UNITY_EDITOR
             var style = Connection.GetEditorStyle(IsSelected());
 
+            var from = From.GetRect(gridOffset, zoom).center;
+            var to = To.GetRect(gridOffset, zoom).center;
+
             // Draw a line between the From and To rooms
             var oldColor = Handles.color;
             Handles.color = style.LineColor;
-            Handles.DrawLine(From.GetRect(gridOffset, zoom).center, To.GetRect(gridOffset, zoom).center);
+            Handles.DrawLine(from, to);
             Handles.color = oldColor;
 
-            // Draw the connection handle
-            var oldBackgroundColor = GUI.backgroundColor;
-            GUI.backgroundColor = style.HandleBackgroundColor;
-            var rectStyle = new GUIStyle(LevelGraphEditorStyles.ConnectionHandle);
-            GUI.Box(GetHandleRect(gridOffset, zoom), string.Empty, rectStyle);
-            GUI.backgroundColor = oldBackgroundColor;
+            // Draw the connection handle - a square that is oriented according to the connection line
+            Handles.color = style.HandleBackgroundColor;
+            var center = (from + to) / 2;
+            var direction = to - from;
+            direction.Normalize();
+            direction *= 5 * zoom;
+            var perpendicular = Vector2.Perpendicular(direction);
+
+            var points = new List<Vector3>
+            {
+                center - direction - perpendicular,
+                center + direction - perpendicular,
+                center + direction + perpendicular,
+                center - direction + perpendicular
+            };
+            Handles.DrawAAConvexPolygon(points.ToArray());
+
+            if (isDirected)
+            {
+                center += 1.2f * direction;
+                Handles.DrawAAConvexPolygon(center - perpendicular, center + direction, center + perpendicular);
+            }
             #endif
         }
 

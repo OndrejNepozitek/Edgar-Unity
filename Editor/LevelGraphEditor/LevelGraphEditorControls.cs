@@ -617,7 +617,18 @@ namespace Edgar.Unity.Editor
             {
                 if (assembly == typeof(TAttribute).Assembly || assembly.GetReferencedAssemblies().Any(a => a.Name == definedIn))
                 {
-                    foreach (var type in assembly.GetTypes())
+                    Type[] types;
+
+                    try
+                    {
+                        types = assembly.GetTypes();
+                    }
+                    catch (ReflectionTypeLoadException)
+                    {
+                        continue;
+                    }
+
+                    foreach (var type in types)
                     {
                         var attribute = type.GetCustomAttribute<TAttribute>();
 
