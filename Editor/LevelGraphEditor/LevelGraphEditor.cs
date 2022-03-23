@@ -338,15 +338,23 @@ namespace Edgar.Unity.Editor
             }
         }
 
+        private void SetDirtyInternal()
+        {
+            EditorUtility.SetDirty(LevelGraph);
+            SaveData();
+        }
+
         private void SaveData(bool setDirty = false)
         {
             if (LevelGraph != null)
             {
+                var hasChanges = LevelGraph.EditorData.PanOffset != panOffset || LevelGraph.EditorData.Zoom != zoom;
+
                 LevelGraph.EditorData.PanOffset = panOffset;
                 LevelGraph.EditorData.Zoom = zoom;
 
                 // Should the metadata make the level graph dirty?
-                if (setDirty)
+                if (setDirty && hasChanges)
                 {
                     EditorUtility.SetDirty(LevelGraph);
                 }

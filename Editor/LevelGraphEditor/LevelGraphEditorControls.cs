@@ -129,7 +129,6 @@ namespace Edgar.Unity.Editor
                     else if (e.button == 0 && isDoubleClick)
                     {
                         CreateRoom(e.mousePosition);
-                        SaveData();
                         GUI.changed = true;
                     }
 
@@ -147,7 +146,6 @@ namespace Edgar.Unity.Editor
                         panOffset += e.delta / zoom;
 
                         GUI.changed = true;
-                        SaveData();
                     }
 
                     // Drag room
@@ -254,7 +252,7 @@ namespace Edgar.Unity.Editor
             // Select the room in the inspector after creating
             SelectObject(room);
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
 
             return room;
         }
@@ -324,7 +322,7 @@ namespace Edgar.Unity.Editor
 
             CreateConnectionControl(connection);
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
 
             return connection;
         }
@@ -373,7 +371,7 @@ namespace Edgar.Unity.Editor
 
             control.Room.Position = newPosition;
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
         }
 
         /// <summary>
@@ -403,7 +401,6 @@ namespace Edgar.Unity.Editor
 
             // This equation makes sure that zoom center is the focus of the zoom
             panOffset += -(zoom * (zoomCenter - panOffset * oldZoom) - zoomCenter * oldZoom) / (zoom * oldZoom) - panOffset;
-            SaveData();
         }
 
         /// <summary>
@@ -463,7 +460,7 @@ namespace Edgar.Unity.Editor
             DestroyImmediate(connectionControl.Connection, true);
             connectionControls.Remove(connectionControl);
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
         }
 
         /// <summary>
@@ -502,7 +499,7 @@ namespace Edgar.Unity.Editor
                 DeleteConnection(connectionControl);
             }
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
         }
 
         private void DeleteSelectedRooms()
@@ -542,7 +539,7 @@ namespace Edgar.Unity.Editor
                 LevelGraph.Rooms.Add(duplicatedRoom);
                 AssetDatabase.AddObjectToAsset(duplicatedRoom, LevelGraph);
 
-                EditorUtility.SetDirty(LevelGraph);
+                SetDirtyInternal();
             }
 
             GUI.changed = true;
