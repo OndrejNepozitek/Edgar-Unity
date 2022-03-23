@@ -129,6 +129,7 @@ namespace Edgar.Unity.Editor
                     else if (e.button == 0 && isDoubleClick)
                     {
                         CreateRoom(e.mousePosition);
+                        SaveData();
                         GUI.changed = true;
                     }
 
@@ -146,6 +147,7 @@ namespace Edgar.Unity.Editor
                         panOffset += e.delta / zoom;
 
                         GUI.changed = true;
+                        SaveData();
                     }
 
                     // Drag room
@@ -401,6 +403,7 @@ namespace Edgar.Unity.Editor
 
             // This equation makes sure that zoom center is the focus of the zoom
             panOffset += -(zoom * (zoomCenter - panOffset * oldZoom) - zoomCenter * oldZoom) / (zoom * oldZoom) - panOffset;
+            SaveData();
         }
 
         /// <summary>

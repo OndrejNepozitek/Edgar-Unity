@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -35,6 +36,8 @@ namespace Edgar.Unity.Editor
         private bool isDoubleClick;
 
         private int gridSize = 16;
+
+        private bool lastIsDirty;
 
         private Dictionary<Type, Type> roomTypeToControlType;
         private Dictionary<Type, Type> connectionTypeToControlType;
@@ -75,14 +78,19 @@ namespace Edgar.Unity.Editor
             DrawRooms();
 
             DrawMenuBar();
+
+            lastIsDirty = IsDirty();
         }
 
         protected void Update()
         {
-            if (LevelGraph.HasChanges)
+            var isDirtyChanged = lastIsDirty && !IsDirty();
+
+            if (LevelGraph.HasChanges || isDirtyChanged)
             {
-                Repaint();
+                lastIsDirty = IsDirty();
                 LevelGraph.HasChanges = false;
+                Repaint();
             }
         }
 
@@ -222,7 +230,7 @@ namespace Edgar.Unity.Editor
 
             if (LevelGraph != null)
             {
-                GUILayout.Label($"Selected graph: {LevelGraph.name}");
+                GUILayout.Label($"Selected graph: {LevelGraph.name} {(lastIsDirty ? "*" : "")}");
             }
             else
             {
@@ -230,6 +238,7 @@ namespace Edgar.Unity.Editor
             }
 
             snapToGrid = GUILayout.Toggle(snapToGrid, "Snap to grid", GUILayout.Width(120));
+            EditorPrefs.SetBool(EditorConstants.SnapToGridEditorPrefsKey, snapToGrid);
 
             if (GUILayout.Button(new GUIContent("Select in inspector"), EditorStyles.toolbarButton, GUILayout.Width(150)))
             {
@@ -267,6 +276,41 @@ namespace Edgar.Unity.Editor
             GUILayout.EndArea();
         }
 
+        #if UNITY_2019_1_OR_NEWER
+        private bool IsDirty()
+        {
+            if (LevelGraph == null)
+            {
+                return false;
+            }
+
+            return EditorUtility.IsDirty(LevelGraph);
+        }
+        #else
+        private MethodInfo isDirtyMethod;
+        private bool IsDirty()
+        {
+            if (LevelGraph == null)
+            {
+                return false;
+            }
+
+            if (isDirtyMethod == null)
+            {
+                var type = typeof(EditorUtility);
+                isDirtyMethod = type.GetMethod("IsDirty", BindingFlags.NonPublic | BindingFlags.Static, null, CallingConventions.Any, new[] {typeof(UnityEngine.Object)}, null);
+            }
+
+            if (isDirtyMethod != null)
+            {
+                var isDirty = (bool) isDirtyMethod.Invoke(this, new object[] {LevelGraph});
+                return isDirty;
+            }
+
+            return false;
+        }
+        #endif
+
         private void DrawRooms()
         {
             foreach (var roomControl in roomControls)
@@ -294,17 +338,14 @@ namespace Edgar.Unity.Editor
             }
         }
 
-        private void SaveData()
+        private void SaveData(bool setDirty = false)
         {
-            EditorPrefs.SetBool(EditorConstants.SnapToGridEditorPrefsKey, snapToGrid);
-
             if (LevelGraph != null)
             {
-                var setDirty = LevelGraph.EditorData.PanOffset != panOffset || LevelGraph.EditorData.Zoom != zoom;
-
                 LevelGraph.EditorData.PanOffset = panOffset;
                 LevelGraph.EditorData.Zoom = zoom;
 
+                // Should the metadata make the level graph dirty?
                 if (setDirty)
                 {
                     EditorUtility.SetDirty(LevelGraph);
@@ -314,12 +355,12 @@ namespace Edgar.Unity.Editor
 
         private void OnDestroy()
         {
-            SaveData();
+            SaveData(true);
         }
 
         private void OnLostFocus()
         {
-            SaveData();
+            SaveData(true);
         }
 
         private void ClearWindow()
