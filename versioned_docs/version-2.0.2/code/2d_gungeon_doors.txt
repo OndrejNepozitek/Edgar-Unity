@@ -1,0 +1,75 @@
+[CreateAssetMenu(menuName = "Edgar/Examples/Gungeon/Post-processing", fileName = "GungeonPostProcessing")]
+public class GungeonPostProcessingTask : DungeonGeneratorPostProcessingGrid2D
+{
+    public GameObject[] Enemies;
+
+    public override void Run(DungeonGeneratorLevelGrid2D level)
+    {
+        /* ... */
+
+        foreach (var roomInstance in level.RoomInstances)
+        {
+            var room = (GungeonRoom) roomInstance.Room;
+            var roomTemplateInstance = roomInstance.RoomTemplateInstance;
+
+            // Find floor tilemap layer
+            var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(roomTemplateInstance);
+            var floor = tilemaps.Single(x => x.name == "Floor").gameObject;
+
+            // Add current room detection handler
+            floor.AddComponent<GungeonCurrentRoomHandler>();
+
+            // Add room manager
+            var roomManager = roomTemplateInstance.AddComponent<GungeonRoomManager>();
+
+            if (room.Type != GungeonRoomType.Corridor)
+            {
+                // Set enemies and floor collider to the room manager
+                roomManager.Enemies = Enemies;
+                roomManager.FloorCollider = floor.GetComponent<CompositeCollider2D>();
+
+                // Find all the doors of neighboring corridors and save them in the room manager
+                // The term "door" has two different meanings here:
+                //   1. it represents the connection point between two rooms in the level
+                //   2. it represents the door game object that we have inside each corridor
+                foreach (var door in roomInstance.Doors)
+                {
+                    // Get the room instance of the room that is connected via this door
+                    var corridorRoom = door.ConnectedRoomInstance;
+
+                    // Get the room template instance of the corridor room
+                    var corridorGameObject = corridorRoom.RoomTemplateInstance;
+
+                    // Find the door game object by its name
+                    var doorsGameObject = corridorGameObject.transform.Find("Door")?.gameObject;
+
+                    // Each corridor room instance has a connection that represents the edge in the level graph
+                    // We use the connection object to check if the corridor should be locked or not
+                    var connection = (GungeonConnection) corridorRoom.Connection;
+
+                    if (doorsGameObject != null)
+                    {
+                        // If the connection is locked, we set the Locked state and keep the game object active
+                        // Otherwise we set the EnemyLocked state and deactivate the door. That means that the door is active and locked
+                        // only when there are enemies in the room.
+                        if (connection.IsLocked)
+                        {
+                            doorsGameObject.GetComponent<GungeonDoor>().State = GungeonDoor.DoorState.Locked;
+                        }
+                        else
+                        {
+                            doorsGameObject.GetComponent<GungeonDoor>().State = GungeonDoor.DoorState.EnemyLocked;
+                            doorsGameObject.SetActive(false);
+                        }
+
+                        roomManager.Doors.Add(doorsGameObject);
+                    }
+                }
+            }
+        }
+
+        /* ... */
+    }
+
+    /* ... */
+}

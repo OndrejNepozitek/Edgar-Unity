@@ -1,0 +1,24 @@
+[Serializable]
+public class MetroidvaniaRoomTemplatesConfig
+{
+    public GameObject[] DefaultRoomTemplates;
+
+    public GameObject[] ShopRoomTemplates;
+
+    /* ... */
+
+
+    public GameObject[] GetRoomTemplates(MetroidvaniaRoom room)
+    {
+        switch (room.Type)
+        {
+            case MetroidvaniaRoomType.Shop:
+                return ShopRoomTemplates;
+
+            /* ... */
+
+            default:
+                return DefaultRoomTemplates;
+        }
+    }
+}

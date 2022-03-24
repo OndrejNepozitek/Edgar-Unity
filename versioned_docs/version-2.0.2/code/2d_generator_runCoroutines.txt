@@ -1,0 +1,2 @@
+var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGeneratorGrid2D>();
+StartCoroutine(generator.GenerateCoroutine());
