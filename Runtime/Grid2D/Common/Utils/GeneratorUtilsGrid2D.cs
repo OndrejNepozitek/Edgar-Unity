@@ -93,12 +93,14 @@ namespace Edgar.Unity
         {
             var doorLines = layoutRoom.RoomTemplate.Doors.GetDoors(layoutRoom.Outline);
             var doorLineInfos = new List<DoorLineInfoGrid2D>();
+            var doors = layoutRoom.Doors.ToList();
 
             foreach (var doorLine in doorLines)
             {
                 var doorInstances = new List<DoorInstanceGrid2D>();
+                var usedDoors = new List<LayoutDoorGrid2D<RoomBase>>();
 
-                foreach (var door in layoutRoom.Doors)
+                foreach (var door in doors)
                 {
                     var otherDoorLine = door.DoorLine;
 
@@ -106,9 +108,13 @@ namespace Edgar.Unity
                     {
                         var doorInstance = TransformDoorInfo(door, roomInstances[door.ToRoom]);
                         doorInstances.Add(doorInstance);
-
-                        break;
+                        usedDoors.Add(door);
                     }
+                }
+
+                foreach (var door in usedDoors)
+                {
+                    doors.Remove(door);
                 }
 
                 var doorLineUnity = new DoorLineGrid2D()
@@ -123,6 +129,11 @@ namespace Edgar.Unity
                     doorInstances
                 );
                 doorLineInfos.Add(doorLineInfo);
+            }
+
+            if (doors.Count != 0)
+            {
+                throw new GeneratorException("Not all door were matched. This is a bug. Please contact the author of the asset.");
             }
 
             return doorLineInfos;
