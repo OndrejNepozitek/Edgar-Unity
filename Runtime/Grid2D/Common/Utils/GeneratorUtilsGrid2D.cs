@@ -71,7 +71,8 @@ namespace Edgar.Unity
 
             foreach (var roomInstance in layoutData.Values)
             {
-                roomInstance.SetDoors(TransformDoorInfo(layoutRooms[roomInstance.Room].Doors, layoutData));
+                var doorLines = ComputeDoorLines(layoutRooms[roomInstance.Room], layoutData);
+                roomInstance.SetDoors(doorLines);
             }
 
             // Add level info
@@ -86,6 +87,56 @@ namespace Edgar.Unity
             levelInfo.RoomInstances = layoutData.Values.ToList();
 
             return new DungeonGeneratorLevelGrid2D(layoutData, layout, rootGameObject, levelDescription);
+        }
+
+        private static List<DoorLineInfoGrid2D> ComputeDoorLines(LayoutRoomGrid2D<RoomBase> layoutRoom, Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances)
+        {
+            var doorLines = layoutRoom.RoomTemplate.Doors.GetDoors(layoutRoom.Outline);
+            var doorLineInfos = new List<DoorLineInfoGrid2D>();
+            var doors = layoutRoom.Doors.ToList();
+
+            foreach (var doorLine in doorLines)
+            {
+                var doorInstances = new List<DoorInstanceGrid2D>();
+                var usedDoors = new List<LayoutDoorGrid2D<RoomBase>>();
+
+                foreach (var door in doors)
+                {
+                    var otherDoorLine = door.DoorLine;
+
+                    if (doorLine.Line.Contains(otherDoorLine.From) != -1 && doorLine.Line.GetDirection() == otherDoorLine.GetDirection())
+                    {
+                        var doorInstance = TransformDoorInfo(door, roomInstances[door.ToRoom]);
+                        doorInstances.Add(doorInstance);
+                        usedDoors.Add(door);
+                    }
+                }
+
+                foreach (var door in usedDoors)
+                {
+                    doors.Remove(door);
+                }
+
+                var doorLineUnity = new DoorLineGrid2D()
+                {
+                    From = doorLine.Line.From.ToUnityIntVector3(),
+                    To = doorLine.Line.To.ToUnityIntVector3(),
+                    Length = doorLine.Length + 1,
+                };
+                var doorLineInfo = new DoorLineInfoGrid2D(
+                    doorLineUnity,
+                    doorLine.Line.GetDirectionVector().ToUnityIntVector3(),
+                    doorInstances
+                );
+                doorLineInfos.Add(doorLineInfo);
+            }
+
+            if (doors.Count != 0)
+            {
+                throw new GeneratorException("Not all door were matched. This is a bug. Please contact the author of the asset.");
+            }
+
+            return doorLineInfos;
         }
 
         private static List<DoorInstanceGrid2D> TransformDoorInfo(IEnumerable<LayoutDoorGrid2D<RoomBase>> doorInfos, Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances)

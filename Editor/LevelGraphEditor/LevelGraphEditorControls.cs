@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Edgar.Unity.Editor
 {
@@ -25,6 +28,12 @@ namespace Edgar.Unity.Editor
         {
             var e = Event.current;
 
+            // Skip window controls if an object picker is currently shown
+            if (EditorGUIUtility.GetObjectPickerControlID() != 0)
+            {
+                return;
+            }
+
             switch (e.type)
             {
                 case EventType.MouseDown:
@@ -34,25 +43,25 @@ namespace Edgar.Unity.Editor
 
                     if (CurrentState == State.Idle)
                     {
-                        var currentHoverRoomNode = GetHoverRoomNode(e.mousePosition);
-                        var currentHoverConnectionNode = GetHoverConnectionNode(e.mousePosition);
+                        var currentHoverRoomControl = GetHoverRoomControl(e.mousePosition);
+                        var hoverConnectionControl = GetHoverConnectionControl(e.mousePosition);
 
-                        if (currentHoverRoomNode != null)
+                        if (currentHoverRoomControl != null)
                         {
                             // Hold room on left click
                             if (e.button == 0 && !e.control)
                             {
-                                hoverRoomNode = currentHoverRoomNode;
+                                hoverRoomControl = currentHoverRoomControl;
                                 CurrentState = State.HoldRoom;
                             }
                             // Start making a connection on left click with control
                             else if (e.button == 0 && e.control)
                             {
                                 CurrentState = State.CreateConnection;
-                                connectionStartNode = currentHoverRoomNode;
+                                connectionStartControl = currentHoverRoomControl;
                             }
                         }
-                        else if (currentHoverConnectionNode != null)
+                        else if (hoverConnectionControl != null)
                         {
                             /* empty */
                         }
@@ -68,17 +77,17 @@ namespace Edgar.Unity.Editor
 
                 case EventType.MouseUp:
                 {
-                    var currentHoverRoomNode = GetHoverRoomNode(e.mousePosition);
-                    var currentHoverConnectionNode = GetHoverConnectionNode(e.mousePosition);
+                    var currentHoverRoomControl = GetHoverRoomControl(e.mousePosition);
+                    var currentHoverConnectionControl = GetHoverConnectionControl(e.mousePosition);
 
-                    if (currentHoverRoomNode != null)
+                    if (currentHoverRoomControl != null)
                     {
                         var mouseDownDistance = Vector2.Distance(mouseDownPosition, e.mousePosition);
 
                         // Configure room on double click
                         if (e.button == 0 && !e.control && ( /*mouseDownDistance <= 2 ||*/ isDoubleClick))
                         {
-                            SelectObject(currentHoverRoomNode.Room, e.shift);
+                            SelectObject(currentHoverRoomControl.Room, e.shift);
 
                             GUI.changed = true;
                             CurrentState = State.Idle;
@@ -86,28 +95,28 @@ namespace Edgar.Unity.Editor
                         // Show room context menu on right click
                         else if (e.button == 1)
                         {
-                            ShowRoomContextMenu(currentHoverRoomNode);
+                            ShowRoomContextMenu(currentHoverRoomControl);
                             GUI.changed = true;
                         }
-                        // Create a connection if hovering node
+                        // Create a connection if hovering a room
                         else if (CurrentState == State.CreateConnection)
                         {
-                            CreateConnection(connectionStartNode, currentHoverRoomNode);
+                            CreateConnection(connectionStartControl, currentHoverRoomControl);
                             GUI.changed = true;
                         }
                     }
-                    else if (currentHoverConnectionNode != null)
+                    else if (currentHoverConnectionControl != null)
                     {
                         // Configure connection on double click
                         if (e.button == 0 && isDoubleClick)
                         {
-                            SelectObject(currentHoverConnectionNode.Connection);
+                            SelectObject(currentHoverConnectionControl.Connection);
                             GUI.changed = true;
                         }
                         // Show connection context menu on right click
                         else if (e.button == 1)
                         {
-                            ShowConnectionContextMenu(currentHoverConnectionNode);
+                            ShowConnectionContextMenu(currentHoverConnectionControl);
                             GUI.changed = true;
                         }
                     }
@@ -145,13 +154,13 @@ namespace Edgar.Unity.Editor
                         if (CurrentState == State.HoldRoom)
                         {
                             drag = Vector2.zero;
-                            originalDragRoomPosition = hoverRoomNode.Room.Position;
+                            originalDragRoomPosition = hoverRoomControl.Room.Position;
                         }
 
                         CurrentState = State.DragRoom;
                         drag += e.delta;
 
-                        HandleDragRoomNode(e);
+                        HandleDragRoomControl(e);
                         GUI.changed = true;
                     }
 
@@ -224,13 +233,13 @@ namespace Edgar.Unity.Editor
             LevelGraph.Rooms.Add(room);
             AssetDatabase.AddObjectToAsset(room, LevelGraph);
 
-            var roomNode = CreateRoomNode(room);
+            var roomControl = CreateRoomControl(room);
 
             // We have to compute a normalized position because the mouse position is not affected by zoom and pan offset
             var normalizedPosition = WorldToGridPosition(position);
 
-            // Subtract the center of the room node rect because we want the room to appear centered on the cursor
-            normalizedPosition -= roomNode.GetRect(1, Vector2.zero).center;
+            // Subtract the center of the room control rect because we want the room to appear centered on the cursor
+            normalizedPosition -= roomControl.GetRect(Vector2.zero, 1).center;
 
             // Snap to grid if enabled
             if (snapToGrid)
@@ -243,7 +252,7 @@ namespace Edgar.Unity.Editor
             // Select the room in the inspector after creating
             SelectObject(room);
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
 
             return room;
         }
@@ -258,25 +267,36 @@ namespace Edgar.Unity.Editor
         }
 
         /// <summary>
-        /// Creates a room node from a given room.
+        /// Creates a room control for a given room.
         /// </summary>
         /// <param name="room"></param>
         /// <returns></returns>
-        private RoomNode CreateRoomNode(RoomBase room)
+        private RoomControl CreateRoomControl(RoomBase room)
         {
-            var roomNode = new RoomNode(room);
-            roomNodes.Add(roomNode);
+            RoomControl roomControl;
 
-            return roomNode;
+            if (roomTypeToControlType.TryGetValue(room.GetType(), out var customControl))
+            {
+                roomControl = (RoomControl) Activator.CreateInstance(customControl);
+            }
+            else
+            {
+                roomControl = new RoomControl();
+            }
+
+            roomControl.Initialize(room);
+            roomControls.Add(roomControl);
+
+            return roomControl;
         }
 
         /// <summary>
-        /// Creates a connection between the two given room nodes.
+        /// Creates a connection between the two given rooms.
         /// </summary>
         /// <param name="from"></param>
         /// <param name="to"></param>
         /// <returns></returns>
-        public ConnectionBase CreateConnection(RoomNode from, RoomNode to)
+        public ConnectionBase CreateConnection(RoomControl from, RoomControl to)
         {
             // Do not create the connection if the from room is same as the to room
             if (from.Room == to.Room)
@@ -285,7 +305,7 @@ namespace Edgar.Unity.Editor
             }
 
             // Do not create the connection if it already exists
-            if (connectionNodes.Any(x => (x.From == from && x.To == to) || (x.To == from && x.From == to)))
+            if (connectionControls.Any(x => (x.From == from && x.To == to) || (x.To == from && x.From == to)))
             {
                 return null;
             }
@@ -300,36 +320,46 @@ namespace Edgar.Unity.Editor
             LevelGraph.Connections.Add(connection);
             AssetDatabase.AddObjectToAsset(connection, LevelGraph);
 
-            CreateConnectionNode(connection);
+            CreateConnectionControl(connection);
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
 
             return connection;
         }
 
         /// <summary>
-        /// Create a connection node from a given connection.
+        /// Create a connection control for a given connection.
         /// </summary>
         /// <param name="connection"></param>
         /// <returns></returns>
-        public ConnectionNode CreateConnectionNode(ConnectionBase connection)
+        public ConnectionControl CreateConnectionControl(ConnectionBase connection)
         {
-            var from = roomNodes.Single(x => x.Room == connection.From);
-            var to = roomNodes.Single(x => x.Room == connection.To);
+            var from = roomControls.Single(x => x.Room == connection.From);
+            var to = roomControls.Single(x => x.Room == connection.To);
 
-            var connectionNode = new ConnectionNode(connection, from, to);
-            connectionNodes.Add(connectionNode);
+            ConnectionControl connectionControl;
+            if (connectionTypeToControlType.TryGetValue(connection.GetType(), out var customControl))
+            {
+                connectionControl = (ConnectionControl) Activator.CreateInstance(customControl);
+            }
+            else
+            {
+                connectionControl = new ConnectionControl();
+            }
 
-            return connectionNode;
+            connectionControl.Initialize(connection, from, to);
+            connectionControls.Add(connectionControl);
+
+            return connectionControl;
         }
 
         /// <summary>
         /// Handle room being dragged.
         /// </summary>
         /// <param name="e"></param>
-        private void HandleDragRoomNode(Event e)
+        private void HandleDragRoomControl(Event e)
         {
-            var node = hoverRoomNode;
+            var control = hoverRoomControl;
             var dragOffset = drag / zoom;
             var newPosition = originalDragRoomPosition + dragOffset;
 
@@ -339,9 +369,9 @@ namespace Edgar.Unity.Editor
                 newPosition = GetSnappedToGridPosition(newPosition);
             }
 
-            node.Room.Position = newPosition;
+            control.Room.Position = newPosition;
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
         }
 
         /// <summary>
@@ -379,13 +409,13 @@ namespace Edgar.Unity.Editor
         /// </summary>
         /// <param name="mousePosition"></param>
         /// <returns></returns>
-        private RoomNode GetHoverRoomNode(Vector2 mousePosition)
+        private RoomControl GetHoverRoomControl(Vector2 mousePosition)
         {
-            foreach (var roomNode in roomNodes)
+            foreach (var roomControl in roomControls)
             {
-                if (roomNode.GetRect(zoom, panOffset).Contains(mousePosition))
+                if (roomControl.GetRect(panOffset, zoom).Contains(mousePosition))
                 {
-                    return roomNode;
+                    return roomControl;
                 }
             }
 
@@ -398,13 +428,13 @@ namespace Edgar.Unity.Editor
         /// </summary>
         /// <param name="mousePosition"></param>
         /// <returns></returns>
-        private ConnectionNode GetHoverConnectionNode(Vector2 mousePosition)
+        private ConnectionControl GetHoverConnectionControl(Vector2 mousePosition)
         {
-            foreach (var connectionNode in connectionNodes)
+            foreach (var connectionControl in connectionControls)
             {
-                if (connectionNode.GetHandleRect(zoom, panOffset).Contains(mousePosition))
+                if (connectionControl.GetHandleRect(panOffset, zoom).Contains(mousePosition))
                 {
-                    return connectionNode;
+                    return connectionControl;
                 }
             }
 
@@ -414,78 +444,76 @@ namespace Edgar.Unity.Editor
         /// <summary>
         /// Shows the connection context menu.
         /// </summary>
-        /// <param name="connectionNode"></param>
-        private void ShowConnectionContextMenu(ConnectionNode connectionNode)
+        private void ShowConnectionContextMenu(ConnectionControl connectionControl)
         {
             var genericMenu = new GenericMenu();
-            genericMenu.AddItem(new GUIContent("Delete connection"), false, () => DeleteConnectionNode(connectionNode));
+            genericMenu.AddItem(new GUIContent("Delete connection"), false, () => DeleteConnection(connectionControl));
             genericMenu.ShowAsContext();
         }
 
         /// <summary>
-        /// Deletes a given connection node.
+        /// Deletes a given connection.
         /// </summary>
-        /// <param name="connectionNode"></param>
-        private void DeleteConnectionNode(ConnectionNode connectionNode)
+        private void DeleteConnection(ConnectionControl connectionControl)
         {
-            LevelGraph.Connections.Remove(connectionNode.Connection);
-            DestroyImmediate(connectionNode.Connection, true);
-            connectionNodes.Remove(connectionNode);
+            LevelGraph.Connections.Remove(connectionControl.Connection);
+            DestroyImmediate(connectionControl.Connection, true);
+            connectionControls.Remove(connectionControl);
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
         }
 
         /// <summary>
         /// Shows the room context menu.
         /// </summary>
-        /// <param name="roomNode"></param>
-        private void ShowRoomContextMenu(RoomNode roomNode)
+        /// <param name="roomControl"></param>
+        private void ShowRoomContextMenu(RoomControl roomControl)
         {
             var genericMenu = new GenericMenu();
-            genericMenu.AddItem(new GUIContent("Configure room"), false, () => SelectObject(roomNode.Room));
-            genericMenu.AddItem(new GUIContent("Delete room"), false, () => DeleteRoomNode(roomNode));
+            genericMenu.AddItem(new GUIContent("Configure room"), false, () => SelectObject(roomControl.Room));
+            genericMenu.AddItem(new GUIContent("Delete room"), false, () => DeleteRoom(roomControl));
             genericMenu.ShowAsContext();
         }
 
         /// <summary>
-        /// Deletes a given room node.
+        /// Deletes a given room.
         /// </summary>
-        /// <param name="roomNode"></param>
-        private void DeleteRoomNode(RoomNode roomNode)
+        /// <param name="roomControl"></param>
+        private void DeleteRoom(RoomControl roomControl)
         {
-            LevelGraph.Rooms.Remove(roomNode.Room);
-            DestroyImmediate(roomNode.Room, true);
-            roomNodes.Remove(roomNode);
+            LevelGraph.Rooms.Remove(roomControl.Room);
+            DestroyImmediate(roomControl.Room, true);
+            roomControls.Remove(roomControl);
 
-            var connectionsToRemove = new List<ConnectionNode>();
-            foreach (var connectionNode in connectionNodes)
+            var connectionsToRemove = new List<ConnectionControl>();
+            foreach (var connectionControl in connectionControls)
             {
-                if (connectionNode.From == roomNode || connectionNode.To == roomNode)
+                if (connectionControl.From == roomControl || connectionControl.To == roomControl)
                 {
-                    connectionsToRemove.Add(connectionNode);
+                    connectionsToRemove.Add(connectionControl);
                 }
             }
 
-            foreach (var connectionNode in connectionsToRemove)
+            foreach (var connectionControl in connectionsToRemove)
             {
-                DeleteConnectionNode(connectionNode);
+                DeleteConnection(connectionControl);
             }
 
-            EditorUtility.SetDirty(LevelGraph);
+            SetDirtyInternal();
         }
 
         private void DeleteSelectedRooms()
         {
             foreach (var room in Selection.objects.OfType<RoomBase>())
             {
-                var roomNode = roomNodes.FirstOrDefault(x => x.Room == room);
+                var roomControl = roomControls.FirstOrDefault(x => x.Room == room);
 
-                if (roomNode == null)
+                if (roomControl == null)
                 {
                     continue;
                 }
 
-                DeleteRoomNode(roomNode);
+                DeleteRoom(roomControl);
             }
 
             GUI.changed = true;
@@ -495,9 +523,9 @@ namespace Edgar.Unity.Editor
         {
             foreach (var room in Selection.objects.OfType<RoomBase>())
             {
-                var roomNode = roomNodes.FirstOrDefault(x => x.Room == room);
+                var roomControl = roomControls.FirstOrDefault(x => x.Room == room);
 
-                if (roomNode == null)
+                if (roomControl == null)
                 {
                     continue;
                 }
@@ -505,13 +533,13 @@ namespace Edgar.Unity.Editor
                 var duplicatedRoom = Instantiate(room);
                 duplicatedRoom.Position += 2 * new Vector2(gridSize, -gridSize);
 
-                var duplicatedRoomNode = CreateRoomNode(duplicatedRoom);
+                CreateRoomControl(duplicatedRoom);
 
                 // Add room to the level graph
                 LevelGraph.Rooms.Add(duplicatedRoom);
                 AssetDatabase.AddObjectToAsset(duplicatedRoom, LevelGraph);
 
-                EditorUtility.SetDirty(LevelGraph);
+                SetDirtyInternal();
             }
 
             GUI.changed = true;
@@ -528,6 +556,88 @@ namespace Edgar.Unity.Editor
             else
             {
                 Selection.objects = new List<UnityEngine.Object>(Selection.objects) {o}.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Setups custom controls for rooms and connection using reflection and attributes.
+        /// </summary>
+        private void SetupCustomControls()
+        {
+            //var sw = new Stopwatch();
+            //sw.Start();
+
+            roomTypeToControlType = new Dictionary<Type, Type>();
+            foreach (var tuple in GetTypesWithAttribute<CustomRoomControlAttribute>())
+            {
+                var controlType = tuple.Item1;
+                var attribute = tuple.Item2;
+
+                if (!typeof(RoomControl).IsAssignableFrom(controlType))
+                {
+                    Debug.LogWarning($"Class '{controlType}' does not inherit from '{nameof(RoomControl)}'!");
+                    continue;
+                }
+
+                //Debug.Log($"{attribute.RoomType}, {controlType}");
+                roomTypeToControlType[attribute.RoomType] = controlType;
+            }
+
+            connectionTypeToControlType = new Dictionary<Type, Type>();
+            foreach (var tuple in GetTypesWithAttribute<CustomConnectionControlAttribute>())
+            {
+                var controlType = tuple.Item1;
+                var attribute = tuple.Item2;
+
+                if (!typeof(ConnectionControl).IsAssignableFrom(controlType))
+                {
+                    Debug.LogWarning($"Class '{controlType}' does not inherit from '{nameof(ConnectionControl)}'!");
+                    continue;
+                }
+
+                //Debug.Log($"{attribute.ConnectionType}, {controlType}");
+                connectionTypeToControlType[attribute.ConnectionType] = controlType;
+            }
+
+            //sw.Stop();
+            //Debug.Log($"{sw.ElapsedMilliseconds}");
+        }
+
+        /// <summary>
+        /// Finds types that contain a custom attribute.
+        /// </summary>
+        /// <typeparam name="TAttribute"></typeparam>
+        /// <returns></returns>
+        private IEnumerable<Tuple<Type, TAttribute>> GetTypesWithAttribute<TAttribute>()
+            where TAttribute : Attribute
+        {
+            var definedIn = typeof(TAttribute).Assembly.GetName().Name;
+
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                if (assembly == typeof(TAttribute).Assembly || assembly.GetReferencedAssemblies().Any(a => a.Name == definedIn))
+                {
+                    Type[] types;
+
+                    try
+                    {
+                        types = assembly.GetTypes();
+                    }
+                    catch (ReflectionTypeLoadException)
+                    {
+                        continue;
+                    }
+
+                    foreach (var type in types)
+                    {
+                        var attribute = type.GetCustomAttribute<TAttribute>();
+
+                        if (attribute != null)
+                        {
+                            yield return Tuple.Create(type, attribute);
+                        }
+                    }
+                }
             }
         }
     }

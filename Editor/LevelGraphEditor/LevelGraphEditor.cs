@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEditor;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Edgar.Unity.Editor
 {
@@ -9,9 +11,9 @@ namespace Edgar.Unity.Editor
     {
         public LevelGraph LevelGraph { get; private set; }
 
-        private List<RoomNode> roomNodes = new List<RoomNode>();
+        private List<RoomControl> roomControls = new List<RoomControl>();
 
-        private List<ConnectionNode> connectionNodes = new List<ConnectionNode>();
+        private List<ConnectionControl> connectionControls = new List<ConnectionControl>();
 
         public State CurrentState;
 
@@ -23,21 +25,27 @@ namespace Edgar.Unity.Editor
 
         private float zoom;
 
-        private RoomNode hoverRoomNode;
+        private RoomControl hoverRoomControl;
 
         private Vector2 originalDragRoomPosition;
 
         private int currentPickerWindow;
 
-        private RoomNode connectionStartNode;
+        private RoomControl connectionStartControl;
 
         private bool isDoubleClick;
 
         private int gridSize = 16;
 
+        private bool lastIsDirty;
+
+        private Dictionary<Type, Type> roomTypeToControlType;
+        private Dictionary<Type, Type> connectionTypeToControlType;
+
         public void OnEnable()
         {
             Selection.selectionChanged += ProjectBrowserLocker.Unlock;
+            SetupCustomControls();
 
             if (LevelGraph != null)
             {
@@ -70,14 +78,19 @@ namespace Edgar.Unity.Editor
             DrawRooms();
 
             DrawMenuBar();
+
+            lastIsDirty = IsDirty();
         }
 
         protected void Update()
         {
-            if (LevelGraph.HasChanges)
+            var isDirtyChanged = lastIsDirty && !IsDirty();
+
+            if (LevelGraph.HasChanges || isDirtyChanged)
             {
-                Repaint();
+                lastIsDirty = IsDirty();
                 LevelGraph.HasChanges = false;
+                Repaint();
             }
         }
 
@@ -87,20 +100,25 @@ namespace Edgar.Unity.Editor
         /// <param name="levelGraph"></param>
         public void Initialize(LevelGraph levelGraph)
         {
+            if (roomTypeToControlType == null || connectionTypeToControlType == null)
+            {
+                SetupCustomControls();
+            }
+
             LevelGraph = levelGraph;
             CurrentState = State.Idle;
             zoom = LevelGraph.EditorData.Zoom;
             panOffset = LevelGraph.EditorData.PanOffset;
             snapToGrid = EditorPrefs.GetBool(EditorConstants.SnapToGridEditorPrefsKey, false);
-            connectionStartNode = null;
+            connectionStartControl = null;
 
-            // Initialize room nodes
-            roomNodes = new List<RoomNode>();
+            // Initialize room controls
+            roomControls = new List<RoomControl>();
             foreach (var room in LevelGraph.Rooms)
             {
                 if (room != null)
                 {
-                    CreateRoomNode(room);
+                    CreateRoomControl(room);
                 }
                 else
                 {
@@ -108,13 +126,13 @@ namespace Edgar.Unity.Editor
                 }
             }
 
-            // Initialize connection nodes
-            connectionNodes = new List<ConnectionNode>();
+            // Initialize connection controls
+            connectionControls = new List<ConnectionControl>();
             foreach (var connection in LevelGraph.Connections)
             {
                 if (connection != null)
                 {
-                    CreateConnectionNode(connection);
+                    CreateConnectionControl(connection);
                 }
                 else
                 {
@@ -212,7 +230,7 @@ namespace Edgar.Unity.Editor
 
             if (LevelGraph != null)
             {
-                GUILayout.Label($"Selected graph: {LevelGraph.name}");
+                GUILayout.Label($"Selected graph: {LevelGraph.name} {(lastIsDirty ? "*" : "")}");
             }
             else
             {
@@ -220,6 +238,7 @@ namespace Edgar.Unity.Editor
             }
 
             snapToGrid = GUILayout.Toggle(snapToGrid, "Snap to grid", GUILayout.Width(120));
+            EditorPrefs.SetBool(EditorConstants.SnapToGridEditorPrefsKey, snapToGrid);
 
             if (GUILayout.Button(new GUIContent("Select in inspector"), EditorStyles.toolbarButton, GUILayout.Width(150)))
             {
@@ -257,19 +276,54 @@ namespace Edgar.Unity.Editor
             GUILayout.EndArea();
         }
 
+        #if UNITY_2019_1_OR_NEWER
+        private bool IsDirty()
+        {
+            if (LevelGraph == null)
+            {
+                return false;
+            }
+
+            return EditorUtility.IsDirty(LevelGraph);
+        }
+        #else
+        private MethodInfo isDirtyMethod;
+        private bool IsDirty()
+        {
+            if (LevelGraph == null)
+            {
+                return false;
+            }
+
+            if (isDirtyMethod == null)
+            {
+                var type = typeof(EditorUtility);
+                isDirtyMethod = type.GetMethod("IsDirty", BindingFlags.NonPublic | BindingFlags.Static, null, CallingConventions.Any, new[] {typeof(UnityEngine.Object)}, null);
+            }
+
+            if (isDirtyMethod != null)
+            {
+                var isDirty = (bool) isDirtyMethod.Invoke(this, new object[] {LevelGraph});
+                return isDirty;
+            }
+
+            return false;
+        }
+        #endif
+
         private void DrawRooms()
         {
-            foreach (var roomNode in roomNodes)
+            foreach (var roomControl in roomControls)
             {
-                roomNode.Draw(zoom, panOffset);
+                roomControl.Draw(panOffset, zoom);
             }
         }
 
         private void DrawConnections()
         {
-            foreach (var connectionNode in connectionNodes)
+            foreach (var connectionControl in connectionControls)
             {
-                connectionNode.Draw(zoom, panOffset);
+                connectionControl.Draw(panOffset, zoom, false);
             }
         }
 
@@ -277,22 +331,30 @@ namespace Edgar.Unity.Editor
         {
             if (CurrentState == State.CreateConnection)
             {
-                Handles.DrawLine(connectionStartNode.GetRect(zoom, panOffset).center, e.mousePosition);
+                var color = Handles.color;
+                Handles.color = Color.white;
+                Handles.DrawLine(connectionStartControl.GetRect(panOffset, zoom).center, e.mousePosition);
+                Handles.color = color;
             }
         }
 
-        private void SaveData()
+        private void SetDirtyInternal()
         {
-            EditorPrefs.SetBool(EditorConstants.SnapToGridEditorPrefsKey, snapToGrid);
+            EditorUtility.SetDirty(LevelGraph);
+            SaveData();
+        }
 
+        private void SaveData(bool setDirty = false)
+        {
             if (LevelGraph != null)
             {
-                var setDirty = LevelGraph.EditorData.PanOffset != panOffset || LevelGraph.EditorData.Zoom != zoom;
+                var hasChanges = LevelGraph.EditorData.PanOffset != panOffset || LevelGraph.EditorData.Zoom != zoom;
 
                 LevelGraph.EditorData.PanOffset = panOffset;
                 LevelGraph.EditorData.Zoom = zoom;
 
-                if (setDirty)
+                // Should the metadata make the level graph dirty?
+                if (setDirty && hasChanges)
                 {
                     EditorUtility.SetDirty(LevelGraph);
                 }
@@ -301,19 +363,19 @@ namespace Edgar.Unity.Editor
 
         private void OnDestroy()
         {
-            SaveData();
+            SaveData(true);
         }
 
         private void OnLostFocus()
         {
-            SaveData();
+            SaveData(true);
         }
 
         private void ClearWindow()
         {
             LevelGraph = null;
-            connectionNodes.Clear();
-            roomNodes.Clear();
+            connectionControls.Clear();
+            roomControls.Clear();
         }
 
         public enum State

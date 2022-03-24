@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Edgar.Unity
@@ -89,6 +90,15 @@ namespace Edgar.Unity
         private List<DoorInstanceGrid2D> doors;
 
         /// <summary>
+        /// List of all the door lines that were available in the used room template.
+        /// These door lines contain information about which tiles were actually used for doors and which not.
+        /// </summary>
+        public List<DoorLineInfoGrid2D> DoorLines => doorLines;
+
+        [SerializeField]
+        private List<DoorLineInfoGrid2D> doorLines;
+
+        /// <summary>
         ///     The polygon that was used as the outline of the room.
         /// </summary>
         /// <remarks>
@@ -116,10 +126,10 @@ namespace Edgar.Unity
         /// Sets the doors of the room instance.
         /// Should not be called directly.
         /// </summary>
-        /// <param name="doors"></param>
-        internal void SetDoors(List<DoorInstanceGrid2D> doors)
+        internal void SetDoors(List<DoorLineInfoGrid2D> doorLines)
         {
-            this.doors = doors;
+            this.doors = doorLines.SelectMany(x => x.UsedDoors).ToList();
+            this.doorLines = doorLines;
         }
     }
 }
