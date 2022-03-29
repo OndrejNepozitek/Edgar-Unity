@@ -113,6 +113,109 @@ references:
   commentId: F:Edgar.Unity.ConnectionBase.To
   fullName: Edgar.Unity.ConnectionBase.To
   nameWithType: ConnectionBase.To
+- uid: Edgar.Unity.ConnectionControl
+  name: ConnectionControl
+  href: master/api/Edgar.Unity.ConnectionControl.html
+  commentId: T:Edgar.Unity.ConnectionControl
+  fullName: Edgar.Unity.ConnectionControl
+  nameWithType: ConnectionControl
+- uid: Edgar.Unity.ConnectionControl.Connection
+  name: Connection
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_Connection
+  commentId: P:Edgar.Unity.ConnectionControl.Connection
+  fullName: Edgar.Unity.ConnectionControl.Connection
+  nameWithType: ConnectionControl.Connection
+- uid: Edgar.Unity.ConnectionControl.Connection*
+  name: Connection
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_Connection_
+  commentId: Overload:Edgar.Unity.ConnectionControl.Connection
+  isSpec: "True"
+  fullName: Edgar.Unity.ConnectionControl.Connection
+  nameWithType: ConnectionControl.Connection
+- uid: Edgar.Unity.ConnectionControl.DefaultHandleWidth
+  name: DefaultHandleWidth
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_DefaultHandleWidth
+  commentId: F:Edgar.Unity.ConnectionControl.DefaultHandleWidth
+  fullName: Edgar.Unity.ConnectionControl.DefaultHandleWidth
+  nameWithType: ConnectionControl.DefaultHandleWidth
+- uid: Edgar.Unity.ConnectionControl.Draw(Vector2,System.Single,System.Boolean)
+  name: Draw(Vector2, Single, Boolean)
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_Draw_Vector2_System_Single_System_Boolean_
+  commentId: M:Edgar.Unity.ConnectionControl.Draw(Vector2,System.Single,System.Boolean)
+  fullName: Edgar.Unity.ConnectionControl.Draw(Vector2, System.Single, System.Boolean)
+  nameWithType: ConnectionControl.Draw(Vector2, Single, Boolean)
+- uid: Edgar.Unity.ConnectionControl.Draw*
+  name: Draw
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_Draw_
+  commentId: Overload:Edgar.Unity.ConnectionControl.Draw
+  isSpec: "True"
+  fullName: Edgar.Unity.ConnectionControl.Draw
+  nameWithType: ConnectionControl.Draw
+- uid: Edgar.Unity.ConnectionControl.From
+  name: From
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_From
+  commentId: P:Edgar.Unity.ConnectionControl.From
+  fullName: Edgar.Unity.ConnectionControl.From
+  nameWithType: ConnectionControl.From
+- uid: Edgar.Unity.ConnectionControl.From*
+  name: From
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_From_
+  commentId: Overload:Edgar.Unity.ConnectionControl.From
+  isSpec: "True"
+  fullName: Edgar.Unity.ConnectionControl.From
+  nameWithType: ConnectionControl.From
+- uid: Edgar.Unity.ConnectionControl.GetHandleRect(Vector2,System.Single)
+  name: GetHandleRect(Vector2, Single)
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_GetHandleRect_Vector2_System_Single_
+  commentId: M:Edgar.Unity.ConnectionControl.GetHandleRect(Vector2,System.Single)
+  fullName: Edgar.Unity.ConnectionControl.GetHandleRect(Vector2, System.Single)
+  nameWithType: ConnectionControl.GetHandleRect(Vector2, Single)
+- uid: Edgar.Unity.ConnectionControl.GetHandleRect*
+  name: GetHandleRect
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_GetHandleRect_
+  commentId: Overload:Edgar.Unity.ConnectionControl.GetHandleRect
+  isSpec: "True"
+  fullName: Edgar.Unity.ConnectionControl.GetHandleRect
+  nameWithType: ConnectionControl.GetHandleRect
+- uid: Edgar.Unity.ConnectionControl.Initialize(Edgar.Unity.ConnectionBase,Edgar.Unity.RoomControl,Edgar.Unity.RoomControl)
+  name: Initialize(ConnectionBase, RoomControl, RoomControl)
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_Initialize_Edgar_Unity_ConnectionBase_Edgar_Unity_RoomControl_Edgar_Unity_RoomControl_
+  commentId: M:Edgar.Unity.ConnectionControl.Initialize(Edgar.Unity.ConnectionBase,Edgar.Unity.RoomControl,Edgar.Unity.RoomControl)
+  fullName: Edgar.Unity.ConnectionControl.Initialize(Edgar.Unity.ConnectionBase, Edgar.Unity.RoomControl, Edgar.Unity.RoomControl)
+  nameWithType: ConnectionControl.Initialize(ConnectionBase, RoomControl, RoomControl)
+- uid: Edgar.Unity.ConnectionControl.Initialize*
+  name: Initialize
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_Initialize_
+  commentId: Overload:Edgar.Unity.ConnectionControl.Initialize
+  isSpec: "True"
+  fullName: Edgar.Unity.ConnectionControl.Initialize
+  nameWithType: ConnectionControl.Initialize
+- uid: Edgar.Unity.ConnectionControl.IsSelected
+  name: IsSelected()
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_IsSelected
+  commentId: M:Edgar.Unity.ConnectionControl.IsSelected
+  fullName: Edgar.Unity.ConnectionControl.IsSelected()
+  nameWithType: ConnectionControl.IsSelected()
+- uid: Edgar.Unity.ConnectionControl.IsSelected*
+  name: IsSelected
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_IsSelected_
+  commentId: Overload:Edgar.Unity.ConnectionControl.IsSelected
+  isSpec: "True"
+  fullName: Edgar.Unity.ConnectionControl.IsSelected
+  nameWithType: ConnectionControl.IsSelected
+- uid: Edgar.Unity.ConnectionControl.To
+  name: To
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_To
+  commentId: P:Edgar.Unity.ConnectionControl.To
+  fullName: Edgar.Unity.ConnectionControl.To
+  nameWithType: ConnectionControl.To
+- uid: Edgar.Unity.ConnectionControl.To*
+  name: To
+  href: master/api/Edgar.Unity.ConnectionControl.html#Edgar_Unity_ConnectionControl_To_
+  commentId: Overload:Edgar.Unity.ConnectionControl.To
+  isSpec: "True"
+  fullName: Edgar.Unity.ConnectionControl.To
+  nameWithType: ConnectionControl.To
 - uid: Edgar.Unity.ConnectionEditorStyle
   name: ConnectionEditorStyle
   href: master/api/Edgar.Unity.ConnectionEditorStyle.html
@@ -145,6 +248,70 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.ConnectionEditorStyle.LineColor
   nameWithType: ConnectionEditorStyle.LineColor
+- uid: Edgar.Unity.CustomConnectionControlAttribute
+  name: CustomConnectionControlAttribute
+  href: master/api/Edgar.Unity.CustomConnectionControlAttribute.html
+  commentId: T:Edgar.Unity.CustomConnectionControlAttribute
+  fullName: Edgar.Unity.CustomConnectionControlAttribute
+  nameWithType: CustomConnectionControlAttribute
+- uid: Edgar.Unity.CustomConnectionControlAttribute.#ctor(System.Type)
+  name: CustomConnectionControlAttribute(Type)
+  href: master/api/Edgar.Unity.CustomConnectionControlAttribute.html#Edgar_Unity_CustomConnectionControlAttribute__ctor_System_Type_
+  commentId: M:Edgar.Unity.CustomConnectionControlAttribute.#ctor(System.Type)
+  fullName: Edgar.Unity.CustomConnectionControlAttribute.CustomConnectionControlAttribute(System.Type)
+  nameWithType: CustomConnectionControlAttribute.CustomConnectionControlAttribute(Type)
+- uid: Edgar.Unity.CustomConnectionControlAttribute.#ctor*
+  name: CustomConnectionControlAttribute
+  href: master/api/Edgar.Unity.CustomConnectionControlAttribute.html#Edgar_Unity_CustomConnectionControlAttribute__ctor_
+  commentId: Overload:Edgar.Unity.CustomConnectionControlAttribute.#ctor
+  isSpec: "True"
+  fullName: Edgar.Unity.CustomConnectionControlAttribute.CustomConnectionControlAttribute
+  nameWithType: CustomConnectionControlAttribute.CustomConnectionControlAttribute
+- uid: Edgar.Unity.CustomConnectionControlAttribute.ConnectionType
+  name: ConnectionType
+  href: master/api/Edgar.Unity.CustomConnectionControlAttribute.html#Edgar_Unity_CustomConnectionControlAttribute_ConnectionType
+  commentId: P:Edgar.Unity.CustomConnectionControlAttribute.ConnectionType
+  fullName: Edgar.Unity.CustomConnectionControlAttribute.ConnectionType
+  nameWithType: CustomConnectionControlAttribute.ConnectionType
+- uid: Edgar.Unity.CustomConnectionControlAttribute.ConnectionType*
+  name: ConnectionType
+  href: master/api/Edgar.Unity.CustomConnectionControlAttribute.html#Edgar_Unity_CustomConnectionControlAttribute_ConnectionType_
+  commentId: Overload:Edgar.Unity.CustomConnectionControlAttribute.ConnectionType
+  isSpec: "True"
+  fullName: Edgar.Unity.CustomConnectionControlAttribute.ConnectionType
+  nameWithType: CustomConnectionControlAttribute.ConnectionType
+- uid: Edgar.Unity.CustomRoomControlAttribute
+  name: CustomRoomControlAttribute
+  href: master/api/Edgar.Unity.CustomRoomControlAttribute.html
+  commentId: T:Edgar.Unity.CustomRoomControlAttribute
+  fullName: Edgar.Unity.CustomRoomControlAttribute
+  nameWithType: CustomRoomControlAttribute
+- uid: Edgar.Unity.CustomRoomControlAttribute.#ctor(System.Type)
+  name: CustomRoomControlAttribute(Type)
+  href: master/api/Edgar.Unity.CustomRoomControlAttribute.html#Edgar_Unity_CustomRoomControlAttribute__ctor_System_Type_
+  commentId: M:Edgar.Unity.CustomRoomControlAttribute.#ctor(System.Type)
+  fullName: Edgar.Unity.CustomRoomControlAttribute.CustomRoomControlAttribute(System.Type)
+  nameWithType: CustomRoomControlAttribute.CustomRoomControlAttribute(Type)
+- uid: Edgar.Unity.CustomRoomControlAttribute.#ctor*
+  name: CustomRoomControlAttribute
+  href: master/api/Edgar.Unity.CustomRoomControlAttribute.html#Edgar_Unity_CustomRoomControlAttribute__ctor_
+  commentId: Overload:Edgar.Unity.CustomRoomControlAttribute.#ctor
+  isSpec: "True"
+  fullName: Edgar.Unity.CustomRoomControlAttribute.CustomRoomControlAttribute
+  nameWithType: CustomRoomControlAttribute.CustomRoomControlAttribute
+- uid: Edgar.Unity.CustomRoomControlAttribute.RoomType
+  name: RoomType
+  href: master/api/Edgar.Unity.CustomRoomControlAttribute.html#Edgar_Unity_CustomRoomControlAttribute_RoomType
+  commentId: P:Edgar.Unity.CustomRoomControlAttribute.RoomType
+  fullName: Edgar.Unity.CustomRoomControlAttribute.RoomType
+  nameWithType: CustomRoomControlAttribute.RoomType
+- uid: Edgar.Unity.CustomRoomControlAttribute.RoomType*
+  name: RoomType
+  href: master/api/Edgar.Unity.CustomRoomControlAttribute.html#Edgar_Unity_CustomRoomControlAttribute_RoomType_
+  commentId: Overload:Edgar.Unity.CustomRoomControlAttribute.RoomType
+  isSpec: "True"
+  fullName: Edgar.Unity.CustomRoomControlAttribute.RoomType
+  nameWithType: CustomRoomControlAttribute.RoomType
 - uid: Edgar.Unity.Diagnostics
   name: Edgar.Unity.Diagnostics
   href: master/api/Edgar.Unity.Diagnostics.html
@@ -1114,6 +1281,57 @@ references:
   commentId: F:Edgar.Unity.DoorLineGrid2D.Direction
   fullName: Edgar.Unity.DoorLineGrid2D.Direction
   nameWithType: DoorLineGrid2D.Direction
+- uid: Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#From
+  name: IDoorLine.From
+  href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_Edgar_Unity_IDoorLine_From
+  commentId: P:Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#From
+  name.vb: Edgar.Unity.IDoorLine.From
+  fullName: Edgar.Unity.DoorLineGrid2D.Edgar.Unity.IDoorLine.From
+  nameWithType: DoorLineGrid2D.IDoorLine.From
+  nameWithType.vb: DoorLineGrid2D.Edgar.Unity.IDoorLine.From
+- uid: Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#From*
+  name: IDoorLine.From
+  href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_Edgar_Unity_IDoorLine_From_
+  commentId: Overload:Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#From
+  isSpec: "True"
+  name.vb: Edgar.Unity.IDoorLine.From
+  fullName: Edgar.Unity.DoorLineGrid2D.Edgar.Unity.IDoorLine.From
+  nameWithType: DoorLineGrid2D.IDoorLine.From
+  nameWithType.vb: DoorLineGrid2D.Edgar.Unity.IDoorLine.From
+- uid: Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#Length
+  name: IDoorLine.Length
+  href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_Edgar_Unity_IDoorLine_Length
+  commentId: P:Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#Length
+  name.vb: Edgar.Unity.IDoorLine.Length
+  fullName: Edgar.Unity.DoorLineGrid2D.Edgar.Unity.IDoorLine.Length
+  nameWithType: DoorLineGrid2D.IDoorLine.Length
+  nameWithType.vb: DoorLineGrid2D.Edgar.Unity.IDoorLine.Length
+- uid: Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#Length*
+  name: IDoorLine.Length
+  href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_Edgar_Unity_IDoorLine_Length_
+  commentId: Overload:Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#Length
+  isSpec: "True"
+  name.vb: Edgar.Unity.IDoorLine.Length
+  fullName: Edgar.Unity.DoorLineGrid2D.Edgar.Unity.IDoorLine.Length
+  nameWithType: DoorLineGrid2D.IDoorLine.Length
+  nameWithType.vb: DoorLineGrid2D.Edgar.Unity.IDoorLine.Length
+- uid: Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#To
+  name: IDoorLine.To
+  href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_Edgar_Unity_IDoorLine_To
+  commentId: P:Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#To
+  name.vb: Edgar.Unity.IDoorLine.To
+  fullName: Edgar.Unity.DoorLineGrid2D.Edgar.Unity.IDoorLine.To
+  nameWithType: DoorLineGrid2D.IDoorLine.To
+  nameWithType.vb: DoorLineGrid2D.Edgar.Unity.IDoorLine.To
+- uid: Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#To*
+  name: IDoorLine.To
+  href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_Edgar_Unity_IDoorLine_To_
+  commentId: Overload:Edgar.Unity.DoorLineGrid2D.Edgar#Unity#IDoorLine#To
+  isSpec: "True"
+  name.vb: Edgar.Unity.IDoorLine.To
+  fullName: Edgar.Unity.DoorLineGrid2D.Edgar.Unity.IDoorLine.To
+  nameWithType: DoorLineGrid2D.IDoorLine.To
+  nameWithType.vb: DoorLineGrid2D.Edgar.Unity.IDoorLine.To
 - uid: Edgar.Unity.DoorLineGrid2D.Equals(Edgar.Unity.DoorLineGrid2D)
   name: Equals(DoorLineGrid2D)
   href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_Equals_Edgar_Unity_DoorLineGrid2D_
@@ -1196,19 +1414,230 @@ references:
   commentId: F:Edgar.Unity.DoorLineGrid2D.To
   fullName: Edgar.Unity.DoorLineGrid2D.To
   nameWithType: DoorLineGrid2D.To
-- uid: Edgar.Unity.DoorLineGrid2D.ToInternal
-  name: ToInternal()
-  href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_ToInternal
-  commentId: M:Edgar.Unity.DoorLineGrid2D.ToInternal
-  fullName: Edgar.Unity.DoorLineGrid2D.ToInternal()
-  nameWithType: DoorLineGrid2D.ToInternal()
-- uid: Edgar.Unity.DoorLineGrid2D.ToInternal*
-  name: ToInternal
-  href: master/api/Edgar.Unity.DoorLineGrid2D.html#Edgar_Unity_DoorLineGrid2D_ToInternal_
-  commentId: Overload:Edgar.Unity.DoorLineGrid2D.ToInternal
+- uid: Edgar.Unity.DoorLineInfoBase`2
+  name: DoorLineInfoBase<TDoorInstance, TDoorLine>
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html
+  commentId: T:Edgar.Unity.DoorLineInfoBase`2
+  name.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine)
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine)
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine)
+- uid: Edgar.Unity.DoorLineInfoBase`2.#ctor(`1,Edgar.Unity.SerializableVector3Int,System.Collections.Generic.List{`0})
+  name: DoorLineInfoBase(TDoorLine, SerializableVector3Int, List<TDoorInstance>)
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2__ctor__1_Edgar_Unity_SerializableVector3Int_System_Collections_Generic_List__0__
+  commentId: M:Edgar.Unity.DoorLineInfoBase`2.#ctor(`1,Edgar.Unity.SerializableVector3Int,System.Collections.Generic.List{`0})
+  name.vb: DoorLineInfoBase(TDoorLine, SerializableVector3Int, List(Of TDoorInstance))
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.DoorLineInfoBase(TDoorLine, Edgar.Unity.SerializableVector3Int, System.Collections.Generic.List<TDoorInstance>)
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).DoorLineInfoBase(TDoorLine, Edgar.Unity.SerializableVector3Int, System.Collections.Generic.List(Of TDoorInstance))
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.DoorLineInfoBase(TDoorLine, SerializableVector3Int, List<TDoorInstance>)
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).DoorLineInfoBase(TDoorLine, SerializableVector3Int, List(Of TDoorInstance))
+- uid: Edgar.Unity.DoorLineInfoBase`2.#ctor*
+  name: DoorLineInfoBase
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2__ctor_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.#ctor
   isSpec: "True"
-  fullName: Edgar.Unity.DoorLineGrid2D.ToInternal
-  nameWithType: DoorLineGrid2D.ToInternal
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.DoorLineInfoBase
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).DoorLineInfoBase
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.DoorLineInfoBase
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).DoorLineInfoBase
+- uid: Edgar.Unity.DoorLineInfoBase`2.DoorLine
+  name: DoorLine
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2_DoorLine
+  commentId: P:Edgar.Unity.DoorLineInfoBase`2.DoorLine
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.DoorLine
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).DoorLine
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.DoorLine
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).DoorLine
+- uid: Edgar.Unity.DoorLineInfoBase`2.DoorLine*
+  name: DoorLine
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2_DoorLine_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.DoorLine
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.DoorLine
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).DoorLine
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.DoorLine
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).DoorLine
+- uid: Edgar.Unity.DoorLineInfoBase`2.GetLine(`0)
+  name: GetLine(TDoorInstance)
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2_GetLine__0_
+  commentId: M:Edgar.Unity.DoorLineInfoBase`2.GetLine(`0)
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.GetLine(TDoorInstance)
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).GetLine(TDoorInstance)
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.GetLine(TDoorInstance)
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).GetLine(TDoorInstance)
+- uid: Edgar.Unity.DoorLineInfoBase`2.GetLine*
+  name: GetLine
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2_GetLine_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.GetLine
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.GetLine
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).GetLine
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.GetLine
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).GetLine
+- uid: Edgar.Unity.DoorLineInfoBase`2.GetTiles
+  name: GetTiles()
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2_GetTiles
+  commentId: M:Edgar.Unity.DoorLineInfoBase`2.GetTiles
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.GetTiles()
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).GetTiles()
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.GetTiles()
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).GetTiles()
+- uid: Edgar.Unity.DoorLineInfoBase`2.GetTiles*
+  name: GetTiles
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2_GetTiles_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.GetTiles
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.GetTiles
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).GetTiles
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.GetTiles
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).GetTiles
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo
+  name: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html
+  commentId: T:Edgar.Unity.DoorLineInfoBase`2.TileInfo
+  name.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.#ctor(Vector3Int,System.Boolean,`0,System.Int32)
+  name: TileInfo(Vector3Int, Boolean, TDoorInstance, Int32)
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo__ctor_Vector3Int_System_Boolean__0_System_Int32_
+  commentId: M:Edgar.Unity.DoorLineInfoBase`2.TileInfo.#ctor(Vector3Int,System.Boolean,`0,System.Int32)
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.TileInfo(Vector3Int, System.Boolean, TDoorInstance, System.Int32)
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.TileInfo(Vector3Int, System.Boolean, TDoorInstance, System.Int32)
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.TileInfo(Vector3Int, Boolean, TDoorInstance, Int32)
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.TileInfo(Vector3Int, Boolean, TDoorInstance, Int32)
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.#ctor*
+  name: TileInfo
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo__ctor_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.TileInfo.#ctor
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.TileInfo
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.TileInfo
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.TileInfo
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.TileInfo
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.Door
+  name: Door
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo_Door
+  commentId: P:Edgar.Unity.DoorLineInfoBase`2.TileInfo.Door
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.Door
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.Door
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.Door
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.Door
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.Door*
+  name: Door
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo_Door_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.TileInfo.Door
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.Door
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.Door
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.Door
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.Door
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.IndexInsideDoor
+  name: IndexInsideDoor
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo_IndexInsideDoor
+  commentId: P:Edgar.Unity.DoorLineInfoBase`2.TileInfo.IndexInsideDoor
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.IndexInsideDoor
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.IndexInsideDoor
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.IndexInsideDoor
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.IndexInsideDoor
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.IndexInsideDoor*
+  name: IndexInsideDoor
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo_IndexInsideDoor_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.TileInfo.IndexInsideDoor
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.IndexInsideDoor
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.IndexInsideDoor
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.IndexInsideDoor
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.IndexInsideDoor
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.IsUsed
+  name: IsUsed
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo_IsUsed
+  commentId: P:Edgar.Unity.DoorLineInfoBase`2.TileInfo.IsUsed
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.IsUsed
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.IsUsed
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.IsUsed
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.IsUsed
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.IsUsed*
+  name: IsUsed
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo_IsUsed_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.TileInfo.IsUsed
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.IsUsed
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.IsUsed
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.IsUsed
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.IsUsed
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.Position
+  name: Position
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo_Position
+  commentId: P:Edgar.Unity.DoorLineInfoBase`2.TileInfo.Position
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.Position
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.Position
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.Position
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.Position
+- uid: Edgar.Unity.DoorLineInfoBase`2.TileInfo.Position*
+  name: Position
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.TileInfo.html#Edgar_Unity_DoorLineInfoBase_2_TileInfo_Position_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.TileInfo.Position
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.Position
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.Position
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.TileInfo.Position
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).TileInfo.Position
+- uid: Edgar.Unity.DoorLineInfoBase`2.UsedDoors
+  name: UsedDoors
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2_UsedDoors
+  commentId: P:Edgar.Unity.DoorLineInfoBase`2.UsedDoors
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.UsedDoors
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).UsedDoors
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.UsedDoors
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).UsedDoors
+- uid: Edgar.Unity.DoorLineInfoBase`2.UsedDoors*
+  name: UsedDoors
+  href: master/api/Edgar.Unity.DoorLineInfoBase-2.html#Edgar_Unity_DoorLineInfoBase_2_UsedDoors_
+  commentId: Overload:Edgar.Unity.DoorLineInfoBase`2.UsedDoors
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoBase<TDoorInstance, TDoorLine>.UsedDoors
+  fullName.vb: Edgar.Unity.DoorLineInfoBase(Of TDoorInstance, TDoorLine).UsedDoors
+  nameWithType: DoorLineInfoBase<TDoorInstance, TDoorLine>.UsedDoors
+  nameWithType.vb: DoorLineInfoBase(Of TDoorInstance, TDoorLine).UsedDoors
+- uid: Edgar.Unity.DoorLineInfoGrid2D
+  name: DoorLineInfoGrid2D
+  href: master/api/Edgar.Unity.DoorLineInfoGrid2D.html
+  commentId: T:Edgar.Unity.DoorLineInfoGrid2D
+  fullName: Edgar.Unity.DoorLineInfoGrid2D
+  nameWithType: DoorLineInfoGrid2D
+- uid: Edgar.Unity.DoorLineInfoGrid2D.#ctor(Edgar.Unity.DoorLineGrid2D,Edgar.Unity.SerializableVector3Int,System.Collections.Generic.List{Edgar.Unity.DoorInstanceGrid2D})
+  name: DoorLineInfoGrid2D(DoorLineGrid2D, SerializableVector3Int, List<DoorInstanceGrid2D>)
+  href: master/api/Edgar.Unity.DoorLineInfoGrid2D.html#Edgar_Unity_DoorLineInfoGrid2D__ctor_Edgar_Unity_DoorLineGrid2D_Edgar_Unity_SerializableVector3Int_System_Collections_Generic_List_Edgar_Unity_DoorInstanceGrid2D__
+  commentId: M:Edgar.Unity.DoorLineInfoGrid2D.#ctor(Edgar.Unity.DoorLineGrid2D,Edgar.Unity.SerializableVector3Int,System.Collections.Generic.List{Edgar.Unity.DoorInstanceGrid2D})
+  name.vb: DoorLineInfoGrid2D(DoorLineGrid2D, SerializableVector3Int, List(Of DoorInstanceGrid2D))
+  fullName: Edgar.Unity.DoorLineInfoGrid2D.DoorLineInfoGrid2D(Edgar.Unity.DoorLineGrid2D, Edgar.Unity.SerializableVector3Int, System.Collections.Generic.List<Edgar.Unity.DoorInstanceGrid2D>)
+  fullName.vb: Edgar.Unity.DoorLineInfoGrid2D.DoorLineInfoGrid2D(Edgar.Unity.DoorLineGrid2D, Edgar.Unity.SerializableVector3Int, System.Collections.Generic.List(Of Edgar.Unity.DoorInstanceGrid2D))
+  nameWithType: DoorLineInfoGrid2D.DoorLineInfoGrid2D(DoorLineGrid2D, SerializableVector3Int, List<DoorInstanceGrid2D>)
+  nameWithType.vb: DoorLineInfoGrid2D.DoorLineInfoGrid2D(DoorLineGrid2D, SerializableVector3Int, List(Of DoorInstanceGrid2D))
+- uid: Edgar.Unity.DoorLineInfoGrid2D.#ctor*
+  name: DoorLineInfoGrid2D
+  href: master/api/Edgar.Unity.DoorLineInfoGrid2D.html#Edgar_Unity_DoorLineInfoGrid2D__ctor_
+  commentId: Overload:Edgar.Unity.DoorLineInfoGrid2D.#ctor
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoGrid2D.DoorLineInfoGrid2D
+  nameWithType: DoorLineInfoGrid2D.DoorLineInfoGrid2D
+- uid: Edgar.Unity.DoorLineInfoGrid2D.GetLine(Edgar.Unity.DoorInstanceGrid2D)
+  name: GetLine(DoorInstanceGrid2D)
+  href: master/api/Edgar.Unity.DoorLineInfoGrid2D.html#Edgar_Unity_DoorLineInfoGrid2D_GetLine_Edgar_Unity_DoorInstanceGrid2D_
+  commentId: M:Edgar.Unity.DoorLineInfoGrid2D.GetLine(Edgar.Unity.DoorInstanceGrid2D)
+  fullName: Edgar.Unity.DoorLineInfoGrid2D.GetLine(Edgar.Unity.DoorInstanceGrid2D)
+  nameWithType: DoorLineInfoGrid2D.GetLine(DoorInstanceGrid2D)
+- uid: Edgar.Unity.DoorLineInfoGrid2D.GetLine*
+  name: GetLine
+  href: master/api/Edgar.Unity.DoorLineInfoGrid2D.html#Edgar_Unity_DoorLineInfoGrid2D_GetLine_
+  commentId: Overload:Edgar.Unity.DoorLineInfoGrid2D.GetLine
+  isSpec: "True"
+  fullName: Edgar.Unity.DoorLineInfoGrid2D.GetLine
+  nameWithType: DoorLineInfoGrid2D.GetLine
 - uid: Edgar.Unity.DoorsGrid2D
   name: DoorsGrid2D
   href: master/api/Edgar.Unity.DoorsGrid2D.html
@@ -2218,90 +2647,6 @@ references:
   commentId: N:Edgar.Unity.Editor
   fullName: Edgar.Unity.Editor
   nameWithType: Edgar.Unity.Editor
-- uid: Edgar.Unity.Editor.ConnectionNode
-  name: ConnectionNode
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html
-  commentId: T:Edgar.Unity.Editor.ConnectionNode
-  fullName: Edgar.Unity.Editor.ConnectionNode
-  nameWithType: ConnectionNode
-- uid: Edgar.Unity.Editor.ConnectionNode.#ctor(Edgar.Unity.ConnectionBase,Edgar.Unity.Editor.RoomNode,Edgar.Unity.Editor.RoomNode)
-  name: ConnectionNode(ConnectionBase, RoomNode, RoomNode)
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode__ctor_Edgar_Unity_ConnectionBase_Edgar_Unity_Editor_RoomNode_Edgar_Unity_Editor_RoomNode_
-  commentId: M:Edgar.Unity.Editor.ConnectionNode.#ctor(Edgar.Unity.ConnectionBase,Edgar.Unity.Editor.RoomNode,Edgar.Unity.Editor.RoomNode)
-  fullName: Edgar.Unity.Editor.ConnectionNode.ConnectionNode(Edgar.Unity.ConnectionBase, Edgar.Unity.Editor.RoomNode, Edgar.Unity.Editor.RoomNode)
-  nameWithType: ConnectionNode.ConnectionNode(ConnectionBase, RoomNode, RoomNode)
-- uid: Edgar.Unity.Editor.ConnectionNode.#ctor*
-  name: ConnectionNode
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode__ctor_
-  commentId: Overload:Edgar.Unity.Editor.ConnectionNode.#ctor
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.ConnectionNode.ConnectionNode
-  nameWithType: ConnectionNode.ConnectionNode
-- uid: Edgar.Unity.Editor.ConnectionNode.Connection
-  name: Connection
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_Connection
-  commentId: P:Edgar.Unity.Editor.ConnectionNode.Connection
-  fullName: Edgar.Unity.Editor.ConnectionNode.Connection
-  nameWithType: ConnectionNode.Connection
-- uid: Edgar.Unity.Editor.ConnectionNode.Connection*
-  name: Connection
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_Connection_
-  commentId: Overload:Edgar.Unity.Editor.ConnectionNode.Connection
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.ConnectionNode.Connection
-  nameWithType: ConnectionNode.Connection
-- uid: Edgar.Unity.Editor.ConnectionNode.Draw(System.Single,Vector2,System.Boolean)
-  name: Draw(Single, Vector2, Boolean)
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_Draw_System_Single_Vector2_System_Boolean_
-  commentId: M:Edgar.Unity.Editor.ConnectionNode.Draw(System.Single,Vector2,System.Boolean)
-  fullName: Edgar.Unity.Editor.ConnectionNode.Draw(System.Single, Vector2, System.Boolean)
-  nameWithType: ConnectionNode.Draw(Single, Vector2, Boolean)
-- uid: Edgar.Unity.Editor.ConnectionNode.Draw*
-  name: Draw
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_Draw_
-  commentId: Overload:Edgar.Unity.Editor.ConnectionNode.Draw
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.ConnectionNode.Draw
-  nameWithType: ConnectionNode.Draw
-- uid: Edgar.Unity.Editor.ConnectionNode.From
-  name: From
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_From
-  commentId: P:Edgar.Unity.Editor.ConnectionNode.From
-  fullName: Edgar.Unity.Editor.ConnectionNode.From
-  nameWithType: ConnectionNode.From
-- uid: Edgar.Unity.Editor.ConnectionNode.From*
-  name: From
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_From_
-  commentId: Overload:Edgar.Unity.Editor.ConnectionNode.From
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.ConnectionNode.From
-  nameWithType: ConnectionNode.From
-- uid: Edgar.Unity.Editor.ConnectionNode.GetHandleRect(System.Single,Vector2)
-  name: GetHandleRect(Single, Vector2)
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_GetHandleRect_System_Single_Vector2_
-  commentId: M:Edgar.Unity.Editor.ConnectionNode.GetHandleRect(System.Single,Vector2)
-  fullName: Edgar.Unity.Editor.ConnectionNode.GetHandleRect(System.Single, Vector2)
-  nameWithType: ConnectionNode.GetHandleRect(Single, Vector2)
-- uid: Edgar.Unity.Editor.ConnectionNode.GetHandleRect*
-  name: GetHandleRect
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_GetHandleRect_
-  commentId: Overload:Edgar.Unity.Editor.ConnectionNode.GetHandleRect
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.ConnectionNode.GetHandleRect
-  nameWithType: ConnectionNode.GetHandleRect
-- uid: Edgar.Unity.Editor.ConnectionNode.To
-  name: To
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_To
-  commentId: P:Edgar.Unity.Editor.ConnectionNode.To
-  fullName: Edgar.Unity.Editor.ConnectionNode.To
-  nameWithType: ConnectionNode.To
-- uid: Edgar.Unity.Editor.ConnectionNode.To*
-  name: To
-  href: master/api/Edgar.Unity.Editor.ConnectionNode.html#Edgar_Unity_Editor_ConnectionNode_To_
-  commentId: Overload:Edgar.Unity.Editor.ConnectionNode.To
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.ConnectionNode.To
-  nameWithType: ConnectionNode.To
 - uid: Edgar.Unity.Editor.CustomInspectorWindow
   name: CustomInspectorWindow
   href: master/api/Edgar.Unity.Editor.CustomInspectorWindow.html
@@ -2743,12 +3088,12 @@ references:
   commentId: T:Edgar.Unity.Editor.LevelGraphEditor
   fullName: Edgar.Unity.Editor.LevelGraphEditor
   nameWithType: LevelGraphEditor
-- uid: Edgar.Unity.Editor.LevelGraphEditor.CreateConnection(Edgar.Unity.Editor.RoomNode,Edgar.Unity.Editor.RoomNode)
-  name: CreateConnection(RoomNode, RoomNode)
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditor.html#Edgar_Unity_Editor_LevelGraphEditor_CreateConnection_Edgar_Unity_Editor_RoomNode_Edgar_Unity_Editor_RoomNode_
-  commentId: M:Edgar.Unity.Editor.LevelGraphEditor.CreateConnection(Edgar.Unity.Editor.RoomNode,Edgar.Unity.Editor.RoomNode)
-  fullName: Edgar.Unity.Editor.LevelGraphEditor.CreateConnection(Edgar.Unity.Editor.RoomNode, Edgar.Unity.Editor.RoomNode)
-  nameWithType: LevelGraphEditor.CreateConnection(RoomNode, RoomNode)
+- uid: Edgar.Unity.Editor.LevelGraphEditor.CreateConnection(Edgar.Unity.RoomControl,Edgar.Unity.RoomControl)
+  name: CreateConnection(RoomControl, RoomControl)
+  href: master/api/Edgar.Unity.Editor.LevelGraphEditor.html#Edgar_Unity_Editor_LevelGraphEditor_CreateConnection_Edgar_Unity_RoomControl_Edgar_Unity_RoomControl_
+  commentId: M:Edgar.Unity.Editor.LevelGraphEditor.CreateConnection(Edgar.Unity.RoomControl,Edgar.Unity.RoomControl)
+  fullName: Edgar.Unity.Editor.LevelGraphEditor.CreateConnection(Edgar.Unity.RoomControl, Edgar.Unity.RoomControl)
+  nameWithType: LevelGraphEditor.CreateConnection(RoomControl, RoomControl)
 - uid: Edgar.Unity.Editor.LevelGraphEditor.CreateConnection*
   name: CreateConnection
   href: master/api/Edgar.Unity.Editor.LevelGraphEditor.html#Edgar_Unity_Editor_LevelGraphEditor_CreateConnection_
@@ -2756,19 +3101,19 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.LevelGraphEditor.CreateConnection
   nameWithType: LevelGraphEditor.CreateConnection
-- uid: Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionNode(Edgar.Unity.ConnectionBase)
-  name: CreateConnectionNode(ConnectionBase)
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditor.html#Edgar_Unity_Editor_LevelGraphEditor_CreateConnectionNode_Edgar_Unity_ConnectionBase_
-  commentId: M:Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionNode(Edgar.Unity.ConnectionBase)
-  fullName: Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionNode(Edgar.Unity.ConnectionBase)
-  nameWithType: LevelGraphEditor.CreateConnectionNode(ConnectionBase)
-- uid: Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionNode*
-  name: CreateConnectionNode
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditor.html#Edgar_Unity_Editor_LevelGraphEditor_CreateConnectionNode_
-  commentId: Overload:Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionNode
+- uid: Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionControl(Edgar.Unity.ConnectionBase)
+  name: CreateConnectionControl(ConnectionBase)
+  href: master/api/Edgar.Unity.Editor.LevelGraphEditor.html#Edgar_Unity_Editor_LevelGraphEditor_CreateConnectionControl_Edgar_Unity_ConnectionBase_
+  commentId: M:Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionControl(Edgar.Unity.ConnectionBase)
+  fullName: Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionControl(Edgar.Unity.ConnectionBase)
+  nameWithType: LevelGraphEditor.CreateConnectionControl(ConnectionBase)
+- uid: Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionControl*
+  name: CreateConnectionControl
+  href: master/api/Edgar.Unity.Editor.LevelGraphEditor.html#Edgar_Unity_Editor_LevelGraphEditor_CreateConnectionControl_
+  commentId: Overload:Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionControl
   isSpec: "True"
-  fullName: Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionNode
-  nameWithType: LevelGraphEditor.CreateConnectionNode
+  fullName: Edgar.Unity.Editor.LevelGraphEditor.CreateConnectionControl
+  nameWithType: LevelGraphEditor.CreateConnectionControl
 - uid: Edgar.Unity.Editor.LevelGraphEditor.CurrentState
   name: CurrentState
   href: master/api/Edgar.Unity.Editor.LevelGraphEditor.html#Edgar_Unity_Editor_LevelGraphEditor_CurrentState
@@ -2895,51 +3240,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.LevelGraphEditor.Update
   nameWithType: LevelGraphEditor.Update
-- uid: Edgar.Unity.Editor.LevelGraphEditorStyles
-  name: LevelGraphEditorStyles
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditorStyles.html
-  commentId: T:Edgar.Unity.Editor.LevelGraphEditorStyles
-  fullName: Edgar.Unity.Editor.LevelGraphEditorStyles
-  nameWithType: LevelGraphEditorStyles
-- uid: Edgar.Unity.Editor.LevelGraphEditorStyles.#ctor
-  name: LevelGraphEditorStyles()
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditorStyles.html#Edgar_Unity_Editor_LevelGraphEditorStyles__ctor
-  commentId: M:Edgar.Unity.Editor.LevelGraphEditorStyles.#ctor
-  fullName: Edgar.Unity.Editor.LevelGraphEditorStyles.LevelGraphEditorStyles()
-  nameWithType: LevelGraphEditorStyles.LevelGraphEditorStyles()
-- uid: Edgar.Unity.Editor.LevelGraphEditorStyles.#ctor*
-  name: LevelGraphEditorStyles
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditorStyles.html#Edgar_Unity_Editor_LevelGraphEditorStyles__ctor_
-  commentId: Overload:Edgar.Unity.Editor.LevelGraphEditorStyles.#ctor
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.LevelGraphEditorStyles.LevelGraphEditorStyles
-  nameWithType: LevelGraphEditorStyles.LevelGraphEditorStyles
-- uid: Edgar.Unity.Editor.LevelGraphEditorStyles.ConnectionHandle
-  name: ConnectionHandle
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditorStyles.html#Edgar_Unity_Editor_LevelGraphEditorStyles_ConnectionHandle
-  commentId: P:Edgar.Unity.Editor.LevelGraphEditorStyles.ConnectionHandle
-  fullName: Edgar.Unity.Editor.LevelGraphEditorStyles.ConnectionHandle
-  nameWithType: LevelGraphEditorStyles.ConnectionHandle
-- uid: Edgar.Unity.Editor.LevelGraphEditorStyles.ConnectionHandle*
-  name: ConnectionHandle
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditorStyles.html#Edgar_Unity_Editor_LevelGraphEditorStyles_ConnectionHandle_
-  commentId: Overload:Edgar.Unity.Editor.LevelGraphEditorStyles.ConnectionHandle
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.LevelGraphEditorStyles.ConnectionHandle
-  nameWithType: LevelGraphEditorStyles.ConnectionHandle
-- uid: Edgar.Unity.Editor.LevelGraphEditorStyles.RoomNode
-  name: RoomNode
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditorStyles.html#Edgar_Unity_Editor_LevelGraphEditorStyles_RoomNode
-  commentId: P:Edgar.Unity.Editor.LevelGraphEditorStyles.RoomNode
-  fullName: Edgar.Unity.Editor.LevelGraphEditorStyles.RoomNode
-  nameWithType: LevelGraphEditorStyles.RoomNode
-- uid: Edgar.Unity.Editor.LevelGraphEditorStyles.RoomNode*
-  name: RoomNode
-  href: master/api/Edgar.Unity.Editor.LevelGraphEditorStyles.html#Edgar_Unity_Editor_LevelGraphEditorStyles_RoomNode_
-  commentId: Overload:Edgar.Unity.Editor.LevelGraphEditorStyles.RoomNode
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.LevelGraphEditorStyles.RoomNode
-  nameWithType: LevelGraphEditorStyles.RoomNode
 - uid: Edgar.Unity.Editor.LevelGraphInspector
   name: LevelGraphInspector
   href: master/api/Edgar.Unity.Editor.LevelGraphInspector.html
@@ -3625,64 +3925,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Editor.PopupWindow.Open
   nameWithType: PopupWindow.Open
-- uid: Edgar.Unity.Editor.RoomNode
-  name: RoomNode
-  href: master/api/Edgar.Unity.Editor.RoomNode.html
-  commentId: T:Edgar.Unity.Editor.RoomNode
-  fullName: Edgar.Unity.Editor.RoomNode
-  nameWithType: RoomNode
-- uid: Edgar.Unity.Editor.RoomNode.#ctor(Edgar.Unity.RoomBase)
-  name: RoomNode(RoomBase)
-  href: master/api/Edgar.Unity.Editor.RoomNode.html#Edgar_Unity_Editor_RoomNode__ctor_Edgar_Unity_RoomBase_
-  commentId: M:Edgar.Unity.Editor.RoomNode.#ctor(Edgar.Unity.RoomBase)
-  fullName: Edgar.Unity.Editor.RoomNode.RoomNode(Edgar.Unity.RoomBase)
-  nameWithType: RoomNode.RoomNode(RoomBase)
-- uid: Edgar.Unity.Editor.RoomNode.#ctor*
-  name: RoomNode
-  href: master/api/Edgar.Unity.Editor.RoomNode.html#Edgar_Unity_Editor_RoomNode__ctor_
-  commentId: Overload:Edgar.Unity.Editor.RoomNode.#ctor
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.RoomNode.RoomNode
-  nameWithType: RoomNode.RoomNode
-- uid: Edgar.Unity.Editor.RoomNode.Draw(System.Single,Vector2)
-  name: Draw(Single, Vector2)
-  href: master/api/Edgar.Unity.Editor.RoomNode.html#Edgar_Unity_Editor_RoomNode_Draw_System_Single_Vector2_
-  commentId: M:Edgar.Unity.Editor.RoomNode.Draw(System.Single,Vector2)
-  fullName: Edgar.Unity.Editor.RoomNode.Draw(System.Single, Vector2)
-  nameWithType: RoomNode.Draw(Single, Vector2)
-- uid: Edgar.Unity.Editor.RoomNode.Draw*
-  name: Draw
-  href: master/api/Edgar.Unity.Editor.RoomNode.html#Edgar_Unity_Editor_RoomNode_Draw_
-  commentId: Overload:Edgar.Unity.Editor.RoomNode.Draw
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.RoomNode.Draw
-  nameWithType: RoomNode.Draw
-- uid: Edgar.Unity.Editor.RoomNode.GetRect(System.Single,Vector2)
-  name: GetRect(Single, Vector2)
-  href: master/api/Edgar.Unity.Editor.RoomNode.html#Edgar_Unity_Editor_RoomNode_GetRect_System_Single_Vector2_
-  commentId: M:Edgar.Unity.Editor.RoomNode.GetRect(System.Single,Vector2)
-  fullName: Edgar.Unity.Editor.RoomNode.GetRect(System.Single, Vector2)
-  nameWithType: RoomNode.GetRect(Single, Vector2)
-- uid: Edgar.Unity.Editor.RoomNode.GetRect*
-  name: GetRect
-  href: master/api/Edgar.Unity.Editor.RoomNode.html#Edgar_Unity_Editor_RoomNode_GetRect_
-  commentId: Overload:Edgar.Unity.Editor.RoomNode.GetRect
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.RoomNode.GetRect
-  nameWithType: RoomNode.GetRect
-- uid: Edgar.Unity.Editor.RoomNode.Room
-  name: Room
-  href: master/api/Edgar.Unity.Editor.RoomNode.html#Edgar_Unity_Editor_RoomNode_Room
-  commentId: P:Edgar.Unity.Editor.RoomNode.Room
-  fullName: Edgar.Unity.Editor.RoomNode.Room
-  nameWithType: RoomNode.Room
-- uid: Edgar.Unity.Editor.RoomNode.Room*
-  name: Room
-  href: master/api/Edgar.Unity.Editor.RoomNode.html#Edgar_Unity_Editor_RoomNode_Room_
-  commentId: Overload:Edgar.Unity.Editor.RoomNode.Room
-  isSpec: "True"
-  fullName: Edgar.Unity.Editor.RoomNode.Room
-  nameWithType: RoomNode.Room
 - uid: Edgar.Unity.Editor.RoomTemplateBulkOperationBase
   name: RoomTemplateBulkOperationBase
   href: master/api/Edgar.Unity.Editor.RoomTemplateBulkOperationBase.html
@@ -4220,6 +4462,147 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Examples.CurrentRoomDetection.CurrentRoomDetectionTriggerHandler.Start
   nameWithType: CurrentRoomDetectionTriggerHandler.Start
+- uid: Edgar.Unity.Examples.CustomEditorControls
+  name: Edgar.Unity.Examples.CustomEditorControls
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.html
+  commentId: N:Edgar.Unity.Examples.CustomEditorControls
+  fullName: Edgar.Unity.Examples.CustomEditorControls
+  nameWithType: Edgar.Unity.Examples.CustomEditorControls
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsConnection
+  name: CustomEditorControlsConnection
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsConnection.html
+  commentId: T:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsConnection
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsConnection
+  nameWithType: CustomEditorControlsConnection
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsConnection.IsLocked
+  name: IsLocked
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsConnection.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsConnection_IsLocked
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsConnection.IsLocked
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsConnection.IsLocked
+  nameWithType: CustomEditorControlsConnection.IsLocked
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons
+  name: CustomEditorControlsIcons
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.html
+  commentId: T:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons
+  nameWithType: CustomEditorControlsIcons
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.Base64ToTexture(System.String,FilterMode)
+  name: Base64ToTexture(String, FilterMode)
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsIcons_Base64ToTexture_System_String_FilterMode_
+  commentId: M:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.Base64ToTexture(System.String,FilterMode)
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.Base64ToTexture(System.String, FilterMode)
+  nameWithType: CustomEditorControlsIcons.Base64ToTexture(String, FilterMode)
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.Base64ToTexture*
+  name: Base64ToTexture
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsIcons_Base64ToTexture_
+  commentId: Overload:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.Base64ToTexture
+  isSpec: "True"
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.Base64ToTexture
+  nameWithType: CustomEditorControlsIcons.Base64ToTexture
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.BossIcon
+  name: BossIcon
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsIcons_BossIcon
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.BossIcon
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.BossIcon
+  nameWithType: CustomEditorControlsIcons.BossIcon
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.LockIcon
+  name: LockIcon
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsIcons_LockIcon
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.LockIcon
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.LockIcon
+  nameWithType: CustomEditorControlsIcons.LockIcon
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.ShopIcon
+  name: ShopIcon
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsIcons_ShopIcon
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.ShopIcon
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.ShopIcon
+  nameWithType: CustomEditorControlsIcons.ShopIcon
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.SpawnIcon
+  name: SpawnIcon
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsIcons_SpawnIcon
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.SpawnIcon
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.SpawnIcon
+  nameWithType: CustomEditorControlsIcons.SpawnIcon
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.TreasureIcon
+  name: TreasureIcon
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsIcons_TreasureIcon
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.TreasureIcon
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsIcons.TreasureIcon
+  nameWithType: CustomEditorControlsIcons.TreasureIcon
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom
+  name: CustomEditorControlsRoom
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.html
+  commentId: T:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom
+  nameWithType: CustomEditorControlsRoom
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetDisplayName
+  name: GetDisplayName()
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_GetDisplayName
+  commentId: M:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetDisplayName
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetDisplayName()
+  nameWithType: CustomEditorControlsRoom.GetDisplayName()
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetDisplayName*
+  name: GetDisplayName
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_GetDisplayName_
+  commentId: Overload:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetDisplayName
+  isSpec: "True"
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetDisplayName
+  nameWithType: CustomEditorControlsRoom.GetDisplayName
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetRoomTemplates
+  name: GetRoomTemplates()
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_GetRoomTemplates
+  commentId: M:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetRoomTemplates
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetRoomTemplates()
+  nameWithType: CustomEditorControlsRoom.GetRoomTemplates()
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetRoomTemplates*
+  name: GetRoomTemplates
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_GetRoomTemplates_
+  commentId: Overload:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetRoomTemplates
+  isSpec: "True"
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.GetRoomTemplates
+  nameWithType: CustomEditorControlsRoom.GetRoomTemplates
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType
+  name: CustomEditorControlsRoom.RoomType
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.html
+  commentId: T:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType
+  nameWithType: CustomEditorControlsRoom.RoomType
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Basic
+  name: Basic
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_RoomType_Basic
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Basic
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Basic
+  nameWithType: CustomEditorControlsRoom.RoomType.Basic
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Boss
+  name: Boss
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_RoomType_Boss
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Boss
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Boss
+  nameWithType: CustomEditorControlsRoom.RoomType.Boss
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Shop
+  name: Shop
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_RoomType_Shop
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Shop
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Shop
+  nameWithType: CustomEditorControlsRoom.RoomType.Shop
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Spawn
+  name: Spawn
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_RoomType_Spawn
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Spawn
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Spawn
+  nameWithType: CustomEditorControlsRoom.RoomType.Spawn
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Treasure
+  name: Treasure
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_RoomType_Treasure
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Treasure
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.RoomType.Treasure
+  nameWithType: CustomEditorControlsRoom.RoomType.Treasure
+- uid: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.Type
+  name: Type
+  href: master/api/Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.html#Edgar_Unity_Examples_CustomEditorControls_CustomEditorControlsRoom_Type
+  commentId: F:Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.Type
+  fullName: Edgar.Unity.Examples.CustomEditorControls.CustomEditorControlsRoom.Type
+  nameWithType: CustomEditorControlsRoom.Type
 - uid: Edgar.Unity.Examples.Deprecated
   name: Edgar.Unity.Examples.Deprecated
   href: master/api/Edgar.Unity.Examples.Deprecated.html
@@ -9637,6 +10020,43 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Examples.Scripts.Platformer3GameManager.Update
   nameWithType: Platformer3GameManager.Update
+- uid: Edgar.Unity.Examples.UnusedDoors
+  name: Edgar.Unity.Examples.UnusedDoors
+  href: master/api/Edgar.Unity.Examples.UnusedDoors.html
+  commentId: N:Edgar.Unity.Examples.UnusedDoors
+  fullName: Edgar.Unity.Examples.UnusedDoors
+  nameWithType: Edgar.Unity.Examples.UnusedDoors
+- uid: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing
+  name: UnusedDoorsPostProcessing
+  href: master/api/Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.html
+  commentId: T:Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing
+  fullName: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing
+  nameWithType: UnusedDoorsPostProcessing
+- uid: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.Run(Edgar.Unity.DungeonGeneratorLevelGrid2D)
+  name: Run(DungeonGeneratorLevelGrid2D)
+  href: master/api/Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.html#Edgar_Unity_Examples_UnusedDoors_UnusedDoorsPostProcessing_Run_Edgar_Unity_DungeonGeneratorLevelGrid2D_
+  commentId: M:Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.Run(Edgar.Unity.DungeonGeneratorLevelGrid2D)
+  fullName: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.Run(Edgar.Unity.DungeonGeneratorLevelGrid2D)
+  nameWithType: UnusedDoorsPostProcessing.Run(DungeonGeneratorLevelGrid2D)
+- uid: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.Run*
+  name: Run
+  href: master/api/Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.html#Edgar_Unity_Examples_UnusedDoors_UnusedDoorsPostProcessing_Run_
+  commentId: Overload:Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.Run
+  isSpec: "True"
+  fullName: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.Run
+  nameWithType: UnusedDoorsPostProcessing.Run
+- uid: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.UnusedDoorTile
+  name: UnusedDoorTile
+  href: master/api/Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.html#Edgar_Unity_Examples_UnusedDoors_UnusedDoorsPostProcessing_UnusedDoorTile
+  commentId: F:Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.UnusedDoorTile
+  fullName: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.UnusedDoorTile
+  nameWithType: UnusedDoorsPostProcessing.UnusedDoorTile
+- uid: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.UsedDoorTile
+  name: UsedDoorTile
+  href: master/api/Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.html#Edgar_Unity_Examples_UnusedDoors_UnusedDoorsPostProcessing_UsedDoorTile
+  commentId: F:Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.UsedDoorTile
+  fullName: Edgar.Unity.Examples.UnusedDoors.UnusedDoorsPostProcessing.UsedDoorTile
+  nameWithType: UnusedDoorsPostProcessing.UsedDoorTile
 - uid: Edgar.Unity.Extensions
   name: Extensions
   href: master/api/Edgar.Unity.Extensions.html
@@ -10325,6 +10745,51 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.HybridDoorModeDataGrid2D.GetDoorMode
   nameWithType: HybridDoorModeDataGrid2D.GetDoorMode
+- uid: Edgar.Unity.IDoorLine
+  name: IDoorLine
+  href: master/api/Edgar.Unity.IDoorLine.html
+  commentId: T:Edgar.Unity.IDoorLine
+  fullName: Edgar.Unity.IDoorLine
+  nameWithType: IDoorLine
+- uid: Edgar.Unity.IDoorLine.From
+  name: From
+  href: master/api/Edgar.Unity.IDoorLine.html#Edgar_Unity_IDoorLine_From
+  commentId: P:Edgar.Unity.IDoorLine.From
+  fullName: Edgar.Unity.IDoorLine.From
+  nameWithType: IDoorLine.From
+- uid: Edgar.Unity.IDoorLine.From*
+  name: From
+  href: master/api/Edgar.Unity.IDoorLine.html#Edgar_Unity_IDoorLine_From_
+  commentId: Overload:Edgar.Unity.IDoorLine.From
+  isSpec: "True"
+  fullName: Edgar.Unity.IDoorLine.From
+  nameWithType: IDoorLine.From
+- uid: Edgar.Unity.IDoorLine.Length
+  name: Length
+  href: master/api/Edgar.Unity.IDoorLine.html#Edgar_Unity_IDoorLine_Length
+  commentId: P:Edgar.Unity.IDoorLine.Length
+  fullName: Edgar.Unity.IDoorLine.Length
+  nameWithType: IDoorLine.Length
+- uid: Edgar.Unity.IDoorLine.Length*
+  name: Length
+  href: master/api/Edgar.Unity.IDoorLine.html#Edgar_Unity_IDoorLine_Length_
+  commentId: Overload:Edgar.Unity.IDoorLine.Length
+  isSpec: "True"
+  fullName: Edgar.Unity.IDoorLine.Length
+  nameWithType: IDoorLine.Length
+- uid: Edgar.Unity.IDoorLine.To
+  name: To
+  href: master/api/Edgar.Unity.IDoorLine.html#Edgar_Unity_IDoorLine_To
+  commentId: P:Edgar.Unity.IDoorLine.To
+  fullName: Edgar.Unity.IDoorLine.To
+  nameWithType: IDoorLine.To
+- uid: Edgar.Unity.IDoorLine.To*
+  name: To
+  href: master/api/Edgar.Unity.IDoorLine.html#Edgar_Unity_IDoorLine_To_
+  commentId: Overload:Edgar.Unity.IDoorLine.To
+  isSpec: "True"
+  fullName: Edgar.Unity.IDoorLine.To
+  nameWithType: IDoorLine.To
 - uid: Edgar.Unity.IDoorModeDataGrid2D
   name: IDoorModeDataGrid2D
   href: master/api/Edgar.Unity.IDoorModeDataGrid2D.html
@@ -11193,6 +11658,51 @@ references:
   commentId: F:Edgar.Unity.LevelGraphEditorData.Zoom
   fullName: Edgar.Unity.LevelGraphEditorData.Zoom
   nameWithType: LevelGraphEditorData.Zoom
+- uid: Edgar.Unity.LevelGraphEditorStyles
+  name: LevelGraphEditorStyles
+  href: master/api/Edgar.Unity.LevelGraphEditorStyles.html
+  commentId: T:Edgar.Unity.LevelGraphEditorStyles
+  fullName: Edgar.Unity.LevelGraphEditorStyles
+  nameWithType: LevelGraphEditorStyles
+- uid: Edgar.Unity.LevelGraphEditorStyles.#ctor
+  name: LevelGraphEditorStyles()
+  href: master/api/Edgar.Unity.LevelGraphEditorStyles.html#Edgar_Unity_LevelGraphEditorStyles__ctor
+  commentId: M:Edgar.Unity.LevelGraphEditorStyles.#ctor
+  fullName: Edgar.Unity.LevelGraphEditorStyles.LevelGraphEditorStyles()
+  nameWithType: LevelGraphEditorStyles.LevelGraphEditorStyles()
+- uid: Edgar.Unity.LevelGraphEditorStyles.#ctor*
+  name: LevelGraphEditorStyles
+  href: master/api/Edgar.Unity.LevelGraphEditorStyles.html#Edgar_Unity_LevelGraphEditorStyles__ctor_
+  commentId: Overload:Edgar.Unity.LevelGraphEditorStyles.#ctor
+  isSpec: "True"
+  fullName: Edgar.Unity.LevelGraphEditorStyles.LevelGraphEditorStyles
+  nameWithType: LevelGraphEditorStyles.LevelGraphEditorStyles
+- uid: Edgar.Unity.LevelGraphEditorStyles.ConnectionHandle
+  name: ConnectionHandle
+  href: master/api/Edgar.Unity.LevelGraphEditorStyles.html#Edgar_Unity_LevelGraphEditorStyles_ConnectionHandle
+  commentId: P:Edgar.Unity.LevelGraphEditorStyles.ConnectionHandle
+  fullName: Edgar.Unity.LevelGraphEditorStyles.ConnectionHandle
+  nameWithType: LevelGraphEditorStyles.ConnectionHandle
+- uid: Edgar.Unity.LevelGraphEditorStyles.ConnectionHandle*
+  name: ConnectionHandle
+  href: master/api/Edgar.Unity.LevelGraphEditorStyles.html#Edgar_Unity_LevelGraphEditorStyles_ConnectionHandle_
+  commentId: Overload:Edgar.Unity.LevelGraphEditorStyles.ConnectionHandle
+  isSpec: "True"
+  fullName: Edgar.Unity.LevelGraphEditorStyles.ConnectionHandle
+  nameWithType: LevelGraphEditorStyles.ConnectionHandle
+- uid: Edgar.Unity.LevelGraphEditorStyles.RoomControl
+  name: RoomControl
+  href: master/api/Edgar.Unity.LevelGraphEditorStyles.html#Edgar_Unity_LevelGraphEditorStyles_RoomControl
+  commentId: P:Edgar.Unity.LevelGraphEditorStyles.RoomControl
+  fullName: Edgar.Unity.LevelGraphEditorStyles.RoomControl
+  nameWithType: LevelGraphEditorStyles.RoomControl
+- uid: Edgar.Unity.LevelGraphEditorStyles.RoomControl*
+  name: RoomControl
+  href: master/api/Edgar.Unity.LevelGraphEditorStyles.html#Edgar_Unity_LevelGraphEditorStyles_RoomControl_
+  commentId: Overload:Edgar.Unity.LevelGraphEditorStyles.RoomControl
+  isSpec: "True"
+  fullName: Edgar.Unity.LevelGraphEditorStyles.RoomControl
+  nameWithType: LevelGraphEditorStyles.RoomControl
 - uid: Edgar.Unity.LevelInfoBase`1
   name: LevelInfoBase<TRoomInstance>
   href: master/api/Edgar.Unity.LevelInfoBase-1.html
@@ -11514,41 +12024,18 @@ references:
   fullName: Edgar.Unity.OrthogonalLine.Contains
   nameWithType: OrthogonalLine.Contains
 - uid: Edgar.Unity.OrthogonalLine.Direction
-  name: OrthogonalLine.Direction
-  href: master/api/Edgar.Unity.OrthogonalLine.Direction.html
-  commentId: T:Edgar.Unity.OrthogonalLine.Direction
+  name: Direction
+  href: master/api/Edgar.Unity.OrthogonalLine.html#Edgar_Unity_OrthogonalLine_Direction
+  commentId: P:Edgar.Unity.OrthogonalLine.Direction
   fullName: Edgar.Unity.OrthogonalLine.Direction
   nameWithType: OrthogonalLine.Direction
-- uid: Edgar.Unity.OrthogonalLine.Direction.Bottom
-  name: Bottom
-  href: master/api/Edgar.Unity.OrthogonalLine.Direction.html#Edgar_Unity_OrthogonalLine_Direction_Bottom
-  commentId: F:Edgar.Unity.OrthogonalLine.Direction.Bottom
-  fullName: Edgar.Unity.OrthogonalLine.Direction.Bottom
-  nameWithType: OrthogonalLine.Direction.Bottom
-- uid: Edgar.Unity.OrthogonalLine.Direction.Left
-  name: Left
-  href: master/api/Edgar.Unity.OrthogonalLine.Direction.html#Edgar_Unity_OrthogonalLine_Direction_Left
-  commentId: F:Edgar.Unity.OrthogonalLine.Direction.Left
-  fullName: Edgar.Unity.OrthogonalLine.Direction.Left
-  nameWithType: OrthogonalLine.Direction.Left
-- uid: Edgar.Unity.OrthogonalLine.Direction.Right
-  name: Right
-  href: master/api/Edgar.Unity.OrthogonalLine.Direction.html#Edgar_Unity_OrthogonalLine_Direction_Right
-  commentId: F:Edgar.Unity.OrthogonalLine.Direction.Right
-  fullName: Edgar.Unity.OrthogonalLine.Direction.Right
-  nameWithType: OrthogonalLine.Direction.Right
-- uid: Edgar.Unity.OrthogonalLine.Direction.Top
-  name: Top
-  href: master/api/Edgar.Unity.OrthogonalLine.Direction.html#Edgar_Unity_OrthogonalLine_Direction_Top
-  commentId: F:Edgar.Unity.OrthogonalLine.Direction.Top
-  fullName: Edgar.Unity.OrthogonalLine.Direction.Top
-  nameWithType: OrthogonalLine.Direction.Top
-- uid: Edgar.Unity.OrthogonalLine.Direction.Undefined
-  name: Undefined
-  href: master/api/Edgar.Unity.OrthogonalLine.Direction.html#Edgar_Unity_OrthogonalLine_Direction_Undefined
-  commentId: F:Edgar.Unity.OrthogonalLine.Direction.Undefined
-  fullName: Edgar.Unity.OrthogonalLine.Direction.Undefined
-  nameWithType: OrthogonalLine.Direction.Undefined
+- uid: Edgar.Unity.OrthogonalLine.Direction*
+  name: Direction
+  href: master/api/Edgar.Unity.OrthogonalLine.html#Edgar_Unity_OrthogonalLine_Direction_
+  commentId: Overload:Edgar.Unity.OrthogonalLine.Direction
+  isSpec: "True"
+  fullName: Edgar.Unity.OrthogonalLine.Direction
+  nameWithType: OrthogonalLine.Direction
 - uid: Edgar.Unity.OrthogonalLine.Equals(Edgar.Unity.OrthogonalLine)
   name: Equals(OrthogonalLine)
   href: master/api/Edgar.Unity.OrthogonalLine.html#Edgar_Unity_OrthogonalLine_Equals_Edgar_Unity_OrthogonalLine_
@@ -11581,19 +12068,6 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.OrthogonalLine.From
   nameWithType: OrthogonalLine.From
-- uid: Edgar.Unity.OrthogonalLine.GetDirectionVector
-  name: GetDirectionVector()
-  href: master/api/Edgar.Unity.OrthogonalLine.html#Edgar_Unity_OrthogonalLine_GetDirectionVector
-  commentId: M:Edgar.Unity.OrthogonalLine.GetDirectionVector
-  fullName: Edgar.Unity.OrthogonalLine.GetDirectionVector()
-  nameWithType: OrthogonalLine.GetDirectionVector()
-- uid: Edgar.Unity.OrthogonalLine.GetDirectionVector*
-  name: GetDirectionVector
-  href: master/api/Edgar.Unity.OrthogonalLine.html#Edgar_Unity_OrthogonalLine_GetDirectionVector_
-  commentId: Overload:Edgar.Unity.OrthogonalLine.GetDirectionVector
-  isSpec: "True"
-  fullName: Edgar.Unity.OrthogonalLine.GetDirectionVector
-  nameWithType: OrthogonalLine.GetDirectionVector
 - uid: Edgar.Unity.OrthogonalLine.GetHashCode
   name: GetHashCode()
   href: master/api/Edgar.Unity.OrthogonalLine.html#Edgar_Unity_OrthogonalLine_GetHashCode
@@ -12583,6 +13057,89 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomBase.ToString
   nameWithType: RoomBase.ToString
+- uid: Edgar.Unity.RoomControl
+  name: RoomControl
+  href: master/api/Edgar.Unity.RoomControl.html
+  commentId: T:Edgar.Unity.RoomControl
+  fullName: Edgar.Unity.RoomControl
+  nameWithType: RoomControl
+- uid: Edgar.Unity.RoomControl.DefaultHeight
+  name: DefaultHeight
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_DefaultHeight
+  commentId: F:Edgar.Unity.RoomControl.DefaultHeight
+  fullName: Edgar.Unity.RoomControl.DefaultHeight
+  nameWithType: RoomControl.DefaultHeight
+- uid: Edgar.Unity.RoomControl.DefaultWidth
+  name: DefaultWidth
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_DefaultWidth
+  commentId: F:Edgar.Unity.RoomControl.DefaultWidth
+  fullName: Edgar.Unity.RoomControl.DefaultWidth
+  nameWithType: RoomControl.DefaultWidth
+- uid: Edgar.Unity.RoomControl.Draw(Vector2,System.Single)
+  name: Draw(Vector2, Single)
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_Draw_Vector2_System_Single_
+  commentId: M:Edgar.Unity.RoomControl.Draw(Vector2,System.Single)
+  fullName: Edgar.Unity.RoomControl.Draw(Vector2, System.Single)
+  nameWithType: RoomControl.Draw(Vector2, Single)
+- uid: Edgar.Unity.RoomControl.Draw*
+  name: Draw
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_Draw_
+  commentId: Overload:Edgar.Unity.RoomControl.Draw
+  isSpec: "True"
+  fullName: Edgar.Unity.RoomControl.Draw
+  nameWithType: RoomControl.Draw
+- uid: Edgar.Unity.RoomControl.GetRect(Vector2,System.Single)
+  name: GetRect(Vector2, Single)
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_GetRect_Vector2_System_Single_
+  commentId: M:Edgar.Unity.RoomControl.GetRect(Vector2,System.Single)
+  fullName: Edgar.Unity.RoomControl.GetRect(Vector2, System.Single)
+  nameWithType: RoomControl.GetRect(Vector2, Single)
+- uid: Edgar.Unity.RoomControl.GetRect*
+  name: GetRect
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_GetRect_
+  commentId: Overload:Edgar.Unity.RoomControl.GetRect
+  isSpec: "True"
+  fullName: Edgar.Unity.RoomControl.GetRect
+  nameWithType: RoomControl.GetRect
+- uid: Edgar.Unity.RoomControl.Initialize(Edgar.Unity.RoomBase)
+  name: Initialize(RoomBase)
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_Initialize_Edgar_Unity_RoomBase_
+  commentId: M:Edgar.Unity.RoomControl.Initialize(Edgar.Unity.RoomBase)
+  fullName: Edgar.Unity.RoomControl.Initialize(Edgar.Unity.RoomBase)
+  nameWithType: RoomControl.Initialize(RoomBase)
+- uid: Edgar.Unity.RoomControl.Initialize*
+  name: Initialize
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_Initialize_
+  commentId: Overload:Edgar.Unity.RoomControl.Initialize
+  isSpec: "True"
+  fullName: Edgar.Unity.RoomControl.Initialize
+  nameWithType: RoomControl.Initialize
+- uid: Edgar.Unity.RoomControl.IsSelected
+  name: IsSelected()
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_IsSelected
+  commentId: M:Edgar.Unity.RoomControl.IsSelected
+  fullName: Edgar.Unity.RoomControl.IsSelected()
+  nameWithType: RoomControl.IsSelected()
+- uid: Edgar.Unity.RoomControl.IsSelected*
+  name: IsSelected
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_IsSelected_
+  commentId: Overload:Edgar.Unity.RoomControl.IsSelected
+  isSpec: "True"
+  fullName: Edgar.Unity.RoomControl.IsSelected
+  nameWithType: RoomControl.IsSelected
+- uid: Edgar.Unity.RoomControl.Room
+  name: Room
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_Room
+  commentId: P:Edgar.Unity.RoomControl.Room
+  fullName: Edgar.Unity.RoomControl.Room
+  nameWithType: RoomControl.Room
+- uid: Edgar.Unity.RoomControl.Room*
+  name: Room
+  href: master/api/Edgar.Unity.RoomControl.html#Edgar_Unity_RoomControl_Room_
+  commentId: Overload:Edgar.Unity.RoomControl.Room
+  isSpec: "True"
+  fullName: Edgar.Unity.RoomControl.Room
+  nameWithType: RoomControl.Room
 - uid: Edgar.Unity.RoomEditorStyle
   name: RoomEditorStyle
   href: master/api/Edgar.Unity.RoomEditorStyle.html
@@ -12670,6 +13227,19 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomInstanceGrid2D.Connection
   nameWithType: RoomInstanceGrid2D.Connection
+- uid: Edgar.Unity.RoomInstanceGrid2D.DoorLines
+  name: DoorLines
+  href: master/api/Edgar.Unity.RoomInstanceGrid2D.html#Edgar_Unity_RoomInstanceGrid2D_DoorLines
+  commentId: P:Edgar.Unity.RoomInstanceGrid2D.DoorLines
+  fullName: Edgar.Unity.RoomInstanceGrid2D.DoorLines
+  nameWithType: RoomInstanceGrid2D.DoorLines
+- uid: Edgar.Unity.RoomInstanceGrid2D.DoorLines*
+  name: DoorLines
+  href: master/api/Edgar.Unity.RoomInstanceGrid2D.html#Edgar_Unity_RoomInstanceGrid2D_DoorLines_
+  commentId: Overload:Edgar.Unity.RoomInstanceGrid2D.DoorLines
+  isSpec: "True"
+  fullName: Edgar.Unity.RoomInstanceGrid2D.DoorLines
+  nameWithType: RoomInstanceGrid2D.DoorLines
 - uid: Edgar.Unity.RoomInstanceGrid2D.Doors
   name: Doors
   href: master/api/Edgar.Unity.RoomInstanceGrid2D.html#Edgar_Unity_RoomInstanceGrid2D_Doors
@@ -13083,6 +13653,84 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.RoomTemplateUtilsGrid2D.GetUsedTiles
   nameWithType: RoomTemplateUtilsGrid2D.GetUsedTiles
+- uid: Edgar.Unity.SerializableVector3Int
+  name: SerializableVector3Int
+  href: master/api/Edgar.Unity.SerializableVector3Int.html
+  commentId: T:Edgar.Unity.SerializableVector3Int
+  fullName: Edgar.Unity.SerializableVector3Int
+  nameWithType: SerializableVector3Int
+- uid: Edgar.Unity.SerializableVector3Int.#ctor(System.Int32,System.Int32,System.Int32)
+  name: SerializableVector3Int(Int32, Int32, Int32)
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int__ctor_System_Int32_System_Int32_System_Int32_
+  commentId: M:Edgar.Unity.SerializableVector3Int.#ctor(System.Int32,System.Int32,System.Int32)
+  fullName: Edgar.Unity.SerializableVector3Int.SerializableVector3Int(System.Int32, System.Int32, System.Int32)
+  nameWithType: SerializableVector3Int.SerializableVector3Int(Int32, Int32, Int32)
+- uid: Edgar.Unity.SerializableVector3Int.#ctor*
+  name: SerializableVector3Int
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int__ctor_
+  commentId: Overload:Edgar.Unity.SerializableVector3Int.#ctor
+  isSpec: "True"
+  fullName: Edgar.Unity.SerializableVector3Int.SerializableVector3Int
+  nameWithType: SerializableVector3Int.SerializableVector3Int
+- uid: Edgar.Unity.SerializableVector3Int.op_Implicit(Edgar.Unity.SerializableVector3Int)~Vector3Int
+  name: Implicit(SerializableVector3Int to Vector3Int)
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int_op_Implicit_Edgar_Unity_SerializableVector3Int__Vector3Int
+  commentId: M:Edgar.Unity.SerializableVector3Int.op_Implicit(Edgar.Unity.SerializableVector3Int)~Vector3Int
+  name.vb: Widening(SerializableVector3Int to Vector3Int)
+  fullName: Edgar.Unity.SerializableVector3Int.Implicit(Edgar.Unity.SerializableVector3Int to Vector3Int)
+  fullName.vb: Edgar.Unity.SerializableVector3Int.Widening(Edgar.Unity.SerializableVector3Int to Vector3Int)
+  nameWithType: SerializableVector3Int.Implicit(SerializableVector3Int to Vector3Int)
+  nameWithType.vb: SerializableVector3Int.Widening(SerializableVector3Int to Vector3Int)
+- uid: Edgar.Unity.SerializableVector3Int.op_Implicit(Vector3Int)~Edgar.Unity.SerializableVector3Int
+  name: Implicit(Vector3Int to SerializableVector3Int)
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int_op_Implicit_Vector3Int__Edgar_Unity_SerializableVector3Int
+  commentId: M:Edgar.Unity.SerializableVector3Int.op_Implicit(Vector3Int)~Edgar.Unity.SerializableVector3Int
+  name.vb: Widening(Vector3Int to SerializableVector3Int)
+  fullName: Edgar.Unity.SerializableVector3Int.Implicit(Vector3Int to Edgar.Unity.SerializableVector3Int)
+  fullName.vb: Edgar.Unity.SerializableVector3Int.Widening(Vector3Int to Edgar.Unity.SerializableVector3Int)
+  nameWithType: SerializableVector3Int.Implicit(Vector3Int to SerializableVector3Int)
+  nameWithType.vb: SerializableVector3Int.Widening(Vector3Int to SerializableVector3Int)
+- uid: Edgar.Unity.SerializableVector3Int.op_Implicit*
+  name: Implicit
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int_op_Implicit_
+  commentId: Overload:Edgar.Unity.SerializableVector3Int.op_Implicit
+  isSpec: "True"
+  name.vb: Widening
+  fullName: Edgar.Unity.SerializableVector3Int.Implicit
+  fullName.vb: Edgar.Unity.SerializableVector3Int.Widening
+  nameWithType: SerializableVector3Int.Implicit
+  nameWithType.vb: SerializableVector3Int.Widening
+- uid: Edgar.Unity.SerializableVector3Int.ToString
+  name: ToString()
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int_ToString
+  commentId: M:Edgar.Unity.SerializableVector3Int.ToString
+  fullName: Edgar.Unity.SerializableVector3Int.ToString()
+  nameWithType: SerializableVector3Int.ToString()
+- uid: Edgar.Unity.SerializableVector3Int.ToString*
+  name: ToString
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int_ToString_
+  commentId: Overload:Edgar.Unity.SerializableVector3Int.ToString
+  isSpec: "True"
+  fullName: Edgar.Unity.SerializableVector3Int.ToString
+  nameWithType: SerializableVector3Int.ToString
+- uid: Edgar.Unity.SerializableVector3Int.x
+  name: x
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int_x
+  commentId: F:Edgar.Unity.SerializableVector3Int.x
+  fullName: Edgar.Unity.SerializableVector3Int.x
+  nameWithType: SerializableVector3Int.x
+- uid: Edgar.Unity.SerializableVector3Int.y
+  name: y
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int_y
+  commentId: F:Edgar.Unity.SerializableVector3Int.y
+  fullName: Edgar.Unity.SerializableVector3Int.y
+  nameWithType: SerializableVector3Int.y
+- uid: Edgar.Unity.SerializableVector3Int.z
+  name: z
+  href: master/api/Edgar.Unity.SerializableVector3Int.html#Edgar_Unity_SerializableVector3Int_z
+  commentId: F:Edgar.Unity.SerializableVector3Int.z
+  fullName: Edgar.Unity.SerializableVector3Int.z
+  nameWithType: SerializableVector3Int.z
 - uid: Edgar.Unity.SimpleDoorModeDataGrid2D
   name: SimpleDoorModeDataGrid2D
   href: master/api/Edgar.Unity.SimpleDoorModeDataGrid2D.html
@@ -13862,6 +14510,103 @@ references:
   isSpec: "True"
   fullName: Edgar.Unity.Tests.Runtime.Meta.AddComponentMenuTests.CheckMissingAttribute
   nameWithType: AddComponentMenuTests.CheckMissingAttribute
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests
+  name: OrthogonalLineTests
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html
+  commentId: T:Edgar.Unity.Tests.Runtime.OrthogonalLineTests
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests
+  nameWithType: OrthogonalLineTests
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_InvalidLine
+  name: Constructor_InvalidLine()
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Constructor_InvalidLine
+  commentId: M:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_InvalidLine
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_InvalidLine()
+  nameWithType: OrthogonalLineTests.Constructor_InvalidLine()
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_InvalidLine*
+  name: Constructor_InvalidLine
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Constructor_InvalidLine_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_InvalidLine
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_InvalidLine
+  nameWithType: OrthogonalLineTests.Constructor_InvalidLine
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_ValidLine
+  name: Constructor_ValidLine()
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Constructor_ValidLine
+  commentId: M:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_ValidLine
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_ValidLine()
+  nameWithType: OrthogonalLineTests.Constructor_ValidLine()
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_ValidLine*
+  name: Constructor_ValidLine
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Constructor_ValidLine_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_ValidLine
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Constructor_ValidLine
+  nameWithType: OrthogonalLineTests.Constructor_ValidLine
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Contains
+  name: Contains()
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Contains
+  commentId: M:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Contains
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Contains()
+  nameWithType: OrthogonalLineTests.Contains()
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Contains*
+  name: Contains
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Contains_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Contains
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Contains
+  nameWithType: OrthogonalLineTests.Contains
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Direction
+  name: Direction()
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Direction
+  commentId: M:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Direction
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Direction()
+  nameWithType: OrthogonalLineTests.Direction()
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Direction*
+  name: Direction
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Direction_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Direction
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Direction
+  nameWithType: OrthogonalLineTests.Direction
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetNthPoint
+  name: GetNthPoint()
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_GetNthPoint
+  commentId: M:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetNthPoint
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetNthPoint()
+  nameWithType: OrthogonalLineTests.GetNthPoint()
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetNthPoint*
+  name: GetNthPoint
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_GetNthPoint_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetNthPoint
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetNthPoint
+  nameWithType: OrthogonalLineTests.GetNthPoint
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetPoints
+  name: GetPoints()
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_GetPoints
+  commentId: M:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetPoints
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetPoints()
+  nameWithType: OrthogonalLineTests.GetPoints()
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetPoints*
+  name: GetPoints
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_GetPoints_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetPoints
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.GetPoints
+  nameWithType: OrthogonalLineTests.GetPoints
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Length
+  name: Length()
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Length
+  commentId: M:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Length
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Length()
+  nameWithType: OrthogonalLineTests.Length()
+- uid: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Length*
+  name: Length
+  href: master/api/Edgar.Unity.Tests.Runtime.OrthogonalLineTests.html#Edgar_Unity_Tests_Runtime_OrthogonalLineTests_Length_
+  commentId: Overload:Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Length
+  isSpec: "True"
+  fullName: Edgar.Unity.Tests.Runtime.OrthogonalLineTests.Length
+  nameWithType: OrthogonalLineTests.Length
 - uid: Edgar.Unity.Tests.Runtime.Polygon2DTests
   name: Polygon2DTests
   href: master/api/Edgar.Unity.Tests.Runtime.Polygon2DTests.html

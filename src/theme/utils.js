@@ -24,6 +24,11 @@ export const Path = props => {
         joinSequence = '/';
     }
 
+    if (type === '3de') {
+        path = 'Examples/Grid3D/' + path;
+        joinSequence = '/';
+    }
+
     const parts = path.split('/');
     let result = parts.join(joinSequence);
 

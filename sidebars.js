@@ -74,7 +74,7 @@ module.exports = {
     {
       type: "category",
       label: "Examples",
-      items: ["3d/examples/simple-blocks", "3d/examples/simple-meshes"]
+      items: [ "3d/examples/basics"]
     },
   ]
 };
