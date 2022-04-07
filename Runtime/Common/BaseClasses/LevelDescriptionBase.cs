@@ -11,12 +11,12 @@ namespace Edgar.Unity
 {
     public abstract class LevelDescriptionBase
     {
-        private readonly List<ConnectionBase> connections = new List<ConnectionBase>();
-        private readonly List<RoomDescriptionGrid2D> corridorRoomDescriptions = new List<RoomDescriptionGrid2D>();
+        protected List<ConnectionBase> Connections = new List<ConnectionBase>();
+        protected List<RoomDescriptionGrid2D> CorridorRoomDescriptions = new List<RoomDescriptionGrid2D>();
 
-        private readonly TwoWayDictionary<RoomBase, ConnectionBase> corridorToConnectionMapping = new TwoWayDictionary<RoomBase, ConnectionBase>();
-        private readonly LevelDescriptionGrid2D<RoomBase> levelDescription = new LevelDescriptionGrid2D<RoomBase>();
-        private readonly TwoWayDictionary<GameObject, RoomTemplateGrid2D> prefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplateGrid2D>();
+        protected TwoWayDictionary<RoomBase, ConnectionBase> CorridorToConnectionMapping = new TwoWayDictionary<RoomBase, ConnectionBase>();
+        protected LevelDescriptionGrid2D<RoomBase> LevelDescription = new LevelDescriptionGrid2D<RoomBase>();
+        protected TwoWayDictionary<GameObject, RoomTemplateGrid2D> PrefabToRoomTemplateMapping = new TwoWayDictionary<GameObject, RoomTemplateGrid2D>();
 
         /// <summary>
         /// Adds a given room together with a list of available room templates.
@@ -29,7 +29,7 @@ namespace Edgar.Unity
             if (roomTemplates == null) throw new ArgumentNullException(nameof(roomTemplates));
             if (roomTemplates.Count == 0) throw new ArgumentException($"There must be at least one room template for each room. Room: {room}", nameof(roomTemplates));
 
-            levelDescription.AddRoom(room, GetBasicRoomDescription(roomTemplates));
+            LevelDescription.AddRoom(room, GetBasicRoomDescription(roomTemplates));
         }
 
         /// <summary>
@@ -40,8 +40,8 @@ namespace Edgar.Unity
         {
             if (connection == null) throw new ArgumentNullException(nameof(connection));
 
-            connections.Add(connection);
-            levelDescription.AddConnection(connection.From, connection.To);
+            Connections.Add(connection);
+            LevelDescription.AddConnection(connection.From, connection.To);
         }
 
         /// <summary>
@@ -56,13 +56,13 @@ namespace Edgar.Unity
             if (corridorRoom == null) throw new ArgumentNullException(nameof(corridorRoom));
             if (corridorRoomTemplates.Count == 0) throw new ArgumentException($"There must be at least one room template for each corridor room. Room: {corridorRoom}", nameof(corridorRoom));
 
-            connections.Add(connection);
-            corridorToConnectionMapping.Add(corridorRoom, connection);
+            Connections.Add(connection);
+            CorridorToConnectionMapping.Add(corridorRoom, connection);
 
             var corridorRoomDescription = GetCorridorRoomDescription(corridorRoomTemplates);
-            levelDescription.AddRoom(corridorRoom, corridorRoomDescription);
-            levelDescription.AddConnection(connection.From, corridorRoom);
-            levelDescription.AddConnection(corridorRoom, connection.To);
+            LevelDescription.AddRoom(corridorRoom, corridorRoomDescription);
+            LevelDescription.AddConnection(connection.From, corridorRoom);
+            LevelDescription.AddConnection(corridorRoom, connection.To);
         }
 
         private RoomDescriptionGrid2D GetBasicRoomDescription(List<GameObject> roomTemplatePrefabs)
@@ -72,11 +72,11 @@ namespace Edgar.Unity
 
         private RoomDescriptionGrid2D GetCorridorRoomDescription(List<GameObject> roomTemplatePrefabs)
         {
-            foreach (var existingRoomDescription in corridorRoomDescriptions)
+            foreach (var existingRoomDescription in CorridorRoomDescriptions)
             {
                 var existingPrefabs = existingRoomDescription
                     .RoomTemplates
-                    .Select(x => prefabToRoomTemplateMapping.GetByValue(x))
+                    .Select(x => PrefabToRoomTemplateMapping.GetByValue(x))
                     .ToList();
 
                 if (existingPrefabs.SequenceEqual(roomTemplatePrefabs))
@@ -86,7 +86,7 @@ namespace Edgar.Unity
             }
 
             var corridorRoomDescription = new RoomDescriptionGrid2D(true, roomTemplatePrefabs.Select(GetRoomTemplate).ToList());
-            corridorRoomDescriptions.Add(corridorRoomDescription);
+            CorridorRoomDescriptions.Add(corridorRoomDescription);
 
             return corridorRoomDescription;
         }
@@ -95,14 +95,14 @@ namespace Edgar.Unity
 
         private RoomTemplateGrid2D GetRoomTemplate(GameObject roomTemplatePrefab)
         {
-            if (prefabToRoomTemplateMapping.ContainsKey(roomTemplatePrefab))
+            if (PrefabToRoomTemplateMapping.ContainsKey(roomTemplatePrefab))
             {
-                return prefabToRoomTemplateMapping[roomTemplatePrefab];
+                return PrefabToRoomTemplateMapping[roomTemplatePrefab];
             }
 
             if (TryGetRoomTemplate(roomTemplatePrefab, out var roomTemplate, out var result))
             {
-                prefabToRoomTemplateMapping.Add(roomTemplatePrefab, roomTemplate);
+                PrefabToRoomTemplateMapping.Add(roomTemplatePrefab, roomTemplate);
                 return roomTemplate;
             }
 
@@ -121,7 +121,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         internal LevelDescriptionGrid2D<RoomBase> GetLevelDescription()
         {
-            return levelDescription;
+            return LevelDescription;
         }
 
 
@@ -131,7 +131,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         internal TwoWayDictionary<GameObject, RoomTemplateGrid2D> GetPrefabToRoomTemplateMapping()
         {
-            return prefabToRoomTemplateMapping;
+            return PrefabToRoomTemplateMapping;
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         internal TwoWayDictionary<RoomBase, ConnectionBase> GetCorridorToConnectionMapping()
         {
-            return corridorToConnectionMapping;
+            return CorridorToConnectionMapping;
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         public IGraph<RoomBase> GetGraph()
         {
-            return levelDescription.GetGraphWithoutCorridors();
+            return LevelDescription.GetGraphWithoutCorridors();
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Edgar.Unity
         /// <returns></returns>
         public IGraph<RoomBase> GetGraphWithCorridors()
         {
-            return levelDescription.GetGraph();
+            return LevelDescription.GetGraph();
         }
     }
 }
