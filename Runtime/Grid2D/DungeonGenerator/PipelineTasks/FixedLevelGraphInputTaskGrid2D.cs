@@ -60,7 +60,7 @@ namespace Edgar.Unity
                     }
 
                     levelDescription.AddCorridorConnection(connection, corridorRoom,
-                        InputSetupUtils.GetRoomTemplates(config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates));
+                        InputSetupUtils.GetRoomTemplates(connection, config.LevelGraph.CorridorRoomTemplateSets, config.LevelGraph.CorridorIndividualRoomTemplates));
                 }
                 else
                 {
