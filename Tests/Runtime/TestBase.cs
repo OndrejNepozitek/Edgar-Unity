@@ -10,7 +10,7 @@ namespace Edgar.Unity.Tests
 {
     public class TestBase : IPrebuildSetup, IPostBuildCleanup
     {
-        private const string TestSceneFolder = "Assets/Edgar/Tests/Runtime/Scenes";
+        private const string TestSceneFolder = "Assets/Edgar/Tests";
         private const string ExampleSceneFolder = "Assets/Edgar/Examples";
 
         public void Setup()
