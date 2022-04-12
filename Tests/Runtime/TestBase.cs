@@ -46,7 +46,7 @@ namespace Edgar.Unity.Tests
         {
             foreach (var scene in EditorBuildSettings.scenes)
             {
-                if (scene.path.Contains(sceneName))
+                if (scene.path.EndsWith(sceneName + ".unity"))
                 {
                     return scene.path;
                 }
