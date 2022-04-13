@@ -61,7 +61,7 @@ namespace Edgar.Unity.Editor
 
         private static string GetFilePath()
         {
-            return EdgarSettings.FullPath;
+            return EdgarSettings.FilePath;
         }
     }
 }
