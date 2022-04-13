@@ -24,7 +24,7 @@ namespace Edgar.Unity.Editor
         public void Save()
         {
             #if UNITY_2020_1_OR_NEWER
-            Save(True);
+            Save(true);
             #else
             var path = FullPath;
             var directoryName = Path.GetDirectoryName(path);
