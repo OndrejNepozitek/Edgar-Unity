@@ -1,6 +1,9 @@
 ﻿using System.IO;
 using UnityEditorInternal;
 using UnityEngine;
+#if UNITY_2020_1_OR_NEWER
+using UnityEditor;
+#endif
 
 namespace Edgar.Unity.Editor
 {
