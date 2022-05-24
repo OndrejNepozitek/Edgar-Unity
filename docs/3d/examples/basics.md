@@ -30,7 +30,7 @@ Create an empty prefab game object. Then add a cube as a child object (3D Object
     <Image src="3d/examples/basics/floor_aligned.png" caption="Floor block (aligned)" />
 </Gallery>
 
-The last step is to set the position of the cube so that it is aligned to the grid cells. As you can see in the image (left) above, the block is not aligned to the grid in the background, but we want it to be. In this case, I had to set the position to to `(0.5, -0.25, 0.5)` (right image). 
+The last step is to set the position of the cube so that it is aligned to the grid cells. As you can see in the image (left) above, the block is not aligned to the grid in the background, but we want it to be. In this case, I had to set the position to `(0.5, -0.25, 0.5)` (right image). 
 
 ### Generator settings
 
@@ -38,7 +38,7 @@ The next step is to create an instance of the `GeneratorSettings` scriptable obj
 
 <Image src="3d/examples/basics/generator_settings.png" caption="Generator settings for this tutorial" />
 
-> **Note:** The height (*y axis*) of the cell size is not important in this case. The walls are 1 unit high while the floors are only 0.5 units high. Therefore, we could use both heights of *1* and *0.5* and it would work, just some gizmos would be shown in a slightly different way.
+> **Note:** The height (*y axis*) of the cell size is not important in this case. The walls are 1 unit high while the floors are only 0.5 units high. Therefore, we could use both heights of *1* and *0.5*, and it would work, just some gizmos would be shown in a slightly different way.
 
 ### Room template
 
@@ -46,15 +46,28 @@ Create your first room template <Path path="3d:Dungeon room template" par />. Op
 
 Next, use the floor and wall blocks to design the room template. Make sure to add these blocks as children of the `Blocks` game object so that they can be recognized by the outline computing algorithm. The room template I created looks like this:
 
-<Image src="3d/examples/basics/room_1_no_doors.png" caption="Basic room template without doors" />
+<Image src="3d/examples/basics/room_1_no_doors.png" caption="Basic room template without doors, the yellow gizmo display the outline as seen by the generator" />
+
+Make sure that the outline of the room template is aligned to the underlying grid. In the image above, you can see that yellow outline gizmo precisely follows the intended outline of the room template.
 
 You might be wondering why there is so much empty space on the outline of the room template where walls should be. The reason is that we will use this space to mark potential door positions in the next section.
+
+> **WARNING:** It is not possible to decrease the cell size in order to hide the fact that a room template is not aligned to the grid. See the two images below. The outline of the room template in the images should be a square, and changing the cell size of the grid does not fix the fact that one of the floor tiles is incorrectly positioned.
+>
+> <Gallery cols={2} fixedHeight>
+>    <Image src="3d/examples/basics/outline_not_aligned_1.png" caption="Wrong - the outline is incorrect because one floor tile is not aligned to the grid" />
+>    <Image src="3d/examples/basics/outline_not_aligned_2.png" caption="Wrong - the cell size was decreased (0.1, 0.5, 0.1) so the outline now follows the room template, but it is still wrong" />
+> </Gallery>
+>
+> The correct solutions are:
+> - Move the floor tile so that it does not cover the neighbouring grid cell
+> - Increase the `ColliderSizeTolerance` field in the `GeneratorSettings` object
 
 ### Door prefab
 
 The room template is now ready for doors to be added. Create a door prefab by going to <Path path="3d:Door" />. Open the prefab and, again, assign the `GeneratorSettings` field. Now, you should see something like in the image bellow on the left.
 
-The darker red gizmos shows the orientation of the door - the dark part is directed outwards from the room. The more transparent red gizmo shows the total volum of the door. By default, each door is *1 block* long in all dimensions. That means that with the cell size in the generator settings, the volume is `(1, 0.5, 1)` units. 
+The darker red gizmos show the orientation of the door - the dark part is directed outwards from the room. The more transparent red gizmo shows the total volume of the door. By default, each door is *1 block* long in all dimensions. That means that with the cell size in the generator settings, the volume is `(1, 0.5, 1)` units. 
 
 For this tutorial, I decided that the doors will be *2 blocks* wide, so change the `Width` field in the `DoorsHandler` component to `2`. You should now see something like in the image bellow on the right.
 

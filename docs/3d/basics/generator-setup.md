@@ -1,5 +1,3 @@
 ---
-title: Generator setup
+title: Generator setup (TODO)
 ---
-
-Please see the [2D version](../../basics/generator-setup.md) of this page.

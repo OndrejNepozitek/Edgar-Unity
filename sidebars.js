@@ -63,18 +63,23 @@ module.exports = {
   "3d": [
     {
       type: "category",
-      label: "Introduction (3D version preview only!)",
+      label: "(PRO) Introduction",
       items: ["3d/introduction"]
     },
     {
       type: "category",
-      label: "Basics",
-      items: ["3d/basics/room-templates", "3d/basics/level-graphs", "3d/basics/generator-setup"]
+      label: "(PRO) Basics",
+      items: ["3d/basics/room-templates", "3d/basics/level-graphs", "3d/basics/generator-setup", "3d/basics/performance-tips"]
     },
     {
       type: "category",
-      label: "Examples",
-      items: [ "3d/examples/basics"]
+      label: "(PRO) Examples",
+      items: ["3d/examples/basics"]
+    },
+    {
+      type: "category",
+      label: "(PRO) Guides",
+      items: ["3d/guides/different-elevations", "3d/guides/door-sockets", "3d/guides/directed-level-graphs", "3d/guides/custom-editor-controls"]
     },
   ]
 };

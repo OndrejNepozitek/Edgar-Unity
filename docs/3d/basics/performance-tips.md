@@ -1,8 +1,6 @@
 ---
-title: Level graphs
+title: Performance tips
 ---
-
-Level graph is an abstraction that lets us control the structure of generated levels.
 
 > **Note:** This guide lives in the 2D section of the documentation: [here](../../basics/level-graphs.md)
 >
