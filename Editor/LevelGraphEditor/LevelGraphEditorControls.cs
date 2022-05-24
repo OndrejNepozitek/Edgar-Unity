@@ -83,9 +83,10 @@ namespace Edgar.Unity.Editor
                     if (currentHoverRoomControl != null)
                     {
                         var mouseDownDistance = Vector2.Distance(mouseDownPosition, e.mousePosition);
+                        var doubleClickToConfigure = EdgarSettings.instance.General.DoubleClickToConfigureRoom;
 
                         // Configure room on double click
-                        if (e.button == 0 && !e.control && ( /*mouseDownDistance <= 2 ||*/ isDoubleClick))
+                        if (e.button == 0 && !e.control && ((doubleClickToConfigure && isDoubleClick) || (!doubleClickToConfigure && mouseDownDistance <= 2)))
                         {
                             SelectObject(currentHoverRoomControl.Room, e.shift);
 

@@ -9,6 +9,8 @@ namespace Edgar.Unity.Editor
     {
         public bool SnapLevelGraphToGrid = true;
 
+        public bool DoubleClickToConfigureRoom = true;
+
         internal class Inspector : EdgarSettingsInspectorBase
         {
             public Inspector(SerializedObject serializedObject) : base(serializedObject, nameof(EdgarSettings.General))
@@ -22,6 +24,7 @@ namespace Edgar.Unity.Editor
                 if (Show)
                 {
                     EditorGUILayout.PropertyField(Property(nameof(SnapLevelGraphToGrid)));
+                    EditorGUILayout.PropertyField(Property(nameof(DoubleClickToConfigureRoom)));
                 }
                 GUILayout.EndVertical();
             }
