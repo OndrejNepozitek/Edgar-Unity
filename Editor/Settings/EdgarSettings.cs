@@ -14,6 +14,10 @@ namespace Edgar.Unity.Editor
     {
         internal const string FilePath = "ProjectSettings/EdgarSettings.asset";
 
+        public EdgarSettingsGeneral General;
+
+        public EdgarSettingsGrid2D Grid2D;
+
         private void OnEnable()
         {
             hideFlags &= ~HideFlags.NotEditable;

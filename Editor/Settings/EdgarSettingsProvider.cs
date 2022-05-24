@@ -9,7 +9,9 @@ namespace Edgar.Unity.Editor
 {
     public class EdgarSettingsProvider : SettingsProvider
     {
-        SerializedObject serializedObject;
+        private SerializedObject serializedObject;
+        private EdgarSettingsGrid2D.Inspector inspectorGrid2D;
+        private EdgarSettingsGeneral.Inspector inspectorGeneral;
 
         public EdgarSettingsProvider(string path, SettingsScope scopes, IEnumerable<string> keywords = null)
             : base(path, scopes, keywords) { }
@@ -18,6 +20,8 @@ namespace Edgar.Unity.Editor
         {
             EdgarSettings.instance.Save();
             serializedObject = new SerializedObject(EdgarSettings.instance);
+            inspectorGrid2D = new EdgarSettingsGrid2D.Inspector(serializedObject);
+            inspectorGeneral = new EdgarSettingsGeneral.Inspector(serializedObject);
         }
 
         public override void OnGUI(string searchContext)
@@ -27,7 +31,8 @@ namespace Edgar.Unity.Editor
                 serializedObject.Update();
                 EditorGUI.BeginChangeCheck();
 
-                //EditorGUILayout.PropertyField(serializedObject.FindProperty(nameof(EdgarSettings.Test3)));
+                inspectorGeneral.OnGUI();
+                inspectorGrid2D.OnGUI();
 
                 if (EditorGUI.EndChangeCheck())
                 {
