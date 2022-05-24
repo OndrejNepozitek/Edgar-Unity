@@ -105,6 +105,10 @@ module.exports = {
               label: "Twitter",
               href: "https://twitter.com/OndrejNepozitek"
             },
+            {
+              label: "Discord",
+              href: "https://discord.gg/syktZ6VWq9"
+            },
           ]
         },
         {
