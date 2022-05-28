@@ -14,7 +14,7 @@ namespace Edgar.Unity.Examples.Example1
 
         public override void Interact()
         {
-            if (Input.GetKey(KeyCode.E))
+            if (InputHelper.GetKey(KeyCode.E))
             {
                 Example1GameManager.Instance.LoadNextLevel();
             }

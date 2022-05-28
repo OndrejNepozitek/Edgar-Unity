@@ -23,7 +23,7 @@ namespace Edgar.Unity.Examples
 
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (InputHelper.GetKeyDown(KeyCode.LeftControl))
             {
                 previousOrthographicSize = camera.orthographicSize;
                 camera.orthographicSize = ZoomOutSize;
@@ -33,7 +33,7 @@ namespace Edgar.Unity.Examples
                 isZoomedOut = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.LeftControl))
+            if (InputHelper.GetKeyUp(KeyCode.LeftControl))
             {
                 camera.orthographicSize = previousOrthographicSize;
                 transform.position = previousPosition;

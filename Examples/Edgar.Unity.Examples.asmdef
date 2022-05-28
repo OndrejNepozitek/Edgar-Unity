@@ -1,14 +1,16 @@
 {
     "name": "Edgar.Unity.Examples",
     "references": [
-        "Edgar.Unity"
+        "Edgar.Unity",
+        "Unity.InputSystem"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
