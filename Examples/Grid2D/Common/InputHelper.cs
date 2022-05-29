@@ -192,5 +192,35 @@ namespace Edgar.Unity.Examples
             }
         }
 #endif
+
+        public static float GetVerticalAxis()
+        {
+            if (GetKey(KeyCode.W))
+            {
+                return 1;
+            }
+
+            if (GetKey(KeyCode.S))
+            {
+                return -1;
+            }
+
+            return 0;
+        }
+
+        public static float GetHorizontalAxis()
+        {
+            if (GetKey(KeyCode.D))
+            {
+                return 1;
+            }
+
+            if (GetKey(KeyCode.A))
+            {
+                return -1;
+            }
+
+            return 0;
+        }
     }
 }
