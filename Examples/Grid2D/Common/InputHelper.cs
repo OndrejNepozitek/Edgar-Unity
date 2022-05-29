@@ -8,6 +8,12 @@ using UnityEngine;
 
 namespace Edgar.Unity.Examples
 {
+    /// <summary>
+    /// This is a helper class so that Edgar can support both the
+    /// old and the new input system in the example scenes.
+    ///
+    /// You should not use this class in your own game.
+    /// </summary>
     public static class InputHelper
     {
         private static bool IsKeySupported(KeyCode key)
