@@ -501,24 +501,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   From: {fileID: 114712285462437556}
   To: {fileID: 4698793640383739538}
---- !u!114 &3405540421892298472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2693faefc821c1d439e25b33a718411d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Room
-  Position: {x: 584, y: 242}
-  RoomTemplateSets: []
-  IndividualRoomTemplates: []
-  serializedGuid: 
-  Test: 0
 --- !u!114 &3772787492039850656
 MonoBehaviour:
   m_ObjectHideFlags: 0
