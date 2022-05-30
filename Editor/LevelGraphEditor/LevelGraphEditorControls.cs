@@ -80,11 +80,11 @@ namespace Edgar.Unity.Editor
                     var currentHoverRoomControl = GetHoverRoomControl(e.mousePosition);
                     var currentHoverConnectionControl = GetHoverConnectionControl(e.mousePosition);
 
+                    var mouseDownDistance = Vector2.Distance(mouseDownPosition, e.mousePosition);
+                    var doubleClickToConfigure = EdgarSettings.instance.General.DoubleClickToConfigureRoom;
+
                     if (currentHoverRoomControl != null)
                     {
-                        var mouseDownDistance = Vector2.Distance(mouseDownPosition, e.mousePosition);
-                        var doubleClickToConfigure = EdgarSettings.instance.General.DoubleClickToConfigureRoom;
-
                         // Configure room on double click
                         if (e.button == 0 && !e.control && ((doubleClickToConfigure && isDoubleClick) || (!doubleClickToConfigure && mouseDownDistance <= 2)))
                         {
@@ -109,7 +109,7 @@ namespace Edgar.Unity.Editor
                     else if (currentHoverConnectionControl != null)
                     {
                         // Configure connection on double click
-                        if (e.button == 0 && isDoubleClick)
+                        if (e.button == 0 && ((doubleClickToConfigure && isDoubleClick) || (!doubleClickToConfigure && mouseDownDistance <= 2)))
                         {
                             SelectObject(currentHoverConnectionControl.Connection);
                             GUI.changed = true;
