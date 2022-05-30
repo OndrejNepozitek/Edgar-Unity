@@ -1,0 +1,17 @@
+// Add passages/corridors
+foreach (var connection in LevelGraph.Connections.Cast<Dungeon1Connection>())
+{
+    // Handle both corridor connections and direct room-to-room connections
+    // This is useful for the "Extra stuff" in the tutorial
+    if (UseCorridors && connection.IsCorridor)
+    {
+        var corridorRoom = (RoomBase) CreateInstance<Dungeon1Room>();
+        
+        levelDescription.AddCorridorConnection(connection, corridorRoom,
+            RoomTemplates.Corridors);
+    }
+    else
+    {
+        levelDescription.AddConnection(connection);
+    }
+}

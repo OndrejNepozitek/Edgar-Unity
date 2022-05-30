@@ -44,6 +44,8 @@ The next step is to create an instance of the `GeneratorSettings` scriptable obj
 
 Create your first room template <Path path="3d:Dungeon room template" par />. Open the prefab and assign the `GeneratorSettings` object created in the previous step to the `GeneratorSettings` field of the `RoomTemplateSettings` component.
 
+> **Tip:** When creating room templates and doors, you are required to assign the generator settings object to them. If you want to automate this step, open your `GeneratorSettings` object and click the *Mark as default generator settings* button. When you create a new room template, the chosen default generator settings will be automatically assigned.
+
 Next, use the floor and wall blocks to design the room template. Make sure to add these blocks as children of the `Blocks` game object so that they can be recognized by the outline computing algorithm. The room template I created looks like this:
 
 <Image src="3d/examples/basics/room_1_no_doors.png" caption="Basic room template without doors, the yellow gizmo display the outline as seen by the generator" />

@@ -74,7 +74,7 @@ module.exports = {
     {
       type: "category",
       label: "(PRO) Examples",
-      items: ["3d/examples/basics"]
+      items: ["3d/examples/basics", "3d/examples/dungeon-1"]
     },
     {
       type: "category",
