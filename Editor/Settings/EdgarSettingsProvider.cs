@@ -45,7 +45,7 @@ namespace Edgar.Unity.Editor
         [SettingsProvider]
         public static SettingsProvider CreateMySingletonProvider()
         {
-            var provider = new EdgarSettingsProvider("Project/Edgar", SettingsScope.Project);
+            var provider = new EdgarSettingsProvider("Preferences/Edgar", SettingsScope.User);
             return provider;
         }
 
