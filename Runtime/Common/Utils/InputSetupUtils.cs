@@ -26,6 +26,26 @@ namespace Edgar.Unity
         }
 
         /// <summary>
+        /// Gets corridor room templates for a given connection.
+        /// These room templates are only used if UseCorridors is enabled.
+        /// </summary>
+        /// <param name="connection"></param>
+        /// <param name="defaultRoomTemplatesSets"></param>
+        /// <param name="defaultIndividualRoomTemplates"></param>
+        /// <returns></returns>
+        public static List<GameObject> GetRoomTemplates(ConnectionBase connection, List<RoomTemplatesSet> defaultRoomTemplatesSets, List<GameObject> defaultIndividualRoomTemplates)
+        {
+            var roomTemplates = connection.GetRoomTemplates();
+
+            if (roomTemplates == null || roomTemplates.Count == 0)
+            {
+                return GetRoomTemplates(defaultRoomTemplatesSets, defaultIndividualRoomTemplates);
+            }
+
+            return roomTemplates;
+        }
+
+        /// <summary>
         /// Combines room templates from room templates sets and individual room templates.
         /// </summary>
         /// <param name="roomTemplatesSets"></param>

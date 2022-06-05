@@ -30,6 +30,11 @@ namespace Edgar.Unity
 
             list.elementHeightCallback = (index) =>
             {
+                if (list.serializedProperty.arraySize == 0)
+                {
+                    return 0;
+                }
+
                 var element = list.serializedProperty.GetArrayElementAtIndex(index);
                 var height = EditorGUI.GetPropertyHeight(element);
 

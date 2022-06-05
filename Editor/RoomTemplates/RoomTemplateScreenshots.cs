@@ -17,13 +17,13 @@ namespace Edgar.Unity.Editor
         }
 
         #if OndrejNepozitekEdgar
-        [MenuItem("MyMenu/Room template screenshot with center %g")]
+        [MenuItem("Edgar debug/Room template screenshot with center %g")]
         public static void TakeScreenshotWithCenter()
         {
             TakeScreenshot(true);
         }
 
-        [MenuItem("MyMenu/Room template screenshot without center %h")]
+        [MenuItem("Edgar debug/Room template screenshot without center %h")]
         public static void TakeScreenshotWithoutCenter()
         {
             TakeScreenshot(false);

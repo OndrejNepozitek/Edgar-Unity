@@ -11,7 +11,7 @@ namespace Edgar.Unity.Examples.Example2
     {
         public void Update()
         {
-            if (Input.GetKeyDown(KeyCode.G))
+            if (InputHelper.GetKeyDown(KeyCode.G))
             {
                 LoadNextLevel();
             }

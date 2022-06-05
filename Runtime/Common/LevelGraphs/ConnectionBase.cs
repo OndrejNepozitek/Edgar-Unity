@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Edgar.Unity
 {
@@ -21,6 +22,18 @@ namespace Edgar.Unity
         /// </summary>
         [HideInInspector]
         public RoomBase To;
+
+        /// <summary>
+        /// Gets all the corridor room templates that are available for the connection.
+        /// </summary>
+        /// <remarks>
+        /// This method is used in the default implementation of the input setup task.
+        /// If null or an empty list is returned, the input setup will use the default room template from the level graph.
+        /// </remarks>
+        public virtual List<GameObject> GetRoomTemplates()
+        {
+            return null;
+        }
 
         /// <summary>
         /// Gets the style for the level graph editor.

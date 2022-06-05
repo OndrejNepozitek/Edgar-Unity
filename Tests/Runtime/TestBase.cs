@@ -10,7 +10,8 @@ namespace Edgar.Unity.Tests
 {
     public class TestBase : IPrebuildSetup, IPostBuildCleanup
     {
-        private const string TestSceneFolder = "Assets/Edgar/Tests/Runtime/Scenes";
+        private const string TestSceneFolder = "Assets/Edgar/Tests";
+        private const string ExampleSceneFolder = "Assets/Edgar/Examples";
 
         public void Setup()
         {
@@ -45,7 +46,7 @@ namespace Edgar.Unity.Tests
         {
             foreach (var scene in EditorBuildSettings.scenes)
             {
-                if (scene.path.Contains(sceneName))
+                if (scene.path.EndsWith(sceneName + ".unity"))
                 {
                     return scene.path;
                 }
@@ -61,7 +62,7 @@ namespace Edgar.Unity.Tests
         {
             #if UNITY_EDITOR
             var scenes = new List<EditorBuildSettingsScene>();
-            var guids = AssetDatabase.FindAssets("t:Scene", new[] {TestSceneFolder});
+            var guids = AssetDatabase.FindAssets("t:Scene", new[] {TestSceneFolder, ExampleSceneFolder});
             if (guids != null)
             {
                 foreach (string guid in guids)
@@ -76,7 +77,7 @@ namespace Edgar.Unity.Tests
             }
 
             Debug.Log("Adding test scenes to build settings:\n" + string.Join("\n", scenes.Select(scene => scene.path)));
-            EditorBuildSettings.scenes = EditorBuildSettings.scenes.Union(scenes).ToArray();
+            EditorBuildSettings.scenes = scenes.ToArray();
             #endif
         }
 

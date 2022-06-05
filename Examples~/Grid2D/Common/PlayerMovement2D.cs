@@ -23,8 +23,8 @@ namespace Edgar.Unity.Examples
 
         public void Update()
         {
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
+            movement.x = InputHelper.GetHorizontalAxis();
+            movement.y = InputHelper.GetVerticalAxis();
 
             animator.SetBool("running", rigidbody.velocity.magnitude > float.Epsilon);
 

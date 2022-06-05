@@ -20,7 +20,7 @@ namespace Edgar.Unity.Examples.Example1
         /// </summary>
         public override void Interact()
         {
-            if (Input.GetKey(KeyCode.E))
+            if (InputHelper.GetKey(KeyCode.E))
             {
                 gameObject.SetActive(false);
             }

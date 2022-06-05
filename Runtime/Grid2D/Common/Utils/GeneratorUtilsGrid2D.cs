@@ -86,6 +86,10 @@ namespace Edgar.Unity
             levelInfo = rootGameObject.AddComponent<LevelInfoGrid2D>();
             levelInfo.RoomInstances = layoutData.Values.ToList();
 
+            // This line is here to make sure that if FromExample mode is used and the level container is not positioned at origin
+            // the positions of tilemaps and rooms are in sync.
+            roomTemplateInstancesRoot.transform.localPosition = Vector3.zero;
+
             return new DungeonGeneratorLevelGrid2D(layoutData, layout, rootGameObject, levelDescription);
         }
 

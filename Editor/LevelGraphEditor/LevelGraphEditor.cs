@@ -17,7 +17,7 @@ namespace Edgar.Unity.Editor
 
         public State CurrentState;
 
-        private bool snapToGrid;
+        private bool snapToGrid => EdgarSettings.instance.General.SnapLevelGraphToGrid;
 
         private Vector2 panOffset;
 
@@ -109,7 +109,6 @@ namespace Edgar.Unity.Editor
             CurrentState = State.Idle;
             zoom = LevelGraph.EditorData.Zoom;
             panOffset = LevelGraph.EditorData.PanOffset;
-            snapToGrid = EditorPrefs.GetBool(EditorConstants.SnapToGridEditorPrefsKey, false);
             connectionStartControl = null;
 
             // Initialize room controls
@@ -237,8 +236,12 @@ namespace Edgar.Unity.Editor
                 GUILayout.Label($"No graph selected");
             }
 
-            snapToGrid = GUILayout.Toggle(snapToGrid, "Snap to grid", GUILayout.Width(120));
-            EditorPrefs.SetBool(EditorConstants.SnapToGridEditorPrefsKey, snapToGrid);
+            var snapToGridNewValue = GUILayout.Toggle(snapToGrid, "Snap to grid", GUILayout.Width(120));
+            if (snapToGridNewValue != snapToGrid)
+            {
+                EdgarSettings.instance.General.SnapLevelGraphToGrid = snapToGridNewValue;
+                EdgarSettings.instance.Save();
+            }
 
             if (GUILayout.Button(new GUIContent("Select in inspector"), EditorStyles.toolbarButton, GUILayout.Width(150)))
             {
