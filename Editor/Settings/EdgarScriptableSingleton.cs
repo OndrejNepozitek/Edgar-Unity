@@ -1,6 +1,4 @@
-﻿#if UNITY_2020_1_OR_NEWER
-#else
-using System.IO;
+﻿using System.IO;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -35,7 +33,7 @@ namespace Edgar.Unity.Editor
                 InternalEditorUtility.LoadSerializedFileAndForget(filePath);
             if (!((Object)EdgarScriptableSingleton<T>.s_Instance == (Object)null))
                 return;
-            ScriptableObject.CreateInstance<T>().hideFlags = HideFlags.HideAndDontSave;
+            ScriptableObject.CreateInstance<T>().hideFlags = HideFlags.HideInHierarchy | HideFlags.DontSave;
         }
 
         protected virtual void Save(bool saveAsText)
@@ -65,4 +63,3 @@ namespace Edgar.Unity.Editor
         }
     }
 }
-#endif
