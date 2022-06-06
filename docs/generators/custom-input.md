@@ -10,6 +10,8 @@ In this tutorial, we will learn how to implement custom inputs in order to have 
 
 The first thing that we need to understand is the difference between ```LevelGraph``` and ```LevelDescription``` classes. If you are reading this tutorial, you probably know what is a level graph. It is a collection of rooms and connections, and it describes the high-level structure of generated levels. With each level graph is associated an instance of the ```LevelGraph``` scriptable object. 
 
+> **Note:** The `LevelDescription` class has a different suffix based on if it is used in the 2D version (`LevelDescriptionGrid2D`) or in the 3D version (`LevelDescriptionGrid3D`). The same also applies to `DungeonGeneratorInputBase`, while `LevelGraph` is the same in both versions.
+
 However, level graphs are not directly given to the generator as an input. First, we need to convert the ```LevelGraph``` to an instance of the ```LevelDescription``` class. The reason for that is that level graphs are made primarily for the GUI editor, and we need to convert them to a real graph data structure.
 
 Both ```LevelGraph``` and ```LevelDescription``` revolve around rooms and connections. The following code should demonstrate the basic API of both classes and how to convert one to the other one:

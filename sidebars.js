@@ -73,6 +73,11 @@ module.exports = {
     },
     {
       type: "category",
+      label: "(PRO) Generators",
+      items: ["3d/generators/dungeon-generator", "3d/generators/post-processing", "3d/generators/custom-input"]
+    },
+    {
+      type: "category",
       label: "(PRO) Examples",
       items: ["3d/examples/basics", "3d/examples/dungeon-1"]
     },

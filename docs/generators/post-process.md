@@ -59,5 +59,3 @@ When you have your implementation ready, you now have to create an instance of t
 <Image src="2d/examples/example1/custom_post_process.png" caption="Add the ScriptableObject to the Custom post process tasks array" />
 
 <FeatureUsage id="custom-post-processing" />
-
-### (PRO) Priority callbacks
