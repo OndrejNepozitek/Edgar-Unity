@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Edgar.Unity
 {
+    [Serializable]
     public class SerializableVector3Int
     {
         public int x;
