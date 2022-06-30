@@ -70,9 +70,26 @@ module.exports = {
           ],
         },
         {
-          label: "Docs for 3D version (preview)", 
-          to: 'docs/next/3d/introduction',
-          position: "right"
+          label: 'Docs (3D version beta)',
+          to: 'docs/3d/introduction',
+          position: 'right',
+          activeBaseRegex: `docs/(?!next/(support|team|resources))`,
+          items: [
+            {
+              label: versions[0],
+              to: 'docs/3d/introduction',
+              activeBaseRegex: `docs/(?!${versions.join('|')}|next)`,
+            },
+            ...versions.slice(1, 3).map((version) => ({
+              label: version,
+              to: `docs/3d/${version}/introduction`,
+            })).filter(x => !["2.0.0-beta.0", "2.0.0", "2.0.2"].includes(x.label)),
+            {
+              label: 'Master/Unreleased',
+              to: 'docs/next/3d/introduction',
+              activeBaseRegex: `docs/next/(?!support|team|resources)`,
+            },
+          ],
         },
         {
           href: "https://github.com/OndrejNepozitek/Edgar-Unity/",
