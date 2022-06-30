@@ -69,7 +69,7 @@ module.exports = {
     {
       type: "category",
       label: "(PRO) Basics",
-      items: ["3d/basics/room-templates", "3d/basics/level-graphs", "3d/basics/generator-setup", "3d/basics/performance-tips"]
+      items: ["3d/basics/quickstart", "3d/basics/generator-settings", "3d/basics/room-templates", "3d/basics/level-graphs", "3d/basics/generator-setup", "3d/basics/performance-tips"]
     },
     {
       type: "category",
