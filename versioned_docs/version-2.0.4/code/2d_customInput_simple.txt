@@ -1,0 +1,9 @@
+// [CreateAssetMenu(menuName = "Dungeon generator/Examples/Docs/My custom input task", fileName = "MyCustomInputSetup")]
+public class CustomInputExample2 : DungeonGeneratorInputBaseGrid2D
+{
+    /* Create the level description here */
+    protected override LevelDescriptionGrid2D GetLevelDescription()
+    {
+        /* ... */
+    }
+}

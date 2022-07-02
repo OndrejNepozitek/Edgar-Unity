@@ -1,0 +1,35 @@
+/// <summary>
+/// Simple custom room to demonstrate custom editor controls.
+/// </summary>
+public class CustomEditorControlsRoom : RoomBase
+{
+    /// <summary>
+    /// Each room has a type that determines the display name and icon.
+    /// </summary>
+    public enum RoomType
+    {
+        Basic,
+        Treasure,
+        Shop,
+        Boss,
+        Spawn
+    }
+
+    /// <summary>
+    /// Type of the room.
+    /// </summary>
+    public RoomType Type = RoomType.Basic;
+
+    public override List<GameObject> GetRoomTemplates()
+    {
+        // Not implemented in this example
+        throw new System.NotImplementedException();
+    }
+
+    public override string GetDisplayName()
+    {
+        return Type.ToString();
+    }
+
+    /* ... */
+}
