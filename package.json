@@ -1,6 +1,6 @@
 {
     "name": "com.ondrejnepozitek.edgar.unity",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "displayName": "Edgar - Procedural Level Generator",
     "description": "2D procedural level generator",
     "unity": "2019.3",
