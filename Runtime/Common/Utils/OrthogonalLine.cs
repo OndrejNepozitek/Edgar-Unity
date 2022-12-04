@@ -138,38 +138,42 @@ namespace Edgar.Unity
         [Pure]
         public int Contains(Vector3Int point)
         {
-            if (Direction == Vector3Int.zero)
-            {
-                return point == From ? 0 : -1;
-            }
+            var direction = Direction;
 
-            int index;
-            int sign;
-
-            if (Direction.x != 0)
+            if (direction.y > 0)
             {
-                index = point.x - From.x;
-                sign = Direction.x;
+                if (point.x == From.x && point.y <= To.y && point.y >= From.y)
+                {
+                    return point.y - From.y;
+                } 
+            } 
+            else if (direction.x > 0)
+            {
+                if (point.y == From.y && point.x <= To.x && point.x >= From.x)
+                {
+                    return point.x - From.x;
+                }
             }
-            else if (Direction.y != 0)
+            else if (direction.y < 0)
             {
-                index = point.y - From.y;
-                sign = Direction.y;
+                if (point.x == From.x && point.y >= To.y && point.y <= From.y)
+                {
+                    return From.y - point.y;
+                }
             }
-            else if (Direction.z != 0)
+            else if (direction.x < 0)
             {
-                index = point.z - From.z;
-                sign = Direction.z;
+                if (point.y == From.y && point.x >= To.x && point.x <= From.x)
+                {
+                    return From.x - point.x;
+                }
             }
             else
             {
-                throw new ArgumentOutOfRangeException();
-            }
-
-            var absoluteIndex = Math.Abs(index);
-            if ((sign == Math.Sign(index) || (index == 0 && point == From)) && absoluteIndex < Length)
-            {
-                return absoluteIndex;
+                if (point == From)
+                {
+                    return 0;
+                }
             }
 
             return -1;
