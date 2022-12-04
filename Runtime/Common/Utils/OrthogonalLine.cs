@@ -138,42 +138,43 @@ namespace Edgar.Unity
         [Pure]
         public int Contains(Vector3Int point)
         {
-            var direction = Direction;
+            if (Direction == Vector3Int.zero)
+            {
+                return point == From ? 0 : -1;
+            }
 
-            if (direction.y > 0)
+            if (point == From)
             {
-                if (point.x == From.x && point.y <= To.y && point.y >= From.y)
-                {
-                    return point.y - From.y;
-                } 
-            } 
-            else if (direction.x > 0)
-            {
-                if (point.y == From.y && point.x <= To.x && point.x >= From.x)
-                {
-                    return point.x - From.x;
-                }
+                return 0;
             }
-            else if (direction.y < 0)
+
+            int index;
+            int sign;
+
+            if (Direction.x != 0 && point.y == fromY && point.z == fromZ)
             {
-                if (point.x == From.x && point.y >= To.y && point.y <= From.y)
-                {
-                    return From.y - point.y;
-                }
+                index = point.x - From.x;
+                sign = Direction.x;
             }
-            else if (direction.x < 0)
+            else if (Direction.y != 0 && point.x == fromX && point.z == fromZ)
             {
-                if (point.y == From.y && point.x >= To.x && point.x <= From.x)
-                {
-                    return From.x - point.x;
-                }
+                index = point.y - From.y;
+                sign = Direction.y;
+            }
+            else if (Direction.z != 0 && point.y == fromY && point.x == fromX)
+            {
+                index = point.z - From.z;
+                sign = Direction.z;
             }
             else
             {
-                if (point == From)
-                {
-                    return 0;
-                }
+                return -1;
+            }
+
+            var absoluteIndex = Math.Abs(index);
+            if (sign == Math.Sign(index) && absoluteIndex < Length)
+            {
+                return absoluteIndex;
             }
 
             return -1;
