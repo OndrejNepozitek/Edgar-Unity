@@ -34,6 +34,12 @@ namespace Edgar.Unity.Editor
                 {
                     EditorGUILayout.HelpBox(string.Join("\n", wrongManualDoorsCheck.Errors).Trim(), MessageType.Warning);
                 }
+
+                var wrongPositionGameObjects = RoomTemplateDiagnostics.CheckWrongPositionGameObjects(roomTemplate.gameObject);
+                if (wrongPositionGameObjects.HasErrors)
+                {
+                    EditorGUILayout.HelpBox(string.Join("\n", wrongPositionGameObjects.Errors).Trim(), MessageType.Warning);
+                }
             }
             else
             {

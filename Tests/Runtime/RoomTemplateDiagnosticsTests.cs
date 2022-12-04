@@ -146,5 +146,19 @@ namespace Edgar.Unity.Tests.Runtime
             var resultComponents = RoomTemplateDiagnostics.CheckWrongManualDoors(roomTemplate, out var _);
             Assert.That(resultComponents.HasErrors, Is.True);
         }
+        
+        [Test]
+        public void WrongPositions()
+        {
+            var roomTemplate = GameObject.Find("WrongPositions");
+            Assert.That(roomTemplate, Is.Not.Null);
+
+            var resultAll = RoomTemplateDiagnostics.CheckAll(roomTemplate);
+            Assert.That(resultAll.HasErrors, Is.False);
+
+            var resultComponents = RoomTemplateDiagnostics.CheckWrongPositionGameObjects(roomTemplate);
+            Assert.That(resultComponents.HasErrors, Is.True);
+            Assert.That(resultComponents.Errors[0].Contains("Floor"));
+        }
     }
 }
