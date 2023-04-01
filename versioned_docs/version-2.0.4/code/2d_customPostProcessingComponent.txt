@@ -1,4 +1,4 @@
-public class MyCustomPostProcessingComponent : DungeonGeneratorPostProcessingGrid2D
+public class MyCustomPostProcessingComponent : DungeonGeneratorPostProcessingComponentGrid2D
 {
     public override void Run(DungeonGeneratorLevelGrid2D level)
     {
