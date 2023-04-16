@@ -13,6 +13,8 @@ namespace Edgar.Unity
 {
     public class PipelineRunner<TPayload> where TPayload : class
     {
+        private bool isGenerating = false;
+        
         /// <summary>
         ///     Runs given pipeline items with a given payload.
         /// </summary>
@@ -29,54 +31,67 @@ namespace Edgar.Unity
 
         public IEnumerator GetEnumerator(IEnumerable<IPipelineTask<TPayload>> pipelineTasks, TPayload payload, bool runDiagnostics = false)
         {
-            foreach (var pipelineItem in pipelineTasks)
+            if (isGenerating)
             {
-                pipelineItem.Payload = payload;
-
-                IEnumerator enumerator;
-
+                Debug.LogError($"The generator was called while already generating a level. This usually indicates an error in the setup. It is often caused by calling the generator on Start/Awake from a game manager while having the 'Generate On Start' option turned on in the generator. If you are calling the generator manually, disable 'Generate On Start' in the generator component.");
+            }
+            
+            isGenerating = true;
+            
+            var enumerator = GetEnumeratorNoErrorHandling(pipelineTasks, payload);
+            while (true)
+            {
                 try
                 {
-                    enumerator = pipelineItem.Process();
+                    var hasNext = enumerator.MoveNext();
+                    if (!hasNext)
+                    {
+                        break;
+                    }
                 }
-                catch (TimeoutException e)
+                catch (Exception e)
                 {
-                    HandleTimeoutException(e, payload);
+                    isGenerating = false;
+                    
+                    switch (e)
+                    {
+                        case TimeoutException timeoutException:
+                            HandleTimeoutException(timeoutException, payload);
+                            break;
+                        case NoSuitableShapeForRoomException noSuitableShapeForRoom:
+                            throw HandleNoSuitableShapeException(noSuitableShapeForRoom, payload);
+                    }
+
                     throw;
                 }
-                catch (NoSuitableShapeForRoomException e)
-                {
-                    throw HandleNoSuitableShapeException(e, payload);
-                }
 
-                while (true)
-                {
-                    try
-                    {
-                        var hasNext = enumerator.MoveNext();
-                        if (!hasNext)
-                        {
-                            break;
-                        }
-                    }
-                    catch (TimeoutException e)
-                    {
-                        HandleTimeoutException(e, payload);
-                        throw;
-                    }
-                    catch (NoSuitableShapeForRoomException e)
-                    {
-                        throw HandleNoSuitableShapeException(e, payload);
-                    }
-
-                    yield return null;
-                }
+                yield return null;
             }
+
+            isGenerating = false;
 
             if (runDiagnostics)
             {
                 var results = Diagnostics.Diagnostics.Run(payload);
                 Diagnostics.Diagnostics.DisplayPerformanceResults(results, true);
+            }
+        }
+
+        private IEnumerator GetEnumeratorNoErrorHandling(IEnumerable<IPipelineTask<TPayload>> pipelineTasks, TPayload payload)
+        {
+            foreach (var pipelineItem in pipelineTasks)
+            {
+                yield return null;
+                
+                pipelineItem.Payload = payload;
+                var enumerator = pipelineItem.Process();
+                
+                yield return null;
+                
+                while (enumerator.MoveNext())
+                {
+                    yield return null;
+                }
             }
         }
 
