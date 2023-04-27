@@ -22,6 +22,7 @@
   --ifm-menu-color-background-active: none;
   --ifm-menu-color-background-hover: none;
   --ifm-font-weight-bold: 600;
+  --ifm-toc-padding-horizontal: 0.75rem;
 }
 
 :root [data-theme=""] {

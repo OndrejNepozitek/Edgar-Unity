@@ -9,13 +9,16 @@ In this guide, we will learn how to enable a simple fog of war functionality.
 ## Limitations
 
 - **Performance on large levels** - Not suitable for very large levels (e.g. area larger than 500x500 tiles) - see [Implementation and performance](guides/fog-of-war.md#implementation-and-performance)
+- **Isometric not supported** - Does not support isometric games/levels
+- Does not work in levels where the camera is not perpendicular to the level (e.g. if the camera is positioned at an angle)
+
 
 ## Prerequisites
 
 - **Built-in Render Pipeline** - works in Unity 2018.4+
 - **Lightweight Render Pipeline (LWRP)** - version >= 6.5 of LWRP is needed (and therefore Unity 2019.2+)
 - **Universal Render Pipeline (URP)** - version >= 7.0 of URP is needed (and therefore Unity 2019.3+)
-    - **IMPORTANT!** - this feature **does not** work with the **2D Renderer (Experimental)** as it is still experimental and people in Unity have not yet implemented custom renderer features!
+    - **IMPORTANT!** - this feature **now works** with the **2D Renderer (Experimental)** since Unity 2021.3+
 - **High Definition Render Pipeline (HDRP)** - currently not supported
 
 > **Note:** Additional setup steps are needed for LWRP and URP, see below.

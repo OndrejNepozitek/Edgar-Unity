@@ -8,7 +8,7 @@ A version positional argument can be given, default is the "Next" version.
 Example format "2.0.0-beta.0".
 
 */
-const edgarPath = "C:/Users/ondra/Projects/Unity/Edgar-Unity-2019/Assets/Edgar";
+const edgarPath = "C:/Personal projects/Unity/Edgar-Unity-2019/Assets/Edgar";
 const fs = require("fs");
 const path = require("path");
 const stripIndent = require("strip-indent");

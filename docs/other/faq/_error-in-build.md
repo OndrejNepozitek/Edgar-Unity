@@ -1,0 +1,3 @@
+[//]: # "Generator works in the editor but not in the build"
+
+Sometimes the generator may work perfectly fine in the editor but fails to produce a level if you build and run the game. This usually indicates there is a problem with some code that runs immediately before or after Edgar generates a level. Check the logs to see where is the problem. You might be using some APIs that are not available in the build, or maybe you forgot to configure an asset to be included in the build. You can also try disabling all the post-processing scripts to check if the problem is somewhere in there.

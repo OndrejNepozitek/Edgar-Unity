@@ -43,7 +43,7 @@ Please see the [Post-processing](../generators/post-process.md) page to find det
 - **Initialize Shared Tilemaps** - Whether to initialize tilemaps that will hold the generated level.
 - **Tilemap Layers Handler** - Which tilemap layers handler should be used to initialize shared tilemaps. Uses the `DungeonTilemapLayersHandler` if not set.
 - **Tilemap Material** - Material that will be used in Tilemap Renderers of shared tilemaps. This is useful, for example, for lights. If left null, the default material will be used.
-- **Copy Tiles To Shared Tilemaps** - Whether to copy tiles from individual room template to the shared tilemaps.
+- **Copy Tiles To Shared Tilemaps** - Whether to copy tiles from individual room templates to the shared tilemaps.
 - **Center Grid** - Whether to move the level so that its centre is approximately at (0,0). Useful for debugging in Scene view in the editor.
 - **Disable Room Template Renderers** - Whether to disable tilemap renderers of individual rooms, useful only when *Copy Tiles To Shared Tilemaps* is enabled.
 - **Disable Room Template Colliders** - Whether to disable tilemap colliders of individual rooms, useful only when *Copy Tiles To Shared Tilemaps* is enabled.
@@ -81,6 +81,22 @@ The simple approach uses only built-in Unity coroutines and works like this:
 
 <ExternalCode name="2d_generator_runCoroutines" />
 
-There is one problem with the simple approach - coroutines cannot really handle exceptions. So if there is some problem with the generator or with custom post-processing logic, the coroutine just dies, and we are not able to do any clean-up. Therefore, I implemented a smarter coroutine that lets us handle any errors. Example usage:
+There is one problem with the simple approach - coroutines cannot handle exceptions. So if there is some problem with the generator or with custom post-processing logic, the coroutine just dies, and we are not able to do any clean-up. Therefore, I implemented a smarter coroutine that lets us handle any errors. Example usage:
 
 <ExternalCode name="2d_generator_runCoroutinesAdvanced" />
+
+## Controlling the seed of the generator
+
+In the majority of procedural level generators, there is something called the **seed of the generator**. In Edgar, it is a number that controls the randomness of the generator. If you use the same seed twice, the generator will produce the same level.
+
+By default, Edgar automatically generates a new random seed for you each time you run the generator. That means that you should see a different level each time you press the *Generate* button or call the generator from a script. If you want to change this behaviour, there are two properties that you can play with. First, there is the `UseRandomSeed` property that controls whether the generator should pick a random seed for you. The second property is the `RandomSeed` property which controls which seed is used when `UseRandomSeed` is set to false.
+
+> **Note:** As an excercise, you can try playing with the seed yourself. Head to the dungeon generator component and uncheck the `UseRandomSeed` property. Next, in the `RandomSeed` field, write any number you want, e.g. 42. Now, try generating a few levels. You should see that each generated level is the same. You can also check that console which should show that the seed that you picked is used to generate the level. If you change the `RandomSeed` value, a different level should be generated.
+
+You might be asking yourself in which scenario is controlling the seed useful. Here are some examples:
+
+- If you are debugging some problem that you have, it might be useful to fix the seed so that you can easily replicate the problem and later check if it is really fixed. If the problem manifests only in some of the generated levels, it might be otherwise hard to address it if you need to generate multiple levels to find one with the problem.
+- If you want to implement a save and load system, you might need to be able to generate the exact same level twice. More info is in the [How to implement save and load system?](../other/faq.md#how-to-implement-save-and-load-system) section of the FAQ page.
+- If you want to send the same level to multiple players in a multiplayer game, the simplest solution might be sending them the seed instead and generating the level on their computers. That way, each player will get the same level. More info is in the [Send the same level to multiple players (in a multiplayer game)](../other/faq.md#send-the-same-level-to-multiple-players-in-a-multiplayer-game) section of the FAQ page.
+
+If you have read this documentation page carefully, you should now know how to change the seed configuration from a script and also how to call the generator from a script. With that knowledge, you should be able to fully control the seed and the behaviour of the generator.
