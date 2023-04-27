@@ -25,7 +25,7 @@ public class GungeonPostProcessingTask : DungeonGeneratorPostProcessingGrid2D
             if (room.Type != GungeonRoomType.Corridor)
             {
                 // Set enemies and floor collider to the room manager
-                roomManager.Enemies = Enemies;
+                roomManager.EnemyPrefabs = Enemies;
                 roomManager.FloorCollider = floor.GetComponent<CompositeCollider2D>();
 
                 // Find all the doors of neighboring corridors and save them in the room manager

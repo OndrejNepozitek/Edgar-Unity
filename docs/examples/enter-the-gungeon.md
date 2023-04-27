@@ -44,15 +44,15 @@ In Enter the Gungeon, they use multiple level graphs for each stage of the game.
 
 ### Custom rooms and connections
 
-In the level graph above, we used custom room and connection types. We use this feature to add additional data to rooms and connection and also to change how they are displayed in the editor.
+In the level graph above, we used custom room and connection types. We use this feature to add additional data to rooms and connections and also to change how they are displayed in the editor.
 
 #### Rooms
 
-Each room in Enter the Gungeon has its type - there are rooms with enemies, treasure rooms, shops, etc. We use a custom room implementation to add the `GungGungeonRoomType Type` field to each room. Moreover, we use different colours to distinguish different types of rooms in the level graph editor.
+Each room in Enter the Gungeon has its type - there are rooms with enemies, treasure rooms, shops, etc. We use a custom room implementation to add the `GungGungeonRoomType Type` field to each room. Moreover, we use different colors to distinguish different types of rooms in the level graph editor.
 
 #### Connections
 
-Some corridors in Enter the Gungeon are locked and can be unlocked only from the other side of the door. This is usually used to force the player to go through a loop that ends with a treasure or shop room and the door then serves as a shortcut to get back to the main path. We use a custom connection implementation to add the `bool IsLocked` field. If the door is locked, we use red colour to draw the line between the two rooms.
+Some corridors in Enter the Gungeon are locked and can be unlocked only from the other side of the door. This is usually used to force the player to go through a loop that ends with a treasure or shop room and the door then serves as a shortcut to get back to the main path. We use a custom connection implementation to add the `bool IsLocked` field. If the door is locked, we use red color to draw the line between the two rooms.
 
 <Tabs
 defaultValue="room"
@@ -104,13 +104,13 @@ To add the secret room to the level, we first get all the rooms from the level d
 
 ## Room manager
 
-In Enter the Gungeon, when a player visits a (combat-oriented) room for the first time, two things happen. First, all the doors to neighbouring rooms get closed and locked. And second, enemies are spawned. Only after all the enemies are defeated, the doors unlock.
+In Enter the Gungeon, when a player visits a (combat-oriented) room for the first time, two things happen. First, all the doors to neighboring rooms get closed and locked. And second, enemies are spawned. Only after all the enemies are defeated, the doors unlock.
 
 <Video src="videos/gungeon_enter_room.mp4" />
 
 <br />
 
-> **Note:** The enemies in this example are very dumb - they just stand there and cannot be killed as there is no combat system implemented. Therefore, the doors open after some time even though enemies are still alive.
+> **Note:** The enemies in this example are very dumb - they just stand there and can be killed if the player collides with them. The game manager keeps track of how many enemies are left in the room and if there are non, it opens the doors.
 
 ### Current room detection
 
@@ -156,7 +156,9 @@ We can do it like this:
 5. Get the door game object from each neighbouring corridor
 6. Store all the doors in the room manager
 
-When we have the game objects, we can simply activate them when the player enters the room and then deactivate them when enemies are dead. (Or just open the doors after 3 seconds because we do not have any combat implemented.)
+When we have the game objects, we can simply activate them when the player enters the room and then deactivate them when enemies are dead.
+
+> **Note:** Check the game manager implementation if you want to see how and when are the doors opened.
 
 <details><summary>Show code block</summary>
 <div>

@@ -5,7 +5,7 @@ namespace Edgar.Unity.Examples.Grid3D.Dungeon1
     {
         public List<GameObject> Basic;
         public List<GameObject> Boss;
-        public List<GameObject> BossFoyers;
+        public List<GameObject> BossEntrance;
 
         /* ... */
 
@@ -20,7 +20,7 @@ namespace Edgar.Unity.Examples.Grid3D.Dungeon1
                 case Dungeon1Room.RoomType.Boss:
                     return Boss;
                 case Dungeon1Room.RoomType.BossEntrance:
-                    return BossFoyers;
+                    return BossEntrance;
 
                 /* ... */
 
