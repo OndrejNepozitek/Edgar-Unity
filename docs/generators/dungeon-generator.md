@@ -8,7 +8,7 @@ title: Dungeon generator
 - Assign your level graph to the **Level Graph** field.
 - Hit the **Generate dungeon** button or enable **Generate on start** and enter play mode
 
-<Image src="2d/generators/dungeon_generator_inspector.png" caption="Dungeon generator runner" width="500px" />
+<Image src="2d/generators/dungeon_generator_inspector.png" caption="Dungeon generator runner" width="500" />
 
 ## Configuration
 
