@@ -104,7 +104,7 @@ namespace Edgar.Unity
             #endif
 
             // Transform the level to its Unity representation
-            var generatedLevel = GeneratorUtilsGrid2D.TransformLayout(layout, levelDescription, rootGameObject, config.RoomTemplatePrefabsMode);
+            var generatedLevel = GeneratorUtilsGrid2D.TransformLayout(layout, levelDescription, rootGameObject, config.RoomTemplatePrefabMode);
 
             var stats = new GeneratorStats()
             {

@@ -17,7 +17,7 @@ namespace Edgar.Unity
             LayoutGrid2D<RoomBase> layout, 
             LevelDescriptionGrid2D levelDescription,
             GameObject rootGameObject,
-            RoomTemplatePrefabsModeGrid2D roomTemplatePrefabMode)
+            RoomTemplatePrefabModeGrid2D roomTemplatePrefabMode)
         {
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
@@ -202,14 +202,14 @@ namespace Edgar.Unity
 
         #region codeBlock:2d_keepPrefabsInEditor
 
-        private static GameObject InstantiateRoomTemplate(GameObject roomTemplatePrefab, RoomTemplatePrefabsModeGrid2D prefabMode)
+        private static GameObject InstantiateRoomTemplate(GameObject roomTemplatePrefab, RoomTemplatePrefabModeGrid2D prefabMode)
         {
-            if (!Application.isPlaying && prefabMode != RoomTemplatePrefabsModeGrid2D.Instantiate)
+            if (!Application.isPlaying && prefabMode != RoomTemplatePrefabModeGrid2D.Instantiate)
             {
                 #if UNITY_EDITOR
                 var roomTemplateInstance = (GameObject) PrefabUtility.InstantiatePrefab(roomTemplatePrefab);
 
-                if (prefabMode == RoomTemplatePrefabsModeGrid2D.InstantiatePrefabAndUnpackRoot)
+                if (prefabMode == RoomTemplatePrefabModeGrid2D.InstantiatePrefabAndUnpackRoot)
                 {
                     #pragma warning disable CS0162 // Unreachable code detected
                     PrefabUtility.UnpackPrefabInstance(
