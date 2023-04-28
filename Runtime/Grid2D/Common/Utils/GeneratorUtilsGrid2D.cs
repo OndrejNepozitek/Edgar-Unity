@@ -13,7 +13,11 @@ namespace Edgar.Unity
 {
     internal static class GeneratorUtilsGrid2D
     {
-        public static DungeonGeneratorLevelGrid2D TransformLayout(LayoutGrid2D<RoomBase> layout, LevelDescriptionGrid2D levelDescription, GameObject rootGameObject)
+        public static DungeonGeneratorLevelGrid2D TransformLayout(
+            LayoutGrid2D<RoomBase> layout, 
+            LevelDescriptionGrid2D levelDescription,
+            GameObject rootGameObject,
+            RoomTemplatePrefabsModeGrid2D roomTemplatePrefabMode)
         {
             // var layoutCenter = GetLayoutCenter(layout);
             var prefabToRoomTemplateMapping = levelDescription.GetPrefabToRoomTemplateMapping();
@@ -31,7 +35,7 @@ namespace Edgar.Unity
                 var roomTemplatePrefab = prefabToRoomTemplateMapping.GetByValue(layoutRoom.RoomTemplate);
 
                 // Instantiate the room template
-                var roomTemplateInstance = InstantiateRoomTemplate(roomTemplatePrefab);
+                var roomTemplateInstance = InstantiateRoomTemplate(roomTemplatePrefab, roomTemplatePrefabMode);
 
                 roomTemplateInstance.transform.SetParent(roomTemplateInstancesRoot.transform);
                 roomTemplateInstance.name = $"{layoutRoom.Room.GetDisplayName()} - {roomTemplatePrefab.name}";
@@ -198,22 +202,14 @@ namespace Edgar.Unity
 
         #region codeBlock:2d_keepPrefabsInEditor
 
-        private static GameObject InstantiateRoomTemplate(GameObject roomTemplatePrefab)
+        private static GameObject InstantiateRoomTemplate(GameObject roomTemplatePrefab, RoomTemplatePrefabsModeGrid2D prefabMode)
         {
-            // Set to true if you want to keep prefabs when generating levels in the editor
-            const bool keepPrefabsInEditor = false;
-
-            // Set to true if you want to unpack the root game object of the prefab
-            // (keepPrefabsInEditor must be true for this constant to change anything)
-            const bool unpackRootObject = false;
-
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-            if (!Application.isPlaying && keepPrefabsInEditor)
+            if (!Application.isPlaying && prefabMode != RoomTemplatePrefabsModeGrid2D.Instantiate)
             {
                 #if UNITY_EDITOR
                 var roomTemplateInstance = (GameObject) PrefabUtility.InstantiatePrefab(roomTemplatePrefab);
 
-                if (unpackRootObject)
+                if (prefabMode == RoomTemplatePrefabsModeGrid2D.InstantiatePrefabAndUnpackRoot)
                 {
                     #pragma warning disable CS0162 // Unreachable code detected
                     PrefabUtility.UnpackPrefabInstance(
