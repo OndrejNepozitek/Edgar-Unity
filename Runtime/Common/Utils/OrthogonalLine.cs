@@ -143,31 +143,36 @@ namespace Edgar.Unity
                 return point == From ? 0 : -1;
             }
 
+            if (point == From)
+            {
+                return 0;
+            }
+
             int index;
             int sign;
 
-            if (Direction.x != 0)
+            if (Direction.x != 0 && point.y == fromY && point.z == fromZ)
             {
                 index = point.x - From.x;
                 sign = Direction.x;
             }
-            else if (Direction.y != 0)
+            else if (Direction.y != 0 && point.x == fromX && point.z == fromZ)
             {
                 index = point.y - From.y;
                 sign = Direction.y;
             }
-            else if (Direction.z != 0)
+            else if (Direction.z != 0 && point.y == fromY && point.x == fromX)
             {
                 index = point.z - From.z;
                 sign = Direction.z;
             }
             else
             {
-                throw new ArgumentOutOfRangeException();
+                return -1;
             }
 
             var absoluteIndex = Math.Abs(index);
-            if ((sign == Math.Sign(index) || (index == 0 && point == From)) && absoluteIndex < Length)
+            if (sign == Math.Sign(index) && absoluteIndex < Length)
             {
                 return absoluteIndex;
             }

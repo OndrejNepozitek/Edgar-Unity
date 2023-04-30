@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Edgar.Geometry;
@@ -154,6 +155,51 @@ namespace Edgar.Unity.Diagnostics
             var doorMode = doors.GetDoorMode();
 
             return CheckWrongManualDoors(outline, doorMode, out differentLengthsCount);
+        }
+
+        private static bool IsAtOrigin(GameObject gameObject)
+        {
+            return gameObject.transform.localPosition == Vector3.zero;
+        }
+
+        public static List<GameObject> GetWrongPositionGameObjects(GameObject roomTemplate)
+        {
+            var result = new List<GameObject>();
+
+            if (!IsAtOrigin(roomTemplate))
+            {
+                result.Add(roomTemplate);
+            }
+
+            var tilemapsRoot = RoomTemplateUtilsGrid2D.GetTilemapsRoot(roomTemplate);
+
+            if (tilemapsRoot != roomTemplate && !IsAtOrigin(tilemapsRoot))
+            {
+                result.Add(tilemapsRoot);
+            }
+
+            foreach (var tilemap in RoomTemplateUtilsGrid2D.GetTilemaps(roomTemplate))
+            {
+                if (!IsAtOrigin(tilemap.gameObject))
+                {
+                    result.Add(tilemap.gameObject);
+                }
+            }
+
+            return result;
+        }
+        
+        public static ActionResult CheckWrongPositionGameObjects(GameObject roomTemplate)
+        {
+            var result = new ActionResult();
+            var wrongPositionGameObjects = GetWrongPositionGameObjects(roomTemplate);
+
+            if (wrongPositionGameObjects.Count != 0)
+            {
+                result.AddError($"Some game objects that are important for the room template are not positioned at (0,0,0), which can cause some weird issues. The problematic game objects are: {string.Join(", ", wrongPositionGameObjects.Select(x => x.name))}.");
+            }
+
+            return result;
         }
     }
 }

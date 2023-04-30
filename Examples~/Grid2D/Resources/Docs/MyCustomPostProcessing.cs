@@ -17,7 +17,7 @@ namespace Edgar.Unity.Examples.Resources
 
     #region codeBlock:2d_customPostProcessingComponent
 
-    public class MyCustomPostProcessingComponent : DungeonGeneratorPostProcessingGrid2D
+    public class MyCustomPostProcessingComponent : DungeonGeneratorPostProcessingComponentGrid2D
     {
         public override void Run(DungeonGeneratorLevelGrid2D level)
         {

@@ -310,5 +310,14 @@ namespace Edgar.Unity.Tests.Runtime
                 Assert.That(indices, Is.EqualTo(expectedIndices));
             }
         }
+
+        [Test]
+        public void Contains_NonMatchingOtherCoordinates()
+        {
+            var position = new Vector3Int(7, 1, 0);
+            var line = new OrthogonalLine(new Vector3Int(0, 2, 0), new Vector3Int(0, 1, 0));
+            var index = line.Contains(position);
+            Assert.That(index, Is.EqualTo(-1));
+        }
     }
 }

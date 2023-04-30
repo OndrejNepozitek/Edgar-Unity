@@ -24,5 +24,10 @@ namespace Edgar.Unity
         /// </summary>
         [Range(0, 5)]
         public int MinimumRoomDistance = 1;
+        
+        /// <summary>
+        /// Controls how room templates are instantiated. <seealso cref="RoomTemplatePrefabModeGrid2D" />
+        /// </summary>
+        public RoomTemplatePrefabModeGrid2D RoomTemplatePrefabMode = RoomTemplatePrefabModeGrid2D.Instantiate;
     }
 }
