@@ -1,5 +1,7 @@
 ﻿using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Edgar.Unity.Editor
 {
@@ -72,6 +74,7 @@ namespace Edgar.Unity.Editor
                 if (GUILayout.Button("Generate level"))
                 {
                     levelGenerator.Generate();
+                    EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
                 }
             }
 
