@@ -31,4 +31,10 @@ This approach has many advantages:
 
 ### Approach 3: Use colliders to find suitable spawning places
 
-TODO:
+The third approach is completely procedural. After a level is generated, you can go through each room and generate random points inside the collider of the floor tilemap layer. For each such point, you can check if there is already an enemy/another object and if not, spawn an enemy there. This approach is used in the [Enter the Gungeon example](../../examples/enter-the-gungeon.md#enemies) in the Enemies section.
+
+The main disadvantage of this approach is that it can be very slow. Depending on the number of enemies and the size of the room, the algorithm can have problems generating enemies in a reasonable time.
+
+### Recommended approach
+
+I usually recommend Approach 2 because it is very robust. It needs a bit of work to set up all the spawn point markers but otherwise it is a very good approach.

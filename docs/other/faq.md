@@ -18,6 +18,7 @@ import WiderWalls from './faq/_wider-walls.md';
 import RoomTemplateChangesLost from './faq/_room-template-changes-lost.md';
 import RoomDistance from './faq/_room-distance.md';
 import MultiplayerSeed from './faq/_multiplayer-seed.md';
+import KeepPrefabs from './faq/_keep-prefabs.md';
 
 This document contains solutions to common questions that are often asked on Discord and other channels.
 
@@ -51,7 +52,7 @@ This document contains solutions to common questions that are often asked on Dis
 
 ## Keep prefab references when generating levels inside the editor
 
-There is a dedicated guide [here](../recipes/prefabs-in-editor.md).
+<KeepPrefabs />
 
 ## Is it possible to track the progress of the generator?
 
@@ -65,9 +66,9 @@ There is a dedicated guide [here](../recipes/prefabs-in-editor.md).
 
 <LevelsWithoutCorridors />
 
-## TODO How to implement locks and keys?
+<!-- ## TODO How to implement locks and keys?
 
-<LocksAndKeys />
+<LocksAndKeys /> -->
 
 ## Is it possible to have non-rectangular rooms?
 
@@ -85,6 +86,6 @@ There is a dedicated guide [here](../recipes/prefabs-in-editor.md).
 
 <Pathfinding />
 
-## TODO: How to spawn enemies?
+## How to spawn enemies?
 
 <Enemies />

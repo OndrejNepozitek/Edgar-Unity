@@ -56,12 +56,6 @@ module.exports = {
               label: version,
               to: `docs/${version}/introduction`,
             })),
-            ...archiveVersions.slice(0, 3).map((version) => ({
-              label: `Archive ${version}`,
-              to: version == '2.0.0-alpha.9' ?
-                `https://ondrejnepozitek.github.io/Edgar-Unity-DocsArchive/docs/introduction/` :
-                `https://ondrejnepozitek.github.io/Edgar-Unity-DocsArchive/docs/${version}/introduction/`,
-            })),
             {
               label: 'Master/Unreleased',
               to: 'docs/next/introduction',

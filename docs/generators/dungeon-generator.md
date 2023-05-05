@@ -36,6 +36,11 @@ title: Dungeon generator
 
 > **Note:** Higher values of *Minimum Room Distance* may negatively affect the performance of the generator. Moreover, with very short corridor, it might even be impossible to generate a level with a high value of this parameter.
 
+- **Room Template Prefab Mode** - Controls how are room templates instantiated when in the Editor.
+    - **Instantiate** - Instantiate room templates using `Object.Instantiate()` - the default behaviour.
+    - **InstantiatePrefab** - Instantiate room templates using `PrefabUtility.InstantiatePrefab()`. This option keeps all prefab references intact.
+    - **InstantiatePrefabAndUnpackRoot** - Instantiate room templates using `PrefabUtility.InstantiatePrefab()`, but unpack the root object using `PrefabUtility.UnpackPrefabInstance()`. This option keep all the prefab references except for the root object. Useful if you need to alter some room templates in the Editor after a level is generated.
+
 #### Post-processing config (`PostProcessingConfigGrid2D`) {#post-processing-config}
 
 Please see the [Post-processing](../generators/post-process.md) page to find detailed information about this configuration.
