@@ -1,0 +1,5 @@
+[//]: # "Keep prefab references when generating levels inside the editor"
+
+After a level is generated, each room template prefab that was used in the level goes through the `Object.Instantiate()` method. This method removes the connection to the original prefab, which basically means that the whole prefab is unpacked (described [here in Unity docs](https://docs.unity3d.com/ScriptReference/Object.Instantiate.html).) However, it might be sometimes useful to keep the references to the prefabs. For example, if the level generator is used in the Editor and then manual changes are made to that level.
+
+The solution is to use one of the options of `Room Template Prefab Mode` that can be configured in the generator config. You can use the `InstantiatePrefab` option to keep all the prefab references, or the `InstantiatePrefabAndUnpackRoot` option to keep the prefab references but unpack the root prefab object. See more in the [Generator config](../../generators//dungeon-generator.md#generator-config) section of the Dungeon Generator page. 

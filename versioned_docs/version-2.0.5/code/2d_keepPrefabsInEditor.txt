@@ -1,0 +1,24 @@
+private static GameObject InstantiateRoomTemplate(GameObject roomTemplatePrefab, RoomTemplatePrefabsModeGrid2D prefabMode)
+{
+    if (!Application.isPlaying && prefabMode != RoomTemplatePrefabsModeGrid2D.Instantiate)
+    {
+        #if UNITY_EDITOR
+        var roomTemplateInstance = (GameObject) PrefabUtility.InstantiatePrefab(roomTemplatePrefab);
+
+        if (prefabMode == RoomTemplatePrefabsModeGrid2D.InstantiatePrefabAndUnpackRoot)
+        {
+            #pragma warning disable CS0162 // Unreachable code detected
+            PrefabUtility.UnpackPrefabInstance(
+                roomTemplateInstance,
+                PrefabUnpackMode.OutermostRoot,
+                InteractionMode.AutomatedAction
+            );
+            #pragma warning restore CS0162 // Unreachable code detected
+        }
+
+        return roomTemplateInstance;
+        #endif
+    }
+
+    return Object.Instantiate(roomTemplatePrefab);
+}

@@ -1,0 +1,34 @@
+namespace Edgar.Unity.Examples.Grid3D.Dungeon1
+{
+    [Serializable]
+    public class Dungeon1RoomTemplates
+    {
+        public List<GameObject> Basic;
+        public List<GameObject> Boss;
+        public List<GameObject> BossEntrance;
+
+        /* ... */
+
+        public List<GameObject> Hub;
+
+        public List<GameObject> GetRoomTemplates(Dungeon1Room.RoomType roomType)
+        {
+            switch (roomType)
+            {
+                case Dungeon1Room.RoomType.Basic:
+                    return Basic;
+                case Dungeon1Room.RoomType.Boss:
+                    return Boss;
+                case Dungeon1Room.RoomType.BossEntrance:
+                    return BossEntrance;
+
+                /* ... */
+
+                case Dungeon1Room.RoomType.Hub:
+                    return Hub;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(roomType), roomType, null);
+            }
+        }
+    }
+}
