@@ -102,7 +102,7 @@ namespace Edgar.Unity.Tests.Runtime
             var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
-            var result = GetResult<MinimumRoomDistance.Result>(exception);
+            var result = GetResult<MinimumRoomDistance.Result>(exception, false);
 
             Assert.That(result.MinimumRoomDistance, Is.EqualTo(3));
             Assert.That(result.IsPotentialProblem, Is.True);
