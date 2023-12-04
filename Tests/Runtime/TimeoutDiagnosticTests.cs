@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Edgar.Unity.Diagnostics;
 using NUnit.Framework;
@@ -62,7 +63,7 @@ namespace Edgar.Unity.Tests.Runtime
             var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
 
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
-            var result = GetResult<NumberOfCycles.Result>(exception);
+            var result = GetResult<NumberOfCycles.Result>(exception, false);
 
             Assert.That(result.NumberOfCycles, Is.EqualTo(4));
             Assert.That(result.IsPotentialProblem, Is.True);
@@ -77,7 +78,7 @@ namespace Edgar.Unity.Tests.Runtime
             var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
             var result = GetResult<NumberOfRooms.Result>(exception);
 
-            Assert.That(result.NumberOfRooms, Is.EqualTo(25));
+            Assert.That(result.NumberOfRooms, Is.EqualTo(24));
             Assert.That(result.IsPotentialProblem, Is.True);
         }
 
@@ -104,6 +105,19 @@ namespace Edgar.Unity.Tests.Runtime
             var result = GetResult<MinimumRoomDistance.Result>(exception);
 
             Assert.That(result.MinimumRoomDistance, Is.EqualTo(3));
+            Assert.That(result.IsPotentialProblem, Is.True);
+        }
+        
+        [Test]
+        public void OddCycles()
+        {
+            var dungeonGeneratorGameObject = GameObject.Find("OddCycles");
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
+
+            var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
+            var result = GetResult<OddCycles.Result>(exception, false);
+
+            Assert.That(result.CycleLengths, Is.EquivalentTo(new List<int>() {3, 3, 5}));
             Assert.That(result.IsPotentialProblem, Is.True);
         }
 

@@ -30,6 +30,7 @@ namespace Edgar.Unity.Diagnostics
             results.Add(new NumberOfCycles().Run(levelDescription));
             results.Add(new NumberOfRooms().Run(levelDescription));
             results.Add(new WrongPositionGameObjects().Run(levelDescription));
+            results.Add(new OddCycles().Run(levelDescription));
 
             return results;
         }
