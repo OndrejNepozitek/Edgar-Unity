@@ -17,7 +17,7 @@ jobs:
           import os
           is_pro_master = os.environ['GITHUB_REF_NAME'] == 'pro-master'
           is_pro = os.environ['GITHUB_REPOSITORY'] == "OndrejNepozitek/Edgar-UnityPRO"
-          unity_versions = ['2019.4.36f1', '2020.3.48f1', '2021.3.31f1', '2022.3.12f1', '2023.1.18f1']
+          unity_versions = ['2019.4.36f1', '2020.3.30f1', '2021.3.4f1', '2022.1.3f1']
           render_pipelines = ['builtin', 'URP']
           structure_branch = 'pro' if is_pro else 'master'
           jobs = [
