@@ -120,6 +120,32 @@ namespace Edgar.Unity.Tests.Runtime
             Assert.That(result.CycleLengths, Is.EquivalentTo(new List<int>() {3, 3, 5}));
             Assert.That(result.IsPotentialProblem, Is.True);
         }
+        
+        [Test]
+        public void CorridorTypesUndefined()
+        {
+            var dungeonGeneratorGameObject = GameObject.Find("CorridorTypesUndefined");
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
+
+            var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
+            var result = GetResult<CorridorTypes.Result>(exception);
+
+            Assert.That(result.CorridorTypes, Is.EquivalentTo(new List<CorridorTypes.CorridorType>() { CorridorTypes.CorridorType.Undefined }));
+            Assert.That(result.IsPotentialProblem, Is.True);
+        }
+        
+        [Test]
+        public void CorridorTypesHorizontal()
+        {
+            var dungeonGeneratorGameObject = GameObject.Find("CorridorTypesHorizontal");
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
+
+            var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
+            var result = GetResult<CorridorTypes.Result>(exception);
+
+            Assert.That(result.CorridorTypes, Is.EquivalentTo(new List<CorridorTypes.CorridorType>() { CorridorTypes.CorridorType.Horizontal }));
+            Assert.That(result.IsPotentialProblem, Is.True);
+        }
 
         private TResult GetResult<TResult>(TimeoutException exception, bool allowOnlySingle = true) where TResult : class
         {

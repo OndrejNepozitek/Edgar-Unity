@@ -31,6 +31,7 @@ namespace Edgar.Unity.Diagnostics
             results.Add(new NumberOfRooms().Run(levelDescription));
             results.Add(new WrongPositionGameObjects().Run(levelDescription));
             results.Add(new OddCycles().Run(levelDescription));
+            results.Add(new CorridorTypes().Run(levelDescription));
 
             return results;
         }
