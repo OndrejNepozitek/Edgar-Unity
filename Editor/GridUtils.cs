@@ -36,17 +36,15 @@ namespace Edgar.Unity.Editor
             // Make sure that the from tile is on the bottom-left
             if (fromTile.x > toTile.x || fromTile.y > toTile.y)
             {
-                var tmp = fromTile;
-                fromTile = toTile;
-                toTile = tmp;
+                (fromTile, toTile) = (toTile, fromTile);
             }
 
             // Calculate world coordinates of the cells
             var fromWorld = grid.CellToWorld(fromTile);
             var toWorld = grid.CellToWorld(toTile);
 
-            var xDirection = grid.CellToWorld(new Vector3Int(1, 0, 0));
-            var yDirection = grid.CellToWorld(new Vector3Int(0, 1, 0));
+            var xDirection = grid.CellToLocal(new Vector3Int(1, 0, 0));
+            var yDirection = grid.CellToLocal(new Vector3Int(0, 1, 0));
 
             var xSizeModifier = sizeModifier.x * xDirection;
             var ySizeModifier = sizeModifier.y * yDirection;
