@@ -59,9 +59,9 @@ namespace Edgar.Unity.Editor
             advancedFoldout = EditorGUILayout.Foldout(advancedFoldout, "Advanced");
             if (advancedFoldout)
             {
-                if (GUILayout.Button("Export map description"))
+                if (GUILayout.Button("Export level description"))
                 {
-                    levelGenerator.ExportMapDescription();
+                    levelGenerator.ExportLevelDescription();
                 }
             }
 

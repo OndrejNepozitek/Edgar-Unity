@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Edgar.GraphBasedGenerator.Grid2D;
+using Edgar.Unity.Export;
 using UnityEngine;
 
 namespace Edgar.Unity
@@ -123,7 +124,7 @@ namespace Edgar.Unity
             };
         }
 
-        public void ExportMapDescription()
+        public void ExportLevelDescription()
         {
             var payload = InitializePayload();
             var inputSetup = GetInputTask();
@@ -132,13 +133,50 @@ namespace Edgar.Unity
 
             PipelineRunner.Run(pipelineItems, payload);
 
-            var levelDescription = payload.LevelDescription.GetLevelDescription();
-            levelDescription.Name = "Test";
-            var wrappedLevelDescription = GetWrappedLevelDescription(levelDescription);
+            var directoryName = "EdgarExport";
+            if (!Directory.Exists(directoryName))
+            {
+                Directory.CreateDirectory(directoryName);
+            }
+            
+            var dateString = DateTime.Now.ToString("yyyy_MM_dd__HH_mm_ss");
+            var rawPath = Path.Combine(directoryName, $"{dateString}_raw.json");
+            var unityPath = Path.Combine(directoryName, $"{dateString}_unity.json");
 
-            var filename = "exportedMapDescription.json";
-            wrappedLevelDescription.SaveToJson(filename);
-            Debug.Log($"Map description exported to {filename}");
+            var levelDescription = payload.LevelDescription;
+            ExportRawLevelDescription(levelDescription, rawPath);
+            ExportUnityLevelDescription(levelDescription, unityPath);
+        }
+
+        private void ExportUnityLevelDescription(LevelDescriptionGrid2D levelDescription, string path)
+        {
+            try
+            {
+                var exportRunner = new ExportRunner();
+                var json = exportRunner.ExportToJson(levelDescription);
+                File.WriteAllText(path, json);
+                Debug.Log($"Level description (Unity) exported to {path}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Could not export level description (Unity): {e.Message}");
+                throw;
+            }
+        }
+
+        private void ExportRawLevelDescription(LevelDescriptionGrid2D levelDescription, string path)
+        {
+            try
+            {
+                var wrappedLevelDescription = GetWrappedLevelDescription(levelDescription.GetLevelDescription());
+                wrappedLevelDescription.SaveToJson(path);
+                Debug.Log($"Level description (raw) exported to {path}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Could not export level description (raw): {e.Message}");
+                throw;
+            }
         }
 
         private LevelDescriptionGrid2D<RoomWrapper> GetWrappedLevelDescription(LevelDescriptionGrid2D<RoomBase> originalLevelDescription)
@@ -162,7 +200,7 @@ namespace Edgar.Unity
 
             var id = 0;
             var mapping = originalLevelDescription
-                .GetGraphWithoutCorridors()
+                .GetGraph()
                 .Vertices
                 .Select(x => (x, new RoomWrapper(id++, x.GetDisplayName())))
                 .ToDictionary(x => x.x, x => x.Item2);
@@ -172,7 +210,7 @@ namespace Edgar.Unity
                 levelDescription.AddRoom(pair.Value, originalLevelDescription.GetRoomDescription(pair.Key));
             }
 
-            foreach (var edge in originalLevelDescription.GetGraphWithoutCorridors().Edges)
+            foreach (var edge in originalLevelDescription.GetGraph().Edges)
             {
                 var from = mapping[edge.From];
                 var to = mapping[edge.To];
