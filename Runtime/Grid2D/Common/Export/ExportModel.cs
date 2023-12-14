@@ -10,6 +10,8 @@ namespace Edgar.Unity.Export
     {
         public LevelGraphDto LevelGraph;
         public List<RoomTemplateDto> RoomTemplates;
+        public RepeatModeOverride RepeatModeOverride;
+        public int MinimumRoomDistance = 1;
     }
     
     [Serializable]
@@ -43,7 +45,6 @@ namespace Edgar.Unity.Export
     [Serializable]
     public class DoorsDto
     {
-        public List<DoorGrid2D> DoorsList = new List<DoorGrid2D>();
         public DoorsGrid2D.DoorMode SelectedMode;
         public HybridDoorModeDataGrid2D HybridDoorModeData;
         public ManualDoorModeDataGrid2D ManualDoorModeData;

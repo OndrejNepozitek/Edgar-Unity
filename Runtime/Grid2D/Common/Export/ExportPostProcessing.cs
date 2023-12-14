@@ -1,9 +1,11 @@
 using System.Linq;
+using UnityEngine;
 
 namespace Edgar.Unity.Export
 {
     #if OndrejNepozitekEdgar
     // This post-processing class is used to debug exported levels.
+    [AddComponentMenu("Edgar/Grid2D/Export post-processing (you should not see this)")]
     public class ExportPostProcessing : DungeonGeneratorPostProcessingComponentGrid2D
     {
         public override void Run(DungeonGeneratorLevelGrid2D level)

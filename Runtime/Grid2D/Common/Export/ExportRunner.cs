@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Edgar.GraphBasedGenerator.Grid2D;
 using Edgar.Legacy.Utils;
@@ -14,53 +12,32 @@ namespace Edgar.Unity.Export
         private readonly Dictionary<GameObject, string> _roomTemplateToIdMapping = new Dictionary<GameObject, string>();
         private LevelDescriptionGrid2D _levelDescription;
 
-        public string ExportToJson(LevelDescriptionGrid2D levelDescription)
+        public string ExportToJson(LevelDescriptionGrid2D levelDescription, int minimumRoomDistance, RepeatModeOverride repeatModeOverride)
         {
             _levelDescription = levelDescription;
-            var exportDto = GetExportDto(levelDescription);
+            
+            var exportDto = GetExportDto();
+            exportDto.MinimumRoomDistance = minimumRoomDistance;
+            exportDto.RepeatModeOverride = repeatModeOverride;
+            
             var jsonString = JsonUtility.ToJson(exportDto, true);
             
             return jsonString;
         }
 
-        private string GetRoomId(RoomBase room)
+        private ExportDto GetExportDto()
         {
-            if (_roomToIdMapping.TryGetValue(room, out var id))
-            {
-                return id;
-            }
-
-            id = GetUniqueIdentifier(room.GetDisplayName(), _roomToIdMapping.Values);
-            _roomToIdMapping[room] = id;
-
-            return id;
-        }
-        
-        private string GetRoomTemplateId(GameObject roomTemplate)
-        {
-            if (_roomTemplateToIdMapping.TryGetValue(roomTemplate, out var id))
-            {
-                return id;
-            }
-
-            id = GetUniqueIdentifier(roomTemplate.name, _roomToIdMapping.Values);
-            _roomTemplateToIdMapping[roomTemplate] = id;
-
-            return id;
-        }
-
-        private ExportDto GetExportDto(LevelDescriptionGrid2D levelDescription)
-        {
-            var roomTemplates = levelDescription.GetPrefabToRoomTemplateMapping();
+            var roomTemplates = _levelDescription.GetPrefabToRoomTemplateMapping();
             var roomTemplateGameObjects = roomTemplates.Keys.ToList();
 
             return new ExportDto()
             {
                 RoomTemplates = roomTemplateGameObjects.Select(MapToDto).ToList(),
-                LevelGraph = MapToLevelGraphDto(levelDescription.GetLevelDescription()),
+                LevelGraph = MapToLevelGraphDto(_levelDescription.GetLevelDescription()),
             };
         }
 
+        // Get the set of room templates that is shared by the highest number of rooms
         private List<RoomTemplateGrid2D> GetDefaultRoomTemplates(LevelDescriptionGrid2D<RoomBase> levelDescription, bool isCorridor)
         {
             var rooms = levelDescription.GetGraph().Vertices.ToList();
@@ -96,20 +73,6 @@ namespace Edgar.Unity.Export
             var sorted = roomTemplatesCountMapping.OrderByDescending(x => x.Value).ToList();
 
             return sorted[0].Key;
-        }
-        
-        private string GetUniqueIdentifier(string originalName, IReadOnlyCollection<string> usedIds)
-        {
-            var identifier = originalName;
-            var attemptCounter = 0;
-            
-            while (usedIds.Contains(identifier))
-            {
-                attemptCounter++;
-                identifier = $"{originalName} {attemptCounter}";
-            }
-
-            return identifier;
         }
         
         private LevelGraphDto MapToLevelGraphDto(LevelDescriptionGrid2D<RoomBase> levelDescription)
@@ -174,7 +137,11 @@ namespace Edgar.Unity.Export
             var tilemaps = RoomTemplateUtilsGrid2D.GetTilemaps(roomTemplate);
             var outlineTilemaps = RoomTemplateUtilsGrid2D.GetTilemapsForOutline(tilemaps);
             var tiles = RoomTemplateLoaderGrid2D.GetUsedTiles(tilemaps).ToList();
-            var outlinePolygon = new Polygon2D(RoomTemplateLoaderGrid2D.GetPolygonFromTilemaps(outlineTilemaps));
+            var outlineHandler = roomTemplate.GetComponent<IRoomTemplateOutlineHandlerGrid2D>();
+            var outlinePolygon = outlineHandler != null
+                ? outlineHandler.GetRoomTemplateOutline()
+                : new Polygon2D(RoomTemplateLoaderGrid2D.GetPolygonFromTilemaps(outlineTilemaps));
+            
             var outlineTiles = outlinePolygon.GetOutlinePoints().Select(x => new Vector3Int(x.x, x.y,0)).ToList();
             
             return new RoomTemplateDto()
@@ -185,13 +152,52 @@ namespace Edgar.Unity.Export
                 OutlineTiles = outlineTiles,
                 Doors = new DoorsDto()
                 {
-                    DoorsList = doorsComponent.DoorsList,
                     SelectedMode = doorsComponent.SelectedMode,
                     HybridDoorModeData = doorsComponent.HybridDoorModeData,
                     ManualDoorModeData = doorsComponent.ManualDoorModeData,
                     SimpleDoorModeData = doorsComponent.SimpleDoorModeData,
                 }
             };
+        }
+        
+        private string GetRoomId(RoomBase room)
+        {
+            if (_roomToIdMapping.TryGetValue(room, out var id))
+            {
+                return id;
+            }
+
+            id = GetUniqueIdentifier(room.GetDisplayName(), _roomToIdMapping.Values);
+            _roomToIdMapping[room] = id;
+
+            return id;
+        }
+        
+        private string GetRoomTemplateId(GameObject roomTemplate)
+        {
+            if (_roomTemplateToIdMapping.TryGetValue(roomTemplate, out var id))
+            {
+                return id;
+            }
+
+            id = GetUniqueIdentifier(roomTemplate.name, _roomToIdMapping.Values);
+            _roomTemplateToIdMapping[roomTemplate] = id;
+
+            return id;
+        }
+        
+        private static string GetUniqueIdentifier(string originalName, IReadOnlyCollection<string> usedIds)
+        {
+            var identifier = originalName;
+            var attemptCounter = 0;
+            
+            while (usedIds.Contains(identifier))
+            {
+                attemptCounter++;
+                identifier = $"{originalName} {attemptCounter}";
+            }
+
+            return identifier;
         }
     }
 }

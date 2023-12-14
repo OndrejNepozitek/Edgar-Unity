@@ -124,7 +124,7 @@ namespace Edgar.Unity
             };
         }
 
-        public void ExportLevelDescription()
+        public void ExportLevelDescription(bool useTmpFolder = false)
         {
             var payload = InitializePayload();
             var inputSetup = GetInputTask();
@@ -133,7 +133,7 @@ namespace Edgar.Unity
 
             PipelineRunner.Run(pipelineItems, payload);
 
-            var directoryName = "EdgarExport";
+            var directoryName = $"EdgarExport{(useTmpFolder ? "_tmp" : "")}";
             if (!Directory.Exists(directoryName))
             {
                 Directory.CreateDirectory(directoryName);
@@ -153,7 +153,7 @@ namespace Edgar.Unity
             try
             {
                 var exportRunner = new ExportRunner();
-                var json = exportRunner.ExportToJson(levelDescription);
+                var json = exportRunner.ExportToJson(levelDescription, GeneratorConfig.MinimumRoomDistance, GeneratorConfig.RepeatModeOverride);
                 File.WriteAllText(path, json);
                 Debug.Log($"Level description (Unity) exported to {path}");
             }

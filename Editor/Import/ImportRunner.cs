@@ -32,7 +32,7 @@ namespace Edgar.Unity.Editor.Import
             Directory.CreateDirectory(roomTemplatesFolder);
 
             var tile = AssetDatabase.LoadAssetAtPath<Tile>($"Assets\\Edgar\\Examples\\Grid2D\\Example1\\Tiles\\example1_79.asset");
-
+            
             // TODO: handle duplicate names
             foreach (var roomTemplateDto in exportDto.RoomTemplates)
             {
@@ -162,24 +162,29 @@ namespace Edgar.Unity.Editor.Import
                 other.SetTile(position, _outlineTile);
             }
 
-            var doors = roomTemplate.GetComponent<DoorsGrid2D>();
+            var roomTemplateComponent = roomTemplate.GetComponent<RoomTemplateSettingsGrid2D>();
+            roomTemplateComponent.RepeatMode = roomTemplateDto.RepeatMode;
+            
+            
+            var prefabPath = Path.Combine(folder, $"{roomTemplateDto.Name}.prefab");
+            PrefabUtility.SaveAsPrefabAsset(roomTemplate, prefabPath);
+
+            // Remove game object from scene
+            Object.DestroyImmediate(roomTemplate);
+            
+            // For some reason, the nested doors data are not saved the first time
+            var loadedAgain = PrefabUtility.LoadPrefabContents(prefabPath);
+            var doors = loadedAgain.GetComponent<DoorsGrid2D>();
             var doorsDto = roomTemplateDto.Doors;
-            doors.DoorsList = doorsDto.DoorsList;
             doors.SelectedMode = doorsDto.SelectedMode;
             doors.HybridDoorModeData = doorsDto.HybridDoorModeData;
             doors.ManualDoorModeData = doorsDto.ManualDoorModeData;
             doors.SimpleDoorModeData = doorsDto.SimpleDoorModeData;
-
-            var roomTemplateComponent = roomTemplate.GetComponent<RoomTemplateSettingsGrid2D>();
-            roomTemplateComponent.RepeatMode = roomTemplateDto.RepeatMode;
-    
-            var prefabPath = Path.Combine(folder, $"{roomTemplateDto.Name}.prefab");
-            PrefabUtility.SaveAsPrefabAsset(roomTemplate, AssetDatabase.GenerateUniqueAssetPath(prefabPath));
-
+            PrefabUtility.SaveAsPrefabAsset(loadedAgain, prefabPath);
+            
             // Remove game object from scene
-            Object.DestroyImmediate(roomTemplate);
+            Object.DestroyImmediate(loadedAgain);
         }
-        
         
         [MenuItem("Edgar debug/Import")]
         public static void SyncBuildScenes()

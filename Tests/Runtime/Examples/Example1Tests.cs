@@ -33,6 +33,7 @@ namespace Edgar.Unity.Tests.Runtime.Examples
             Assert.IsTrue(levelInfo.RoomInstances.Count(x => !x.IsCorridor) == levelGraph.Rooms.Count);
 
             dungeonGenerator.Generate();
+            dungeonGenerator.ExportLevelDescription(true);
             yield return null;
 
             var levelInfoNew = generatedLevelGameObject.GetComponent<LevelInfoGrid2D>();
