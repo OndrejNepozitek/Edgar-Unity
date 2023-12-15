@@ -146,6 +146,19 @@ namespace Edgar.Unity.Tests.Runtime
             Assert.That(result.CorridorTypes, Is.EquivalentTo(new List<CorridorTypes.CorridorType>() { CorridorTypes.CorridorType.Horizontal }));
             Assert.That(result.IsPotentialProblem, Is.True);
         }
+        
+        [Test]
+        public void NotEnoughDoorsNoFourSides()
+        {
+            var dungeonGeneratorGameObject = GameObject.Find("NotEnoughDoorsNoFourSides");
+            var dungeonGenerator = dungeonGeneratorGameObject.GetComponent<DungeonGeneratorGrid2D>();
+
+            var exception = Assert.Throws<TimeoutException>(() => dungeonGenerator.Generate());
+            var result = GetResult<NotEnoughDoors.Result>(exception);
+
+            Assert.That(result.MissingDoorsOnAllSides, Is.True);
+            Assert.That(result.IsPotentialProblem, Is.True);
+        }
 
         private TResult GetResult<TResult>(TimeoutException exception, bool allowOnlySingle = true) where TResult : class
         {
