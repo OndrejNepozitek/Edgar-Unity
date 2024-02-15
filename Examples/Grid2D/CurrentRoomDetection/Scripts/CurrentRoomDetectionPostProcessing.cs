@@ -35,7 +35,11 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
         private void AddFloorCollider(GameObject floor)
         {
             var tilemapCollider2D = floor.AddComponent<TilemapCollider2D>();
+            #if UNITY_2021_3
+            tilemapCollider2D.compositeOperation = Collider2D.CompositeOperation.Merge;
+            #else
             tilemapCollider2D.usedByComposite = true;
+            #endif
 
             var compositeCollider2d = floor.AddComponent<CompositeCollider2D>();
             compositeCollider2d.geometryType = CompositeCollider2D.GeometryType.Polygons;

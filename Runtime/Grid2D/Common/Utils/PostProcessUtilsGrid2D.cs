@@ -289,12 +289,18 @@ namespace Edgar.Unity
                 // Iterate through all the colliders
                 foreach (var collider in tilemap.GetComponents<Collider2D>())
                 {
+                    #if UNITY_2021_3
+                    var usedByComposite = collider.compositeOperation != Collider2D.CompositeOperation.None;
+                    #else
+                    var usedByComposite = collider.usedByComposite;
+                    #endif
+                    
                     // If the collider is not used by composite collider and it is not a trigger, destroy it
-                    if (!collider.usedByComposite && !collider.isTrigger)
+                    if (!usedByComposite && !collider.isTrigger)
                     {
                         Destroy(collider);
                     }
-                    else if (collider.usedByComposite)
+                    else if (usedByComposite)
                     {
                         // If the collider is used by composite but that composite does not exist or is not a trigger, destroy it
                         if (collider.composite == null || !collider.composite.isTrigger)

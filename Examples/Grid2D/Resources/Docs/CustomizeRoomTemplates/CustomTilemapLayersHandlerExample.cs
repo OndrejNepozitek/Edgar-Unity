@@ -51,7 +51,11 @@ namespace Edgar.Unity.Examples.Resources
         protected void AddCompositeCollider(GameObject tilemapGameObject, bool isTrigger = false)
         {
             var tilemapCollider2D = tilemapGameObject.AddComponent<TilemapCollider2D>();
+            #if UNITY_2021_3
+            tilemapCollider2D.compositeOperation = Collider2D.CompositeOperation.Merge;
+            #else
             tilemapCollider2D.usedByComposite = true;
+            #endif
 
             var compositeCollider2d = tilemapGameObject.AddComponent<CompositeCollider2D>();
             compositeCollider2d.geometryType = CompositeCollider2D.GeometryType.Polygons;

@@ -43,7 +43,11 @@ namespace Edgar.Unity.Edgar.Tests.Runtime.Scenes.TilemapLayersStructure
         protected void AddCompositeCollider(GameObject gameObject)
         {
             var tilemapCollider2D = gameObject.AddComponent<TilemapCollider2D>();
-            tilemapCollider2D.usedByComposite = true;
+            #if UNITY_2021_3
+                tilemapCollider2D.compositeOperation = Collider2D.CompositeOperation.Merge;
+            #else
+                tilemapCollider2D.usedByComposite = true;
+            #endif
 
             gameObject.AddComponent<CompositeCollider2D>();
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;

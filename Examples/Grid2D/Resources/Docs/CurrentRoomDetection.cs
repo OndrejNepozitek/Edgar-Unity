@@ -29,7 +29,11 @@ namespace Edgar.Unity.Examples.Grid2D.Resources.Docs
             private void AddFloorCollider(GameObject floor)
             {
                 var tilemapCollider2D = floor.AddComponent<TilemapCollider2D>();
-                tilemapCollider2D.usedByComposite = true;
+                #if UNITY_2021_3
+                    tilemapCollider2D.compositeOperation = Collider2D.CompositeOperation.Merge;
+                #else
+                    tilemapCollider2D.usedByComposite = true;
+                #endif
 
                 var compositeCollider2d = floor.AddComponent<CompositeCollider2D>();
                 compositeCollider2d.geometryType = CompositeCollider2D.GeometryType.Polygons;
