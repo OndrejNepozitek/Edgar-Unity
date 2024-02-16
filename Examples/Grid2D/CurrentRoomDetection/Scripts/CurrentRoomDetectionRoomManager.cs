@@ -28,7 +28,10 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
         public void OnRoomLeave(GameObject player)
         {
             Debug.Log($"Room leave {RoomInstance.Room.GetDisplayName()}");
-            CurrentRoomDetectionGameManager.Instance.OnRoomLeave(RoomInstance);
+            if (CurrentRoomDetectionGameManager.Instance)
+            {
+                CurrentRoomDetectionGameManager.Instance.OnRoomLeave(RoomInstance);
+            }
         }
     }
 

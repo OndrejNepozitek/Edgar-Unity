@@ -83,6 +83,12 @@ namespace Edgar.Unity.Examples.CurrentRoomDetection
         private void UpdateCurrentRoomInfo()
         {
             var canvas = GetCanvas();
+            
+            if (!canvas)
+            {
+                return;
+            }
+            
             var currentRoomInfo = canvas.transform.Find("CurrentRoomInfo").GetComponent<Text>();
             currentRoomInfo.text = $"Room name: {currentRoom?.Room.GetDisplayName()}, Room template: {currentRoom?.RoomTemplatePrefab.name}";
         }

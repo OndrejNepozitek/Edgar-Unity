@@ -58,6 +58,12 @@ namespace Edgar.Unity.Examples
         protected void SetLevelInfo(string text)
         {
             var canvas = GetCanvas();
+            
+            if (!canvas)
+            {
+                return;
+            }
+            
             var levelInfo = canvas.transform.Find("LevelInfo")?.gameObject.GetComponent<Text>();
 
             if (levelInfo != null)
@@ -74,6 +80,12 @@ namespace Edgar.Unity.Examples
         protected void ShowLoadingScreen(string primaryText, string secondaryText)
         {
             var canvas = GetCanvas();
+            
+            if (!canvas)
+            {
+                return;
+            }
+            
             var loadingImage = canvas.transform.Find("LoadingImage")?.gameObject;
             var primaryTextComponent = loadingImage?.transform.Find("PrimaryText")?.gameObject.GetComponent<Text>();
             var secondaryTextComponent = loadingImage?.transform.Find("SecondaryText")?.gameObject.GetComponent<Text>();
@@ -104,7 +116,7 @@ namespace Edgar.Unity.Examples
 
             if (canvas == null)
             {
-                throw new InvalidOperationException($"Canvas was not found. Please set the {nameof(Canvas)} variable of the GameManager");
+                Debug.LogError($"Canvas was not found. Please set the {nameof(Canvas)} variable of the GameManager");
             }
 
             return canvas;
@@ -116,6 +128,12 @@ namespace Edgar.Unity.Examples
         protected void HideLoadingScreen()
         {
             var canvas = GetCanvas();
+
+            if (!canvas)
+            {
+                return;
+            }
+            
             var loadingImage = canvas.transform.Find("LoadingImage")?.gameObject;
 
             if (loadingImage != null)
