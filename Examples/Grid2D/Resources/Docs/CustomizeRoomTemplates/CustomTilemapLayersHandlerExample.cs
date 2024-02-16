@@ -51,7 +51,7 @@ namespace Edgar.Unity.Examples.Resources
         protected void AddCompositeCollider(GameObject tilemapGameObject, bool isTrigger = false)
         {
             var tilemapCollider2D = tilemapGameObject.AddComponent<TilemapCollider2D>();
-            #if UNITY_2022_1_OR_NEWER
+            #if UNITY_2023_2_OR_NEWER
             tilemapCollider2D.compositeOperation = Collider2D.CompositeOperation.Merge;
             #else
             tilemapCollider2D.usedByComposite = true;
