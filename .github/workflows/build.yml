@@ -92,7 +92,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           unityVersion: ${{ matrix.unityVersion }}
-          targetPlatform: StandaloneLinux64
+          targetPlatform: ${{ startsWith(matrix.unityVersion, '2019') && 'StandaloneWindows' || 'StandaloneLinux64' }}
           versioning: None
 
   package:
