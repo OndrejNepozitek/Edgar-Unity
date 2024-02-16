@@ -17,7 +17,7 @@ jobs:
           import os
           is_pro_master = os.environ['GITHUB_REF_NAME'] == 'pro-master'
           is_pro = os.environ['GITHUB_REPOSITORY'] == "OndrejNepozitek/Edgar-UnityPRO"
-          unity_versions = ['2019.4.40f1', '2020.3.48f1', '2021.3.35f1', '2022.3.19f1', '2023.2.9f1']
+          unity_versions = ['2019.4.36f1', '2020.3.48f1', '2021.3.35f1', '2022.3.19f1', '2023.2.9f1']
 
           if os.environ['GITHUB_REF_NAME'] == '2019/pro-dev-grid-3d':
             unity_versions = ['2019.4.36f1']
@@ -83,16 +83,30 @@ jobs:
           unityVersion: ${{ matrix.unityVersion }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
 
-      # Build
+      # Build 2020+
       - name: Run build
         uses: game-ci/unity-builder@v4
+        if: ${{ startsWith(matrix.unityVersion, '2019') == false }}
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           unityVersion: ${{ matrix.unityVersion }}
-          targetPlatform: ${{ startsWith(matrix.unityVersion, '2019') && 'StandaloneWindows' || 'StandaloneLinux64' }}
+          targetPlatform: StandaloneLinux64
+          versioning: None
+            
+      # Build 2019
+      - name: Run build (2019)
+        uses: game-ci/unity-builder@v2
+        if: ${{ startsWith(matrix.unityVersion, '2019') == true }}
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: StandaloneWindows
           versioning: None
 
   package:
