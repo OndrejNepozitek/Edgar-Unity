@@ -289,7 +289,7 @@ namespace Edgar.Unity
                 // Iterate through all the colliders
                 foreach (var collider in tilemap.GetComponents<Collider2D>())
                 {
-                    #if UNITY_2021_3
+                    #if UNITY_2022_1_OR_NEWER
                     var usedByComposite = collider.compositeOperation != Collider2D.CompositeOperation.None;
                     #else
                     var usedByComposite = collider.usedByComposite;
