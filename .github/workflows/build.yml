@@ -17,9 +17,14 @@ jobs:
           import os
           is_pro_master = os.environ['GITHUB_REF_NAME'] == 'pro-master'
           is_pro = os.environ['GITHUB_REPOSITORY'] == "OndrejNepozitek/Edgar-UnityPRO"
-          unity_versions = ['2019.4.36f1', '2020.3.30f1', '2021.3.4f1', '2022.1.3f1']
+          unity_versions = ['2019.4.40f1', '2020.3.48f1', '2021.3.35f1', '2022.3.19f1', '2023.2.9f1']
+
+          if os.environ['GITHUB_REF_NAME'] == '2019/pro-dev-grid-3d':
+            unity_versions = ['2019.4.36f1']
+
           render_pipelines = ['builtin', 'URP']
           structure_branch = 'pro' if is_pro else 'master'
+
           jobs = [
             {
               'unityVersion': unity_version,
@@ -28,7 +33,7 @@ jobs:
             }
             for unity_version in unity_versions
             for render_pipeline in render_pipelines
-            if render_pipeline == 'builtin' or (not unity_version.startswith('2018') and is_pro_master) or (unity_version.startswith('2019') and is_pro)
+            if render_pipeline == 'builtin' or is_pro_master or (unity_version.startswith('2019') and is_pro)
           ]
 
           print(f'::set-output name=jobs::{jobs!s}')
@@ -44,37 +49,50 @@ jobs:
       matrix:
         include: ${{ fromJson(needs.params.outputs.jobs) }}
     steps:
+
+      # Disabled for now
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        if: ${{ false }}
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: false
+
       # Checkout Unity project structure
       - name: Checkout Unity project structure
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: OndrejNepozitek/Edgar-UnityProjectStructure
           ref: ${{ matrix.structureBranch }}
 
       # Checkout this repository
       - name: Checkout this repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: Assets/Edgar
-    
+
       # Test
       - name: Run tests
-        uses: game-ci/unity-test-runner@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
-        with:
-          unityVersion: ${{ matrix.unityVersion }}
-
-      # Build
-      - name: Run build
-        uses: game-ci/unity-builder@v2
+        uses: game-ci/unity-test-runner@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE_NEW }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           unityVersion: ${{ matrix.unityVersion }}
-          targetPlatform: StandaloneWindows
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build
+      - name: Run build
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: StandaloneLinux64
           versioning: None
 
   package:
@@ -83,13 +101,13 @@ jobs:
     steps:
       # Checkout Unity project structure
       - name: Checkout Unity project structure
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: OndrejNepozitek/ProceduralLevelGenerator-UnityProjectStructure
 
       # Checkout this repository
       - name: Checkout this repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           path: Assets/Edgar
 
@@ -97,7 +115,7 @@ jobs:
       - name: Prepare unitypackage file list
         run: |
           echo "Assets/Edgar.meta" > unitypackageFiles
-          find ./Assets/Edgar/ -name \*.meta ! -path "./Assets/Edgar/Tests*" ! -path "./Assets/Edgar/Examples/Grid2D/Platformer3*" ! -path "./Assets/Edgar/Examples/Grid2D/Resources/Docs*" ! -path "./Assets/Edgar/*.md.meta" ! -path "./Assets/Edgar/Edgar-Unity.sln.DotSettings.meta" >> unitypackageFiles
+          find ./Assets/Edgar/ -name \*.meta ! -path "./Assets/Edgar/Tests*" ! -path "./Assets/Edgar/Examples/Grid2D/Platformer3*" ! -path "./Assets/Edgar/Examples/Grid3D/Docs*" ! -path "./Assets/Edgar/Examples/Grid2D/Resources/Docs*" ! -path "./Assets/Edgar/*.md.meta" ! -path "./Assets/Edgar/Edgar-Unity.sln.DotSettings.meta" >> unitypackageFiles
 
       # Package files
       - name: Package files
@@ -108,7 +126,7 @@ jobs:
       
       # Upload unitypackage
       - name: Upload unitypackage
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: Edgar.unitypackage
           name: Edgar_CI_build.unitypackage
