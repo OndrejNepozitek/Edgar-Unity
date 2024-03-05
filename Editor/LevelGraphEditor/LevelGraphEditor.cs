@@ -27,7 +27,7 @@ namespace Edgar.Unity.Editor
 
         private RoomControl hoverRoomControl;
 
-        private Vector2 originalDragRoomPosition;
+        private List<Tuple<RoomControl, Vector2>> draggedRoomControlsAndPositions;
 
         private int currentPickerWindow;
 

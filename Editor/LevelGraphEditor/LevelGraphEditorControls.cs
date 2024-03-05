@@ -155,7 +155,24 @@ namespace Edgar.Unity.Editor
                         if (CurrentState == State.HoldRoom)
                         {
                             drag = Vector2.zero;
-                            originalDragRoomPosition = hoverRoomControl.Room.Position;
+
+                            // If the currently dragged room is among selected objects, make sure all selected objects are dragged
+                            if (Selection.objects.Any(x => x == hoverRoomControl.Room))
+                            {
+                                draggedRoomControlsAndPositions = Selection.objects
+                                    .Select(room => roomControls.FirstOrDefault(control => control.Room == room))
+                                    .Where(x => x != null)
+                                    .Select(x => Tuple.Create(x, x.Room.Position))
+                                    .ToList();
+                            }
+                            // Otherwise only drag the currently dragged room
+                            else
+                            {
+                                draggedRoomControlsAndPositions = new List<Tuple<RoomControl, Vector2>>()
+                                {
+                                    Tuple.Create(hoverRoomControl, hoverRoomControl.Room.Position)
+                                };
+                            }
                         }
 
                         CurrentState = State.DragRoom;
@@ -360,17 +377,21 @@ namespace Edgar.Unity.Editor
         /// <param name="e"></param>
         private void HandleDragRoomControl(Event e)
         {
-            var control = hoverRoomControl;
             var dragOffset = drag / zoom;
-            var newPosition = originalDragRoomPosition + dragOffset;
 
-            // Snap to grid if permanently enabled or if holding shift
-            if (snapToGrid || e.shift)
+            foreach (var tuple in draggedRoomControlsAndPositions)
             {
-                newPosition = GetSnappedToGridPosition(newPosition);
+                var roomControl = tuple.Item1;
+                var originalPosition = tuple.Item2;
+                var newPosition = originalPosition + dragOffset;
+                // Snap to grid if permanently enabled or if holding shift
+                if (snapToGrid || e.shift)
+                {
+                    newPosition = GetSnappedToGridPosition(newPosition);
+                }
+                
+                roomControl.Room.Position = newPosition;
             }
-
-            control.Room.Position = newPosition;
 
             SetDirtyInternal();
         }
