@@ -26,8 +26,12 @@ namespace Edgar.Unity.Examples
             movement.x = InputHelper.GetHorizontalAxis();
             movement.y = InputHelper.GetVerticalAxis();
 
+            #if UNITY_6000_0_OR_NEWER
+            animator.SetBool("running", rigidbody.linearVelocity.magnitude > float.Epsilon);
+            #else
             animator.SetBool("running", rigidbody.velocity.magnitude > float.Epsilon);
-
+            #endif
+            
             // Flip sprite if needed
             var flipSprite = spriteRenderer.flipX ? movement.x > 0.01f : movement.x < -0.01f;
             if (flipSprite)
