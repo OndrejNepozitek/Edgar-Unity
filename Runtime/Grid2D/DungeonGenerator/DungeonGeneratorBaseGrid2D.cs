@@ -49,7 +49,27 @@ namespace Edgar.Unity
         /// <summary>
         /// Whether to generate a level on enter play mode.
         /// </summary>
-        public bool GenerateOnStart = true;
+        [Obsolete("Use the GenerateOn field instead.")]
+        public bool GenerateOnStart
+        {
+            get => GenerateOn == GenerateOn.Start;
+            set
+            {
+                if (value)
+                {
+                    GenerateOn = GenerateOn.Start;
+                }
+                else
+                {
+                    GenerateOn = GenerateOn.Manually;
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Whether to generate a level automatically when entering the play mode/opening a scene.
+        /// </summary>
+        public GenerateOn GenerateOn = GenerateOn.Awake;
 
         public bool ThrowExceptionsImmediately = false;
 
@@ -60,7 +80,15 @@ namespace Edgar.Unity
 
         public void Start()
         {
-            if (GenerateOnStart)
+            if (GenerateOn == GenerateOn.Start)
+            {
+                Generate();
+            }
+        }
+        
+        public void Awake()
+        {
+            if (GenerateOn == GenerateOn.Awake)
             {
                 Generate();
             }
@@ -295,9 +323,14 @@ namespace Edgar.Unity
                     }
                 }
             }
+
+            if (version < 4)
+            {
+                GenerateOn = GenerateOnStart ? GenerateOn.Start : GenerateOn.Manually;
+            }
             #pragma warning restore 618
 
-            return 3;
+            return 4;
         }
     }
 }

@@ -33,7 +33,7 @@ namespace Edgar.Unity.Examples.Grid2D.Resources.Docs
             // Access other properties
             generator.UseRandomSeed = false;
             generator.RandomGeneratorSeed = 1000;
-            generator.GenerateOnStart = false;
+            generator.GenerateOn = GenerateOn.Manually;
 
             #endregion
         }
