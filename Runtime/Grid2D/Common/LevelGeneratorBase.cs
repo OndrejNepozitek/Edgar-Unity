@@ -17,7 +17,7 @@ namespace Edgar.Unity
 
         public bool EnableDiagnostics = false;
 
-        protected virtual Random GetRandomNumbersGenerator(bool useRandomSeed, int seed)
+        protected virtual (Random, int) GetRandomNumbersGenerator(bool useRandomSeed, int seed)
         {
             if (useRandomSeed)
             {
@@ -26,7 +26,7 @@ namespace Edgar.Unity
 
             Debug.Log($"Random generator seed: {seed}");
 
-            return new Random(seed);
+            return (new Random(seed), seed);
         }
 
         public virtual object Generate()

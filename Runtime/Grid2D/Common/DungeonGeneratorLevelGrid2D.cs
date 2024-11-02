@@ -14,7 +14,8 @@ namespace Edgar.Unity
     {
         private readonly LayoutGrid2D<RoomBase> mapLayout;
 
-        public DungeonGeneratorLevelGrid2D(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject, LevelDescriptionGrid2D levelDescription) : base(roomInstances, rootGameObject, levelDescription)
+        public DungeonGeneratorLevelGrid2D(Dictionary<RoomBase, RoomInstanceGrid2D> roomInstances, LayoutGrid2D<RoomBase> mapLayout, GameObject rootGameObject, LevelDescriptionGrid2D levelDescription, int seed)
+            : base(roomInstances, rootGameObject, levelDescription, seed)
         {
             this.mapLayout = mapLayout;
         }

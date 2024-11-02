@@ -145,9 +145,11 @@ namespace Edgar.Unity
 
         protected virtual DungeonGeneratorPayloadGrid2D InitializePayload()
         {
+            var (random, seed) = GetRandomNumbersGenerator(UseRandomSeed, RandomGeneratorSeed);
             return new DungeonGeneratorPayloadGrid2D()
             {
-                Random = GetRandomNumbersGenerator(UseRandomSeed, RandomGeneratorSeed),
+                Random = random,
+                Seed = seed,
                 DungeonGenerator = this,
             };
         }
