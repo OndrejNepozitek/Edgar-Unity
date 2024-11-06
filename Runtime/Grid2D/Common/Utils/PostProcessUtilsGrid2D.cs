@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Edgar.Unity.Diagnostics;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using Object = UnityEngine.Object;
@@ -272,6 +273,28 @@ namespace Edgar.Unity
             {
                 var roomTemplateInstance = roomInstance.RoomTemplateInstance;
                 DisableRoomTemplateColliders(roomTemplateInstance);
+            }
+        }
+
+        public static void AnalyzeLevelStructure(DungeonGeneratorLevelGrid2D level)
+        {
+            if (!Application.isEditor)
+            {
+                return;
+            }
+
+            try
+            {
+                var result = LevelStructureDiagnostics.Analyze(level);
+                if (result.IsPotentialProblem)
+                {
+                    Debug.LogWarning(result.Summary);
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Could not analyze level structure, see the exception below");
+                Debug.LogException(e);
             }
         }
 

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace Edgar.Unity
 {
@@ -114,6 +113,14 @@ namespace Edgar.Unity
                 callbacks.RegisterCallback(PostProcessPrioritiesGrid2D.DisableRoomTemplateColliders, (level) =>
                 {
                     PostProcessUtilsGrid2D.DisableRoomTemplateColliders(level);
+                });
+            }
+
+            if (config.AnalyzeLevelStructure)
+            {
+                callbacks.RegisterAfterAll((level) =>
+                {
+                    PostProcessUtilsGrid2D.AnalyzeLevelStructure(level);
                 });
             }
         }
