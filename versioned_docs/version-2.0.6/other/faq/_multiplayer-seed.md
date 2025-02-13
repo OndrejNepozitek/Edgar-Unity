@@ -1,0 +1,3 @@
+[//]: # "Send the same level to multiple players (in a multiplayer game)"
+
+If you want to use the generator in a multiplayer scenario, you might wonder how to distribute the same level to all the players. The easiest solution is to send the **seed** of the generator to every player and then run the generator with the seed on all clients. You can read more about the seed [here](../../generators/dungeon-generator.md#other-config) and how to see the seed programmatically [here](../../generators/dungeon-generator.md#change-the-configuration-from-a-script).

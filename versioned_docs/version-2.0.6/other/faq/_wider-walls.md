@@ -1,0 +1,3 @@
+[//]: # "TODO How to deal with wider walls/doors?"
+
+Some tilesets have walls that are wider than a single tile. If you try to approach this scenario the same way as 1-wide walls, you will find out that the corridor will not go through the whole multi-tile-wide wall but only through the first tile. The solution for this problem is using the *Outline Override* feature to modify the outline of corridors. This setup is described in the [Example 2](../../examples/example-2.md) tutorial where there is a tileset with an additional layer of wall tiles on top of horizontal walls. (The most important part is the [Vertical corridos](../../examples/example-2.md#vertical-corridors) section.)
