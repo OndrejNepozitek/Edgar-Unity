@@ -45,6 +45,17 @@
 <p align="center">
 <img src="http://zuzka.nepozitek.cz/output4.gif" width='600'"
 </p>
+
+## Frigga is out now!
+
+I released another procedural level generator for Unity, called **Frigga**. While Edgar focuses on levels made of rooms, Frigga specializes on **open-space levels like caves or islands**. Make sure to check it out on the [Unity Asset Store](https://url.ondrejnepozitek.com/frigga-from-edgar-readme)!
+
+<p align="center">
+<a href="https://url.ondrejnepozitek.com/frigga-from-edgar-readme">
+<img src="https://ondrejnepozitek.github.io/Edgar-Unity/frigga_banner.png"
+</a>
+</p>
+
                                                              
 ## Introduction
 
