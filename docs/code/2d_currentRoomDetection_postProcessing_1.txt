@@ -18,7 +18,11 @@ public class CurrentRoomDetectionPostProcessing : DungeonGeneratorPostProcessing
     private void AddFloorCollider(GameObject floor)
     {
         var tilemapCollider2D = floor.AddComponent<TilemapCollider2D>();
-        tilemapCollider2D.usedByComposite = true;
+        #if UNITY_2023_2_OR_NEWER
+            tilemapCollider2D.compositeOperation = Collider2D.CompositeOperation.Merge;
+        #else
+            tilemapCollider2D.usedByComposite = true;
+        #endif
 
         var compositeCollider2d = floor.AddComponent<CompositeCollider2D>();
         compositeCollider2d.geometryType = CompositeCollider2D.GeometryType.Polygons;

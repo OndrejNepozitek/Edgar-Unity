@@ -43,7 +43,7 @@ module.exports = {
     {
       type: "category",
       label: "Guides",
-      items: ["guides/room-template-customization", "guides/current-room-detection", "guides/fog-of-war", "guides/minimap", "guides/door-sockets", "guides/directed-level-graphs", "guides/custom-editor-controls"]
+      items: ["guides/room-template-customization", "guides/current-room-detection", "guides/fog-of-war", "guides/fog-of-war-mesh", "guides/minimap", "guides/door-sockets", "guides/directed-level-graphs", "guides/custom-editor-controls"]
     },
     {
       type: "category",

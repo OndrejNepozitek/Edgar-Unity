@@ -19,8 +19,12 @@ public class GungeonPostProcessingTask : DungeonGeneratorPostProcessingGrid2D
             // Add current room detection handler
             floor.AddComponent<GungeonCurrentRoomHandler>();
 
-            // Add room manager
-            var roomManager = roomTemplateInstance.AddComponent<GungeonRoomManager>();
+            // Add or get room manager
+            var roomManager = roomTemplateInstance.GetComponent<GungeonRoomManager>();
+            if (roomManager == null)
+            {
+                roomManager = roomTemplateInstance.AddComponent<GungeonRoomManager>();
+            }
 
             if (room.Type != GungeonRoomType.Corridor)
             {

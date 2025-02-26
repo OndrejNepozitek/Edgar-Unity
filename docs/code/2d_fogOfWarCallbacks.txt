@@ -1,0 +1,30 @@
+using Edgar.Unity;
+using UnityEngine.U2D;
+
+namespace Edgar.Examples.Grid2D.Resources.Docs
+{
+    // This component is responsible for toggling the lights in the room based on the Fog of War state
+    public class MyFogOfWarCallback : FogOfWarCallbackGrid2D
+    {
+        private void Awake()
+        {
+            // Disable all lights in the room on Awake
+            var lights = gameObject.GetComponentsInChildren<Light2DBase>();
+            foreach (var light in lights)
+            {
+                light.enabled = false;
+            }
+        }
+        
+        public override void OnRoomRevealing()
+        {
+            // Enable all lights in the room when the room starts being revealed
+            // This method might be called more than once for each room
+            var lights = gameObject.GetComponentsInChildren<Light2DBase>();
+            foreach (var light in lights)
+            {
+                light.enabled = true;
+            }
+        }
+    }
+}
