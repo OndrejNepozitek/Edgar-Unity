@@ -48,7 +48,7 @@
 
 ## Frigga is out now!
 
-I released another procedural level generator for Unity, called **Frigga**. While Edgar focused on levels made of rooms, Frigga specializes on open-space levels like caves or dungeons. Make sure to check it out on the [Unity Asset Store](https://url.ondrejnepozitek.com/frigga-from-edgar-readme).
+I released another procedural level generator for Unity, called **Frigga**. While Edgar focuses on levels made of rooms, Frigga specializes on **open-space levels like caves or islands**. Make sure to check it out on the [Unity Asset Store](https://url.ondrejnepozitek.com/frigga-from-edgar-readme)!
 
 <p align="center">
 <a href="https://url.ondrejnepozitek.com/frigga-from-edgar-readme">
