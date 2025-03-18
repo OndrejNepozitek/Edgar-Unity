@@ -115,8 +115,8 @@ namespace Edgar.Unity.Editor
             else
             {
 #if UNITY_2022_1_OR_NEWER
-                GizmoUtility.TryGetGizmoInfo(typeof(RoomTemplateSettingsGrid2D), out GizmoInfo gizmosEnabled);
-                if (!gizmosEnabled.gizmoEnabled)
+                GizmoUtility.TryGetGizmoInfo(typeof(RoomTemplateSettingsGrid2D), out GizmoInfo info);
+                if (info != null && !info.gizmoEnabled)
                 {
                     return;
                 }
