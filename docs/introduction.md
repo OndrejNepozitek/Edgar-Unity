@@ -7,14 +7,33 @@ This project is a Unity plugin for procedural generation of 2D dungeons and aims
 
 Similar approaches are used in games like [**Enter the Gungeon**](https://www.boristhebrave.com/2019/07/28/dungeon-generation-in-enter-the-gungeon/) or [**Dead Cells**](https://www.indiedb.com/games/dead-cells/news/the-level-design-of-a-procedurally-generated-metroidvania).
 
-## Features
+## Key features
 
-- **Complete control over the structure of generated level.** Instead of generating completely random dungeons, you specify how many rooms you want and how they should be connected, and the algorithm generates levels that follow exactly that structure.
-- **Complete control over the look of individual rooms.** You can draw room templates using Unity built-in Tilemap feature. You can use all available tools (brushes, rule tiles, etc.) to design room templates.
-- **Rooms either directly connected by doors or connected by corridors.** You can choose to either connect rooms by corridors or directly via doors.
-- **Easy to customize.** The plugin is ready to be customized and extended.
-- **Supports Unity 2019.4 and newer.**
-- **Multiple example scenes included.**
+- Procedural dungeon generator
+- Describe the structure of levels with a graph of rooms and connections
+- Control the appearance of rooms with handmade room templates
+- Connect rooms either directly with doors or with short corridors
+- Easy to customize with custom post-processing logic
+- Supports Unity 2018.4 and newer
+- Currently works only in 2D with experimental [3D support](/docs/3d/introduction/)
+- Comprehensive documentation
+- Multiple example scenes included
+
+## PRO version
+
+There are two versions of this asset - free version and [PRO version](https://url.ondrejnepozitek.com/edgar-docs). The free version contains the core functions of the generator and should be fine for simple procedural dungeons. The PRO version can be bought **[on the Unity Asset Store](https://url.ondrejnepozitek.com/edgar-docs)** and contains many additional features that you can see below. If you like this asset, please consider buying the PRO version to support the development.
+
+- **Coroutines** - Call the generator as a coroutine so that the game does not freeze when generating a level ([docs](../generators/dungeon-generator#coroutines))
+- **Custom rooms** - It is possible to add additional fields to rooms and connections in a level graph ([docs](../guides/room-template-customization))
+- **Platformers** - Generator that is able to produce platformer levels ([docs](../generators/platformer-generator))
+- **Isometric** - Simple example of isometric levels
+- **Dead Cells** - Tutorial on how to generate levels that are similar to Dead Cells ([docs](../recipes/dead-cells))
+- **Enter the Gungeon** - Tutorial on how to generate levels that are similar to Enter the Gungeon ([docs](../recipes/enter-the-gungeon))
+- **Custom input** - Modify a level graph before it is used in the generator (e.g. add a random secret room) ([docs](../generators/custom-input))
+- **Fog of War** - Hide rooms in a fog until they are explored by the player ([docs](../guides/fog-of-war))
+- **Minimap support** - Simple to use minimap ([docs](../guides/minimap))
+- **Door sockets** - Use door sockets to specify which doors are compatible ([docs](../guides/door-sockets))
+- **Directed level graphs** - Use directed level graphs together with entrance-only and exit-only doors to have better control over generated levels ([docs](../guides/directed-level-graphs))
 
 ## Limitations
 - **Some inputs are too hard for the generator.** You need to follow some guidelines in order to achieve good performance.

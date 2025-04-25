@@ -25,6 +25,13 @@
   --ifm-toc-padding-horizontal: 0.75rem;
 }
 
+@media screen and (max-width: 996px) {
+  :root {
+    --ifm-menu-color: white;
+    --ifm-menu-color-active: rgb(232, 230, 230);
+  }
+}
+
 :root [data-theme=""] {
   --ifm-font-color-base: rgb(28, 30, 33);
 }
