@@ -40,10 +40,18 @@ module.exports = {
       hideOnScroll: false,
       title: "Edgar - Unity",
       items: [
-        { to: "versions", label: `v${latestVersion}`, position: "left" },
+        { 
+          to: "docs/introduction", 
+          label: `v${latestVersion}`,
+          position: "left" 
+        },
+        { 
+          to: "docs/introduction", 
+          label: `Docs`,
+          position: "right" 
+        },
         {
-          label: 'Docs',
-          to: 'docs/introduction',
+          label: 'Archive',
           position: 'right',
           activeBaseRegex: `docs/(?!next/(support|team|resources))`,
           items: [
