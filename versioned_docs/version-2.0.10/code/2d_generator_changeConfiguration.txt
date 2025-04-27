@@ -1,0 +1,16 @@
+// Get the generator component
+var generator = GameObject.Find("Dungeon Generator").GetComponent<DungeonGeneratorGrid2D>();
+
+// Access the input config
+generator.FixedLevelGraphConfig.UseCorridors = false;
+
+// Access the generator config
+generator.GeneratorConfig.Timeout = 5000;
+
+// Access the post-processing config
+generator.PostProcessConfig.CenterGrid = false;
+
+// Access other properties
+generator.UseRandomSeed = false;
+generator.RandomGeneratorSeed = 1000;
+generator.GenerateOn = GenerateOn.Manually;

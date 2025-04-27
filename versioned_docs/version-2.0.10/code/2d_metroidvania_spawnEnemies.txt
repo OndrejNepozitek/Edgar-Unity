@@ -1,0 +1,35 @@
+/// <summary>
+/// Spawn enemies
+/// </summary>
+/// <remarks>
+/// The method is not named "SpawnEnemies" because there is already a public field with that name.
+/// </remarks>
+private void DoSpawnEnemies(DungeonGeneratorLevelGrid2D level)
+{
+    // Check that we have at least one enemy to choose from
+    if (Enemies == null || Enemies.Length == 0)
+    {
+        throw new InvalidOperationException("There must be at least one enemy prefab to spawn enemies");
+    }
+
+    // Go through individual rooms
+    foreach (var roomInstance in level.RoomInstances)
+    {
+        var roomTemplate = roomInstance.RoomTemplateInstance;
+
+        // Find the game object that holds all the spawn points
+        var enemySpawnPoints = roomTemplate.transform.Find("EnemySpawnPoints");
+
+        if (enemySpawnPoints != null)
+        {
+            // Go through individual spawn points and choose a random enemy to spawn
+            foreach (Transform enemySpawnPoint in enemySpawnPoints)
+            {
+                var enemyPrefab = Enemies[Random.Next(Enemies.Length)];
+                var enemy = Instantiate(enemyPrefab);
+                enemy.transform.parent = roomTemplate.transform;
+                enemy.transform.position = enemySpawnPoint.position;
+            }
+        }
+    }
+}

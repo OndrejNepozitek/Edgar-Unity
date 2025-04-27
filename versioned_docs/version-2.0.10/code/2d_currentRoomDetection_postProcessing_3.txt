@@ -1,0 +1,24 @@
+public class CurrentRoomDetectionPostProcessing : DungeonGeneratorPostProcessingGrid2D
+{
+    public override void Run(DungeonGeneratorLevelGrid2D level)
+    {
+        foreach (var roomInstance in level.RoomInstances)
+        {
+            var roomTemplateInstance = roomInstance.RoomTemplateInstance;
+
+            // Find floor tilemap layer
+            // Add floor collider
+
+            // Add the room manager component
+            var roomManager = roomTemplateInstance.AddComponent<CurrentRoomDetectionRoomManager>();
+            roomManager.RoomInstance = roomInstance;
+
+            // Add current room detection handler
+        }
+    }
+
+    private void AddFloorCollider(GameObject floor)
+    {
+        /* ... */
+    }
+}
