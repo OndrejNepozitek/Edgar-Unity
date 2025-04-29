@@ -108,6 +108,21 @@ namespace Edgar.Unity.Editor
 
         private void OnSceneGUIPersistent(SceneView sceneView)
         {
+            if (!Handles.ShouldRenderGizmos())
+            {
+                return;
+            }
+            else
+            {
+#if UNITY_2022_1_OR_NEWER
+                GizmoUtility.TryGetGizmoInfo(typeof(RoomTemplateSettingsGrid2D), out GizmoInfo info);
+                if (info != null && !info.gizmoEnabled)
+                {
+                    return;
+                }
+#endif
+            }
+
             if (target == null || PrefabStageUtility.GetCurrentPrefabStage() == null)
             {
                 RemoveOnSceneGUIDelegate();
