@@ -29,12 +29,20 @@ module.exports = {
         facetFilters: [`version:${versions[0]}`],
       },
     },
+    // announcementBar: {
+    //   id: 'support_us',
+    //   content:
+    //     'Check out the PRO version of the generator on the <a href="https://url.ondrejnepozitek.com/edgar-docs" target="_blank">Unity Asset Store</a>!',
+    //   backgroundColor: '#fafbfc', // Defaults to `#fff`.
+    //   textColor: '#091E42', // Defaults to `#000`.
+    // },
     announcementBar: {
-      id: 'support_us',
+      id: 'sale',
       content:
-        'Check out the PRO version of the generator on the <a href="https://url.ondrejnepozitek.com/edgar-docs" target="_blank">Unity Asset Store</a>!',
+        'Edgar PRO now on sale for 50% off! <a href="https://url.ondrejnepozitek.com/edgar-docs" target="_blank">Buy now on the Asset Store</a>!',
       backgroundColor: '#fafbfc', // Defaults to `#fff`.
       textColor: '#091E42', // Defaults to `#000`.
+      
     },
     navbar: {
       hideOnScroll: false,
