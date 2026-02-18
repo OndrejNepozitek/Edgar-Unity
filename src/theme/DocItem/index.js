@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 export default function DocItemWrapper(props) {
   return (
     <>
-      <div className={styles.saleBanner}>
+      {/* <div className={styles.saleBanner}>
         <div className={styles.saleBannerContent}>
           <span className={styles.saleBannerText}>
             🎉 Asset Store Sale: <strong>50% OFF</strong> on Edgar PRO!
@@ -18,7 +18,7 @@ export default function DocItemWrapper(props) {
             Buy Now →
           </a>
         </div>
-      </div>
+      </div> */}
       <DocItem {...props} />
     </>
   );
