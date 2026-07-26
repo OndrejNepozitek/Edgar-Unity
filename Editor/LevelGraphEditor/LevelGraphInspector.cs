@@ -56,25 +56,31 @@ namespace Edgar.Unity.Editor
             serializedObject.ApplyModifiedProperties();
         }
         
+#if UNITY_6000_4_OR_NEWER
         [UnityEditor.Callbacks.OnOpenAsset(1)]
-        #if UNITY_6000_4_OR_NEWER
-        public static bool OnOpenAsset(EntityId instanceID, int line)
-        #else
-        public static bool OnOpenAsset(int instanceID, int line)
-        #endif
+        public static bool OnOpenAsset(EntityId entityId, int line)
         {
-            #pragma warning disable CS0618 // Type or member is obsolete
-            var assetPath = AssetDatabase.GetAssetPath(instanceID);
-            #pragma warning restore CS0618 // Type or member is obsolete
+            return TryOpenLevelGraph(AssetDatabase.GetAssetPath(entityId));
+        }
+#else
+        [UnityEditor.Callbacks.OnOpenAsset(1)]
+        public static bool OnOpenAsset(int instanceID, int line)
+        {
+            return TryOpenLevelGraph(AssetDatabase.GetAssetPath(instanceID));
+        }
+#endif
+
+        private static bool TryOpenLevelGraph(string assetPath)
+        {
             var levelGraph = AssetDatabase.LoadAssetAtPath<LevelGraph>(assetPath);
-        
+
             if (levelGraph != null)
             {
                 OpenWindow(levelGraph);
-        
+
                 return true;
             }
-        
+
             return false;
         }
 
