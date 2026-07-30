@@ -2,6 +2,6 @@
 {
     public static class AssetInfo
     {
-        public static readonly string Version = "2.0.11";
+        public static readonly string Version = "2.1.0";
     }
 }
